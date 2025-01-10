@@ -6,8 +6,13 @@ export type CreateThemeDto = {
   fontWeight: number;
   fontColor: string;
   secondaryColorFont: string;
+
   backgroundColor: string;
-  backgroundImage: string;
+  backgroundImageUrl: string;
+  videoUrl: string;
+  videoBackgroundActive: boolean;
+  cardBackgroundColor: string;
+
   borderColor: string;
   borderRadius: number;
   borderWidth: number;

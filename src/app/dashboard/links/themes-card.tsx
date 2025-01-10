@@ -5,18 +5,55 @@ import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { FONTS } from "@/constants";
 import { upsertTheme } from "./themes.actions";
 import { toast } from "sonner";
 import { CreateThemeDto } from "@/data-access/theme";
 import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
+import { Switch } from "@/components/ui/switch";
+import { SelectInput } from "@/components/select-input/select-input";
+
+export const THEME_FORM_FIELDS = [
+  {
+    category: "Font",
+    fields: [
+      { label: "Font Family", type: "select", name: "fontFamily" },
+      { label: "Text Color", type: "color", name: "fontColor" },
+      {
+        label: "Secondary Text Color",
+        type: "color",
+        name: "secondaryColorFont",
+      },
+    ],
+  },
+  {
+    category: "Background",
+    fields: [
+      { label: "Background Color", type: "color", name: "backgroundColor" },
+      { label: "Background Image", type: "text", name: "backgroundImageUrl" },
+      { label: "Video Background", type: "text", name: "videoUrl" },
+      {
+        label: "Video Background Active",
+        type: "switch",
+        name: "videoBackgroundActive",
+      },
+      {
+        label: "Card Background Color",
+        type: "color",
+        name: "cardBackgroundColor",
+      },
+    ],
+  },
+  {
+    category: "Border",
+    fields: [
+      { label: "Border Color", type: "color", name: "borderColor" },
+      { label: "Border Radius", type: "number", name: "borderRadius" },
+      { label: "Border Width", type: "number", name: "borderWidth" },
+      { label: "Border Style", type: "select", name: "borderStyle" },
+    ],
+  },
+];
 
 export function ThemesCard({
   userId,
@@ -49,6 +86,43 @@ export function ThemesCard({
     setIsSubmitting(false);
   };
 
+  const renderFormField = (
+    field: (typeof THEME_FORM_FIELDS)[0]["fields"][0],
+  ) => {
+    switch (field.type) {
+      case "select":
+        return (
+          <SelectInput
+            options={
+              field.name === "fontFamily"
+                ? FONTS
+                : [
+                    { label: "Solid", value: "solid" },
+                    { label: "Dashed", value: "dashed" },
+                    { label: "Dotted", value: "dotted" },
+                  ]
+            }
+            placeholder={`Select ${field.label.toLowerCase()}`}
+            defaultValue={
+              initialTheme[field.name as keyof CreateThemeDto] as string
+            }
+            onValueChange={(value) => setValue(`theme.${field.name}`, value)}
+          />
+        );
+      case "switch":
+        return (
+          <Switch
+            {...register(`theme.${field.name}`)}
+            checked={
+              initialTheme[field.name as keyof CreateThemeDto] as boolean
+            }
+          />
+        );
+      default:
+        return <Input type={field.type} {...register(`theme.${field.name}`)} />;
+    }
+  };
+
   return (
     <DashboardCard
       title={<span>Themes</span>}
@@ -67,87 +141,20 @@ export function ThemesCard({
         className="space-y-4"
       >
         <div className="space-y-4">
-          <div>
-            <Label className="text-lg font-bold">Font</Label>
-          </div>
-          <div className="flex items-center space-x-2 mt-2">
-            <Label className="w-24">Font Family</Label>
-            <Select
-              onValueChange={(value) => setValue("theme.fontFamily", value)}
-              defaultValue={initialTheme.fontFamily}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select a font" />
-              </SelectTrigger>
-              <SelectContent>
-                {FONTS.map((font) => (
-                  <SelectItem key={font.value} value={font.value}>
-                    {font.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="flex items-center space-x-2 mt-2">
-            <Label className="w-24">Text Color</Label>
-            <Input type="color" {...register("theme.fontColor")} />
-          </div>
-          <div className="flex items-center space-x-2 mt-2">
-            <Label className="w-24">Secondary Text Color</Label>
-            <Input type="color" {...register("theme.secondaryColorFont")} />
-          </div>
-          <div className="mt-4">
-            <Label className="text-lg font-bold">Background</Label>
-          </div>
-          <div className="flex items-center space-x-2 mt-2">
-            <Label className="w-24">Background Color</Label>
-            <Input type="color" {...register("theme.backgroundColor")} />
-          </div>
-          <div className="flex items-center space-x-2 mt-2">
-            <Label className="w-24">Background Image</Label>
-            <Input
-              type="text"
-              placeholder="Enter image URL"
-              {...register("theme.backgroundImage")}
-            />
-          </div>
-          <div className="mt-4">
-            <Label className="text-lg font-bold">Border</Label>
-          </div>
-          <div className="flex items-center space-x-2 mt-2">
-            <Label className="w-24">Border Color</Label>
-            <Input type="color" {...register("theme.borderColor")} />
-          </div>
-          <div className="flex items-center space-x-2 mt-2">
-            <Label className="w-24">Border Radius</Label>
-            <Input
-              type="number"
-              {...register("theme.borderRadius", { valueAsNumber: true })}
-            />
-          </div>
-          <div className="flex items-center space-x-2 mt-2">
-            <Label className="w-24">Border Width</Label>
-            <Input
-              type="number"
-              {...register("theme.borderWidth", { valueAsNumber: true })}
-            />
-          </div>
-          <div className="flex items-center space-x-2 mt-2">
-            <Label className="w-24">Border Style</Label>
-            <Select
-              onValueChange={(value) => setValue("theme.borderStyle", value)}
-              defaultValue={initialTheme.borderStyle}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select border style" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="solid">Solid</SelectItem>
-                <SelectItem value="dashed">Dashed</SelectItem>
-                <SelectItem value="dotted">Dotted</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+          {THEME_FORM_FIELDS.map((section) => (
+            <div key={section.category} className="space-y-2">
+              <Label className="text-lg font-bold">{section.category}</Label>
+              {section.fields.map((field) => (
+                <div
+                  key={field.name}
+                  className="flex items-center space-x-2 mt-2"
+                >
+                  <Label className="w-24">{field.label}</Label>
+                  {renderFormField(field)}
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       </form>
     </DashboardCard>

@@ -80,8 +80,11 @@ model Theme {
   fontColor String
   secondaryColorFont String
 
-  backgroundColor String
-  backgroundImage String?
+  backgroundColor String?
+  backgroundImageUrl String?
+  videoUrl String?
+  videoBackgroundActive Boolean? @default(false)
+  cardBackgroundColor String?
 
   borderColor String
   borderRadius Int
