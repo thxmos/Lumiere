@@ -3,12 +3,12 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import { PlusCircle } from "lucide-react";
 import { LinkDto } from "@/data-access/links";
 import { LinkInput } from "./_components/link-input";
 import { deleteLink, updateUserLinks } from "./links.actions";
 import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
-import { Separator } from "@radix-ui/react-dropdown-menu";
+import { PlusCircle } from "lucide-react";
+import { toast } from "sonner";
 
 interface LinksCardProps {
   userLinks: LinkDto[];
@@ -23,19 +23,20 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
   } = useForm();
 
   const onSubmit = async () => {
+    console.log("onSubmit", links);
     try {
       await updateUserLinks(userId, links);
-      // You might want to add a success message here
+      toast.success("Links updated successfully");
     } catch (error) {
+      toast.error("Failed to update links");
       console.error("Failed to update links:", error);
-      // You might want to add an error message here
     }
   };
 
   const addLink = () => {
     setLinks([
       ...links,
-      { title: "", url: "", imageUrl: "", userId } as LinkDto,
+      { title: "", url: "https://", imageUrl: "", userId } as LinkDto,
     ]);
   };
 
@@ -44,7 +45,9 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
     if (linkToRemove.id) {
       try {
         await deleteLink(linkToRemove.id);
+        toast.success("Link deleted successfully");
       } catch (error) {
+        toast.error("Failed to delete link");
         console.error("Failed to delete link:", error);
         return; // Don't remove from state if delete failed
       }
@@ -70,6 +73,7 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
       setLinks(newLinks);
     }
   };
+  console.log("links", links);
 
   return (
     <DashboardCard title="Links" description="Manage your custom links here">
@@ -87,12 +91,16 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
             />
           ))}
         </div>
+        <div className="flex justify-end px-0 space-x-2">
+          <Button type="button" variant="outline" onClick={addLink}>
+            <PlusCircle className="w-4 h-4 mr-2" />
+            Add Link
+          </Button>
+          <Button type="submit" disabled={isSubmitting}>
+            Save Changes
+          </Button>
+        </div>
       </form>
-      <div className="flex justify-end px-0 space-x-2">
-        <Button type="submit" disabled={isSubmitting}>
-          Save Changes
-        </Button>
-      </div>
     </DashboardCard>
   );
 }

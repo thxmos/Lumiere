@@ -45,14 +45,27 @@ export async function updateUserLinks(
   }
 
   const createLinksFiltered = links
-    ?.filter((link) => !link.id)
+    ?.filter((link, index) => {
+      if (!link.id) {
+        return {
+          title: link.title,
+          url: link.url,
+          imageUrl: link.imageUrl,
+          userId: userId,
+          index: index,
+        };
+      }
+    })
     .map((link) => ({
       title: link.title,
       url: link.url,
       imageUrl: link.imageUrl,
       userId: userId,
+      index: link.index,
     }));
   await createLinks(createLinksFiltered as CreateLinkDto[]);
+
+  console.log("links", links);
 
   const updateLinksFiltered = links
     ?.filter((link) => link.id)
