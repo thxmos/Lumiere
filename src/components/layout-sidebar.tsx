@@ -9,7 +9,6 @@ type Tab = {
   key: string;
   label: string;
   icon: React.ReactNode;
-  href: string;
 };
 
 type Props = {
@@ -28,11 +27,13 @@ const LayoutSidebar: React.FC<Props> = ({ tabs, title }) => {
       </div>
       <nav>
         {tabs.map((tab) => (
-          <Link href={tab.href} key={tab.key}>
+          <Link href={`/dashboard/${tab.key}`} key={tab.key}>
             <Button
               key={tab.key}
               className="w-full justify-start mb-2"
-              variant={pathname === tab.href ? "default" : "ghost"}
+              variant={
+                pathname === `/dashboard/${tab.key}` ? "default" : "ghost"
+              }
             >
               {tab.icon}
               {tab.label}

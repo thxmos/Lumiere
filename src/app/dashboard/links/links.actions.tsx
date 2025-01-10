@@ -70,7 +70,7 @@ export async function getLinks(userId: string) {
   const links = await getLinksByUserId(userId);
   if (!links) return [];
   return links
-    .sort((a, b) => a.index - b.index)
+    .sort((a, b) => (a.index ?? 0) - (b.index ?? 0))
     .map((link, index) => ({
       ...link,
       index: link.index !== null ? link.index : index,

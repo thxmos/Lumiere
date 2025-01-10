@@ -3,6 +3,10 @@ import LinksTab from "./links-tab";
 import { getUser } from "@/actions/session.actions";
 import { getLinks } from "./links.actions";
 import { getTheme } from "@/actions/theme.actions";
+import { ThemesCard } from "./_components/themes-card";
+import { ProfileInfoCard } from "./_components/profile-card";
+import { SocialMediaCard } from "./_components/social-media-card";
+import { LinksCard } from "./_components/links-card";
 
 const LinksPage = async () => {
   const sessionUser = await getUser();
@@ -13,11 +17,12 @@ const LinksPage = async () => {
   const theme = await getTheme(userId);
 
   return (
-    <main className="flex-1 p-8 overflow-y-auto bg-background">
-      <div className="w-full max-w-5xl">
-        <LinksTab user={user} userLinks={links} theme={theme} />
-      </div>
-    </main>
+    <div className="space-y-4 mb-16">
+      <ProfileInfoCard user={user} />
+      <LinksCard userLinks={links} userId={user.id} />
+      <SocialMediaCard user={user} />
+      <ThemesCard userId={user.id} initialTheme={theme} />
+    </div>
   );
 };
 

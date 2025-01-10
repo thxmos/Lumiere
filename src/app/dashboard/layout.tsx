@@ -17,7 +17,9 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
           title="Dashboard"
           headerIcon={<LayoutDashboard />}
         />
-        {children}
+        <main className="flex-1 p-8 overflow-y-auto bg-background">
+          <div className="w-full max-w-5xl">{children}</div>
+        </main>
       </div>
     </ProtectedLayout>
   );

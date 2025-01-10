@@ -53,7 +53,7 @@ export function LinkInput({
       <div className="flex items-center space-x-4 justify-between">
         <p className="text-sm text-muted-foreground">{index + 1}</p>
         <ImageUpload
-          initialImage={link.imageUrl}
+          initialImage={link.imageUrl ?? undefined}
           onImageChange={handleImageChange}
         />
         <div className="flex space-x-4 flex-1 items-center">
