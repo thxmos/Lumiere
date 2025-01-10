@@ -1,25 +1,37 @@
 import { Link1Icon } from "@radix-ui/react-icons";
-import { Settings, Lock, CreditCard } from "lucide-react";
+import { Settings, Lock, CreditCard, Paintbrush, BarChart } from "lucide-react";
+
+const iconStyle = "mr-2 h-4 w-4";
 
 export const DASHBOARD_TABS = [
   {
     key: "links",
     label: "Links",
-    icon: <Link1Icon className={"mr-2 h-4 w-4"} />,
+    icon: <Link1Icon className={iconStyle} />,
+  },
+  {
+    key: "theme-editor",
+    label: "Theme Editor",
+    icon: <Paintbrush className={iconStyle} />,
+  },
+  {
+    key: "metrics",
+    label: "Metrics",
+    icon: <BarChart className={iconStyle} />,
   },
   {
     key: "account",
     label: "Account",
-    icon: <Settings className={"mr-2 h-4 w-4"} />,
+    icon: <Settings className={iconStyle} />,
   },
   {
     key: "security",
     label: "Security",
-    icon: <Lock className={"mr-2 h-4 w-4"} />,
+    icon: <Lock className={iconStyle} />,
   },
   {
     key: "billing",
     label: "Billing",
-    icon: <CreditCard className={"mr-2 h-4 w-4"} />,
+    icon: <CreditCard className={iconStyle} />,
   },
 ];

@@ -7,6 +7,7 @@ export default async function SecurityPage() {
   const user = await getUserById(sessionUser.id);
   const { password } = await getUserByIdWithPassword(sessionUser.id);
   const hasPassword = !!password;
+  // TODO: only check session in layout
 
   return <SecurityTab user={user} hasPassword={hasPassword} />;
 }

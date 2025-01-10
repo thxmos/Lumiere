@@ -23,6 +23,7 @@
 - Paginating API Results: Ensure APIs return only limited data at a time with pagination.s
 - logging
 - circleci
+- qr code generator?
 
 ### Backlog from previous
 
