@@ -55,6 +55,7 @@ model Link {
   url String
   title String
   imageUrl String?
+  active Boolean @default(true)
 
   index Int?
   @@unique([userId, index])

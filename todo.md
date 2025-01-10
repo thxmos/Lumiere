@@ -5,6 +5,11 @@
 - Paginating API Results: Ensure APIs return only limited data at a time with pagination.s
 - fix resend smh
 - delete files from blob storage when deleting a link or unsetting avatar upload
+- soft delete links and be able to restore them / view stats
+- up to 10 links per user
+- helper method to ensure https:// is prepended to the url
+- themes
+-
 
 - validate dtos in data access layer
 - cron job for cleaning up expired sessions

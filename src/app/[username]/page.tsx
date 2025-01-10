@@ -2,11 +2,9 @@ import Image from "next/image";
 import placeholder from "@/assets/product-default.svg";
 import { getUserByUsername } from "@/actions/user.actions";
 import { TabSelector } from "@/app/[username]/_components/tab-selector";
-import { getLinksByUserId } from "@/data-access/links";
 import { SOCIAL_PLATFORMS } from "@/constants";
 import { X } from "lucide-react";
-
-// todo: helper method to ensure https:// is prepended to the url
+import { getActiveLinksByUserId } from "./actions";
 
 const bgVideo =
   "https://fg92krreal8mypv5.public.blob.vercel-storage.com/urlfern/these%20clouds%20spotify%20canvas-BgxPR1YQkp3sjStMxVCz2lfTSFARD9.mp4";
@@ -19,7 +17,7 @@ export default async function ArtistPage({
   const user = await getUserByUsername(params.username);
   if (!user) return <div>User not found</div>;
 
-  const links = await getLinksByUserId(user.id);
+  const links = await getActiveLinksByUserId(user.id);
 
   return (
     <div className="relative min-h-screen overflow-hidden">

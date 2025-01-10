@@ -10,7 +10,6 @@ import {
   updateLinks,
 } from "@/data-access/links";
 import { updateUserById, UserDto } from "@/data-access/user";
-import { ThemeSettings } from "./themes-card";
 import { updateTheme } from "@/actions/theme.actions";
 import { Theme } from "@prisma/client";
 
@@ -53,6 +52,7 @@ export async function updateUserLinks(
           imageUrl: link.imageUrl,
           userId: userId,
           index: index,
+          active: link.active,
         };
       }
     })
@@ -62,10 +62,9 @@ export async function updateUserLinks(
       imageUrl: link.imageUrl,
       userId: userId,
       index: link.index,
+      active: link.active,
     }));
   await createLinks(createLinksFiltered as CreateLinkDto[]);
-
-  console.log("links", links);
 
   const updateLinksFiltered = links
     ?.filter((link) => link.id)
@@ -75,6 +74,7 @@ export async function updateUserLinks(
       imageUrl: link.imageUrl,
       userId: userId,
       id: link.id,
+      active: link.active,
     }));
   await updateLinks(updateLinksFiltered as LinkDto[]);
 }

@@ -1,20 +1,6 @@
-import { getLinkById, LinkDto } from "@/data-access/links";
+import { getLinkById, updateLink } from "@/data-access/links";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
-
-export const updateLinks = async (links: LinkDto[]) => {
-  await Promise.all(
-    links.map((link) =>
-      prisma.link.update({
-        where: { id: link.id },
-        data: {
-          title: link.title,
-          url: link.url,
-        },
-      }),
-    ),
-  );
-};
 
 export async function clickLink(id: string): Promise<void> {
   const link = await getLinkById(id);
@@ -26,4 +12,8 @@ export async function clickLink(id: string): Promise<void> {
     data: { clicks: { increment: 1 } },
   });
   redirect(link.url);
+}
+
+export async function updateLinkActive(id: string, active: boolean) {
+  await updateLink(id, { active });
 }

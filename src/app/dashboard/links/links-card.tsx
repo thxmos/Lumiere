@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { LinkDto } from "@/data-access/links";
-import { LinkInput } from "./_components/link-input";
 import { deleteLink, updateUserLinks } from "./links.actions";
 import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
 import { PlusCircle } from "lucide-react";
 import { toast } from "sonner";
+import LinkInput from "./_components/link-input";
 
 interface LinksCardProps {
   userLinks: LinkDto[];
@@ -23,7 +23,6 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
   } = useForm();
 
   const onSubmit = async () => {
-    console.log("onSubmit", links);
     try {
       await updateUserLinks(userId, links);
       toast.success("Links updated successfully");
@@ -36,7 +35,13 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
   const addLink = () => {
     setLinks([
       ...links,
-      { title: "", url: "https://", imageUrl: "", userId } as LinkDto,
+      {
+        title: "",
+        url: "https://",
+        imageUrl: "",
+        userId,
+        active: false,
+      } as LinkDto,
     ]);
   };
 
@@ -73,7 +78,6 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
       setLinks(newLinks);
     }
   };
-  console.log("links", links);
 
   return (
     <DashboardCard title="Links" description="Manage your custom links here">

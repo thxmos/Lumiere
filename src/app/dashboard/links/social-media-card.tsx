@@ -55,8 +55,10 @@ export function SocialMediaCard({ user }: SocialMediaCardProps) {
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {SOCIAL_PLATFORMS.map((platform) => (
-            <div key={platform.value} className="space-y-2">
-              <Label htmlFor={platform.value}>{platform.label}</Label>
+            <div key={platform.value} className="space-x-2 items-center flex">
+              <Label htmlFor={platform.value} className="w-20">
+                {platform.label}
+              </Label>
               <Input
                 id={platform.value}
                 placeholder={`Enter your ${platform.label} username`}
