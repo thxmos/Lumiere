@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Cpu } from "lucide-react";
+import { Cpu, Trees } from "lucide-react";
 import { APP_NAME } from "@/constants";
 import DropdownMenu from "./dropdown-menu";
 import { getUser } from "@/actions/session.actions";
@@ -28,12 +28,12 @@ const Navbar = async () => {
       role="banner"
     >
       <Link
-        className="flex items-center justify-center"
+        className="flex items-center justify-center space-x-2"
         href="/"
         aria-label={"Home Page"}
       >
-        <Cpu className="h-6 w-6 text-primary" aria-hidden="true" />
-        <span className="sr-only">{APP_NAME}</span>
+        <Trees className="h-6 w-6 text-primary" aria-hidden="true" />
+        <p className="text-2xl font-bold">{APP_NAME}</p>
       </Link>
 
       <nav

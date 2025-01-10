@@ -1,29 +1,29 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, Code, Globe, Zap } from "lucide-react";
 
 const features = [
-  {
-    icon: Zap,
-    title: "Lightning Fast",
-    description: "Experience unparalleled speed and efficiency.",
-  },
+  // {
+  //   icon: Zap,
+  //   title: "Quick Updates",
+  //   description:
+  //     "Manage and update all your links instantly from one dashboard.",
+  // },
   {
     icon: Globe,
-    title: "Global Access",
-    description: "Access your data from anywhere in the world.",
+    title: "Share Anywhere",
+    description: "One link to share all your social media and content.",
   },
   {
     icon: Code,
-    title: "Powerful API",
-    description: "Integrate seamlessly with your existing tools.",
+    title: "Custom Themes",
+    description: "Personalize your profile page with custom themes.",
   },
   {
     icon: CheckCircle,
-    title: "99.9% Uptime",
-    description: "Rely on our robust and stable infrastructure.",
+    title: "Analytics & Insights",
+    description: "Track clicks and engagement on all your links.",
   },
 ];
 
