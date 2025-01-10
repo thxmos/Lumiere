@@ -14,6 +14,8 @@
 
 ### Nice To Have
 
+- theme editor page that shows the current theme applied to your profile
+  - seperate username page into seperate component
 - track clicks on links
 - fix resend smh
 - delete files from blob storage when deleting a link or unsetting avatar upload

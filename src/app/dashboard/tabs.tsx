@@ -1,5 +1,13 @@
 import { Link1Icon } from "@radix-ui/react-icons";
-import { Settings, Lock, CreditCard, Paintbrush, BarChart } from "lucide-react";
+import {
+  Settings,
+  Lock,
+  CreditCard,
+  Paintbrush,
+  BarChart,
+  ShoppingBag,
+  Calendar,
+} from "lucide-react";
 
 const iconStyle = "mr-2 h-4 w-4";
 
@@ -18,6 +26,16 @@ export const DASHBOARD_TABS = [
     key: "metrics",
     label: "Metrics",
     icon: <BarChart className={iconStyle} />,
+  },
+  {
+    key: "merch",
+    label: "Merch",
+    icon: <ShoppingBag className={iconStyle} />,
+  },
+  {
+    key: "release-planner",
+    label: "Release Planner",
+    icon: <Calendar className={iconStyle} />,
   },
   {
     key: "account",

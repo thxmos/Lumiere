@@ -68,6 +68,39 @@ model Link {
 
   userId String
   user User @relation("UserLinks", fields: [userId], references: [id])
+  Click Click[]
+}
+
+model Click {
+  id String @id @default(cuid()) @unique
+  linkId String
+  link Link @relation(fields: [linkId], references: [id])
+  createdAt DateTime @default(now())
+
+  // Network info
+  ipAddress String?
+  userAgent String?
+  referrer String?
+  
+  // Browser info
+  browser String? // Chrome, Firefox, Safari etc
+  browserVersion String?
+  operatingSystem String? // Windows, MacOS, iOS etc
+  deviceType String? // mobile, tablet, desktop
+  screenResolution String? // 1920x1080 etc
+  language String? // en-US etc
+  timezone String?
+
+  // Session info
+  sessionDuration Int? // Time spent on page in seconds
+  exitPage String? // URL user went to after clicking
+  
+  // Location
+  country Country?
+  city String?
+  region String? // State/province
+  latitude Float?
+  longitude Float?
 }
 
 model Theme {
