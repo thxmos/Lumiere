@@ -23,6 +23,7 @@ import {
 import { FONTS } from "@/constants";
 import { updateUserTheme } from "./links.actions";
 import { Theme } from "@prisma/client";
+import { toast } from "sonner";
 export interface ThemeSettings {
   fontFamily: string;
   fontColor: string;
@@ -51,7 +52,13 @@ export function ThemesCard({ userId, initialTheme }: ThemesCardProps) {
 
   const onSubmit = async (data: { theme: Theme }) => {
     setIsSubmitting(true);
-    await updateUserTheme(userId, data.theme);
+    try {
+      await updateUserTheme(userId, data.theme);
+      toast.success("Theme updated successfully");
+    } catch (error) {
+      console.error("Failed to update theme:", error);
+      toast.error("Failed to update theme");
+    }
     setIsSubmitting(false);
   };
 

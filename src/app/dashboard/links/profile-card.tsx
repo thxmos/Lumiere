@@ -11,6 +11,7 @@ import Link from "next/link";
 import { UserDto } from "@/data-access/user";
 import { updateUser } from "./links.actions";
 import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
+import { toast } from "sonner";
 
 interface ProfileInfoCardProps {
   user: UserDto;
@@ -31,8 +32,10 @@ export function ProfileInfoCard({ user }: ProfileInfoCardProps) {
   const onSubmit = async (data: { username: string; description: string }) => {
     try {
       await updateUser(user.id, data);
+      toast.success("Profile updated successfully");
     } catch (error) {
       console.error("Failed to update profile:", error);
+      toast.error("Failed to update profile");
     }
   };
 

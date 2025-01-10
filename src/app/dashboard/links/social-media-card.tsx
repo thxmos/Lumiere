@@ -16,6 +16,7 @@ import { Label } from "@/components/ui/label";
 import { SOCIAL_PLATFORMS } from "@/constants";
 import { updateUser } from "./links.actions";
 import { UserDto } from "@/data-access/user";
+import { toast } from "sonner";
 
 interface SocialMediaCardProps {
   user: UserDto;
@@ -39,10 +40,10 @@ export function SocialMediaCard({ user }: SocialMediaCardProps) {
   const onSubmit = async (data: Record<string, string>) => {
     try {
       await updateUser(user.id, data);
-      // You might want to add a success message here
+      toast.success("Social media links updated successfully");
     } catch (error) {
       console.error("Failed to update social media links:", error);
-      // You might want to add an error message here
+      toast.error("Failed to update social media links");
     }
   };
 
