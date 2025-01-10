@@ -27,7 +27,7 @@ export function DashboardCard({
         <CardTitle className="text-2xl">{title}</CardTitle>
         {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>
-      <CardContent>{children}</CardContent>
+      <CardContent className="space-y-4">{children}</CardContent>
       {footer && <CardFooter>{footer}</CardFooter>}
     </Card>
   );
