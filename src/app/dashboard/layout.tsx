@@ -2,6 +2,7 @@ import { LayoutDashboard } from "lucide-react";
 import ProtectedLayout from "@/components/protected-layout";
 import LayoutSidebar from "@/components/layout-sidebar";
 import { DASHBOARD_TABS } from "./tabs";
+import Navbar from "@/components/nav-bar/nav-bar";
 interface Props {
   children: React.ReactNode;
 }
@@ -11,6 +12,8 @@ const DashboardLayout: React.FC<Props> = ({ children }) => {
 
   return (
     <ProtectedLayout redirectUrl="/auth">
+      <Navbar />
+
       <div className="flex h-screen bg-background">
         <LayoutSidebar
           tabs={tabs}

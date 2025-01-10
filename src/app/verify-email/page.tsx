@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { redirect } from "next/navigation";
 import VerificationStatus from "./verification-status";
 import { verifyEmailToken } from "./verify-email.action";
+import Navbar from "@/components/nav-bar/nav-bar";
 
 export default async function VerifyEmailPage({
   searchParams,
@@ -27,25 +28,28 @@ export default async function VerifyEmailPage({
   }
 
   return (
-    <main
-      className="min-h-screen flex items-center justify-center"
-      role="main"
-      aria-label="Email Verification Page"
-    >
-      <Suspense
-        fallback={
-          <p aria-live="polite" aria-busy="true">
-            Verifying email...
-          </p>
-        }
+    <>
+      <Navbar />
+      <main
+        className="min-h-screen flex items-center justify-center"
+        role="main"
+        aria-label="Email Verification Page"
       >
-        <VerificationStatus
-          message={message}
-          isVerified={isVerified}
-          aria-live="polite"
-          aria-atomic="true"
-        />
-      </Suspense>
-    </main>
+        <Suspense
+          fallback={
+            <p aria-live="polite" aria-busy="true">
+              Verifying email...
+            </p>
+          }
+        >
+          <VerificationStatus
+            message={message}
+            isVerified={isVerified}
+            aria-live="polite"
+            aria-atomic="true"
+          />
+        </Suspense>
+      </main>
+    </>
   );
 }

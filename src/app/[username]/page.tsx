@@ -35,7 +35,7 @@ export default async function ArtistPage({
         </video>
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
       </div>
-      <div className="relative z-10 min-h-screen bg-black bg-opacity-50 px-4 py-8 flex flex-col">
+      <div className="relative z-10 min-h-screen bg-black bg-opacity-50 px-4 py-16 flex flex-col">
         <div className="max-w-md mx-auto flex-grow">
           {/* Profile Info */}
           <div className="flex items-center mb-6 justify-center">

@@ -63,11 +63,6 @@ export default function DropdownMenu({ user }: Props) {
               icon: User,
             },
             {
-              href: "/settings",
-              label: "Settings",
-              icon: Settings,
-            },
-            {
               href: "#",
               label: "Sign Out",
               icon: LogOut,
