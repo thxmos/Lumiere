@@ -9,6 +9,9 @@
 - themes
 - sqids
 - fix 3rd part auth redirect to localhost
+- toggle display country
+- description max 200 characters
+- check mobile design
 
 ### Nice To Have
 

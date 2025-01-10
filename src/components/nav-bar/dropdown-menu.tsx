@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { LogOut, Settings, User } from "lucide-react";
+import { LayoutDashboard, LogOut, User } from "lucide-react";
 import { getInitials } from "@/helpers";
 
 interface Props {
@@ -49,18 +49,24 @@ export default function DropdownMenu({ user }: Props) {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="w-56 mt-1 rounded-t-none border-none"
+        className="w-56 mt-1 border border-primary shadow-md"
         role="menu"
         aria-label="User account options"
       >
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuSeparator />
+        <DropdownMenuLabel className="flex items-center justify-between">
+          <span className="flex flex-col">
+            My Account
+            <span className="text-xs text-muted-foreground">{user.email}</span>
+          </span>
+          <User className="text-sm" />
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator className="bg-primary" />
         <DropdownMenuGroup>
           {[
             {
               href: "/dashboard",
               label: "Dashboard",
-              icon: User,
+              icon: LayoutDashboard,
             },
             {
               href: "#",
