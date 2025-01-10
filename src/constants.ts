@@ -1,9 +1,9 @@
 import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
 
-export const APP_NAME = "Bean Swipe";
+export const APP_NAME = "Tree Link";
 export const APP_DESCRIPTION =
-  "Bean Swipe is a social media platform for beans.";
-export const APP_DOMAIN = "beangang.gov";
+  "Tree your links and manage your social media presence";
+export const APP_DOMAIN = "treelink.app";
 
 export const THEMES = [
   { name: "light", color: "#ffffff" },

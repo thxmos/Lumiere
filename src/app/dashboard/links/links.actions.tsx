@@ -10,7 +10,7 @@ import {
   updateLinks,
 } from "@/data-access/links";
 import { updateUserById, UserDto } from "@/data-access/user";
-import { ThemeSettings } from "./_components/themes-card";
+import { ThemeSettings } from "./themes-card";
 import { updateTheme } from "@/actions/theme.actions";
 import { Theme } from "@prisma/client";
 

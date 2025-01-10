@@ -21,7 +21,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { FONTS } from "@/constants";
-import { updateUserTheme } from "../links.actions";
+import { updateUserTheme } from "./links.actions";
 import { Theme } from "@prisma/client";
 export interface ThemeSettings {
   fontFamily: string;
@@ -144,11 +144,11 @@ export function ThemesCard({ userId, initialTheme }: ThemesCardProps) {
               </div>
             </div>
           </div>
-          <CardFooter className="flex justify-end px-0">
+          <div className="flex justify-end px-0">
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting ? "Saving..." : "Save Changes"}
             </Button>
-          </CardFooter>
+          </div>
         </form>
       </CardContent>
     </Card>

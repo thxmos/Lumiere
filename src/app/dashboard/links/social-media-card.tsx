@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { SOCIAL_PLATFORMS } from "@/constants";
-import { updateUser } from "../links.actions";
+import { updateUser } from "./links.actions";
 import { UserDto } from "@/data-access/user";
 
 interface SocialMediaCardProps {
@@ -64,11 +64,11 @@ export function SocialMediaCard({ user }: SocialMediaCardProps) {
               />
             </div>
           ))}
-          <CardFooter className="flex justify-end px-0">
+          <div className="flex justify-end px-0">
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting ? "Saving..." : "Save Changes"}
             </Button>
-          </CardFooter>
+          </div>
         </form>
       </CardContent>
     </Card>

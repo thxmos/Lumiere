@@ -2,19 +2,13 @@
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { PlusCircle } from "lucide-react";
 import { LinkDto } from "@/data-access/links";
-import { LinkInput } from "./link-input";
-import { deleteLink, updateUserLinks } from "../links.actions";
+import { LinkInput } from "./_components/link-input";
+import { deleteLink, updateUserLinks } from "./links.actions";
+import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
+import { Separator } from "@radix-ui/react-dropdown-menu";
 
 interface LinksCardProps {
   userLinks: LinkDto[];
@@ -78,37 +72,27 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-2xl">Links</CardTitle>
-        <CardDescription>Manage your custom links here</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div className="space-y-2">
-            {links.map((link, index) => (
-              <LinkInput
-                key={link.id || index}
-                link={link}
-                index={index}
-                onUpdate={updateLink}
-                onDelete={removeLink}
-                onMoveUp={() => moveLink(index, "up")}
-                onMoveDown={() => moveLink(index, "down")}
-              />
-            ))}
-          </div>
-          <CardFooter className="flex justify-end px-0 space-x-2">
-            <Button type="button" variant="outline" onClick={addLink}>
-              <PlusCircle className="h-4 w-4 mr-2" />
-              Add Link
-            </Button>
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Saving..." : "Save Changes"}
-            </Button>
-          </CardFooter>
-        </form>
-      </CardContent>
-    </Card>
+    <DashboardCard title="Links" description="Manage your custom links here">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <div className="space-y-4">
+          {links.map((link, index) => (
+            <LinkInput
+              key={link.id || index}
+              link={link}
+              index={index}
+              onUpdate={updateLink}
+              onDelete={removeLink}
+              onMoveUp={() => moveLink(index, "up")}
+              onMoveDown={() => moveLink(index, "down")}
+            />
+          ))}
+        </div>
+      </form>
+      <div className="flex justify-end px-0 space-x-2">
+        <Button type="submit" disabled={isSubmitting}>
+          Save Changes
+        </Button>
+      </div>
+    </DashboardCard>
   );
 }

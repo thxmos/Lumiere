@@ -1,14 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
 import Link from "next/link";
 import { SessionUser } from "@/lib/lucia";
 import { Price, Product } from "@prisma/client";
@@ -24,45 +17,42 @@ export default function BillingTab({
   const unitAmount = Number(price.unitAmount) / 100; // Convert BigInt to number and divide by 100 if it's in cents
 
   return (
-    <>
-      <Card className="w-full ">
-        <CardHeader>
-          <CardTitle className="text-2xl">Subscription Details</CardTitle>
-          <CardDescription>Manage your subscription plan</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <h3 className="text-lg font-semibold mb-2" id="billing-history">
-              {product.name}
-            </h3>
-            {billingInfo ? (
-              <div className="flex flex-col gap-2">
-                <p>{product.description}</p>
-                <h4>
-                  ${unitAmount} {price.currency?.toUpperCase()}
-                </h4>
-                <span className="text-sm text-gray-500">
-                  {product.active ? "Active" : "Inactive"}
-                </span>
-              </div>
-            ) : (
-              <h4>No active subscription</h4>
-            )}
-          </div>
-        </CardContent>
-        <CardFooter className="flex space-x-4">
-          <Link href={`/subscribe`}>
-            <Button>
-              <span className="sr-only">
-                Access customer portal to manage your subscription plan
+    <DashboardCard
+      title="Subscription Details"
+      description="Manage your subscription plan"
+    >
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-lg font-semibold mb-2" id="billing-history">
+            {product.name}
+          </h3>
+          {billingInfo ? (
+            <div className="flex flex-col gap-2">
+              <p>{product.description}</p>
+              <h4>
+                ${unitAmount} {price.currency?.toUpperCase()}
+              </h4>
+              <span className="text-sm text-gray-500">
+                {product.active ? "Active" : "Inactive"}
               </span>
-              <span aria-hidden="true">
-                {billingInfo ? "Change Plan" : "View Plans"}
-              </span>
-            </Button>
-          </Link>
-        </CardFooter>
-      </Card>
-    </>
+            </div>
+          ) : (
+            <h4>No active subscription</h4>
+          )}
+        </div>
+      </div>
+      <div className="flex justify-end w-full">
+        <Link href={`/subscribe`}>
+          <Button>
+            <span className="sr-only">
+              Access customer portal to manage your subscription plan
+            </span>
+            <span aria-hidden="true">
+              {billingInfo ? "Change Plan" : "View Plans"}
+            </span>
+          </Button>
+        </Link>
+      </div>
+    </DashboardCard>
   );
 }
