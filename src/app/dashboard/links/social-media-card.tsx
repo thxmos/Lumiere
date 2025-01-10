@@ -2,20 +2,13 @@
 
 import React from "react";
 import { useForm } from "react-hook-form";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { SOCIAL_PLATFORMS } from "@/constants";
 import { updateUser } from "./links.actions";
 import { UserDto } from "@/data-access/user";
+import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
 import { toast } from "sonner";
 
 interface SocialMediaCardProps {
@@ -52,32 +45,39 @@ export function SocialMediaCard({ user }: SocialMediaCardProps) {
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-2xl">Social Media</CardTitle>
-        <CardDescription>Manage your social media links here</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          {SOCIAL_PLATFORMS.map((platform) => (
-            <div key={platform.value} className="space-x-2 items-center flex">
-              <Label htmlFor={platform.value} className="w-20">
-                {platform.label}
-              </Label>
-              <Input
-                id={platform.value}
-                placeholder={`Enter your ${platform.label} username`}
-                {...register(platform.value as keyof typeof register)}
-              />
-            </div>
-          ))}
-          <div className="flex justify-end px-0">
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Saving..." : "Save Changes"}
-            </Button>
+    <DashboardCard
+      title="Social Media"
+      description="Manage your social media links here"
+      footer={
+        <div className="flex justify-end w-full">
+          <Button
+            type="submit"
+            form="social-media-form"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Saving..." : "Save Changes"}
+          </Button>
+        </div>
+      }
+    >
+      <form
+        id="social-media-form"
+        onSubmit={handleSubmit(onSubmit)}
+        className="space-y-4"
+      >
+        {SOCIAL_PLATFORMS.map((platform) => (
+          <div key={platform.value} className="space-x-2 items-center flex">
+            <Label htmlFor={platform.value} className="w-20">
+              {platform.label}
+            </Label>
+            <Input
+              id={platform.value}
+              placeholder={`Enter your ${platform.label} username`}
+              {...register(platform.value as keyof typeof register)}
+            />
           </div>
-        </form>
-      </CardContent>
-    </Card>
+        ))}
+      </form>
+    </DashboardCard>
   );
 }

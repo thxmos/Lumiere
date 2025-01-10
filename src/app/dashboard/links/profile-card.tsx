@@ -12,6 +12,14 @@ import { UserDto } from "@/data-access/user";
 import { updateUser } from "./links.actions";
 import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
 import { toast } from "sonner";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { COUNTRIES } from "@/constants";
 
 interface ProfileInfoCardProps {
   user: UserDto;
@@ -22,14 +30,20 @@ export function ProfileInfoCard({ user }: ProfileInfoCardProps) {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    setValue,
   } = useForm({
     defaultValues: {
       username: user.username,
       description: user.description || "",
+      country: user.country || "",
     },
   });
 
-  const onSubmit = async (data: { username: string; description: string }) => {
+  const onSubmit = async (data: {
+    username: string;
+    description: string;
+    country: string;
+  }) => {
     try {
       await updateUser(user.id, data);
       toast.success("Profile updated successfully", {
@@ -84,6 +98,24 @@ export function ProfileInfoCard({ user }: ProfileInfoCardProps) {
             rows={4}
             className="resize-none"
           />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="country">Country</Label>
+          <Select
+            onValueChange={(value) => setValue("country", value)}
+            defaultValue={user.country || ""}
+          >
+            <SelectTrigger>
+              <SelectValue placeholder="Select your country" />
+            </SelectTrigger>
+            <SelectContent>
+              {COUNTRIES.map((country) => (
+                <SelectItem key={country.code} value={country.code}>
+                  {country.emoji} {country.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
         <div className="flex justify-end w-full">
           <Button type="submit" form="profile-form" disabled={isSubmitting}>

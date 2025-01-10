@@ -2,7 +2,7 @@ import Image from "next/image";
 import placeholder from "@/assets/product-default.svg";
 import { getUserByUsername } from "@/actions/user.actions";
 import { TabSelector } from "@/app/[username]/_components/tab-selector";
-import { SOCIAL_PLATFORMS } from "@/constants";
+import { COUNTRIES, SOCIAL_PLATFORMS } from "@/constants";
 import { X } from "lucide-react";
 import { getActiveLinksByUserId } from "./actions";
 import { getTheme } from "@/actions/theme.actions";
@@ -20,7 +20,6 @@ export default async function ArtistPage({
 
   const links = await getActiveLinksByUserId(user.id);
   const theme = await getTheme(user.id);
-  console.log(theme);
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -48,7 +47,19 @@ export default async function ArtistPage({
               className="rounded-full border-2 border-gray-200 flex-shrink-0"
             />
             <div className="ml-4 flex flex-col items-start">
-              <h1 className="text-3xl font-bold text-white">{user.username}</h1>
+              <span className="flex items-end">
+                <h1 className="text-3xl font-bold text-white">
+                  {user.username}
+                </h1>
+                {user.country && (
+                  <span className="ml-2">
+                    {
+                      COUNTRIES.find((country) => country.code === user.country)
+                        ?.emoji
+                    }
+                  </span>
+                )}
+              </span>
               <p className="mt-2 text-gray-200 max-w-sm">{user.description}</p>
             </div>
           </div>

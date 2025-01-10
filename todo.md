@@ -8,6 +8,7 @@
 - up to 10 links per user
 - themes
 - sqids
+- fix 3rd part auth redirect to localhost
 
 ### Nice To Have
 

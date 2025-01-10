@@ -10,6 +10,7 @@ import {
   updateLinks,
 } from "@/data-access/links";
 import { updateUserById, UserDto } from "@/data-access/user";
+import { Country } from "@prisma/client";
 
 export async function updateUser(userId: string, data: Partial<UserDto>) {
   const isSessionValid = await isValidSession();
@@ -20,6 +21,7 @@ export async function updateUser(userId: string, data: Partial<UserDto>) {
   await updateUserById(userId, {
     username: data.username,
     description: data.description,
+    country: data.country as Country,
     twitchUsername: data.twitchUsername,
     instagramUsername: data.instagramUsername,
     facebookUsername: data.facebookUsername,
