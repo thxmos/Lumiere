@@ -3,14 +3,11 @@
 import { Button } from "@/components/ui/button";
 import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
 import Link from "next/link";
-import { SessionUser } from "@/lib/lucia";
 import { Price, Product } from "@prisma/client";
 
 export default function BillingTab({
-  user,
   billingInfo,
 }: {
-  user: SessionUser;
   billingInfo: { price: Price; product: Product };
 }) {
   const { price, product } = billingInfo;

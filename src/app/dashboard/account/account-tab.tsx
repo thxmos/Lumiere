@@ -23,10 +23,14 @@ export default function AccountTab({ user }: { user: UserDto }) {
 
     try {
       await updateUser(userId, { name });
-      toast.success("Successfully updated user");
+      toast.success("Successfully updated user", {
+        duration: 3000,
+      });
     } catch (error) {
       console.error(error);
-      toast.error("Could not update user");
+      toast.error("Could not update user", {
+        duration: 3000,
+      });
     } finally {
       setIsSubmitting(false);
     }

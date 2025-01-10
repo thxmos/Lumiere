@@ -1,31 +1,10 @@
-import { prisma } from "@/lib/prisma";
-import { Theme } from "@prisma/client";
+import { DEFAULT_THEME } from "@/constants";
+import { CreateThemeDto, getThemeByUserId } from "@/data-access/theme";
 
-export async function updateTheme(userId: string, theme: Theme) {
-  await prisma.theme.update({
-    where: { userId },
-    data: theme,
-  });
-}
-
-export async function getTheme(userId: string): Promise<Theme> {
-  const theme = await prisma.theme.findUnique({
-    where: { userId },
-  });
+export async function getTheme(userId: string): Promise<CreateThemeDto> {
+  const theme = await getThemeByUserId(userId);
   if (!theme) {
-    return {
-      id: "",
-      fontFamily: "",
-      fontWeight: 0,
-      fontColor: "",
-      secondaryColorFont: "",
-      backgroundColor: "",
-      backgroundImage: "",
-      borderColor: "",
-      borderRadius: 0,
-      borderWidth: 0,
-      userId: "",
-    } as Theme;
+    return DEFAULT_THEME;
   }
-  return theme;
+  return theme as CreateThemeDto;
 }

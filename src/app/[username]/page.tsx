@@ -5,6 +5,7 @@ import { TabSelector } from "@/app/[username]/_components/tab-selector";
 import { SOCIAL_PLATFORMS } from "@/constants";
 import { X } from "lucide-react";
 import { getActiveLinksByUserId } from "./actions";
+import { getTheme } from "@/actions/theme.actions";
 
 const bgVideo =
   "https://fg92krreal8mypv5.public.blob.vercel-storage.com/urlfern/these%20clouds%20spotify%20canvas-BgxPR1YQkp3sjStMxVCz2lfTSFARD9.mp4";
@@ -18,6 +19,8 @@ export default async function ArtistPage({
   if (!user) return <div>User not found</div>;
 
   const links = await getActiveLinksByUserId(user.id);
+  const theme = await getTheme(user.id);
+  console.log(theme);
 
   return (
     <div className="relative min-h-screen overflow-hidden">

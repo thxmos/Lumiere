@@ -32,10 +32,14 @@ export function ProfileInfoCard({ user }: ProfileInfoCardProps) {
   const onSubmit = async (data: { username: string; description: string }) => {
     try {
       await updateUser(user.id, data);
-      toast.success("Profile updated successfully");
+      toast.success("Profile updated successfully", {
+        duration: 3000,
+      });
     } catch (error) {
       console.error("Failed to update profile:", error);
-      toast.error("Failed to update profile");
+      toast.error("Failed to update profile", {
+        duration: 3000,
+      });
     }
   };
 

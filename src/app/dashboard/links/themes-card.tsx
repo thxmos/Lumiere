@@ -8,7 +8,6 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-  CardFooter,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -21,43 +20,37 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { FONTS } from "@/constants";
-import { updateUserTheme } from "./links.actions";
-import { Theme } from "@prisma/client";
+import { upsertTheme } from "./themes.actions";
 import { toast } from "sonner";
-export interface ThemeSettings {
-  fontFamily: string;
-  fontColor: string;
-  secondaryColorFont: string;
-  backgroundColor: string;
-  backgroundImage: string;
-  borderColor: string;
-  borderRadius: number;
-  borderWidth: number;
-  borderStyle: string;
-}
+import { CreateThemeDto } from "@/data-access/theme";
 
-interface ThemesCardProps {
+export function ThemesCard({
+  userId,
+  initialTheme,
+}: {
   userId: string;
-  initialTheme: Theme;
-}
-
-export function ThemesCard({ userId, initialTheme }: ThemesCardProps) {
+  initialTheme: CreateThemeDto;
+}) {
   const { register, handleSubmit, setValue } = useForm<{
-    theme: Theme;
+    theme: CreateThemeDto;
   }>({
     defaultValues: { theme: initialTheme },
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const onSubmit = async (data: { theme: Theme }) => {
+  const onSubmit = async (data: { theme: CreateThemeDto }) => {
     setIsSubmitting(true);
     try {
-      await updateUserTheme(userId, data.theme);
-      toast.success("Theme updated successfully");
+      await upsertTheme(userId, data.theme);
+      toast.success("Theme updated successfully", {
+        duration: 3000,
+      });
     } catch (error) {
       console.error("Failed to update theme:", error);
-      toast.error("Failed to update theme");
+      toast.error("Failed to update theme", {
+        duration: 3000,
+      });
     }
     setIsSubmitting(false);
   };

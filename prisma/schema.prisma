@@ -72,13 +72,17 @@ model Link {
 
 model Theme {
   id String @id @default(cuid()) @unique
+  userId String @unique
+  user User @relation("UserTheme", fields: [userId], references: [id])
 
   fontFamily String
   fontWeight Int
   fontColor String
   secondaryColorFont String
+
   backgroundColor String
   backgroundImage String?
+
   borderColor String
   borderRadius Int
   borderWidth Int
@@ -86,10 +90,6 @@ model Theme {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  deletedAt DateTime? // soft delete
-
-  userId String @unique
-  user User @relation("UserTheme", fields: [userId], references: [id])
 }
 
 // Auth Models

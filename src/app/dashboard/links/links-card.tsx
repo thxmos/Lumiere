@@ -25,9 +25,13 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
   const onSubmit = async () => {
     try {
       await updateUserLinks(userId, links);
-      toast.success("Links updated successfully");
+      toast.success("Links updated successfully", {
+        duration: 3000,
+      });
     } catch (error) {
-      toast.error("Failed to update links");
+      toast.error("Failed to update links", {
+        duration: 3000,
+      });
       console.error("Failed to update links:", error);
     }
   };
@@ -80,7 +84,10 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
   };
 
   return (
-    <DashboardCard title="Links" description="Manage your custom links here">
+    <DashboardCard
+      title="Links"
+      description={`Manage your custom links here (${links.length}/10)`}
+    >
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="space-y-4">
           {links.map((link, index) => (

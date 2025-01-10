@@ -1,4 +1,5 @@
 import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import { CreateThemeDto } from "./data-access/theme";
 
 export const APP_NAME = "Tree Link";
 export const APP_DESCRIPTION =
@@ -15,6 +16,19 @@ export const THEMES = [
   { name: "pink", color: "#ec4899" },
   { name: "teal", color: "#14b8a6" },
 ];
+
+export const DEFAULT_THEME = {
+  fontFamily: "Arial",
+  fontWeight: 400,
+  fontColor: "#000000",
+  secondaryColorFont: "#000000",
+  backgroundColor: "#ffffff",
+  backgroundImage: "",
+  borderColor: "#000000",
+  borderRadius: 0,
+  borderWidth: 0,
+  borderStyle: "solid",
+} as CreateThemeDto;
 
 export const SOCIAL_PLATFORMS = [
   {

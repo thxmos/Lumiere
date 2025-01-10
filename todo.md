@@ -7,9 +7,11 @@
 - Paginating API Results: Ensure APIs return only limited data at a time with pagination.s
 - up to 10 links per user
 - themes
+- sqids
 
 ### Nice To Have
 
+- track clicks on links
 - fix resend smh
 - delete files from blob storage when deleting a link or unsetting avatar upload
 - delete files from blob storage when deleting a link or unsetting avatar upload

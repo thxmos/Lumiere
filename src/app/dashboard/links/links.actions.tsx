@@ -10,8 +10,6 @@ import {
   updateLinks,
 } from "@/data-access/links";
 import { updateUserById, UserDto } from "@/data-access/user";
-import { updateTheme } from "@/actions/theme.actions";
-import { Theme } from "@prisma/client";
 
 export async function updateUser(userId: string, data: Partial<UserDto>) {
   const isSessionValid = await isValidSession();
@@ -47,12 +45,8 @@ export async function updateUserLinks(
     ?.filter((link, index) => {
       if (!link.id) {
         return {
-          title: link.title,
-          url: link.url,
-          imageUrl: link.imageUrl,
-          userId: userId,
-          index: index,
-          active: link.active,
+          ...link,
+          index,
         };
       }
     })
@@ -88,10 +82,6 @@ export async function getLinks(userId: string) {
       ...link,
       index: link.index !== null ? link.index : index,
     }));
-}
-
-export async function updateUserTheme(userId: string, theme: Theme) {
-  await updateTheme(userId, theme);
 }
 
 export async function deleteLink(id: string) {

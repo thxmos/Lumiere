@@ -40,10 +40,14 @@ export function SocialMediaCard({ user }: SocialMediaCardProps) {
   const onSubmit = async (data: Record<string, string>) => {
     try {
       await updateUser(user.id, data);
-      toast.success("Social media links updated successfully");
+      toast.success("Social media links updated successfully", {
+        duration: 3000,
+      });
     } catch (error) {
       console.error("Failed to update social media links:", error);
-      toast.error("Failed to update social media links");
+      toast.error("Failed to update social media links", {
+        duration: 3000,
+      });
     }
   };
 
