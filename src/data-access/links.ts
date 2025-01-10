@@ -6,15 +6,16 @@ export type CreateLinkDto = {
   title: string;
   imageUrl: string;
   userId: string;
+  index: number;
 };
 
 export type LinkDto = {
   id: string;
   url: string;
   title: string;
-  imageUrl: string;
+  imageUrl: string | null;
   userId: string;
-  index: number;
+  index: number | null;
 };
 
 function toDtoMapper(link: Link): LinkDto {
