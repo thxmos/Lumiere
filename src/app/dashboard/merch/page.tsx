@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { MerchCard } from "./merch-card";
 
-export const MERCH_MOCK = [
+const MERCH_MOCK = [
   {
     title: "Shirt",
     price: 10,

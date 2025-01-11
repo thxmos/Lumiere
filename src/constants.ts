@@ -24,11 +24,15 @@ export const DEFAULT_THEME = {
   secondaryColorFont: "#000000",
   backgroundColor: "#ffffff",
   backgroundImage: "",
+  cardBackgroundColor: "#ffffff",
+  videoUrl: "",
+  videoBackgroundActive: false,
+  backgroundImageUrl: "",
   borderColor: "#000000",
   borderRadius: 0,
   borderWidth: 0,
   borderStyle: "solid",
-} as CreateThemeDto;
+} as Omit<CreateThemeDto, "userId">;
 
 export const SOCIAL_PLATFORMS = [
   {
