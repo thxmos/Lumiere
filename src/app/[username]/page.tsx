@@ -21,6 +21,7 @@ export default async function ArtistPage({
   const links = await getActiveLinksByUserId(user.id);
   const theme = await getTheme(user.id);
 
+  console.log(theme);
   return (
     <div className="relative min-h-screen overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full">
@@ -45,10 +46,20 @@ export default async function ArtistPage({
               width={100}
               height={100}
               className="rounded-full border-2 border-gray-200 flex-shrink-0"
+              style={{
+                borderColor: theme.borderColor || "#000000",
+                borderWidth: theme.borderWidth ? `${theme.borderWidth}px` : 1,
+                borderStyle: theme.borderStyle || "solid",
+              }}
             />
             <div className="ml-4 flex flex-col items-start">
               <span className="flex items-end">
-                <h1 className="text-3xl font-bold text-white">
+                <h1
+                  className="text-3xl font-bold"
+                  style={{
+                    color: theme.fontColor || "#000000",
+                  }}
+                >
                   {user.username}
                 </h1>
                 {user.country && (
@@ -60,12 +71,19 @@ export default async function ArtistPage({
                   </span>
                 )}
               </span>
-              <p className="mt-2 text-gray-200 max-w-sm">{user.description}</p>
+              <p
+                className="mt-2 max-w-sm"
+                style={{
+                  color: theme.secondaryColorFont || "#666666",
+                }}
+              >
+                {user.description}
+              </p>
             </div>
           </div>
 
           {/* Tab Selector */}
-          <TabSelector links={links} />
+          <TabSelector links={links} theme={theme} />
 
           {/* Social Links */}
           <div className="mt-8 flex justify-center space-x-4">

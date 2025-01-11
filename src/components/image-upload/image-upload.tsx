@@ -1,136 +1,71 @@
 "use client";
 
 import { useState } from "react";
-import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
-import { ChevronLeft, X } from "lucide-react";
-import Link from "next/link";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Switch } from "@/components/ui/switch";
+import { Upload, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ImageUpload from "@/components/image-upload/image-upload";
 
-interface Props {
-  params: {
-    merchId: string;
-  };
+interface ImageUploadProps {
+  initialImage?: string;
+  onImageChange: (image: string | null) => void;
 }
 
-export default function ProductPage({ params }: Props) {
-  const { merchId } = params;
-  const [images, setImages] = useState<File[]>([]);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
-  const [isActive, setIsActive] = useState(true);
+export function ImageUpload({ initialImage, onImageChange }: ImageUploadProps) {
+  const [image, setImage] = useState<string | null>(initialImage || null);
 
-  const handleImageUpload = (files: File[]) => {
-    setImages((prevImages) => {
-      const newImages = [...prevImages, ...files];
-      return newImages.slice(0, 5); // Limit to 5 images
-    });
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        setImage(base64String);
+        onImageChange(base64String);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
-  const handleImageDelete = (index: number) => {
-    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log({ images, title, description, price, isActive });
+  const handleRemoveImage = () => {
+    setImage(null);
+    onImageChange(null);
   };
 
   return (
-    <DashboardCard
-      title={
-        <div className="flex items-center">
-          <Link href="/dashboard/merch">
-            <ChevronLeft className="w-4 h-4 mr-2" />
-          </Link>
-          <p className="text-lg font-medium text-gray-800">
-            {merchId.charAt(0).toUpperCase() + merchId.slice(1)}
-          </p>
-        </div>
-      }
-      description={`Product ID: ${merchId}`}
-    >
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <Label htmlFor="image">Images (up to 5)</Label>
-          <ImageUpload
-            onChange={handleImageUpload}
-            maxFiles={5 - images.length}
-            maxSize={1024 * 1024 * 5} // 5MB
-            accept={{
-              "image/png": [".png"],
-              "image/jpeg": [".jpg", ".jpeg"],
-            }}
+    <div className="relative min-w-20 min-h-20 max-w-20 max-h-20 rounded-lg overflow-hidden">
+      {image ? (
+        <div className="w-full h-full group">
+          <img
+            src={image}
+            alt="Uploaded"
+            className="w-full h-full object-cover"
           />
-          <div className="mt-2 flex flex-wrap gap-2">
-            {images.map((image, index) => (
-              <div key={index} className="relative group">
-                <img
-                  src={URL.createObjectURL(image)}
-                  alt={`Uploaded image ${index + 1}`}
-                  className="w-16 h-16 object-cover rounded"
-                />
-                <button
-                  type="button"
-                  onClick={() => handleImageDelete(index)}
-                  className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity"
-                >
-                  <X className="w-4 h-4 text-white" />
-                </button>
-              </div>
-            ))}
+          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleRemoveImage}
+              className="text-white hover:text-red-500"
+            >
+              <X className="h-6 w-6" />
+              <span className="sr-only">Remove image</span>
+            </Button>
           </div>
         </div>
-
-        <div>
-          <Label htmlFor="title">Title</Label>
-          <Input
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Enter product title"
+      ) : (
+        <label
+          htmlFor="image-upload"
+          className="min-w-20 min-h-20 flex items-center justify-center bg-gray-100 cursor-pointer"
+        >
+          <Upload className="h-8 w-8 text-gray-400" />
+          <input
+            id="image-upload"
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            className="hidden"
           />
-        </div>
-
-        <div>
-          <Label htmlFor="description">Description</Label>
-          <Textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Enter product description"
-          />
-        </div>
-
-        <div>
-          <Label htmlFor="price">Price</Label>
-          <Input
-            id="price"
-            type="number"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            placeholder="Enter product price"
-            step="0.01"
-          />
-        </div>
-
-        <div className="flex items-center space-x-2">
-          <Switch
-            id="active"
-            checked={isActive}
-            onCheckedChange={setIsActive}
-          />
-          <Label htmlFor="active">Active</Label>
-        </div>
-
-        <Button type="submit">Save Changes</Button>
-      </form>
-    </DashboardCard>
+        </label>
+      )}
+    </div>
   );
 }
