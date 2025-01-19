@@ -22,6 +22,7 @@ export async function updateUser(userId: string, data: Partial<UserDto>) {
     username: data.username,
     description: data.description,
     country: data.country as Country,
+    displayCountry: data.displayCountry,
     twitchUsername: data.twitchUsername,
     instagramUsername: data.instagramUsername,
     facebookUsername: data.facebookUsername,

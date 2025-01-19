@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -62,7 +62,7 @@ export function ThemesCard({
   userId: string;
   initialTheme: CreateThemeDto;
 }) {
-  const { register, handleSubmit, setValue } = useForm<{
+  const { control, handleSubmit } = useForm<{
     theme: CreateThemeDto;
   }>({
     defaultValues: { theme: initialTheme },
@@ -73,7 +73,16 @@ export function ThemesCard({
   const onSubmit = async (data: { theme: CreateThemeDto }) => {
     setIsSubmitting(true);
     try {
-      await upsertTheme(userId, data.theme);
+      // Ensure number fields are converted to integers
+      const updatedTheme = {
+        ...data.theme,
+        borderRadius: parseInt(
+          data.theme.borderRadius as unknown as string,
+          10,
+        ),
+        borderWidth: parseInt(data.theme.borderWidth as unknown as string, 10),
+      };
+      await upsertTheme(userId, updatedTheme);
       toast.success("Theme updated successfully", {
         duration: 3000,
       });
@@ -88,38 +97,65 @@ export function ThemesCard({
 
   const renderFormField = (
     field: (typeof THEME_FORM_FIELDS)[0]["fields"][0],
+    control: any,
   ) => {
     switch (field.type) {
       case "select":
         return (
-          <SelectInput
-            options={
-              field.name === "fontFamily"
-                ? FONTS
-                : [
-                    { label: "Solid", value: "solid" },
-                    { label: "Dashed", value: "dashed" },
-                    { label: "Dotted", value: "dotted" },
-                  ]
-            }
-            placeholder={`Select ${field.label.toLowerCase()}`}
-            defaultValue={
-              initialTheme[field.name as keyof CreateThemeDto] as string
-            }
-            onValueChange={(value) => setValue(`theme.${field.name}`, value)}
+          <Controller
+            name={`theme.${field.name}`}
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <SelectInput
+                options={
+                  field.name === "fontFamily"
+                    ? FONTS
+                    : [
+                        { label: "Solid", value: "solid" },
+                        { label: "Dashed", value: "dashed" },
+                        { label: "Dotted", value: "dotted" },
+                      ]
+                }
+                placeholder={`Select ${field.label.toLowerCase()}`}
+                onValueChange={onChange}
+              />
+            )}
           />
         );
       case "switch":
         return (
-          <Switch
-            {...register(`theme.${field.name}`)}
-            checked={
-              initialTheme[field.name as keyof CreateThemeDto] as boolean
-            }
+          <Controller
+            name={`theme.${field.name}`}
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <Switch checked={value} onCheckedChange={onChange} />
+            )}
+          />
+        );
+      case "number":
+        return (
+          <Controller
+            name={`theme.${field.name}`}
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <Input
+                type="number"
+                value={value}
+                onChange={(e) => onChange(parseInt(e.target.value, 10))}
+              />
+            )}
           />
         );
       default:
-        return <Input type={field.type} {...register(`theme.${field.name}`)} />;
+        return (
+          <Controller
+            name={`theme.${field.name}`}
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <Input type={field.type} value={value} onChange={onChange} />
+            )}
+          />
+        );
     }
   };
 
@@ -150,7 +186,7 @@ export function ThemesCard({
                   className="flex items-center space-x-2 mt-2"
                 >
                   <Label className="w-24">{field.label}</Label>
-                  {renderFormField(field)}
+                  {renderFormField(field, control)}
                 </div>
               ))}
             </div>

@@ -15,11 +15,12 @@ model User {
   name  String?
   password   String?
   country Country?
+  displayCountry Boolean? @default(false)
 
   // Profile Info
   avatar      String?
   username    String   @unique @default(dbgenerated("'user-' || floor(random() * 1000000)::text"))
-  description String?  @default("")
+  description String?  @default("") @db.VarChar(200)
   links Link[] @relation("UserLinks")
   theme Theme? @relation("UserTheme")
   themeId String?

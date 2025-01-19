@@ -21,7 +21,6 @@ export default async function ArtistPage({
   const links = await getActiveLinksByUserId(user.id);
   const theme = await getTheme(user.id);
 
-  console.log(theme);
   return (
     <div className="relative min-h-screen overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full">
@@ -62,7 +61,7 @@ export default async function ArtistPage({
                 >
                   {user.username}
                 </h1>
-                {user.country && (
+                {user.displayCountry && user.country && (
                   <span className="ml-2">
                     {
                       COUNTRIES.find((country) => country.code === user.country)

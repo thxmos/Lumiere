@@ -20,29 +20,31 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { COUNTRIES } from "@/constants";
+import { Switch } from "@/components/ui/switch";
 
-interface ProfileInfoCardProps {
-  user: UserDto;
-}
-
-export function ProfileInfoCard({ user }: ProfileInfoCardProps) {
+export function ProfileInfoCard({ user }: { user: UserDto }) {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
     setValue,
+    watch,
   } = useForm({
     defaultValues: {
       username: user.username,
       description: user.description || "",
       country: user.country || "",
+      displayCountry: user.displayCountry,
     },
   });
+
+  const displayCountry = watch("displayCountry");
 
   const onSubmit = async (data: {
     username: string;
     description: string;
     country: string;
+    displayCountry: boolean;
   }) => {
     try {
       await updateUser(user.id, data);
@@ -91,13 +93,26 @@ export function ProfileInfoCard({ user }: ProfileInfoCardProps) {
           )}
         </div>
         <div className="space-y-2">
-          <Label htmlFor="description">Description</Label>
+          <Label htmlFor="description">
+            Description ({watch("description")?.length || 0}/150)
+          </Label>
           <Textarea
             id="description"
-            {...register("description")}
+            {...register("description", {
+              maxLength: {
+                value: 150,
+                message: "Description cannot exceed 150 characters",
+              },
+            })}
             rows={4}
             className="resize-none"
+            aria-invalid={errors.description ? "true" : "false"}
           />
+          {errors.description && (
+            <p className="text-sm text-red-500" role="alert">
+              {errors.description.message}
+            </p>
+          )}
         </div>
         <div className="space-y-2">
           <Label htmlFor="country">Country</Label>
@@ -116,6 +131,19 @@ export function ProfileInfoCard({ user }: ProfileInfoCardProps) {
               ))}
             </SelectContent>
           </Select>
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="displayCountry" className="block mb-2">
+            Display Country?
+          </Label>
+          <div className="flex items-center space-x-2">
+            <Switch
+              id="displayCountry"
+              checked={displayCountry}
+              onCheckedChange={(checked) => setValue("displayCountry", checked)}
+            />
+            <span>{displayCountry ? "Yes" : "No"}</span>
+          </div>
         </div>
         <div className="flex justify-end w-full">
           <Button type="submit" form="profile-form" disabled={isSubmitting}>

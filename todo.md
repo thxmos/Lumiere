@@ -5,15 +5,17 @@
 - don't allow for duplicate usernames
 - Limiting File Uploads: Restrict the size of file uploads using Content-Length headers or custom logic in API routes.
 - up to 10 links per user
-- themes
 - sqids
 - fix 3rd part auth redirect to localhost
-- toggle display country
-- description max 200 characters
 - check mobile design
+- fix bg image/video toggle
+- social icons
+- default font family
 
 ### Nice To Have
 
+- FEATURE FLAGS for admin OR 2 user types
+- default themes
 - theme editor page that shows the current theme applied to your profile
   - seperate username page into seperate component
 - track clicks on links

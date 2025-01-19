@@ -15,6 +15,7 @@ export type UserDto = {
   username: string;
   description: string | null;
   country: string | null;
+  displayCountry: boolean;
   // links: Link[];
   facebookUsername: string | null;
   twitterUsername: string | null;
@@ -39,6 +40,7 @@ function toDtoMapper(user: User): UserDto {
     username: user.username,
     description: user.description,
     country: user.country,
+    displayCountry: user.displayCountry || false,
     facebookUsername: user.facebookUsername,
     twitterUsername: user.twitterUsername,
     instagramUsername: user.instagramUsername,
