@@ -5,7 +5,7 @@
 - don't allow for duplicate usernames
 - Limiting File Uploads: Restrict the size of file uploads using Content-Length headers or custom logic in API routes.
 - up to 10 links per user
-- sqids
+- up to 3 (or 10?) qr codes per user
 - fix 3rd part auth redirect to localhost
 - check mobile design
 - fix bg image/video toggle
@@ -15,6 +15,7 @@
 ### Nice To Have
 
 - FEATURE FLAGS for admin OR 2 user types
+- sqids (what for again i forget)
 - default themes
 - theme editor page that shows the current theme applied to your profile
   - seperate username page into seperate component
@@ -27,7 +28,6 @@
 - Paginating API Results: Ensure APIs return only limited data at a time with pagination.s
 - logging
 - circleci
-- qr code generator?
 
 ### Backlog from previous
 

@@ -7,6 +7,7 @@ import {
   BarChart,
   ShoppingBag,
   Calendar,
+  QrCodeIcon,
 } from "lucide-react";
 
 const iconStyle = "mr-2 h-4 w-4";
@@ -21,6 +22,11 @@ export const DASHBOARD_TABS = [
     key: "theme-editor",
     label: "Theme Editor",
     icon: <Paintbrush className={iconStyle} />,
+  },
+  {
+    key: "qr-generator",
+    label: "QR Generator",
+    icon: <QrCodeIcon className={iconStyle} />,
   },
   {
     key: "metrics",

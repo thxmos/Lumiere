@@ -7,10 +7,13 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "lh3.googleusercontent.com",
+        hostname: "lh3.googleusercontent.com", // google auth
       },
       {
-        hostname: "3sygz88yjtarhtwa.public.blob.vercel-storage.com",
+        hostname: "3sygz88yjtarhtwa.public.blob.vercel-storage.com", // blob storage
+      },
+      {
+        hostname: "api.qrserver.com", // qr code generator
       },
     ],
   },
