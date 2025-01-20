@@ -126,6 +126,7 @@ model Theme {
   fontColor String
   secondaryColorFont String
 
+  backgroundType String @default("color") // "color" | "image" | "video"
   backgroundColor String?
   backgroundImageUrl String?
   videoUrl String?
@@ -171,6 +172,18 @@ enum OAuthProvider {
 
 // Payment Models
 
+model Product {
+  id              String   @id @default(cuid())
+  name            String?
+  description     String?
+  image           String?
+  active          Boolean?
+  metadata        Json?
+  stripeProductId String?  @unique
+
+  prices Price[]
+}
+
 model Price {
   id              String               @id @default(cuid())
   stripePriceId   String?              @unique
@@ -187,18 +200,6 @@ model Price {
   productId String?
   product   Product? @relation(fields: [productId], references: [id])
   users     User[]   @relation("UserSubscriptions")
-}
-
-model Product {
-  id              String   @id @default(cuid())
-  name            String?
-  description     String?
-  image           String?
-  active          Boolean?
-  metadata        Json?
-  stripeProductId String?  @unique
-
-  prices Price[]
 }
 
 enum PricingType {

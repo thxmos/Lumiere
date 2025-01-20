@@ -7,9 +7,26 @@ import { Button } from "@/components/ui/button";
 interface ImageUploadProps {
   initialImage?: string;
   onImageChange: (image: string | null) => void;
+  size?: "sm" | "md" | "lg";
 }
 
-export function ImageUpload({ initialImage, onImageChange }: ImageUploadProps) {
+const sizeClasses = {
+  sm: "min-w-20 min-h-20 max-w-20 max-h-20",
+  md: "min-w-32 min-h-32 max-w-32 max-h-32",
+  lg: "min-w-48 min-h-48 max-w-48 max-h-48",
+};
+
+const iconSizes = {
+  sm: "h-8 w-8",
+  md: "h-12 w-12",
+  lg: "h-16 w-16",
+};
+
+export function ImageUpload({
+  initialImage,
+  onImageChange,
+  size = "sm",
+}: ImageUploadProps) {
   const [image, setImage] = useState<string | null>(initialImage || null);
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +48,7 @@ export function ImageUpload({ initialImage, onImageChange }: ImageUploadProps) {
   };
 
   return (
-    <div className="relative min-w-20 min-h-20 max-w-20 max-h-20 rounded-lg overflow-hidden">
+    <div className={`relative ${sizeClasses[size]} rounded-lg overflow-hidden`}>
       {image ? (
         <div className="w-full h-full group">
           <img
@@ -46,7 +63,7 @@ export function ImageUpload({ initialImage, onImageChange }: ImageUploadProps) {
               onClick={handleRemoveImage}
               className="text-white hover:text-red-500"
             >
-              <X className="h-6 w-6" />
+              <X className={iconSizes[size]} />
               <span className="sr-only">Remove image</span>
             </Button>
           </div>
@@ -54,9 +71,9 @@ export function ImageUpload({ initialImage, onImageChange }: ImageUploadProps) {
       ) : (
         <label
           htmlFor="image-upload"
-          className="min-w-20 min-h-20 flex items-center justify-center bg-gray-100 cursor-pointer"
+          className={`${sizeClasses[size]} flex items-center justify-center bg-gray-100 cursor-pointer`}
         >
-          <Upload className="h-8 w-8 text-gray-400" />
+          <Upload className={`${iconSizes[size]} text-gray-400`} />
           <input
             id="image-upload"
             type="file"

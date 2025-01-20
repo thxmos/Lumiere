@@ -18,11 +18,11 @@ export const DASHBOARD_TABS = [
     label: "Links",
     icon: <Link1Icon className={iconStyle} />,
   },
-  {
-    key: "theme-editor",
-    label: "Theme Editor",
-    icon: <Paintbrush className={iconStyle} />,
-  },
+  // {
+  //   key: "theme-editor",
+  //   label: "Theme Editor",
+  //   icon: <Paintbrush className={iconStyle} />,
+  // },
   {
     key: "qr-generator",
     label: "QR Generator",

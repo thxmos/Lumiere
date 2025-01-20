@@ -13,6 +13,12 @@ import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
 import { Switch } from "@/components/ui/switch";
 import { SelectInput } from "@/components/select-input/select-input";
 
+const BACKGROUND_TYPES = [
+  { label: "Colored Background", value: "color" },
+  { label: "Image Background", value: "image" },
+  { label: "Video Background", value: "video" },
+];
+
 export const THEME_FORM_FIELDS = [
   {
     category: "Font",
@@ -23,24 +29,6 @@ export const THEME_FORM_FIELDS = [
         label: "Secondary Text Color",
         type: "color",
         name: "secondaryColorFont",
-      },
-    ],
-  },
-  {
-    category: "Background",
-    fields: [
-      { label: "Background Color", type: "color", name: "backgroundColor" },
-      { label: "Background Image", type: "text", name: "backgroundImageUrl" },
-      { label: "Video Background", type: "text", name: "videoUrl" },
-      {
-        label: "Video Background Active",
-        type: "switch",
-        name: "videoBackgroundActive",
-      },
-      {
-        label: "Card Background Color",
-        type: "color",
-        name: "cardBackgroundColor",
       },
     ],
   },
@@ -60,17 +48,19 @@ export function ThemesCard({
   initialTheme,
 }: {
   userId: string;
-  initialTheme: CreateThemeDto;
+  initialTheme: Omit<CreateThemeDto, "userId">;
 }) {
-  const { control, handleSubmit } = useForm<{
-    theme: CreateThemeDto;
+  const { control, handleSubmit, watch } = useForm<{
+    theme: Omit<CreateThemeDto, "userId">;
   }>({
     defaultValues: { theme: initialTheme },
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const backgroundType =
+    watch("theme.backgroundType") || BACKGROUND_TYPES[0].value;
 
-  const onSubmit = async (data: { theme: CreateThemeDto }) => {
+  const onSubmit = async (data: { theme: Omit<CreateThemeDto, "userId"> }) => {
     setIsSubmitting(true);
     try {
       // Ensure number fields are converted to integers
@@ -82,6 +72,7 @@ export function ThemesCard({
         ),
         borderWidth: parseInt(data.theme.borderWidth as unknown as string, 10),
       };
+      console.log("updatedTheme", updatedTheme);
       await upsertTheme(userId, updatedTheme);
       toast.success("Theme updated successfully", {
         duration: 3000,
@@ -118,6 +109,10 @@ export function ThemesCard({
                 }
                 placeholder={`Select ${field.label.toLowerCase()}`}
                 onValueChange={onChange}
+                defaultValue={
+                  value ||
+                  (field.name === "fontFamily" ? FONTS[0].value : undefined)
+                }
               />
             )}
           />
@@ -191,6 +186,64 @@ export function ThemesCard({
               ))}
             </div>
           ))}
+          <div className="space-y-2">
+            <Label className="text-lg font-bold">Background</Label>
+            <div className="flex items-center space-x-2 mt-2">
+              <Label className="w-24">Type</Label>
+              <Controller
+                name="theme.backgroundType"
+                control={control}
+                defaultValue={BACKGROUND_TYPES[0].value}
+                render={({ field: { onChange, value } }) => (
+                  <SelectInput
+                    options={BACKGROUND_TYPES}
+                    placeholder="Select background type"
+                    onValueChange={onChange}
+                    defaultValue={BACKGROUND_TYPES[0].value}
+                  />
+                )}
+              />
+            </div>
+
+            {backgroundType === "color" && (
+              <div className="flex items-center space-x-2 mt-2">
+                <Label className="w-24">Color</Label>
+                <Controller
+                  name="theme.backgroundColor"
+                  control={control}
+                  render={({ field: { onChange, value } }) => (
+                    <Input type="color" value={value} onChange={onChange} />
+                  )}
+                />
+              </div>
+            )}
+
+            {backgroundType === "image" && (
+              <div className="flex items-center space-x-2 mt-2">
+                <Label className="w-24">Image URL</Label>
+                <Controller
+                  name="theme.backgroundImageUrl"
+                  control={control}
+                  render={({ field: { onChange, value } }) => (
+                    <Input type="text" value={value} onChange={onChange} />
+                  )}
+                />
+              </div>
+            )}
+
+            {backgroundType === "video" && (
+              <div className="flex items-center space-x-2 mt-2">
+                <Label className="w-24">Video URL</Label>
+                <Controller
+                  name="theme.videoUrl"
+                  control={control}
+                  render={({ field: { onChange, value } }) => (
+                    <Input type="text" value={value} onChange={onChange} />
+                  )}
+                />
+              </div>
+            )}
+          </div>
         </div>
       </form>
     </DashboardCard>

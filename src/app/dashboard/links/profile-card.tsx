@@ -83,6 +83,10 @@ export function ProfileInfoCard({ user }: { user: UserDto }) {
             id="username"
             {...register("username", {
               required: "Username is required",
+              pattern: {
+                value: /^[a-zA-Z0-9]+$/,
+                message: "Username can only contain letters and numbers",
+              },
             })}
             aria-invalid={errors.username ? "true" : "false"}
           />
@@ -114,35 +118,37 @@ export function ProfileInfoCard({ user }: { user: UserDto }) {
             </p>
           )}
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="country">Country</Label>
-          <Select
-            onValueChange={(value) => setValue("country", value)}
-            defaultValue={user.country || ""}
-          >
-            <SelectTrigger>
-              <SelectValue placeholder="Select your country" />
-            </SelectTrigger>
-            <SelectContent>
-              {COUNTRIES.map((country) => (
-                <SelectItem key={country.code} value={country.code}>
-                  {country.emoji} {country.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="displayCountry" className="block mb-2">
-            Display Country?
-          </Label>
-          <div className="flex items-center space-x-2">
-            <Switch
-              id="displayCountry"
-              checked={displayCountry}
-              onCheckedChange={(checked) => setValue("displayCountry", checked)}
-            />
-            <span>{displayCountry ? "Yes" : "No"}</span>
+        <div className="flex gap-4">
+          <div className="space-y-2 flex-1">
+            <Label htmlFor="country">Country</Label>
+            <Select
+              onValueChange={(value) => setValue("country", value)}
+              defaultValue={user.country || ""}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select your country" />
+              </SelectTrigger>
+              <SelectContent>
+                {COUNTRIES.map((country) => (
+                  <SelectItem key={country.code} value={country.code}>
+                    {country.emoji} {country.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-2 flex-1 ">
+            <Label htmlFor="displayCountry">Display Country?</Label>
+            <div className="flex items-center h-10 space-x-2">
+              <Switch
+                id="displayCountry"
+                checked={displayCountry}
+                onCheckedChange={(checked) =>
+                  setValue("displayCountry", checked)
+                }
+              />
+              <span>{displayCountry ? "Yes" : "No"}</span>
+            </div>
           </div>
         </div>
         <div className="flex justify-end w-full">

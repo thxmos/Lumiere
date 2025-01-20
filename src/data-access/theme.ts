@@ -7,6 +7,7 @@ export type CreateThemeDto = {
   fontColor: string;
   secondaryColorFont: string;
 
+  backgroundType: string; // "color" | "image" | "video"
   backgroundColor: string;
   backgroundImageUrl: string;
   videoUrl: string;
@@ -23,7 +24,10 @@ export type ThemeDto = CreateThemeDto & {
   id: string;
 };
 
-export async function createTheme(userId: string, theme: CreateThemeDto) {
+export async function createTheme(
+  userId: string,
+  theme: Omit<CreateThemeDto, "userId">,
+) {
   await prisma.theme.create({
     data: {
       ...theme,
@@ -33,18 +37,20 @@ export async function createTheme(userId: string, theme: CreateThemeDto) {
 }
 
 export async function getThemeByUserId(userId: string) {
-  return await prisma.theme.findUnique({
+  const theme = await prisma.theme.findUnique({
     where: { userId },
   });
+  return theme;
 }
 
 export async function updateThemeByUserId(
   userId: string,
-  theme: CreateThemeDto,
+  theme: Omit<CreateThemeDto, "userId">,
 ) {
+  const { userId: _, ...themeData } = theme as any;
   await prisma.theme.update({
     where: { userId },
-    data: theme,
+    data: themeData,
   });
 }
 
