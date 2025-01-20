@@ -11,7 +11,6 @@ import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { ImageUpload } from "@/components/image-upload/image-upload";
 import { toast } from "sonner";
-// import type { CreateProduct2Dto, Product2Dto } from "@/data-access/product2";
 import { updateProduct } from "./product.actions";
 import { useForm } from "react-hook-form";
 import { Product2Dto } from "@/data-access/product2";
@@ -25,7 +24,9 @@ export default function ProductEditTab({ product }: Props) {
   const [name, setName] = useState(product.name || "");
   const [description, setDescription] = useState(product.description || "");
   const [price, setPrice] = useState(product.price || 0);
-  const [active, setActive] = useState(product.active || true);
+  const [active, setActive] = useState(product.active!);
+
+  console.log("product", product);
 
   const {
     handleSubmit,
@@ -33,7 +34,6 @@ export default function ProductEditTab({ product }: Props) {
   } = useForm();
 
   const handleImageChange = (imageUrl: string | undefined) => {
-    console.log("imageUrl", imageUrl);
     setImage(imageUrl);
   };
 

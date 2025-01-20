@@ -10,6 +10,8 @@
 
 ### Important
 
+- FIX backgrounds for profiles
+
 1. Better image upload system
 
    - [ ] make entity assigned to userId
@@ -28,6 +30,7 @@
 5. fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
 6. check mobile designs
 7. add some missing social icons
+8. database backups
 
 ### Nice To Have
 

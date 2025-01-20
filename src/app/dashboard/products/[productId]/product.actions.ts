@@ -18,6 +18,8 @@ export async function updateProduct(
   productId: string,
   data: Partial<CreateProduct2Dto>,
 ) {
+  console.log("data", data);
+
   const processedData = {
     ...data,
     price: data.price !== undefined ? Number(data.price) : undefined,

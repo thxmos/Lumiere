@@ -1,0 +1,14 @@
+model Product2 {
+  id              String   @id @default(cuid())
+  name            String?
+  description     String?
+  image           String?
+  active          Boolean? @default(false)
+  price           Decimal? @default(0.00) @db.Decimal(10,2)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
+
+  userId String
+  user User @relation("UserProducts", fields: [userId], references: [id])
+}

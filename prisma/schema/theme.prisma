@@ -1,0 +1,25 @@
+model Theme {
+  id String @id @default(cuid()) @unique
+  userId String @unique
+  user User @relation("UserTheme", fields: [userId], references: [id])
+
+  fontFamily String
+  fontWeight Int
+  fontColor String
+  secondaryColorFont String
+
+  backgroundType String @default("color") // "color" | "image" | "video"
+  backgroundColor String?
+  backgroundImageUrl String?
+  videoUrl String?
+  videoBackgroundActive Boolean? @default(false)
+  cardBackgroundColor String?
+
+  borderColor String
+  borderRadius Int
+  borderWidth Int
+  borderStyle String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
+}

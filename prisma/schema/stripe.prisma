@@ -1,0 +1,43 @@
+// Stripe Models
+
+model Product {
+  id              String   @id @default(cuid())
+  name            String?
+  description     String?
+  image           String?
+  active          Boolean?
+  metadata        Json?
+  stripeProductId String?  @unique
+
+  prices Price[]
+}
+
+model Price {
+  id              String               @id @default(cuid())
+  stripePriceId   String?              @unique
+  stripeProductId String?              @map("product_id")
+  active          Boolean?
+  unitAmount      BigInt?              @map("unit_amount")
+  currency        String?
+  type            PricingType?
+  interval        PricingPlanInterval?
+  intervalCount   Int?                 @map("interval_count")
+  trialPeriodDays Int?                 @map("trial_period_days")
+  metadata        Json?
+
+  productId String?
+  product   Product? @relation(fields: [productId], references: [id])
+  users     User[]   @relation("UserSubscriptions")
+}
+
+enum PricingType {
+  RECURRING
+  ONE_TIME
+}
+
+enum PricingPlanInterval {
+  DAY
+  WEEK
+  MONTH
+  YEAR
+}

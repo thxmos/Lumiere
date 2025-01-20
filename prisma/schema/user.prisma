@@ -1,0 +1,52 @@
+model User {
+  // Personal Info
+  id    String  @id @default(cuid())
+  email String  @unique
+  name  String?
+  password   String?
+  country Country?
+  displayCountry Boolean? @default(false)
+
+  // Profile Info
+  avatar      String?
+  username    String   @unique @default(dbgenerated("'user-' || floor(random() * 1000000)::text"))
+  description String?  @default("") @db.VarChar(200)
+  links Link[] @relation("UserLinks")
+  theme Theme? @relation("UserTheme")
+  themeId String?
+
+  // Products
+  Product2 Product2[] @relation("UserProducts")
+  
+  // Social Links
+  facebookUsername String?
+  twitterUsername String?
+  instagramUsername String?
+  twitchUsername String?
+  tiktokUsername String?
+  spotifyUsername String?
+  appleMusicUsername String?
+  patreonUsername String?
+  youtubeUsername String?
+  
+  // Account Info
+  isVerified Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt @default(now())
+
+  // Payment Info
+  stripeCustomerId String? @unique
+
+  // Session Info
+  session       Session[]
+  subscriptions Price[]        @relation("UserSubscriptions")
+  oAuthProvider OAuthProvider?
+ 
+  // QR Codes
+  QRCode QRCode[] @relation("UserQRCodes")
+
+}
+
+enum OAuthProvider {
+  GOOGLE
+}
