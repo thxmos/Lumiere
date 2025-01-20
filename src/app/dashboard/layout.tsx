@@ -3,11 +3,13 @@ import ProtectedLayout from "@/components/protected-layout";
 import LayoutSidebar from "@/components/layout-sidebar";
 import { DASHBOARD_TABS } from "./tabs";
 import Navbar from "@/components/nav-bar/nav-bar";
+import { getUser } from "@/actions/session.actions";
+
 interface Props {
   children: React.ReactNode;
 }
 
-const DashboardLayout: React.FC<Props> = ({ children }) => {
+const DashboardLayout: React.FC<Props> = async ({ children }) => {
   const tabs = DASHBOARD_TABS;
 
   return (

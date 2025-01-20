@@ -56,25 +56,27 @@ export async function getProductsByUserId(
   return products.map(toDtoMapper);
 }
 
-// export async function getProductById(id: string): Promise<Product2Dto> {
-//   const product = await prisma.product2.findUnique({ where: { id } });
-//   if (!product) {
-//     throw new Error("Product not found with id: " + id);
-//   }
-//   return toDtoMapper(product);
-// }
+export async function getProductById(productId: string): Promise<Product2Dto> {
+  const product = await prisma.product2.findUnique({
+    where: { id: productId },
+  });
+  if (!product) {
+    throw new Error("Product not found with id: " + productId);
+  }
+  return toDtoMapper(product);
+}
 
 // export async function getProducts(): Promise<Product2Dto[]> {
 //   const products = await prisma.product2.findMany();
 //   return products.map(toDtoMapper);
 // }
 
-// export async function updateProduct(
-//   id: string,
-//   data: Partial<Product2>,
-// ): Promise<void> {
-//   await prisma.product2.update({ where: { id }, data });
-// }
+export async function updateProductById(
+  id: string,
+  data: Partial<Product2Dto>,
+): Promise<void> {
+  await prisma.product2.update({ where: { id }, data });
+}
 
 // export async function getProduct2ById(id: string): Promise<Product2Dto> {
 //   const foundProduct = await prisma.product2.findUnique({

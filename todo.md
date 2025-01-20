@@ -1,19 +1,29 @@
 ## TODOS:
 
+### Roadmap
+
+- get 10 users (the clear, hafta)
+- get click data
+- get qr code data
+- metrics page
+- add products tab + merch section on page
+
 ### Important
 
-- don't allow for duplicate usernames
-- Limiting File Uploads: Restrict the size of file uploads using Content-Length headers or custom logic in API routes.
-- up to 10 links per user
-- up to 3 (or 10?) qr codes per user
-- fix 3rd part auth redirect to localhost
-- check mobile design
-- fix bg image/video toggle
-- social icons
-- default font family
+- Better image upload system
+  - make entity assigned to userId
+  - products, links, etc can reference the entity
+- Limiting File Uploads
+  - Restrict the size of file uploads using Content-Length headers or custom logic in API routes.
+- LIMIT up to 10 links per user
+- LIMIT up to 3 (or 10?) qr codes per user
+- fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
+- check mobile designs
+- add some missing social icons
 
 ### Nice To Have
 
+- don't allow for duplicate usernames
 - FEATURE FLAGS for admin OR 2 user types
 - sqids (what for again i forget)
 - default themes
@@ -26,8 +36,10 @@
 - soft delete links and be able to restore them / view stats
 - helper method to ensure https:// is prepended to the url
 - Paginating API Results: Ensure APIs return only limited data at a time with pagination.s
-- logging
-- circleci
+- better logging
+- CircleCI
+- DRYER Blob Image Upload implementation
+  - used in product edit tab and avatar upload, make into a more reusable action
 
 ### Backlog from previous
 

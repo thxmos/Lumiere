@@ -28,21 +28,21 @@ export const DASHBOARD_TABS = [
     label: "QR Generator",
     icon: <QrCodeIcon className={iconStyle} />,
   },
+  // {
+  //   key: "metrics",
+  //   label: "Metrics",
+  //   icon: <BarChart className={iconStyle} />,
+  // },
   {
-    key: "metrics",
-    label: "Metrics",
-    icon: <BarChart className={iconStyle} />,
-  },
-  {
-    key: "merch",
-    label: "Merch",
+    key: "products",
+    label: "Products",
     icon: <ShoppingBag className={iconStyle} />,
   },
-  {
-    key: "release-planner",
-    label: "Release Planner",
-    icon: <Calendar className={iconStyle} />,
-  },
+  // {
+  //   key: "release-planner",
+  //   label: "Release Planner",
+  //   icon: <Calendar className={iconStyle} />,
+  // },
   {
     key: "account",
     label: "Account",
