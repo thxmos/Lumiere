@@ -24,6 +24,9 @@ model User {
   links Link[] @relation("UserLinks")
   theme Theme? @relation("UserTheme")
   themeId String?
+
+  // Products
+  Product2 Product2[] @relation("UserProducts")
   
   // Social Links
   facebookUsername String?
@@ -39,7 +42,7 @@ model User {
   // Account Info
   isVerified Boolean  @default(false)
   createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  updatedAt  DateTime @updatedAt @default(now())
 
   // Payment Info
   stripeCustomerId String? @unique
@@ -51,6 +54,7 @@ model User {
  
   // QR Codes
   QRCode QRCode[] @relation("UserQRCodes")
+
 }
 
 model Link {
@@ -66,7 +70,7 @@ model Link {
   clicks Int @default(0)
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @updatedAt @default(now())
   deletedAt DateTime? // soft delete
 
   userId String
@@ -113,7 +117,7 @@ model QRCode {
   user User @relation("UserQRCodes", fields: [userId], references: [id])
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @updatedAt @default(now())
 }
 
 model Theme {
@@ -139,7 +143,7 @@ model Theme {
   borderStyle String
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @updatedAt @default(now())
 }
 
 // Auth Models
@@ -182,6 +186,21 @@ model Product {
   stripeProductId String?  @unique
 
   prices Price[]
+}
+
+model Product2 {
+  id              String   @id @default(cuid())
+  name            String?
+  description     String?
+  image           String?
+  active          Boolean?
+  price           Decimal? @default(0.00) @db.Decimal(10,2)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
+
+  userId String
+  user User @relation("UserProducts", fields: [userId], references: [id])
 }
 
 model Price {

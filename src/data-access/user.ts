@@ -16,7 +16,6 @@ export type UserDto = {
   description: string | null;
   country: string | null;
   displayCountry: boolean;
-  // links: Link[];
   facebookUsername: string | null;
   twitterUsername: string | null;
   instagramUsername: string | null;

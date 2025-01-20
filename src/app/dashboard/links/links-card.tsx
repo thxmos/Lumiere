@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import { LinkDto } from "@/data-access/links";
-import { deleteLink, updateUserLinks } from "./links.actions";
+import { type LinkDto } from "@/data-access/links";
+import { deleteLink, updateUserLinks } from "./links-card.actions";
 import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
 import { PlusCircle } from "lucide-react";
 import { toast } from "sonner";

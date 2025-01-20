@@ -1,6 +1,6 @@
 import { getUserById } from "@/data-access/user";
 import { getUser } from "@/actions/session.actions";
-import { getLinks } from "./links.actions";
+import { getLinks } from "./links-card.actions";
 import { getTheme } from "@/actions/theme.actions";
 import { ThemesCard } from "./themes-card";
 import { ProfileInfoCard } from "./profile-card";

@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { FONTS } from "@/constants";
 import { upsertTheme } from "./themes.actions";
 import { toast } from "sonner";
-import { CreateThemeDto } from "@/data-access/theme";
+import { type CreateThemeDto } from "@/data-access/theme";
 import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
 import { Switch } from "@/components/ui/switch";
 import { SelectInput } from "@/components/select-input/select-input";

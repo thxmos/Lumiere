@@ -1,0 +1,98 @@
+import { prisma } from "@/lib/prisma";
+import type { Product2 } from "@prisma/client";
+
+export type CreateProduct2Dto = {
+  name?: string;
+  description?: string;
+  image?: string;
+  active?: boolean;
+  price?: number;
+};
+
+export type Product2Dto = {
+  id: string;
+  name: string | null;
+  description: string | null;
+  image: string | null;
+  active: boolean | null;
+  price: number | null;
+  userId?: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+function toDtoMapper(product: Product2): Product2Dto {
+  return {
+    id: product.id,
+    name: product.name,
+    description: product.description,
+    image: product.image,
+    active: product.active,
+    price: product.price ? Number.parseFloat(product.price.toString()) : null,
+    userId: product.userId,
+    createdAt: product.createdAt,
+    updatedAt: product.updatedAt,
+  };
+}
+
+export async function createProduct(
+  userId: string,
+  data: CreateProduct2Dto,
+): Promise<Product2Dto> {
+  console.log("createProduct", data);
+  const createdProduct = await prisma.product2.create({
+    data: {
+      ...data,
+      userId: userId,
+    },
+  });
+  return toDtoMapper(createdProduct);
+}
+
+export async function getProductsByUserId(
+  userId: string,
+): Promise<Product2Dto[]> {
+  const products = await prisma.product2.findMany({ where: { userId } });
+  return products.map(toDtoMapper);
+}
+
+// export async function getProductById(id: string): Promise<Product2Dto> {
+//   const product = await prisma.product2.findUnique({ where: { id } });
+//   if (!product) {
+//     throw new Error("Product not found with id: " + id);
+//   }
+//   return toDtoMapper(product);
+// }
+
+// export async function getProducts(): Promise<Product2Dto[]> {
+//   const products = await prisma.product2.findMany();
+//   return products.map(toDtoMapper);
+// }
+
+// export async function updateProduct(
+//   id: string,
+//   data: Partial<Product2>,
+// ): Promise<void> {
+//   await prisma.product2.update({ where: { id }, data });
+// }
+
+// export async function getProduct2ById(id: string): Promise<Product2Dto> {
+//   const foundProduct = await prisma.product2.findUnique({
+//     where: { id },
+//   });
+//   if (!foundProduct) {
+//     throw new Error("Product2 not found with id: " + id);
+//   }
+//   return toDtoMapper(foundProduct);
+// }
+
+// export async function updateProduct2ById(
+//   id: string,
+//   data: Partial<Product2>,
+// ): Promise<void> {
+//   await prisma.product2.update({ where: { id }, data });
+// }
+
+// export async function deleteProduct2ById(id: string): Promise<void> {
+//   await prisma.product2.delete({ where: { id } });
+// }

@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { AvatarUpload } from "@/components/avatar-upload/avatar-upload";
 import Link from "next/link";
-import { UserDto } from "@/data-access/user";
-import { updateUser } from "./links.actions";
+import { type UserDto } from "@/data-access/user";
+import { updateUser } from "./links-card.actions";
 import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
 import { toast } from "sonner";
 import {
