@@ -5,17 +5,33 @@ import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { ProductCard } from "./product-card";
-import { CreateProductModal } from "./create-product-modal";
-import { Product2Dto } from "@/data-access/product2";
+import { CreateProductModal } from "../create-product-modal";
+import { CreateProduct2Dto, Product2Dto } from "@/data-access/product2";
+import { getProducts } from "../merch.actions";
+import { toast } from "sonner";
+import { createNewProduct } from "../merch.actions";
 
 const ProductsList = ({
+  userId,
   products,
-  createProduct,
 }: {
+  userId: string;
   products: Product2Dto[];
-  createProduct: (productData: any) => Promise<void>;
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const createProduct = async (productData: Partial<CreateProduct2Dto>) => {
+    console.log("productData", productData);
+    try {
+      await createNewProduct(userId, productData);
+      const updatedProducts = await getProducts(userId);
+      console.log("updatedProducts", updatedProducts);
+      toast.success("Product created successfully");
+    } catch (error) {
+      console.error("Error creating product:", error);
+      toast.error("Failed to create product. Please try again.");
+    }
+  };
 
   return (
     <DashboardCard title="Products" description="View your products">
@@ -28,11 +44,11 @@ const ProductsList = ({
         <Plus className="w-4 h-4 mr-2" />
         Create New
       </Button>
-      {/* <CreateProductModal
+      <CreateProductModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSubmit={createProduct}
-      /> */}
+      />
     </DashboardCard>
   );
 };

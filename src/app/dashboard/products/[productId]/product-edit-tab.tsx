@@ -76,7 +76,7 @@ export default function ProductEditTab({ product }: Props) {
           <Label htmlFor="image">Image</Label>
           <ImageUpload
             initialImage={image}
-            size="lg"
+            size="sm"
             onImageChange={(image: string | null) =>
               handleImageChange(image || undefined)
             }
