@@ -8,7 +8,7 @@ import { deleteLink, updateUserLinks } from "./links-card.actions";
 import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
 import { PlusCircle } from "lucide-react";
 import { toast } from "sonner";
-import LinkInput from "./_components/link-input";
+import LinkInput from "./components/link-input";
 
 interface LinksCardProps {
   userLinks: LinkDto[];

@@ -1,6 +1,6 @@
 import { getUser } from "@/actions/session.actions";
 import { getProducts } from "./merch.actions";
-import ProductsList from "./_components/products-list";
+import ProductsList from "./components/products-list";
 
 const ProductsPage = async () => {
   //TODO: make this ugly pattern cleaner

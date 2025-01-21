@@ -9,13 +9,3 @@ datasource db {
   url = env("POSTGRES_PRISMA_URL")
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
-
-// import "schema/auth.prisma"
-// import "schema/click.prisma"
-// import "schema/country.prisma"
-// import "schema/link.prisma"
-// import "schema/product.prisma"
-// import "schema/qr-code.prisma"
-// import "schema/stripe.prisma"
-// import "schema/theme.prisma"
-// import "schema/user.prisma"
