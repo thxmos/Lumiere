@@ -17,11 +17,11 @@ const nextConfig = {
       },
     ],
   },
-  // experimental: {
-  //   serverActions: {
-  //     bodySizeLimit: "2mb",
-  //   },
-  // },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "10mb", //TODO: whats a good amount here idk
+    },
+  },
 };
 
 export default nextConfig;
