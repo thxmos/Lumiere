@@ -8,5 +8,7 @@ export default async function BillingPage() {
 
   const billingInfo = await getBillingInfo(user.id);
 
+  if (!billingInfo) return <>No Maidens</>;
+
   return <BillingTab billingInfo={billingInfo} />;
 }
