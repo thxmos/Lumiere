@@ -1,6 +1,6 @@
 import { Html } from "@react-email/html";
 import { Button } from "@react-email/button";
-import { APP_NAME } from "@/utils/constants/constants";
+import { APP_NAME } from "@/constants/app";
 
 interface WelcomeEmailProps {
   name: string;

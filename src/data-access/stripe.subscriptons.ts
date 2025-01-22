@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/utils/prisma";
 
 export const getSubscriptionByUserId = async (userId: string): Promise<any> => {
   const foundUser = await prisma.user.findUnique({

@@ -1,9 +1,9 @@
 import { createStripeCustomer } from "@/data-access/stripe.customers";
 import { getUserByEmail, updateUserById } from "@/data-access/user";
-import { googleOAuthClient } from "@/lib/googleOauth";
-import { lucia } from "@/lib/lucia";
-import { prisma } from "@/lib/prisma";
-import { createSessionCookie } from "@/utils/cookies.utils";
+import { googleOAuthClient } from "@/utils/googleOauth";
+import { lucia } from "@/utils/lucia";
+import { prisma } from "@/utils/prisma";
+import { createSessionCookie } from "@/utils/cookies";
 import { OAuthProvider } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 

@@ -2,13 +2,13 @@ import Image from "next/image";
 import placeholder from "@/assets/product-default.svg";
 import { getUserByUsername } from "@/actions/user.actions";
 import { TabSelector } from "@/app/[username]/components/tab-selector";
-import { COUNTRIES, SOCIAL_PLATFORMS } from "@/utils/constants/constants";
-import { X } from "lucide-react";
 import { getActiveLinksByUserId } from "./actions";
 import { getTheme } from "@/actions/theme.actions";
 import BackgroundVideo from "./components/background-video";
-import { BLACK, WHITE } from "@/utils/colors";
+import { BLACK, WHITE } from "@/constants/colors";
 import React from "react";
+import { COUNTRIES } from "@/constants/countries";
+import { SOCIAL_PLATFORMS } from "@/constants/social-media";
 
 export default async function ArtistPage({
   params,
@@ -70,7 +70,7 @@ export default async function ArtistPage({
                 >
                   {user.username}
                 </h1>
-                {user.displayCountry && user.country && (
+                {user.country && (
                   <span className="ml-2">
                     {
                       COUNTRIES.find((country) => country.code === user.country)

@@ -1,7 +1,7 @@
 "use server";
 
 import { getUserByIdWithPassword, updateUserById } from "@/data-access/user";
-import { hash, verify } from "@/utils/crypto.utils";
+import { hash, verify } from "@/utils/crypto";
 
 export async function passwordReset(formData: FormData, userId: string) {
   const currentPassword = formData.get("currentPassword") as string;

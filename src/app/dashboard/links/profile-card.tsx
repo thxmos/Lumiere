@@ -19,8 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { COUNTRIES } from "@/utils/constants/constants";
-import { Switch } from "@/components/ui/switch";
+import { COUNTRIES } from "@/constants/countries";
 
 export function ProfileInfoCard({ user }: { user: UserDto }) {
   const {
@@ -34,18 +33,10 @@ export function ProfileInfoCard({ user }: { user: UserDto }) {
       username: user.username,
       description: user.description || "",
       country: user.country || "",
-      displayCountry: user.displayCountry,
     },
   });
 
-  const displayCountry = watch("displayCountry");
-
-  const onSubmit = async (data: {
-    username: string;
-    description: string;
-    country: string;
-    displayCountry: boolean;
-  }) => {
+  const onSubmit = async (data: Partial<UserDto>) => {
     try {
       await updateUser(user.id, data);
       toast.success("Profile updated successfully", {
@@ -136,19 +127,6 @@ export function ProfileInfoCard({ user }: { user: UserDto }) {
                 ))}
               </SelectContent>
             </Select>
-          </div>
-          <div className="space-y-2 flex-1 ">
-            <Label htmlFor="displayCountry">Display Country?</Label>
-            <div className="flex items-center h-10 space-x-2">
-              <Switch
-                id="displayCountry"
-                checked={displayCountry}
-                onCheckedChange={(checked) =>
-                  setValue("displayCountry", checked)
-                }
-              />
-              <span>{displayCountry ? "Yes" : "No"}</span>
-            </div>
           </div>
         </div>
         <div className="flex justify-end w-full">

@@ -1,4 +1,5 @@
 enum Country {
+  None
   AF
   AL
   DZ

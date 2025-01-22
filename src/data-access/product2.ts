@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/utils/prisma";
 import type { Product2 } from "@prisma/client";
 
 export type CreateProduct2Dto = {

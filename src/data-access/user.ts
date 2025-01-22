@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/utils/prisma";
 import { OAuthProvider, User } from "@prisma/client";
 
 export type CreateUserDto = {
@@ -15,7 +15,6 @@ export type UserDto = {
   username: string;
   description: string | null;
   country: string | null;
-  displayCountry: boolean;
   facebookUsername: string | null;
   twitterUsername: string | null;
   instagramUsername: string | null;

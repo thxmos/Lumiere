@@ -3,7 +3,7 @@ import {
   getPasswordResetTokenByToken,
 } from "@/data-access/password-reset-token";
 import { updateUserById } from "@/data-access/user";
-import { hash } from "@/utils/crypto.utils";
+import { hash } from "@/utils/crypto";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {

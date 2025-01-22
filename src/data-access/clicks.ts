@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/utils/prisma";
 
 export const getClicksByLinkId = async (linkId: string) => {
   const clicks = await prisma.click.findMany({

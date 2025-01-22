@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { SOCIAL_PLATFORMS } from "@/utils/constants/constants";
+import { SOCIAL_PLATFORMS } from "@/constants/social-media";
 import { updateUser } from "./links-card.actions";
 import { UserDto } from "@/data-access/user";
 import { DashboardCard } from "@/components/dashboard-card/dashboard-card";

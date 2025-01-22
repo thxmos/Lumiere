@@ -18,11 +18,11 @@ export async function updateUser(userId: string, data: Partial<UserDto>) {
     throw new Error("Your session has expired. Please log in again.");
   }
 
+  // TODO: clean up this disgusting mess
   await updateUserById(userId, {
     username: data.username,
     description: data.description,
     country: data.country as Country,
-    displayCountry: data.displayCountry,
     twitchUsername: data.twitchUsername,
     instagramUsername: data.instagramUsername,
     facebookUsername: data.facebookUsername,

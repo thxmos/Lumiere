@@ -1,25 +1,22 @@
 "use server";
 
 import { SignUpSchema } from "../app/auth/_components/sign-up-form";
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/utils/prisma";
 import { Argon2id } from "oslo/password";
-import { lucia } from "@/lib/lucia";
+import { lucia } from "@/utils/lucia";
 import { cookies } from "next/headers";
 import { SignInSchema } from "../app/auth/_components/sign-in-form";
 import { redirect } from "next/navigation";
 import { generateCodeVerifier, generateState } from "arctic";
-import { googleOAuthClient } from "@/lib/googleOauth";
+import { googleOAuthClient } from "@/utils/googleOauth";
 
 import { createStripeCustomer } from "@/data-access/stripe.customers";
 import { createUser, getUserByEmail, updateUserById } from "@/data-access/user";
 import { sendVerifyEmail } from "./email.actions";
-import { hash } from "@/utils/crypto.utils";
+import { hash } from "@/utils/crypto";
 import { getPasswordResetTokenByToken } from "@/data-access/password-reset-token";
 import { deleteSession } from "@/data-access/sessions";
-import {
-  createSessionCookie,
-  deleteSessionCookie,
-} from "@/utils/cookies.utils";
+import { createSessionCookie, deleteSessionCookie } from "@/utils/cookies";
 
 export const signUp = async (values: SignUpSchema) => {
   const { email, name, password } = values;

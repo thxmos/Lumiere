@@ -1,5 +1,5 @@
 import { getLinkById, updateLink } from "@/data-access/links";
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/utils/prisma";
 import { redirect } from "next/navigation";
 
 export async function clickLink(id: string): Promise<void> {

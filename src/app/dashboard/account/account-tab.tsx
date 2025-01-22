@@ -5,11 +5,12 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { THEMES } from "@/utils/constants/constants";
 import { useTheme } from "next-themes";
 import { UserDto } from "@/data-access/user";
 import { updateUser } from "./account.actions";
 import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
+import { THEMES } from "@/constants/theme";
+
 export default function AccountTab({ user }: { user: UserDto }) {
   const { theme, setTheme } = useTheme();
   const [isSubmitting, setIsSubmitting] = useState(false);
