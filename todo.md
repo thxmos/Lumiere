@@ -27,10 +27,11 @@
 
 3. LIMIT up to 10 links per user (no archive/soft delete for now)
 4. LIMIT up to 3 (or 10?) qr codes per user
-5. fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
-6. check mobile designs
-7. add some missing social icons
-8. database backups
+5. check mobile designs
+6. fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
+7. User types and test account so I can put it on my resume too
+8. add some missing social icons
+9. database backups
 
 ### Refactors
 
