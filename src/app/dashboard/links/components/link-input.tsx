@@ -2,7 +2,7 @@ import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ImageUpload } from "@/components/image-upload/image-upload";
+import { ImageUpload } from "@/components/image-upload";
 import { ChevronUp, ChevronDown, Trash } from "lucide-react";
 import { useState } from "react";
 import { ConfirmDeleteModal } from "./confirm-delete-modal";

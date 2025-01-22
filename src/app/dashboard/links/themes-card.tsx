@@ -11,7 +11,7 @@ import { toast } from "sonner";
 import type { CreateThemeDto } from "@/data-access/theme";
 import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
 import { Switch } from "@/components/ui/switch";
-import { SelectInput } from "@/components/select-input/select-input";
+import { SelectInput } from "@/components/select-input";
 
 const BACKGROUND_TYPES = [
   { label: "Colored Background", value: "color" },

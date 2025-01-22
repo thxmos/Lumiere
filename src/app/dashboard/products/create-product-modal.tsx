@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { ImageUpload } from "@/components/image-upload/image-upload";
+import { ImageUpload } from "@/components/image-upload";
 import type { CreateProduct2Dto } from "@/data-access/product2";
 
 interface CreateProductModalProps {

@@ -1,7 +1,7 @@
-import Footer from "@/components/landing-page/footer";
-import FeaturesSection from "@/components/landing-page/features-section";
-import HeroSection from "@/components/landing-page/hero-section";
-import SubscribeSection from "@/components/landing-page/subscribe-section";
+import Footer from "@/components/landing-page-sections/footer";
+import FeaturesSection from "@/components/landing-page-sections/features-section";
+import HeroSection from "@/components/landing-page-sections/hero-section";
+import SubscribeSection from "@/components/landing-page-sections/subscribe-section";
 import Navbar from "@/components/nav-bar/nav-bar";
 
 export default async function LandingPage() {
@@ -12,7 +12,6 @@ export default async function LandingPage() {
         <main className="flex-1 mb-16">
           <HeroSection />
           <FeaturesSection />
-          {/* <PricingSection /> */}
           <SubscribeSection />
           <Footer />
         </main>

@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
-import { ImageUpload } from "@/components/image-upload/image-upload";
+import { ImageUpload } from "@/components/image-upload";
 import { toast } from "sonner";
 import { updateProduct } from "./product.actions";
 import { useForm } from "react-hook-form";

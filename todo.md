@@ -35,6 +35,8 @@
 - theme dynamic forms clean up
 - clean up dto structure and maybe mapper
 - actions vs data access layer?
+- where is select input being used?
+- make a helper function to get the country name from the country enum
 
 ### Nice To Have
 

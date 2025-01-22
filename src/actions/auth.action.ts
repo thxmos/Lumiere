@@ -1,11 +1,11 @@
 "use server";
 
-import { SignUpSchema } from "../app/auth/_components/sign-up-form";
+import { SignUpSchema } from "../app/auth/components/sign-up-form";
 import { prisma } from "@/utils/prisma";
 import { Argon2id } from "oslo/password";
 import { lucia } from "@/utils/lucia";
 import { cookies } from "next/headers";
-import { SignInSchema } from "../app/auth/_components/sign-in-form";
+import { SignInSchema } from "../app/auth/components/sign-in-form";
 import { redirect } from "next/navigation";
 import { generateCodeVerifier, generateState } from "arctic";
 import { googleOAuthClient } from "@/utils/googleOauth";
