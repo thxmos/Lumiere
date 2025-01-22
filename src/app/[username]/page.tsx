@@ -1,11 +1,13 @@
 import Image from "next/image";
 import placeholder from "@/assets/product-default.svg";
 import { getUserByUsername } from "@/actions/user.actions";
-import { TabSelector } from "@/app/[username]/_components/tab-selector";
+import { TabSelector } from "@/app/[username]/components/tab-selector";
 import { COUNTRIES, SOCIAL_PLATFORMS } from "@/constants";
 import { X } from "lucide-react";
 import { getActiveLinksByUserId } from "./actions";
 import { getTheme } from "@/actions/theme.actions";
+import BackgroundVideo from "./components/background-video";
+import { BLACK, WHITE } from "@/utils/colors";
 
 const bgVideo =
   "https://fg92krreal8mypv5.public.blob.vercel-storage.com/urlfern/these%20clouds%20spotify%20canvas-BgxPR1YQkp3sjStMxVCz2lfTSFARD9.mp4";
@@ -23,19 +25,23 @@ export default async function ArtistPage({
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover"
-        >
-          <source src={bgVideo} type="video/mp4" />
-        </video>
-        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
-      </div>
-      <div className="relative z-10 min-h-screen bg-black bg-opacity-50 px-4 py-16 flex flex-col">
+      {theme.backgroundType === "color" && (
+        <div
+          className="absolute top-0 left-0 w-full h-full"
+          style={{ backgroundColor: theme.backgroundColor || "#000000" }}
+        ></div>
+      )}
+      {theme.backgroundType === "image" && (
+        <div
+          className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
+          style={{ backgroundImage: `url(${theme.backgroundImageUrl})` }}
+        ></div>
+      )}
+      {theme.backgroundType === "video" && (
+        <BackgroundVideo bgVideo={bgVideo} />
+      )}
+
+      <div className="relative z-10 min-h-screen  px-4 py-16 flex flex-col">
         <div className="max-w-md mx-auto flex-grow">
           {/* Profile Info */}
           <div className="flex items-center mb-6 justify-center">
@@ -46,7 +52,7 @@ export default async function ArtistPage({
               height={100}
               className="rounded-full border-2 border-gray-200 flex-shrink-0"
               style={{
-                borderColor: theme.borderColor || "#000000",
+                borderColor: theme.borderColor || BLACK,
                 borderWidth: theme.borderWidth ? `${theme.borderWidth}px` : 1,
                 borderStyle: theme.borderStyle || "solid",
               }}
@@ -56,7 +62,7 @@ export default async function ArtistPage({
                 <h1
                   className="text-3xl font-bold"
                   style={{
-                    color: theme.fontColor || "#000000",
+                    color: theme.fontColor || BLACK,
                   }}
                 >
                   {user.username}
@@ -73,7 +79,7 @@ export default async function ArtistPage({
               <p
                 className="mt-2 max-w-sm"
                 style={{
-                  color: theme.secondaryColorFont || "#666666",
+                  color: theme.secondaryColorFont || WHITE,
                 }}
               >
                 {user.description}
@@ -99,7 +105,16 @@ export default async function ArtistPage({
                 rel="noopener noreferrer"
                 className="text-white hover:text-gray-300 transition-colors"
               >
-                {platform.icon ? <platform.icon size={24} /> : <X size={24} />}
+                {platform.icon ? (
+                  <platform.icon
+                    size={24}
+                    style={{
+                      color: theme.iconColor || WHITE,
+                    }}
+                  />
+                ) : (
+                  <X size={24} style={{ color: theme.iconColor || WHITE }} />
+                )}
               </a>
             ))}
           </div>

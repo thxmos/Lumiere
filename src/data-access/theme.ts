@@ -7,17 +7,18 @@ export type CreateThemeDto = {
   fontColor: string;
   secondaryColorFont: string;
 
-  backgroundType: string; // "color" | "image" | "video"
-  backgroundColor: string;
-  backgroundImageUrl: string;
-  videoUrl: string;
-  videoBackgroundActive: boolean;
-  cardBackgroundColor: string;
-
   borderColor: string;
   borderRadius: number;
   borderWidth: number;
   borderStyle: string;
+
+  cardBackgroundColor: string;
+  iconColor: string;
+
+  backgroundType: string; // "color" | "image" | "video"
+  backgroundColor: string;
+  backgroundImageUrl: string;
+  videoUrl: string;
 };
 
 export type ThemeDto = CreateThemeDto & {

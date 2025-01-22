@@ -32,11 +32,17 @@
 7. add some missing social icons
 8. database backups
 
+### Refactors
+
+- theme dynamic forms clean up
+- clean up dto structure and maybe mapper
+- actions vs data access layer?
+
 ### Nice To Have
 
 - split themes into seperate files or something cleaner? and make 8 more
 - don't allow for duplicate usernames (still going to keep it closed circle for now)
-- FEATURE FLAGS for admin OR 2 user types
+- FEATURE FLAGS for admin OR user types for subscriptions too
 
 - default themes for username page
 

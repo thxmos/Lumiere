@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { FONTS } from "@/constants";
 import { upsertTheme } from "./themes.actions";
 import { toast } from "sonner";
-import { type CreateThemeDto } from "@/data-access/theme";
+import type { CreateThemeDto } from "@/data-access/theme";
 import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
 import { Switch } from "@/components/ui/switch";
 import { SelectInput } from "@/components/select-input/select-input";
@@ -41,6 +41,20 @@ export const THEME_FORM_FIELDS = [
       { label: "Border Style", type: "select", name: "borderStyle" },
     ],
   },
+  {
+    category: "Card",
+    fields: [
+      {
+        label: "Background Color",
+        type: "color",
+        name: "cardBackgroundColor",
+      },
+    ],
+  },
+  {
+    category: "Icon",
+    fields: [{ label: "Icon Color", type: "color", name: "iconColor" }],
+  },
 ];
 
 export function ThemesCard({
@@ -63,16 +77,18 @@ export function ThemesCard({
   const onSubmit = async (data: { theme: Omit<CreateThemeDto, "userId"> }) => {
     setIsSubmitting(true);
     try {
-      // Ensure number fields are converted to integers
+      // TODO: Ensure number fields are converted to integers in data access layer
       const updatedTheme = {
         ...data.theme,
-        borderRadius: parseInt(
+        borderRadius: Number.parseInt(
           data.theme.borderRadius as unknown as string,
           10,
         ),
-        borderWidth: parseInt(data.theme.borderWidth as unknown as string, 10),
+        borderWidth: Number.parseInt(
+          data.theme.borderWidth as unknown as string,
+          10,
+        ),
       };
-      console.log("updatedTheme", updatedTheme);
       await upsertTheme(userId, updatedTheme);
       toast.success("Theme updated successfully", {
         duration: 3000,
@@ -136,7 +152,7 @@ export function ThemesCard({
               <Input
                 type="number"
                 value={value}
-                onChange={(e) => onChange(parseInt(e.target.value, 10))}
+                onChange={(e) => onChange(Number.parseInt(e.target.value, 10))}
               />
             )}
           />

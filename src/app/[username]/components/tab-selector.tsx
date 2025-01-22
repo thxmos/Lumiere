@@ -10,7 +10,7 @@ export function TabSelector({
   theme,
 }: {
   links: LinkDto[];
-  theme: CreateThemeDto;
+  theme: Omit<CreateThemeDto, "userId">;
 }) {
   const [activeTab, setActiveTab] = useState("links");
 

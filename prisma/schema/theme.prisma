@@ -5,20 +5,21 @@ model Theme {
 
   fontFamily String
   fontWeight Int
-  fontColor String
-  secondaryColorFont String
-
-  backgroundType String @default("color") // "color" | "image" | "video"
-  backgroundColor String?
-  backgroundImageUrl String?
-  videoUrl String?
-  videoBackgroundActive Boolean? @default(false)
-  cardBackgroundColor String?
+  fontColor String @db.Char(7)
+  secondaryColorFont String @db.Char(7)
 
   borderColor String
   borderRadius Int
   borderWidth Int
   borderStyle String
+
+  cardBackgroundColor String? @db.Char(7)
+  iconColor String? @db.Char(7)
+
+  backgroundType String @default("color") // "color" | "image" | "video"
+  backgroundColor String? @db.Char(7) 
+  backgroundImageUrl String?
+  videoUrl String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt @default(now())
