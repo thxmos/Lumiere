@@ -1,6 +1,17 @@
-import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
 import { CreateThemeDto } from "../../data-access/theme";
 import { BLACK, WHITE } from "../colors";
+
+import {
+  FaApple,
+  FaDiscord,
+  FaFacebook,
+  FaInstagram,
+  FaPatreon,
+  FaSpotify,
+  FaTiktok,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa6";
 
 export const APP_NAME = "Tree Link";
 export const APP_DESCRIPTION =
@@ -38,44 +49,58 @@ export const DEFAULT_THEME = {
 
 export const SOCIAL_PLATFORMS = [
   {
-    label: "Twitter/X",
-    value: "twitterUsername",
-    prefix: "https://twitter.com/",
-    icon: Twitter,
+    label: "Apple Music",
+    value: "appleMusicUsername",
+    prefix: "https://applemusic.com/",
+    icon: FaApple,
+  },
+  {
+    label: "Discord",
+    value: "discordUsername",
+    prefix: "https://discord.com/",
+    icon: FaDiscord,
   },
   {
     label: "Facebook",
     value: "facebookUsername",
     prefix: "https://facebook.com/",
-    icon: Facebook,
+    icon: FaFacebook,
   },
   {
     label: "Instagram",
     value: "instagramUsername",
     prefix: "https://instagram.com/",
-    icon: Instagram,
-  },
-  {
-    label: "YouTube",
-    value: "youtubeUsername",
-    prefix: "https://youtube.com/",
-    icon: Youtube,
-  },
-  { label: "TikTok", value: "tiktokUsername", prefix: "https://tiktok.com/" },
-  {
-    label: "Spotify",
-    value: "spotifyUsername",
-    prefix: "https://spotify.com/",
-  },
-  {
-    label: "Apple Music",
-    value: "appleMusicUsername",
-    prefix: "https://applemusic.com/",
+    icon: FaInstagram,
   },
   {
     label: "Patreon",
     value: "patreonUsername",
     prefix: "https://patreon.com/",
+    icon: FaPatreon,
+  },
+  {
+    label: "Spotify",
+    value: "spotifyUsername",
+    prefix: "https://spotify.com/",
+    icon: FaSpotify,
+  },
+  {
+    label: "TikTok",
+    value: "tiktokUsername",
+    prefix: "https://tiktok.com/",
+    icon: FaTiktok,
+  },
+  {
+    label: "Twitter/X",
+    value: "twitterUsername",
+    prefix: "https://twitter.com/",
+    icon: FaTwitter,
+  },
+  {
+    label: "YouTube",
+    value: "youtubeUsername",
+    prefix: "https://youtube.com/",
+    icon: FaYoutube,
   },
 ];
 

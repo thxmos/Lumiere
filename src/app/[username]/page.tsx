@@ -8,9 +8,7 @@ import { getActiveLinksByUserId } from "./actions";
 import { getTheme } from "@/actions/theme.actions";
 import BackgroundVideo from "./components/background-video";
 import { BLACK, WHITE } from "@/utils/colors";
-
-const bgVideo =
-  "https://fg92krreal8mypv5.public.blob.vercel-storage.com/urlfern/these%20clouds%20spotify%20canvas-BgxPR1YQkp3sjStMxVCz2lfTSFARD9.mp4";
+import React from "react";
 
 export default async function ArtistPage({
   params,
@@ -43,7 +41,7 @@ export default async function ArtistPage({
         ></div>
       )}
       {theme.backgroundType === "video" && (
-        <BackgroundVideo bgVideo={bgVideo} />
+        <BackgroundVideo bgVideo={theme.videoUrl} />
       )}
 
       <div className="relative z-10 min-h-screen  px-4 py-16 flex flex-col">
@@ -110,16 +108,13 @@ export default async function ArtistPage({
                 rel="noopener noreferrer"
                 className="text-white hover:text-gray-300 transition-colors"
               >
-                {platform.icon ? (
-                  <platform.icon
-                    size={24}
-                    style={{
-                      color: theme.iconColor || WHITE,
-                    }}
-                  />
-                ) : (
-                  <X size={24} style={{ color: theme.iconColor || WHITE }} />
-                )}
+                <platform.icon
+                  style={{
+                    color: theme.iconColor || WHITE,
+                    fill: theme.iconColor || WHITE,
+                  }}
+                  size={24}
+                />
               </a>
             ))}
           </div>
