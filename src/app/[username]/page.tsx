@@ -2,7 +2,7 @@ import Image from "next/image";
 import placeholder from "@/assets/product-default.svg";
 import { getUserByUsername } from "@/actions/user.actions";
 import { TabSelector } from "@/app/[username]/components/tab-selector";
-import { COUNTRIES, SOCIAL_PLATFORMS } from "@/constants";
+import { COUNTRIES, SOCIAL_PLATFORMS } from "@/utils/constants/constants";
 import { X } from "lucide-react";
 import { getActiveLinksByUserId } from "./actions";
 import { getTheme } from "@/actions/theme.actions";

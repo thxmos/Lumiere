@@ -1,4 +1,4 @@
-import { APP_NAME } from "@/constants";
+import { APP_NAME } from "@/utils/constants/constants";
 import Pricing from "@/components/pricing/pricing";
 import Navbar from "@/components/nav-bar/nav-bar";
 

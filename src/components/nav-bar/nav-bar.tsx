@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Cpu, Trees } from "lucide-react";
-import { APP_NAME } from "@/constants";
+import { APP_NAME } from "@/utils/constants/constants";
 import DropdownMenu from "./dropdown-menu";
 import { getUser } from "@/actions/session.actions";
 

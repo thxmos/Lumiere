@@ -1,5 +1,6 @@
 import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
-import { CreateThemeDto } from "./data-access/theme";
+import { CreateThemeDto } from "../../data-access/theme";
+import { BLACK, WHITE } from "../colors";
 
 export const APP_NAME = "Tree Link";
 export const APP_DESCRIPTION =
@@ -20,15 +21,16 @@ export const THEMES = [
 export const DEFAULT_THEME = {
   fontFamily: "Arial",
   fontWeight: 400,
-  fontColor: "#000000",
-  secondaryColorFont: "#000000",
+  fontColor: BLACK,
+  secondaryColorFont: WHITE,
   backgroundType: "color",
-  backgroundColor: "#ffffff",
+  backgroundColor: WHITE,
   backgroundImageUrl: "",
   videoUrl: "",
   videoBackgroundActive: false,
-  cardBackgroundColor: "#ffffff",
-  borderColor: "#000000",
+  cardBackgroundColor: WHITE,
+  iconColor: BLACK,
+  borderColor: BLACK,
   borderRadius: 0,
   borderWidth: 0,
   borderStyle: "solid",
@@ -82,6 +84,22 @@ export const FONTS = [
   { label: "Roboto", value: "roboto" },
   { label: "Poppins", value: "poppins" },
   { label: "Lato", value: "lato" },
+  { label: "Arial", value: "arial" },
+  { label: "Helvetica", value: "helvetica" },
+  { label: "Times New Roman", value: "times-new-roman" },
+  { label: "Georgia", value: "georgia" },
+  { label: "Georgia Pro", value: "georgia-pro" },
+  { label: "Palatino", value: "palatino" },
+  { label: "Bookman", value: "bookman" },
+  { label: "Comic Sans MS", value: "comic-sans-ms" },
+  { label: "Impact", value: "impact" },
+  { label: "Lucida Sans Unicode", value: "lucida-sans-unicode" },
+  { label: "Lucida Sans", value: "lucida-sans" },
+  { label: "Geneva", value: "geneva" },
+  { label: "Lucida Console", value: "lucida-console" },
+  { label: "Monaco", value: "monaco" },
+  { label: "Courier New", value: "courier-new" },
+  { label: "Lucida Bright", value: "lucida-bright" },
 ];
 
 export const COUNTRIES = [

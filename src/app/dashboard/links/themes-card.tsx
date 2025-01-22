@@ -5,7 +5,7 @@ import { useForm, Controller } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { FONTS } from "@/constants";
+import { FONTS } from "@/utils/constants/constants";
 import { upsertTheme } from "./themes.actions";
 import { toast } from "sonner";
 import type { CreateThemeDto } from "@/data-access/theme";

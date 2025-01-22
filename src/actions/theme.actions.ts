@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from "@/constants";
+import { DEFAULT_THEME } from "@/utils/constants/constants";
 import { CreateThemeDto, getThemeByUserId } from "@/data-access/theme";
 
 export async function getTheme(

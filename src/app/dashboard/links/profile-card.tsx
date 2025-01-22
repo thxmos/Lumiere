@@ -19,7 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { COUNTRIES } from "@/constants";
+import { COUNTRIES } from "@/utils/constants/constants";
 import { Switch } from "@/components/ui/switch";
 
 export function ProfileInfoCard({ user }: { user: UserDto }) {
