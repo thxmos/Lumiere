@@ -1,15 +1,9 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle, Code, Globe, Zap } from "lucide-react";
+import { CheckCircle, Code, Globe } from "lucide-react";
 
 const features = [
-  // {
-  //   icon: Zap,
-  //   title: "Quick Updates",
-  //   description:
-  //     "Manage and update all your links instantly from one dashboard.",
-  // },
   {
     icon: Globe,
     title: "Share Anywhere",

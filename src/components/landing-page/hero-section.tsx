@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { APP_NAME } from "@/utils/constants/constants";
+import { APP_NAME } from "@/constants/app";
 import Link from "next/link";
 import { ParallaxLayout } from "./parallax-layout";
 
