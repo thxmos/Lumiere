@@ -24,3 +24,27 @@ model Theme {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt @default(now())
 }
+
+// TODO: actually use this at some point
+enum FontFamily {
+  INTER
+  ROBOTO
+  POPPINS
+  LATO
+  ARIAL
+  HELVETICA
+  TIMES_NEW_ROMAN
+  GEORGIA
+  GEORGIA_PRO
+  PALATINO
+  BOOKMAN
+  COMIC_SANS_MS
+  IMPACT
+  LUCIDA_SANS_UNICODE
+  LUCIDA_SANS
+  GENEVA
+  LUCIDA_CONSOLE
+  MONACO
+  COURIER_NEW
+  LUCIDA_BRIGHT
+}

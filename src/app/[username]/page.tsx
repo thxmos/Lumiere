@@ -24,7 +24,12 @@ export default async function ArtistPage({
   const theme = await getTheme(user.id);
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div
+      className="relative min-h-screen overflow-hidden"
+      style={{
+        fontFamily: theme.fontFamily || "system-ui, sans-serif",
+      }}
+    >
       {theme.backgroundType === "color" && (
         <div
           className="absolute top-0 left-0 w-full h-full"
