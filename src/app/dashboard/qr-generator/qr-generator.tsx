@@ -7,17 +7,30 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import Link from "next/link";
+import { toast } from "sonner";
+import { createQRCodeAction } from "./actions";
 
-export const QRGenerator = () => {
+export const QRGenerator = ({ userId }: { userId: string }) => {
   const [link, setLink] = useState("");
   const [qrCode, setQrCode] = useState("");
 
   const generateQRCode = (e: React.FormEvent) => {
-    e.preventDefault();
     if (link) {
       const encodedLink = encodeURIComponent(link);
       const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodedLink}&size=200x200`;
       setQrCode(qrCodeUrl);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    generateQRCode(e);
+    try {
+      await createQRCodeAction(link, userId);
+      toast.success("QR code generated successfully");
+    } catch (error) {
+      toast.error("Failed to generate QR code");
+      console.error(error);
     }
   };
 
@@ -26,7 +39,7 @@ export const QRGenerator = () => {
       title="QR Generator"
       description="Generate QR codes for your links"
     >
-      <form onSubmit={generateQRCode} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="link">Enter your link</Label>
           <Input
