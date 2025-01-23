@@ -1,20 +1,19 @@
 model Link {
-  id String @id @default(cuid()) @unique
-  url String
-  title String
+  id       String  @id @unique @default(cuid())
+  url      String
+  title    String
   imageUrl String?
-  active Boolean @default(true)
+  active   Boolean @default(true)
 
   index Int?
-  @@unique([userId, index])
 
   clicks Int @default(0)
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt @default(now())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
   deletedAt DateTime? // soft delete
 
   userId String
-  user User @relation("UserLinks", fields: [userId], references: [id])
-  Click Click[]
+  user   User    @relation("UserLinks", fields: [userId], references: [id])
+  Click  Click[]
 }

@@ -1,14 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
-import { type LinkDto } from "@/data-access/links";
-import { deleteLink, updateUserLinks } from "./links-card.actions";
-import { DashboardCard } from "@/components/dashboard-card";
 import { PlusCircle } from "lucide-react";
 import { toast } from "sonner";
-import LinkInput from "./components/link-input";
+
+import { type LinkDto } from "@/data-access/links";
+import { deleteLink, updateUserLinks } from "./links-card.actions";
+import LinkList from "./components/link-list";
+import { DashboardCard } from "@/components/dashboard-card";
+import { Button } from "@/components/ui/button";
 
 interface LinksCardProps {
   userLinks: LinkDto[];
@@ -17,6 +18,7 @@ interface LinksCardProps {
 
 export function LinksCard({ userLinks, userId }: LinksCardProps) {
   const [links, setLinks] = useState<LinkDto[]>(userLinks);
+
   const {
     handleSubmit,
     formState: { isSubmitting },
@@ -69,16 +71,18 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
   };
 
   const moveLink = (index: number, direction: "up" | "down") => {
-    if (
-      (direction === "up" && index > 0) ||
-      (direction === "down" && index < links.length - 1)
-    ) {
+    const swapIndex = direction === "up" ? index - 1 : index + 1;
+
+    if (swapIndex >= 0 && swapIndex < links.length) {
       const newLinks = [...links];
-      const swapIndex = direction === "up" ? index - 1 : index + 1;
       [newLinks[index], newLinks[swapIndex]] = [
         newLinks[swapIndex],
         newLinks[index],
       ];
+
+      newLinks[index].index = index;
+      newLinks[swapIndex].index = swapIndex;
+
       setLinks(newLinks);
     }
   };
@@ -89,19 +93,13 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
       description={`Manage your custom links here (${links.length}/10)`}
     >
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div className="space-y-4">
-          {links.map((link, index) => (
-            <LinkInput
-              key={link.id || index}
-              link={link}
-              index={index}
-              onUpdate={updateLink}
-              onDelete={removeLink}
-              onMoveUp={() => moveLink(index, "up")}
-              onMoveDown={() => moveLink(index, "down")}
-            />
-          ))}
-        </div>
+        <LinkList
+          links={links}
+          setLinks={setLinks}
+          onUpdate={updateLink}
+          onDelete={removeLink}
+          moveLink={moveLink}
+        />
         <div className="flex justify-end px-0 space-x-2">
           <Button type="button" variant="outline" onClick={addLink}>
             <PlusCircle className="w-4 h-4 mr-2" />

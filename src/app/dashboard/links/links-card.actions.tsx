@@ -72,6 +72,7 @@ export async function updateUserLinks(
       userId: userId,
       id: link.id,
       active: link.active,
+      index: link.index,
     }));
   await updateLinks(updateLinksFiltered as LinkDto[]);
 }
