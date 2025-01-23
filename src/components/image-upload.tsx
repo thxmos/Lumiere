@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Upload, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ImageUploadDialog } from "./image-upload-dialog";
 
 interface ImageUploadProps {
   initialImage?: string;
@@ -28,17 +29,27 @@ export function ImageUpload({
   size = "sm",
 }: ImageUploadProps) {
   const [image, setImage] = useState<string | null>(initialImage || null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [tempFile, setTempFile] = useState<File | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
+  const handleImageUpload = async () => {
+    if (!tempFile) return;
+
+    setIsUploading(true);
+    try {
       const reader = new FileReader();
       reader.onloadend = () => {
         const base64String = reader.result as string;
         setImage(base64String);
         onImageChange(base64String);
+        setIsDialogOpen(false);
       };
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(tempFile);
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -52,7 +63,7 @@ export function ImageUpload({
       {image ? (
         <div className="w-full h-full group">
           <img
-            src={image}
+            src={image || "/placeholder.svg"}
             alt="Uploaded"
             className="w-full h-full object-cover"
           />
@@ -69,20 +80,21 @@ export function ImageUpload({
           </div>
         </div>
       ) : (
-        <label
-          htmlFor="image-upload"
+        <div
           className={`${sizeClasses[size]} flex items-center justify-center bg-gray-100 cursor-pointer`}
+          onClick={() => setIsDialogOpen(true)}
         >
           <Upload className={`${iconSizes[size]} text-gray-400`} />
-          <input
-            id="image-upload"
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-            className="hidden"
-          />
-        </label>
+        </div>
       )}
+      <ImageUploadDialog
+        isOpen={isDialogOpen}
+        onOpenChange={setIsDialogOpen}
+        onUpload={handleImageUpload}
+        file={tempFile}
+        setFile={setTempFile}
+        isUploading={isUploading}
+      />
     </div>
   );
 }

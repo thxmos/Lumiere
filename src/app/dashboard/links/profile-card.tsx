@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { AvatarUpload } from "@/components/avatar-upload/avatar-upload";
+import { AvatarUpload } from "@/components/avatar-upload";
 import Link from "next/link";
 import { type UserDto } from "@/data-access/user";
 import { updateUser } from "./links-card.actions";

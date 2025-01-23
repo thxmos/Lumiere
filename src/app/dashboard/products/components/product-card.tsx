@@ -5,7 +5,7 @@ import Link from "next/link";
 export function ProductCard(product: any) {
   return (
     <Link href={`/dashboard/products/${product.id}`}>
-      <div className="flex items-center p-2 bg-white rounded-lg border border-gray-200 transition-all hover:border-gray-300 cursor-pointer">
+      <div className="flex items-center p-2 bg-card rounded-lg border border-secondary transition-all hover:border-primary cursor-pointer">
         <Image
           src={product.image || placeholder}
           alt={product.name || ""}
