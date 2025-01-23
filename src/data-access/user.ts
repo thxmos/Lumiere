@@ -38,7 +38,6 @@ function toDtoMapper(user: User): UserDto {
     username: user.username,
     description: user.description,
     country: user.country,
-    displayCountry: user.displayCountry || false,
     facebookUsername: user.facebookUsername,
     twitterUsername: user.twitterUsername,
     instagramUsername: user.instagramUsername,
