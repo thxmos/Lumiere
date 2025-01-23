@@ -36,7 +36,7 @@ export function AvatarUpload({ avatar, name }: AvatarUploadProps) {
 
   return (
     <div className="w-36 grid place-items-center gap-4">
-      <Avatar className="w-28 h-28 border-2 border-primary">
+      <Avatar className="w-28 h-28 border border-primary">
         <AvatarImage src={avatar ?? undefined} alt="Avatar" />
         <AvatarFallback className="bg-red-500 text-white text-xs">
           {getInitials(name)}

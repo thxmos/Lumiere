@@ -36,7 +36,7 @@ export default function DropdownMenu({ user }: Props) {
     <DropdownWrapper open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
         <Avatar
-          className="cursor-pointer"
+          className="cursor-pointer border border-primary"
           role="button"
           aria-haspopup="menu"
           aria-expanded={open}

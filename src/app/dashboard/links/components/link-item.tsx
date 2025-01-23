@@ -61,14 +61,7 @@ const LinkItem: React.FC<Props> = ({
         {...draggableProvided.draggableProps}
         className="border border-border rounded p-4 flex justify-between items-center"
       >
-        <div className="flex gap-4 items-center">
-          {/* Drag Handle */}
-          <button
-            {...draggableProvided.dragHandleProps}
-            className="cursor-grab"
-          >
-            <RxDragHandleDots2 />
-          </button>
+        <div className="flex gap-4 items-center justify-between w-full">
           {/* Image Upload */}
           <div>
             <ImageUpload
@@ -76,70 +69,71 @@ const LinkItem: React.FC<Props> = ({
               onImageChange={(image) => handleImageChange(image ?? "")}
             />
           </div>
+
           {/* Title & Link Input */}
-          <div className="flex space-x-4 flex-1 items-center">
-            <Label htmlFor="title">Title</Label>
-            <Input
-              name="title"
-              placeholder="Title"
-              value={link.title}
-              onChange={handleInputChange}
-              aria-label="Link title"
-              required
-            />
-            <Label htmlFor="url">URL</Label>
-            <Input
-              name="url"
-              placeholder="URL"
-              value={link.url}
-              onChange={handleInputChange}
-              aria-label="Link URL"
-              required
-              type="url"
-            />
+          <div className="flex flex-col flex-1 space-y-2">
+            <div className="flex items-center gap-4 w-full max-w-[400px]">
+              <Label htmlFor="title">Title</Label>
+              <Input
+                name="title"
+                placeholder="Title"
+                value={link.title}
+                onChange={handleInputChange}
+                aria-label="Link title"
+                required
+                className="w-full"
+              />
+            </div>
+            <div className="flex items-center gap-4 w-full max-w-[400px]">
+              <Label htmlFor="url">URL</Label>
+              <Input
+                name="url"
+                placeholder="URL"
+                value={link.url}
+                onChange={handleInputChange}
+                aria-label="Link URL"
+                required
+                type="url"
+                className="w-full"
+              />
+            </div>
           </div>
 
-          <div className="flex space-x-4 items-center">
-            <div className="flex items-center space-x-2">
-              <Switch
-                checked={link.active}
-                onCheckedChange={(checked) =>
-                  handleInputChange(checked, "active")
-                }
-                aria-label="Toggle link active status"
-              />
-              <Label htmlFor={`active-${index}`} className="text-sm w-14">
-                {link.active ? "Active" : "Inactive"}
-              </Label>
-            </div>
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              onClick={() => moveLink(index, "up")}
-            >
-              <ChevronUp className="h-4 w-4" />
-              <span className="sr-only">Move link up</span>
-            </Button>
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              onClick={() => moveLink(index, "down")}
-            >
-              <ChevronDown className="h-4 w-4" />
-              <span className="sr-only">Move link down</span>
-            </Button>
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsDeleteModalOpen(true)}
-            >
-              <Trash className="h-4 w-4" />
-              <span className="sr-only">Delete link</span>
-            </Button>
+          {/* Active Switch */}
+          <div className="flex items-center space-x-2">
+            <Switch
+              checked={link.active}
+              onCheckedChange={(checked) =>
+                handleInputChange(checked, "active")
+              }
+              aria-label="Toggle link active status"
+            />
+            <Label htmlFor={`active-${index}`} className="text-sm w-14">
+              {link.active ? "Active" : "Inactive"}
+            </Label>
           </div>
+
+          {/* Delete Button */}
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsDeleteModalOpen(true)}
+          >
+            <Trash className="h-4 w-4" />
+            <span className="sr-only">Delete link</span>
+          </Button>
+
+          {/* Drag Handle */}
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            {...draggableProvided.dragHandleProps}
+            className="cursor-grab"
+          >
+            <RxDragHandleDots2 className="h-4 w-4" />
+          </Button>
         </div>
       </li>
       <ConfirmDeleteModal

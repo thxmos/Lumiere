@@ -14,24 +14,20 @@
 
    - [ ] make entity assigned to userId
    - [ ] products, links, etc can reference the entity
-   - [ ] blob actions
-     - [ ] make a helper function to upload images to blob storage
-     - [ ] make a helper function to delete images from blob storage
-     - [ ] make a helper function to get images from blob storage
+   - [ ] make a helper function to upload images to blob storage
+   - [ ] make a helper function to delete images from blob storage
+   - [ ] make a helper function to get images from blob storage
+   - [ ] Variable file size restriction for uploadBlob method
 
-2. Limiting File Uploads
-
-   - [ ] Restrict the size of file uploads using Content-Length headers or logic in actions
-
-3. LIMIT up to 10 links per user (no archive/soft delete for now)
-4. LIMIT up to 3 (or 10?) qr codes per user
-5. check mobile designs
-6. fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
-7. User types and test account so I can put it on my resume too
-8. database backups
+2. LIMIT up to 10 links per user (no archive/soft delete for now)
+3. LIMIT up to 3 (or 10?) qr codes per user
+4. fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
+5. User types and test account so I can put it on my resume too
+6. database backups
 
 ### Refactors
 
+- clean up actions to not require fetching userId in each component
 - make Save Changes button consistent
 - BACKGROUND TYPE default form value is broken on refresh?
 - theme dynamic forms clean up
