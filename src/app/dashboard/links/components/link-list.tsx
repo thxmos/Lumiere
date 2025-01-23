@@ -40,11 +40,16 @@ const LinkList: React.FC<Props> = ({
   };
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
+    <DragDropContext
+      onDragEnd={onDragEnd}
+      autoScrollerOptions={{
+        disabled: true,
+      }}
+    >
       <Droppable droppableId="links">
         {(droppableProvided) => (
           <ul
-            className="space-y-4 "
+            className="space-y-4 min-h-[18px]"
             ref={droppableProvided.innerRef}
             {...droppableProvided.droppableProps}
           >
