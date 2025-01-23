@@ -73,6 +73,14 @@ export function CreateProductModal({
           <DialogTitle>Create New Product</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-2">
+            <Label htmlFor="image">Image</Label>
+            <ImageUpload
+              initialImage={image}
+              size="lg"
+              onImageChange={handleImageChange}
+            />
+          </div>
           <div className="grid grid-cols-2 gap-6">
             <div className="space-y-2">
               <Label htmlFor="name">Name</Label>
@@ -102,14 +110,6 @@ export function CreateProductModal({
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Enter product description"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="image">Image</Label>
-            <ImageUpload
-              initialImage={image}
-              size="sm"
-              onImageChange={handleImageChange}
             />
           </div>
           <div className="flex items-center justify-between">
