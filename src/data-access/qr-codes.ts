@@ -26,7 +26,7 @@ export async function createQRCode(data: CreateQRCodeDto): Promise<QRCodeDto> {
     const createdQRCode = await prisma.qRCode.create({ data });
     return toDtoMapper(createdQRCode);
   } else {
-    throw new Error("User has reached the maximum number of QR codes");
+    throw new Error("You have reached the maximum number of QR codes");
   }
 }
 

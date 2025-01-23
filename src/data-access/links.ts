@@ -37,7 +37,7 @@ export async function createLink(data: CreateLinkDto): Promise<LinkDto> {
     const createdLink = await prisma.link.create({ data });
     return toDtoMapper(createdLink);
   } else {
-    throw new Error("User has reached the maximum number of links");
+    throw new Error("You have reached the maximum number of links");
   }
 }
 
