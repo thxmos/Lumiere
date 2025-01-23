@@ -59,7 +59,9 @@ export function ImageUpload({
   };
 
   return (
-    <div className={`relative ${sizeClasses[size]} rounded-lg overflow-hidden`}>
+    <div
+      className={`relative ${sizeClasses[size]} rounded-lg overflow-hidden border border-primary`}
+    >
       {image ? (
         <div className="w-full h-full group">
           <img

@@ -21,8 +21,13 @@ function toDtoMapper(qrCode: QRCode): QRCodeDto {
 }
 
 export async function createQRCode(data: CreateQRCodeDto): Promise<QRCodeDto> {
-  const createdQRCode = await prisma.qRCode.create({ data });
-  return toDtoMapper(createdQRCode);
+  const userQrCodes = await getQRCodesByUserId(data.userId);
+  if (userQrCodes.length < 10) {
+    const createdQRCode = await prisma.qRCode.create({ data });
+    return toDtoMapper(createdQRCode);
+  } else {
+    throw new Error("User has reached the maximum number of QR codes");
+  }
 }
 
 export async function getQRCodesByUserId(userId: string): Promise<QRCodeDto[]> {
