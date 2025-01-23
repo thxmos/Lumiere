@@ -1,5 +1,5 @@
 import { getUser } from "@/actions/session.actions";
-import { getProducts } from "./merch.actions";
+import { getProducts } from "./actions";
 import ProductsList from "./components/products-list";
 
 const ProductsPage = async () => {
