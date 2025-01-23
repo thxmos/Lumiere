@@ -11,6 +11,7 @@ export const config = {
   matcher: "/",
 };
 
+// Rate limiting middleware
 export default async function middleware(request: NextRequest) {
   const ip = request.ip ?? "unknown";
   const { success, pending, limit, reset, remaining } =

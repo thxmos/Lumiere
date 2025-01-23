@@ -15,7 +15,7 @@ export const QRCodeList = async ({ userId }: { userId: string }) => {
   return (
     <DashboardCard
       title="QR Codes"
-      description="List of QR codes you generated"
+      description={`List of QR codes you generated ${qrCodes.length}/10`}
     >
       {qrCodes.map((qrCode, index) => (
         <Card key={qrCode.id} className="flex flex-col gap-2 ">

@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/dialog";
 import FileUpload, { FileType } from "@/components/file-upload";
 import { uploadAvatar } from "./actions";
-import { getInitials } from "@/helpers";
+import { getInitials } from "@/utils/helpers";
 
 interface AvatarUploadProps {
   avatar: string | null;
