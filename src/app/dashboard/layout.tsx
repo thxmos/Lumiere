@@ -22,7 +22,7 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
           title="Dashboard"
           headerIcon={<LayoutDashboard />}
         />
-        <main className="flex-1 p-8 overflow-y-auto bg-background">
+        <main className="flex-1 p-8 overflow-y-auto bg-background mb-16">
           <div className="w-full max-w-5xl">{children}</div>
         </main>
       </div>

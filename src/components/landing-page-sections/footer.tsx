@@ -8,7 +8,7 @@ const Footer = () => {
       aria-label="Site footer"
     >
       <p className="text-xs text-muted-foreground">
-        © {new Date().getFullYear()} {APP_NAME} Inc. All rights reserved.
+        © {new Date().getFullYear()} {APP_NAME} LLC. All rights reserved.
       </p>
     </footer>
   );

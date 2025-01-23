@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { type LinkDto } from "@/data-access/links";
 import { deleteLink, updateUserLinks } from "./links-card.actions";
-import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
+import { DashboardCard } from "@/components/dashboard-card";
 import { PlusCircle } from "lucide-react";
 import { toast } from "sonner";
 import LinkInput from "./components/link-input";

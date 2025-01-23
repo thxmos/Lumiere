@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
+import { DashboardCard } from "@/components/dashboard-card";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { ProductCard } from "./product-card";

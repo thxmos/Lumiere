@@ -16,7 +16,7 @@ const LinksPage = async () => {
   const theme = await getTheme(userId);
 
   return (
-    <div className="space-y-4 mb-16">
+    <div className="space-y-4">
       <ProfileInfoCard user={user} />
       <LinksCard userLinks={links} userId={user.id} />
       <SocialMediaCard user={user} />

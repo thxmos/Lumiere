@@ -1,4 +1,4 @@
-import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
+import { DashboardCard } from "@/components/dashboard-card";
 import { Card } from "@/components/ui/card";
 import { getQRCodesByUserIdAction } from "./actions";
 import Image from "next/image";

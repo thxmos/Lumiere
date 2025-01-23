@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
+import { DashboardCard } from "@/components/dashboard-card";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";

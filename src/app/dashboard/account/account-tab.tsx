@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { useTheme } from "next-themes";
 import { UserDto } from "@/data-access/user";
 import { updateUser } from "./account.actions";
-import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
+import { DashboardCard } from "@/components/dashboard-card";
 import { THEMES } from "@/constants/theme";
 
 export default function AccountTab({ user }: { user: UserDto }) {

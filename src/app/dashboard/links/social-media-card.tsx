@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { SOCIAL_PLATFORMS } from "@/constants/social-media";
 import { updateUser } from "./links-card.actions";
 import { UserDto } from "@/data-access/user";
-import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
+import { DashboardCard } from "@/components/dashboard-card";
 import { toast } from "sonner";
 
 interface SocialMediaCardProps {

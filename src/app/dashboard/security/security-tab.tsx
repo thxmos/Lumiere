@@ -4,7 +4,7 @@ import React from "react";
 import { UserDto } from "@/data-access/user";
 import PasswordResetForm from "./password-reset-form";
 import PasswordResetFormOAuth from "./password-reset-form-oAuth";
-import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
+import { DashboardCard } from "@/components/dashboard-card";
 
 export default function SecurityTab({
   user,

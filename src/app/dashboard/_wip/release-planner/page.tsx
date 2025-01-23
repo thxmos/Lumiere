@@ -1,4 +1,4 @@
-import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
+import { DashboardCard } from "@/components/dashboard-card";
 
 const ReleasePlannerPage = () => {
   return (

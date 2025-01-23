@@ -10,7 +10,7 @@ import { AvatarUpload } from "@/components/avatar-upload/avatar-upload";
 import Link from "next/link";
 import { type UserDto } from "@/data-access/user";
 import { updateUser } from "./links-card.actions";
-import { DashboardCard } from "@/components/dashboard-card/dashboard-card";
+import { DashboardCard } from "@/components/dashboard-card";
 import { toast } from "sonner";
 import {
   Select,
