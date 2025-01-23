@@ -1,10 +1,10 @@
-import Parallax from "../parallax";
-import heroBgPic from "@/assets/hero-bg.jpg";
+import Parallax from "./parallax";
+import HERO_BG_IMG from "@/assets/hero-bg.jpg";
 
 export const ParallaxLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Parallax
-      bgImage={heroBgPic.src}
+      bgImage={HERO_BG_IMG.src}
       bgImageAlt="Background Image"
       strength={200}
     >
