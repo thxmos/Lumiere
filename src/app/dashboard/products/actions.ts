@@ -1,3 +1,5 @@
+"use server";
+
 import { isValidSession } from "@/actions/session.actions";
 import {
   createProduct,
