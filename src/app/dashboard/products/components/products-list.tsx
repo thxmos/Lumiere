@@ -7,9 +7,9 @@ import { Plus } from "lucide-react";
 import { ProductCard } from "./product-card";
 import { CreateProductModal } from "../create-product-modal";
 import { CreateProduct2Dto, Product2Dto } from "@/data-access/product2";
-import { getProducts } from "../merch.actions";
+import { getProducts } from "../actions";
 import { toast } from "sonner";
-import { createNewProduct } from "../merch.actions";
+import { createNewProduct } from "../actions";
 
 const ProductsList = ({
   userId,
