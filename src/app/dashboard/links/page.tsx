@@ -13,7 +13,7 @@ const LinksPage = async () => {
 
   return (
     <>
-      <LinksCard userLinks={links} userId={user.id} />
+      <LinksCard userLinks={links} user={user} />
       <SocialMediaCard user={user} />
     </>
   );

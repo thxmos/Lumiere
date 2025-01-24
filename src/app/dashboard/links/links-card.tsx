@@ -10,13 +10,15 @@ import { deleteLink, updateUserLinksAction } from "./links-card.actions";
 import LinkList from "./components/link-list";
 import { DashboardCard } from "@/components/dashboard-card";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { UserDto } from "@/data-access/user";
 
 interface LinksCardProps {
   userLinks: LinkDto[];
-  userId: string;
+  user: UserDto;
 }
 
-export function LinksCard({ userLinks, userId }: LinksCardProps) {
+export function LinksCard({ userLinks, user }: LinksCardProps) {
   const [links, setLinks] = useState<LinkDto[]>(userLinks);
 
   const {
@@ -45,7 +47,7 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
         title: "",
         url: "https://",
         imageUrl: "",
-        userId,
+        userId: user.id,
         active: false,
         index: links.length,
       } as LinkDto,
@@ -73,7 +75,14 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
 
   return (
     <DashboardCard
-      title="Links"
+      title={
+        <div className="flex justify-between items-center">
+          <span>Links</span>
+          <Link href={`/${user.username}`} className="text-base underline">
+            Preview
+          </Link>
+        </div>
+      }
       description={`Manage your custom links here (${links.length}/10)`}
     >
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

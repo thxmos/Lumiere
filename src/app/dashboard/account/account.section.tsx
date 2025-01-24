@@ -51,14 +51,7 @@ export function AccountSection({ user }: { user: UserDto }) {
 
   return (
     <DashboardCard
-      title={
-        <div className="flex justify-between items-center">
-          <span>Profile Info</span>
-          <Link href={`/${user.username}`} className="text-base underline">
-            Preview
-          </Link>
-        </div>
-      }
+      title="Profile Info"
       description="Manage your profile information here."
     >
       <form

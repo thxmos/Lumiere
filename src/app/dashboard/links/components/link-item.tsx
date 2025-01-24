@@ -111,7 +111,7 @@ const LinkItem: React.FC<Props> = ({
             ) : (
               <>
                 <div className="text-lg font-bold text-primary">
-                  {link.title}
+                  {link.title || "Untitled"}
                 </div>
                 <div className="text-sm text-muted-foreground">{link.url}</div>
                 <div className="text-sm text-muted-foreground">Clicks: 100</div>
