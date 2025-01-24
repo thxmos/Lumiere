@@ -14,6 +14,7 @@ import { Switch } from "@/components/ui/switch";
 import { SelectInput } from "@/components/select-input";
 import { ColorSelect } from "@/components/color-select/color-select";
 import { ColorPickerStandalone } from "@/components/color-select/color-picker-standalone";
+import { Separator } from "@/components/ui/separator";
 
 const BACKGROUND_TYPES = [
   { label: "Colored Background", value: "color" },
@@ -208,7 +209,7 @@ export function ThemeEditorSection({
   return (
     <DashboardCard
       title={<span>Themes</span>}
-      description="Customize your theme settings here"
+      description="Customize your brand theme settings here. These will be applied to all your pages"
       footer={
         <div className="flex justify-end w-full">
           <Button type="submit" form="theme-form" disabled={isSubmitting}>
@@ -231,17 +232,18 @@ export function ThemeEditorSection({
                   key={field.name}
                   className="flex items-center space-x-2 mt-2"
                 >
-                  <Label className="w-24">{field.label}</Label>
+                  <Label className="w-24 font-bold">{field.label}</Label>
                   {renderFormField(field, control)}
                 </div>
               ))}
+              <Separator />
             </div>
           ))}
 
           <div className="space-y-2">
             <Label className="text-lg font-bold">Background</Label>
             <div className="flex items-center space-x-2 mt-2">
-              <Label className="w-24">Type</Label>
+              <Label className="w-24 font-bold">Type</Label>
               <Controller
                 name="theme.backgroundType"
                 control={control}
@@ -259,7 +261,7 @@ export function ThemeEditorSection({
 
             {backgroundType === "color" && (
               <div className="flex items-center space-x-2 mt-2">
-                <Label className="w-24">Color</Label>
+                <Label className="w-24 font-bold">Color</Label>
                 <Controller
                   name="theme.backgroundColor"
                   control={control}
@@ -276,7 +278,7 @@ export function ThemeEditorSection({
 
             {backgroundType === "image" && (
               <div className="flex items-center space-x-2 mt-2">
-                <Label className="w-24">Image URL</Label>
+                <Label className="w-24 font-bold">Image URL</Label>
                 <Controller
                   name="theme.backgroundImageUrl"
                   control={control}
@@ -289,7 +291,7 @@ export function ThemeEditorSection({
 
             {backgroundType === "video" && (
               <div className="flex items-center space-x-2 mt-2">
-                <Label className="w-24">Video URL</Label>
+                <Label className="w-24 font-bold">Video URL</Label>
                 <Controller
                   name="theme.videoUrl"
                   control={control}

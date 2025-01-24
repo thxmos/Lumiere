@@ -8,22 +8,17 @@ import {
 
 import { LinkDto } from "@/data-access/links";
 import LinkItem from "./link-item";
+import { updateUserLinksAction } from "../links-card.actions";
+import { toast } from "sonner";
 
 interface Props {
   links: LinkDto[];
   setLinks: (links: LinkDto[]) => void;
   onUpdate: (index: number, updatedLink: LinkDto) => void;
   onDelete: (index: number) => void;
-  moveLink: (index: number, direction: "up" | "down") => void;
 }
 
-const LinkList: React.FC<Props> = ({
-  links,
-  setLinks,
-  onUpdate,
-  onDelete,
-  moveLink,
-}) => {
+const LinkList: React.FC<Props> = ({ links, setLinks, onUpdate, onDelete }) => {
   const onDragEnd = (result: DropResult) => {
     const { source, destination } = result;
     if (!destination) return;
@@ -37,6 +32,17 @@ const LinkList: React.FC<Props> = ({
     });
 
     setLinks(reorderedItems);
+    try {
+      updateUserLinksAction(reorderedItems); //TODO: make it so only indexes update
+      toast.success("Link order updated successfully", {
+        duration: 3000,
+      });
+    } catch (error) {
+      toast.error("Failed to update link order", {
+        duration: 3000,
+      });
+      console.error("Failed to update link order:", error);
+    }
   };
 
   return (
@@ -62,7 +68,6 @@ const LinkList: React.FC<Props> = ({
                     draggableProvided={draggableProvided}
                     onUpdate={onUpdate}
                     onDelete={onDelete}
-                    moveLink={moveLink}
                   />
                 )}
               </Draggable>

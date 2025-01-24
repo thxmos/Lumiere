@@ -1,6 +1,6 @@
 "use server";
 
-import { isValidSession } from "@/actions/session.actions";
+import { getUser, isValidSession } from "@/actions/session.actions";
 import {
   CreateLinkDto,
   createLinks,
@@ -10,6 +10,7 @@ import {
   updateLinks,
 } from "@/data-access/links";
 import { updateUserById, UserDto } from "@/data-access/user";
+import { ValidateSessionOrThrow } from "@/utils/sessions";
 import { Country } from "@prisma/client";
 
 export async function updateUser(userId: string, data: Partial<UserDto>) {
@@ -35,14 +36,13 @@ export async function updateUser(userId: string, data: Partial<UserDto>) {
   });
 }
 
-export async function updateUserLinks(
-  userId: string,
-  links: Partial<LinkDto>[],
-) {
-  const isSessionValid = await isValidSession();
-  if (!isSessionValid) {
-    throw new Error("Your session has expired. Please log in again.");
-  }
+export async function updateUserLinksAction(links: Partial<LinkDto>[]) {
+  ValidateSessionOrThrow();
+  if (!links) return;
+
+  const user = await getUser();
+  const userId = user.user?.id!;
+  console.log(links);
 
   const createLinksFiltered = links
     ?.filter((link, index) => {
@@ -60,8 +60,8 @@ export async function updateUserLinks(
       userId: userId,
       index: link.index,
       active: link.active,
-    }));
-  await createLinks(createLinksFiltered as CreateLinkDto[]);
+    })) as CreateLinkDto[];
+  await createLinks(createLinksFiltered);
 
   const updateLinksFiltered = links
     ?.filter((link) => link.id)
@@ -73,8 +73,8 @@ export async function updateUserLinks(
       id: link.id,
       active: link.active,
       index: link.index,
-    }));
-  await updateLinks(updateLinksFiltered as LinkDto[]);
+    })) as LinkDto[];
+  await updateLinks(updateLinksFiltered);
 }
 
 export async function getLinks(userId: string) {

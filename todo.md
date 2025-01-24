@@ -32,6 +32,11 @@
 - LINK CARDS
 
   - instead of a form for the section just make each one a dynamic component that allows you to update and save individually
+  - update indexes on dnd now
+  - remove form
+  - make dnd component into its own thing and get rid of links-list.tsx
+  - rethink the add card, the method right now is ugly, make a modal or something
+  - some funky stuff going on with the way the dnd and the state are interacting. creating a new card, saving, then rearranging wont save it quite right
 
 - SOME SORT OF VALIDATION METHOD
 

@@ -1,15 +1,20 @@
-import React, { useState } from "react";
-import { DraggableProvided } from "@hello-pangea/dnd";
+import type React from "react";
+import { useState } from "react";
+import type { DraggableProvided } from "@hello-pangea/dnd";
 import { RxDragHandleDots2 } from "react-icons/rx";
-
-import { LinkDto } from "@/data-access/links";
+import type { LinkDto } from "@/data-access/links";
 import { ImageUpload } from "@/components/image-upload";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, ChevronUp, Trash } from "lucide-react";
+import { Trash, Edit, Check, X } from "lucide-react";
 import { ConfirmDeleteModal } from "./confirm-delete-modal";
+import { Label } from "@/components/ui/label";
+
+/*
+Hide drag n drop icon in edit mode
+
+*/
 
 interface Props {
   link: LinkDto;
@@ -17,7 +22,6 @@ interface Props {
   draggableProvided: DraggableProvided;
   onUpdate: (index: number, updatedLink: LinkDto) => void;
   onDelete: (index: number) => void;
-  moveLink: (index: number, direction: "up" | "down") => void;
 }
 
 const LinkItem: React.FC<Props> = ({
@@ -26,27 +30,25 @@ const LinkItem: React.FC<Props> = ({
   draggableProvided,
   onUpdate,
   onDelete,
-  moveLink,
 }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedLink, setEditedLink] = useState(link);
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement> | boolean,
     field?: string,
   ) => {
     if (typeof event === "boolean" && field) {
-      const updatedLink = { ...link, [field]: event };
-      onUpdate(index, updatedLink);
+      setEditedLink({ ...editedLink, [field]: event });
     } else if (typeof event !== "boolean") {
       const { name, value } = event.target;
-      const updatedLink = { ...link, [name]: value };
-      onUpdate(index, updatedLink);
+      setEditedLink({ ...editedLink, [name]: value });
     }
   };
 
   const handleImageChange = (imageUrl: string) => {
-    const updatedLink = { ...link, imageUrl };
-    onUpdate(index, updatedLink);
+    setEditedLink({ ...editedLink, imageUrl });
   };
 
   const handleConfirmDelete = () => {
@@ -54,64 +56,115 @@ const LinkItem: React.FC<Props> = ({
     setIsDeleteModalOpen(false);
   };
 
+  const handleSaveChanges = () => {
+    onUpdate(index, editedLink);
+    setIsEditing(false);
+  };
+
+  const handleCancelEdit = () => {
+    setEditedLink(link);
+    setIsEditing(false);
+  };
+
   return (
     <>
       <li
         ref={draggableProvided.innerRef}
         {...draggableProvided.draggableProps}
-        className="border border-border rounded-lg p-4 flex justify-between items-center"
+        className="border border-border rounded-lg p-4 flex justify-between items-center bg-background"
       >
         <div className="flex gap-4 items-center justify-between w-full">
+          <Label>{index + 1}</Label>
+
           {/* Image Upload */}
           <div>
             <ImageUpload
-              initialImage={link.imageUrl ?? undefined}
+              initialImage={editedLink.imageUrl ?? undefined}
               onImageChange={(image) => handleImageChange(image ?? "")}
+              disabled={!isEditing}
             />
           </div>
 
           {/* Title & Link Input */}
           <div className="flex flex-col flex-1 space-y-2">
-            <div className="flex items-center gap-4 w-full max-w-[400px]">
-              <Label htmlFor="title">Title</Label>
-              <Input
-                name="title"
-                placeholder="Title"
-                value={link.title}
-                onChange={handleInputChange}
-                aria-label="Link title"
-                required
-                className="w-full"
-              />
-            </div>
-            <div className="flex items-center gap-4 w-full max-w-[400px]">
-              <Label htmlFor="url">URL</Label>
-              <Input
-                name="url"
-                placeholder="URL"
-                value={link.url}
-                onChange={handleInputChange}
-                aria-label="Link URL"
-                required
-                type="url"
-                className="w-full"
-              />
-            </div>
+            {isEditing ? (
+              <>
+                <Input
+                  name="title"
+                  placeholder="Title"
+                  value={editedLink.title}
+                  onChange={handleInputChange}
+                  aria-label="Link title"
+                  required
+                  className="w-full"
+                />
+                <Input
+                  name="url"
+                  placeholder="URL"
+                  value={editedLink.url}
+                  onChange={handleInputChange}
+                  aria-label="Link URL"
+                  required
+                  type="url"
+                  className="w-full"
+                />
+              </>
+            ) : (
+              <>
+                <div className="font-medium">{link.title}</div>
+                <div className="text-sm text-gray-500">{link.url}</div>
+              </>
+            )}
           </div>
 
           {/* Active Switch */}
           <div className="flex items-center space-x-2">
             <Switch
-              checked={link.active}
+              checked={editedLink.active}
               onCheckedChange={(checked) =>
                 handleInputChange(checked, "active")
               }
               aria-label="Toggle link active status"
+              disabled={!isEditing}
             />
-            <Label htmlFor={`active-${index}`} className="text-sm w-14">
-              {link.active ? "Active" : "Inactive"}
-            </Label>
+            <span className="text-sm w-14">
+              {editedLink.active ? "Active" : "Inactive"}
+            </span>
           </div>
+
+          {/* Edit/Save/Cancel Buttons */}
+          {isEditing ? (
+            <>
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon"
+                onClick={handleSaveChanges}
+              >
+                <Check className="h-4 w-4" />
+                <span className="sr-only">Save changes</span>
+              </Button>
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon"
+                onClick={handleCancelEdit}
+              >
+                <X className="h-4 w-4" />
+                <span className="sr-only">Cancel edit</span>
+              </Button>
+            </>
+          ) : (
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsEditing(true)}
+            >
+              <Edit className="h-4 w-4" />
+              <span className="sr-only">Edit link</span>
+            </Button>
+          )}
 
           {/* Delete Button */}
           <Button
@@ -125,15 +178,17 @@ const LinkItem: React.FC<Props> = ({
           </Button>
 
           {/* Drag Handle */}
-          <Button
-            type="button"
-            variant="ghost"
-            size="icon"
-            {...draggableProvided.dragHandleProps}
-            className="cursor-grab"
-          >
-            <RxDragHandleDots2 className="h-4 w-4" />
-          </Button>
+          {!isEditing && (
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              {...draggableProvided.dragHandleProps}
+              className="cursor-grab"
+            >
+              <RxDragHandleDots2 className="h-4 w-4" />
+            </Button>
+          )}
         </div>
       </li>
       <ConfirmDeleteModal

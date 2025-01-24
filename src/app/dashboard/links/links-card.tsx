@@ -6,7 +6,7 @@ import { PlusCircle } from "lucide-react";
 import { toast } from "sonner";
 
 import { type LinkDto } from "@/data-access/links";
-import { deleteLink, updateUserLinks } from "./links-card.actions";
+import { deleteLink, updateUserLinksAction } from "./links-card.actions";
 import LinkList from "./components/link-list";
 import { DashboardCard } from "@/components/dashboard-card";
 import { Button } from "@/components/ui/button";
@@ -26,7 +26,7 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
 
   const onSubmit = async () => {
     try {
-      await updateUserLinks(userId, links);
+      await updateUserLinksAction(links);
       toast.success("Links updated successfully", {
         duration: 3000,
       });
@@ -47,6 +47,7 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
         imageUrl: "",
         userId,
         active: false,
+        index: links.length,
       } as LinkDto,
     ]);
   };
@@ -70,23 +71,6 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
     setLinks(links.map((link, i) => (i === index ? updatedLink : link)));
   };
 
-  const moveLink = (index: number, direction: "up" | "down") => {
-    const swapIndex = direction === "up" ? index - 1 : index + 1;
-
-    if (swapIndex >= 0 && swapIndex < links.length) {
-      const newLinks = [...links];
-      [newLinks[index], newLinks[swapIndex]] = [
-        newLinks[swapIndex],
-        newLinks[index],
-      ];
-
-      newLinks[index].index = index;
-      newLinks[swapIndex].index = swapIndex;
-
-      setLinks(newLinks);
-    }
-  };
-
   return (
     <DashboardCard
       title="Links"
@@ -98,7 +82,6 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
           setLinks={setLinks}
           onUpdate={updateLink}
           onDelete={removeLink}
-          moveLink={moveLink}
         />
         <div className="flex justify-end px-0 space-x-2">
           <Button type="button" variant="outline" onClick={addLink}>

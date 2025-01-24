@@ -8,6 +8,7 @@ import { ImageUploadDialog } from "./image-upload-dialog";
 interface ImageUploadProps {
   initialImage?: string;
   onImageChange: (image: string | null) => void;
+  disabled?: boolean;
   size?: "sm" | "md" | "lg";
 }
 
@@ -26,6 +27,7 @@ const iconSizes = {
 export function ImageUpload({
   initialImage,
   onImageChange,
+  disabled = false,
   size = "sm",
 }: ImageUploadProps) {
   const [image, setImage] = useState<string | null>(initialImage || null);
@@ -75,6 +77,7 @@ export function ImageUpload({
               size="icon"
               onClick={handleRemoveImage}
               className="text-white hover:text-red-500"
+              disabled={disabled}
             >
               <X className={iconSizes[size]} />
               <span className="sr-only">Remove image</span>
