@@ -7,6 +7,7 @@ export async function clickLink(id: string): Promise<void> {
   if (!link) {
     throw new Error("Link not found with id: " + id);
   }
+
   await prisma.link.update({
     where: { id },
     data: { clicks: { increment: 1 } },

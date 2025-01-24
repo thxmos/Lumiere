@@ -7,14 +7,14 @@ model Session {
 }
 
 model VerificationToken {
-  id        String   @id @default(cuid())
+  id        String   @id @default(uuid())
   token     String   @unique
   userId    String
   expiresAt DateTime
 }
 
 model PasswordResetToken {
-  id        String   @id @default(cuid())
+  id        String   @id @default(uuid())
   token     String   @unique
   userId    String
   expiresAt DateTime

@@ -1,5 +1,5 @@
 model Theme {
-  id String @id @default(cuid()) @unique
+  id String @id @default(uuid()) @unique
   userId String @unique
   user User @relation("UserTheme", fields: [userId], references: [id])
 

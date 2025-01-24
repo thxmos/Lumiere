@@ -1,11 +1,13 @@
 model Link {
-  id       String  @id @unique @default(cuid())
+  id       String  @id @unique @default(uuid())
   url      String
   title    String
   imageUrl String?
+  imageId  String?
   active   Boolean @default(true)
 
   index Int?
+  @@unique([userId, index])
 
   clicks Int @default(0)
 

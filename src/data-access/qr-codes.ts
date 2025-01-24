@@ -1,3 +1,4 @@
+import { getUser } from "@/actions/session.actions";
 import { prisma } from "@/utils/prisma";
 import { QRCode } from "@prisma/client";
 
@@ -33,4 +34,12 @@ export async function createQRCode(data: CreateQRCodeDto): Promise<QRCodeDto> {
 export async function getQRCodesByUserId(userId: string): Promise<QRCodeDto[]> {
   const qrCodes = await prisma.qRCode.findMany({ where: { userId } });
   return qrCodes.map(toDtoMapper);
+}
+
+export async function deleteQRCode(id: string): Promise<void> {
+  const { user } = await getUser();
+  if (!user) {
+    throw new Error("User not found");
+  }
+  await prisma.qRCode.delete({ where: { id, userId: user.id } });
 }

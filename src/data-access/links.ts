@@ -41,11 +41,32 @@ export async function createLink(data: CreateLinkDto): Promise<LinkDto> {
   }
 }
 
+export async function createLinks(data: CreateLinkDto[]): Promise<void> {
+  await prisma.link.createMany({ data });
+}
+
 export async function updateLink(
   id: string,
   data: Partial<Link>,
 ): Promise<void> {
   await prisma.link.update({ where: { id }, data });
+}
+
+export async function updateLinks(data: LinkDto[]): Promise<void> {
+  // updateMany() doesn't work here because we need to update each link individually
+  // with its specific id and data
+  for (const link of data) {
+    await prisma.link.update({
+      where: { id: link.id },
+      data: link,
+    });
+  }
+  // const updatedLinks = await prisma.link.findMany({
+  //   where: {
+  //     userId: data[0].userId,
+  //   },
+  // });
+  // return updatedLinks.map(toDtoMapper);
 }
 
 export async function getLinksByUserId(userId: string): Promise<LinkDto[]> {

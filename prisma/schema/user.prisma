@@ -1,6 +1,6 @@
 model User {
   // Personal Info
-  id    String  @id @default(cuid())
+  id    String  @id @default(uuid())
   email String  @unique
   name  String?
   password   String?
@@ -8,6 +8,7 @@ model User {
 
   // Profile Info
   avatar      String?
+  imageId     String? // EVENTUALLY replace avatar with imageId
   username    String   @unique @default(dbgenerated("'user-' || floor(random() * 1000000)::text"))
   description String?  @default("") @db.VarChar(200)
   links Link[] @relation("UserLinks")
@@ -42,8 +43,9 @@ model User {
   oAuthProvider OAuthProvider?
  
   // QR Codes
-  QRCode QRCode[] @relation("UserQRCodes")
+  QRCodes QRCode[] @relation("UserQRCodes")
 
+  Images Image[]
 }
 
 enum OAuthProvider {

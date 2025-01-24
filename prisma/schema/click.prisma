@@ -1,5 +1,5 @@
 model Click {
-  id String @id @default(cuid()) @unique
+  id String @id @default(uuid()) @unique
   linkId String
   link Link @relation(fields: [linkId], references: [id])
   createdAt DateTime @default(now())

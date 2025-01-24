@@ -17,23 +17,35 @@
    - [ ] make a helper function to upload images to blob storage
    - [ ] make a helper function to delete images from blob storage
    - [ ] make a helper function to get images from blob storage
-   - [ ] Variable file size restriction for uploadBlob method
 
-2. LIMIT up to 10 links per user (no archive/soft delete for now)
-3. LIMIT up to 3 (or 10?) qr codes per user
-4. fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
-5. User types and test account so I can put it on my resume too
-6. database backups
+2. fix account settings default country
+3. dnd new draggable needs draggableId
+4. replace color selects with color palette component
+5. refetch props on form saves (ie. preview is out of date if you change username)
+6. fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
+7. User types and test account so I can put it on my resume too
+8. database backups
 
 ### Refactors
 
+- SOME SORT OF VALIDATION METHOD
+
+  - get session user and return id, throw if not found
+
+- IMAGES
+
+  - image upload component use new imageUploadAction
+  - validation in image dialog for file size / dont allow submit / show error message
+  - transactions for image upload actions
+  - use avatar, link image, etc specific actions to delete image on change (account for upsert)
+
+- pagespeed insights
 - clean up actions to not require fetching userId in each component
 - make Save Changes button consistent
 - BACKGROUND TYPE default form value is broken on refresh?
 - theme dynamic forms clean up
 - clean up dto structure and maybe mapper
-- actions vs data access layer?
-- where is select input being used?
+- use select input more?
 - make a helper function to get the country name from the country enum
 - validateSession method to use in protected routes and actions
 - color scheme utils for theme editor

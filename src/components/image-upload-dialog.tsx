@@ -9,8 +9,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Upload } from "lucide-react";
 import FileUpload, { FileType } from "@/components/file-upload";
 
 interface ImageUploadDialogProps {
@@ -32,12 +30,6 @@ export function ImageUploadDialog({
 }: ImageUploadDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogTrigger asChild>
-        <Button type="button">
-          <Upload className="h-4 w-4 mr-2" />
-          Update Image
-        </Button>
-      </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Update Image</DialogTitle>

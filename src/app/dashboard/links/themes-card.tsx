@@ -12,6 +12,7 @@ import type { CreateThemeDto } from "@/data-access/theme";
 import { DashboardCard } from "@/components/dashboard-card";
 import { Switch } from "@/components/ui/switch";
 import { SelectInput } from "@/components/select-input";
+import { ColorPalette } from "@/components/color-palette";
 
 const BACKGROUND_TYPES = [
   { label: "Colored Background", value: "color" },
@@ -20,6 +21,10 @@ const BACKGROUND_TYPES = [
 ];
 
 export const THEME_FORM_FIELDS = [
+  {
+    category: "Color Palette",
+    fields: [{ label: "Primary Color", type: "color", name: "primaryColor" }],
+  },
   {
     category: "Font",
     fields: [
@@ -200,6 +205,12 @@ export function ThemesCard({
                   {renderFormField(field, control)}
                 </div>
               ))}
+              {section.category === "Color Palette" && (
+                <div className="space-y-2 flex items-center">
+                  <Label className="w-24">Color Palette</Label>
+                  <ColorPalette />
+                </div>
+              )}
             </div>
           ))}
           <div className="space-y-2">

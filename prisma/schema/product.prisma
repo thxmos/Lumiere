@@ -1,8 +1,8 @@
 model Product2 {
-  id              String   @id @default(cuid())
+  id              String   @id @default(uuid())
   name            String?
   description     String?
-  image           String?
+  imageId         String?
   active          Boolean? @default(false)
   price           Decimal? @default(0.00) @db.Decimal(10,2)
 

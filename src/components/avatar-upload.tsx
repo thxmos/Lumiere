@@ -6,6 +6,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { uploadAvatar } from "../actions/image-upload.actions";
 import { getInitials } from "@/utils/helpers";
 import { ImageUploadDialog } from "./image-upload-dialog";
+import { Upload } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface AvatarUploadProps {
   avatar: string | null;
@@ -50,6 +52,16 @@ export function AvatarUpload({ avatar, name }: AvatarUploadProps) {
         setFile={setAvatarFile}
         isUploading={isUploadingAvatar}
       />
+      <Button
+        className="w-full bg-primary"
+        onClick={(e) => {
+          e.preventDefault();
+          setIsModalOpen(true);
+        }}
+      >
+        <Upload className="h-4 w-4 mr-2" />
+        Update Avatar
+      </Button>
     </div>
   );
 }
