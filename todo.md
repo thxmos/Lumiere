@@ -29,8 +29,11 @@
 
 ### Refactors
 
+- Confirm Delete Modal
+
 - LINK CARDS
 
+  - make into item card compoennt
   - instead of a form for the section just make each one a dynamic component that allows you to update and save individually
   - update indexes on dnd now
   - remove form
@@ -66,6 +69,12 @@
 - make a helper function to get the country name from the country enum
 
 ### Nice To Have
+
+- ADMIN features
+
+  - workbench kinda tab
+  - wiki / docs
+  - user invite
 
 - split themes into seperate files or something cleaner? and make 8 more
 - don't allow for duplicate usernames (still going to keep it closed circle for now)

@@ -1,6 +1,10 @@
 "use server";
 
-import { createQRCode, getQRCodesByUserId } from "@/data-access/qr-codes";
+import {
+  createQRCode,
+  deleteQRCode,
+  getQRCodesByUserId,
+} from "@/data-access/qr-codes";
 
 export const createQRCodeAction = async (url: string, userId: string) => {
   const qrCode = await createQRCode({ url, userId });
@@ -10,4 +14,8 @@ export const createQRCodeAction = async (url: string, userId: string) => {
 export const getQRCodesByUserIdAction = async (userId: string) => {
   const qrCodes = await getQRCodesByUserId(userId);
   return qrCodes;
+};
+
+export const deleteQRCodeAction = async (qrCodeId: string) => {
+  await deleteQRCode(qrCodeId);
 };

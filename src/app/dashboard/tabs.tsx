@@ -8,6 +8,7 @@ import {
   ShoppingBag,
   Calendar,
   QrCodeIcon,
+  Wrench,
 } from "lucide-react";
 
 const iconStyle = "mr-2 h-4 w-4";
@@ -57,5 +58,10 @@ export const DASHBOARD_TABS = [
     key: "billing",
     label: "Billing",
     icon: <CreditCard className={iconStyle} />,
+  },
+  {
+    key: "workbench",
+    label: "Workbench",
+    icon: <Wrench className={iconStyle} />,
   },
 ];

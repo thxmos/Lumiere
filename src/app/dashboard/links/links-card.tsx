@@ -28,11 +28,11 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
     try {
       await updateUserLinksAction(links);
       toast.success("Links updated successfully", {
-        duration: 3000,
+        duration: 2000,
       });
     } catch (error) {
       toast.error("Failed to update links", {
-        duration: 3000,
+        duration: 2000,
       });
       console.error("Failed to update links:", error);
     }
@@ -61,7 +61,7 @@ export function LinksCard({ userLinks, userId }: LinksCardProps) {
       } catch (error) {
         toast.error("Failed to delete link");
         console.error("Failed to delete link:", error);
-        return; // Don't remove from state if delete failed
+        // Don't remove from state if delete failed
       }
     }
     setLinks(links.filter((_, i) => i !== index));
