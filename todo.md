@@ -10,26 +10,34 @@
 
 ### Important
 
-1. Better image upload system
+1. ARCHITECTURE for:
 
-   - [ ] make entity assigned to userId
-   - [ ] products, links, etc can reference the entity
-   - [ ] make a helper function to upload images to blob storage
-   - [ ] make a helper function to delete images from blob storage
-   - [ ] make a helper function to get images from blob storage
+   - clicks,
+   - image upload,
+   - user create,
+   - one time sign up flow
 
 2. THEME FORMS CLEAN UP SO IT CAN GO TO PROD
-3. fix account settings default country
-4. dnd new draggable needs draggableId EASY FIX
-5. toats only 2-3 second by default
-6. refetch props on form saves (ie. preview is out of date if you change username)
-7. fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
-8. User types and test account so I can put it on my resume too
-9. database backups
+
+3. Database backups
+
+4. ABAC & Architecture
+
+5. workbench page
+
+6. EASY FIX: fix account settings default country AND/OR add disabled state to country select
+
+7. EASY FIX: dnd new draggable needs draggableId
+8. EASY FIX: Toast Helper methods with defaults ie. 2-3 second
+9. EASY FIX: refetch props on form saves (ie. preview is out of date if you change username)
+10. EASY FIX: fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
+11. EASY FIX: User types and test account so I can put it on my resume too
 
 ### Refactors
 
 - Confirm Delete Modal
+
+- make sure all forms have button directly attached, minimize need for e.preventDefault()
 
 - LINK CARDS
 

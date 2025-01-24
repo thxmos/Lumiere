@@ -18,6 +18,7 @@ import type {
   SearchCriteria,
 } from "./types";
 import { fetchEntities, getAttributesForType } from "./helpers";
+import { Separator } from "@/components/ui/separator";
 
 export function Workbench({
   onEntitySelect,
@@ -169,6 +170,8 @@ export function Workbench({
           {isSubmitting ? "Searching..." : "Search"}
         </Button>
       </div>
+
+      <Separator className="my-4" />
 
       <div className="mt-6">
         <h3 className="text-lg font-semibold mb-4">Results:</h3>

@@ -60,8 +60,8 @@ export const DASHBOARD_TABS = [
     icon: <CreditCard className={iconStyle} />,
   },
   {
-    key: "workbench",
-    label: "Workbench",
+    key: "admin",
+    label: "Admin ⭐",
     icon: <Wrench className={iconStyle} />,
   },
 ];

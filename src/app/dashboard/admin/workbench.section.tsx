@@ -23,7 +23,7 @@ export function WorkbenchSection() {
 
   return (
     <DashboardCard
-      title="Workbench (Admin)"
+      title="Workbench"
       description="Look up and modify entities here"
     >
       <Workbench
