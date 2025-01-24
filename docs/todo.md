@@ -1,6 +1,6 @@
-## TODOS:
+# TODOS:
 
-### Roadmap
+## Roadmap
 
 - get 10 users (the clear, hafta)
 - get click data
@@ -8,7 +8,7 @@
 - metrics page
 - add products tab + merch section on page
 
-### Important
+## Important For Launch
 
 1. ARCHITECTURE for:
 
@@ -21,52 +21,59 @@
 
 3. Database backups
 
-4. ABAC & Architecture
+4. Seperate Confirm Delete Modal
 
-5. Confirm Delete Modal
+5. EASY FIX: fix account settings default country AND/OR add disabled state to country select
 
-6. workbench page
+6. EASY FIX: dnd new draggable needs draggableId
+7. EASY FIX: Toast Helper methods with defaults ie. 2-3 second
+8. EASY FIX: refetch props on form saves (ie. preview is out of date if you change username)
+9. EASY FIX: fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
+10. EASY FIX: User types and test account so I can put it on my resume too
 
-7. EASY FIX: fix account settings default country AND/OR add disabled state to country select
+## Future Features
 
-8. EASY FIX: dnd new draggable needs draggableId
-9. EASY FIX: Toast Helper methods with defaults ie. 2-3 second
-10. EASY FIX: refetch props on form saves (ie. preview is out of date if you change username)
-11. EASY FIX: fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
-12. EASY FIX: User types and test account so I can put it on my resume too
+### Workbench page
+
+- dynamically get entities
+- display in a table
+- table pagination
+
+### Component: Link Cards
+
+- make into item card compoennt
+- instead of a form for the section just make each one a dynamic component that allows you to update and save individually
+- update indexes on dnd now
+- remove form
+- make dnd component into its own thing and get rid of links-list.tsx
+  - rethink the add card, the method right now is ugly, make a modal or something
+  - some funky stuff going on with the way the dnd and the state are interacting. creating a new card, saving, then rearranging wont save it quite right
+
+### Entity:Images
+
+- image upload component use new imageUploadAction
+- validation in image dialog for file size / dont allow submit / show error message
+- transactions for image upload actions if one part fails
+- use avatar, link image, etc specific actions to delete image on change (account for upsert)
+
+### Entity: Clicks
+
+- track link clicks
+- track QR code scans?
+- add social media clicked to click table
+  - it can be either social media or link
 
 ### Refactors
 
 - make sure all forms have button directly attached, minimize need for e.preventDefault()
 
-- LINK CARDS
-
-  - make into item card compoennt
-  - instead of a form for the section just make each one a dynamic component that allows you to update and save individually
-  - update indexes on dnd now
-  - remove form
-  - make dnd component into its own thing and get rid of links-list.tsx
-  - rethink the add card, the method right now is ugly, make a modal or something
-  - some funky stuff going on with the way the dnd and the state are interacting. creating a new card, saving, then rearranging wont save it quite right
-
 - SOME SORT OF VALIDATION METHOD
 
   - get session user and return id, throw if not found
 
-- IMAGES
-
-  - image upload component use new imageUploadAction
-  - validation in image dialog for file size / dont allow submit / show error message
-  - transactions for image upload actions
-  - use avatar, link image, etc specific actions to delete image on change (account for upsert)
-
 - REVIEW SESSIONS.ACTIONS
 
   - strip back lucia and implement from scratch perhaps
-
-- CLICKS
-
-  - add social media clicked to click table
 
 - pagespeed insights
 - clean up actions to not require fetching userId in each component

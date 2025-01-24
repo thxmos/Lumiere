@@ -12,11 +12,11 @@ import { DashboardCard } from "@/components/dashboard-card";
 import { toast } from "sonner";
 import Image from "next/image";
 
-interface SocialMediaCardProps {
+interface Props {
   user: UserDto;
 }
 
-export function SocialMediaCard({ user }: SocialMediaCardProps) {
+export function SocialMediaSection({ user }: Props) {
   const {
     register,
     handleSubmit,

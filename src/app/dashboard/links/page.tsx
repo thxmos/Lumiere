@@ -1,8 +1,8 @@
 import { getUserById } from "@/data-access/user";
 import { getUser } from "@/actions/session.actions";
 import { getLinks } from "./links-card.actions";
-import { SocialMediaCard } from "./social-media-card";
-import { LinksCard } from "./links-card";
+import { SocialMediaSection } from "./social-media.section";
+import { LinksSection } from "./links.section";
 
 const LinksPage = async () => {
   const sessionUser = await getUser();
@@ -13,8 +13,8 @@ const LinksPage = async () => {
 
   return (
     <>
-      <LinksCard userLinks={links} user={user} />
-      <SocialMediaCard user={user} />
+      <LinksSection userLinks={links} user={user} />
+      <SocialMediaSection user={user} />
     </>
   );
 };

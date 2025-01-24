@@ -7,7 +7,7 @@ import {
 } from "@hello-pangea/dnd";
 
 import { LinkDto } from "@/data-access/links";
-import LinkItem from "./link-item";
+import { LinkCard } from "./link-card";
 import { updateUserLinksAction } from "../links-card.actions";
 import { toast } from "sonner";
 
@@ -18,7 +18,12 @@ interface Props {
   onDelete: (index: number) => void;
 }
 
-const LinkList: React.FC<Props> = ({ links, setLinks, onUpdate, onDelete }) => {
+export const LinksList: React.FC<Props> = ({
+  links,
+  setLinks,
+  onUpdate,
+  onDelete,
+}) => {
   const onDragEnd = (result: DropResult) => {
     const { source, destination } = result;
     if (!destination) return;
@@ -62,7 +67,7 @@ const LinkList: React.FC<Props> = ({ links, setLinks, onUpdate, onDelete }) => {
             {links.map((link, index) => (
               <Draggable key={link.id} draggableId={link.id} index={index}>
                 {(draggableProvided) => (
-                  <LinkItem
+                  <LinkCard
                     link={link}
                     index={index}
                     draggableProvided={draggableProvided}
@@ -79,5 +84,3 @@ const LinkList: React.FC<Props> = ({ links, setLinks, onUpdate, onDelete }) => {
     </DragDropContext>
   );
 };
-
-export default LinkList;

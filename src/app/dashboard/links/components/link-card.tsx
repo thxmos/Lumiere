@@ -23,7 +23,7 @@ interface Props {
   onDelete: (index: number) => void;
 }
 
-const LinkItem: React.FC<Props> = ({
+export const LinkCard: React.FC<Props> = ({
   link,
   index,
   draggableProvided,
@@ -201,5 +201,3 @@ const LinkItem: React.FC<Props> = ({
     </>
   );
 };
-
-export default LinkItem;
