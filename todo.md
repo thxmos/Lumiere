@@ -20,7 +20,7 @@
 
 2. fix account settings default country
 3. dnd new draggable needs draggableId
-4. replace color selects with color palette component
+4. toats only 2-3 second by default and use success,
 5. refetch props on form saves (ie. preview is out of date if you change username)
 6. fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
 7. User types and test account so I can put it on my resume too

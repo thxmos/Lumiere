@@ -3,6 +3,8 @@ model Theme {
   userId String @unique
   user User @relation("UserTheme", fields: [userId], references: [id])
 
+  primaryColor String @db.Char(7) @default("#3f434a")
+
   fontFamily String
   fontWeight Int
   fontColor String @db.Char(7)

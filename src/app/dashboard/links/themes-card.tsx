@@ -12,7 +12,8 @@ import type { CreateThemeDto } from "@/data-access/theme";
 import { DashboardCard } from "@/components/dashboard-card";
 import { Switch } from "@/components/ui/switch";
 import { SelectInput } from "@/components/select-input";
-import { ColorPalette } from "@/components/color-palette";
+import { ColorSelect } from "@/components/color-select/color-select";
+import { ColorPickerStandalone } from "@/components/color-select/color-picker-standalone";
 
 const BACKGROUND_TYPES = [
   { label: "Colored Background", value: "color" },
@@ -23,7 +24,9 @@ const BACKGROUND_TYPES = [
 export const THEME_FORM_FIELDS = [
   {
     category: "Color Palette",
-    fields: [{ label: "Primary Color", type: "color", name: "primaryColor" }],
+    fields: [
+      { label: "Primary Color", type: "color-picker", name: "primaryColor" },
+    ],
   },
   {
     category: "Font",
@@ -162,6 +165,35 @@ export function ThemesCard({
             )}
           />
         );
+      case "color":
+        return (
+          <Controller
+            name={`theme.${field.name}`}
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <ColorSelect
+                value={value}
+                themePrimaryColor={watch("theme.primaryColor")}
+                onChange={onChange}
+                size="md"
+              />
+            )}
+          />
+        );
+      case "color-picker":
+        return (
+          <Controller
+            name={`theme.${field.name}`}
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <ColorPickerStandalone
+                value={watch("theme.primaryColor")}
+                onChange={onChange}
+                size="md"
+              />
+            )}
+          />
+        );
       default:
         return (
           <Controller
@@ -194,7 +226,7 @@ export function ThemesCard({
       >
         <div className="space-y-4">
           {THEME_FORM_FIELDS.map((section) => (
-            <div key={section.category} className="space-y-2">
+            <div key={section.category} className="space-y-4">
               <Label className="text-lg font-bold">{section.category}</Label>
               {section.fields.map((field) => (
                 <div
@@ -205,12 +237,6 @@ export function ThemesCard({
                   {renderFormField(field, control)}
                 </div>
               ))}
-              {section.category === "Color Palette" && (
-                <div className="space-y-2 flex items-center">
-                  <Label className="w-24">Color Palette</Label>
-                  <ColorPalette />
-                </div>
-              )}
             </div>
           ))}
           <div className="space-y-2">
@@ -239,7 +265,12 @@ export function ThemesCard({
                   name="theme.backgroundColor"
                   control={control}
                   render={({ field: { onChange, value } }) => (
-                    <Input type="color" value={value} onChange={onChange} />
+                    <ColorSelect
+                      value={value}
+                      themePrimaryColor={watch("theme.primaryColor")}
+                      onChange={onChange}
+                      size="md"
+                    />
                   )}
                 />
               </div>

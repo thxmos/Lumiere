@@ -2,6 +2,8 @@ import { prisma } from "@/utils/prisma";
 
 export type CreateThemeDto = {
   userId: string;
+  primaryColor: string;
+
   fontFamily: string;
   fontWeight: number;
   fontColor: string;
