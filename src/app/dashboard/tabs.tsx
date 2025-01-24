@@ -14,15 +14,20 @@ const iconStyle = "mr-2 h-4 w-4";
 
 export const DASHBOARD_TABS = [
   {
+    key: "account",
+    label: "Account",
+    icon: <Settings className={iconStyle} />,
+  },
+  {
     key: "links",
     label: "Links",
     icon: <Link1Icon className={iconStyle} />,
   },
-  // {
-  //   key: "theme-editor",
-  //   label: "Theme Editor",
-  //   icon: <Paintbrush className={iconStyle} />,
-  // },
+  {
+    key: "theme-editor",
+    label: "Theme Editor",
+    icon: <Paintbrush className={iconStyle} />,
+  },
   {
     key: "qr-generator",
     label: "QR Generator",
@@ -43,11 +48,6 @@ export const DASHBOARD_TABS = [
   //   label: "Release Planner",
   //   icon: <Calendar className={iconStyle} />,
   // },
-  {
-    key: "account",
-    label: "Account",
-    icon: <Settings className={iconStyle} />,
-  },
   {
     key: "security",
     label: "Security",

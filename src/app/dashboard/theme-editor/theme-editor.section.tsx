@@ -65,7 +65,7 @@ export const THEME_FORM_FIELDS = [
   },
 ];
 
-export function ThemesCard({
+export function ThemeEditorSection({
   userId,
   initialTheme,
 }: {
@@ -237,6 +237,7 @@ export function ThemesCard({
               ))}
             </div>
           ))}
+
           <div className="space-y-2">
             <Label className="text-lg font-bold">Background</Label>
             <div className="flex items-center space-x-2 mt-2">

@@ -1,12 +1,19 @@
 import { getUser } from "@/actions/session.actions";
-import AccountTab from "./account-tab";
 import { getUserById } from "@/data-access/user";
+import { AccountSection } from "./account.section";
+import UserSettingsSection from "./user-settings.section";
+import { ThemeSection } from "./theme.section";
 
 export default async function AccountSettingsPage() {
   const sessionUser = await getUser();
-  const userId = sessionUser.user?.id;
-  if (!userId) return null;
+  const userId = sessionUser.user?.id!;
   const user = await getUserById(userId);
 
-  return <AccountTab user={user} />;
+  return (
+    <>
+      <AccountSection user={user} />
+      <UserSettingsSection user={user} />
+      <ThemeSection />
+    </>
+  );
 }

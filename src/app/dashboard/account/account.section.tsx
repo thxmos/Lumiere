@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { AvatarUpload } from "@/components/avatar-upload";
 import Link from "next/link";
 import { type UserDto } from "@/data-access/user";
-import { updateUser } from "./links-card.actions";
+import { updateUserAccountInfoAction } from "./account.actions";
 import { DashboardCard } from "@/components/dashboard-card";
 import { toast } from "sonner";
 import {
@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/select";
 import { COUNTRIES } from "@/constants/countries";
 
-export function ProfileInfoCard({ user }: { user: UserDto }) {
+export function AccountSection({ user }: { user: UserDto }) {
   const {
     register,
     handleSubmit,
@@ -38,12 +38,11 @@ export function ProfileInfoCard({ user }: { user: UserDto }) {
 
   const onSubmit = async (data: Partial<UserDto>) => {
     try {
-      await updateUser(user.id, data);
+      await updateUserAccountInfoAction(user.id, data);
       toast.success("Profile updated successfully", {
         duration: 3000,
       });
     } catch (error) {
-      console.error("Failed to update profile:", error);
       toast.error("Failed to update profile", {
         duration: 3000,
       });
@@ -60,7 +59,7 @@ export function ProfileInfoCard({ user }: { user: UserDto }) {
           </Link>
         </div>
       }
-      description="Manage your profile information here"
+      description="Manage your profile information here."
     >
       <form
         id="profile-form"

@@ -1,14 +1,20 @@
 "use server";
 
-import { isValidSession } from "@/actions/session.actions";
 import { updateUserById } from "@/data-access/user";
-import { User } from "@prisma/client";
 
-export async function updateUser(userId: string, data: Partial<User>) {
-  const isSessionValid = await isValidSession();
-  if (!isSessionValid) {
-    throw new Error("Your session has expired. Please log in again.");
-  }
+import { UserDto } from "@/data-access/user";
+import { Country } from "@prisma/client";
+import { ValidateSessionOrThrow } from "@/utils/sessions";
 
-  await updateUserById(userId, data);
+export async function updateUserAccountInfoAction(
+  userId: string,
+  data: Partial<UserDto>,
+) {
+  ValidateSessionOrThrow();
+
+  await updateUserById(userId, {
+    username: data.username,
+    description: data.description,
+    country: data.country as Country,
+  });
 }

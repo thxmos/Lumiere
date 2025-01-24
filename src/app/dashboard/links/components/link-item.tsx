@@ -59,7 +59,7 @@ const LinkItem: React.FC<Props> = ({
       <li
         ref={draggableProvided.innerRef}
         {...draggableProvided.draggableProps}
-        className="border border-border rounded p-4 flex justify-between items-center"
+        className="border border-border rounded-lg p-4 flex justify-between items-center"
       >
         <div className="flex gap-4 items-center justify-between w-full">
           {/* Image Upload */}

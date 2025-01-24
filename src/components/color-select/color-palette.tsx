@@ -18,7 +18,7 @@ export function ColorPalette({
 }: ColorPaletteProps) {
   const scheme = [
     themePrimaryColor,
-    ...generateColorSchemeFromHex(themePrimaryColor, "triade", "light", 6),
+    ...generateColorSchemeFromHex(themePrimaryColor, "triade", "light", 7),
     BLACK,
     WHITE,
   ];

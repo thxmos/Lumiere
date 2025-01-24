@@ -10,6 +10,7 @@ import { updateUser } from "./links-card.actions";
 import { UserDto } from "@/data-access/user";
 import { DashboardCard } from "@/components/dashboard-card";
 import { toast } from "sonner";
+import Image from "next/image";
 
 interface SocialMediaCardProps {
   user: UserDto;
@@ -67,6 +68,7 @@ export function SocialMediaCard({ user }: SocialMediaCardProps) {
       >
         {SOCIAL_PLATFORMS.map((platform) => (
           <div key={platform.value} className="space-x-2 items-center flex">
+            <platform.icon className="w-4 h-4 mr-2" />
             <Label htmlFor={platform.value} className="w-20">
               {platform.label}
             </Label>

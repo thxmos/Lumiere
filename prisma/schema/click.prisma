@@ -1,6 +1,7 @@
 model Click {
   id String @id @default(uuid()) @unique
   linkId String
+  socialMediaClicked SocialMedia
   link Link @relation(fields: [linkId], references: [id])
   createdAt DateTime @default(now())
 
@@ -28,4 +29,16 @@ model Click {
   region String? // State/province
   latitude Float?
   longitude Float?
+}
+
+enum SocialMedia {
+  APPLE_MUSIC
+  DISCORD
+  FACEBOOK
+  INSTAGRAM
+  PATREON
+  SPOTIFY
+  TIKTOK
+  TWITTER_X
+  YOUTUBE
 }

@@ -18,15 +18,20 @@
    - [ ] make a helper function to delete images from blob storage
    - [ ] make a helper function to get images from blob storage
 
-2. fix account settings default country
-3. dnd new draggable needs draggableId
-4. toats only 2-3 second by default and use success,
-5. refetch props on form saves (ie. preview is out of date if you change username)
-6. fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
-7. User types and test account so I can put it on my resume too
-8. database backups
+2. THEME FORMS CLEAN UP SO IT CAN GO TO PROD
+3. fix account settings default country
+4. dnd new draggable needs draggableId EASY FIX
+5. toats only 2-3 second by default
+6. refetch props on form saves (ie. preview is out of date if you change username)
+7. fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
+8. User types and test account so I can put it on my resume too
+9. database backups
 
 ### Refactors
+
+- LINK CARDS
+
+  - instead of a form for the section just make each one a dynamic component that allows you to update and save individually
 
 - SOME SORT OF VALIDATION METHOD
 
@@ -39,16 +44,21 @@
   - transactions for image upload actions
   - use avatar, link image, etc specific actions to delete image on change (account for upsert)
 
+- REVIEW SESSIONS.ACTIONS
+
+  - strip back lucia and implement from scratch perhaps
+
+- CLICKS
+
+  - add social media clicked to click table
+
 - pagespeed insights
 - clean up actions to not require fetching userId in each component
 - make Save Changes button consistent
 - BACKGROUND TYPE default form value is broken on refresh?
-- theme dynamic forms clean up
 - clean up dto structure and maybe mapper
-- use select input more?
+  - use more Partials and Omits instead of redefining
 - make a helper function to get the country name from the country enum
-- validateSession method to use in protected routes and actions
-- color scheme utils for theme editor
 
 ### Nice To Have
 
