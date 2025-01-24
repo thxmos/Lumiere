@@ -175,7 +175,6 @@ export function ThemesCard({
                 value={value}
                 themePrimaryColor={watch("theme.primaryColor")}
                 onChange={onChange}
-                size="md"
               />
             )}
           />
@@ -189,7 +188,6 @@ export function ThemesCard({
               <ColorPickerStandalone
                 value={watch("theme.primaryColor")}
                 onChange={onChange}
-                size="md"
               />
             )}
           />
@@ -269,7 +267,6 @@ export function ThemesCard({
                       value={value}
                       themePrimaryColor={watch("theme.primaryColor")}
                       onChange={onChange}
-                      size="md"
                     />
                   )}
                 />
