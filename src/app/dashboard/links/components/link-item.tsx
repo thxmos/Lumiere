@@ -12,8 +12,7 @@ import { ConfirmDeleteModal } from "./confirm-delete-modal";
 import { Label } from "@/components/ui/label";
 
 /*
-Hide drag n drop icon in edit mode
-
+- fix overflow text issue on mobile
 */
 
 interface Props {
@@ -71,10 +70,10 @@ const LinkItem: React.FC<Props> = ({
       <li
         ref={draggableProvided.innerRef}
         {...draggableProvided.draggableProps}
-        className="border border-border rounded-lg p-4 flex justify-between items-center bg-background"
+        className="border border-primary rounded-lg p-4 flex justify-between items-center bg-background"
       >
         <div className="flex gap-4 items-center justify-between w-full">
-          <Label>{index + 1}</Label>
+          <Label className="font-bold text-primary">{index + 1}</Label>
 
           {/* Image Upload */}
           <div>
@@ -111,8 +110,11 @@ const LinkItem: React.FC<Props> = ({
               </>
             ) : (
               <>
-                <div className="font-medium">{link.title}</div>
-                <div className="text-sm text-gray-500">{link.url}</div>
+                <div className="text-lg font-bold text-primary">
+                  {link.title}
+                </div>
+                <div className="text-sm text-muted-foreground">{link.url}</div>
+                <div className="text-sm text-muted-foreground">Clicks: 100</div>
               </>
             )}
           </div>

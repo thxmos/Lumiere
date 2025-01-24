@@ -23,19 +23,19 @@
 
 4. ABAC & Architecture
 
-5. workbench page
+5. Confirm Delete Modal
 
-6. EASY FIX: fix account settings default country AND/OR add disabled state to country select
+6. workbench page
 
-7. EASY FIX: dnd new draggable needs draggableId
-8. EASY FIX: Toast Helper methods with defaults ie. 2-3 second
-9. EASY FIX: refetch props on form saves (ie. preview is out of date if you change username)
-10. EASY FIX: fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
-11. EASY FIX: User types and test account so I can put it on my resume too
+7. EASY FIX: fix account settings default country AND/OR add disabled state to country select
+
+8. EASY FIX: dnd new draggable needs draggableId
+9. EASY FIX: Toast Helper methods with defaults ie. 2-3 second
+10. EASY FIX: refetch props on form saves (ie. preview is out of date if you change username)
+11. EASY FIX: fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
+12. EASY FIX: User types and test account so I can put it on my resume too
 
 ### Refactors
-
-- Confirm Delete Modal
 
 - make sure all forms have button directly attached, minimize need for e.preventDefault()
 

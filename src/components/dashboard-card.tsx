@@ -22,7 +22,7 @@ export function DashboardCard({
   footer,
 }: DashboardCardProps) {
   return (
-    <Card className="max-w-4xl">
+    <Card className="max-w-4xl border-primary">
       <CardHeader>
         <CardTitle className="text-2xl">{title}</CardTitle>
         {description && <CardDescription>{description}</CardDescription>}
