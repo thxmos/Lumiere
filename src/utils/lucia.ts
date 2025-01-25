@@ -2,10 +2,17 @@ import { Lucia } from "lucia";
 import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
 import { prisma } from "./prisma";
 
+/*
+TODO:
+- dont add roles here like a caveman, do some checks in an action
+- also make it a list of roles
+*/
+
 export interface SessionUser {
   id: string;
   name: string;
   avatar: string;
+  roles: string;
 }
 
 const adapter = new PrismaAdapter(prisma.session, prisma.user);

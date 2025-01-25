@@ -10,6 +10,7 @@ export type CreateUserDto = {
 
 export type UserDto = {
   id: string;
+  roles: string;
   email: string;
   name: string | null;
   username: string;
@@ -34,6 +35,7 @@ export type UserDto = {
 function toDtoMapper(user: User): UserDto {
   return {
     id: user.id,
+    roles: user.roles,
     email: user.email.toLowerCase(),
     name: user.name,
     username: user.username,

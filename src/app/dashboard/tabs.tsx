@@ -1,3 +1,4 @@
+import { USER_ROLES } from "@/constants/user";
 import { Link1Icon } from "@radix-ui/react-icons";
 import {
   Settings,
@@ -55,11 +56,11 @@ export const DASHBOARD_TABS = [
     label: "Security",
     icon: <Lock className={iconStyle} />,
   },
-  {
-    key: "billing",
-    label: "Billing",
-    icon: <CreditCard className={iconStyle} />,
-  },
+  // {
+  //   key: "billing",
+  //   label: "Billing",
+  //   icon: <CreditCard className={iconStyle} />,
+  // },
   {
     key: "user-settings",
     label: "User Settings",
@@ -69,5 +70,6 @@ export const DASHBOARD_TABS = [
     key: "admin",
     label: "Admin ⭐",
     icon: <Wrench className={iconStyle} />,
+    userRole: USER_ROLES.ADMIN,
   },
 ];

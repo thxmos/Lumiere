@@ -4,12 +4,15 @@ import LayoutSidebar from "@/components/layout-sidebar";
 import { DASHBOARD_TABS } from "./tabs";
 import Navbar from "@/components/nav-bar/nav-bar";
 import { ScrollToTopLayout } from "./scroll-to-top.layout";
+import { getUser } from "@/actions/session.actions";
+import { USER_ROLES } from "@/constants/user";
 
 interface Props {
   children: React.ReactNode;
 }
 
 const DashboardLayout: React.FC<Props> = async ({ children }) => {
+  const { user } = await getUser();
   const tabs = DASHBOARD_TABS;
 
   return (
@@ -18,6 +21,7 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
 
       <div className="flex h-screen bg-background">
         <LayoutSidebar
+          userRole={user?.roles || USER_ROLES.USER}
           tabs={tabs}
           title="Dashboard"
           headerIcon={<LayoutDashboard />}
