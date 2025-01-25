@@ -10,24 +10,22 @@
 
 ## Important For Launch
 
-1. ARCHITECTURE for:
+1. DESIGN for:
 
    - clicks,
    - image upload,
    - user create,
    - one time sign up flow
 
-2. THEME FORMS CLEAN UP SO IT CAN GO TO PROD
+2. Database backups
 
-3. Database backups
+3. EASY FIX: add default country in profile page
 
-4. EASY FIX: add default country in profile page
+4. EASY FIX BUG: dnd new draggable needs draggableId
 
-5. EASY FIX BUG: dnd new draggable needs draggableId
+5. EASY FIX: refresh props on form saves OR optimistically update (ie. preview is out of date if you change username)
 
-6. EASY FIX: refresh props on form saves OR optimistically update (ie. preview is out of date if you change username)
-
-7. EASY FIX: fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
+6. EASY FIX: fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
 
 ## Future Features
 
