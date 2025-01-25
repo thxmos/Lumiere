@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { UserDto } from "@/data-access/user";
-import { updateUser } from "./user-settings.actions";
+import { updateUser } from "./actions";
 import { DashboardCard } from "@/components/dashboard-card";
 
 export default function UserSettingsSection({ user }: { user: UserDto }) {

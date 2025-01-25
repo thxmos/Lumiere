@@ -87,7 +87,10 @@ export function ThemeEditorSection({
           <div className="space-y-4">
             <Label className="text-lg font-bold">Color Palette</Label>
             <div className="flex items-center space-x-2 mt-2">
-              <Label className="w-24 font-bold">Primary Color</Label>
+              <Label className="w-24 font-bold">
+                Primary <br />
+                Color
+              </Label>
               <Controller
                 name="theme.primaryColor"
                 control={control}

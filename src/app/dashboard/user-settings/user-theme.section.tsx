@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { THEMES } from "@/constants/theme";
 import { useTheme } from "next-themes";
 
-export const ThemeSection = () => {
+export const UserThemeSection = () => {
   const { theme, setTheme } = useTheme();
 
   return (

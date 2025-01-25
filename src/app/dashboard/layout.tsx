@@ -14,20 +14,18 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
 
   return (
     <ProtectedLayout redirectUrl="/auth">
-      <ScrollToTopLayout>
-        <Navbar />
+      <Navbar />
 
-        <div className="flex h-screen bg-background">
-          <LayoutSidebar
-            tabs={tabs}
-            title="Dashboard"
-            headerIcon={<LayoutDashboard />}
-          />
-          <main className="flex flex-col overflow-y-auto bg-background mb-16 w-full gap-4 p-8">
-            {children}
-          </main>
-        </div>
-      </ScrollToTopLayout>
+      <div className="flex h-screen bg-background">
+        <LayoutSidebar
+          tabs={tabs}
+          title="Dashboard"
+          headerIcon={<LayoutDashboard />}
+        />
+        <main className="flex flex-col overflow-y-auto bg-background mb-16 w-full gap-4 p-8">
+          <ScrollToTopLayout>{children}</ScrollToTopLayout>
+        </main>
+      </div>
     </ProtectedLayout>
   );
 };

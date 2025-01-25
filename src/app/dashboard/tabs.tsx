@@ -9,6 +9,7 @@ import {
   Calendar,
   QrCodeIcon,
   Wrench,
+  User,
 } from "lucide-react";
 
 const iconStyle = "mr-2 h-4 w-4";
@@ -58,6 +59,11 @@ export const DASHBOARD_TABS = [
     key: "billing",
     label: "Billing",
     icon: <CreditCard className={iconStyle} />,
+  },
+  {
+    key: "user-settings",
+    label: "User Settings",
+    icon: <User className={iconStyle} />,
   },
   {
     key: "admin",
