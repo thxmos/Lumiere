@@ -56,7 +56,6 @@ export const updateProduct = async (
     });
     return { success: true };
   } catch (error) {
-    console.log("Failed to update product", error);
     return { error: "Failed to update product" };
   }
 };
@@ -71,7 +70,6 @@ export const deleteProduct = async (
     if (!deletedProduct) return { error: "Product not found" };
     return { success: true };
   } catch (error) {
-    console.log("Failed to delete product", error);
     return { error: "Failed to delete product" };
   }
 };

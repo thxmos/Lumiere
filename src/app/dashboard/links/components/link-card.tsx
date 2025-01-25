@@ -70,7 +70,7 @@ export const LinkCard: React.FC<Props> = ({
       <li
         ref={draggableProvided.innerRef}
         {...draggableProvided.draggableProps}
-        className="border border-primary rounded-lg p-4 flex justify-between items-center bg-background"
+        className="border border-secondary hover:border-primary bg-card transition-all rounded-lg p-4 flex justify-between items-center"
       >
         <div className="flex gap-4 items-center justify-between w-full">
           <Label className="font-bold text-primary">{index + 1}</Label>
@@ -110,13 +110,15 @@ export const LinkCard: React.FC<Props> = ({
               </>
             ) : (
               <>
-                <div className="text-lg font-bold text-primary">
+                <span className="text-lg font-bold text-primary">
                   {link.title || "Untitled"}
-                </div>
-                <div className="text-sm text-muted-foreground">{link.url}</div>
-                <div className="text-sm text-muted-foreground">
+                </span>
+                <span className="text-sm text-muted-foreground">
+                  {link.url}
+                </span>
+                <span className="text-sm text-muted-foreground">
                   Clicks: {link.clicks}
-                </div>
+                </span>
               </>
             )}
           </div>

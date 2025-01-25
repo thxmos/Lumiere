@@ -3,7 +3,6 @@
 ## Roadmap
 
 - get 10 users (the clear, hafta)
-- get click data
 - get qr code data
 - metrics page
 - add products tab + merch section on page
@@ -28,6 +27,13 @@
 6. EASY FIX: fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
 
 ## Future Features
+
+### Item Card
+
+- simple component to re-use for link, qr code, product, etc
+- mainly UI focused, logic can be implemented in individual components
+- take in different sizes ie sm md lg
+- take in different styles ie. primary, secondary, tertiary
 
 ### Workbench page
 

@@ -37,7 +37,6 @@ export function ColorPicker({
   const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const newColor = e.target.value;
-    console.log(newColor);
     onChange(newColor);
   };
 

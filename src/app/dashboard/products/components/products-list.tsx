@@ -7,7 +7,6 @@ import { Plus } from "lucide-react";
 import { ProductCard } from "./product-card";
 import { CreateProductModal } from "../create-product-modal";
 import { CreateProduct2Dto, Product2Dto } from "@/data-access/product2";
-import { getProducts } from "../actions";
 import { toast } from "sonner";
 import { createNewProduct } from "../actions";
 
@@ -21,11 +20,8 @@ const ProductsList = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const createProduct = async (productData: Partial<CreateProduct2Dto>) => {
-    console.log("productData", productData);
     try {
       await createNewProduct(userId, productData);
-      const updatedProducts = await getProducts(userId);
-      console.log("updatedProducts", updatedProducts);
       toast.success("Product created successfully");
     } catch (error) {
       console.error("Error creating product:", error);

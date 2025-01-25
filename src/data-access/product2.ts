@@ -4,7 +4,7 @@ import type { Product2 } from "@prisma/client";
 export type CreateProduct2Dto = {
   name?: string;
   description?: string;
-  image?: string;
+  imageId?: string;
   active?: boolean;
   price?: number;
 };

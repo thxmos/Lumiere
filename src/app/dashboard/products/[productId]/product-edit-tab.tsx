@@ -11,22 +11,21 @@ import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { ImageUpload } from "@/components/image-upload";
 import { toast } from "sonner";
-import { updateProduct } from "./product.actions";
+import { updateProduct } from "./actions";
 import { useForm } from "react-hook-form";
 import { Product2Dto } from "@/data-access/product2";
-
+import { UserDto } from "@/data-access/user";
 interface Props {
   product: Product2Dto;
+  user: UserDto;
 }
 
-export default function ProductEditTab({ product }: Props) {
-  const [image, setImage] = useState(product.imageId || undefined);
+export default function ProductEditTab({ product, user }: Props) {
+  const [imageId, setImageId] = useState(product.imageId || undefined);
   const [name, setName] = useState(product.name || "");
   const [description, setDescription] = useState(product.description || "");
   const [price, setPrice] = useState(product.price || 0);
   const [active, setActive] = useState(product.active!);
-
-  console.log("product", product);
 
   const {
     handleSubmit,
@@ -34,7 +33,7 @@ export default function ProductEditTab({ product }: Props) {
   } = useForm();
 
   const handleImageChange = (imageUrl: string | undefined) => {
-    setImage(imageUrl);
+    setImageId(imageUrl);
   };
 
   const onSubmit = async () => {
@@ -42,7 +41,7 @@ export default function ProductEditTab({ product }: Props) {
       const productData = {
         name,
         description,
-        image,
+        imageId,
         active,
         price,
       };
@@ -62,11 +61,19 @@ export default function ProductEditTab({ product }: Props) {
   return (
     <DashboardCard
       title={
-        <div className="flex items-center">
-          <Link href="/dashboard/products">
-            <ChevronLeft className="w-4 h-4 mr-2" />
+        <div className="flex justify-between items-center">
+          <div className="flex items-center">
+            <Link href="/dashboard/products">
+              <ChevronLeft className="w-4 h-4 mr-2" />
+            </Link>
+            <p className="text-lg font-medium text-primary">{product.name}</p>
+          </div>{" "}
+          <Link
+            href={`/${user.username}/product/${product.id}`}
+            className="text-base underline"
+          >
+            Preview
           </Link>
-          <p className="text-lg font-medium text-gray-800">{product.name}</p>
         </div>
       }
       description={`Product ID: ${product.id}`}
@@ -75,8 +82,8 @@ export default function ProductEditTab({ product }: Props) {
         <div>
           <Label htmlFor="image">Image</Label>
           <ImageUpload
-            initialImage={image}
-            size="sm"
+            initialImage={imageId}
+            size="lg"
             onImageChange={(image: string | null) =>
               handleImageChange(image || undefined)
             }

@@ -9,6 +9,12 @@ import { ConfirmDeleteModal } from "@/components/confirm-delete-modal";
 import { useState } from "react";
 import { deleteQRCodeAction } from "./actions";
 
+/*
+TODO:
+- click on card to open a big modal with the QR code
+- add a button to download the QR code image
+*/
+
 export const QRCodeCard = ({
   qrCode,
   index,
@@ -19,7 +25,7 @@ export const QRCodeCard = ({
   removeQRCodeFromListById: (qrCodeId: string) => void;
 }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const handleDelete = async () => {
     removeQRCodeFromListById(qrCode.id);
 
@@ -32,10 +38,15 @@ export const QRCodeCard = ({
     }
   };
 
+  const handleCardClick = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <Card
       key={qrCode.id}
-      className="flex flex-col gap-2 bg-background border-primary"
+      className="flex flex-col gap-2 bg-card border-secondary hover:border-primary transition-all cursor-pointer"
+      onClick={handleCardClick}
     >
       <div className="flex gap-16 p-4 items-center justify-between">
         <div className="flex gap-4 items-center">
@@ -50,7 +61,7 @@ export const QRCodeCard = ({
           </div>
           <div className="flex flex-col gap-2">
             <h3 className="text-lg font-bold text-primary">{qrCode.url}</h3>
-            {/* <p className="text-sm text-muted-foreground">Clicks: 100</p> */}
+            <p className="text-sm text-muted-foreground">Scans: 0</p>
           </div>
         </div>
         <div className="flex justify-end p-4">

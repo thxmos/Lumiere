@@ -16,7 +16,6 @@ export async function createNewProduct(
     throw new Error("Your session has expired. Please log in again.");
   }
 
-  console.log("createNewProduct", product);
   await createProduct(userId, product);
 }
 
