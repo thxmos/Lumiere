@@ -37,12 +37,12 @@ model User {
 
   // Payment Info
   stripeCustomerId String? @unique
+  subscriptions Price[] @relation("UserSubscriptions")
 
   // Session Info
-  session       Session[]
-  VerificationToken VerificationToken?
-  PasswordResetToken PasswordResetToken?
-  subscriptions Price[]        @relation("UserSubscriptions")
+  session       Session?
+  verificationToken VerificationToken?
+  passwordResetToken PasswordResetToken?
   oAuthProvider OAuthProvider?
  
   QRCodes QRCode[] @relation("UserQRCodes")

@@ -1,6 +1,6 @@
 model Session {
   id        String   @id
-  userId    String
+  userId    String   @unique
   expiresAt DateTime
 
   user User @relation(fields: [userId], references: [id])
