@@ -37,7 +37,7 @@ export function TabSelector({
         >
           Links
         </button> */}
-        {/* Uncomment and adjust these buttons when ready to implement
+        {/* Uncomment and adjust thgiese buttons when ready to implement
         <button
           className="flex-1 py-2 px-4 text-center transition-all duration-200 ease-in-out"
           style={tabStyle(activeTab === "showDates")}
