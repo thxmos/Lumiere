@@ -14,15 +14,12 @@ import { BLACK, WHITE } from "@/constants/colors";
 import { COUNTRIES } from "@/constants/countries";
 import { TabSelector } from "@/app/[username]/components/tab-selector";
 import { SOCIAL_PLATFORMS } from "@/constants/social-media";
-import { usePathname } from "next/navigation";
-import { Tab } from "@/app/dashboard/tabs";
 
 interface Props {
   isPreview?: boolean;
   initialLinks: LinkDto[];
   initialTheme: ThemeNoId;
   user: UserDto;
-  tab: Tab;
 }
 
 const LinkTree: React.FC<Props> = ({
@@ -31,8 +28,6 @@ const LinkTree: React.FC<Props> = ({
   initialLinks,
   user,
 }) => {
-  const pathname = usePathname();
-
   const [localTheme, setlocalTheme] = useState<ThemeNoId | null>(initialTheme);
   const [localLinks, setLocalLinks] = useState<LinkDto[]>(initialLinks);
 

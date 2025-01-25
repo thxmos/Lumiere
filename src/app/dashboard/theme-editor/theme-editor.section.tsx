@@ -48,7 +48,6 @@ export function ThemeEditorSection({
 
   useEffect(() => {
     setTheme(themeValues);
-    console.log("Theme updated", themeValues);
   }, [themeValues, setTheme]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
