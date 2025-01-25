@@ -57,11 +57,11 @@ export const DASHBOARD_TABS = [
     label: "Security",
     icon: <Lock className={iconStyle} />,
   },
-  {
-    key: "billing",
-    label: "Billing",
-    icon: <CreditCard className={iconStyle} />,
-  },
+  // {
+  //   key: "billing",
+  //   label: "Billing",
+  //   icon: <CreditCard className={iconStyle} />,
+  // },
   {
     key: "user-settings",
     label: "User Settings",
