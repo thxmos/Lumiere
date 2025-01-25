@@ -14,6 +14,7 @@ import { BLACK, WHITE } from "@/constants/colors";
 import { COUNTRIES } from "@/constants/countries";
 import { TabSelector } from "@/app/[username]/components/tab-selector";
 import { SOCIAL_PLATFORMS } from "@/constants/social-media";
+import { cn } from "@/utils/utils";
 
 interface Props {
   isPreview?: boolean;
@@ -45,6 +46,17 @@ const LinkTree: React.FC<Props> = ({
     if (theme) setlocalTheme(theme);
     if (links) setLocalLinks(links);
   }, [theme, links]);
+
+  const previewStyles = {
+    wrapper: {},
+    avatarSize: 80,
+    usernameSize: "text-2xl",
+  };
+  const styles = {
+    wrappper: {},
+    avatarSize: 100,
+    usernameSize: "text-3xl",
+  };
 
   return (
     <div
@@ -78,8 +90,8 @@ const LinkTree: React.FC<Props> = ({
             <Image
               src={user.avatar || placeholder}
               alt="Profile Picture"
-              width={100}
-              height={100}
+              width={isPreview ? previewStyles.avatarSize : styles.avatarSize}
+              height={isPreview ? previewStyles.avatarSize : styles.avatarSize}
               className="rounded-full border-2 border-gray-200 flex-shrink-0"
               style={{
                 borderColor: localTheme?.borderColor || BLACK,
@@ -92,7 +104,12 @@ const LinkTree: React.FC<Props> = ({
             <div className="ml-4 flex flex-col items-start">
               <span className="flex items-end">
                 <h1
-                  className="text-3xl font-bold"
+                  className={cn(
+                    "font-bold",
+                    isPreview
+                      ? previewStyles.usernameSize
+                      : styles.usernameSize,
+                  )}
                   style={{
                     color: localTheme?.fontColor || BLACK,
                   }}

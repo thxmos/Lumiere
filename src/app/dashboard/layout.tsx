@@ -39,7 +39,6 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
         </main>
         <div className="min-w-[30%] h-full grid items-center">
           <MobilePreview>
-            {/* <MobilePreviewContent /> */}
             <LinkTree
               isPreview={true}
               initialLinks={links}
