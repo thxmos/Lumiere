@@ -9,6 +9,10 @@
 
 ## Important For Launch
 
+- image & video background upload
+- fix country form issue
+- warn user if unsaved changes
+
 1. DESIGN for:
 
    - clicks,

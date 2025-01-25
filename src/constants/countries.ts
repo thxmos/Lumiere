@@ -1,5 +1,9 @@
+/*
+TODO: make None just a null value instead and remove from schema
+*/
+
 export const COUNTRIES = [
-  // { code: "", name: "None", emoji: "" },
+  { code: "None", name: "Worldwide", emoji: "🌍" },
   { code: "AF", name: "Afghanistan", emoji: "🇦🇫" },
   { code: "AL", name: "Albania", emoji: "🇦🇱" },
   { code: "DZ", name: "Algeria", emoji: "🇩🇿" },

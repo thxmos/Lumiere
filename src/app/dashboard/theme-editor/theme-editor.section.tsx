@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { FONTS } from "@/constants/fonts";
 import { upsertTheme } from "./themes.actions";
 import { toast } from "sonner";
-import type { ThemeDto, ThemeNoId } from "@/data-access/theme";
+import type { ThemeNoId } from "@/data-access/theme";
 import { DashboardCard } from "@/components/dashboard-card";
 import { SelectInput } from "@/components/select-input";
 import { ColorSelect } from "@/components/color-select/color-select";
@@ -196,6 +196,8 @@ export function ThemeEditorSection({
                     onChange={(e) =>
                       onChange(Number.parseInt(e.target.value, 10))
                     }
+                    max={40}
+                    min={0}
                   />
                 )}
               />
@@ -212,6 +214,8 @@ export function ThemeEditorSection({
                     onChange={(e) =>
                       onChange(Number.parseInt(e.target.value, 10))
                     }
+                    max={5}
+                    min={0}
                   />
                 )}
               />

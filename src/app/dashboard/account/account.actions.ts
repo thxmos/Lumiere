@@ -15,7 +15,7 @@ export async function updateUserAccountInfoAction(
   await updateUserById(userId, {
     username: data.username,
     description: data.description,
-    country: data.country as Country,
+    country: data.country ? (data.country as Country) : Country.None,
     displayCountry: data.displayCountry,
   });
 }
