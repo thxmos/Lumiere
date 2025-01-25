@@ -10,7 +10,6 @@ import { upsertTheme } from "./themes.actions";
 import { toast } from "sonner";
 import type { CreateThemeDto } from "@/data-access/theme";
 import { DashboardCard } from "@/components/dashboard-card";
-import { Switch } from "@/components/ui/switch";
 import { SelectInput } from "@/components/select-input";
 import { ColorSelect } from "@/components/color-select/color-select";
 import { ColorPickerStandalone } from "@/components/color-select/color-picker-standalone";
@@ -20,50 +19,6 @@ const BACKGROUND_TYPES = [
   { label: "Colored Background", value: "color" },
   { label: "Image Background", value: "image" },
   { label: "Video Background", value: "video" },
-];
-
-export const THEME_FORM_FIELDS = [
-  {
-    category: "Color Palette",
-    fields: [
-      { label: "Primary Color", type: "color-picker", name: "primaryColor" },
-    ],
-  },
-  {
-    category: "Font",
-    fields: [
-      { label: "Font Family", type: "select", name: "fontFamily" },
-      { label: "Text Color", type: "color", name: "fontColor" },
-      {
-        label: "Secondary Text Color",
-        type: "color",
-        name: "secondaryColorFont",
-      },
-    ],
-  },
-  {
-    category: "Border",
-    fields: [
-      { label: "Border Color", type: "color", name: "borderColor" },
-      { label: "Border Radius", type: "number", name: "borderRadius" },
-      { label: "Border Width", type: "number", name: "borderWidth" },
-      { label: "Border Style", type: "select", name: "borderStyle" },
-    ],
-  },
-  {
-    category: "Card",
-    fields: [
-      {
-        label: "Background Color",
-        type: "color",
-        name: "cardBackgroundColor",
-      },
-    ],
-  },
-  {
-    category: "Icon",
-    fields: [{ label: "Icon Color", type: "color", name: "iconColor" }],
-  },
 ];
 
 export function ThemeEditorSection({
@@ -86,7 +41,6 @@ export function ThemeEditorSection({
   const onSubmit = async (data: { theme: Omit<CreateThemeDto, "userId"> }) => {
     setIsSubmitting(true);
     try {
-      // TODO: Ensure number fields are converted to integers in data access layer
       const updatedTheme = {
         ...data.theme,
         borderRadius: Number.parseInt(
@@ -111,101 +65,6 @@ export function ThemeEditorSection({
     setIsSubmitting(false);
   };
 
-  const renderFormField = (
-    field: (typeof THEME_FORM_FIELDS)[0]["fields"][0],
-    control: any,
-  ) => {
-    switch (field.type) {
-      case "select":
-        return (
-          <Controller
-            name={`theme.${field.name}`}
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <SelectInput
-                options={
-                  field.name === "fontFamily"
-                    ? FONTS
-                    : [
-                        { label: "Solid", value: "solid" },
-                        { label: "Dashed", value: "dashed" },
-                        { label: "Dotted", value: "dotted" },
-                      ]
-                }
-                placeholder={`Select ${field.label.toLowerCase()}`}
-                onValueChange={onChange}
-                defaultValue={
-                  value ||
-                  (field.name === "fontFamily" ? FONTS[0].value : undefined)
-                }
-              />
-            )}
-          />
-        );
-      case "switch":
-        return (
-          <Controller
-            name={`theme.${field.name}`}
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <Switch checked={value} onCheckedChange={onChange} />
-            )}
-          />
-        );
-      case "number":
-        return (
-          <Controller
-            name={`theme.${field.name}`}
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <Input
-                type="number"
-                value={value}
-                onChange={(e) => onChange(Number.parseInt(e.target.value, 10))}
-              />
-            )}
-          />
-        );
-      case "color":
-        return (
-          <Controller
-            name={`theme.${field.name}`}
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <ColorSelect
-                value={value}
-                themePrimaryColor={watch("theme.primaryColor")}
-                onChange={onChange}
-              />
-            )}
-          />
-        );
-      case "color-picker":
-        return (
-          <Controller
-            name={`theme.${field.name}`}
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <ColorPickerStandalone
-                value={watch("theme.primaryColor")}
-                onChange={onChange}
-              />
-            )}
-          />
-        );
-      default:
-        return (
-          <Controller
-            name={`theme.${field.name}`}
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <Input type={field.type} value={value} onChange={onChange} />
-            )}
-          />
-        );
-    }
-  };
-
   return (
     <DashboardCard
       title={<span>Themes</span>}
@@ -224,22 +83,183 @@ export function ThemeEditorSection({
         className="space-y-4"
       >
         <div className="space-y-4">
-          {THEME_FORM_FIELDS.map((section) => (
-            <div key={section.category} className="space-y-4">
-              <Label className="text-lg font-bold">{section.category}</Label>
-              {section.fields.map((field) => (
-                <div
-                  key={field.name}
-                  className="flex items-center space-x-2 mt-2"
-                >
-                  <Label className="w-24 font-bold">{field.label}</Label>
-                  {renderFormField(field, control)}
-                </div>
-              ))}
-              <Separator />
+          {/* Color Palette */}
+          <div className="space-y-4">
+            <Label className="text-lg font-bold">Color Palette</Label>
+            <div className="flex items-center space-x-2 mt-2">
+              <Label className="w-24 font-bold">Primary Color</Label>
+              <Controller
+                name="theme.primaryColor"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <ColorPickerStandalone value={value} onChange={onChange} />
+                )}
+              />
             </div>
-          ))}
+            <Separator />
+          </div>
 
+          {/* Font */}
+          <div className="space-y-4">
+            <Label className="text-lg font-bold">Font</Label>
+            <div className="flex items-center space-x-2 mt-2">
+              <Label className="w-24 font-bold">Font Family</Label>
+              <Controller
+                name="theme.fontFamily"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <SelectInput
+                    options={FONTS}
+                    placeholder="Select font family"
+                    onValueChange={onChange}
+                    defaultValue={value || FONTS[0].value}
+                  />
+                )}
+              />
+            </div>
+            <div className="flex items-center space-x-2 mt-2">
+              <Label className="w-24 font-bold">Text Color</Label>
+              <Controller
+                name="theme.fontColor"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <ColorSelect
+                    value={value}
+                    themePrimaryColor={watch("theme.primaryColor")}
+                    onChange={onChange}
+                  />
+                )}
+              />
+            </div>
+            <div className="flex items-center space-x-2 mt-2">
+              <Label className="w-24 font-bold">Secondary Text Color</Label>
+              <Controller
+                name="theme.secondaryColorFont"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <ColorSelect
+                    value={value}
+                    themePrimaryColor={watch("theme.primaryColor")}
+                    onChange={onChange}
+                  />
+                )}
+              />
+            </div>
+            <Separator />
+          </div>
+
+          {/* Border */}
+          <div className="space-y-4">
+            <Label className="text-lg font-bold">Border</Label>
+            <div className="flex items-center space-x-2 mt-2">
+              <Label className="w-24 font-bold">Border Color</Label>
+              <Controller
+                name="theme.borderColor"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <ColorSelect
+                    value={value}
+                    themePrimaryColor={watch("theme.primaryColor")}
+                    onChange={onChange}
+                  />
+                )}
+              />
+            </div>
+            <div className="flex items-center space-x-2 mt-2">
+              <Label className="w-24 font-bold">Border Radius</Label>
+              <Controller
+                name="theme.borderRadius"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <Input
+                    type="number"
+                    value={value}
+                    onChange={(e) =>
+                      onChange(Number.parseInt(e.target.value, 10))
+                    }
+                  />
+                )}
+              />
+            </div>
+            <div className="flex items-center space-x-2 mt-2">
+              <Label className="w-24 font-bold">Border Width</Label>
+              <Controller
+                name="theme.borderWidth"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <Input
+                    type="number"
+                    value={value}
+                    onChange={(e) =>
+                      onChange(Number.parseInt(e.target.value, 10))
+                    }
+                  />
+                )}
+              />
+            </div>
+            <div className="flex items-center space-x-2 mt-2">
+              <Label className="w-24 font-bold">Border Style</Label>
+              <Controller
+                name="theme.borderStyle"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <SelectInput
+                    options={[
+                      { label: "Solid", value: "solid" },
+                      { label: "Dashed", value: "dashed" },
+                      { label: "Dotted", value: "dotted" },
+                    ]}
+                    placeholder="Select border style"
+                    onValueChange={onChange}
+                    defaultValue={value}
+                  />
+                )}
+              />
+            </div>
+            <Separator />
+          </div>
+
+          {/* Card */}
+          <div className="space-y-4">
+            <Label className="text-lg font-bold">Card</Label>
+            <div className="flex items-center space-x-2 mt-2">
+              <Label className="w-24 font-bold">Background Color</Label>
+              <Controller
+                name="theme.cardBackgroundColor"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <ColorSelect
+                    value={value}
+                    themePrimaryColor={watch("theme.primaryColor")}
+                    onChange={onChange}
+                  />
+                )}
+              />
+            </div>
+            <Separator />
+          </div>
+
+          {/* Icon */}
+          <div className="space-y-4">
+            <Label className="text-lg font-bold">Icon</Label>
+            <div className="flex items-center space-x-2 mt-2">
+              <Label className="w-24 font-bold">Icon Color</Label>
+              <Controller
+                name="theme.iconColor"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <ColorSelect
+                    value={value}
+                    themePrimaryColor={watch("theme.primaryColor")}
+                    onChange={onChange}
+                  />
+                )}
+              />
+            </div>
+            <Separator />
+          </div>
+
+          {/* Background */}
           <div className="space-y-2">
             <Label className="text-lg font-bold">Background</Label>
             <div className="flex items-center space-x-2 mt-2">
@@ -253,7 +273,7 @@ export function ThemeEditorSection({
                     options={BACKGROUND_TYPES}
                     placeholder="Select background type"
                     onValueChange={onChange}
-                    defaultValue={BACKGROUND_TYPES[0].value}
+                    defaultValue={value}
                   />
                 )}
               />

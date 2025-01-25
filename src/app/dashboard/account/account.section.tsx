@@ -124,7 +124,8 @@ export function AccountSection({ user }: { user: UserDto }) {
           <div className="flex items-center space-x-2">
             <Switch
               id="display-country"
-              checked={user.displayCountry}
+              {...register("displayCountry")}
+              checked={watch("displayCountry")}
               onCheckedChange={(checked) => setValue("displayCountry", checked)}
             />{" "}
             <Label htmlFor="display-country">Display Country</Label>

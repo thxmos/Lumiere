@@ -111,6 +111,7 @@ export async function updateUserById(
   id: string,
   data: Partial<User>,
 ): Promise<void> {
+  console.log("updateUserById", id, data);
   await prisma.user.update({ where: { id }, data });
 }
 

@@ -44,7 +44,6 @@ export async function updateUserLinksAction(links: Partial<LinkDto>[]) {
 
   const user = await getUser();
   const userId = user.user?.id!;
-  console.log(links);
 
   const createLinksFiltered = links
     ?.filter((link, index) => {

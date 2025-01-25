@@ -46,7 +46,6 @@ export const LinksList: React.FC<Props> = ({
       toast.error("Failed to update link order", {
         duration: 3000,
       });
-      console.error("Failed to update link order:", error);
     }
   };
 

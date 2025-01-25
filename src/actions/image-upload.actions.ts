@@ -28,6 +28,12 @@ export async function uploadLinkImage(formData: FormData) {
   return await uploadImageAction(file, path);
 }
 
+export async function uploadProductImage(formData: FormData) {
+  const path = "products/";
+  const file = formData.get("file") as File;
+  return await uploadImageAction(file, path);
+}
+
 /*
 Authenticated user uploads an image to the blob, creates an image in the database, and returns the URL of the image if successful.
 If the image fails to be created in the database, the blob image is deleted.
