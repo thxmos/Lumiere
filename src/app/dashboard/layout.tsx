@@ -38,7 +38,7 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
           <ScrollToTopLayout>{children}</ScrollToTopLayout>
         </main>
         <div className="min-w-[30%] h-full grid items-center">
-          <MobilePreview>
+          <MobilePreview username={user?.username!}>
             <LinkTree
               isPreview={true}
               initialLinks={links}
