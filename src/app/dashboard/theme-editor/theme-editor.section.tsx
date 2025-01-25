@@ -1,19 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import React, { useEffect, useState } from "react";
+import { useForm, Controller, useWatch } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { FONTS } from "@/constants/fonts";
 import { upsertTheme } from "./themes.actions";
 import { toast } from "sonner";
-import type { ThemeNoId } from "@/data-access/theme";
+import type { ThemeDto, ThemeNoId } from "@/data-access/theme";
 import { DashboardCard } from "@/components/dashboard-card";
 import { SelectInput } from "@/components/select-input";
 import { ColorSelect } from "@/components/color-select/color-select";
 import { ColorPickerStandalone } from "@/components/color-select/color-picker-standalone";
 import { Separator } from "@/components/ui/separator";
+import { useThemeStore } from "@/stores/themes";
 
 const BACKGROUND_TYPES = [
   { label: "Colored Background", value: "color" },
@@ -33,6 +34,22 @@ export function ThemeEditorSection({
   }>({
     defaultValues: { theme: initialTheme },
   });
+
+  const { setTheme } = useThemeStore();
+
+  const themeValues = useWatch({
+    control,
+    name: "theme",
+  });
+
+  useEffect(() => {
+    return () => setTheme(initialTheme);
+  }, []);
+
+  useEffect(() => {
+    setTheme(themeValues);
+    console.log("Theme updated", themeValues);
+  }, [themeValues, setTheme]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const backgroundType =

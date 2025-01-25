@@ -4,14 +4,7 @@ import { LayoutDashboard } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { usePathname } from "next/navigation";
-
-// TODO: move to the tabs file
-type Tab = {
-  key: string;
-  label: string;
-  icon: React.ReactNode;
-  userRole?: string;
-};
+import { Tab } from "@/app/dashboard/tabs";
 
 type Props = {
   tabs: Tab[];

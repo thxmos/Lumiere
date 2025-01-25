@@ -6,6 +6,11 @@ import Navbar from "@/components/nav-bar/nav-bar";
 import { ScrollToTopLayout } from "./scroll-to-top.layout";
 import { getUser } from "@/actions/session.actions";
 import { USER_ROLES } from "@/constants/user";
+import MobilePreview from "@/components/mobile-preview/mobile-preview";
+import LinkTree from "@/components/profile/linktree";
+import { getTheme } from "@/actions/theme.actions";
+import { getLinksByUserId } from "@/data-access/links";
+import { UserDto } from "@/data-access/user";
 
 interface Props {
   children: React.ReactNode;
@@ -14,6 +19,9 @@ interface Props {
 const DashboardLayout: React.FC<Props> = async ({ children }) => {
   const { user } = await getUser();
   const tabs = DASHBOARD_TABS;
+
+  const theme = await getTheme(user?.id!);
+  const links = await getLinksByUserId(user?.id!);
 
   return (
     <ProtectedLayout redirectUrl="/auth">
@@ -29,6 +37,17 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
         <main className="flex flex-col overflow-y-auto bg-background mb-16 w-full gap-4 p-8">
           <ScrollToTopLayout>{children}</ScrollToTopLayout>
         </main>
+        <div className="min-w-[30%] h-full grid items-center">
+          <MobilePreview>
+            {/* <MobilePreviewContent /> */}
+            <LinkTree
+              isPreview={true}
+              initialLinks={links}
+              initialTheme={theme}
+              user={user as UserDto}
+            />
+          </MobilePreview>
+        </div>
       </div>
     </ProtectedLayout>
   );

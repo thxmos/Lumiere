@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { PlusCircle } from "lucide-react";
 import { toast } from "sonner";
@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { UserDto } from "@/data-access/user";
 import { deleteImage } from "@/data-access/images";
+import { useLinksStore } from "@/stores/links";
 
 interface Props {
   userLinks: LinkDto[];
@@ -20,7 +21,13 @@ interface Props {
 }
 
 export function LinksSection({ userLinks, user }: Props) {
-  const [links, setLinks] = useState<LinkDto[]>(userLinks);
+  const { links, setLinks } = useLinksStore();
+
+  useEffect(() => {
+    setLinks(userLinks);
+
+    return () => setLinks(userLinks);
+  }, []);
 
   const {
     handleSubmit,
