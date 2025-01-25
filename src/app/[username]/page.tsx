@@ -9,6 +9,7 @@ import { BLACK, WHITE } from "@/constants/colors";
 import React from "react";
 import { COUNTRIES } from "@/constants/countries";
 import { SOCIAL_PLATFORMS } from "@/constants/social-media";
+import { redirect } from "next/navigation";
 
 export default async function ArtistPage({
   params,
@@ -16,7 +17,9 @@ export default async function ArtistPage({
   params: { username: string };
 }) {
   const user = await getUserByUsername(params.username);
-  if (!user) return <div>User not found</div>;
+  if (!user) {
+    return redirect("/404");
+  }
 
   const links = await getActiveLinksByUserId(user.id);
   const theme = await getTheme(user.id);
