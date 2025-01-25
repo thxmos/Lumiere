@@ -1,13 +1,11 @@
 import { DEFAULT_THEME } from "@/constants/theme";
-import { CreateThemeDto, getThemeByUserId } from "@/data-access/theme";
+import { getThemeByUserId, ThemeNoId } from "@/data-access/theme";
 
-export async function getTheme(
-  themeUserId: string,
-): Promise<Omit<CreateThemeDto, "userId">> {
+export async function getTheme(themeUserId: string): Promise<ThemeNoId> {
   const theme = await getThemeByUserId(themeUserId);
   if (!theme) {
     return DEFAULT_THEME;
   }
-  const { userId, ...themeWithoutUserId } = theme;
-  return themeWithoutUserId as Omit<CreateThemeDto, "userId">;
+  const { id, ...themeWithoutId } = theme;
+  return themeWithoutId as ThemeNoId;
 }

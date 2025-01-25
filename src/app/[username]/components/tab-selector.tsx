@@ -3,14 +3,14 @@
 import { useState } from "react";
 import { LinksTab } from "./links-tab";
 import { LinkDto } from "@/data-access/links";
-import { CreateThemeDto } from "@/data-access/theme";
+import { ThemeNoId } from "@/data-access/theme";
 
 export function TabSelector({
   links,
   theme,
 }: {
   links: LinkDto[];
-  theme: Omit<CreateThemeDto, "userId">;
+  theme: ThemeNoId;
 }) {
   const [activeTab, setActiveTab] = useState("links");
 

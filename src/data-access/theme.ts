@@ -1,4 +1,7 @@
 import { prisma } from "@/utils/prisma";
+import { Theme } from "@prisma/client";
+
+export type ThemeNoId = Omit<Theme, "id">;
 
 export type CreateThemeDto = {
   userId: string;

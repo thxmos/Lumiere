@@ -1,4 +1,4 @@
-import { CreateThemeDto } from "@/data-access/theme";
+import { CreateThemeDto, ThemeNoId } from "@/data-access/theme";
 import { BLACK } from "@/constants/colors";
 import { WHITE } from "@/constants/colors";
 
@@ -42,4 +42,4 @@ export const DEFAULT_THEME = {
   borderRadius: 0,
   borderWidth: 0,
   borderStyle: "solid",
-} as Omit<CreateThemeDto, "userId">;
+} as ThemeNoId;

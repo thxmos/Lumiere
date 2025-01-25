@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useTransition } from "react";
 import placeholder from "@/assets/product-default.svg";
 import type { LinkDto } from "@/data-access/links";
-import type { CreateThemeDto } from "@/data-access/theme";
+import type { CreateThemeDto, ThemeNoId } from "@/data-access/theme";
 import { updateLinkClicked } from "../actions";
 
 /*
@@ -17,7 +17,7 @@ export function LinkCard({
   url,
   imageUrl,
   theme,
-}: LinkDto & { theme: CreateThemeDto }) {
+}: LinkDto & { theme: ThemeNoId }) {
   const [isPending, startTransition] = useTransition();
 
   const cardStyle = {
