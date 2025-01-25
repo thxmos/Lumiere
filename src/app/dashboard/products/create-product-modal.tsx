@@ -29,7 +29,7 @@ export function CreateProductModal({
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState<string | undefined>(undefined);
+  const [imageId, setImageId] = useState<string | undefined>(undefined);
   const [active, setActive] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
