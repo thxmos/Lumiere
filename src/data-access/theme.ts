@@ -30,10 +30,7 @@ export type ThemeDto = CreateThemeDto & {
   id: string;
 };
 
-export async function createTheme(
-  userId: string,
-  theme: Omit<CreateThemeDto, "userId">,
-) {
+export async function createTheme(userId: string, theme: ThemeNoId) {
   await prisma.theme.create({
     data: {
       ...theme,
@@ -49,14 +46,11 @@ export async function getThemeByUserId(userId: string) {
   return theme;
 }
 
-export async function updateThemeByUserId(
-  userId: string,
-  theme: Omit<CreateThemeDto, "userId">,
-) {
-  const { userId: _, ...themeData } = theme as any;
+export async function updateThemeByUserId(userId: string, theme: ThemeNoId) {
+  const { userId: _, ...themeData } = theme;
   await prisma.theme.update({
     where: { userId },
-    data: themeData,
+    data: themeData as Omit<ThemeNoId, "userId">,
   });
 }
 

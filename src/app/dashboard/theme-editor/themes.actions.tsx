@@ -4,13 +4,10 @@ import {
   getThemeByUserId,
   updateThemeByUserId,
   createTheme,
-  CreateThemeDto,
+  ThemeNoId,
 } from "@/data-access/theme";
 
-export async function upsertTheme(
-  userId: string,
-  theme: Omit<CreateThemeDto, "userId">,
-) {
+export async function upsertTheme(userId: string, theme: ThemeNoId) {
   const existingTheme = await getThemeByUserId(userId);
   if (existingTheme) {
     await updateThemeByUserId(userId, theme);

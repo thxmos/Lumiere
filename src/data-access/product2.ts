@@ -13,7 +13,7 @@ export type Product2Dto = {
   id: string;
   name: string | null;
   description: string | null;
-  image: string | null;
+  imageId: string | null;
   active: boolean | null;
   price: number | null;
   userId?: string;
@@ -26,7 +26,7 @@ function toDtoMapper(product: Product2): Product2Dto {
     id: product.id,
     name: product.name,
     description: product.description,
-    image: product.image,
+    imageId: product.imageId,
     active: product.active,
     price: product.price ? Number.parseFloat(product.price.toString()) : null,
     userId: product.userId,
@@ -39,7 +39,6 @@ export async function createProduct(
   userId: string,
   data: CreateProduct2Dto,
 ): Promise<Product2Dto> {
-  console.log("createProduct", data);
   const createdProduct = await prisma.product2.create({
     data: {
       ...data,

@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { FONTS } from "@/constants/fonts";
 import { upsertTheme } from "./themes.actions";
 import { toast } from "sonner";
-import type { CreateThemeDto } from "@/data-access/theme";
+import type { ThemeNoId } from "@/data-access/theme";
 import { DashboardCard } from "@/components/dashboard-card";
 import { SelectInput } from "@/components/select-input";
 import { ColorSelect } from "@/components/color-select/color-select";
@@ -26,10 +26,10 @@ export function ThemeEditorSection({
   initialTheme,
 }: {
   userId: string;
-  initialTheme: Omit<CreateThemeDto, "userId">;
+  initialTheme: ThemeNoId;
 }) {
   const { control, handleSubmit, watch } = useForm<{
-    theme: Omit<CreateThemeDto, "userId">;
+    theme: ThemeNoId;
   }>({
     defaultValues: { theme: initialTheme },
   });
@@ -38,7 +38,7 @@ export function ThemeEditorSection({
   const backgroundType =
     watch("theme.backgroundType") || BACKGROUND_TYPES[0].value;
 
-  const onSubmit = async (data: { theme: Omit<CreateThemeDto, "userId"> }) => {
+  const onSubmit = async (data: { theme: ThemeNoId }) => {
     setIsSubmitting(true);
     try {
       const updatedTheme = {
@@ -229,7 +229,7 @@ export function ThemeEditorSection({
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <ColorSelect
-                    value={value}
+                    value={value || ""}
                     themePrimaryColor={watch("theme.primaryColor")}
                     onChange={onChange}
                   />
@@ -249,7 +249,7 @@ export function ThemeEditorSection({
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <ColorSelect
-                    value={value}
+                    value={value || ""}
                     themePrimaryColor={watch("theme.primaryColor")}
                     onChange={onChange}
                   />
@@ -287,7 +287,7 @@ export function ThemeEditorSection({
                   control={control}
                   render={({ field: { onChange, value } }) => (
                     <ColorSelect
-                      value={value}
+                      value={value || ""}
                       themePrimaryColor={watch("theme.primaryColor")}
                       onChange={onChange}
                     />
@@ -303,7 +303,11 @@ export function ThemeEditorSection({
                   name="theme.backgroundImageUrl"
                   control={control}
                   render={({ field: { onChange, value } }) => (
-                    <Input type="text" value={value} onChange={onChange} />
+                    <Input
+                      type="text"
+                      value={value || ""}
+                      onChange={onChange}
+                    />
                   )}
                 />
               </div>
@@ -316,7 +320,11 @@ export function ThemeEditorSection({
                   name="theme.videoUrl"
                   control={control}
                   render={({ field: { onChange, value } }) => (
-                    <Input type="text" value={value} onChange={onChange} />
+                    <Input
+                      type="text"
+                      value={value || ""}
+                      onChange={onChange}
+                    />
                   )}
                 />
               </div>

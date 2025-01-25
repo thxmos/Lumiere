@@ -20,7 +20,7 @@ interface Props {
 }
 
 export default function ProductEditTab({ product }: Props) {
-  const [image, setImage] = useState(product.image || undefined);
+  const [image, setImage] = useState(product.imageId || undefined);
   const [name, setName] = useState(product.name || "");
   const [description, setDescription] = useState(product.description || "");
   const [price, setPrice] = useState(product.price || 0);
