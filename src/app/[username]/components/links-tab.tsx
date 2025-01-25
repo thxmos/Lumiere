@@ -12,7 +12,7 @@ export function LinksTab({
   return (
     <div className="space-y-4 flex flex-col">
       {links.map((link, index) => (
-        <LinkCard key={index} {...link} theme={theme} />
+        <>{link.active && <LinkCard key={index} {...link} theme={theme} />}</>
       ))}
     </div>
   );

@@ -3,11 +3,8 @@ import { Link1Icon } from "@radix-ui/react-icons";
 import {
   Settings,
   Lock,
-  CreditCard,
   Paintbrush,
-  BarChart,
   ShoppingBag,
-  Calendar,
   QrCodeIcon,
   Wrench,
   User,
@@ -15,7 +12,15 @@ import {
 
 const iconStyle = "mr-2 h-4 w-4";
 
-export const DASHBOARD_TABS = [
+export type Tab = {
+  key: string;
+  label: string;
+  icon: React.ReactNode;
+  userRole?: string;
+  mobilePreview?: boolean;
+};
+
+export const DASHBOARD_TABS: Tab[] = [
   {
     key: "account",
     label: "Account",
@@ -25,11 +30,13 @@ export const DASHBOARD_TABS = [
     key: "links",
     label: "Links",
     icon: <Link1Icon className={iconStyle} />,
+    mobilePreview: true,
   },
   {
     key: "theme-editor",
     label: "Theme Editor",
     icon: <Paintbrush className={iconStyle} />,
+    mobilePreview: true,
   },
   {
     key: "qr-generator",
