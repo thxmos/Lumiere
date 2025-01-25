@@ -7,8 +7,6 @@ import { getQRCodesByUserIdAction } from "./actions";
 TODO:
 - Add a click counter to the QR code
 - Create new QR code should add it in real time
-- Add a delete button to the QR code
-- Add a modal to confirm the deletion of the QR code
 */
 
 const QRGeneratorPage = async () => {

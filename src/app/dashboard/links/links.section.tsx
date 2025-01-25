@@ -56,10 +56,10 @@ export function LinksSection({ userLinks, user }: Props) {
   };
 
   const removeLink = async (index: number) => {
-    const linkToRemove = links[index];
+    const linkToRemove = links[index] as LinkDto;
     if (linkToRemove.id) {
       try {
-        await deleteLink(linkToRemove.id);
+        await deleteLink(linkToRemove);
         if (linkToRemove.imageUrl) {
           await deleteImage(linkToRemove.imageUrl, user.id);
         }

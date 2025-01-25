@@ -38,7 +38,7 @@ export const LinksList: React.FC<Props> = ({
 
     setLinks(reorderedItems);
     try {
-      updateUserLinksAction(reorderedItems); //TODO: make it so only indexes update
+      updateUserLinksAction(reorderedItems);
       toast.success("Link order updated successfully", {
         duration: 3000,
       });

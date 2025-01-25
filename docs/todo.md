@@ -21,7 +21,7 @@
 
 3. Database backups
 
-4. EASY FIX: fix account settings default country AND/OR add disabled state to country select
+4. EASY FIX: add default country in profile page
 
 5. EASY FIX BUG: dnd new draggable needs draggableId
 
@@ -36,35 +36,6 @@
 - dynamically get entities
 - display in a table
 - table pagination
-
-### Confirm Delete Modal
-
-- refactor links to use this and not have the whole section a client component
-- refactor modal so its the only client component
-
-### Component: Link Cards
-
-- make into item card compoennt
-- instead of a form for the section just make each one a dynamic component that allows you to update and save individually
-- update indexes on dnd now
-- remove form
-- make dnd component into its own thing and get rid of links-list.tsx
-  - rethink the add card, the method right now is ugly, make a modal or something
-  - some funky stuff going on with the way the dnd and the state are interacting. creating a new card, saving, then rearranging wont save it quite right
-
-### Entity:Images
-
-- image upload component use new imageUploadAction
-- validation in image dialog for file size / dont allow submit / show error message
-- transactions for image upload actions if one part fails
-- use avatar, link image, etc specific actions to delete image on change (account for upsert)
-
-### Entity: Clicks
-
-- track link clicks
-- track QR code scans?
-- add social media clicked to click table
-  - it can be either social media or link
 
 ### Refactors
 
@@ -88,7 +59,11 @@
   - use more Partials and Omits instead of redefining
 - make a helper function to get the country name from the country enum
 
+- don't allow for duplicate usernames (still going to keep it closed circle for now)
+
 ### Nice To Have
+
+- Generic Card Item Component
 
 - ADMIN features
 
@@ -97,7 +72,6 @@
   - user invite
 
 - split themes into seperate files or something cleaner? and make 8 more
-- don't allow for duplicate usernames (still going to keep it closed circle for now)
 - FEATURE FLAGS for admin OR user types for subscriptions too
 
 - default themes for username page

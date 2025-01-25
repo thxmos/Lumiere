@@ -14,6 +14,7 @@ export type LinkDto = {
   url: string;
   title: string;
   imageUrl: string | null;
+  clicks?: number;
   userId: string;
   index: number | null;
   active: boolean;

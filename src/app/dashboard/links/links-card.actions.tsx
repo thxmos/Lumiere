@@ -1,6 +1,7 @@
 "use server";
 
 import { getUser, isValidSession } from "@/actions/session.actions";
+import { getClicksByLinkId } from "@/data-access/clicks";
 import { deleteImage } from "@/data-access/images";
 import {
   CreateLinkDto,
@@ -78,15 +79,29 @@ export async function updateUserLinksAction(links: Partial<LinkDto>[]) {
   await updateLinks(updateLinksFiltered);
 }
 
-export async function getLinks(userId: string) {
+export async function getLinksWithNumOfClicks(userId: string) {
   const links = await getLinksByUserId(userId);
   if (!links) return [];
-  return links
+  const linksWithClicks = links
     .sort((a, b) => (a.index ?? 0) - (b.index ?? 0))
     .map((link, index) => ({
       ...link,
       index: link.index !== null ? link.index : index,
+      clicks: 0, // Initialize clicks to 0, will need to fetch separately
     }));
+
+  // Fetch clicks for each link
+  for (const link of linksWithClicks) {
+    const clicks = await getNumOfClicksByLinkId(link.id);
+    link.clicks = clicks;
+  }
+
+  return linksWithClicks;
+}
+
+export async function getNumOfClicksByLinkId(linkId: string) {
+  const clicks = await getClicksByLinkId(linkId);
+  return clicks.length;
 }
 
 export async function deleteLink(link: LinkDto) {

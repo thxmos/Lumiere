@@ -43,7 +43,7 @@ export const QRGeneratorSection = ({ userId }: { userId: string }) => {
           <Input
             id="link"
             type="url"
-            placeholder={`https://example.com/username`}
+            placeholder={`https://example.com/username`} //TODO: Add a placeholder image for the project
             value={link}
             onChange={(e) => setLink(e.target.value)}
             required
