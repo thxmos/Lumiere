@@ -40,7 +40,7 @@ export function CreateProductModal({
       const productData: CreateProduct2Dto = {
         name,
         description,
-        image,
+        imageId,
         active,
         price: price ? Number.parseFloat(price) : undefined,
       };
@@ -58,12 +58,12 @@ export function CreateProductModal({
     setName("");
     setPrice("");
     setDescription("");
-    setImage(undefined);
+    setImageId(undefined);
     setActive(false);
   };
 
   const handleImageChange = (imageUrl: string | null) => {
-    setImage(imageUrl || undefined);
+    setImageId(imageUrl || undefined);
   };
 
   return (
@@ -76,7 +76,7 @@ export function CreateProductModal({
           <div className="space-y-2">
             <Label htmlFor="image">Image</Label>
             <ImageUpload
-              initialImage={image}
+              initialImage={imageId}
               size="lg"
               onImageChange={handleImageChange}
             />
