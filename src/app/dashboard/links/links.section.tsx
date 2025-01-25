@@ -86,14 +86,7 @@ export function LinksSection({ userLinks, user }: Props) {
 
   return (
     <DashboardCard
-      title={
-        <div className="flex justify-between items-center">
-          <span>External Links</span>
-          <Link href={`/${user.username}`} className="text-base underline">
-            Preview
-          </Link>
-        </div>
-      }
+      title="Links"
       description={`Manage your custom links here and track your audience (${links.length}/10)`}
     >
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
