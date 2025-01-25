@@ -34,13 +34,15 @@ export default async function ArtistPage({
           style={{ backgroundColor: theme.backgroundColor || "#000000" }}
         ></div>
       )}
+
       {theme.backgroundType === "image" && (
         <div
           className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
           style={{ backgroundImage: `url(${theme.backgroundImageUrl})` }}
         ></div>
       )}
-      {theme.backgroundType === "video" && (
+
+      {theme.backgroundType === "video" && theme.videoUrl && (
         <BackgroundVideo bgVideo={theme.videoUrl} />
       )}
 
