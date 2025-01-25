@@ -4,13 +4,13 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { PlusCircle } from "lucide-react";
 import { toast } from "sonner";
+import { v4 as uuidv4 } from "uuid";
 
 import { type LinkDto } from "@/data-access/links";
 import { deleteLink, updateUserLinksAction } from "./links-card.actions";
 import { LinksList } from "./components/links-list";
 import { DashboardCard } from "@/components/dashboard-card";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { UserDto } from "@/data-access/user";
 import { deleteImage } from "@/data-access/images";
 import { useLinksStore } from "@/stores/links";
@@ -58,6 +58,7 @@ export function LinksSection({ userLinks, user }: Props) {
         userId: user.id,
         active: false,
         index: links.length,
+        id: uuidv4(),
       } as LinkDto,
     ]);
   };

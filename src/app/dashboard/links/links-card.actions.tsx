@@ -61,6 +61,7 @@ export async function updateUserLinksAction(links: Partial<LinkDto>[]) {
       userId: userId,
       index: link.index,
       active: link.active,
+      id: link.id,
     })) as CreateLinkDto[];
   await createLinks(createLinksFiltered);
 
