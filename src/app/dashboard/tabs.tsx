@@ -43,8 +43,9 @@ export const DASHBOARD_TABS = [
   // },
   {
     key: "products",
-    label: "Products",
+    label: "Products ⭐",
     icon: <ShoppingBag className={iconStyle} />,
+    userRole: USER_ROLES.ADMIN,
   },
   // {
   //   key: "release-planner",
@@ -56,11 +57,11 @@ export const DASHBOARD_TABS = [
     label: "Security",
     icon: <Lock className={iconStyle} />,
   },
-  // {
-  //   key: "billing",
-  //   label: "Billing",
-  //   icon: <CreditCard className={iconStyle} />,
-  // },
+  {
+    key: "billing",
+    label: "Billing",
+    icon: <CreditCard className={iconStyle} />,
+  },
   {
     key: "user-settings",
     label: "User Settings",

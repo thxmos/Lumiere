@@ -4,19 +4,19 @@ import { useState } from "react";
 import { DashboardCard } from "@/components/dashboard-card";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
-import { ProductCard } from "./product-card";
-import { CreateProductModal } from "../create-product-modal";
+import { ProductCard } from "./components/product-card";
+import { CreateProductModal } from "./create-product-modal";
 import { CreateProduct2Dto, Product2Dto } from "@/data-access/product2";
 import { toast } from "sonner";
-import { createNewProduct } from "../actions";
+import { createNewProduct } from "./actions";
 
-const ProductsList = ({
+export default function ProductsSection({
   userId,
   products,
 }: {
   userId: string;
   products: Product2Dto[];
-}) => {
+}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const createProduct = async (productData: Partial<CreateProduct2Dto>) => {
@@ -24,7 +24,6 @@ const ProductsList = ({
       await createNewProduct(userId, productData);
       toast.success("Product created successfully");
     } catch (error) {
-      console.error("Error creating product:", error);
       toast.error("Failed to create product. Please try again.");
     }
   };
@@ -47,6 +46,4 @@ const ProductsList = ({
       />
     </DashboardCard>
   );
-};
-
-export default ProductsList;
+}

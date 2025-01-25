@@ -13,10 +13,10 @@ export function ProductCard(product: any) {
           height={50}
           className="rounded-md"
         />
-        <span className="ml-4 text-lg font-medium text-gray-800">
+        <span className="ml-4 text-lg font-medium text-primary">
           {product.name || ""}
         </span>
-        <span className="ml-4 text-lg font-medium text-gray-500">
+        <span className="ml-4 text-lg font-medium text-muted-foreground">
           ${product.price || 0}
         </span>
       </div>

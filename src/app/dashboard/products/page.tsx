@@ -1,13 +1,13 @@
 import { getUser } from "@/actions/session.actions";
 import { getProducts } from "./actions";
-import ProductsList from "./components/products-list";
+import ProductsSection from "./products.section";
 
 const ProductsPage = async () => {
   const sessionUser = await getUser();
   const userId = sessionUser.user!.id;
   const products = await getProducts(userId);
 
-  return <ProductsList userId={userId} products={products} />;
+  return <ProductsSection userId={userId} products={products} />;
 };
 
 export default ProductsPage;
