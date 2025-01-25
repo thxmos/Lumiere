@@ -43,12 +43,17 @@ model User {
   subscriptions Price[]        @relation("UserSubscriptions")
   oAuthProvider OAuthProvider?
  
-  // QR Codes
   QRCodes QRCode[] @relation("UserQRCodes")
+  Image Image[]
 
-  Images Image[]
+  roles Role @default(USER)
 }
 
 enum OAuthProvider {
   GOOGLE
+}
+
+enum Role {
+  ADMIN
+  USER
 }

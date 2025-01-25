@@ -28,6 +28,7 @@ export const THEMES = [
 ];
 
 export const DEFAULT_THEME = {
+  primaryColor: WHITE,
   fontFamily: "Arial",
   fontWeight: 400,
   fontColor: BLACK,
