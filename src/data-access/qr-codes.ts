@@ -4,12 +4,14 @@ import { QRCode } from "@prisma/client";
 
 export type CreateQRCodeDto = {
   url: string;
+  title: string;
   userId: string;
 };
 
 export type QRCodeDto = {
   id: string;
   url: string;
+  title: string;
   userId: string;
 };
 
@@ -17,6 +19,7 @@ function toDtoMapper(qrCode: QRCode): QRCodeDto {
   return {
     id: qrCode.id,
     url: qrCode.url,
+    title: qrCode.title || "",
     userId: qrCode.userId,
   };
 }

@@ -3,7 +3,7 @@ import { Loader2 } from "lucide-react";
 
 export default function Loading() {
   return (
-    <DashboardCard title="">
+    <DashboardCard>
       <div className="flex flex-1 flex-col items-center justify-center">
         <Loader2 className="h-16 w-16 animate-spin text-primary" />
         <div className="flex flex-col items-center space-y-4">

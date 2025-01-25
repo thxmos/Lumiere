@@ -26,7 +26,7 @@ export default function ErrorPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-center text-gray-600">
+            <p className="text-center text-secondary">
               Oops! Something went wrong.
             </p>
           </CardContent>

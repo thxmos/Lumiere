@@ -1,4 +1,5 @@
 import type React from "react";
+import Link from "next/link";
 import { useState } from "react";
 import type { DraggableProvided } from "@hello-pangea/dnd";
 import { RxDragHandleDots2 } from "react-icons/rx";
@@ -113,9 +114,11 @@ export const LinkCard: React.FC<Props> = ({
                 <span className="text-lg font-bold text-primary">
                   {link.title || "Untitled"}
                 </span>
-                <span className="text-sm text-muted-foreground">
-                  {link.url}
-                </span>
+                <Link href={link.url} target="_blank">
+                  <span className="text-sm text-muted-foreground hover:text-primary hover:underline transition-all">
+                    {link.url}
+                  </span>
+                </Link>
                 <span className="text-sm text-muted-foreground">
                   Clicks: {link.clicks}
                 </span>

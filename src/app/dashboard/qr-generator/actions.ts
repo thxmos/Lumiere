@@ -7,8 +7,12 @@ import {
   QRCodeDto,
 } from "@/data-access/qr-codes";
 
-export const createQRCodeAction = async (url: string, userId: string) => {
-  const qrCode = await createQRCode({ url, userId });
+export const createQRCodeAction = async (
+  url: string,
+  title: string,
+  userId: string,
+) => {
+  const qrCode = await createQRCode({ url, title, userId });
   return qrCode;
 };
 

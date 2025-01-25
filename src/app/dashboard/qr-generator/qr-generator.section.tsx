@@ -13,6 +13,7 @@ import { generateQRCode } from "./utils";
 
 export const QRGeneratorSection = ({ userId }: { userId: string }) => {
   const [link, setLink] = useState("");
+  const [title, setTitle] = useState("");
   const [qrCode, setQrCode] = useState("");
 
   const generateAndSetQRCode = async () => {
@@ -24,11 +25,10 @@ export const QRGeneratorSection = ({ userId }: { userId: string }) => {
     e.preventDefault();
     try {
       generateAndSetQRCode();
-      await createQRCodeAction(link, userId);
+      await createQRCodeAction(link, title, userId);
       toast.success("QR code generated successfully");
     } catch (error) {
       toast.error("Failed to generate QR code");
-      console.error(error);
     }
   };
 
@@ -38,6 +38,17 @@ export const QRGeneratorSection = ({ userId }: { userId: string }) => {
       description="Generate QR codes for your links"
     >
       <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="space-y-2">
+          <Label htmlFor="title">Title</Label>
+          <Input
+            id="title"
+            type="text"
+            placeholder={`Title`}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </div>
         <div className="space-y-2">
           <Label htmlFor="link">Enter your link</Label>
           <Input

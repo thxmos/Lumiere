@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { generateQRCode } from "./utils";
@@ -37,7 +38,6 @@ export const QRCodeCard = ({
       toast.success("QR code deleted successfully", { duration: 3000 });
     } catch (error) {
       toast.error("Failed to delete QR code", { duration: 3000 });
-      console.error(error);
     }
   };
 
@@ -53,15 +53,17 @@ export const QRCodeCard = ({
     <>
       <Card
         key={qrCode.id}
-        className="flex flex-col gap-2 bg-card border-secondary hover:border-primary transition-all cursor-pointer"
-        onClick={handleCardClick}
+        className="flex flex-col gap-2 bg-card border-secondary hover:border-primary transition-all"
       >
         <div className="flex gap-16 p-4 items-center justify-between">
           <div className="flex gap-4 items-center">
             <Label className="text-lg font-bold text-primary">
               {index + 1}
             </Label>
-            <div className="relative w-[100px] h-[100px] border border-primary">
+            <div
+              className="relative w-[100px] h-[100px] border border-primary cursor-pointer"
+              onClick={handleCardClick}
+            >
               <Image
                 src={generateQRCode(qrCode.url)}
                 alt="Generated QR Code"
@@ -70,7 +72,14 @@ export const QRCodeCard = ({
               />
             </div>
             <div className="flex flex-col gap-2">
-              <h3 className="text-lg font-bold text-primary">{qrCode.url}</h3>
+              <h3 className="text-lg font-bold text-primary">
+                {qrCode.title || "Untitled"}
+              </h3>
+              <Link href={qrCode.url} target="_blank">
+                <p className="text-md text-muted-foreground hover:text-primary hover:underline transition-all">
+                  {qrCode.url}
+                </p>
+              </Link>
               <p className="text-sm text-muted-foreground">Scans: 0</p>
             </div>
           </div>

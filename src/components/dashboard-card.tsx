@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 
 interface DashboardCardProps {
-  title: React.ReactNode;
+  title?: React.ReactNode;
   description?: string;
   children: React.ReactNode;
   footer?: React.ReactNode;
@@ -24,7 +24,7 @@ export function DashboardCard({
   return (
     <Card className="max-w-4xl border-primary">
       <CardHeader>
-        <CardTitle className="text-2xl">{title}</CardTitle>
+        {title && <CardTitle className="text-2xl">{title}</CardTitle>}
         {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>
       <CardContent className="space-y-4">{children}</CardContent>
