@@ -40,6 +40,8 @@ model User {
 
   // Session Info
   session       Session[]
+  VerificationToken VerificationToken?
+  PasswordResetToken PasswordResetToken?
   subscriptions Price[]        @relation("UserSubscriptions")
   oAuthProvider OAuthProvider?
  

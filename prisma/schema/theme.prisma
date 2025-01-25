@@ -5,7 +5,7 @@ model Theme {
 
   primaryColor String @db.Char(7) @default("#3f434a")
 
-  fontFamily String
+  fontFamily String // TODO: make FontFamily enum
   fontWeight Int
   fontColor String @db.Char(7)
   secondaryColorFont String @db.Char(7)
@@ -27,7 +27,6 @@ model Theme {
   updatedAt DateTime @updatedAt @default(now())
 }
 
-// TODO: actually use this at some point
 enum FontFamily {
   INTER
   ROBOTO
