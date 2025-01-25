@@ -16,5 +16,6 @@ export async function updateUserAccountInfoAction(
     username: data.username,
     description: data.description,
     country: data.country as Country,
+    displayCountry: data.displayCountry,
   });
 }

@@ -9,23 +9,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { toast } from "sonner";
 import { createQRCodeAction } from "./actions";
+import { generateQRCode } from "./utils";
 
-export const QRGenerator = ({ userId }: { userId: string }) => {
+export const QRGeneratorSection = ({ userId }: { userId: string }) => {
   const [link, setLink] = useState("");
   const [qrCode, setQrCode] = useState("");
 
-  const generateQRCode = (e: React.FormEvent) => {
-    if (link) {
-      const encodedLink = encodeURIComponent(link);
-      const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodedLink}&size=200x200`;
-      setQrCode(qrCodeUrl);
-    }
+  const generateAndSetQRCode = async () => {
+    const qrCodeUrl = generateQRCode(link);
+    setQrCode(qrCodeUrl);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    generateQRCode(e);
     try {
+      generateAndSetQRCode();
       await createQRCodeAction(link, userId);
       toast.success("QR code generated successfully");
     } catch (error) {

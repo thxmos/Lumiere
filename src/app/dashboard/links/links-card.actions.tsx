@@ -1,6 +1,7 @@
 "use server";
 
 import { getUser, isValidSession } from "@/actions/session.actions";
+import { deleteImage } from "@/data-access/images";
 import {
   CreateLinkDto,
   createLinks,
@@ -88,6 +89,9 @@ export async function getLinks(userId: string) {
     }));
 }
 
-export async function deleteLink(id: string) {
-  await deleteLinkById(id);
+export async function deleteLink(link: LinkDto) {
+  await deleteLinkById(link.id);
+  if (link.imageUrl) {
+    await deleteImage(link.imageUrl, link.userId);
+  }
 }

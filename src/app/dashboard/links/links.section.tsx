@@ -12,6 +12,7 @@ import { DashboardCard } from "@/components/dashboard-card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { UserDto } from "@/data-access/user";
+import { deleteImage } from "@/data-access/images";
 
 interface Props {
   userLinks: LinkDto[];
@@ -59,6 +60,9 @@ export function LinksSection({ userLinks, user }: Props) {
     if (linkToRemove.id) {
       try {
         await deleteLink(linkToRemove.id);
+        if (linkToRemove.imageUrl) {
+          await deleteImage(linkToRemove.imageUrl, user.id);
+        }
         toast.success("Link deleted successfully");
       } catch (error) {
         toast.error("Failed to delete link");

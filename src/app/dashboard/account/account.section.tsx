@@ -7,7 +7,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { AvatarUpload } from "@/components/avatar-upload";
-import Link from "next/link";
 import { type UserDto } from "@/data-access/user";
 import { updateUserAccountInfoAction } from "./account.actions";
 import { DashboardCard } from "@/components/dashboard-card";
@@ -20,6 +19,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { COUNTRIES } from "@/constants/countries";
+import { Switch } from "@/components/ui/switch";
 
 export function AccountSection({ user }: { user: UserDto }) {
   const {
@@ -33,6 +33,7 @@ export function AccountSection({ user }: { user: UserDto }) {
       username: user.username,
       description: user.description || "",
       country: user.country || "",
+      displayCountry: user.displayCountry,
     },
   });
 
@@ -101,8 +102,8 @@ export function AccountSection({ user }: { user: UserDto }) {
             </p>
           )}
         </div>
-        <div className="flex gap-4">
-          <div className="space-y-2 flex-1">
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col space-y-2 flex-1">
             <Label htmlFor="country">Country</Label>
             <Select
               onValueChange={(value) => setValue("country", value)}
@@ -119,6 +120,14 @@ export function AccountSection({ user }: { user: UserDto }) {
                 ))}
               </SelectContent>
             </Select>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Switch
+              id="display-country"
+              checked={user.displayCountry}
+              onCheckedChange={(checked) => setValue("displayCountry", checked)}
+            />{" "}
+            <Label htmlFor="display-country">Display Country</Label>
           </div>
         </div>
         <div className="flex justify-end w-full">

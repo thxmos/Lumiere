@@ -4,7 +4,8 @@ model User {
   email String  @unique
   name  String?
   password   String?
-  country Country?
+  country Country? @default(None)
+  displayCountry Boolean @default(false)
 
   // Profile Info
   avatar      String?

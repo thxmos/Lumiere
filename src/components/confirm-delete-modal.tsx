@@ -26,7 +26,8 @@ export function ConfirmDeleteModal({
         <AlertDialogHeader>
           <AlertDialogTitle>Are you sure?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete the link.
+            This action cannot be undone. This will permanently delete your
+            data.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

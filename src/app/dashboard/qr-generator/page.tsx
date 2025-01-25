@@ -1,16 +1,25 @@
 import { getUser } from "@/actions/session.actions";
-import { QRCodeList } from "./qr-codes-list";
-import { QRGenerator } from "./qr-generator";
-import { getQRCodesByUserId } from "@/data-access/qr-codes";
+import { QRListSection } from "./qr-list.section";
+import { QRGeneratorSection } from "./qr-generator.section";
+import { getQRCodesByUserIdAction } from "./actions";
+
+/*
+TODO:
+- Add a click counter to the QR code
+- Create new QR code should add it in real time
+- Add a delete button to the QR code
+- Add a modal to confirm the deletion of the QR code
+*/
 
 const QRGeneratorPage = async () => {
   const { user } = await getUser();
   if (!user) return null;
+  const qrCodes = await getQRCodesByUserIdAction(user.id);
 
   return (
     <div className="flex flex-col gap-4">
-      <QRGenerator userId={user.id} />
-      <QRCodeList userId={user.id} />
+      <QRGeneratorSection userId={user.id} />
+      <QRListSection qrCodes={qrCodes} />
     </div>
   );
 };

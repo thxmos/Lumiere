@@ -21,15 +21,13 @@
 
 3. Database backups
 
-4. Seperate Confirm Delete Modal
+4. EASY FIX: fix account settings default country AND/OR add disabled state to country select
 
-5. EASY FIX: fix account settings default country AND/OR add disabled state to country select
+5. EASY FIX BUG: dnd new draggable needs draggableId
 
-6. EASY FIX: dnd new draggable needs draggableId
-7. EASY FIX: Toast Helper methods with defaults ie. 2-3 second
-8. EASY FIX: refetch props on form saves (ie. preview is out of date if you change username)
-9. EASY FIX: fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
-10. EASY FIX: User types and test account so I can put it on my resume too
+6. EASY FIX: refresh props on form saves OR optimistically update (ie. preview is out of date if you change username)
+
+7. EASY FIX: fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
 
 ## Future Features
 
@@ -38,6 +36,11 @@
 - dynamically get entities
 - display in a table
 - table pagination
+
+### Confirm Delete Modal
+
+- refactor links to use this and not have the whole section a client component
+- refactor modal so its the only client component
 
 ### Component: Link Cards
 
@@ -64,6 +67,8 @@
   - it can be either social media or link
 
 ### Refactors
+
+- Toast Helper methods with defaults ie. 2-3 second
 
 - make sure all forms have button directly attached, minimize need for e.preventDefault()
 
