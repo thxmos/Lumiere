@@ -8,6 +8,8 @@ import { toast } from "sonner";
 import { ConfirmDeleteModal } from "@/components/confirm-delete-modal";
 import { useState } from "react";
 import { deleteQRCodeAction } from "./actions";
+import QRModal from "./qr-modal";
+import { QRCodeDto } from "@/data-access/qr-codes";
 
 /*
 TODO:
@@ -20,66 +22,82 @@ export const QRCodeCard = ({
   index,
   removeQRCodeFromListById,
 }: {
-  qrCode: any;
+  qrCode: QRCodeDto;
   index: number;
   removeQRCodeFromListById: (qrCodeId: string) => void;
 }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isQRModalOpen, setIsQRModalOpen] = useState(false);
+
   const handleDelete = async () => {
     removeQRCodeFromListById(qrCode.id);
 
     try {
       await deleteQRCodeAction(qrCode.id);
-      toast.success("QR code deleted successfully");
+      toast.success("QR code deleted successfully", { duration: 3000 });
     } catch (error) {
-      toast.error("Failed to delete QR code");
+      toast.error("Failed to delete QR code", { duration: 3000 });
       console.error(error);
     }
   };
 
   const handleCardClick = () => {
-    setIsModalOpen(true);
+    setIsQRModalOpen(true);
+  };
+
+  const handleQrSave = () => {
+    console.log("clicked");
   };
 
   return (
-    <Card
-      key={qrCode.id}
-      className="flex flex-col gap-2 bg-card border-secondary hover:border-primary transition-all cursor-pointer"
-      onClick={handleCardClick}
-    >
-      <div className="flex gap-16 p-4 items-center justify-between">
-        <div className="flex gap-4 items-center">
-          <Label className="text-lg font-bold text-primary">{index + 1}</Label>
-          <div className="relative w-[100px] h-[100px] border border-primary">
-            <Image
-              src={generateQRCode(qrCode.url)}
-              alt="Generated QR Code"
-              layout="fill"
-              objectFit="contain"
-            />
+    <>
+      <Card
+        key={qrCode.id}
+        className="flex flex-col gap-2 bg-card border-secondary hover:border-primary transition-all cursor-pointer"
+        onClick={handleCardClick}
+      >
+        <div className="flex gap-16 p-4 items-center justify-between">
+          <div className="flex gap-4 items-center">
+            <Label className="text-lg font-bold text-primary">
+              {index + 1}
+            </Label>
+            <div className="relative w-[100px] h-[100px] border border-primary">
+              <Image
+                src={generateQRCode(qrCode.url)}
+                alt="Generated QR Code"
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <h3 className="text-lg font-bold text-primary">{qrCode.url}</h3>
+              <p className="text-sm text-muted-foreground">Scans: 0</p>
+            </div>
           </div>
-          <div className="flex flex-col gap-2">
-            <h3 className="text-lg font-bold text-primary">{qrCode.url}</h3>
-            <p className="text-sm text-muted-foreground">Scans: 0</p>
+          <div className="flex justify-end p-4">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsDeleteModalOpen(true)}
+            >
+              <X className="h-4 w-4" />
+              <span className="sr-only">Delete QR code</span>
+            </Button>
           </div>
         </div>
-        <div className="flex justify-end p-4">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setIsDeleteModalOpen(true)}
-          >
-            <X className="h-4 w-4" />
-            <span className="sr-only">Delete QR code</span>
-          </Button>
-        </div>
-      </div>
-      <ConfirmDeleteModal
-        isOpen={isDeleteModalOpen}
-        onClose={() => setIsDeleteModalOpen(false)}
-        onConfirm={handleDelete}
+        <ConfirmDeleteModal
+          isOpen={isDeleteModalOpen}
+          onClose={() => setIsDeleteModalOpen(false)}
+          onConfirm={handleDelete}
+        />
+      </Card>
+      <QRModal
+        title={qrCode.url}
+        qrCodeUrl={generateQRCode(qrCode.url)}
+        isOpen={isQRModalOpen}
+        onClose={() => setIsQRModalOpen(false)}
+        onConfirm={handleQrSave}
       />
-    </Card>
+    </>
   );
 };

@@ -26,6 +26,8 @@
 
 6. EASY FIX: fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
 
+7. navigate to not found page on username is theres no user found & redirect on product page for now too
+
 ## Future Features
 
 ### Item Card
