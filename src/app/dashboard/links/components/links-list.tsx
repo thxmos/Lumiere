@@ -37,16 +37,16 @@ export const LinksList: React.FC<Props> = ({
     });
 
     setLinks(reorderedItems);
-    try {
-      updateUserLinksAction(reorderedItems);
-      toast.success("Link order updated successfully", {
-        duration: 3000,
-      });
-    } catch (error) {
-      toast.error("Failed to update link order", {
-        duration: 3000,
-      });
-    }
+    // try {
+    //   updateUserLinksAction(reorderedItems);
+    //   toast.success("Link order updated successfully", {
+    //     duration: 3000,
+    //   });
+    // } catch (error) {
+    //   toast.error("Failed to update link order", {
+    //     duration: 3000,
+    //   });
+    // }
   };
 
   return (
