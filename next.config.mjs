@@ -13,6 +13,9 @@ const nextConfig = {
         hostname: "3sygz88yjtarhtwa.public.blob.vercel-storage.com", // blob storage
       },
       {
+        hostname: "fg92krreal8mypv5.public.blob.vercel-storage.com", // blob storage why is this different? used for placeholder images
+      },
+      {
         hostname: "api.qrserver.com", // qr code generator
       },
     ],

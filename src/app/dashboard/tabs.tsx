@@ -8,6 +8,7 @@ import {
   QrCodeIcon,
   Wrench,
   User,
+  ImageIcon,
 } from "lucide-react";
 
 const iconStyle = "mr-2 h-4 w-4";
@@ -25,6 +26,12 @@ export const DASHBOARD_TABS: Tab[] = [
     key: "account",
     label: "Account",
     icon: <Settings className={iconStyle} />,
+  },
+  {
+    key: "assets",
+    label: "Assets",
+    icon: <ImageIcon className={iconStyle} />,
+    userRole: USER_ROLES.ADMIN,
   },
   {
     key: "links",

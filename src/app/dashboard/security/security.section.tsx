@@ -6,23 +6,23 @@ import PasswordResetForm from "./password-reset-form";
 import PasswordResetFormOAuth from "./password-reset-form-oAuth";
 import { DashboardCard } from "@/components/dashboard-card";
 
-export default function SecurityTab({
+export default function SecuritySection({
   user,
   hasPassword,
 }: {
   user: UserDto;
   hasPassword: boolean;
 }) {
-  if (user.oAuthProvider && !hasPassword) {
-    return <PasswordResetFormOAuth user={user} />;
-  }
-
   return (
     <DashboardCard
       title="Security Settings"
       description="Manage your account's security."
     >
-      <PasswordResetForm user={user} />
+      {user.oAuthProvider && !hasPassword ? (
+        <PasswordResetFormOAuth user={user} />
+      ) : (
+        <PasswordResetForm user={user} />
+      )}
     </DashboardCard>
   );
 }

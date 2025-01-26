@@ -1,6 +1,6 @@
 import { getUser } from "@/actions/session.actions";
-import BillingTab from "./billing-tab";
-import { getBillingInfo } from "./billing.actions";
+import BillingSection from "./billing.section";
+import { getBillingInfo } from "./actions";
 
 export default async function BillingPage() {
   const { user } = await getUser();
@@ -10,5 +10,5 @@ export default async function BillingPage() {
 
   if (!billingInfo) return <>No Maidens</>;
 
-  return <BillingTab billingInfo={billingInfo} />;
+  return <BillingSection billingInfo={billingInfo} />;
 }

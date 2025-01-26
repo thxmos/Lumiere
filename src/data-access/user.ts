@@ -17,13 +17,14 @@ export type UserDto = {
   description: string | null;
   country: string | null;
   displayCountry: boolean;
-  facebookUsername: string | null;
-  twitterUsername: string | null;
-  instagramUsername: string | null;
-  twitchUsername: string | null;
-  tiktokUsername: string | null;
-  spotifyUsername: string | null;
   appleMusicUsername: string | null;
+  discordUsername: string | null;
+  facebookUsername: string | null;
+  instagramUsername: string | null;
+  spotifyUsername: string | null;
+  tiktokUsername: string | null;
+  twitchUsername: string | null;
+  twitterUsername: string | null;
   patreonUsername: string | null;
   youtubeUsername: string | null;
   avatar: string | null;
@@ -42,14 +43,15 @@ function toDtoMapper(user: User): UserDto {
     description: user.description,
     country: user.country,
     displayCountry: user.displayCountry,
-    facebookUsername: user.facebookUsername,
-    twitterUsername: user.twitterUsername,
-    instagramUsername: user.instagramUsername,
-    twitchUsername: user.twitchUsername,
-    tiktokUsername: user.tiktokUsername,
-    spotifyUsername: user.spotifyUsername,
     appleMusicUsername: user.appleMusicUsername,
+    discordUsername: user.discordUsername,
+    facebookUsername: user.facebookUsername,
+    instagramUsername: user.instagramUsername,
     patreonUsername: user.patreonUsername,
+    spotifyUsername: user.spotifyUsername,
+    tiktokUsername: user.tiktokUsername,
+    twitchUsername: user.twitchUsername,
+    twitterUsername: user.twitterUsername,
     youtubeUsername: user.youtubeUsername,
     avatar: user.avatar,
     isVerified: user.isVerified,

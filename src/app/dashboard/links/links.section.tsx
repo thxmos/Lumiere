@@ -58,7 +58,6 @@ export function LinksSection({ userLinks, user }: Props) {
         userId: user.id,
         active: false,
         index: links.length,
-        id: uuidv4(),
       } as LinkDto,
     ]);
   };

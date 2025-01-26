@@ -20,15 +20,16 @@ model User {
   Product2 Product2[] @relation("UserProducts")
   
   // Social Links
-  facebookUsername String?
-  twitterUsername String?
-  instagramUsername String?
-  twitchUsername String?
-  tiktokUsername String?
-  spotifyUsername String?
-  appleMusicUsername String?
-  patreonUsername String?
-  youtubeUsername String?
+    appleMusicUsername String?
+    discordUsername String?
+    facebookUsername String?
+    instagramUsername String?
+    patreonUsername String?
+    spotifyUsername String?
+    tiktokUsername String?
+    twitchUsername String?
+    twitterUsername String?
+    youtubeUsername String?
   
   // Account Info
   isVerified Boolean  @default(false)

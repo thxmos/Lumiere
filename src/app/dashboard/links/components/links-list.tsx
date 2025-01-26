@@ -8,8 +8,11 @@ import {
 
 import { LinkDto } from "@/data-access/links";
 import { LinkCard } from "./link-card";
-import { updateUserLinksAction } from "../links-card.actions";
-import { toast } from "sonner";
+
+/*
+TODO: Fix form submit, remove update on every re-order
+
+*/
 
 interface Props {
   links: LinkDto[];
@@ -64,9 +67,14 @@ export const LinksList: React.FC<Props> = ({
             {...droppableProvided.droppableProps}
           >
             {links.map((link, index) => (
-              <Draggable key={link.id} draggableId={link.id} index={index}>
+              <Draggable
+                key={link.id}
+                draggableId={link.id.toString()}
+                index={index}
+              >
                 {(draggableProvided) => (
                   <LinkCard
+                    key={link.id}
                     link={link}
                     index={index}
                     draggableProvided={draggableProvided}

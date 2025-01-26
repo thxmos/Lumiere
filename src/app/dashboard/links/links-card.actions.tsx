@@ -26,15 +26,16 @@ export async function updateUser(userId: string, data: Partial<UserDto>) {
     username: data.username,
     description: data.description,
     country: data.country as Country,
-    twitchUsername: data.twitchUsername,
-    instagramUsername: data.instagramUsername,
-    facebookUsername: data.facebookUsername,
-    twitterUsername: data.twitterUsername,
-    patreonUsername: data.patreonUsername,
-    youtubeUsername: data.youtubeUsername,
     appleMusicUsername: data.appleMusicUsername,
+    discordUsername: data.discordUsername,
+    facebookUsername: data.facebookUsername,
+    instagramUsername: data.instagramUsername,
+    patreonUsername: data.patreonUsername,
     spotifyUsername: data.spotifyUsername,
     tiktokUsername: data.tiktokUsername,
+    twitchUsername: data.twitchUsername,
+    twitterUsername: data.twitterUsername,
+    youtubeUsername: data.youtubeUsername,
   });
 }
 

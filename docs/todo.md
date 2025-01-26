@@ -10,8 +10,16 @@
 ## Important For Launch
 
 - image & video background upload
-- warn user if unsaved changes
-- disable image upload on link card if not in edit mode
+- Fix LinksList
+  - update on every re-order breaks new links
+- Warn user of unsaved changes on form
+  - intercept form submit and warn if unsaved changes
+- Ensure one session per user, delete stale sessions
+  - revisit auth stuff
+- !!! rename images to assets
+- upload images in Assets section
+- QR code page update in real time
+- font family in theme editor
 
 1. DESIGN for:
 
@@ -22,15 +30,11 @@
 
 2. Database backups
 
-3. EASY FIX: add default country in profile page
+3. EASY FIX: refresh props on form saves OR optimistically update (ie. preview is out of date if you change username)
 
-4. EASY FIX BUG: dnd new draggable needs draggableId
+4. EASY FIX: fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
 
-5. EASY FIX: refresh props on form saves OR optimistically update (ie. preview is out of date if you change username)
-
-6. EASY FIX: fix 3rd part auth redirect to localhost on prod currently (lol oops still wip)
-
-7. navigate to not found page on username is theres no user found & redirect on product page for now too
+5. navigate to not found page on username is theres no user found & redirect on product page for now too
 
 ## Future Features
 

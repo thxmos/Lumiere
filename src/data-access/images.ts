@@ -3,11 +3,18 @@ import { prisma } from "@/utils/prisma";
 export type CreateImageDto = {
   url: string;
   userId: string;
+  title: string;
+  description: string;
 };
 
 export const createImage = async (image: CreateImageDto) => {
   const newImage = await prisma.image.create({
-    data: image,
+    data: {
+      url: image.url,
+      userId: image.userId,
+      title: image.title,
+      description: image.description,
+    },
   });
   return newImage;
 };

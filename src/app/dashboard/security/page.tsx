@@ -1,13 +1,12 @@
-import { getUserById, getUserByIdWithPassword } from "@/data-access/user";
-import SecurityTab from "./security-tab";
+import { UserDto } from "@/data-access/user";
+import { hasPasswordAction } from "./actions";
+import SecuritySection from "./security.section";
 import { getUser } from "@/actions/session.actions";
-export default async function SecurityPage() {
-  const { user: sessionUser } = await getUser();
-  if (!sessionUser) return null;
-  const user = await getUserById(sessionUser.id);
-  const { password } = await getUserByIdWithPassword(sessionUser.id);
-  const hasPassword = !!password;
-  // TODO: only check session in layout
 
-  return <SecurityTab user={user} hasPassword={hasPassword} />;
+export default async function SecurityPage() {
+  const { user } = await getUser();
+  if (!user) return null;
+  const hasPassword = await hasPasswordAction();
+
+  return <SecuritySection user={user as UserDto} hasPassword={hasPassword} />;
 }

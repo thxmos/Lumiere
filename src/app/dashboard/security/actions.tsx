@@ -1,7 +1,16 @@
 "use server";
 
+import { getUser } from "@/actions/session.actions";
 import { getUserByIdWithPassword, updateUserById } from "@/data-access/user";
 import { hash, verify } from "@/utils/crypto";
+
+export async function hasPasswordAction(): Promise<boolean> {
+  const { user } = await getUser();
+  if (!user) return false; // TODO: should throw probably or something
+  const { password } = await getUserByIdWithPassword(user.id);
+  const hasPassword = !!password;
+  return hasPassword;
+}
 
 export async function passwordReset(formData: FormData, userId: string) {
   const currentPassword = formData.get("currentPassword") as string;

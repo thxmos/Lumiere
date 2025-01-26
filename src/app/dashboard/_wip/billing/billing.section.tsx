@@ -5,7 +5,7 @@ import { DashboardCard } from "@/components/dashboard-card";
 import Link from "next/link";
 import { Price, Product } from "@prisma/client";
 
-export default function BillingTab({
+export default function BillingSection({
   billingInfo,
 }: {
   billingInfo: { price: Price; product: Product };

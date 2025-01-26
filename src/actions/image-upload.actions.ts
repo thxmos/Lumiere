@@ -1,6 +1,6 @@
 "use server";
 
-import { createImage } from "@/data-access/images";
+import { createImage, CreateImageDto } from "@/data-access/images";
 import { getUser } from "./session.actions";
 import { updateUserAvatar } from "./user.actions";
 import { put, del } from "@vercel/blob";
@@ -22,23 +22,33 @@ export async function uploadAvatar(formData: FormData) {
   }
 }
 
-export async function uploadLinkImage(formData: FormData) {
+export async function uploadLinkImage(
+  formData: FormData,
+  data: CreateImageDto,
+) {
   const path = "links/";
   const file = formData.get("file") as File;
-  return await uploadImageAction(file, path);
+  return await uploadImageAction(file, path, data);
 }
 
-export async function uploadProductImage(formData: FormData) {
+export async function uploadProductImage(
+  formData: FormData,
+  data: Omit<CreateImageDto, "userId">,
+) {
   const path = "products/";
   const file = formData.get("file") as File;
-  return await uploadImageAction(file, path);
+  return await uploadImageAction(file, path, data);
 }
 
 /*
 Authenticated user uploads an image to the blob, creates an image in the database, and returns the URL of the image if successful.
 If the image fails to be created in the database, the blob image is deleted.
 */
-export async function uploadImageAction(file: File, path: string) {
+export async function uploadImageAction(
+  file: File,
+  path: string,
+  data: Omit<CreateImageDto, "userId">,
+) {
   const { user } = await getUser();
   if (!user) {
     throw new Error("Unauthenticated");
@@ -46,9 +56,17 @@ export async function uploadImageAction(file: File, path: string) {
 
   const blobResult = await uploadBlob(file, path);
 
+  console.log("blobResult", blobResult);
+
   if (blobResult) {
     try {
-      const image = await createImage({ url: blobResult.url, userId: user.id });
+      const image = await createImage({
+        url: blobResult.url,
+        userId: user.id,
+        title: data.title,
+        description: data.description,
+      });
+      console.log("image", image);
       return image.url;
     } catch (error) {
       await deleteBlob(path);
