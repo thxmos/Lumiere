@@ -1,6 +1,6 @@
 import { LinkCard } from "./link-card";
 import { LinkDto } from "@/data-access/links";
-import { CreateThemeDto, ThemeNoId } from "@/data-access/theme";
+import { ThemeNoId } from "@/data-access/theme";
 
 export function LinksTab({
   links,
@@ -11,9 +11,11 @@ export function LinksTab({
 }) {
   return (
     <div className="space-y-4 flex flex-col">
-      {links.map((link, index) => (
-        <>{link.active && <LinkCard key={index} {...link} theme={theme} />}</>
-      ))}
+      {links.map((link, index) => {
+        if (link.active) {
+          return <LinkCard key={index} {...link} theme={theme} />;
+        }
+      })}
     </div>
   );
 }
