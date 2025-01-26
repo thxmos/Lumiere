@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { LinksTab } from "./links-tab";
+import { LinksTab } from "./links.tab";
 import { LinkDto } from "@/data-access/links";
 import { ThemeNoId } from "@/data-access/theme";
 

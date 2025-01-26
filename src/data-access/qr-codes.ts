@@ -2,19 +2,6 @@ import { getUser } from "@/actions/session.actions";
 import { prisma } from "@/utils/prisma";
 import { QRCode } from "@prisma/client";
 
-export type CreateQRCodeDto = {
-  url: string;
-  title: string;
-  userId: string;
-};
-
-export type QRCodeDto = {
-  id: string;
-  url: string;
-  title: string;
-  userId: string;
-};
-
 function toDtoMapper(qrCode: QRCode): QRCodeDto {
   return {
     id: qrCode.id,
