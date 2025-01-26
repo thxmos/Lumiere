@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Edit, X } from "lucide-react";
 import { PLACEHOLDER_IMG } from "@/constants/images";
-import { Product2Dto } from "@/data-access/product2";
+import type { Product2Dto } from "@/types/product2";
 import { deleteProductById } from "@/actions/product.actions";
 import { ConfirmDeleteModal } from "@/components/confirm-delete-modal";
 import { useState } from "react";

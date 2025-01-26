@@ -1,4 +1,4 @@
-import { Permissions, ROLES, RolesWithPermissions, User } from "@/types/auth";
+import { Permissions, ROLES, RolesWithPermissions, User } from "@/types/abac";
 
 /*
 Rough ABAC implementation helper method

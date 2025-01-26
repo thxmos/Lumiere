@@ -11,6 +11,7 @@ import LinkTree from "@/components/profile/linktree";
 import { getTheme } from "@/actions/theme.actions";
 import { getLinksByUserId } from "@/data-access/links";
 import { UserDto } from "@/data-access/user";
+import { LinkDtoWithId } from "@/types/links";
 
 interface Props {
   children: React.ReactNode;
@@ -41,7 +42,7 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
           <MobilePreview username={user?.username!}>
             <LinkTree
               isPreview={true}
-              initialLinks={links}
+              initialLinks={links as LinkDtoWithId[]}
               initialTheme={theme}
               user={user as UserDto}
             />

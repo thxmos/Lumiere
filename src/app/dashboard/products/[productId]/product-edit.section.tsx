@@ -13,7 +13,7 @@ import { ImageUpload } from "@/components/image-upload";
 import { toast } from "sonner";
 import { updateProduct } from "./actions";
 import { useForm } from "react-hook-form";
-import { Product2Dto } from "@/data-access/product2";
+import type { Product2Dto } from "@/types/product2";
 import { UserDto } from "@/data-access/user";
 
 interface Props {

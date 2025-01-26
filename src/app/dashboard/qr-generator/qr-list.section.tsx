@@ -2,7 +2,7 @@
 
 import { DashboardCard } from "@/components/dashboard-card";
 import { QRCodeCard } from "./qr-card";
-import { QRCodeDto } from "@/data-access/qr-codes";
+import type { QRCodeDto } from "@/types/qr-codes";
 import { useState } from "react";
 
 export const QRListSection = ({ qrCodes }: { qrCodes: QRCodeDto[] }) => {

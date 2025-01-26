@@ -10,7 +10,7 @@ import { ConfirmDeleteModal } from "@/components/confirm-delete-modal";
 import { useState } from "react";
 import { deleteQRCodeAction } from "./actions";
 import QRModal from "./qr-modal";
-import { QRCodeDto } from "@/data-access/qr-codes";
+import type { QRCodeDto } from "@/types/qr-codes";
 
 /*
 TODO:

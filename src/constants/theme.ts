@@ -1,4 +1,4 @@
-import { CreateThemeDto, ThemeNoId } from "@/data-access/theme";
+import type { ThemeNoId } from "@/types/theme";
 import { BLACK } from "@/constants/colors";
 import { WHITE } from "@/constants/colors";
 

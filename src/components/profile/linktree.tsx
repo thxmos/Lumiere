@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { PLACEHOLDER_IMG } from "@/constants/images";
-import { LinkDto } from "@/data-access/links";
-import { ThemeNoId } from "@/data-access/theme";
+import type { LinkDto, LinkDtoWithId } from "@/types/links";
+import type { ThemeNoId } from "@/types/theme";
 import { useThemeStore } from "@/stores/themes";
 import { useLinksStore } from "@/stores/links";
 import BackgroundVideo from "@/app/[username]/components/background-video";
@@ -30,21 +30,23 @@ const LinkTree: React.FC<Props> = ({
   user,
 }) => {
   const [localTheme, setlocalTheme] = useState<ThemeNoId | null>(initialTheme);
-  const [localLinks, setLocalLinks] = useState<LinkDto[]>(initialLinks);
+  const [localLinks, setLocalLinks] = useState<LinkDtoWithId[]>(
+    initialLinks as LinkDtoWithId[],
+  );
 
   const { theme, setTheme } = useThemeStore();
   const { links, setLinks } = useLinksStore();
 
   useEffect(() => {
     setTheme(initialTheme);
-    setLinks(initialLinks);
+    setLinks(initialLinks as LinkDtoWithId[]);
   }, []);
 
   useEffect(() => {
     if (!isPreview) return;
 
     if (theme) setlocalTheme(theme);
-    if (links) setLocalLinks(links);
+    if (links) setLocalLinks(links as LinkDtoWithId[]);
   }, [theme, links]);
 
   const previewStyles = {

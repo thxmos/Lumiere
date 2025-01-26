@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { useTransition } from "react";
 import { PLACEHOLDER_IMG } from "@/constants/images";
-import type { LinkDto } from "@/data-access/links";
-import type { ThemeNoId } from "@/data-access/theme";
+import type { LinkDtoWithId } from "@/types/links";
+import type { ThemeNoId } from "@/types/theme";
 import { updateLinkClicked } from "../actions";
 
 /*
@@ -17,7 +17,7 @@ export function LinkCard({
   url,
   imageUrl,
   theme,
-}: LinkDto & { theme: ThemeNoId }) {
+}: LinkDtoWithId & { theme: ThemeNoId }) {
   const [isPending, startTransition] = useTransition();
 
   const cardStyle = {

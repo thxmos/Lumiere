@@ -4,6 +4,7 @@ import { getTheme } from "@/actions/theme.actions";
 import React from "react";
 import { redirect } from "next/navigation";
 import LinkTree from "@/components/profile/linktree";
+import { LinkDtoWithId } from "@/types/links";
 
 export default async function ArtistPage({
   params,
@@ -21,7 +22,7 @@ export default async function ArtistPage({
   return (
     <LinkTree
       isPreview={false}
-      initialLinks={links}
+      initialLinks={links as LinkDtoWithId[]}
       initialTheme={theme}
       user={user}
     />

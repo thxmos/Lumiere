@@ -1,12 +1,12 @@
 import { LinkCard } from "./link-card";
-import { LinkDto } from "@/data-access/links";
-import { ThemeNoId } from "@/data-access/theme";
+import { LinkDtoWithId } from "@/types/links";
+import { ThemeNoId } from "@/types/theme";
 
 export function LinksTab({
   links,
   theme,
 }: {
-  links: LinkDto[];
+  links: LinkDtoWithId[];
   theme: ThemeNoId;
 }) {
   return (

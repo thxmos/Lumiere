@@ -1,11 +1,7 @@
 "use server";
 
-import {
-  getProductById,
-  Product2Dto,
-  updateProductById,
-  type CreateProduct2Dto,
-} from "@/data-access/product2";
+import { getProductById, updateProductById } from "@/data-access/product2";
+import type { CreateProduct2Dto, Product2Dto } from "@/types/product2";
 
 export async function getProduct(productId: string) {
   return await getProductById(productId);

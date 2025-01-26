@@ -1,11 +1,8 @@
 "use server";
 
 import { isValidSession } from "@/actions/session.actions";
-import {
-  createProduct,
-  getProductsByUserId,
-  type CreateProduct2Dto,
-} from "@/data-access/product2";
+import { createProduct, getProductsByUserId } from "@/data-access/product2";
+import type { CreateProduct2Dto } from "@/types/product2";
 
 export async function createNewProduct(
   userId: string,

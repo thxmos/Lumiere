@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import { ThemeNoId } from "@/data-access/theme";
+import type { ThemeNoId } from "@/types/theme";
 
 type ThemeStore = {
   theme: ThemeNoId | null;
