@@ -45,9 +45,7 @@ export const QRCodeCard = ({
     setIsQRModalOpen(true);
   };
 
-  const handleQrSave = () => {
-    console.log("clicked");
-  };
+  const handleQrSave = () => {};
 
   return (
     <>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Upload, X } from "lucide-react";
+import { ImageOff, Upload, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ImageUploadDialog } from "./image-upload-dialog";
 
@@ -87,17 +87,21 @@ export function ImageUpload({
               className="text-white hover:text-red-500"
               disabled={disabled}
             >
-              <X className={iconSizes[size]} />
+              <X className={`${iconSizes[size]} text-primary`} />
               <span className="sr-only">Remove image</span>
             </Button>
           </div>
         </div>
       ) : (
         <div
-          className={`${sizeClasses[size]} flex items-center justify-center bg-gray-100 cursor-pointer`}
-          onClick={() => setIsDialogOpen(true)}
+          className={`${sizeClasses[size]} flex items-center justify-center bg-gray-100 ${!disabled ? "cursor-pointer" : ""}`}
+          onClick={() => !disabled && setIsDialogOpen(true)}
         >
-          <Upload className={`${iconSizes[size]} text-gray-400`} />
+          {!disabled ? (
+            <Upload className={`${iconSizes[size]} text-primary`} />
+          ) : (
+            <ImageOff className={`${iconSizes[size]} text-primary`} />
+          )}
         </div>
       )}
       <ImageUploadDialog

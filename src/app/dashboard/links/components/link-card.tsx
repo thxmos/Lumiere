@@ -114,11 +114,11 @@ export const LinkCard: React.FC<Props> = ({
                 <span className="text-lg font-bold text-primary block">
                   {link.title || "Untitled"}
                 </span>
-                <span className="text-sm text-muted-foreground hover:text-primary hover:underline transition-all block">
-                  <Link href={link.url} target="_blank">
+                <Link href={link.url} target="_blank">
+                  <span className="text-sm text-muted-foreground hover:text-primary hover:underline transition-all block">
                     {link.url}
-                  </Link>
-                </span>
+                  </span>
+                </Link>
                 <span className="text-sm text-muted-foreground block">
                   Clicks: {link.clicks}
                 </span>
