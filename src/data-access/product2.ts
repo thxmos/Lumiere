@@ -97,6 +97,6 @@ export async function updateProductById(
 //   await prisma.product2.update({ where: { id }, data });
 // }
 
-// export async function deleteProduct2ById(id: string): Promise<void> {
-//   await prisma.product2.delete({ where: { id } });
-// }
+export async function deleteProduct2ById(id: string): Promise<void> {
+  await prisma.product2.delete({ where: { id } });
+}

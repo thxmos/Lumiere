@@ -1,5 +1,6 @@
 "use client";
 
+import { SquareArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 import { usePathname } from "next/navigation";
@@ -27,8 +28,12 @@ const MobilePreview: React.FC<Props> = ({ children, username }) => {
             {children}
           </div>
         </div>
-        <Link href={`/${username}`} className="text-base underline">
+        <Link
+          href={`/${username}`}
+          className="text-base underline font-bold hover:text-primary transition-all flex items-center gap-2"
+        >
           Preview
+          <SquareArrowUpRight className="w-4 h-4" />
         </Link>
       </div>
     </>
