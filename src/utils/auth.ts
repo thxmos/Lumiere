@@ -1,7 +1,9 @@
 import { Permissions, ROLES, RolesWithPermissions, User } from "@/types/auth";
 
 /*
-    Rough ABAC implementation helper method
+Rough ABAC implementation helper method
+TODO:
+- user's BlockedBy?
 */
 
 export function hasPermission<Resource extends keyof Permissions>(

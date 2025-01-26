@@ -10,7 +10,6 @@
 ## Important For Launch
 
 - image & video background upload
-- fix country form issue
 - warn user if unsaved changes
 - disable image upload on link card if not in edit mode
 

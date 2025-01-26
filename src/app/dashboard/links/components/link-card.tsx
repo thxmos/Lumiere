@@ -13,7 +13,7 @@ import { ConfirmDeleteModal } from "../../../../components/confirm-delete-modal"
 import { Label } from "@/components/ui/label";
 
 /*
-- fix overflow text issue on mobile
+- text ellipsis on mobile
 */
 
 interface Props {
@@ -86,7 +86,7 @@ export const LinkCard: React.FC<Props> = ({
           </div>
 
           {/* Title & Link Input */}
-          <div className="flex flex-col flex-1 space-y-2">
+          <div className="flex flex-col flex-1 space-y-2 max-w-[80%] overflow-hidden whitespace-nowrap">
             {isEditing ? (
               <>
                 <Input
@@ -111,15 +111,15 @@ export const LinkCard: React.FC<Props> = ({
               </>
             ) : (
               <>
-                <span className="text-lg font-bold text-primary">
+                <span className="text-lg font-bold text-primary block">
                   {link.title || "Untitled"}
                 </span>
-                <Link href={link.url} target="_blank">
-                  <span className="text-sm text-muted-foreground hover:text-primary hover:underline transition-all">
+                <span className="text-sm text-muted-foreground hover:text-primary hover:underline transition-all block">
+                  <Link href={link.url} target="_blank">
                     {link.url}
-                  </span>
-                </Link>
-                <span className="text-sm text-muted-foreground">
+                  </Link>
+                </span>
+                <span className="text-sm text-muted-foreground block">
                   Clicks: {link.clicks}
                 </span>
               </>
