@@ -10,12 +10,14 @@ import Link from "next/link";
 import { toast } from "sonner";
 import { createQRCodeAction } from "./actions";
 import { generateQRCode } from "./utils";
+import { PLACEHOLDER_IMG } from "@/constants/images";
+import QRModal from "./qr-modal";
 
 export const QRGeneratorSection = ({ userId }: { userId: string }) => {
   const [link, setLink] = useState("");
   const [title, setTitle] = useState("");
   const [qrCode, setQrCode] = useState("");
-
+  const [isQRModalOpen, setIsQRModalOpen] = useState(false);
   const generateAndSetQRCode = async () => {
     const qrCodeUrl = generateQRCode(link);
     setQrCode(qrCodeUrl);
@@ -60,32 +62,33 @@ export const QRGeneratorSection = ({ userId }: { userId: string }) => {
             required
           />
         </div>
-        <Button type="submit">Generate QR Code</Button>
-      </form>
-      {qrCode && (
-        <div className="mt-6 space-y-2">
-          <h3 className="text-lg font-semibold">Generated QR Code:</h3>
-          <div className="relative w-[200px] h-[200px]">
-            <Image
-              src={qrCode || "/placeholder.svg"}
-              alt="Generated QR Code"
-              layout="fill"
-              objectFit="contain"
-            />
+        {qrCode && (
+          <div className="mt-6 space-y-2">
+            <h3 className="text-lg font-semibold">Generated QR Code:</h3>
+            <div className="relative w-[200px] h-[200px]">
+              <Image
+                src={qrCode || PLACEHOLDER_IMG}
+                alt="Generated QR Code"
+                className="object-contain border border-primary cursor-pointer"
+                width={200}
+                height={200}
+                onClick={() => setIsQRModalOpen(true)}
+              />
+            </div>
           </div>
-          <p className="text-sm text-gray-500">
-            Scan this QR code to open the link:{" "}
-            <Link
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-gray-700"
-            >
-              {link}
-            </Link>
-          </p>
+        )}
+        <div className="flex w-full justify-end">
+          <Button type="submit">Generate QR Code</Button>
         </div>
-      )}
+      </form>
+      <QRModal
+        title={title}
+        linkUrl={link}
+        qrCodeUrl={qrCode}
+        isOpen={isQRModalOpen}
+        onClose={() => setIsQRModalOpen(false)}
+        onConfirm={() => {}}
+      />
     </DashboardCard>
   );
 };

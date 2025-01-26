@@ -1,7 +1,7 @@
 "use client";
 
 import { DashboardCard } from "@/components/dashboard-card";
-import { QRCodeCard } from "./qr-card";
+import { QRCodeCard } from "./qr-list.card";
 import type { QRCodeDto } from "@/types/qr-codes";
 import { useState } from "react";
 

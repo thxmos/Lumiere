@@ -65,8 +65,9 @@ export const QRCodeCard = ({
               <Image
                 src={generateQRCode(qrCode.url)}
                 alt="Generated QR Code"
-                layout="fill"
-                objectFit="contain"
+                width={100}
+                height={100}
+                className="object-contain"
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -101,6 +102,7 @@ export const QRCodeCard = ({
       <QRModal
         title={qrCode.url}
         qrCodeUrl={generateQRCode(qrCode.url)}
+        linkUrl={qrCode.url}
         isOpen={isQRModalOpen}
         onClose={() => setIsQRModalOpen(false)}
         onConfirm={handleQrSave}
