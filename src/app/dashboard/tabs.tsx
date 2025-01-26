@@ -29,7 +29,7 @@ export const DASHBOARD_TABS: Tab[] = [
   },
   {
     key: "assets",
-    label: "Assets",
+    label: "Assets ⭐",
     icon: <ImageIcon className={iconStyle} />,
     userRole: USER_ROLES.ADMIN,
   },

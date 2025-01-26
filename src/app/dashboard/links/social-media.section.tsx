@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { SOCIAL_PLATFORMS } from "@/constants/social-media";
-import { updateUser } from "./links-card.actions";
+import { updateUser } from "./actions";
 import { UserDto } from "@/data-access/user";
 import { DashboardCard } from "@/components/dashboard-card";
 import { toast } from "sonner";

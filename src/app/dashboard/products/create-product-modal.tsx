@@ -100,6 +100,7 @@ export function CreateProductModal({
                 onChange={(e) => setPrice(e.target.value)}
                 placeholder="Enter product price"
                 step="0.01"
+                min="0"
               />
             </div>
           </div>

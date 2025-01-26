@@ -69,7 +69,7 @@ export const LinksList: React.FC<Props> = ({
             {links.map((link, index) => (
               <Draggable
                 key={link.id}
-                draggableId={link.id.toString()}
+                draggableId={link?.id?.toString() || index.toString()}
                 index={index}
               >
                 {(draggableProvided) => (

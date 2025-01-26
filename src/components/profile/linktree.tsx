@@ -51,11 +51,13 @@ const LinkTree: React.FC<Props> = ({
     wrapper: {},
     avatarSize: 80,
     usernameSize: "text-2xl",
+    iconSize: 16,
   };
   const styles = {
-    wrappper: {},
+    wrapper: {},
     avatarSize: 100,
     usernameSize: "text-3xl",
+    iconSize: 24,
   };
 
   return (
@@ -159,7 +161,7 @@ const LinkTree: React.FC<Props> = ({
                     color: localTheme?.iconColor || WHITE,
                     fill: localTheme?.iconColor || WHITE,
                   }}
-                  size={24}
+                  size={isPreview ? previewStyles.iconSize : styles.iconSize}
                 />
               </a>
             ))}

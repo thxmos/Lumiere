@@ -7,13 +7,20 @@ import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 
 import { type LinkDto } from "@/data-access/links";
-import { deleteLink, updateUserLinksAction } from "./links-card.actions";
+import { deleteLink, updateUserLinksAction } from "./actions";
 import { LinksList } from "./components/links-list";
 import { DashboardCard } from "@/components/dashboard-card";
 import { Button } from "@/components/ui/button";
 import { UserDto } from "@/data-access/user";
 import { deleteImage } from "@/data-access/images";
 import { useLinksStore } from "@/stores/links";
+
+/*
+TODO: Creating new link and submitting form is not working when id is set here
+Setting id in the action breaks the draggable list
+Cant create a new link when id is set here
+Deleting a new link also gives a failure but removes from the list
+*/
 
 interface Props {
   userLinks: LinkDto[];
@@ -58,6 +65,7 @@ export function LinksSection({ userLinks, user }: Props) {
         userId: user.id,
         active: false,
         index: links.length,
+        id: uuidv4(),
       } as LinkDto,
     ]);
   };
@@ -73,7 +81,6 @@ export function LinksSection({ userLinks, user }: Props) {
         toast.success("Link deleted successfully");
       } catch (error) {
         toast.error("Failed to delete link");
-        console.error("Failed to delete link:", error);
         // Don't remove from state if delete failed
       }
     }

@@ -1,6 +1,5 @@
 "use client";
 
-import { UserDto } from "@/data-access/user";
 import Link from "next/link";
 
 import { usePathname } from "next/navigation";
@@ -18,16 +17,21 @@ const MobilePreview: React.FC<Props> = ({ children, username }) => {
     return null;
 
   return (
-    <div className="flex flex-col gap-4 justify-center items-center">
-      <div className="w-[20rem] h-[40rem] bg-gray-800 rounded-[2rem] p-1 shadow-lg mx-auto">
-        <div className="w-full h-full bg-white rounded-[1.9rem] overflow-hidden relative">
-          <div className="w-full h-full">{children}</div>
+    <>
+      {/* Preview container */}
+      <div className="flex flex-col gap-4 justify-center items-center">
+        {/* Phone border*/}
+        <div className="w-[20rem] h-[40rem] bg-gray-800 rounded-[2rem] p-1 shadow-lg mx-auto">
+          {/* Phone screen */}
+          <div className="w-full h-full bg-white rounded-[1.9rem] overflow-hidden relative overflow-y-scroll">
+            {children}
+          </div>
         </div>
+        <Link href={`/${username}`} className="text-base underline">
+          Preview
+        </Link>
       </div>
-      <Link href={`/${username}`} className="text-base underline">
-        Preview
-      </Link>
-    </div>
+    </>
   );
 };
 
