@@ -32,7 +32,7 @@ export default function ProductsSection({
     <DashboardCard title="Products" description="View your products">
       <div className="flex flex-col gap-4">
         {products.map((product) => (
-          <ProductCard key={product.id} {...product} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
       <Button variant="outline" onClick={() => setIsModalOpen(true)}>

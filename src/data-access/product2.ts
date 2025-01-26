@@ -16,6 +16,7 @@ export type Product2Dto = {
   imageId: string | null;
   active: boolean | null;
   price: number | null;
+  isPwyc: boolean | null;
   userId?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -29,6 +30,7 @@ function toDtoMapper(product: Product2): Product2Dto {
     imageId: product.imageId,
     active: product.active,
     price: product.price ? Number.parseFloat(product.price.toString()) : null,
+    isPwyc: product.isPwyc,
     userId: product.userId,
     createdAt: product.createdAt,
     updatedAt: product.updatedAt,

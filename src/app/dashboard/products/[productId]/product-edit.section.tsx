@@ -15,12 +15,13 @@ import { updateProduct } from "./actions";
 import { useForm } from "react-hook-form";
 import { Product2Dto } from "@/data-access/product2";
 import { UserDto } from "@/data-access/user";
+
 interface Props {
   product: Product2Dto;
   user: UserDto;
 }
 
-export default function ProductEditTab({ product, user }: Props) {
+export default function ProductEditSection({ product, user }: Props) {
   const [imageId, setImageId] = useState(product.imageId || undefined);
   const [name, setName] = useState(product.name || "");
   const [description, setDescription] = useState(product.description || "");

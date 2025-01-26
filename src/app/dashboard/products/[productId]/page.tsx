@@ -1,4 +1,4 @@
-import ProductEditTab from "./product-edit-tab";
+import ProductEditSection from "./product-edit.section";
 import { getProduct } from "./actions";
 import { getUser } from "@/actions/session.actions";
 import { UserDto } from "@/data-access/user";
@@ -16,5 +16,5 @@ export default async function ProductPage({ params }: Props) {
   const product = await getProduct(productId);
   if (!product) return null;
 
-  return <ProductEditTab product={product} user={user as UserDto} />;
+  return <ProductEditSection product={product} user={user as UserDto} />;
 }

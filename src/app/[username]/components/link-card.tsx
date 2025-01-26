@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import { useTransition } from "react";
-import placeholder from "@/assets/product-default.svg";
+import { PLACEHOLDER_IMG } from "@/constants/images";
 import type { LinkDto } from "@/data-access/links";
-import type { CreateThemeDto, ThemeNoId } from "@/data-access/theme";
+import type { ThemeNoId } from "@/data-access/theme";
 import { updateLinkClicked } from "../actions";
 
 /*
@@ -50,7 +50,7 @@ export function LinkCard({
       disabled={isPending}
     >
       <Image
-        src={imageUrl || placeholder}
+        src={imageUrl || PLACEHOLDER_IMG}
         alt={title}
         width={50}
         height={50}

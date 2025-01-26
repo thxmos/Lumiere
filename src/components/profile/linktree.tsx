@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-import placeholder from "@/assets/product-default.svg";
+import { PLACEHOLDER_IMG } from "@/constants/images";
 import { LinkDto } from "@/data-access/links";
 import { ThemeNoId } from "@/data-access/theme";
 import { useThemeStore } from "@/stores/themes";
@@ -90,7 +90,7 @@ const LinkTree: React.FC<Props> = ({
           {/* Profile Info */}
           <div className="flex items-center mb-6 justify-center">
             <Image
-              src={user.avatar || placeholder}
+              src={user.avatar || PLACEHOLDER_IMG}
               alt="Profile Picture"
               width={isPreview ? previewStyles.avatarSize : styles.avatarSize}
               height={isPreview ? previewStyles.avatarSize : styles.avatarSize}
