@@ -11,7 +11,7 @@ export const createQRCodeAction = async (
   url: string,
   title: string,
   userId: string,
-) => {
+): Promise<QRCodeDto> => {
   const qrCode = await createQRCode({ url, title, userId });
   return qrCode;
 };
@@ -23,6 +23,6 @@ export const getQRCodesByUserIdAction = async (
   return qrCodes;
 };
 
-export const deleteQRCodeAction = async (qrCodeId: string) => {
+export const deleteQRCodeAction = async (qrCodeId: string): Promise<void> => {
   await deleteQRCode(qrCodeId);
 };

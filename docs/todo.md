@@ -9,6 +9,32 @@
 
 ## Important For Launch
 
+### Account
+
+- check unique username
+
+### Theme Editor
+
+- improve gradients
+- add card shadow option
+- add background image option w upload
+- add background video option w upload
+- font family in theme editor
+
+### Links
+
+- new link update issue (how to seperate create vs update)
+
+### QR Generator
+
+- hook in with zustand
+
+### Security
+
+### User Settings
+
+### Misc
+
 - image & video background upload
 - Fix LinksList
   - update on every re-order breaks new links
@@ -16,10 +42,6 @@
   - intercept form submit and warn if unsaved changes
 - Ensure one session per user, delete stale sessions
   - revisit auth stuff
-- !!! rename images to assets
-- upload images in Assets section
-- QR code page update in real time
-- font family in theme editor
 
 1. DESIGN for:
 

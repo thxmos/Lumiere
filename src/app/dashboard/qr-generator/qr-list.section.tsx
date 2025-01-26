@@ -2,14 +2,13 @@
 
 import { DashboardCard } from "@/components/dashboard-card";
 import { QRCodeCard } from "./qr-list.card";
-import type { QRCodeDto } from "@/types/qr-codes";
-import { useState } from "react";
+import { removeQRCodeStore, useQRCodeStore } from "@/stores/qr-codes";
 
-export const QRListSection = ({ qrCodes }: { qrCodes: QRCodeDto[] }) => {
-  const [qrCodesList, setQrCodesList] = useState<QRCodeDto[]>(qrCodes);
+export const QRListSection = () => {
+  const qrCodes = useQRCodeStore((state) => state.qrCodes);
 
-  const removeQRCodeFromListById = (qrCodeId: string) => {
-    setQrCodesList(qrCodesList.filter((qrCode) => qrCode.id !== qrCodeId));
+  const removeQRCode = (qrCodeId: string) => {
+    removeQRCodeStore(qrCodeId);
   };
 
   return (
@@ -17,12 +16,12 @@ export const QRListSection = ({ qrCodes }: { qrCodes: QRCodeDto[] }) => {
       title="QR Codes"
       description={`List of QR codes you generated (${qrCodes.length}/10)`}
     >
-      {qrCodesList.map((qrCode, index) => (
+      {qrCodes.map((qrCode, index) => (
         <QRCodeCard
           key={qrCode.id}
           qrCode={qrCode}
           index={index}
-          removeQRCodeFromListById={removeQRCodeFromListById}
+          removeQRCode={removeQRCode}
         />
       ))}
     </DashboardCard>

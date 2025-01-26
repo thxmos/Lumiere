@@ -21,17 +21,17 @@ TODO:
 export const QRCodeCard = ({
   qrCode,
   index,
-  removeQRCodeFromListById,
+  removeQRCode,
 }: {
   qrCode: QRCodeDto;
   index: number;
-  removeQRCodeFromListById: (qrCodeId: string) => void;
+  removeQRCode: (qrCodeId: string) => void;
 }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isQRModalOpen, setIsQRModalOpen] = useState(false);
 
   const handleDelete = async () => {
-    removeQRCodeFromListById(qrCode.id);
+    removeQRCode(qrCode.id);
 
     try {
       await deleteQRCodeAction(qrCode.id);

@@ -6,12 +6,12 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
-import Link from "next/link";
 import { toast } from "sonner";
 import { createQRCodeAction } from "./actions";
 import { generateQRCode } from "./utils";
 import { PLACEHOLDER_IMG } from "@/constants/images";
 import QRModal from "./qr-modal";
+import { addQRCodeStore } from "@/stores/qr-codes";
 
 export const QRGeneratorSection = ({ userId }: { userId: string }) => {
   const [link, setLink] = useState("");
@@ -26,8 +26,9 @@ export const QRGeneratorSection = ({ userId }: { userId: string }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      const qrCode = await createQRCodeAction(link, title, userId);
       generateAndSetQRCode();
-      await createQRCodeAction(link, title, userId);
+      addQRCodeStore(qrCode);
       toast.success("QR code generated successfully");
     } catch (error) {
       toast.error("Failed to generate QR code");
