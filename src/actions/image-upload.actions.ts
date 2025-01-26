@@ -1,6 +1,6 @@
 "use server";
 
-import { createImage, CreateImageDto } from "@/data-access/images";
+import { createImage, CreateImageDto, deleteImage } from "@/data-access/images";
 import { getUser } from "./session.actions";
 import { updateUserAvatar } from "./user.actions";
 import { put, del } from "@vercel/blob";
@@ -56,8 +56,6 @@ export async function uploadImageAction(
 
   const blobResult = await uploadBlob(file, path);
 
-  console.log("blobResult", blobResult);
-
   if (blobResult) {
     try {
       const image = await createImage({
@@ -94,7 +92,7 @@ const uploadBlob = async (file: File, path: string, maxSize: number = 20) => {
     const { user } = await getUser();
 
     const blob = await put(`${path}${user?.id}`, file, {
-      contentType: file.type,
+      contentType: "image/png",
       access: "public",
     });
 
@@ -110,3 +108,11 @@ const deleteBlob = async (path: string) => {
 
   await del(`${path}${user?.id}`);
 };
+
+export async function deleteImageAction(imageId: string) {
+  const { user } = await getUser();
+  if (!user) throw new Error("Unauthenticated");
+
+  await deleteBlob(imageId);
+  await deleteImage(imageId, user.id);
+}

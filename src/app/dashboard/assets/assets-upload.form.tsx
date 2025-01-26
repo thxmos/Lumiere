@@ -10,6 +10,11 @@ import { UploadIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
+/*
+ Saving as unknown type in blob
+ File type allow list? ie. jpg, png, mp4, etc.
+*/
+
 export const ImageUploadForm = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
