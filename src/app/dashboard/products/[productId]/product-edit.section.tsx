@@ -27,6 +27,7 @@ export default function ProductEditSection({ product, user }: Props) {
   const [description, setDescription] = useState(product.description || "");
   const [price, setPrice] = useState(product.price || 0);
   const [active, setActive] = useState(product.active!);
+  const [isPwyc, setIsPwyc] = useState(product.isPwyc!);
 
   const {
     handleSubmit,
@@ -45,14 +46,15 @@ export default function ProductEditSection({ product, user }: Props) {
         imageId,
         active,
         price,
+        isPwyc,
       };
 
       await updateProduct(product.id, productData);
-      toast.success("Product created successfully", {
+      toast.success("Product updated successfully", {
         duration: 3000,
       });
     } catch (error) {
-      console.error("Error creating product:", error);
+      console.error("Error updating product:", error);
       toast.error("An unexpected error occurred", {
         duration: 3000,
       });
@@ -63,12 +65,10 @@ export default function ProductEditSection({ product, user }: Props) {
     <DashboardCard
       title={
         <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <Link href="/dashboard/products">
-              <ChevronLeft className="w-4 h-4 mr-2" />
-            </Link>
+          <Link href="/dashboard/products" className="flex items-center">
+            <ChevronLeft className="w-4 h-4 mr-2" />
             <p className="text-lg font-medium text-primary">{product.name}</p>
-          </div>{" "}
+          </Link>
           <Link
             href={`/${user.username}/product/${product.id}`}
             className="text-base underline"
@@ -77,7 +77,11 @@ export default function ProductEditSection({ product, user }: Props) {
           </Link>
         </div>
       }
-      description={`Product ID: ${product.id}`}
+      description={
+        <span className="text-sm text-muted-foreground">
+          <span className="font-bold">ID:</span> {product.id}
+        </span>
+      }
     >
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div>
@@ -122,19 +126,29 @@ export default function ProductEditSection({ product, user }: Props) {
             step="0.01"
           />
         </div>
-
-        <div className="flex items-center space-x-2">
-          <Switch
-            id="active"
-            checked={active}
-            onCheckedChange={(checked: boolean) => setActive(checked)}
-          />
-          <Label htmlFor="active">Active</Label>
+        <div className="flex gap-2">
+          <div className="flex items-center space-x-2">
+            <Switch
+              id="isPwyc"
+              checked={isPwyc}
+              onCheckedChange={(checked: boolean) => setIsPwyc(checked)}
+            />
+            <Label htmlFor="isPwyc">Pay What You Can</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Switch
+              id="active"
+              checked={active}
+              onCheckedChange={(checked: boolean) => setActive(checked)}
+            />
+            <Label htmlFor="active">Active</Label>
+          </div>
         </div>
-
-        <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Updating..." : "Update Product"}
-        </Button>
+        <div className="flex w-full justify-end">
+          <Button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Updating..." : "Update Product"}
+          </Button>
+        </div>
       </form>
     </DashboardCard>
   );

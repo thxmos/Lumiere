@@ -53,12 +53,14 @@ export const ImageUploadForm = () => {
     <form onSubmit={handleSubmit} className="flex gap-4">
       <div className="flex flex-col gap-2 items-center">
         <ImageUpload onImageChange={handleImageChange} size="lg" />
+        {/*
         <p className="text-sm text-muted-foreground">
           <span className="font-bold">Type:</span> Image
         </p>
         <p className="text-sm text-muted-foreground">
           <span className="font-bold">Size:</span> 10MB
         </p>
+        */}
       </div>
       <div className="flex flex-col gap-2 justify-between w-full">
         <div className="flex flex-col gap-2">
@@ -76,7 +78,8 @@ export const ImageUploadForm = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        <Button type="submit" className="flex gap-2 self-end">
+        {/* Make this in card footer*/}
+        <Button type="submit" className="flex gap-2 mt-2 self-end">
           <UploadIcon className="w-4 h-4" />
           Upload
         </Button>

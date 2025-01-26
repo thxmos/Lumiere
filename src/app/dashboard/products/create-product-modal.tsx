@@ -31,6 +31,7 @@ export function CreateProductModal({
   const [description, setDescription] = useState("");
   const [imageId, setImageId] = useState<string | undefined>(undefined);
   const [active, setActive] = useState(false);
+  const [isPwyc, setIsPwyc] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -43,6 +44,7 @@ export function CreateProductModal({
         imageId,
         active,
         price: price ? Number.parseFloat(price) : undefined,
+        isPwyc,
       };
       await onSubmit(productData);
       resetForm();
@@ -103,6 +105,10 @@ export function CreateProductModal({
                 min="0"
               />
             </div>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Switch id="isPwyc" checked={isPwyc} onCheckedChange={setIsPwyc} />
+            <Label htmlFor="isPwyc">Pay What You Can</Label>
           </div>
           <div className="space-y-2">
             <Label htmlFor="description">Description</Label>

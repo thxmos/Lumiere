@@ -7,6 +7,7 @@ export type CreateProduct2Dto = {
   imageId?: string;
   active?: boolean;
   price?: number;
+  isPwyc?: boolean;
 };
 
 export type Product2Dto = {

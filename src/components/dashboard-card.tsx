@@ -10,7 +10,7 @@ import {
 
 interface DashboardCardProps {
   title?: React.ReactNode;
-  description?: string;
+  description?: React.ReactNode;
   children: React.ReactNode;
   footer?: React.ReactNode;
 }
