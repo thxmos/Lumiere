@@ -9,6 +9,11 @@
 
 ## Important For Launch
 
+### [Username]
+
+- dont count clicks in mobile preview
+- pass in query param preview=true to disable clicks
+
 ### Account
 
 - check unique username
@@ -19,6 +24,8 @@
 - add card shadow option
 - add background image option w upload
 - add background video option w upload
+- Memoization of color picker
+  - https://www.youtube.com/watch?v=INLq9RPAYUw
 
 ### Links
 

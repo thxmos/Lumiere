@@ -39,8 +39,6 @@ export const QRCodeCard = ({
     setIsQRModalOpen(true);
   };
 
-  const handleQrSave = () => {};
-
   return (
     <>
       <Card
@@ -105,7 +103,6 @@ export const QRCodeCard = ({
         linkUrl={qrCode.url}
         isOpen={isQRModalOpen}
         onClose={() => setIsQRModalOpen(false)}
-        onConfirm={handleQrSave}
       />
     </>
   );

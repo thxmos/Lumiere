@@ -13,7 +13,7 @@ export const QRListSection = () => {
       description={`List of QR codes you generated (${qrCodes.length}/10)`}
     >
       {qrCodes
-        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+        .sort((a, b) => b.createdAt?.getTime() - a.createdAt?.getTime())
         .map((qrCode, index) => (
           <QRCodeCard
             key={qrCode.id}
