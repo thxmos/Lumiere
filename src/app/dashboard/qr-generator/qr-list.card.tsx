@@ -83,6 +83,7 @@ export const QRCodeCard = ({
             <Button
               variant="ghost"
               size="icon"
+              className="hover:text-primary transition-all"
               onClick={() => setIsDeleteModalOpen(true)}
             >
               <X className="h-4 w-4" />
