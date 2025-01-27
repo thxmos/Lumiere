@@ -1,11 +1,21 @@
 "use client";
 
+import { ImageDtoWithId } from "@/types/image";
 import { DashboardCard } from "@/components/dashboard-card";
 import { AssetsCard } from "./assets-list.card";
 import { useAssetStore } from "@/stores/assets";
+import { useEffect } from "react";
 
-export default function AssetsListSection() {
+export default function AssetsListSection({
+  initialAssets,
+}: {
+  initialAssets: ImageDtoWithId[];
+}) {
   const { assets, setAssets } = useAssetStore();
+
+  useEffect(() => {
+    setAssets(initialAssets);
+  }, [initialAssets]);
 
   console.log(assets);
 
