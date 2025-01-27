@@ -2,7 +2,6 @@ import { getUser } from "@/actions/session.actions";
 import { QRListSection } from "./qr-list.section";
 import { QRGeneratorSection } from "./qr-generator.section";
 import { getQRCodesByUserIdAction } from "./actions";
-import { useQRCodeStore } from "@/stores/qr-codes";
 
 /*
 TODO:
@@ -14,11 +13,10 @@ const QRGeneratorPage = async () => {
   const { user } = await getUser();
   if (!user) return null;
   const qrCodes = await getQRCodesByUserIdAction(user.id);
-  useQRCodeStore.setState({ qrCodes });
 
   return (
     <div className="flex flex-col gap-4">
-      <QRGeneratorSection userId={user.id} />
+      <QRGeneratorSection userId={user.id} initialQRCodes={qrCodes} />
       <QRListSection />
     </div>
   );

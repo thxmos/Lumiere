@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import type React from "react";
+import { useState, useEffect } from "react";
 import { DashboardCard } from "@/components/dashboard-card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -11,13 +12,28 @@ import { createQRCodeAction } from "./actions";
 import { generateQRCode } from "./utils";
 import { PLACEHOLDER_IMG } from "@/constants/images";
 import QRModal from "./qr-modal";
-import { addQRCodeStore } from "@/stores/qr-codes";
+import { useQRCodeStore } from "@/stores/qr-codes";
+import { QRCodeDto } from "@/types/qr-codes";
 
-export const QRGeneratorSection = ({ userId }: { userId: string }) => {
+// Add initialQRCodes to the props
+export const QRGeneratorSection = ({
+  userId,
+  initialQRCodes,
+}: {
+  userId: string;
+  initialQRCodes: QRCodeDto[];
+}) => {
+  const { setQRCodes } = useQRCodeStore();
+
+  useEffect(() => {
+    setQRCodes(initialQRCodes);
+  }, [initialQRCodes, setQRCodes]);
+
   const [link, setLink] = useState("");
   const [title, setTitle] = useState("");
   const [qrCode, setQrCode] = useState("");
   const [isQRModalOpen, setIsQRModalOpen] = useState(false);
+
   const generateAndSetQRCode = async () => {
     const qrCodeUrl = generateQRCode(link);
     setQrCode(qrCodeUrl);
@@ -28,7 +44,8 @@ export const QRGeneratorSection = ({ userId }: { userId: string }) => {
     try {
       const qrCode = await createQRCodeAction(link, title, userId);
       generateAndSetQRCode();
-      addQRCodeStore(qrCode);
+      const qrCodes = useQRCodeStore.getState().qrCodes;
+      useQRCodeStore.setState({ qrCodes: [...qrCodes, qrCode] });
       toast.success("QR code generated successfully");
     } catch (error) {
       toast.error("Failed to generate QR code");

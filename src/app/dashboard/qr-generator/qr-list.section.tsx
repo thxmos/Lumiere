@@ -2,14 +2,10 @@
 
 import { DashboardCard } from "@/components/dashboard-card";
 import { QRCodeCard } from "./qr-list.card";
-import { removeQRCodeStore, useQRCodeStore } from "@/stores/qr-codes";
+import { useQRCodeStore } from "@/stores/qr-codes";
 
 export const QRListSection = () => {
-  const qrCodes = useQRCodeStore((state) => state.qrCodes);
-
-  const removeQRCode = (qrCodeId: string) => {
-    removeQRCodeStore(qrCodeId);
-  };
+  const { qrCodes, removeQRCode } = useQRCodeStore();
 
   return (
     <DashboardCard

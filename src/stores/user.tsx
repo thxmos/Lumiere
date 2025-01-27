@@ -7,6 +7,6 @@ type UserStore = {
 };
 
 export const useUserStore = create<UserStore>((set) => ({
-  user: null,
+  user: {} as UserDto,
   setUser: (user) => set({ user }),
 }));

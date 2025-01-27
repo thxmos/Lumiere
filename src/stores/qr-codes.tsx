@@ -1,24 +1,32 @@
-import { QRCodeDto } from "@/types/qr-codes";
+import type { QRCodeDto } from "@/types/qr-codes";
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
+
+/*
+TODO: look at how middleware is used in zustand
+*/
 
 type QRCodeStore = {
   qrCodes: QRCodeDto[];
   setQRCodes: (qrCodes: QRCodeDto[]) => void;
+  addQRCode: (qrCode: QRCodeDto) => void;
+  removeQRCode: (qrCodeId: string) => void;
 };
 
-export const useQRCodeStore = create<QRCodeStore>((set) => ({
-  qrCodes: [],
-  setQRCodes: (qrCodes) => set({ qrCodes }),
-}));
-
-export const addQRCodeStore = (qrCode: QRCodeDto) => {
-  const qrCodes = useQRCodeStore.getState().qrCodes;
-  useQRCodeStore.setState({ qrCodes: [...qrCodes, qrCode] });
-};
-
-export const removeQRCodeStore = (qrCodeId: string) => {
-  const qrCodes = useQRCodeStore.getState().qrCodes;
-  useQRCodeStore.setState({
-    qrCodes: qrCodes.filter((qrCode) => qrCode.id !== qrCodeId),
-  });
-};
+export const useQRCodeStore = create<QRCodeStore>()(
+  persist(
+    (set) => ({
+      qrCodes: [],
+      setQRCodes: (qrCodes) => set({ qrCodes }),
+      addQRCode: (qrCode) =>
+        set((state) => ({ qrCodes: [qrCode, ...state.qrCodes] })),
+      removeQRCode: (qrCodeId) =>
+        set((state) => ({
+          qrCodes: state.qrCodes.filter((qrCode) => qrCode.id !== qrCodeId),
+        })),
+    }),
+    {
+      name: "qr-code-storage",
+    },
+  ),
+);
