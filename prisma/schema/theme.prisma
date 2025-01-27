@@ -20,6 +20,8 @@ model Theme {
 
   backgroundType String @default("color") // "color" | "image" | "video"
   backgroundColor String? @db.Char(7) 
+  gradient Boolean @default(false)
+  gradientColor String? @db.Char(7)
   backgroundImageUrl String?
   videoUrl String?
 

@@ -64,8 +64,7 @@ export async function uploadImageAction(
         title: data.title,
         description: data.description,
       });
-      console.log("image", image);
-      return image.url;
+      return image;
     } catch (error) {
       await deleteBlob(path);
       throw new Error(

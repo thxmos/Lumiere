@@ -1,25 +1,33 @@
+"use client";
+
 import { X } from "lucide-react";
 import Image from "next/image";
-import { Image as ImagePrisma } from "@prisma/client";
+import type { ImageDtoWithId } from "@/types/image";
 import { ConfirmDeleteModal } from "@/components/confirm-delete-modal";
 import { useState } from "react";
 import { deleteImageAction } from "@/actions/image-upload.actions";
 import { toast } from "sonner";
+import { useAssetStore } from "@/stores/assets";
 
 export function AssetsCard({
-  image,
+  asset,
   index,
 }: {
-  image: ImagePrisma;
+  asset: ImageDtoWithId;
   index: number;
 }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const setAssets = useAssetStore((state) => state.setAssets);
 
   async function handleConfirmDelete() {
     try {
-      await deleteImageAction(image.id);
+      await deleteImageAction(asset.id);
       setIsDeleteModalOpen(false);
       toast.success("Asset deleted successfully", { duration: 3000 });
+
+      setAssets(
+        useAssetStore.getState().assets.filter((img) => img.id !== asset.id),
+      );
     } catch (error) {
       console.error(error);
       toast.error("Failed to delete asset", { duration: 3000 });
@@ -29,14 +37,14 @@ export function AssetsCard({
   return (
     <>
       <div
-        key={image.id}
+        key={asset.id}
         className="flex items-center justify-between border border-secondary rounded-md gap-4 p-2 hover:border-primary"
       >
         <div className="flex items-center gap-2">
           <div className="text-sm text-primary font-bold">{index + 1}</div>
           <Image
-            src={image.url}
-            alt={image.url}
+            src={asset.url || "/placeholder.svg"}
+            alt={asset.url}
             width={100}
             height={100}
             objectFit="cover"
@@ -44,15 +52,15 @@ export function AssetsCard({
           />
           <div className="flex flex-col gap-2">
             <p className="text-lg font-bold text-primary">
-              {image.title || "Untitled"}
+              {asset.title || "Untitled"}
             </p>
             <p className="text-sm text-muted-foreground">
               <span className="font-bold">File Type:</span>{" "}
-              {image.url ? "Image" : "Video"}
+              {asset.url ? "Image" : "Video"}
             </p>
             <p className="text-sm text-muted-foreground">
               <span className="font-bold">File Size:</span>{" "}
-              {image.url ? "10MB" : "100MB"}
+              {asset.url ? "10MB" : "100MB"}
             </p>
           </div>
         </div>

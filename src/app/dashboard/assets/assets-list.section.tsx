@@ -1,26 +1,22 @@
 "use client";
 
-import { Image as ImagePrisma } from "@prisma/client";
 import { DashboardCard } from "@/components/dashboard-card";
 import { AssetsCard } from "./assets-list.card";
+import { useAssetStore } from "@/stores/assets";
 
-/*
-sort by favourites then created at desc
-*/
+export default function AssetsListSection() {
+  const { assets, setAssets } = useAssetStore();
 
-export default function ImageListSection({
-  images,
-}: {
-  images: ImagePrisma[];
-}) {
+  console.log(assets);
+
   return (
     <DashboardCard
       title="Uploaded Assets"
-      description="Manage your images and videos"
+      description={`Manage your images and videos ${assets.length}/20`}
     >
       <div className="flex flex-col justify-between gap-4">
-        {images.map((image, index) => (
-          <AssetsCard key={index} image={image} index={index} />
+        {assets.map((asset, index) => (
+          <AssetsCard key={asset.id} asset={asset} index={index} />
         ))}
       </div>
     </DashboardCard>

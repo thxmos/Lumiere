@@ -72,7 +72,15 @@ const LinkTree: React.FC<Props> = ({
       {localTheme?.backgroundType === "color" && (
         <div
           className="absolute top-0 left-0 w-full h-full"
-          style={{ backgroundColor: localTheme?.backgroundColor || "#000000" }}
+          style={
+            localTheme?.gradient
+              ? {
+                  background: `linear-gradient(45deg, ${
+                    localTheme?.backgroundColor || "#000000"
+                  }, ${localTheme?.gradientColor || "#000000"})`,
+                }
+              : { backgroundColor: localTheme?.backgroundColor || "#000000" }
+          }
         ></div>
       )}
 

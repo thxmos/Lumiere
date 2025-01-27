@@ -8,7 +8,7 @@ import { getUser } from "@/actions/session.actions";
 import { USER_ROLES } from "@/constants/user";
 import MobilePreview from "@/components/mobile-preview/mobile-preview";
 import LinkTree from "@/components/profile/linktree";
-import { getTheme } from "@/actions/theme.actions";
+import { getThemeAction } from "@/actions/theme.actions";
 import { getLinksByUserId } from "@/data-access/links";
 import { UserDto } from "@/data-access/user";
 import { LinkDtoWithId } from "@/types/links";
@@ -21,7 +21,7 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
   const { user } = await getUser();
   const tabs = DASHBOARD_TABS;
 
-  const theme = await getTheme(user?.id!);
+  const theme = await getThemeAction(user?.id!);
   const links = await getLinksByUserId(user?.id!);
 
   return (

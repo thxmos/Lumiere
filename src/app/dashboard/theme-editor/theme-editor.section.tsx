@@ -15,6 +15,8 @@ import { ColorSelect } from "@/components/color-select/color-select";
 import { ColorPickerStandalone } from "@/components/color-select/color-picker-standalone";
 import { Separator } from "@/components/ui/separator";
 import { useThemeStore } from "@/stores/themes";
+import { Switch } from "@/components/ui/switch";
+import { WHITE } from "@/constants/colors";
 
 const BACKGROUND_TYPES = [
   { label: "Colored Background", value: "color" },
@@ -303,20 +305,58 @@ export function ThemeEditorSection({
             </div>
 
             {backgroundType === "color" && (
-              <div className="flex items-center space-x-2 mt-2">
-                <Label className="w-24 font-bold">Color</Label>
-                <Controller
-                  name="theme.backgroundColor"
-                  control={control}
-                  render={({ field: { onChange, value } }) => (
-                    <ColorSelect
-                      value={value || ""}
-                      themePrimaryColor={watch("theme.primaryColor")}
-                      onChange={onChange}
+              <>
+                <div className="flex items-center space-x-2 mt-2">
+                  <Label className="w-24 font-bold">Color</Label>
+                  <Controller
+                    name="theme.backgroundColor"
+                    control={control}
+                    render={({ field: { onChange, value } }) => (
+                      <ColorSelect
+                        value={value || ""}
+                        themePrimaryColor={
+                          watch("theme.backgroundColor") ?? WHITE
+                        }
+                        onChange={onChange}
+                      />
+                    )}
+                  />
+                </div>
+                <div className="flex items-center space-x-2 mt-2">
+                  <Controller
+                    name="theme.gradient"
+                    control={control}
+                    render={({ field: { onChange, value } }) => (
+                      <>
+                        <Label className="w-24 font-bold">Gradient</Label>
+                        <Switch
+                          id="gradient"
+                          checked={value}
+                          onCheckedChange={onChange}
+                        />
+                      </>
+                    )}
+                  />
+                </div>
+                {watch("theme.gradient") && (
+                  <div className="flex items-center space-x-2 mt-2">
+                    <Label className="w-24 font-bold">Gradient Color</Label>
+                    <Controller
+                      name="theme.gradientColor"
+                      control={control}
+                      render={({ field: { onChange, value } }) => (
+                        <ColorSelect
+                          value={value || ""}
+                          themePrimaryColor={
+                            watch("theme.gradientColor") ?? WHITE
+                          }
+                          onChange={onChange}
+                        />
+                      )}
                     />
-                  )}
-                />
-              </div>
+                  </div>
+                )}
+              </>
             )}
 
             {backgroundType === "image" && (

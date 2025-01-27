@@ -35,6 +35,8 @@ export const DEFAULT_THEME = {
   secondaryColorFont: WHITE,
   backgroundType: "color",
   backgroundColor: WHITE,
+  gradient: false,
+  gradientColor: WHITE,
   backgroundImageUrl: "",
   videoUrl: "",
   cardBackgroundColor: WHITE,

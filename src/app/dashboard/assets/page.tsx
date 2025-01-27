@@ -1,7 +1,8 @@
 import { getUser } from "@/actions/session.actions";
-import ImageListSection from "./assets-list.section";
-import { ImageUploadSection } from "./assets-upload.section";
+import { AssetsUploadSection } from "./assets-upload.section";
 import { getImagesByUserId } from "@/data-access/images";
+import { useAssetStore } from "@/stores/assets";
+import AssetsListSection from "./assets-list.section";
 
 export default async function ImagesPage() {
   const { user } = await getUser();
@@ -9,10 +10,12 @@ export default async function ImagesPage() {
 
   const images = await getImagesByUserId(user.id);
 
+  useAssetStore.getState().setAssets(images);
+
   return (
     <>
-      <ImageUploadSection />
-      <ImageListSection images={images} />
+      <AssetsUploadSection />
+      <AssetsListSection />
     </>
   );
 }

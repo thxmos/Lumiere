@@ -9,16 +9,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { UploadIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-
-/*
- Saving as unknown type in blob
- File type allow list? ie. jpg, png, mp4, etc.
-*/
+import { useAssetStore } from "@/stores/assets";
 
 export const ImageUploadForm = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState<string | null>(null);
+  const setAssets = useAssetStore((state) => state.setAssets);
 
   async function handleImageChange(newImage: string | null): Promise<void> {
     setImage(newImage);
@@ -36,12 +33,15 @@ export const ImageUploadForm = () => {
     formData.append("file", file);
 
     try {
-      await uploadProductImage(formData, {
+      const uploadedImage = await uploadProductImage(formData, {
         url: image,
         title,
         description,
       });
       toast.success("Image uploaded successfully");
+
+      setAssets([uploadedImage, ...useAssetStore.getState().assets]);
+
       resetForm();
     } catch (error) {
       toast.error("Failed to upload image");
@@ -58,14 +58,6 @@ export const ImageUploadForm = () => {
     <form onSubmit={handleSubmit} className="flex gap-4">
       <div className="flex flex-col gap-2 items-center">
         <ImageUpload onImageChange={handleImageChange} size="lg" />
-        {/*
-        <p className="text-sm text-muted-foreground">
-          <span className="font-bold">Type:</span> Image
-        </p>
-        <p className="text-sm text-muted-foreground">
-          <span className="font-bold">Size:</span> 10MB
-        </p>
-        */}
       </div>
       <div className="flex flex-col gap-2 justify-between w-full">
         <div className="flex flex-col gap-2">
@@ -83,7 +75,6 @@ export const ImageUploadForm = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        {/* Make this in card footer*/}
         <Button type="submit" className="flex gap-2 mt-2 self-end">
           <UploadIcon className="w-4 h-4" />
           Upload

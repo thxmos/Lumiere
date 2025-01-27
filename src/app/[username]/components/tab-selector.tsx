@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { LinksTab } from "./links.tab";
 import type { LinkDtoWithId } from "@/types/links";
-import type { ThemeNoId } from "@/types/theme";
+import type { ThemeDto, ThemeNoId } from "@/types/theme";
+import { ShowDatesTab } from "./show-dates.tab";
 
 export function TabSelector({
   links,
@@ -55,8 +56,8 @@ export function TabSelector({
         */}
       </div>
       {activeTab === "links" && <LinksTab links={links} theme={theme} />}
+      {/* {activeTab === "show-dates" && <ShowDatesTab theme={theme as ThemeNoId} />} */}
       {/* Uncomment these when ready to implement
-      {activeTab === "showDates" && <ShowDates theme={theme} />}
       {activeTab === "merch" && <MerchTab theme={theme} />}
       */}
     </div>

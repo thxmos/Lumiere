@@ -9,6 +9,7 @@ import {
   Wrench,
   User,
   ImageIcon,
+  BarChart,
 } from "lucide-react";
 
 const iconStyle = "mr-2 h-4 w-4";
@@ -50,15 +51,17 @@ export const DASHBOARD_TABS: Tab[] = [
     label: "QR Generator",
     icon: <QrCodeIcon className={iconStyle} />,
   },
-  // {
-  //   key: "metrics",
-  //   label: "Metrics",
-  //   icon: <BarChart className={iconStyle} />,
-  // },
+
   {
     key: "products",
     label: "Products ⭐",
     icon: <ShoppingBag className={iconStyle} />,
+    userRole: USER_ROLES.ADMIN,
+  },
+  {
+    key: "analytics",
+    label: "Analytics ⭐",
+    icon: <BarChart className={iconStyle} />,
     userRole: USER_ROLES.ADMIN,
   },
   // {
