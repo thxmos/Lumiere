@@ -11,6 +11,9 @@ export type QRCodeDto = {
   url: string;
   title: string;
   userId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  scans: number;
 };
 
 // export type QRCodeDto = Omit<QRCode, "id">;

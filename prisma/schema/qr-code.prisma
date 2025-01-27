@@ -4,7 +4,7 @@ model QRCode {
   url String
   userId String
   user User @relation("UserQRCodes", fields: [userId], references: [id])
-
+  scans Int @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt @default(now())
 }

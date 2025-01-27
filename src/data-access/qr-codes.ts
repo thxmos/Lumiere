@@ -10,6 +10,9 @@ function toDtoMapper(qrCode: QRCode): QRCodeDto {
     url: qrCode.url,
     title: qrCode.title || "",
     userId: qrCode.userId,
+    scans: qrCode.scans,
+    createdAt: qrCode.createdAt,
+    updatedAt: qrCode.updatedAt,
   };
 }
 

@@ -12,12 +12,6 @@ import { deleteQRCodeAction } from "./actions";
 import QRModal from "./qr-modal";
 import type { QRCodeDto } from "@/types/qr-codes";
 
-/*
-TODO:
-- click on card to open a big modal with the QR code
-- add a button to download the QR code image
-*/
-
 export const QRCodeCard = ({
   qrCode,
   index,
@@ -51,19 +45,19 @@ export const QRCodeCard = ({
     <>
       <Card
         key={qrCode.id}
-        className="flex flex-col gap-2 bg-card border-secondary hover:border-primary transition-all"
+        className="group flex flex-col gap-2 bg-card border-secondary hover:border-primary transition-all duration-300"
       >
         <div className="flex gap-16 p-4 items-center justify-between">
           <div className="flex gap-4 items-center">
-            <Label className="text-lg font-bold text-primary">
+            <Label className="text-lg font-bold text-secondary group-hover:text-primary transition-all duration-300">
               {index + 1}
             </Label>
             <div
-              className="relative w-[100px] h-[100px] border border-primary cursor-pointer"
+              className="relative w-[100px] h-[100px] border border-secondary group-hover:border-primary transition-all duration-300 cursor-pointer"
               onClick={handleCardClick}
             >
               <Image
-                src={generateQRCode(qrCode.url)}
+                src={generateQRCode(qrCode.url) || "/placeholder.svg"}
                 alt="Generated QR Code"
                 width={100}
                 height={100}
@@ -71,7 +65,10 @@ export const QRCodeCard = ({
               />
             </div>
             <div className="flex flex-col gap-2">
-              <h3 className="text-lg font-bold text-primary">
+              <h3
+                className="text-lg font-bold text-secondary group-hover:text-primary transition-all duration-300 cursor-pointer"
+                onClick={() => setIsQRModalOpen(true)}
+              >
                 {qrCode.title || "Untitled"}
               </h3>
               <Link href={qrCode.url} target="_blank">

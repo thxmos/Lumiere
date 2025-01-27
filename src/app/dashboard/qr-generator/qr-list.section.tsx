@@ -12,14 +12,16 @@ export const QRListSection = () => {
       title="QR Codes"
       description={`List of QR codes you generated (${qrCodes.length}/10)`}
     >
-      {qrCodes.map((qrCode, index) => (
-        <QRCodeCard
-          key={qrCode.id}
-          qrCode={qrCode}
-          index={index}
-          removeQRCode={removeQRCode}
-        />
-      ))}
+      {qrCodes
+        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+        .map((qrCode, index) => (
+          <QRCodeCard
+            key={qrCode.id}
+            qrCode={qrCode}
+            index={index}
+            removeQRCode={removeQRCode}
+          />
+        ))}
     </DashboardCard>
   );
 };
