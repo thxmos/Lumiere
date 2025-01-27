@@ -10,6 +10,7 @@ import {
   User,
   ImageIcon,
   BarChart,
+  BellIcon,
 } from "lucide-react";
 
 const iconStyle = "mr-2 h-4 w-4";
@@ -23,6 +24,12 @@ export type Tab = {
 };
 
 export const DASHBOARD_TABS: Tab[] = [
+  {
+    key: "notifications",
+    label: "Notifications ⭐",
+    icon: <BellIcon className={iconStyle} />,
+    userRole: USER_ROLES.ADMIN,
+  },
   {
     key: "account",
     label: "Account",

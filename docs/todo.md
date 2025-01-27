@@ -19,7 +19,6 @@
 - add card shadow option
 - add background image option w upload
 - add background video option w upload
-- font family in theme editor
 
 ### Links
 
@@ -27,11 +26,11 @@
 
 ### QR Generator
 
-- hook in with zustand
-
 ### Security
 
 ### User Settings
+
+- toast settings?
 
 ### Misc
 

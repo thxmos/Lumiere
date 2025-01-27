@@ -105,7 +105,6 @@ export const QRGeneratorSection = ({
         qrCodeUrl={qrCode}
         isOpen={isQRModalOpen}
         onClose={() => setIsQRModalOpen(false)}
-        onConfirm={() => {}}
       />
     </DashboardCard>
   );

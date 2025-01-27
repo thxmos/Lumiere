@@ -76,7 +76,9 @@ export const QRCodeCard = ({
                   {qrCode.url}
                 </p>
               </Link>
-              <p className="text-sm text-muted-foreground">Scans: 0</p>
+              <p className="text-sm text-muted-foreground">
+                Scans: {qrCode.scans}
+              </p>
             </div>
           </div>
           <div className="flex justify-end p-4">

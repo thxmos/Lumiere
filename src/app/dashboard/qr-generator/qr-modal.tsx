@@ -10,7 +10,6 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { DownloadIcon, SquareArrowOutUpRight } from "lucide-react";
-import { link } from "fs";
 
 /*
 TODO:
@@ -24,7 +23,6 @@ export default function QRModal({
   linkUrl,
   isOpen,
   onClose,
-  onConfirm,
 }: {
   title: string;
   description?: string;
@@ -32,7 +30,6 @@ export default function QRModal({
   linkUrl?: string;
   isOpen: boolean;
   onClose: () => void;
-  onConfirm: () => void;
 }) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
