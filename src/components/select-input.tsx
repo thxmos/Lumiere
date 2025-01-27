@@ -12,6 +12,7 @@ interface SelectInputProps {
   placeholder: string;
   defaultValue?: string;
   onValueChange: (value: string) => void;
+  isFontsSelect?: boolean;
 }
 
 export function SelectInput({
@@ -19,15 +20,27 @@ export function SelectInput({
   placeholder,
   defaultValue,
   onValueChange,
+  isFontsSelect = false,
 }: SelectInputProps) {
   return (
     <Select onValueChange={onValueChange} defaultValue={defaultValue}>
       <SelectTrigger>
-        <SelectValue placeholder={placeholder} />
+        <SelectValue
+          placeholder={placeholder}
+          style={
+            isFontsSelect && defaultValue
+              ? { fontFamily: defaultValue }
+              : undefined
+          }
+        />
       </SelectTrigger>
       <SelectContent>
         {options.map((option) => (
-          <SelectItem key={option.value} value={option.value}>
+          <SelectItem
+            key={option.value}
+            value={option.value}
+            style={isFontsSelect ? { fontFamily: option.value } : undefined}
+          >
             {option.label}
           </SelectItem>
         ))}

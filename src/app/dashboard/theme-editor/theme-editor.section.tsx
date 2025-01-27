@@ -134,6 +134,7 @@ export function ThemeEditorSection({
                     placeholder="Select font family"
                     onValueChange={onChange}
                     defaultValue={value || FONTS[0].value}
+                    isFontsSelect
                   />
                 )}
               />
