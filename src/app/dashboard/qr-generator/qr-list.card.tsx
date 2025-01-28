@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
-import { generateQRCode } from "./utils";
+import { generateQRCode2 } from "./utils";
 import { Label } from "@/components/ui/label";
 import { X } from "lucide-react";
 import { toast } from "sonner";
@@ -55,7 +55,7 @@ export const QRCodeCard = ({
               onClick={handleCardClick}
             >
               <Image
-                src={generateQRCode(qrCode.url) || "/placeholder.svg"}
+                src={generateQRCode2(qrCode.id) || "/placeholder.svg"}
                 alt="Generated QR Code"
                 width={100}
                 height={100}
@@ -98,8 +98,8 @@ export const QRCodeCard = ({
         />
       </Card>
       <QRModal
-        title={qrCode.url}
-        qrCodeUrl={generateQRCode(qrCode.url)}
+        title={qrCode.title || "Untitled"}
+        qrCodeUrl={generateQRCode2(qrCode.id)}
         linkUrl={qrCode.url}
         isOpen={isQRModalOpen}
         onClose={() => setIsQRModalOpen(false)}
