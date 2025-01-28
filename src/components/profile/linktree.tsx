@@ -15,6 +15,7 @@ import { COUNTRIES } from "@/constants/countries";
 import { TabSelector } from "@/app/[username]/components/tab-selector";
 import { SOCIAL_PLATFORMS } from "@/constants/social-media";
 import { cn } from "@/utils/utils";
+import { DEFAULT_FONT } from "@/constants/fonts";
 
 interface Props {
   isPreview?: boolean;
@@ -64,9 +65,11 @@ const LinkTree: React.FC<Props> = ({
 
   return (
     <div
-      className="relative min-h-screen overflow-hidden"
+      className={cn("relative overflow-hidden", {
+        "min-h-screen": !isPreview,
+      })}
       style={{
-        fontFamily: localTheme?.fontFamily || "system-ui, sans-serif",
+        fontFamily: localTheme?.fontFamily || DEFAULT_FONT,
       }}
     >
       {localTheme?.backgroundType === "color" && (
@@ -95,7 +98,12 @@ const LinkTree: React.FC<Props> = ({
         <BackgroundVideo bgVideo={localTheme?.videoUrl} />
       )}
 
-      <div className="relative z-10 min-h-screen  px-4 py-16 flex flex-col">
+      <div
+        className={cn("relative z-10 px-4 py-16 flex flex-col", {
+          "min-h-screen": !isPreview,
+          "h-[calc(65vh)]": isPreview,
+        })}
+      >
         <div className="max-w-md mx-auto flex-grow">
           {/* Profile Info */}
           <div className="flex items-center mb-6 justify-center">
