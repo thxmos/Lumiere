@@ -1,9 +1,11 @@
 import { prisma } from "@/utils/prisma";
+import { type BrowserData } from "@/types/clicks";
 
-export const createClick = async (linkId: string) => {
+export const createClick = async (linkId: string, data: BrowserData) => {
   await prisma.click.create({
     data: {
       linkId,
+      ...data,
     },
   });
 };

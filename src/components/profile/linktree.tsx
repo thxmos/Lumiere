@@ -149,7 +149,11 @@ const LinkTree: React.FC<Props> = ({
           </div>
 
           {/* Tab Selector */}
-          <TabSelector links={localLinks} theme={localTheme!} />
+          <TabSelector
+            links={localLinks}
+            theme={localTheme!}
+            isPreview={isPreview}
+          />
 
           {/* Social Links */}
           <div className="mt-8 flex justify-center space-x-4">

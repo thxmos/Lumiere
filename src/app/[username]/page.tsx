@@ -8,8 +8,10 @@ import { LinkDtoWithId } from "@/types/links";
 
 export default async function ArtistPage({
   params,
+  searchParams,
 }: {
   params: { username: string };
+  searchParams: { preview: string };
 }) {
   const user = await getUserByUsername(params.username);
   if (!user) {
@@ -21,7 +23,7 @@ export default async function ArtistPage({
 
   return (
     <LinkTree
-      isPreview={false}
+      isPreview={searchParams.preview === "true"}
       initialLinks={links as LinkDtoWithId[]}
       initialTheme={theme}
       user={user}

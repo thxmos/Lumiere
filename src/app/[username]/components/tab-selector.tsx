@@ -9,9 +9,11 @@ import { ShowDatesTab } from "./show-dates.tab";
 export function TabSelector({
   links,
   theme,
+  isPreview,
 }: {
   links: LinkDtoWithId[];
   theme: ThemeNoId;
+  isPreview: boolean;
 }) {
   const [activeTab, setActiveTab] = useState("links");
 
@@ -55,7 +57,9 @@ export function TabSelector({
         </button>
         */}
       </div>
-      {activeTab === "links" && <LinksTab links={links} theme={theme} />}
+      {activeTab === "links" && (
+        <LinksTab links={links} theme={theme} isPreview={isPreview} />
+      )}
       {/* {activeTab === "show-dates" && <ShowDatesTab theme={theme as ThemeNoId} />} */}
       {/* Uncomment these when ready to implement
       {activeTab === "merch" && <MerchTab theme={theme} />}

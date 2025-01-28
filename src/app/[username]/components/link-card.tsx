@@ -6,10 +6,7 @@ import { PLACEHOLDER_IMG } from "@/constants/images";
 import type { LinkDtoWithId } from "@/types/links";
 import type { ThemeNoId } from "@/types/theme";
 import { updateLinkClicked } from "../actions";
-
-/*
-  add mobile styling to make it a push button animation
-*/
+import type { BrowserData } from "@/types/clicks";
 
 export function LinkCard({
   id,
@@ -17,7 +14,8 @@ export function LinkCard({
   url,
   imageUrl,
   theme,
-}: LinkDtoWithId & { theme: ThemeNoId }) {
+  isPreview = false,
+}: LinkDtoWithId & { theme: ThemeNoId; isPreview: boolean }) {
   const [isPending, startTransition] = useTransition();
 
   const cardStyle = {
@@ -28,6 +26,7 @@ export function LinkCard({
     borderRadius: theme.borderRadius ? `${theme.borderRadius}px` : "4px",
     fontFamily: theme.fontFamily,
     cursor: "pointer",
+    transition: "transform 0.2s ease-in-out, opacity 0.2s ease-in-out", // Add transition for smooth animation
   };
 
   const titleStyle = {
@@ -37,7 +36,22 @@ export function LinkCard({
 
   const handleClick = () => {
     startTransition(async () => {
-      await updateLinkClicked(id);
+      if (!isPreview) {
+        const browserData = {
+          userAgent: navigator.userAgent,
+          language: navigator.language,
+          screenWidth: window.screen.width,
+          screenHeight: window.screen.height,
+          referrer: document.referrer || "",
+          browser: navigator.userAgent,
+          browserVersion: navigator.appVersion,
+          operatingSystem: navigator.platform,
+          deviceType: navigator.userAgent,
+          screenResolution: `${window.screen.width}x${window.screen.height}`,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        };
+        await updateLinkClicked(id, browserData as Partial<BrowserData>);
+      }
       window.open(url, "_blank");
     });
   };
@@ -45,7 +59,9 @@ export function LinkCard({
   return (
     <button
       onClick={handleClick}
-      className={`flex items-center p-2 w-full text-left transition-all hover:opacity-80 hover:scale-105 ${isPending ? "opacity-50" : ""}`}
+      className={`flex items-center p-2 w-full text-left transition-all hover:opacity-80 hover:scale-105 active:scale-95 ${
+        isPending ? "opacity-50" : ""
+      }`}
       style={cardStyle}
       disabled={isPending}
     >

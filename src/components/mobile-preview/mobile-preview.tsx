@@ -29,7 +29,7 @@ const MobilePreview: React.FC<Props> = ({ children, username }) => {
           </div>
         </div>
         <Link
-          href={`/${username}`}
+          href={`/${username}?preview=true`}
           className="text-base underline font-bold hover:text-primary transition-all flex items-center gap-2"
         >
           Preview
