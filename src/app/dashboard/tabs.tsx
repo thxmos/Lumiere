@@ -23,6 +23,7 @@ export type Tab = {
   mobilePreview?: boolean;
 };
 
+//TODO: Rename key to path or something
 export const DASHBOARD_TABS: Tab[] = [
   {
     key: "notifications",

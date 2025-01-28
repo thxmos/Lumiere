@@ -1,4 +1,5 @@
-import { Permissions, ROLES, RolesWithPermissions, User } from "@/types/abac";
+import type { Permissions, RolesWithPermissions, User } from "@/types/access";
+import { ROLES } from "@/types/access";
 
 /*
 Rough ABAC implementation helper method

@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
-import { DASHBOARD_TABS } from "./tabs";
+import { getFirstTab } from "./actions";
 
-export default function Dashboard() {
-  redirect(`/dashboard/${DASHBOARD_TABS[0].key}`);
+export default async function Dashboard() {
+  const firstTab = await getFirstTab();
+  redirect(`/dashboard/${firstTab?.key}`);
 }

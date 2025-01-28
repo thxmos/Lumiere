@@ -55,7 +55,7 @@ export default function DropdownMenu({ user }: Props) {
       >
         <DropdownMenuLabel className="flex items-center justify-between">
           <span className="flex flex-col">
-            My Account
+            {user.username}
             <span className="text-xs text-muted-foreground">{user.email}</span>
           </span>
           <User className="text-sm" />
@@ -79,7 +79,7 @@ export default function DropdownMenu({ user }: Props) {
               {
                 <Link
                   href={item.href}
-                  className="flex items-center justify-between w-full"
+                  className="flex items-center justify-between w-full cursor-pointer"
                   onClick={item.onClick ?? closeDropdown}
                   role="menuitem"
                 >
