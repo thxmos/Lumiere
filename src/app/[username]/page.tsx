@@ -1,6 +1,6 @@
-import { getUserByUsername } from "@/actions/user.actions";
+import { getUserByUsername } from "@/actions/user";
 import { getActiveLinksByUserId } from "./actions";
-import { getThemeAction } from "@/actions/theme.actions";
+import { getThemeAction } from "@/actions/theme";
 import React from "react";
 import { redirect } from "next/navigation";
 import LinkTree from "@/components/profile/linktree";

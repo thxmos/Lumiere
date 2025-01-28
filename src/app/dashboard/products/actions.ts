@@ -1,6 +1,6 @@
 "use server";
 
-import { isValidSession } from "@/actions/session.actions";
+import { isValidSession } from "@/actions/session";
 import { createProduct, getProductsByUserId } from "@/data-access/product2";
 import type { CreateProduct2Dto } from "@/types/product2";
 

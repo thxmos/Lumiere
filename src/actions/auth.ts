@@ -12,7 +12,7 @@ import { googleOAuthClient } from "@/utils/googleOauth";
 
 import { createStripeCustomer } from "@/data-access/stripe.customers";
 import { createUser, getUserByEmail, updateUserById } from "@/data-access/user";
-import { sendVerifyEmail } from "./email.actions";
+import { sendVerifyEmail } from "./email";
 import { hash } from "@/utils/crypto";
 import { getPasswordResetTokenByToken } from "@/data-access/password-reset-token";
 import { deleteSession } from "@/data-access/sessions";

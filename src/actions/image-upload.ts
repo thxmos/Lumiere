@@ -1,8 +1,8 @@
 "use server";
 
 import { createImage, CreateImageDto, deleteImage } from "@/data-access/images";
-import { getUser } from "./session.actions";
-import { updateUserAvatar } from "./user.actions";
+import { getUser } from "./session";
+import { updateUserAvatar } from "./user";
 import { put, del } from "@vercel/blob";
 
 /*

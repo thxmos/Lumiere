@@ -1,5 +1,5 @@
 import { getUserById } from "@/data-access/user";
-import { getUser } from "@/actions/session.actions";
+import { getUser } from "@/actions/session";
 import { getLinksWithNumOfClicks } from "./actions";
 import { SocialMediaSection } from "./social-media.section";
 import { LinksSection } from "./links.section";

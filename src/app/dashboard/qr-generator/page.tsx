@@ -1,4 +1,4 @@
-import { getUser } from "@/actions/session.actions";
+import { getUser } from "@/actions/session";
 import { QRListSection } from "./qr-list.section";
 import { QRGeneratorSection } from "./qr-generator.section";
 import { getQRCodesByUserIdAction } from "./actions";

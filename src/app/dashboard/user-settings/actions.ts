@@ -1,6 +1,6 @@
 "use server";
 
-import { isValidSession } from "@/actions/session.actions";
+import { isValidSession } from "@/actions/session";
 import { updateUserById } from "@/data-access/user";
 import { User } from "@prisma/client";
 

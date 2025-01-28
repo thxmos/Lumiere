@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/card";
 import { AlertCircle } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { resetPassword } from "@/actions/auth.action";
+import { resetPassword } from "@/actions/auth";
 
 export default function ResetPasswordForm() {
   const [status, setStatus] = useState<{

@@ -1,6 +1,6 @@
 "use server";
 
-import { getUser, isValidSession } from "@/actions/session.actions";
+import { getUser, isValidSession } from "@/actions/session";
 import { getClicksByLinkId } from "@/data-access/clicks";
 import { deleteImage } from "@/data-access/images";
 import {

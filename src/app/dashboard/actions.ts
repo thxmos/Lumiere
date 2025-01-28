@@ -1,6 +1,6 @@
 "use server";
 
-import { getUser } from "@/actions/session.actions";
+import { getUser } from "@/actions/session";
 import { DASHBOARD_TABS } from "./tabs";
 
 export const getFirstTab = async () => {

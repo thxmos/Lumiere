@@ -1,4 +1,4 @@
-import { isValidSession } from "@/actions/session.actions";
+import { isValidSession } from "@/actions/session";
 
 export const ValidateSessionOrThrow = async () => {
   const isSessionValid = await isValidSession();

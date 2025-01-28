@@ -1,4 +1,4 @@
-import { getUser } from "@/actions/session.actions";
+import { getUser } from "@/actions/session";
 import { AssetsUploadSection } from "./assets-upload.section";
 import { getImagesByUserId } from "@/data-access/images";
 import AssetsListSection from "./assets-list.section";

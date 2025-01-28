@@ -1,4 +1,4 @@
-import { getUser } from "@/actions/session.actions";
+import { getUser } from "@/actions/session";
 import { CreateQRCodeDto } from "@/types/qr-codes";
 import { prisma } from "@/utils/prisma";
 import { QRCode } from "@prisma/client";

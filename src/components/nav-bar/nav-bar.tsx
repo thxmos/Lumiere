@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Trees } from "lucide-react";
 import { APP_NAME } from "@/constants/app";
 import DropdownMenu from "./dropdown-menu";
-import { getUser } from "@/actions/session.actions";
+import { getUser } from "@/actions/session";
 
 const Navbar = async () => {
   const { user } = await getUser();

@@ -1,4 +1,4 @@
-import { getUser } from "@/actions/session.actions";
+import { getUser } from "@/actions/session";
 import { getUserById } from "@/data-access/user";
 import UserSettingsSection from "./user-settings.section";
 import { UserThemeSection } from "./user-theme.section";

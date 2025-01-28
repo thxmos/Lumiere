@@ -3,7 +3,7 @@
 import { prisma } from "@/utils/prisma";
 import { del } from "@vercel/blob";
 import { getUserById, updateUserById } from "@/data-access/user";
-import { getUser } from "./session.actions";
+import { getUser } from "./session";
 
 export const updateUserAvatar = async (url: string) => {
   const { user } = await getUser();

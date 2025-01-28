@@ -4,7 +4,7 @@ import { createStripeCheckoutSession } from "@/data-access/stripe.checkout.sessi
 import { getStripeCustomer } from "@/data-access/stripe.customers";
 import { getUserById } from "@/data-access/user";
 import { Price } from "@prisma/client";
-import { getUser } from "./session.actions";
+import { getUser } from "./session";
 
 export type Subscription = {
   id: string;

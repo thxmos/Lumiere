@@ -2,7 +2,7 @@ import TabSwitcher from "./components/tab-switcher";
 import SignInForm from "./components/sign-in-form";
 import SignUpForm from "./components/sign-up-form";
 import { redirect } from "next/navigation";
-import { getUser } from "@/actions/session.actions";
+import { getUser } from "@/actions/session";
 import Navbar from "@/components/nav-bar/nav-bar";
 
 const AuthPage = async () => {
