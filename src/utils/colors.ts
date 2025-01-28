@@ -1,9 +1,25 @@
 import ColorScheme from "color-scheme";
 
+export enum ColorSchemeType {
+  MONO = "mono",
+  CONTRAST = "contrast",
+  TRIADE = "triade",
+  TETRADE = "tetrade",
+  ANALOGIC = "analogic",
+}
+
+export enum ColorVariation {
+  PASTEL = "pastel",
+  SOFT = "soft",
+  LIGHT = "light",
+  HARD = "hard",
+  PALE = "pale",
+}
+
 export function generateColorSchemeFromHex(
   hex: string,
-  scheme: string,
-  variation: string,
+  scheme: ColorSchemeType,
+  variation: ColorVariation,
   numResults: number = 12,
 ): string[] {
   const [r, g, b] = hexToRgb(hex);
@@ -15,8 +31,8 @@ export function generateColorSchemeFromHex(
 
 function generateColorSchemeFromHue(
   hue: number,
-  scheme: string,
-  variation: string,
+  scheme: ColorSchemeType,
+  variation: ColorVariation,
   numResults: number = 12,
 ): string[] {
   const colorScheme = new ColorScheme()

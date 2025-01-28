@@ -75,7 +75,7 @@ export const QRCodeCard = ({
                 </p>
               </Link>
               <p className="text-sm text-muted-foreground">
-                Scans: {qrCode.scans}
+                Scans: {qrCode.scans || 0}
               </p>
             </div>
           </div>

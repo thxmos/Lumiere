@@ -26,9 +26,23 @@ export async function createQRCode(data: CreateQRCodeDto): Promise<QRCodeDto> {
   }
 }
 
+export async function getQRCodeById(id: string): Promise<QRCodeDto> {
+  const qrCode = await prisma.qRCode.findUnique({ where: { id } });
+  if (!qrCode) throw new Error("QR code not found");
+  return toDtoMapper(qrCode);
+}
+
 export async function getQRCodesByUserId(userId: string): Promise<QRCodeDto[]> {
   const qrCodes = await prisma.qRCode.findMany({ where: { userId } });
   return qrCodes.map(toDtoMapper);
+}
+
+export async function updateQRCode(
+  id: string,
+  data: QRCodeDto,
+): Promise<QRCodeDto> {
+  const updatedQRCode = await prisma.qRCode.update({ where: { id }, data });
+  return toDtoMapper(updatedQRCode);
 }
 
 export async function deleteQRCode(id: string): Promise<void> {

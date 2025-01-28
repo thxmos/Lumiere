@@ -128,7 +128,7 @@ const LinkTree: React.FC<Props> = ({
                 >
                   {user.username}
                 </h1>
-                {user.country && (
+                {user.country && user.displayCountry && (
                   <span className="ml-2">
                     {
                       COUNTRIES.find((country) => country.code === user.country)

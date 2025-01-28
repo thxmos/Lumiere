@@ -17,6 +17,8 @@ export default function AssetsListSection({
     setAssets(initialAssets);
   }, [initialAssets]);
 
+  console.log(assets);
+
   return (
     <DashboardCard
       title="Uploaded Assets"

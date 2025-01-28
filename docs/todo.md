@@ -81,6 +81,8 @@
 
 ### Refactors
 
+- change default shadcn image component to show no image icon if no image is provided
+
 - Toast Helper methods with defaults ie. 2-3 second
 
 - make sure all forms have button directly attached, minimize need for e.preventDefault()

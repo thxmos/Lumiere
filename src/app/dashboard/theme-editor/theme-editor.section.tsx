@@ -18,6 +18,11 @@ import { useThemeStore } from "@/stores/themes";
 import { Switch } from "@/components/ui/switch";
 import { WHITE } from "@/constants/colors";
 
+/*
+TODO: ThemePrimaryColor should be primaryColor
+TODO: Pass in Color to ColorSelect for more colors
+*/
+
 const BACKGROUND_TYPES = [
   { label: "Colored Background", value: "color" },
   { label: "Image Background", value: "image" },

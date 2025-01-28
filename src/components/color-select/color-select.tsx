@@ -12,16 +12,16 @@ interface ColorSelectProps {
 }
 
 const sizeClasses = {
-  sm: "w-12 h-12 min-w-12 min-h-12",
-  md: "w-16 h-16 min-w-16 min-h-16",
-  lg: "w-20 h-20 min-w-20 min-h-20",
+  sm: "w-8 h-8 min-w-8 min-h-8",
+  md: "w-12 h-12 min-w-12 min-h-12",
+  lg: "w-16 h-16 min-w-16 min-h-16",
 };
 
 export function ColorSelect({
   value,
   themePrimaryColor,
   onChange,
-  size = "sm",
+  size = "lg",
 }: ColorSelectProps) {
   const handleColorChange = (color: string) => {
     onChange(color);
@@ -44,10 +44,9 @@ export function ColorSelect({
       />
       <div className="flex-grow">
         <ColorPalette
-          color={value}
           themePrimaryColor={themePrimaryColor}
           onSelectColor={handleColorChange}
-          sizeClasses={sizeClasses[size]}
+          // sizeClasses={sizeClasses[size]}
         />
       </div>
     </div>

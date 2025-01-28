@@ -1,24 +1,36 @@
 import type React from "react";
 import { Button } from "../ui/button";
 import { BLACK, WHITE } from "@/constants/colors";
-import { generateColorSchemeFromHex } from "@/utils/colors";
+import {
+  ColorSchemeType,
+  ColorVariation,
+  generateColorSchemeFromHex,
+} from "@/utils/colors";
 
 interface ColorPaletteProps {
-  color: string;
   themePrimaryColor: string;
   onSelectColor: (color: string) => void;
-  sizeClasses: string;
 }
 
+const sizeClasses = {
+  sm: "w-12 h-12 min-w-12 min-h-12",
+  md: "w-16 h-16 min-w-16 min-h-16",
+  lg: "w-20 h-20 min-w-20 min-h-20",
+};
+
 export function ColorPalette({
-  color,
   themePrimaryColor = "#000000",
   onSelectColor,
-  sizeClasses,
+  // sizeClasses,
 }: ColorPaletteProps) {
   const scheme = [
     themePrimaryColor,
-    ...generateColorSchemeFromHex(themePrimaryColor, "triade", "light", 7),
+    ...generateColorSchemeFromHex(
+      themePrimaryColor,
+      ColorSchemeType.TRIADE,
+      ColorVariation.SOFT,
+      7,
+    ),
     BLACK,
     WHITE,
   ];
@@ -32,19 +44,35 @@ export function ColorPalette({
     onSelectColor(color);
   };
 
+  const halfLength = scheme.length / 2;
+
   return (
-    <div className="flex flex-wrap gap-2">
-      {scheme.map((schemeColor, index) => (
-        <Button
-          key={index}
-          className={`${sizeClasses} rounded-md overflow-hidden border border-primary`}
-          onClick={(e) => handleSelectColor(e, schemeColor)}
-          aria-label={`Select color ${schemeColor}`}
-          style={{ backgroundColor: schemeColor }}
-        >
-          <span className="sr-only">Select color {schemeColor}</span>
-        </Button>
-      ))}
+    <div className="flex flex-col gap-2">
+      <div className="flex gap-2">
+        {scheme.slice(0, halfLength).map((schemeColor, index) => (
+          <Button
+            className={`${sizeClasses} rounded-md overflow-hidden border border-primary`}
+            onClick={(e) => handleSelectColor(e, schemeColor)}
+            aria-label={`Select color ${schemeColor}`}
+            style={{ backgroundColor: schemeColor }}
+          >
+            <span className="sr-only">Select color {schemeColor}</span>
+          </Button>
+        ))}
+      </div>
+      <div className="flex gap-2">
+        {scheme.slice(halfLength).map((schemeColor, index) => (
+          <Button
+            key={index}
+            className={`${sizeClasses} rounded-md overflow-hidden border border-primary`}
+            onClick={(e) => handleSelectColor(e, schemeColor)}
+            aria-label={`Select color ${schemeColor}`}
+            style={{ backgroundColor: schemeColor }}
+          >
+            <span className="sr-only">Select color {schemeColor}</span>
+          </Button>
+        ))}
+      </div>
     </div>
   );
 }
