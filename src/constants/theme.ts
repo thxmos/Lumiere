@@ -2,6 +2,7 @@ import type { ThemeNoId } from "@/types/theme";
 import { BLACK } from "@/constants/colors";
 import { WHITE } from "@/constants/colors";
 
+//TODO: Clean up shadcn themes, associate each theme with the color below and map through where needed
 export const SHADCN_THEMES = [
   "light",
   "dark",
@@ -29,6 +30,7 @@ export const THEMES = [
 
 export const DEFAULT_THEME = {
   primaryColor: WHITE,
+  secondaryColor: "#3f1f4a",
   fontFamily: "Arial",
   fontWeight: 400,
   fontColor: BLACK,
@@ -40,6 +42,7 @@ export const DEFAULT_THEME = {
   backgroundImageUrl: "",
   videoUrl: "",
   cardBackgroundColor: WHITE,
+  cardTextColor: BLACK,
   iconColor: WHITE,
   borderColor: BLACK,
   borderRadius: 0,

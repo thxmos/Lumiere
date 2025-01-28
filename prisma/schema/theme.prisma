@@ -4,6 +4,7 @@ model Theme {
   user User @relation("UserTheme", fields: [userId], references: [id])
 
   primaryColor String @db.Char(7) @default("#3f434a")
+  secondaryColor String @db.Char(7) @default("#3f1f4a")
 
   fontFamily String // TODO: make FontFamily enum
   fontWeight Int
@@ -16,6 +17,7 @@ model Theme {
   borderStyle String
 
   cardBackgroundColor String? @db.Char(7)
+  cardTextColor String? @db.Char(7)
   iconColor String? @db.Char(7)
 
   backgroundType String @default("color") // "color" | "image" | "video"

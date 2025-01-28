@@ -21,6 +21,7 @@ import { WHITE } from "@/constants/colors";
 /*
 TODO: ThemePrimaryColor should be primaryColor
 TODO: Pass in Color to ColorSelect for more colors
+TODO: Seperate into section and form components
 */
 
 const BACKGROUND_TYPES = [
