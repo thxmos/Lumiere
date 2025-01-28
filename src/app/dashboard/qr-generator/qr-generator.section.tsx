@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import { toast } from "sonner";
 import { createQRCodeAction } from "./actions";
-import { generateQRCode } from "./utils";
+import { generateQRCode, generateQRCode2 } from "./utils";
 import { PLACEHOLDER_IMG } from "@/constants/images";
 import QRModal from "./qr-modal";
 import { useQRCodeStore } from "@/stores/qr-codes";
@@ -34,16 +34,12 @@ export const QRGeneratorSection = ({
   const [qrCode, setQrCode] = useState("");
   const [isQRModalOpen, setIsQRModalOpen] = useState(false);
 
-  const generateAndSetQRCode = async () => {
-    const qrCodeUrl = generateQRCode(link);
-    setQrCode(qrCodeUrl);
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       const qrCode = await createQRCodeAction(link, title, userId);
-      generateAndSetQRCode();
+      const qrCodeUrl = generateQRCode2(qrCode.id);
+      setQrCode(qrCodeUrl);
       const qrCodes = useQRCodeStore.getState().qrCodes;
       useQRCodeStore.setState({ qrCodes: [...qrCodes, qrCode] });
       toast.success("QR code generated successfully");
