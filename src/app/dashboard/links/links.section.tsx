@@ -43,10 +43,17 @@ export function LinksSection({ userLinks, user }: Props) {
 
   const onSubmit = async () => {
     try {
-      await updateUserLinksAction(links);
-      toast.success("Links updated successfully", {
-        duration: 2000,
-      });
+      const updatedLinks = await updateUserLinksAction(links);
+      if (updatedLinks) {
+        setLinks(updatedLinks);
+        toast.success("Links updated successfully", {
+          duration: 2000,
+        });
+      } else {
+        toast.error("Failed to update links", {
+          duration: 2000,
+        });
+      }
     } catch (error) {
       toast.error("Failed to update links", {
         duration: 2000,
@@ -65,7 +72,7 @@ export function LinksSection({ userLinks, user }: Props) {
         userId: user.id,
         active: false,
         index: links.length,
-        id: uuidv4(),
+        id: "new-" + uuidv4(), //TODO: SLOPPPPPPP
       } as LinkDto,
     ]);
   };

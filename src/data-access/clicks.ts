@@ -7,7 +7,7 @@ export const createClick = async (linkId: string, data: BrowserData) => {
     data: {
       linkId,
       ...data,
-      country: data.country as Country,
+      country: data.country as Country, // TODO: fix this
     },
   });
 };

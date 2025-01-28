@@ -12,6 +12,7 @@ import {
   updateLinks,
 } from "@/data-access/links";
 import { updateUserById, UserDto } from "@/data-access/user";
+import { useLinksStore } from "@/stores/links";
 import { ValidateSessionOrThrow } from "@/utils/sessions";
 import { Country } from "@prisma/client";
 
@@ -47,27 +48,21 @@ export async function updateUserLinksAction(links: Partial<LinkDto>[]) {
   const userId = user.user?.id!;
 
   const createLinksFiltered = links
-    ?.filter((link, index) => {
-      if (!link.id) {
-        return {
-          ...link,
-          index,
-        };
-      }
-    })
-    .map((link) => ({
+    ?.filter((link) => link.id?.includes("new-"))
+    .map((link, index) => ({
+      id: link.id?.slice(4) || "",
       title: link.title,
       url: link.url,
       imageUrl: link.imageUrl,
       userId: userId,
-      index: link.index,
       active: link.active,
-      id: link.id,
+      index,
     })) as CreateLinkDto[];
+
   await createLinks(createLinksFiltered);
 
   const updateLinksFiltered = links
-    ?.filter((link) => link.id)
+    ?.filter((link) => !link.id?.includes("new-"))
     .map((link) => ({
       title: link.title,
       url: link.url,
@@ -78,6 +73,19 @@ export async function updateUserLinksAction(links: Partial<LinkDto>[]) {
       index: link.index,
     })) as LinkDto[];
   await updateLinks(updateLinksFiltered);
+
+  // TODO: clean up this disgusting mess
+  // Return the updated links for client components to update store
+  const result = links.map((link, index) => ({
+    id: link.id?.includes("new-") ? link.id?.slice(4) : link.id,
+    title: link.title,
+    url: link.url,
+    imageUrl: link.imageUrl,
+    userId: userId,
+    active: link.active,
+    index,
+  })) as LinkDto[];
+  return result;
 }
 
 export async function getLinksWithNumOfClicks(userId: string) {
