@@ -3,8 +3,8 @@ model Theme {
   userId String @unique
   user User @relation("UserTheme", fields: [userId], references: [id])
 
-  primaryColor String @db.Char(7) @default("#3f434a")
-  secondaryColor String @db.Char(7) @default("#3f1f4a")
+  primaryColor String @db.Char(7) @default("#3f434a") //TODO: better default
+  secondaryColor String @db.Char(7) @default("#3f1f4a") //TODO: better default
 
   fontFamily String // TODO: make FontFamily enum
   fontWeight Int
@@ -19,8 +19,14 @@ model Theme {
   cardBackgroundColor String? @db.Char(7)
   cardTextColor String? @db.Char(7)
   iconColor String? @db.Char(7)
+  
+  shadow Boolean @default(false)
+  shadowColor String? @db.Char(7)
+  shadowBlur Int?
+  shadowOffsetX Int?
+  shadowOffsetY Int?
 
-  backgroundType String @default("color") // "color" | "image" | "video"
+  backgroundType String @default("color") // "color" | "image" | "video" //TODO: make enum
   backgroundColor String? @db.Char(7) 
   gradient Boolean @default(false)
   gradientColor String? @db.Char(7)

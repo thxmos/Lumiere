@@ -1,7 +1,7 @@
 model Click {
   id String @id @default(uuid()) @unique
   linkId String
-  socialMediaClicked SocialMedia?
+  socialPlatformClicked SocialMedia?
   link Link @relation(fields: [linkId], references: [id])
   createdAt DateTime @default(now())
 

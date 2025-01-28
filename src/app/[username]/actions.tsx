@@ -1,7 +1,7 @@
 "use server";
 
 import { getLinkById, getLinksByUserId, updateLink } from "@/data-access/links";
-import { createClick } from "@/data-access/clicks";
+import { createClick, createClickSocial } from "@/data-access/clicks";
 import { headers } from "next/headers";
 import { UAParser } from "ua-parser-js";
 import { BrowserData } from "@/types/clicks";
@@ -31,6 +31,14 @@ export const getActiveLinksByUserId = async (userId: string) => {
   return links.filter((link) => link.active);
 };
 
+export const createClickForSocialAction = async (
+  socialPlatformClicked: string,
+  clientData: Partial<BrowserData>,
+) => {
+  const clickData = await getClientData(clientData);
+  await createClickSocial(socialPlatformClicked, clickData as BrowserData);
+};
+
 export const updateLinkClicked = async (
   linkId: string,
   clientData: Partial<BrowserData>,
@@ -40,6 +48,11 @@ export const updateLinkClicked = async (
   link.clicks = (link.clicks || 0) + 1;
   await updateLink(linkId, link);
 
+  const clickData = await getClientData(clientData);
+  await createClick(linkId, clickData as BrowserData);
+};
+
+export const getClientData = async (clientData: Partial<BrowserData>) => {
   const headersList = headers();
   const ip = headersList.get("x-forwarded-for")?.split(",")[0] || "Unknown";
 
@@ -73,5 +86,5 @@ export const updateLinkClicked = async (
     ...(locationData || {}),
   };
 
-  await createClick(linkId, clickData as BrowserData);
+  return clickData;
 };

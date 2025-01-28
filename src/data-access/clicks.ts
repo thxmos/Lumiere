@@ -12,6 +12,21 @@ export const createClick = async (linkId: string, data: BrowserData) => {
   });
 };
 
+export const createClickSocial = async (
+  socialPlatformClicked: string,
+  data: BrowserData,
+) => {
+  // await prisma.click.create({
+  //   data: {
+  //     ...data,
+  //     socialPlatformClicked,
+  //     country: data.country as Country, // TODO: fix this
+  //   },
+  // });
+  console.log("socialPlatformClicked", socialPlatformClicked);
+  // TODO: implement
+};
+
 export const getClicksByLinkId = async (linkId: string) => {
   const clicks = await prisma.click.findMany({
     where: {
