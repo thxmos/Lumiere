@@ -27,7 +27,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/utils/constants"
+    "src/utils/constants", // TODO: why is constants here
+    "tsconfig.jest.json"
   ],
   "exclude": ["node_modules"]
 }
