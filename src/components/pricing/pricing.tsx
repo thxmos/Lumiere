@@ -1,5 +1,5 @@
 import { findPrices } from "@/actions/entities/price";
-import { findProducts } from "@/data-access/product";
+import { findProducts } from "@/actions/entities/product";
 import { Price, Product } from "@prisma/client";
 import PricingCard from "@/components/pricing/pricing-card";
 

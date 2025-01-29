@@ -1,8 +1,7 @@
 "use server";
 
-import { updateUserById } from "@/data-access/user";
-
-import { UserDto } from "@/data-access/user";
+import { updateUserById } from "@/actions/entities/user";
+import { UserDto } from "@/actions/entities/user";
 import { withAuth } from "@/utils/security/auth";
 import { SessionUser } from "@/utils/lib/lucia";
 import { Country } from "@prisma/client";

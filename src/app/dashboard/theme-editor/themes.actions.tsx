@@ -4,7 +4,7 @@ import {
   getThemeByUserId,
   updateThemeByUserId,
   createTheme,
-} from "@/data-access/theme";
+} from "@/actions/entities/theme";
 import type { ThemeNoId } from "@/types/theme";
 
 export async function upsertTheme(userId: string, theme: ThemeNoId) {

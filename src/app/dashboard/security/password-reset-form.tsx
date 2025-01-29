@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import React, { useTransition, useRef } from "react";
 import { toast } from "sonner";
 import { passwordReset } from "./actions";
-import { UserDto } from "@/data-access/user";
+import { UserDto } from "@/actions/entities/user";
 
 type Props = {
   user: UserDto;

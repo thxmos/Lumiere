@@ -11,7 +11,11 @@ import { generateCodeVerifier, generateState } from "arctic";
 import { googleOAuthClient } from "@/utils/security/googleOauth";
 
 import { createStripeCustomer } from "@/actions/stripe/stripe.customers";
-import { createUser, getUserByEmail, updateUserById } from "@/data-access/user";
+import {
+  createUser,
+  getUserByEmail,
+  updateUserById,
+} from "@/actions/entities/user";
 import { sendVerifyEmail } from "../email";
 import { hash } from "@/utils/security/crypto";
 import { getPasswordResetTokenByToken } from "@/actions/entities/password-reset-token";

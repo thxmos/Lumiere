@@ -11,9 +11,9 @@ import { deleteLink, updateUserLinksAction } from "./actions";
 import { LinksList } from "./components/links-list";
 import { DashboardCard } from "@/components/dashboard-card";
 import { Button } from "@/components/ui/button";
-import { UserDto } from "@/data-access/user";
 import { deleteImage } from "@/actions/entities/assets";
 import { useLinksStore } from "@/stores/links";
+import { UserDto } from "@/actions/entities/user";
 
 /*
 TODO: Creating new link and submitting form is not working when id is set here

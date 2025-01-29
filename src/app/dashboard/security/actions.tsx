@@ -1,7 +1,10 @@
 "use server";
 
 import { getUser } from "@/actions/entities/session";
-import { getUserByIdWithPassword, updateUserById } from "@/data-access/user";
+import {
+  getUserByIdWithPassword,
+  updateUserById,
+} from "@/actions/entities/user";
 import { hash, verify } from "@/utils/security/crypto";
 
 export async function hasPasswordAction(): Promise<boolean> {

@@ -11,7 +11,7 @@ import {
   LinkDto,
   updateLinks,
 } from "@/actions/entities/links";
-import { updateUserById, UserDto } from "@/data-access/user";
+import { updateUserById, UserDto } from "@/actions/entities/user";
 import { withAuth } from "@/utils/security/auth";
 import { SessionUser } from "@/utils/lib/lucia";
 import { Country } from "@prisma/client";

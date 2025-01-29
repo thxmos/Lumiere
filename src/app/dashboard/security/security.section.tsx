@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { UserDto } from "@/data-access/user";
+import { UserDto } from "@/actions/entities/user";
 import PasswordResetForm from "./password-reset-form";
 import PasswordResetFormOAuth from "./password-reset-form-oAuth";
 import { DashboardCard } from "@/components/dashboard-card";

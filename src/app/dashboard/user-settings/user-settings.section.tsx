@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { UserDto } from "@/data-access/user";
+import { UserDto } from "@/actions/entities/user";
 import { updateUser } from "./actions";
 import { DashboardCard } from "@/components/dashboard-card";
 

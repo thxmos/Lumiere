@@ -1,4 +1,4 @@
-import { updateUserById } from "@/data-access/user";
+import { updateUserById } from "@/actions/entities/user";
 import {
   deleteVerificationToken,
   getVerificationTokenByToken,
@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
   }
 
   // Update the user's email verification status
-  const res = await updateUserById(verificationToken.userId, {
+  await updateUserById(verificationToken.userId, {
     isVerified: true,
   });
 

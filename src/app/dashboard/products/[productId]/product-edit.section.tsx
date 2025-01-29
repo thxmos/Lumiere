@@ -14,7 +14,7 @@ import { toast } from "sonner";
 import { updateProduct } from "./actions";
 import { useForm } from "react-hook-form";
 import type { Product2Dto } from "@/types/product2";
-import { UserDto } from "@/data-access/user";
+import { UserDto } from "@/actions/entities/user";
 
 interface Props {
   product: Product2Dto;

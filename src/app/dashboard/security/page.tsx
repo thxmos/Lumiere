@@ -1,4 +1,4 @@
-import { UserDto } from "@/data-access/user";
+import { UserDto } from "@/actions/entities/user";
 import { hasPasswordAction } from "./actions";
 import SecuritySection from "./security.section";
 import { getUser } from "@/actions/entities/session";

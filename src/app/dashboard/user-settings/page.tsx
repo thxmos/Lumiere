@@ -1,5 +1,5 @@
 import { getUser } from "@/actions/entities/session";
-import { getUserById } from "@/data-access/user";
+import { getUserById } from "@/actions/entities/user";
 import UserSettingsSection from "./user-settings.section";
 import { UserThemeSection } from "./user-theme.section";
 

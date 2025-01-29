@@ -1,4 +1,4 @@
-import { UserDto } from "@/data-access/user";
+import { UserDto } from "@/actions/entities/user";
 import { create } from "zustand";
 
 type UserStore = {

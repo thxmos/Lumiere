@@ -1,4 +1,4 @@
-import { getUserById } from "@/data-access/user";
+import { getUserById } from "@/actions/entities/user";
 import { getUser } from "@/actions/entities/session";
 import { getLinksWithNumOfClicks } from "./actions";
 import { SocialMediaSection } from "./social-media.section";

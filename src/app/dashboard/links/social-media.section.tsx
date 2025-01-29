@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { SOCIAL_PLATFORMS } from "@/constants/social-media";
 import { updateUser } from "./actions";
-import { UserDto } from "@/data-access/user";
+import { UserDto } from "@/actions/entities/user";
 import { DashboardCard } from "@/components/dashboard-card";
 import { toast } from "sonner";
 import Image from "next/image";

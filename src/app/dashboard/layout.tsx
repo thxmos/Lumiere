@@ -10,7 +10,7 @@ import MobilePreview from "@/components/mobile-preview/mobile-preview";
 import LinkTree from "@/components/profile/linktree";
 import { getThemeAction } from "@/actions/entities/theme";
 import { getLinksByUserId } from "@/actions/entities/links";
-import { UserDto } from "@/data-access/user";
+import { UserDto } from "@/actions/entities/user";
 import { LinkDtoWithId } from "@/types/links";
 
 interface Props {

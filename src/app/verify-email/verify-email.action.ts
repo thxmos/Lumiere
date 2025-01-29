@@ -1,6 +1,6 @@
 "use server";
 
-import { updateUserById } from "@/data-access/user";
+import { updateUserById } from "@/actions/entities/user";
 import {
   deleteVerificationToken,
   getVerificationTokenByToken,

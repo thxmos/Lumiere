@@ -1,7 +1,7 @@
 "use server";
 
 import { isValidSession } from "@/actions/entities/session";
-import { updateUserById } from "@/data-access/user";
+import { updateUserById } from "@/actions/entities/user";
 import { User } from "@prisma/client";
 
 export async function updateUser(userId: string, data: Partial<User>) {
