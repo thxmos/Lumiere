@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { prisma } from "./prisma";
-import { User } from "@prisma/client";
 import { AUTH_COOKIE_NAME } from "@/constants/app";
+import { SessionUser } from "./lucia";
 
 /*
  * validateServerSession:
@@ -11,7 +11,7 @@ import { AUTH_COOKIE_NAME } from "@/constants/app";
  * When you want custom error handling or redirection logic
  */
 
-export async function validateServerSession() {
+export const validateServerSession = async () => {
   const sessionId = cookies().get(AUTH_COOKIE_NAME)?.value;
 
   if (!sessionId) {
@@ -29,8 +29,8 @@ export async function validateServerSession() {
     return null;
   }
 
-  return session.user;
-}
+  return session.user as SessionUser;
+};
 
 /*
  * requireUser:
@@ -53,7 +53,7 @@ export async function requireUser() {
  */
 
 export function withAuth<Args extends any[], Return>(
-  handler: (user: User, ...args: Args) => Promise<Return>,
+  handler: (user: SessionUser, ...args: Args) => Promise<Return>,
 ) {
   return async (...args: Args): Promise<Return> => {
     const user = await requireUser();
