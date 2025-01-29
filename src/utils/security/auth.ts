@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { prisma } from "../lib/prisma";
 import { AUTH_COOKIE_NAME } from "@/constants/app";
 import { SessionUser } from "../lib/lucia";
+import { UserDto } from "@/data-access/user";
 
 /*
  * validateServerSession:
@@ -71,5 +72,5 @@ export async function validateAuthPage() {
   if (!user) {
     redirect("/auth");
   }
-  return user;
+  return user as UserDto;
 }

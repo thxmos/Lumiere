@@ -1,10 +1,8 @@
-import { getUser } from "@/actions/session";
-import { getUserById } from "@/data-access/user";
 import { AccountSection } from "./account.section";
-import { validateServerSession } from "@/utils/security/auth";
+import { validateAuthPage } from "@/utils/security/auth";
 
 export default async function AccountSettingsPage() {
-  const user = await validateServerSession();
+  const user = await validateAuthPage();
 
   return (
     <>
