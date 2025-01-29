@@ -1,5 +1,5 @@
 import { ThemeNoId } from "@/types/theme";
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/utils/lib/prisma";
 
 export async function createTheme(userId: string, theme: ThemeNoId) {
   await prisma.theme.create({

@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/utils/lib/prisma";
 import { del } from "@vercel/blob";
 import { getUserById, updateUserById } from "@/data-access/user";
 import { getUser } from "./session";

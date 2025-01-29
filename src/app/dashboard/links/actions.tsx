@@ -12,8 +12,8 @@ import {
   updateLinks,
 } from "@/data-access/links";
 import { updateUserById, UserDto } from "@/data-access/user";
-import { withAuth } from "@/utils/auth";
-import { SessionUser } from "@/utils/lucia";
+import { withAuth } from "@/utils/security/auth";
+import { SessionUser } from "@/utils/lib/lucia";
 import { Country } from "@prisma/client";
 
 export async function updateUser(userId: string, data: Partial<UserDto>) {

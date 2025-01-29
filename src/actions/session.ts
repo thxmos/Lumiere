@@ -1,12 +1,12 @@
 "use server";
 
 import { getUserById } from "@/data-access/user";
-import { lucia, SessionUser } from "@/utils/lucia";
+import { lucia, SessionUser } from "@/utils/lib/lucia";
 import {
   deleteSessionCookie,
   createSessionCookie,
   getSessionIdFromCookie,
-} from "@/utils/cookies";
+} from "@/utils/security/cookies";
 
 export const isValidSession = async () => {
   const sessionId = getSessionIdFromCookie();

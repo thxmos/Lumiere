@@ -1,5 +1,5 @@
 import { CreateProduct2Dto } from "@/types/product2";
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/utils/lib/prisma";
 import { Product2Dto } from "@/types/product2";
 import { Product2 } from "@prisma/client";
 

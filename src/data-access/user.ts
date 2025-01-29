@@ -1,4 +1,4 @@
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/utils/lib/prisma";
 import { OAuthProvider, User } from "@prisma/client";
 
 export type CreateUserDto = {

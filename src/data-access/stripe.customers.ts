@@ -1,5 +1,5 @@
 import { Stripe } from "stripe";
-import { stripe } from "@/utils/stripe.utils";
+import { stripe } from "@/utils/lib/stripe.utils";
 
 export const createStripeCustomer = async (
   email: string,

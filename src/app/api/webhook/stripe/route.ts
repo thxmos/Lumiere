@@ -1,7 +1,7 @@
 import { deletePriceByStripePriceId } from "@/data-access/price";
 import { deleteProductByStripeProductId } from "@/data-access/product";
 import { getUserByEmail } from "@/data-access/user";
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/utils/lib/prisma";
 import { PricingPlanInterval, PricingType } from "@prisma/client";
 import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";

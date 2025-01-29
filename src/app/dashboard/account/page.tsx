@@ -1,11 +1,10 @@
 import { getUser } from "@/actions/session";
 import { getUserById } from "@/data-access/user";
 import { AccountSection } from "./account.section";
+import { validateServerSession } from "@/utils/security/auth";
 
 export default async function AccountSettingsPage() {
-  const sessionUser = await getUser();
-  const userId = sessionUser.user?.id!;
-  const user = await getUserById(userId);
+  const user = await validateServerSession();
 
   return (
     <>

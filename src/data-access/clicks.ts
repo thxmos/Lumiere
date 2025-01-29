@@ -1,4 +1,4 @@
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/utils/lib/prisma";
 import { type BrowserData } from "@/types/clicks";
 import { Country } from "@prisma/client";
 

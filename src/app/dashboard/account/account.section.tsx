@@ -39,7 +39,7 @@ export function AccountSection({ user }: { user: UserDto }) {
 
   const onSubmit = async (data: Partial<UserDto>) => {
     try {
-      await updateUserAccountInfoAction(user.id, data);
+      await updateUserAccountInfoAction(data);
       toast.success("Profile updated successfully", {
         duration: 3000,
       });

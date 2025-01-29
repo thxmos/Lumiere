@@ -2,7 +2,7 @@
 
 import { getUser } from "@/actions/session";
 import { getUserByIdWithPassword, updateUserById } from "@/data-access/user";
-import { hash, verify } from "@/utils/crypto";
+import { hash, verify } from "@/utils/security/crypto";
 
 export async function hasPasswordAction(): Promise<boolean> {
   const { user } = await getUser();

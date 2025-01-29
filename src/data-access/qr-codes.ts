@@ -1,6 +1,6 @@
 import { getUser } from "@/actions/session";
 import { CreateQRCodeDto } from "@/types/qr-codes";
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/utils/lib/prisma";
 import { QRCode } from "@prisma/client";
 import type { QRCodeDto } from "@/types/qr-codes";
 

@@ -1,5 +1,5 @@
 import { cache } from "react";
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/utils/lib/prisma";
 import { Price, Prisma } from "@prisma/client";
 
 export const createPrice = async (

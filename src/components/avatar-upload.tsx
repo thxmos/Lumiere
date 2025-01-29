@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { toast } from "sonner";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { uploadAvatar } from "../actions/image-upload";
-import { getInitials } from "@/utils/helpers";
+import { getInitials } from "@/utils/utils";
 import { ImageUploadDialog } from "./image-upload-dialog";
 import { Upload } from "lucide-react";
 import { Button } from "./ui/button";

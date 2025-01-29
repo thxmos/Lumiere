@@ -1,5 +1,5 @@
-import { prisma } from "@/utils/prisma";
-import { generateTokenWithExpiration } from "@/utils/crypto";
+import { prisma } from "@/utils/lib/prisma";
+import { generateTokenWithExpiration } from "@/utils/security/crypto";
 import { VerificationToken } from "@prisma/client";
 
 type VerificationTokenDto = {

@@ -1,5 +1,5 @@
 import { getLinkById, updateLink } from "@/data-access/links";
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/utils/lib/prisma";
 import { redirect } from "next/navigation";
 
 // TODO: use data access layer and create link

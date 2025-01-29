@@ -1,4 +1,4 @@
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/utils/lib/prisma";
 import { Session } from "@prisma/client";
 
 // todo: can lucia handle this?

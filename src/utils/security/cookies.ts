@@ -1,4 +1,4 @@
-import { lucia } from "@/utils/lucia";
+import { lucia } from "@/utils/lib/lucia";
 
 import { cookies } from "next/headers";
 

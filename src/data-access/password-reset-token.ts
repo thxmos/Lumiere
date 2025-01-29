@@ -1,6 +1,6 @@
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/utils/lib/prisma";
 import { PasswordResetToken } from "@prisma/client";
-import { generateTokenWithExpiration } from "@/utils/crypto";
+import { generateTokenWithExpiration } from "@/utils/security/crypto";
 
 type PasswordResetTokenDto = {
   id: string;

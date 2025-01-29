@@ -1,7 +1,7 @@
 "use server";
 
 import { APP_NAME } from "@/constants/app";
-import { resend } from "@/utils/resend";
+import { resend } from "@/utils/lib/resend";
 import WelcomeEmail from "@/emails/welcome";
 import PasswordResetEmail from "@/emails/password-reset";
 import { getUserByEmail } from "@/data-access/user";

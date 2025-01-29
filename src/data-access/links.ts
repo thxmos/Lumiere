@@ -1,4 +1,4 @@
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@/utils/lib/prisma";
 import { Link } from "@prisma/client";
 
 export type CreateLinkDto = {
