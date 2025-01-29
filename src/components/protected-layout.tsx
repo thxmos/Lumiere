@@ -1,6 +1,6 @@
 import React from "react";
 import { redirect } from "next/navigation";
-import { getUser } from "@/actions/session";
+import { getUser } from "@/actions/entities/session";
 
 interface Props {
   children: React.ReactNode;

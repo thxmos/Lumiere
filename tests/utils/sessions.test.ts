@@ -1,5 +1,5 @@
 import { ValidateSessionOrThrow } from "@/utils/sessions";
-import { isValidSession } from "@/actions/session";
+import { isValidSession } from "@/actions/entities/session";
 
 // Mock the isValidSession function
 jest.mock("@/actions/session", () => ({

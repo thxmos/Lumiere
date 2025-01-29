@@ -4,7 +4,7 @@ import { updateUserById } from "@/data-access/user";
 import {
   deleteVerificationToken,
   getVerificationTokenByToken,
-} from "@/data-access/verification-token";
+} from "@/actions/entities/verification-token";
 
 export async function verifyEmailToken(token: string) {
   try {

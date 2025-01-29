@@ -1,4 +1,4 @@
-import { getLinkById, updateLink } from "@/data-access/links";
+import { getLinkById, updateLink } from "@/actions/entities/links";
 import { prisma } from "@/utils/lib/prisma";
 import { redirect } from "next/navigation";
 

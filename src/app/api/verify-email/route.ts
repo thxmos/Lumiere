@@ -2,7 +2,7 @@ import { updateUserById } from "@/data-access/user";
 import {
   deleteVerificationToken,
   getVerificationTokenByToken,
-} from "@/data-access/verification-token";
+} from "@/actions/entities/verification-token";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {

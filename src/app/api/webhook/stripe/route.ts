@@ -1,4 +1,4 @@
-import { deletePriceByStripePriceId } from "@/data-access/price";
+import { deletePriceByStripePriceId } from "@/actions/entities/price";
 import { deleteProductByStripeProductId } from "@/data-access/product";
 import { getUserByEmail } from "@/data-access/user";
 import { prisma } from "@/utils/lib/prisma";

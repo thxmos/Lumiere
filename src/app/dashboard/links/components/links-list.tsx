@@ -6,7 +6,7 @@ import {
   DropResult,
 } from "@hello-pangea/dnd";
 
-import { LinkDto } from "@/data-access/links";
+import { LinkDto } from "@/actions/entities/links";
 import { LinkCard } from "./link-card";
 
 /*

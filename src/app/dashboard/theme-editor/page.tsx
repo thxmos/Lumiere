@@ -1,5 +1,5 @@
-import { getThemeAction } from "@/actions/theme";
-import { getUser } from "@/actions/session";
+import { getThemeAction } from "@/actions/entities/theme";
+import { getUser } from "@/actions/entities/session";
 import { ThemeEditorSection } from "./theme-editor.section";
 
 const ThemeEditorPage = async () => {

@@ -1,6 +1,6 @@
 import ProductEditSection from "./product-edit.section";
 import { getProduct } from "./actions";
-import { getUser } from "@/actions/session";
+import { getUser } from "@/actions/entities/session";
 import { UserDto } from "@/data-access/user";
 
 interface Props {

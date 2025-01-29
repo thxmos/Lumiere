@@ -1,4 +1,4 @@
-import { createStripeCustomer } from "@/data-access/stripe.customers";
+import { createStripeCustomer } from "@/actions/stripe/stripe.customers";
 import { getUserByEmail, updateUserById } from "@/data-access/user";
 import { googleOAuthClient } from "@/utils/security/googleOauth";
 import { lucia } from "@/utils/lib/lucia";

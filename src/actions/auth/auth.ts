@@ -1,25 +1,25 @@
 "use server";
 
-import { SignUpSchema } from "../app/auth/components/sign-up-form";
+import { SignUpSchema } from "../../app/auth/components/sign-up-form";
 import { prisma } from "@/utils/lib/prisma";
 import { Argon2id } from "oslo/password";
 import { lucia } from "@/utils/lib/lucia";
 import { cookies } from "next/headers";
-import { SignInSchema } from "../app/auth/components/sign-in-form";
+import { SignInSchema } from "../../app/auth/components/sign-in-form";
 import { redirect } from "next/navigation";
 import { generateCodeVerifier, generateState } from "arctic";
 import { googleOAuthClient } from "@/utils/security/googleOauth";
 
-import { createStripeCustomer } from "@/data-access/stripe.customers";
+import { createStripeCustomer } from "@/actions/stripe/stripe.customers";
 import { createUser, getUserByEmail, updateUserById } from "@/data-access/user";
-import { sendVerifyEmail } from "./email";
+import { sendVerifyEmail } from "../email";
 import { hash } from "@/utils/security/crypto";
-import { getPasswordResetTokenByToken } from "@/data-access/password-reset-token";
-import { deleteSession } from "@/data-access/sessions";
+import { getPasswordResetTokenByToken } from "@/actions/entities/password-reset-token";
 import {
   createSessionCookie,
   deleteSessionCookie,
 } from "@/utils/security/cookies";
+import { SessionRepository } from "@/repositories/sessions/sessions.repository";
 
 export const signUp = async (values: SignUpSchema) => {
   const { email, name, password } = values;
@@ -93,7 +93,9 @@ export const logout = async () => {
   const sessionId = cookies().get(lucia.sessionCookieName)?.value || null;
   if (!sessionId) redirect("/auth");
 
-  await deleteSession(sessionId);
+  const sessionRepository = new SessionRepository();
+
+  await sessionRepository.delete(sessionId);
   deleteSessionCookie();
 
   redirect("/");

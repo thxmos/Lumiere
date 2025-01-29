@@ -1,4 +1,4 @@
-import { getUser } from "@/actions/session";
+import { getUser } from "@/actions/entities/session";
 import { getActiveLinksByUserId } from "@/app/[username]/actions";
 import { DashboardCard } from "@/components/dashboard-card";
 import { Card } from "@/components/ui/card";

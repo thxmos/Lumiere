@@ -1,6 +1,6 @@
 "use server";
 
-import { getProductById, updateProductById } from "@/data-access/product2";
+import { getProductById, updateProductById } from "@/actions/entities/product2";
 import type { CreateProduct2Dto, Product2Dto } from "@/types/product2";
 
 export async function getProduct(productId: string) {

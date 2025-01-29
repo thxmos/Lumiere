@@ -1,4 +1,4 @@
-import { getUser } from "@/actions/session";
+import { getUser } from "@/actions/entities/session";
 import { getProducts } from "./actions";
 import ProductsSection from "./products.section";
 

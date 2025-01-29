@@ -6,13 +6,13 @@ import { PlusCircle } from "lucide-react";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 
-import { type LinkDto } from "@/data-access/links";
+import { type LinkDto } from "@/actions/entities/links";
 import { deleteLink, updateUserLinksAction } from "./actions";
 import { LinksList } from "./components/links-list";
 import { DashboardCard } from "@/components/dashboard-card";
 import { Button } from "@/components/ui/button";
 import { UserDto } from "@/data-access/user";
-import { deleteImage } from "@/data-access/images";
+import { deleteImage } from "@/actions/entities/assets";
 import { useLinksStore } from "@/stores/links";
 
 /*

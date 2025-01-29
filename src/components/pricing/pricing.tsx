@@ -1,4 +1,4 @@
-import { findPrices } from "@/data-access/price";
+import { findPrices } from "@/actions/entities/price";
 import { findProducts } from "@/data-access/product";
 import { Price, Product } from "@prisma/client";
 import PricingCard from "@/components/pricing/pricing-card";

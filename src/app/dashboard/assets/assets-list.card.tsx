@@ -5,7 +5,7 @@ import Image from "next/image";
 import type { ImageDtoWithId } from "@/types/image";
 import { ConfirmDeleteModal } from "@/components/confirm-delete-modal";
 import { useState } from "react";
-import { deleteImageAction } from "@/actions/image-upload";
+import { deleteImageAction } from "@/actions/file-upload/image-upload";
 import { toast } from "sonner";
 import { useAssetStore } from "@/stores/assets";
 

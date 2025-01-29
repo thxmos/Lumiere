@@ -1,11 +1,16 @@
 "use server";
 
-import { createImage, CreateImageDto, deleteImage } from "@/data-access/images";
-import { getUser } from "./session";
-import { updateUserAvatar } from "./user";
+import {
+  createImage,
+  CreateImageDto,
+  deleteImage,
+} from "@/actions/entities/assets";
+import { updateUserAvatar } from "@/actions/entities/user";
 import { put, del } from "@vercel/blob";
+import { getUser } from "@/actions/entities/session";
 
 /*
+TODO: use the new auth methods instead of getUser
 should use uploadImageAction instead
 retrieve URL and save to User entity
 */

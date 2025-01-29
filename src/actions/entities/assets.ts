@@ -1,5 +1,7 @@
 import { prisma } from "@/utils/lib/prisma";
 
+//TODO: clean up and rename to Assets
+
 export type CreateImageDto = {
   url: string;
   userId: string;
@@ -7,16 +9,16 @@ export type CreateImageDto = {
   description: string;
 };
 
-export const createImage = async (image: CreateImageDto) => {
-  const newImage = await prisma.image.create({
+export const createImage = async (asset: CreateImageDto) => {
+  const newAsset = await prisma.image.create({
     data: {
-      url: image.url,
-      userId: image.userId,
-      title: image.title,
-      description: image.description,
+      url: asset.url,
+      userId: asset.userId,
+      title: asset.title,
+      description: asset.description,
     },
   });
-  return newImage;
+  return newAsset;
 };
 
 export const getImagesByUserId = async (userId: string) => {
@@ -27,8 +29,8 @@ export const getImagesByUserId = async (userId: string) => {
 };
 
 export const deleteImage = async (id: string, userId: string) => {
-  const deletedImage = await prisma.image.delete({
+  const deletedAsset = await prisma.image.delete({
     where: { id, userId },
   });
-  return deletedImage;
+  return deletedAsset;
 };

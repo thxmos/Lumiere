@@ -1,10 +1,10 @@
 "use server";
 
-import { createStripeCheckoutSession } from "@/data-access/stripe.checkout.sessions";
-import { getStripeCustomer } from "@/data-access/stripe.customers";
+import { createStripeCheckoutSession } from "@/actions/stripe/stripe.checkout.sessions";
+import { getStripeCustomer } from "@/actions/stripe/stripe.customers";
 import { getUserById } from "@/data-access/user";
 import { Price } from "@prisma/client";
-import { getUser } from "./session";
+import { getUser } from "./entities/session";
 
 export type Subscription = {
   id: string;

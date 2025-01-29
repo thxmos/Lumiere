@@ -1,6 +1,6 @@
 "use server";
 
-import { getUser } from "@/actions/session";
+import { getUser } from "@/actions/entities/session";
 import { DASHBOARD_TABS } from "./tabs";
 import { USER_ROLES } from "@/constants/user";
 import { redirect } from "next/navigation";

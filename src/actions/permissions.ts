@@ -1,7 +1,7 @@
 "use server";
 
 import { hasPermission } from "@/utils/security/access";
-import { getUser } from "./session";
+import { getUser } from "@/actions/entities/session";
 import type { User, Permissions } from "@/types/access";
 import { getUserById } from "@/data-access/user";
 

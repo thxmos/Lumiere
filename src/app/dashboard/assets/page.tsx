@@ -1,6 +1,6 @@
-import { getUser } from "@/actions/session";
+import { getUser } from "@/actions/entities/session";
 import { AssetsUploadSection } from "./assets-upload.section";
-import { getImagesByUserId } from "@/data-access/images";
+import { getImagesByUserId } from "@/actions/entities/assets";
 import AssetsListSection from "./assets-list.section";
 
 export default async function ImagesPage() {

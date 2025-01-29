@@ -1,8 +1,8 @@
 "use server";
 
-import { isValidSession } from "@/actions/session";
-import { getClicksByLinkId } from "@/data-access/clicks";
-import { deleteImage } from "@/data-access/images";
+import { isValidSession } from "@/actions/entities/session";
+import { getClicksByLinkId } from "@/actions/entities/clicks";
+import { deleteImage } from "@/actions/entities/assets";
 import {
   CreateLinkDto,
   createLinks,
@@ -10,7 +10,7 @@ import {
   getLinksByUserId,
   LinkDto,
   updateLinks,
-} from "@/data-access/links";
+} from "@/actions/entities/links";
 import { updateUserById, UserDto } from "@/data-access/user";
 import { withAuth } from "@/utils/security/auth";
 import { SessionUser } from "@/utils/lib/lucia";

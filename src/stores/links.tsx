@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import { LinkDto } from "@/data-access/links";
+import { LinkDto } from "@/actions/entities/links";
 
 type LinkStore = {
   links: LinkDto[];

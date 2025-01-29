@@ -1,7 +1,11 @@
 "use server";
 
-import { getLinkById, getLinksByUserId, updateLink } from "@/data-access/links";
-import { createClick, createClickSocial } from "@/data-access/clicks";
+import {
+  getLinkById,
+  getLinksByUserId,
+  updateLink,
+} from "@/actions/entities/links";
+import { createClick, createClickSocial } from "@/actions/entities/clicks";
 import { headers } from "next/headers";
 import { UAParser } from "ua-parser-js";
 import { BrowserData } from "@/types/clicks";

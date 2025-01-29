@@ -1,7 +1,7 @@
 import { UserDto } from "@/data-access/user";
 import { hasPasswordAction } from "./actions";
 import SecuritySection from "./security.section";
-import { getUser } from "@/actions/session";
+import { getUser } from "@/actions/entities/session";
 
 export default async function SecurityPage() {
   const { user } = await getUser();

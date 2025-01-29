@@ -1,6 +1,6 @@
 "use client";
 
-import { uploadProductImage } from "@/actions/image-upload";
+import { uploadProductImage } from "@/actions/file-upload/image-upload";
 import { ImageUpload } from "@/components/image-upload";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

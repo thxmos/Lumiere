@@ -4,7 +4,7 @@ import {
   createQRCode,
   deleteQRCode,
   getQRCodesByUserId,
-} from "@/data-access/qr-codes";
+} from "@/actions/entities/qr-codes";
 import type { QRCodeDto } from "@/types/qr-codes";
 
 export const createQRCodeAction = async (

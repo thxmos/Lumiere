@@ -1,4 +1,4 @@
-import { getUser } from "@/actions/session";
+import { getUser } from "@/actions/entities/session";
 import BillingSection from "./billing.section";
 import { getBillingInfo } from "./actions";
 

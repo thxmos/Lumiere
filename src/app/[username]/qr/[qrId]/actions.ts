@@ -1,7 +1,7 @@
 "use server";
 
-import { getQRCodeById, updateQRCode } from "@/data-access/qr-codes";
-import { createScan, CreateScanDto } from "@/data-access/scans";
+import { getQRCodeById, updateQRCode } from "@/actions/entities/qr-codes";
+import { createScan, CreateScanDto } from "@/actions/entities/scans";
 import type { BrowserData } from "@/types/clicks";
 
 export const updateQrScanAction = async (

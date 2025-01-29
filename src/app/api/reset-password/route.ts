@@ -1,7 +1,7 @@
 import {
   deletePasswordResetToken,
   getPasswordResetTokenByToken,
-} from "@/data-access/password-reset-token";
+} from "@/actions/entities/password-reset-token";
 import { updateUserById } from "@/data-access/user";
 import { hash } from "@/utils/security/crypto";
 import { NextRequest, NextResponse } from "next/server";

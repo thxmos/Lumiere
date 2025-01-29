@@ -1,6 +1,6 @@
 "use server";
 
-import { getUser } from "@/actions/session";
+import { getUser } from "@/actions/entities/session";
 import { getUserByIdWithPassword, updateUserById } from "@/data-access/user";
 import { hash, verify } from "@/utils/security/crypto";
 
