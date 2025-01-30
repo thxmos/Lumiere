@@ -1,6 +1,6 @@
 "use client";
 
-import { DashboardCard } from "@/components/dashboard-card";
+import { DashboardCard } from "@/components/layout/dashboard-card";
 import { Label } from "@/components/ui/label";
 import { THEMES } from "@/constants/theme";
 import { useTheme } from "next-themes";

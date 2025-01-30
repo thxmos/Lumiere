@@ -1,4 +1,4 @@
-import { DashboardCard } from "@/components/dashboard-card";
+import { DashboardCard } from "@/components/layout/dashboard-card";
 import { ImageUploadForm } from "./components/assets-upload.form";
 
 export const AssetsUploadSection = () => {

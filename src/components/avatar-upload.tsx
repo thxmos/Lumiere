@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { uploadAvatar } from "@/actions/file-upload/image-upload";
 import { getInitials } from "@/utils/utils";
-import { ImageUploadDialog } from "./image-upload-dialog";
+import { ImageUploadDialog } from "./modals/image-upload-modal";
 import { Upload } from "lucide-react";
 import { Button } from "./ui/button";
 

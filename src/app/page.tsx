@@ -2,7 +2,7 @@ import Footer from "@/components/landing-page-sections/footer";
 import FeaturesSection from "@/components/landing-page-sections/features-section";
 import HeroSection from "@/components/landing-page-sections/hero-section";
 import SubscribeSection from "@/components/landing-page-sections/subscribe-section";
-import Navbar from "@/components/nav-bar/nav-bar";
+import Navbar from "@/components/layout/nav-bar";
 
 export default async function LandingPage() {
   return (

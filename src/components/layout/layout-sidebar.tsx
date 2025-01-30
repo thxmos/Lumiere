@@ -2,7 +2,7 @@
 
 import { LayoutDashboard } from "lucide-react";
 import Link from "next/link";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { usePathname } from "next/navigation";
 import { Tab } from "@/app/dashboard/tabs";
 

@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { AlertTriangle } from "lucide-react";
-import Navbar from "@/components/nav-bar/nav-bar";
+import Navbar from "@/components/layout/nav-bar";
 
 export default function NotFoundPage() {
   return (

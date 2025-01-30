@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { DashboardCard } from "@/components/dashboard-card";
+import { DashboardCard } from "@/components/layout/dashboard-card";
 import { getProductById } from "@/actions/entities/product2";
 import { getUserByUsername } from "@/actions/entities/user/user";
 

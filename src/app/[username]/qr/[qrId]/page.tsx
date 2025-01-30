@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { updateQrScanAction } from "./actions";
+import { updateQrScanAction } from "@/actions/profile-page";
 import { getQRCodeById } from "@/actions/entities/qr-codes";
 import { BrowserData } from "@/types/clicks";
 import { headers } from "next/headers";

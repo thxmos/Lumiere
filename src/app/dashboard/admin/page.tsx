@@ -1,4 +1,4 @@
-import { DashboardCard } from "@/components/dashboard-card";
+import { DashboardCard } from "@/components/layout/dashboard-card";
 import { InviteSection } from "./invite.section";
 import { WorkbenchSection } from "./workbench.section";
 import Link from "next/link";

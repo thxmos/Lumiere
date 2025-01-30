@@ -10,6 +10,9 @@ import { BrowserData } from "@/types/clicks";
 import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
 import { getLinkById } from "@/actions/entities/link/getLinkById";
 import { updateLink } from "@/actions/entities/link/updateLink";
+import { CreateScanDto } from "./entities/scans";
+import { getQRCodeById, updateQRCode } from "./entities/qr-codes";
+import { createScan } from "./entities/scans";
 
 async function getLocationData(ip: string) {
   try {
@@ -92,4 +95,18 @@ export const getClientData = async (clientData: Partial<BrowserData>) => {
   };
 
   return clickData;
+};
+
+export const updateQrScanAction = async (
+  qrId: string,
+  browserData: Partial<BrowserData>,
+) => {
+  const qrCode = await getQRCodeById(qrId);
+  if (!qrCode) throw new Error("QR code not found");
+  qrCode.scans = (qrCode.scans || 0) + 1;
+  await updateQRCode(qrId, qrCode);
+  await createScan({
+    qrId,
+    ...browserData,
+  } as CreateScanDto);
 };

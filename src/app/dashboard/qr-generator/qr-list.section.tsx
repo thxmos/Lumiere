@@ -1,6 +1,6 @@
 "use client";
 
-import { DashboardCard } from "@/components/dashboard-card";
+import { DashboardCard } from "@/components/layout/dashboard-card";
 import { QRCodeCard } from "./components/qr-list.card";
 import { useQRCodeStore } from "@/stores/qr-codes";
 

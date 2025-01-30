@@ -1,6 +1,6 @@
 import { APP_NAME } from "@/constants/app";
 import Pricing from "@/components/pricing/pricing";
-import Navbar from "@/components/nav-bar/nav-bar";
+import Navbar from "@/components/layout/nav-bar";
 
 export default function SubscribePage() {
   return (

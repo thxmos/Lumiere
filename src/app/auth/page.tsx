@@ -3,7 +3,7 @@ import SignInForm from "./components/sign-in-form";
 import SignUpForm from "./components/sign-up-form";
 import { redirect } from "next/navigation";
 import { getUser } from "@/actions/entities/session";
-import Navbar from "@/components/nav-bar/nav-bar";
+import Navbar from "@/components/layout/nav-bar";
 
 const AuthPage = async () => {
   const { user } = await getUser();

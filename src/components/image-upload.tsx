@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ImageOff, Upload, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ImageUploadDialog } from "./image-upload-dialog";
+import { ImageUploadDialog } from "./modals/image-upload-modal";
 
 interface ImageUploadProps {
   initialImage?: string;

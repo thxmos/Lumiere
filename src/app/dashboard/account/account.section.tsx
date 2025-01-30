@@ -11,7 +11,7 @@ import {
   updateUserAccountInfoAction,
   type UserDto,
 } from "@/actions/entities/user/user";
-import { DashboardCard } from "@/components/dashboard-card";
+import { DashboardCard } from "@/components/layout/dashboard-card";
 import { toast } from "sonner";
 import {
   Select,

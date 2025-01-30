@@ -6,7 +6,7 @@ import { generateQRCode2 } from "../utils";
 import { Label } from "@/components/ui/label";
 import { X } from "lucide-react";
 import { toast } from "sonner";
-import { ConfirmDeleteModal } from "@/components/confirm-delete-modal";
+import { ConfirmDeleteModal } from "@/components/modals/confirm-delete-modal";
 import { useState } from "react";
 import { deleteQRCodeAction } from "@/actions/entities/qr-codes";
 import type { QRCodeDto } from "@/types/qr-codes";

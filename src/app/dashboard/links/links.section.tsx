@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 
 import { LinksList } from "./components/links-list";
-import { DashboardCard } from "@/components/dashboard-card";
+import { DashboardCard } from "@/components/layout/dashboard-card";
 import { Button } from "@/components/ui/button";
 import { deleteImage } from "@/actions/entities/assets";
 import { useLinksStore } from "@/stores/links";

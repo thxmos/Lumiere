@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { FONTS } from "@/constants/fonts";
 import { toast } from "sonner";
 import type { ThemeNoId } from "@/types/theme";
-import { DashboardCard } from "@/components/dashboard-card";
+import { DashboardCard } from "@/components/layout/dashboard-card";
 import { SelectInput } from "@/components/select-input";
 import { ColorSelect } from "@/components/color-select/color-select";
 import { ColorPickerStandalone } from "@/components/color-select/color-picker-standalone";

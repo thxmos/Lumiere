@@ -1,5 +1,5 @@
-import { getActiveLinksByUserId } from "@/app/[username]/actions";
-import { DashboardCard } from "@/components/dashboard-card";
+import { getActiveLinksByUserId } from "@/actions/profile-page";
+import { DashboardCard } from "@/components/layout/dashboard-card";
 import { Card } from "@/components/ui/card";
 import { validateAuthPage } from "@/utils/security/auth";
 

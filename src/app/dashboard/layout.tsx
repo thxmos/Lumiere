@@ -1,8 +1,7 @@
 import { LayoutDashboard } from "lucide-react";
-import ProtectedLayout from "@/components/protected-layout";
-import LayoutSidebar from "@/components/layout-sidebar";
+import ProtectedLayout from "@/components/layout/protected-layout";
+import LayoutSidebar from "@/components/layout/layout-sidebar";
 import { DASHBOARD_TABS } from "./tabs";
-import Navbar from "@/components/nav-bar/nav-bar";
 import { ScrollToTopLayout } from "./scroll-to-top.layout";
 import { getUser } from "@/actions/entities/session";
 import { USER_ROLES } from "@/constants/user";
@@ -12,6 +11,7 @@ import { getThemeAction } from "@/actions/entities/theme";
 import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
 import { UserDto } from "@/actions/entities/user/user";
 import { LinkDtoWithId } from "@/types/links";
+import Navbar from "@/components/layout/nav-bar";
 
 interface Props {
   children: React.ReactNode;
