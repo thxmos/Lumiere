@@ -10,10 +10,10 @@ import { BrowserData } from "@/types/clicks";
 import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
 import { getLinkById } from "@/actions/entities/link/getLinkById";
 import { updateLink } from "@/actions/entities/link/updateLink";
-import { CreateScanDto } from "./entities/scans";
+import { CreateScanDto } from "./entities/scan/scans";
 import { getQRCodeById } from "@/actions/entities/qr-code/getQrCodeById";
 import { updateQRCode } from "@/actions/entities/qr-code/updateQrCode";
-import { createScan } from "./entities/scans";
+import { createScan } from "./entities/scan/scans";
 
 // TODO: refactor into middleware?
 async function getLocationData(ip: string) {

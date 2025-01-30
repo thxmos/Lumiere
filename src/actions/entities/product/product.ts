@@ -1,6 +1,6 @@
 "use server";
 
-import { deleteProduct2ById } from "@/actions/entities/product2";
+import { deleteProduct2ById } from "@/actions/entities/product/product2";
 import { prisma } from "@/utils/lib/prisma";
 import { Prisma, Product } from "@prisma/client";
 import { cache } from "react";

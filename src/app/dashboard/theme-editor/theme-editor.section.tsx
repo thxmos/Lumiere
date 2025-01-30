@@ -16,7 +16,7 @@ import { Separator } from "@/components/ui/separator";
 import { useThemeStore } from "@/stores/themes";
 import { Switch } from "@/components/ui/switch";
 import { WHITE } from "@/constants/colors";
-import { upsertTheme } from "@/actions/entities/theme";
+import { upsertTheme } from "@/actions/entities/theme/theme";
 
 /*
 TODO: ThemePrimaryColor should be primaryColor

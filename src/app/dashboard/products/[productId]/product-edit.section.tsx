@@ -11,7 +11,7 @@ import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { ImageUpload } from "@/components/image-upload";
 import { toast } from "sonner";
-import { updateProduct } from "@/actions/entities/product2";
+import { updateProduct } from "@/actions/entities/product/product2";
 import { useForm } from "react-hook-form";
 import type { Product2Dto } from "@/types/product2";
 import { UserDto } from "@/actions/entities/user/user";

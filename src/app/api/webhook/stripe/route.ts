@@ -1,5 +1,5 @@
-import { deletePriceByStripePriceId } from "@/actions/entities/price";
-import { deleteProductByStripeProductId } from "@/actions/entities/product";
+import { deletePriceByStripePriceId } from "@/actions/entities/price/price";
+import { deleteProductByStripeProductId } from "@/actions/entities/product/product";
 import { getUserByEmail } from "@/actions/entities/user/user";
 import { prisma } from "@/utils/lib/prisma";
 import { PricingPlanInterval, PricingType } from "@prisma/client";

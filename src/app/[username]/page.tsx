@@ -1,6 +1,6 @@
 import { getUserByUsername } from "@/actions/entities/user/user";
 import { getActiveLinksByUserId } from "../../actions/profile-page";
-import { getThemeAction } from "@/actions/entities/theme";
+import { getThemeAction } from "@/actions/entities/theme/theme";
 import React from "react";
 import { redirect } from "next/navigation";
 import LinkTree from "@/components/profile/linktree";

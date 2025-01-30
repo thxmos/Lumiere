@@ -1,5 +1,5 @@
 import ProductEditSection from "./product-edit.section";
-import { getProduct } from "@/actions/entities/product2";
+import { getProduct } from "@/actions/entities/product/product2";
 import { getUser } from "@/actions/entities/session";
 import { UserDto } from "@/actions/entities/user/user";
 

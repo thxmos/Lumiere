@@ -5,8 +5,8 @@ import { resend } from "@/utils/lib/resend";
 import WelcomeEmail from "@/emails/welcome";
 import PasswordResetEmail from "@/emails/password-reset";
 import { getUserByEmail } from "@/actions/entities/user/user";
-import { createPasswordResetToken } from "@/actions/entities/password-reset-token";
-import { createVerificationToken } from "@/actions/entities/verification-token";
+import { createPasswordResetToken } from "@/actions/entities/password-reset-token/password-reset-token";
+import { createVerificationToken } from "@/actions/entities/verification-token/verification-token";
 
 export const sendResetEmail = async (email: string) => {
   const user = await getUserByEmail(email);

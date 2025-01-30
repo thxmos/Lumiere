@@ -1,4 +1,4 @@
-import { getThemeAction } from "@/actions/entities/theme";
+import { getThemeAction } from "@/actions/entities/theme/theme";
 import { ThemeEditorSection } from "./theme-editor.section";
 import { validateAuthPage } from "@/utils/security/auth";
 
