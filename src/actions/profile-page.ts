@@ -14,6 +14,7 @@ import { CreateScanDto } from "./entities/scans";
 import { getQRCodeById, updateQRCode } from "./entities/qr-codes";
 import { createScan } from "./entities/scans";
 
+// TODO: refactor into middleware?
 async function getLocationData(ip: string) {
   try {
     const response = await fetch(`https://ipapi.co/${ip}/json/`);

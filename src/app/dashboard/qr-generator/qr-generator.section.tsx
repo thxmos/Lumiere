@@ -23,7 +23,7 @@ export const QRGeneratorSection = ({
   userId: string;
   initialQRCodes: QRCodeDto[];
 }) => {
-  const { setQRCodes } = useQRCodeStore();
+  const { qrCodes, setQRCodes } = useQRCodeStore();
 
   useEffect(() => {
     setQRCodes(initialQRCodes);
@@ -92,7 +92,12 @@ export const QRGeneratorSection = ({
           </div>
         )}
         <div className="flex w-full justify-end">
-          <Button type="submit">Generate QR Code</Button>
+          <Button
+            type="submit"
+            disabled={!link || !title || qrCodes.length >= 10}
+          >
+            Generate QR Code
+          </Button>
         </div>
       </form>
       <QRModal

@@ -1,7 +1,7 @@
-import { getUser } from "@/actions/entities/session";
 import { QRListSection } from "./qr-list.section";
 import { QRGeneratorSection } from "./qr-generator.section";
 import { getQRCodesByUserIdAction } from "@/actions/entities/qr-codes";
+import { validateAuthPage } from "@/utils/security/auth";
 
 /*
 TODO:
@@ -10,8 +10,7 @@ TODO:
 */
 
 const QRGeneratorPage = async () => {
-  const { user } = await getUser();
-  if (!user) return null;
+  const user = await validateAuthPage();
   const qrCodes = await getQRCodesByUserIdAction(user.id);
 
   return (
