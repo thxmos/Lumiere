@@ -2,10 +2,10 @@ import Link from "next/link";
 import { Trees } from "lucide-react";
 import { APP_NAME } from "@/constants/app";
 import DropdownMenu from "./dropdown-menu";
-import { getUser } from "@/actions/entities/session";
+import { validateServerSession } from "@/utils/security/auth";
 
 const Navbar = async () => {
-  const { user } = await getUser();
+  const user = await validateServerSession();
 
   const navLinks = [
     {

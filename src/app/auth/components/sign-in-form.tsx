@@ -24,9 +24,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { getGoogleOauthConsentUrl, signIn } from "@/actions/auth/auth";
+import { signIn } from "@/actions/auth/signIn";
 import { BeatLoader } from "react-spinners";
 import ForgotPasswordForm from "./forgot-password-form";
+import { getGoogleOauthConsentUrl } from "@/actions/auth/getGoogleOauthConsentUrl";
 
 const signInSchema = z.object({
   email: z.string().email("Invalid email address"),

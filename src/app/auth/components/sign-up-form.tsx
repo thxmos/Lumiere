@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Card,
   CardContent,
@@ -23,7 +24,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { signUp } from "@/actions/auth/auth";
+import { signUp } from "@/actions/auth/signUp";
 import { BeatLoader } from "react-spinners";
 
 export const signUpSchema = z
