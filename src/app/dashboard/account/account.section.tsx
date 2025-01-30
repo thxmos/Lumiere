@@ -7,8 +7,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { AvatarUpload } from "@/components/avatar-upload";
-import { type UserDto } from "@/actions/entities/user";
-import { updateUserAccountInfoAction } from "./account.actions";
+import {
+  updateUserAccountInfoAction,
+  type UserDto,
+} from "@/actions/entities/user/user";
 import { DashboardCard } from "@/components/dashboard-card";
 import { toast } from "sonner";
 import {

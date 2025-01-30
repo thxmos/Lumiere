@@ -15,7 +15,7 @@ import {
   createUser,
   getUserByEmail,
   updateUserById,
-} from "@/actions/entities/user";
+} from "@/actions/entities/user/user";
 import { sendVerifyEmail } from "../email";
 import { hash } from "@/utils/security/crypto";
 import { getPasswordResetTokenByToken } from "@/actions/entities/password-reset-token";

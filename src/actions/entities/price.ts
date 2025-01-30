@@ -1,3 +1,5 @@
+"use server";
+
 import { cache } from "react";
 import { prisma } from "@/utils/lib/prisma";
 import { Price, Prisma } from "@prisma/client";

@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -9,12 +8,11 @@ import {
   DialogFooter,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { DownloadIcon, SquareArrowOutUpRight } from "lucide-react";
+import { SquareArrowOutUpRight } from "lucide-react";
 
 /*
-TODO:
-Allow users to download the QR code as an image
-*/
+ * TODO: Download button to allow users to download the QR code as an image
+ */
 
 export default function QRModal({
   title,

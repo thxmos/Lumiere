@@ -1,3 +1,5 @@
+"use server";
+
 import { DEFAULT_THEME } from "@/constants/theme";
 
 import { ThemeNoId } from "@/types/theme";
@@ -40,4 +42,13 @@ export async function deleteThemeByUserId(userId: string) {
   await prisma.theme.delete({
     where: { userId },
   });
+}
+
+export async function upsertTheme(userId: string, theme: ThemeNoId) {
+  const existingTheme = await getThemeByUserId(userId);
+  if (existingTheme) {
+    await updateThemeByUserId(userId, theme);
+  } else {
+    await createTheme(userId, theme);
+  }
 }

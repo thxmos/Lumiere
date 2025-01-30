@@ -1,12 +1,9 @@
-import { getUser } from "@/actions/entities/session";
-import { getUserById } from "@/actions/entities/user";
 import UserSettingsSection from "./user-settings.section";
 import { UserThemeSection } from "./user-theme.section";
+import { validateAuthPage } from "@/utils/security/auth";
 
 export default async function UserSettingsPage() {
-  const sessionUser = await getUser();
-  const userId = sessionUser.user?.id!;
-  const user = await getUserById(userId);
+  const user = await validateAuthPage();
 
   return (
     <>

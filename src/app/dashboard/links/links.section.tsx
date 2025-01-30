@@ -11,7 +11,7 @@ import { DashboardCard } from "@/components/dashboard-card";
 import { Button } from "@/components/ui/button";
 import { deleteImage } from "@/actions/entities/assets";
 import { useLinksStore } from "@/stores/links";
-import { UserDto } from "@/actions/entities/user";
+import { UserDto } from "@/actions/entities/user/user";
 import { LinkResponse } from "@/repositories/link/types";
 import { updateUserLinksAction } from "@/actions/entities/link/updateUserLinks";
 import { deleteLinkById } from "@/actions/entities/link/deleteLinkById";

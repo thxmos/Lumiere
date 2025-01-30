@@ -1,13 +1,12 @@
-import { getUser } from "@/actions/entities/session";
-import { getProducts } from "./actions";
+import { getProducts } from "@/actions/entities/product2";
 import ProductsSection from "./products.section";
+import { validateAuthPage } from "@/utils/security/auth";
 
 const ProductsPage = async () => {
-  const sessionUser = await getUser();
-  const userId = sessionUser.user!.id;
-  const products = await getProducts(userId);
+  await validateAuthPage();
+  const products = await getProducts();
 
-  return <ProductsSection userId={userId} products={products} />;
+  return <ProductsSection products={products} />;
 };
 
 export default ProductsPage;

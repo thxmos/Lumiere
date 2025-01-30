@@ -5,7 +5,7 @@ import {
   CreateImageDto,
   deleteImage,
 } from "@/actions/entities/assets";
-import { updateUserAvatar } from "@/actions/entities/user";
+import { updateUserAvatar } from "@/actions/entities/user/user";
 import { put, del } from "@vercel/blob";
 import { getUser } from "@/actions/entities/session";
 

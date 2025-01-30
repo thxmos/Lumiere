@@ -1,7 +1,7 @@
 import ProductEditSection from "./product-edit.section";
-import { getProduct } from "./actions";
+import { getProduct } from "@/actions/entities/product2";
 import { getUser } from "@/actions/entities/session";
-import { UserDto } from "@/actions/entities/user";
+import { UserDto } from "@/actions/entities/user/user";
 
 interface Props {
   params: {

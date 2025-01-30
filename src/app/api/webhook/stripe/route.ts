@@ -1,6 +1,6 @@
 import { deletePriceByStripePriceId } from "@/actions/entities/price";
 import { deleteProductByStripeProductId } from "@/actions/entities/product";
-import { getUserByEmail } from "@/actions/entities/user";
+import { getUserByEmail } from "@/actions/entities/user/user";
 import { prisma } from "@/utils/lib/prisma";
 import { PricingPlanInterval, PricingType } from "@prisma/client";
 import { headers } from "next/headers";

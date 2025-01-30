@@ -1,3 +1,5 @@
+"use server";
+
 import { getUser } from "@/actions/entities/session";
 import { CreateQRCodeDto } from "@/types/qr-codes";
 import { prisma } from "@/utils/lib/prisma";
@@ -52,3 +54,23 @@ export async function deleteQRCode(id: string): Promise<void> {
   }
   await prisma.qRCode.delete({ where: { id, userId: user.id } });
 }
+
+export const createQRCodeAction = async (
+  url: string,
+  title: string,
+  userId: string,
+): Promise<QRCodeDto> => {
+  const qrCode = await createQRCode({ url, title, userId });
+  return qrCode;
+};
+
+export const getQRCodesByUserIdAction = async (
+  userId: string,
+): Promise<QRCodeDto[]> => {
+  const qrCodes = await getQRCodesByUserId(userId);
+  return qrCodes;
+};
+
+export const deleteQRCodeAction = async (qrCodeId: string): Promise<void> => {
+  await deleteQRCode(qrCodeId);
+};

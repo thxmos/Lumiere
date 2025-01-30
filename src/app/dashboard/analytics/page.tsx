@@ -1,12 +1,10 @@
-import { getUser } from "@/actions/entities/session";
 import { getActiveLinksByUserId } from "@/app/[username]/actions";
 import { DashboardCard } from "@/components/dashboard-card";
 import { Card } from "@/components/ui/card";
+import { validateAuthPage } from "@/utils/security/auth";
+
 export default async function AnalyticsPage() {
-  const { user } = await getUser();
-  if (!user) {
-    return null;
-  }
+  const user = await validateAuthPage();
 
   const links = await getActiveLinksByUserId(user.id);
 

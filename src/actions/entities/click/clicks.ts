@@ -1,3 +1,5 @@
+"use server";
+
 import { type BrowserData } from "@/types/clicks";
 import { Country } from "@prisma/client";
 import { ClickRepository } from "@/repositories/click/click.repository";

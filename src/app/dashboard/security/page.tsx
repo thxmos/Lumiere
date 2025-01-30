@@ -1,11 +1,10 @@
-import { UserDto } from "@/actions/entities/user";
-import { hasPasswordAction } from "./actions";
+import { UserDto } from "@/actions/entities/user/user";
+import { hasPasswordAction } from "@/actions/entities/user/user";
 import SecuritySection from "./security.section";
-import { getUser } from "@/actions/entities/session";
+import { validateAuthPage } from "@/utils/security/auth";
 
 export default async function SecurityPage() {
-  const { user } = await getUser();
-  if (!user) return null;
+  const user = await validateAuthPage();
   const hasPassword = await hasPasswordAction();
 
   return <SecuritySection user={user as UserDto} hasPassword={hasPassword} />;

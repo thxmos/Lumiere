@@ -1,4 +1,4 @@
-import { getUserByUsername } from "@/actions/entities/user";
+import { getUserByUsername } from "@/actions/entities/user/user";
 import { getActiveLinksByUserId } from "./actions";
 import { getThemeAction } from "@/actions/entities/theme";
 import React from "react";

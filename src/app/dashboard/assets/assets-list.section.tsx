@@ -2,7 +2,7 @@
 
 import { ImageDtoWithId } from "@/types/image";
 import { DashboardCard } from "@/components/dashboard-card";
-import { AssetsCard } from "./assets-list.card";
+import { AssetsCard } from "./components/assets-list.card";
 import { useAssetStore } from "@/stores/assets";
 import { useEffect } from "react";
 

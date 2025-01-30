@@ -8,20 +8,17 @@ import { ProductCard } from "./components/product-card";
 import { CreateProductModal } from "./create-product-modal";
 import type { CreateProduct2Dto, Product2Dto } from "@/types/product2";
 import { toast } from "sonner";
-import { createNewProduct } from "./actions";
-
+import { createNewProduct } from "@/actions/entities/product2";
 export default function ProductsSection({
-  userId,
   products,
 }: {
-  userId: string;
   products: Product2Dto[];
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const createProduct = async (productData: Partial<CreateProduct2Dto>) => {
     try {
-      await createNewProduct(userId, productData);
+      await createNewProduct(productData);
       toast.success("Product created successfully");
     } catch (error) {
       toast.error("Failed to create product. Please try again.");

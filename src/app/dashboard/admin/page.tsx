@@ -2,8 +2,10 @@ import { DashboardCard } from "@/components/dashboard-card";
 import { InviteSection } from "./invite.section";
 import { WorkbenchSection } from "./workbench.section";
 import Link from "next/link";
+import { validateAuthPage } from "@/utils/security/auth";
 
 const AdminPage = async () => {
+  await validateAuthPage();
   return (
     <>
       <DashboardCard title="Kanban" description="Current work in progress">

@@ -1,3 +1,5 @@
+"use server";
+
 import { prisma } from "@/utils/lib/prisma";
 
 //TODO: clean up and rename to Assets

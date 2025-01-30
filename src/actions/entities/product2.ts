@@ -1,7 +1,11 @@
+"use server";
+
 import { CreateProduct2Dto } from "@/types/product2";
 import { prisma } from "@/utils/lib/prisma";
 import { Product2Dto } from "@/types/product2";
 import { Product2 } from "@prisma/client";
+import { SessionUser } from "@/utils/lib/lucia";
+import { withAuth } from "@/utils/security/auth";
 
 function toDtoMapper(product: Product2): Product2Dto {
   return {
@@ -16,6 +20,21 @@ function toDtoMapper(product: Product2): Product2Dto {
     createdAt: product.createdAt,
     updatedAt: product.updatedAt,
   };
+}
+
+export async function getProduct(productId: string) {
+  return await getProductById(productId);
+}
+
+export async function updateProduct(
+  productId: string,
+  data: Partial<CreateProduct2Dto>,
+) {
+  const processedData = {
+    ...data,
+    price: data.price !== undefined ? Number(data.price) : undefined,
+  };
+  await updateProductById(productId, processedData as Partial<Product2Dto>);
 }
 
 export async function createProduct(
@@ -80,3 +99,31 @@ export async function updateProductById(
 export async function deleteProduct2ById(id: string): Promise<void> {
   await prisma.product2.delete({ where: { id } });
 }
+
+export const createNewProduct = withAuth(
+  async (user: SessionUser, product: CreateProduct2Dto) => {
+    await createProduct(user.id, product);
+  },
+);
+
+export const getProducts = withAuth(async (user: SessionUser) => {
+  return await getProductsByUserId(user.id);
+});
+
+// export async function updateProduct(
+//   productId: string,
+//   data: Partial<CreateProduct2Dto>,
+// ) {
+//   try {
+//     const processedData = {
+//       ...data,
+//       price: data.price !== undefined ? Number(data.price) : undefined,
+//     };
+//     await updateProduct(productId, processedData);
+//     revalidatePath("/dashboard/merch");
+//     return { success: true };
+//   } catch (error) {
+//     console.error("Failed to update product", error);
+//     return { error: "Failed to update product" };
+//   }
+// }

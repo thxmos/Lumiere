@@ -1,7 +1,7 @@
 "use client";
 
 import { DashboardCard } from "@/components/dashboard-card";
-import { QRCodeCard } from "./qr-list.card";
+import { QRCodeCard } from "./components/qr-list.card";
 import { useQRCodeStore } from "@/stores/qr-codes";
 
 export const QRListSection = () => {

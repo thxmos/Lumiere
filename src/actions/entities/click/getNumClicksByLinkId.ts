@@ -1,3 +1,5 @@
+"use server";
+
 import { ClickRepository } from "@/repositories/click/click.repository";
 
 export async function getNumOfClicksByLinkId(linkId: string) {

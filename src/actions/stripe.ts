@@ -2,7 +2,7 @@
 
 import { createStripeCheckoutSession } from "@/actions/stripe/stripe.checkout.sessions";
 import { getStripeCustomer } from "@/actions/stripe/stripe.customers";
-import { getUserById } from "@/actions/entities/user";
+import { getUserById } from "@/actions/entities/user/user";
 import { Price } from "@prisma/client";
 import { getUser } from "./entities/session";
 

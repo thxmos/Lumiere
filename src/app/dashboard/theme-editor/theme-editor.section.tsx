@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { FONTS } from "@/constants/fonts";
-import { upsertTheme } from "./themes.actions";
 import { toast } from "sonner";
 import type { ThemeNoId } from "@/types/theme";
 import { DashboardCard } from "@/components/dashboard-card";
@@ -17,6 +16,7 @@ import { Separator } from "@/components/ui/separator";
 import { useThemeStore } from "@/stores/themes";
 import { Switch } from "@/components/ui/switch";
 import { WHITE } from "@/constants/colors";
+import { upsertTheme } from "@/actions/entities/theme";
 
 /*
 TODO: ThemePrimaryColor should be primaryColor

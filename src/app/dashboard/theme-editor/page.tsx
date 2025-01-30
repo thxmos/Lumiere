@@ -1,15 +1,14 @@
 import { getThemeAction } from "@/actions/entities/theme";
-import { getUser } from "@/actions/entities/session";
 import { ThemeEditorSection } from "./theme-editor.section";
+import { validateAuthPage } from "@/utils/security/auth";
 
 const ThemeEditorPage = async () => {
-  const sessionUser = await getUser();
-  const userId = sessionUser.user?.id!;
-  const theme = await getThemeAction(userId);
+  const user = await validateAuthPage();
+  const theme = await getThemeAction(user.id);
 
   return (
     <>
-      <ThemeEditorSection userId={userId} initialTheme={theme} />
+      <ThemeEditorSection userId={user.id} initialTheme={theme} />
     </>
   );
 };

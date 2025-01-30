@@ -8,10 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import { toast } from "sonner";
-import { createQRCodeAction } from "./actions";
-import { generateQRCode, generateQRCode2 } from "./utils";
+import { createQRCodeAction } from "@/actions/entities/qr-codes";
+import { generateQRCode2 } from "./utils";
 import { PLACEHOLDER_IMG } from "@/constants/images";
-import QRModal from "./qr-modal";
+import QRModal from "./components/qr-modal";
 import { useQRCodeStore } from "@/stores/qr-codes";
 import { QRCodeDto } from "@/types/qr-codes";
 

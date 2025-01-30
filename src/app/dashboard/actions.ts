@@ -1,13 +1,13 @@
 "use server";
 
-import { getUser } from "@/actions/entities/session";
 import { DASHBOARD_TABS } from "./tabs";
 import { USER_ROLES } from "@/constants/user";
 import { redirect } from "next/navigation";
+import { withAuth } from "@/utils/security/auth";
+import { SessionUser } from "@/utils/lib/lucia";
 
 // Get the first tab that the user has access to
-export const getFirstTab = async () => {
-  const { user } = await getUser();
+export const getFirstTab = withAuth(async (user: SessionUser) => {
   const userRole = user?.roles || USER_ROLES.USER;
 
   // First try to find a tab specific to the user's role
@@ -31,4 +31,4 @@ export const getFirstTab = async () => {
   }
 
   return defaultTab;
-};
+});

@@ -5,8 +5,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { UserDto } from "@/actions/entities/user";
-import { updateUser } from "./actions";
+import { updateUserSettings, UserDto } from "@/actions/entities/user/user";
 import { DashboardCard } from "@/components/dashboard-card";
 
 export default function UserSettingsSection({ user }: { user: UserDto }) {
@@ -16,11 +15,10 @@ export default function UserSettingsSection({ user }: { user: UserDto }) {
     event.preventDefault();
     setIsSubmitting(true);
     const formData = new FormData(event.currentTarget);
-    const userId = formData.get("id") as string;
     const name = formData.get("name") as string;
 
     try {
-      await updateUser(userId, { name });
+      await updateUserSettings({ name });
       toast.success("Successfully updated user", {
         duration: 3000,
       });

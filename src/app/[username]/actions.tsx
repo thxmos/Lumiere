@@ -1,6 +1,9 @@
 "use server";
 
-import { createClick, createClickSocial } from "@/actions/entities/clicks";
+import {
+  createClick,
+  createClickSocial,
+} from "@/actions/entities/click/clicks";
 import { headers } from "next/headers";
 import { UAParser } from "ua-parser-js";
 import { BrowserData } from "@/types/clicks";

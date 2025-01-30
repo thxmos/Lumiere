@@ -1,10 +1,9 @@
-import { getUser } from "@/actions/entities/session";
 import BillingSection from "./billing.section";
-import { getBillingInfo } from "./actions";
+import { getBillingInfo } from "../../../../actions/stripe/billing";
+import { validateAuthPage } from "@/utils/security/auth";
 
 export default async function BillingPage() {
-  const { user } = await getUser();
-  if (!user) return null;
+  const user = await validateAuthPage();
 
   const billingInfo = await getBillingInfo(user.id);
 
