@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from "uuid";
 import { LinksList } from "./components/links-list";
 import { DashboardCard } from "@/components/layout/dashboard-card";
 import { Button } from "@/components/ui/button";
-import { deleteImage } from "@/actions/entities/assets";
+import { deleteImage } from "@/actions/entities/asset/deleteImage";
 import { useLinksStore } from "@/stores/links";
 import { UserDto } from "@/actions/entities/user/user";
 import { LinkResponse } from "@/repositories/link/types";

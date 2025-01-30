@@ -7,6 +7,19 @@ import {
   QrCodeCreateInput,
   QrCodeUpdateInput,
 } from "./types";
+import { QRCodeDto } from "@/types/qr-codes";
+
+export function toDtoMapper(qrCode: QRCode): QRCodeDto {
+  return {
+    id: qrCode.id,
+    url: qrCode.url,
+    title: qrCode.title || "",
+    userId: qrCode.userId,
+    scans: qrCode.scans,
+    createdAt: qrCode.createdAt,
+    updatedAt: qrCode.updatedAt,
+  };
+}
 
 export class QrCodeRepository implements IQrCodeRepository {
   private removePrivateFields(qrCode: QRCode): QrCodeResponse {

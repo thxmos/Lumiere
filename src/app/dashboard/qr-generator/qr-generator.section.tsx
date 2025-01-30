@@ -8,12 +8,12 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import { toast } from "sonner";
-import { createQRCodeAction } from "@/actions/entities/qr-codes";
 import { generateQRCode2 } from "./utils";
 import { PLACEHOLDER_IMG } from "@/constants/images";
 import QRModal from "./components/qr-modal";
 import { useQRCodeStore } from "@/stores/qr-codes";
 import { QRCodeDto } from "@/types/qr-codes";
+import { createQRCode } from "@/actions/entities/qr-code/createQrCode";
 
 // Add initialQRCodes to the props
 export const QRGeneratorSection = ({
@@ -37,7 +37,7 @@ export const QRGeneratorSection = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const qrCode = await createQRCodeAction(link, title, userId);
+      const qrCode = await createQRCode({ url: link, title, userId });
       const qrCodeUrl = generateQRCode2(qrCode.id);
       setQrCode(qrCodeUrl);
       const qrCodes = useQRCodeStore.getState().qrCodes;

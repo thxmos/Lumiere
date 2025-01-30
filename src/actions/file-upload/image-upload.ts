@@ -1,13 +1,13 @@
 "use server";
 
 import {
-  createImage,
   CreateImageDto,
   deleteImage,
-} from "@/actions/entities/assets";
+} from "@/actions/entities/asset/deleteImage";
 import { updateUserAvatar } from "@/actions/entities/user/user";
 import { put, del } from "@vercel/blob";
 import { getUser } from "@/actions/entities/session";
+import { createImage } from "../entities/asset/createImage";
 
 /*
 TODO: use the new auth methods instead of getUser

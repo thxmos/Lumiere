@@ -11,7 +11,8 @@ import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
 import { getLinkById } from "@/actions/entities/link/getLinkById";
 import { updateLink } from "@/actions/entities/link/updateLink";
 import { CreateScanDto } from "./entities/scans";
-import { getQRCodeById, updateQRCode } from "./entities/qr-codes";
+import { getQRCodeById } from "@/actions/entities/qr-code/getQrCodeById";
+import { updateQRCode } from "@/actions/entities/qr-code/updateQrCode";
 import { createScan } from "./entities/scans";
 
 // TODO: refactor into middleware?
