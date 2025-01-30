@@ -3,10 +3,10 @@ import SignInForm from "./components/sign-in-form";
 import SignUpForm from "./components/sign-up-form";
 import { redirect } from "next/navigation";
 import Navbar from "@/components/layout/nav-bar";
-import { validateAuthPage } from "@/utils/security/auth";
+import { validateServerSession } from "@/utils/security/auth";
 
 const AuthPage = async () => {
-  const user = await validateAuthPage();
+  const user = await validateServerSession();
 
   if (user) {
     redirect("/dashboard");

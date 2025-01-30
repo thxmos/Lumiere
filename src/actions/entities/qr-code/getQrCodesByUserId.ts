@@ -1,10 +1,12 @@
 "use server";
 
-import { prisma } from "@/utils/lib/prisma";
-import { QRCodeDto } from "@/types/qr-codes";
-import { toDtoMapper } from "@/repositories/qr-code/qr-code.repository";
+import { qrCodeRepository, QrCodeResponse } from "@/repositories/qr-code";
+import { withAuth } from "@/utils/security/auth";
+import { SessionUser } from "@/utils/lib/lucia";
 
-export async function getQRCodesByUserId(userId: string): Promise<QRCodeDto[]> {
-  const qrCodes = await prisma.qRCode.findMany({ where: { userId } });
-  return qrCodes.map(toDtoMapper);
-}
+export const getQRCodesByUserId = withAuth(
+  async (user: SessionUser): Promise<QrCodeResponse[]> => {
+    const qrCodes = await qrCodeRepository.getAllByUserId(user.id);
+    return qrCodes;
+  },
+);

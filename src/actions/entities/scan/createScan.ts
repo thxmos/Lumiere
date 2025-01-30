@@ -1,6 +1,8 @@
 "use server";
 
-import { prisma } from "@/utils/lib/prisma";
+import { scanRepository } from "@/repositories/scan";
+import { SessionUser } from "@/utils/lib/lucia";
+import { withAuth } from "@/utils/security/auth";
 
 export type CreateScanDto = {
   qrId: string;
@@ -13,9 +15,9 @@ export type CreateScanDto = {
   timezone: string;
 };
 
-export const createScan = async (scan: CreateScanDto) => {
-  const newScan = await prisma.scan.create({
-    data: {
+export const createScan = withAuth(
+  async (user: SessionUser, scan: CreateScanDto) => {
+    const newScan = await scanRepository.create({
       qrId: scan.qrId,
       browser: scan.browser,
       browserVersion: scan.browserVersion,
@@ -24,7 +26,7 @@ export const createScan = async (scan: CreateScanDto) => {
       screenResolution: scan.screenResolution,
       language: scan.language,
       timezone: scan.timezone,
-    },
-  });
-  return newScan;
-};
+    });
+    return newScan;
+  },
+);

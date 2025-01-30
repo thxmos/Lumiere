@@ -11,7 +11,7 @@ import {
 export class AssetRepository implements IAssetRepository {
   private removePrivateFields(asset: Asset): AssetResponse {
     const { id, ...assetResponse } = asset;
-    return assetResponse;
+    return { ...assetResponse };
   }
 
   async findById(id: string): Promise<AssetResponse | null> {
@@ -29,6 +29,15 @@ export class AssetRepository implements IAssetRepository {
       return assets.map(this.removePrivateFields);
     } catch (error) {
       throw new RepositoryError("Failed to fetch all assets", error);
+    }
+  }
+
+  async getAllByUserId(userId: string): Promise<AssetResponse[]> {
+    try {
+      const assets = await prisma.image.findMany({ where: { userId } });
+      return assets.map(this.removePrivateFields);
+    } catch (error) {
+      throw new RepositoryError("Failed to fetch assets by user id", error);
     }
   }
 

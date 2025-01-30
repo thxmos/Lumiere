@@ -6,7 +6,7 @@ export type QrCodeUpdateInput = Prisma.QRCodeUpdateInput;
 export type QrCodeWhereInput = Prisma.QRCodeWhereInput;
 
 // TODO: do we want to exclude id from ThemeResponse?
-export type QrCodeResponse = Omit<QRCode, "id">;
+export type QrCodeResponse = QRCode;
 
 export interface IQrCodeRepository
   extends IBaseRepository<

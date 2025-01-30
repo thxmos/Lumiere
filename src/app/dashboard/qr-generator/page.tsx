@@ -2,6 +2,7 @@ import { QRListSection } from "./qr-list.section";
 import { QRGeneratorSection } from "./qr-generator.section";
 import { validateAuthPage } from "@/utils/security/auth";
 import { getQRCodesByUserId } from "@/actions/entities/qr-code/getQrCodesByUserId";
+import { QRCodeDto } from "@/types/qr-codes";
 /*
 TODO:
 - Add a click counter to the QR code
@@ -10,11 +11,14 @@ TODO:
 
 const QRGeneratorPage = async () => {
   const user = await validateAuthPage();
-  const qrCodes = await getQRCodesByUserId(user.id);
+  const qrCodes = await getQRCodesByUserId();
 
   return (
     <div className="flex flex-col gap-4">
-      <QRGeneratorSection userId={user.id} initialQRCodes={qrCodes} />
+      <QRGeneratorSection
+        userId={user.id}
+        initialQRCodes={qrCodes as QRCodeDto[]}
+      />
       <QRListSection />
     </div>
   );

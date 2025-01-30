@@ -1,13 +1,20 @@
 "use server";
 
-import { QRCodeDto } from "@/types/qr-codes";
-import { toDtoMapper } from "@/repositories/qr-code/qr-code.repository";
-import { prisma } from "@/utils/lib/prisma";
+import { SessionUser } from "@/utils/lib/lucia";
+import { withAuth } from "@/utils/security/auth";
+import {
+  qrCodeRepository,
+  QrCodeResponse,
+  QrCodeUpdateInput,
+} from "@/repositories/qr-code";
 
-export async function updateQRCode(
-  id: string,
-  data: QRCodeDto,
-): Promise<QRCodeDto> {
-  const updatedQRCode = await prisma.qRCode.update({ where: { id }, data });
-  return toDtoMapper(updatedQRCode);
-}
+export const updateQRCode = withAuth(
+  async (
+    user: SessionUser,
+    id: string,
+    data: QrCodeUpdateInput,
+  ): Promise<QrCodeResponse> => {
+    const updatedQRCode = await qrCodeRepository.update(id, data);
+    return updatedQRCode;
+  },
+);

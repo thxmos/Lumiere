@@ -1,6 +1,6 @@
 "use server";
 
-import { LinkRepository } from "@/repositories/link/link.repository";
+import { linkRepository } from "@/repositories/link";
 import { LinkCreateInput, LinkUpdateInput } from "@/repositories/link/types";
 
 import { LinkResponse } from "@/repositories/link/types";
@@ -11,8 +11,6 @@ export const updateUserLinksAction = withAuth(
   async (user: SessionUser, links: Partial<LinkResponse>[]) => {
     if (!links) return;
     if (links.length > 10) return;
-
-    const linkRepository = new LinkRepository();
 
     const createLinksFiltered = links
       ?.filter((link) => link.id?.includes("new-"))

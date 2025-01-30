@@ -3,22 +3,22 @@ import ProtectedLayout from "@/components/layout/protected-layout";
 import LayoutSidebar from "@/components/layout/layout-sidebar";
 import { DASHBOARD_TABS } from "./tabs";
 import { ScrollToTopLayout } from "./scroll-to-top.layout";
-import { getUser } from "@/actions/entities/session";
 import { USER_ROLES } from "@/constants/user";
 import MobilePreview from "@/components/mobile-preview/mobile-preview";
 import LinkTree from "@/components/profile/linktree";
-import { getThemeAction } from "@/actions/entities/theme/theme";
+import { getThemeAction } from "@/actions/entities/theme/getTheme";
 import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
 import { UserDto } from "@/actions/entities/user/user";
 import { LinkDtoWithId } from "@/types/links";
 import Navbar from "@/components/layout/nav-bar";
+import { validateAuthPage } from "@/utils/security/auth";
 
 interface Props {
   children: React.ReactNode;
 }
 
 const DashboardLayout: React.FC<Props> = async ({ children }) => {
-  const { user } = await getUser();
+  const user = await validateAuthPage();
   const tabs = DASHBOARD_TABS;
 
   const theme = await getThemeAction(user?.id!);

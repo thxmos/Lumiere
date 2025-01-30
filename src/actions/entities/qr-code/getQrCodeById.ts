@@ -1,11 +1,14 @@
 "use server";
 
-import { prisma } from "@/utils/lib/prisma";
-import { toDtoMapper } from "@/repositories/qr-code/qr-code.repository";
-import { QRCodeDto } from "@/types/qr-codes";
+import { withAuth } from "@/utils/security/auth";
+import { SessionUser } from "@/utils/lib/lucia";
+import { qrCodeRepository } from "@/repositories/qr-code";
+import { QrCodeResponse } from "@/repositories/qr-code/types";
 
-export async function getQRCodeById(id: string): Promise<QRCodeDto> {
-  const qrCode = await prisma.qRCode.findUnique({ where: { id } });
-  if (!qrCode) throw new Error("QR code not found");
-  return toDtoMapper(qrCode);
-}
+export const getQRCodeById = withAuth(
+  async (user: SessionUser, id: string): Promise<QrCodeResponse> => {
+    const qrCode = await qrCodeRepository.findById(id);
+    if (!qrCode) throw new Error("QR code not found");
+    return qrCode;
+  },
+);

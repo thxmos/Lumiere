@@ -1,19 +1,20 @@
 "use server";
 
-import {
-  createClick,
-  createClickSocial,
-} from "@/actions/entities/click/clicks";
+import { createClick } from "@/actions/entities/click/createClick";
 import { headers } from "next/headers";
 import { UAParser } from "ua-parser-js";
 import { BrowserData } from "@/types/clicks";
 import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
 import { getLinkById } from "@/actions/entities/link/getLinkById";
 import { updateLink } from "@/actions/entities/link/updateLink";
-import { CreateScanDto } from "./entities/scan/scans";
+import { CreateScanDto } from "./entities/scan/createScan";
 import { getQRCodeById } from "@/actions/entities/qr-code/getQrCodeById";
 import { updateQRCode } from "@/actions/entities/qr-code/updateQrCode";
-import { createScan } from "./entities/scan/scans";
+import { createScan } from "./entities/scan/createScan";
+import { getUserByUsername } from "./entities/user/user";
+import { userRepository } from "@/repositories/user";
+import { linkRepository } from "@/repositories/link";
+import { ClickCreateInput, clickRepository } from "@/repositories/click";
 
 // TODO: refactor into middleware?
 async function getLocationData(ip: string) {
@@ -36,8 +37,11 @@ async function getLocationData(ip: string) {
   }
 }
 
-export const getActiveLinksByUserId = async (userId: string) => {
-  const links = await getLinksByUserId(userId);
+// public
+export const getActiveLinksByUsername = async (username: string) => {
+  const user = await userRepository.findByUsername(username);
+  if (!user) return [];
+  const links = await linkRepository.getLinksByUserId(user.id);
   return links.filter((link) => link.active);
 };
 
@@ -46,20 +50,28 @@ export const createClickForSocialAction = async (
   clientData: Partial<BrowserData>,
 ) => {
   const clickData = await getClientData(clientData);
-  await createClickSocial(socialPlatformClicked, clickData as BrowserData);
+  // await createClickSocial(socialPlatformClicked, clickData as BrowserData);
 };
 
+// Can probably assume the click exists if its displayed on the page
 export const updateLinkClicked = async (
   linkId: string,
   clientData: Partial<BrowserData>,
 ) => {
-  const link = await getLinkById(linkId);
-  if (!link) throw new Error("Link not found");
-  link.clicks = (link.clicks || 0) + 1;
-  await updateLink(linkId, link);
+  const link = await linkRepository.findById(linkId);
+  // if (!link) throw new Error("Link not found");
+  if (!link) return;
+
+  await linkRepository.update(linkId, {
+    clicks: { increment: 1 },
+  });
 
   const clickData = await getClientData(clientData);
-  await createClick(linkId, clickData as BrowserData);
+
+  await clickRepository.create({
+    ...clickData,
+    link: { connect: { id: linkId } },
+  });
 };
 
 export const getClientData = async (clientData: Partial<BrowserData>) => {
@@ -105,8 +117,11 @@ export const updateQrScanAction = async (
 ) => {
   const qrCode = await getQRCodeById(qrId);
   if (!qrCode) throw new Error("QR code not found");
-  qrCode.scans = (qrCode.scans || 0) + 1;
-  await updateQRCode(qrId, qrCode);
+
+  await updateQRCode(qrId, {
+    scans: (qrCode.scans || 0) + 1,
+  });
+
   await createScan({
     qrId,
     ...browserData,

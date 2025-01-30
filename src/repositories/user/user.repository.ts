@@ -23,6 +23,15 @@ export class UserRepository implements IUserRepository {
     }
   }
 
+  async findByUsername(username: string): Promise<UserResponse | null> {
+    try {
+      const user = await prisma.user.findUnique({ where: { username } });
+      return user ? this.removePrivateFields(user) : null;
+    } catch (error) {
+      throw new RepositoryError("Failed to fetch user by username", error);
+    }
+  }
+
   async findAll(): Promise<UserResponse[]> {
     try {
       const users = await prisma.user.findMany();

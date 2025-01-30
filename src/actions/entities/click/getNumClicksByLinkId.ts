@@ -1,9 +1,12 @@
 "use server";
 
-import { ClickRepository } from "@/repositories/click/click.repository";
+import { clickRepository } from "@/repositories/click";
+import { SessionUser } from "@/utils/lib/lucia";
+import { withAuth } from "@/utils/security/auth";
 
-export async function getNumOfClicksByLinkId(linkId: string) {
-  const clickRepository = new ClickRepository();
-  const clicks = await clickRepository.getAllByLinkId(linkId);
-  return clicks.length;
-}
+export const getNumOfClicksByLinkId = withAuth(
+  async (user: SessionUser, linkId: string) => {
+    const clicks = await clickRepository.getAllByLinkId(linkId);
+    return clicks.length;
+  },
+);

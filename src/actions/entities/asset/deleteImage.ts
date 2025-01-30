@@ -1,19 +1,12 @@
 "use server";
 
-import { prisma } from "@/utils/lib/prisma";
+import { assetRepository } from "@/repositories/asset";
+import { SessionUser } from "@/utils/lib/lucia";
+import { withAuth } from "@/utils/security/auth";
 
 //TODO: clean up and rename to Assets
 
-export type CreateImageDto = {
-  url: string;
-  userId: string;
-  title: string;
-  description: string;
-};
-
-export const deleteImage = async (id: string, userId: string) => {
-  const deletedAsset = await prisma.image.delete({
-    where: { id, userId },
-  });
+export const deleteImage = withAuth(async (user: SessionUser, id: string) => {
+  const deletedAsset = await assetRepository.delete(id);
   return deletedAsset;
-};
+});

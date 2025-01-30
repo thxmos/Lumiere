@@ -1,6 +1,6 @@
-import { getUserByUsername } from "@/actions/entities/user/user";
-import { getActiveLinksByUserId } from "../../actions/profile-page";
-import { getThemeAction } from "@/actions/entities/theme/theme";
+import { getUserByUsername, UserDtoNoId } from "@/actions/entities/user/user";
+import { getActiveLinksByUsername } from "@/actions/profile-page";
+import { getThemeByUsername } from "@/actions/entities/theme/getTheme";
 import React from "react";
 import { redirect } from "next/navigation";
 import LinkTree from "@/components/profile/linktree";
@@ -14,19 +14,20 @@ export default async function ArtistPage({
   searchParams: { preview: string };
 }) {
   const user = await getUserByUsername(params.username);
+
   if (!user) {
     return redirect("/404");
   }
 
-  const links = await getActiveLinksByUserId(user.id);
-  const theme = await getThemeAction(user.id);
+  const links = await getActiveLinksByUsername(user.username);
+  const theme = await getThemeByUsername(user.username);
 
   return (
     <LinkTree
       isPreview={searchParams.preview === "true"}
       initialLinks={links as LinkDtoWithId[]}
       initialTheme={theme}
-      user={user}
+      user={user as UserDtoNoId}
     />
   );
 }

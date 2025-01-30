@@ -1,6 +1,6 @@
 "use client";
 
-import { ImageDtoWithId } from "@/types/image";
+import { Image } from "@prisma/client";
 import { DashboardCard } from "@/components/layout/dashboard-card";
 import { AssetsCard } from "./components/assets-list.card";
 import { useAssetStore } from "@/stores/assets";
@@ -9,7 +9,7 @@ import { useEffect } from "react";
 export default function AssetsListSection({
   initialAssets,
 }: {
-  initialAssets: ImageDtoWithId[];
+  initialAssets: Image[];
 }) {
   const { assets, setAssets } = useAssetStore();
 

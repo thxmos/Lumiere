@@ -10,7 +10,7 @@ import { UploadIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useAssetStore } from "@/stores/assets";
-
+import { Image } from "@prisma/client";
 export const ImageUploadForm = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -40,7 +40,7 @@ export const ImageUploadForm = () => {
       });
       toast.success("Image uploaded successfully");
 
-      setAssets([uploadedImage, ...useAssetStore.getState().assets]);
+      setAssets([uploadedImage as Image, ...useAssetStore.getState().assets]);
 
       resetForm();
     } catch (error) {

@@ -9,7 +9,7 @@ import type { ThemeNoId } from "@/types/theme";
 import { useThemeStore } from "@/stores/themes";
 import { useLinksStore } from "@/stores/links";
 import BackgroundVideo from "./components/background-video";
-import { UserDto } from "@/actions/entities/user/user";
+import { UserDtoNoId } from "@/actions/entities/user/user";
 import { BLACK, WHITE } from "@/constants/colors";
 import { COUNTRIES } from "@/constants/countries";
 import { TabSelector } from "./components/tab-selector";
@@ -21,7 +21,7 @@ interface Props {
   isPreview?: boolean;
   initialLinks: LinkDto[];
   initialTheme: ThemeNoId;
-  user: UserDto;
+  user: UserDtoNoId;
 }
 
 const LinkTree: React.FC<Props> = ({

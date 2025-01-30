@@ -9,8 +9,11 @@ import {
 } from "@/components/ui/card";
 import { AlertTriangle } from "lucide-react";
 import Navbar from "@/components/layout/nav-bar";
+import { validateServerSession } from "@/utils/security/auth";
 
-export default function NotFoundPage() {
+export default async function NotFoundPage() {
+  const user = await validateServerSession();
+
   return (
     <>
       <Navbar />
@@ -29,7 +32,7 @@ export default function NotFoundPage() {
               Oops! The page you're looking for doesn't exist or has been moved.
             </p>
           </CardContent>
-          <Link href="/dashboard">
+          <Link href={user ? "/dashboard" : "/auth"}>
             <CardFooter className="flex justify-center">
               <Button>Return to Home</Button>
             </CardFooter>

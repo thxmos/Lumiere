@@ -7,8 +7,7 @@ export type PasswordResetTokenUpdateInput =
   Prisma.PasswordResetTokenUpdateInput;
 export type PasswordResetTokenWhereInput = Prisma.PasswordResetTokenWhereInput;
 
-// TODO: do we want to exclude link from LinkResponse?
-export type PasswordResetTokenResponse = Omit<PasswordResetToken, "id">;
+export type PasswordResetTokenResponse = PasswordResetToken;
 
 export interface IPasswordResetTokenRepository
   extends IBaseRepository<

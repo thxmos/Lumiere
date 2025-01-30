@@ -1,7 +1,7 @@
 import ProductEditSection from "./product-edit.section";
 import { getProduct } from "@/actions/entities/product/product2";
-import { getUser } from "@/actions/entities/session";
 import { UserDto } from "@/actions/entities/user/user";
+import { validateAuthPage } from "@/utils/security/auth";
 
 interface Props {
   params: {
@@ -10,8 +10,7 @@ interface Props {
 }
 
 export default async function ProductPage({ params }: Props) {
-  const { user } = await getUser();
-
+  const user = await validateAuthPage();
   const { productId } = params;
   const product = await getProduct(productId);
   if (!product) return null;

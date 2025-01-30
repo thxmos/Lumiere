@@ -41,7 +41,7 @@ export const QRGeneratorSection = ({
       const qrCodeUrl = generateQRCode2(qrCode.id);
       setQrCode(qrCodeUrl);
       const qrCodes = useQRCodeStore.getState().qrCodes;
-      useQRCodeStore.setState({ qrCodes: [...qrCodes, qrCode] });
+      useQRCodeStore.setState({ qrCodes: [...qrCodes, qrCode] as QRCodeDto[] });
       toast.success("QR code generated successfully");
     } catch (error) {
       toast.error("Failed to generate QR code");
@@ -92,10 +92,7 @@ export const QRGeneratorSection = ({
           </div>
         )}
         <div className="flex w-full justify-end">
-          <Button
-            type="submit"
-            disabled={!link || !title || qrCodes.length >= 10}
-          >
+          <Button type="submit" disabled={qrCodes.length >= 10}>
             Generate QR Code
           </Button>
         </div>

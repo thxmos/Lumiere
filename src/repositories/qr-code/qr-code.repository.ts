@@ -24,7 +24,7 @@ export function toDtoMapper(qrCode: QRCode): QRCodeDto {
 export class QrCodeRepository implements IQrCodeRepository {
   private removePrivateFields(qrCode: QRCode): QrCodeResponse {
     const { id, ...qrCodeResponse } = qrCode;
-    return qrCodeResponse;
+    return { ...qrCodeResponse, id };
   }
 
   async findById(id: string): Promise<QrCodeResponse | null> {
@@ -42,6 +42,18 @@ export class QrCodeRepository implements IQrCodeRepository {
       return qrCodes.map(this.removePrivateFields);
     } catch (error) {
       throw new RepositoryError("Failed to fetch all QRCodes", error);
+    }
+  }
+
+  async getAllByUserId(userId: string): Promise<QrCodeResponse[]> {
+    try {
+      const qrCodes = await prisma.qRCode.findMany({ where: { userId } });
+      return qrCodes.map(this.removePrivateFields);
+    } catch (error) {
+      throw new RepositoryError(
+        "Failed to fetch all QRCodes by user id",
+        error,
+      );
     }
   }
 

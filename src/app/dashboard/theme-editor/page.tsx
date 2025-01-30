@@ -1,4 +1,4 @@
-import { getThemeAction } from "@/actions/entities/theme/theme";
+import { getThemeAction } from "@/actions/entities/theme/getTheme";
 import { ThemeEditorSection } from "./theme-editor.section";
 import { validateAuthPage } from "@/utils/security/auth";
 
@@ -8,7 +8,7 @@ const ThemeEditorPage = async () => {
 
   return (
     <>
-      <ThemeEditorSection userId={user.id} initialTheme={theme} />
+      <ThemeEditorSection initialTheme={theme} />
     </>
   );
 };

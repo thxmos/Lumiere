@@ -12,7 +12,7 @@ import { SessionUser } from "@/utils/lib/lucia";
 export class LinkRepository implements ILinkRepository {
   // TODO: fix removePrivateFields
   private removePrivateFields(link: Link): LinkResponse {
-    const { userId, ...linkResponse } = link;
+    const { /*id,*/ userId, ...linkResponse } = link; // TODO: id or no?
     return linkResponse as LinkResponse;
   }
 
@@ -31,6 +31,20 @@ export class LinkRepository implements ILinkRepository {
       return links.map(this.removePrivateFields);
     } catch (error) {
       throw new RepositoryError("Failed to fetch links by user id", error);
+    }
+  }
+
+  async getActiveLinksByUsername(username: string): Promise<LinkResponse[]> {
+    try {
+      const links = await prisma.link.findMany({
+        where: { user: { username }, active: true },
+      });
+      return links.map(this.removePrivateFields);
+    } catch (error) {
+      throw new RepositoryError(
+        "Failed to fetch active links by username",
+        error,
+      );
     }
   }
 

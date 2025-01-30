@@ -1,10 +1,11 @@
 "use server";
 
-import { prisma } from "@/utils/lib/prisma";
+import { assetRepository } from "@/repositories/asset";
+import { SessionUser } from "@/utils/lib/lucia";
+import { withAuth } from "@/utils/security/auth";
 
-export const getImagesByUserId = async (userId: string) => {
-  const images = await prisma.image.findMany({
-    where: { userId },
-  });
+// getAllImagesForUser
+export const getImagesByUserId = withAuth(async (user: SessionUser) => {
+  const images = await assetRepository.getAllByUserId(user.id);
   return images;
-};
+});

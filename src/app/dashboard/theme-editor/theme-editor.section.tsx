@@ -16,7 +16,7 @@ import { Separator } from "@/components/ui/separator";
 import { useThemeStore } from "@/stores/themes";
 import { Switch } from "@/components/ui/switch";
 import { WHITE } from "@/constants/colors";
-import { upsertTheme } from "@/actions/entities/theme/theme";
+import { upsertTheme } from "@/actions/entities/theme/upsertTheme";
 
 /*
 TODO: ThemePrimaryColor should be primaryColor
@@ -31,10 +31,8 @@ const BACKGROUND_TYPES = [
 ];
 
 export function ThemeEditorSection({
-  userId,
   initialTheme,
 }: {
-  userId: string;
   initialTheme: ThemeNoId;
 }) {
   const { control, handleSubmit, watch } = useForm<{
@@ -76,7 +74,7 @@ export function ThemeEditorSection({
           10,
         ),
       };
-      await upsertTheme(userId, updatedTheme);
+      await upsertTheme(updatedTheme);
       toast.success("Theme updated successfully", {
         duration: 3000,
       });

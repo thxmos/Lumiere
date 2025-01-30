@@ -11,11 +11,13 @@ import {
 export class PasswordResetTokenRepository
   implements IPasswordResetTokenRepository
 {
+  // doing nothing here, just a placeholder
+  //TODO: clean up in general, probably not needed here
   private removePrivateFields(
     passwordResetToken: PasswordResetToken,
   ): PasswordResetTokenResponse {
     const { id, ...passwordResetTokenResponse } = passwordResetToken;
-    return passwordResetTokenResponse;
+    return { ...passwordResetTokenResponse, id };
   }
 
   async findById(id: string): Promise<PasswordResetTokenResponse | null> {
@@ -32,6 +34,15 @@ export class PasswordResetTokenRepository
         error,
       );
     }
+  }
+
+  async findByToken(token: string): Promise<PasswordResetTokenResponse | null> {
+    const passwordResetToken = await prisma.passwordResetToken.findUnique({
+      where: { token },
+    });
+    return passwordResetToken
+      ? this.removePrivateFields(passwordResetToken)
+      : null;
   }
 
   async findAll(): Promise<PasswordResetTokenResponse[]> {

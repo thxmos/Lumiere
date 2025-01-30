@@ -2,11 +2,12 @@
 
 import { prisma } from "@/utils/lib/prisma";
 import { del } from "@vercel/blob";
-import { getUser, isValidSession } from "@/actions/entities/session";
+import { getUser } from "@/actions/entities/session";
 import { Country, OAuthProvider, User } from "@prisma/client";
 import { SessionUser } from "@/utils/lib/lucia";
 import { withAuth } from "@/utils/security/auth";
 import { hash, verify } from "@/utils/security/crypto";
+import { userRepository } from "@/repositories/user";
 
 export const updateUserAvatar = async (url: string) => {
   const { user } = await getUser();
@@ -32,15 +33,12 @@ export const updateUserAvatar = async (url: string) => {
   }
 };
 
+// used on username page
 export const getUserByUsername = async (username: string) => {
-  const { user } = await getUser();
-  if (!user) return null;
-
-  const data = await prisma.user.findUnique({
-    where: { username },
-  });
-
-  return data;
+  const data = await userRepository.findByUsername(username);
+  if (!data) return null;
+  const { id, ...rest } = data;
+  return rest;
 };
 
 export const getUserSubscriptions = async () => {
@@ -90,6 +88,8 @@ export type UserDto = {
   stripeCustomerId: string | null;
   oAuthProvider: OAuthProvider | null;
 };
+
+export type UserDtoNoId = Omit<UserDto, "id" | "stripeCustomerId">;
 
 function toDtoMapper(user: User): UserDto {
   return {

@@ -78,15 +78,15 @@ export class ThemeRepository implements IThemeRepository {
     }
   }
 
-  async delete(id: string): Promise<void> {
+  async delete(userId: string): Promise<void> {
     try {
       await prisma.theme.delete({
-        where: { id },
+        where: { userId },
       });
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         if (error.code === "P2025") {
-          throw new NotFoundError("Theme", id);
+          throw new NotFoundError("Theme", userId);
         }
       }
       throw new RepositoryError("Failed to delete theme", error);

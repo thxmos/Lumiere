@@ -84,7 +84,7 @@ export function LinksSection({ userLinks, user }: Props) {
       try {
         await deleteLinkById(linkToRemove.id);
         if (linkToRemove.imageUrl) {
-          await deleteImage(linkToRemove.imageUrl, user.id);
+          await deleteImage(linkToRemove.imageUrl);
         }
         toast.success("Link deleted successfully");
       } catch (error) {

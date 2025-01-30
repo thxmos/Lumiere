@@ -1,13 +1,13 @@
 "use server";
 
-import {
-  CreateImageDto,
-  deleteImage,
-} from "@/actions/entities/asset/deleteImage";
+import { deleteImage } from "@/actions/entities/asset/deleteImage";
 import { updateUserAvatar } from "@/actions/entities/user/user";
 import { put, del } from "@vercel/blob";
 import { getUser } from "@/actions/entities/session";
-import { createImage } from "../entities/asset/createImage";
+import {
+  createImage,
+  type CreateImageDto,
+} from "../entities/asset/createImage";
 
 /*
 TODO: use the new auth methods instead of getUser
@@ -118,5 +118,5 @@ export async function deleteImageAction(imageId: string) {
   if (!user) throw new Error("Unauthenticated");
 
   await deleteBlob(imageId);
-  await deleteImage(imageId, user.id);
+  await deleteImage(imageId);
 }

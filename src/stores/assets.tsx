@@ -1,9 +1,9 @@
-import { ImageDtoWithId } from "@/types/image";
+import { Image } from "@prisma/client";
 import { create } from "zustand";
 
 type AssetStore = {
-  assets: ImageDtoWithId[];
-  setAssets: (assets: ImageDtoWithId[]) => void;
+  assets: Image[];
+  setAssets: (assets: Image[]) => void;
 };
 
 export const useAssetStore = create<AssetStore>()((set) => ({

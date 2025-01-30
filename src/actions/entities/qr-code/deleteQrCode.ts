@@ -1,16 +1,10 @@
 "use server";
 
-import { prisma } from "@/utils/lib/prisma";
-import { getUser } from "../session";
+import { withAuth } from "@/utils/security/auth";
+import { SessionUser } from "@/utils/lib/lucia";
+import { qrCodeRepository } from "@/repositories/qr-code";
 
-export const deleteQRCodeAction = async (qrCodeId: string): Promise<void> => {
-  await deleteQRCode(qrCodeId);
-};
-
-export async function deleteQRCode(id: string): Promise<void> {
-  const { user } = await getUser();
-  if (!user) {
-    throw new Error("User not found");
-  }
-  await prisma.qRCode.delete({ where: { id, userId: user.id } });
-}
+export const deleteQRCode = withAuth(async (user: SessionUser, id: string) => {
+  const qrCode = await qrCodeRepository.delete(id);
+  return qrCode;
+});

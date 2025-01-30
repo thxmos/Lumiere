@@ -8,7 +8,7 @@ import { X } from "lucide-react";
 import { toast } from "sonner";
 import { ConfirmDeleteModal } from "@/components/modals/confirm-delete-modal";
 import { useState } from "react";
-import { deleteQRCodeAction } from "@/actions/entities/qr-code/deleteQrCode";
+import { deleteQRCode } from "@/actions/entities/qr-code/deleteQrCode";
 import type { QRCodeDto } from "@/types/qr-codes";
 import QRModal from "./qr-modal";
 
@@ -28,7 +28,7 @@ export const QRCodeCard = ({
     removeQRCode(qrCode.id);
 
     try {
-      await deleteQRCodeAction(qrCode.id);
+      await deleteQRCode(qrCode.id);
       toast.success("QR code deleted successfully", { duration: 3000 });
     } catch (error) {
       toast.error("Failed to delete QR code", { duration: 3000 });

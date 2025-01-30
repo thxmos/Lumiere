@@ -6,13 +6,13 @@ import { MiddlewareFactory } from "./core/types";
 const rateLimiters = {
   auth: new Ratelimit({
     redis: kv,
-    limiter: Ratelimit.slidingWindow(5, "1 m"), // 5 requests per minute
+    limiter: Ratelimit.slidingWindow(10, "1 m"), // 10 requests per minute
     analytics: true,
     prefix: "ratelimit:auth:",
   }),
   api: new Ratelimit({
     redis: kv,
-    limiter: Ratelimit.slidingWindow(20, "10 s"), // 20 requests per 10 seconds
+    limiter: Ratelimit.slidingWindow(50, "10 s"), // 50 requests per 10 seconds
     analytics: true,
     prefix: "ratelimit:api:",
   }),

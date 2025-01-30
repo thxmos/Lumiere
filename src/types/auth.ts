@@ -1,6 +1,6 @@
 import { PasswordResetToken, Session, VerificationToken } from "@prisma/client";
 
-export type PasswordResetTokenDto = Omit<PasswordResetToken, "id">;
+export type PasswordResetTokenDto = PasswordResetToken;
 export type PasswordResetTokenDtoWithId = PasswordResetToken;
 
 export type SessionDto = Omit<Session, "id">;

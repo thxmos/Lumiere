@@ -1,16 +1,23 @@
 "use server";
 
-import { prisma } from "@/utils/lib/prisma";
-import { CreateImageDto } from "./deleteImage";
+import { assetRepository } from "@/repositories/asset";
+import { SessionUser } from "@/utils/lib/lucia";
+import { withAuth } from "@/utils/security/auth";
 
-export const createImage = async (asset: CreateImageDto) => {
-  const newAsset = await prisma.image.create({
-    data: {
-      url: asset.url,
-      userId: asset.userId,
-      title: asset.title,
-      description: asset.description,
-    },
-  });
-  return newAsset;
+export type CreateImageDto = {
+  id?: string;
+  url: string;
+  userId: string;
+  title: string;
+  description: string;
 };
+
+export const createImage = withAuth(
+  async (user: SessionUser, asset: CreateImageDto) => {
+    const newAsset = await assetRepository.create({
+      ...asset,
+      User: { connect: { id: user.id } },
+    });
+    return newAsset;
+  },
+);
