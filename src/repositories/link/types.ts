@@ -1,12 +1,14 @@
 import { Link, Prisma } from "@prisma/client";
 import { IBaseRepository } from "../types";
 
-export type LinkCreateInput = Prisma.LinkCreateInput;
+export type LinkCreateInput = Omit<Prisma.LinkCreateInput, "Click">; // don't want to be able to create a click
+
+export type LinkUpdateDto = Link & { id: string };
 export type LinkUpdateInput = Prisma.LinkUpdateInput;
 export type LinkWhereInput = Prisma.LinkWhereInput;
 
 // TODO: do we want to exclude link from LinkResponse?
-export type LinkResponse = Omit<Link, "id">;
+export type LinkResponse = Link;
 
 export interface ILinkRepository
   extends IBaseRepository<LinkResponse, LinkCreateInput, LinkUpdateInput> {

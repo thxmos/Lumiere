@@ -9,7 +9,7 @@ import { USER_ROLES } from "@/constants/user";
 import MobilePreview from "@/components/mobile-preview/mobile-preview";
 import LinkTree from "@/components/profile/linktree";
 import { getThemeAction } from "@/actions/entities/theme";
-import { getLinksByUserId } from "@/actions/entities/links";
+import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
 import { UserDto } from "@/actions/entities/user";
 import { LinkDtoWithId } from "@/types/links";
 

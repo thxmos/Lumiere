@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useState } from "react";
 import type { DraggableProvided } from "@hello-pangea/dnd";
 import { RxDragHandleDots2 } from "react-icons/rx";
-import type { LinkDto } from "@/actions/entities/links";
 import { ImageUpload } from "@/components/image-upload";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
@@ -11,16 +10,17 @@ import { Button } from "@/components/ui/button";
 import { Trash, Edit, Check, X } from "lucide-react";
 import { ConfirmDeleteModal } from "@/components/confirm-delete-modal";
 import { Label } from "@/components/ui/label";
+import { LinkResponse } from "@/repositories/link/types";
 
 /*
 - text ellipsis on mobile
 */
 
 interface Props {
-  link: LinkDto;
+  link: LinkResponse;
   index: number;
   draggableProvided: DraggableProvided;
-  onUpdate: (index: number, updatedLink: LinkDto) => void;
+  onUpdate: (index: number, updatedLink: LinkResponse) => void;
   onDelete: (index: number) => void;
 }
 

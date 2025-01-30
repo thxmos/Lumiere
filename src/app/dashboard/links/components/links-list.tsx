@@ -6,18 +6,17 @@ import {
   DropResult,
 } from "@hello-pangea/dnd";
 
-import { LinkDto } from "@/actions/entities/links";
 import { LinkCard } from "./link-card";
+import { LinkResponse } from "@/repositories/link/types";
 
 /*
 TODO: Fix form submit, remove update on every re-order
-
 */
 
 interface Props {
-  links: LinkDto[];
-  setLinks: (links: LinkDto[]) => void;
-  onUpdate: (index: number, updatedLink: LinkDto) => void;
+  links: LinkResponse[];
+  setLinks: (links: LinkResponse[]) => void;
+  onUpdate: (index: number, updatedLink: LinkResponse) => void;
   onDelete: (index: number) => void;
 }
 

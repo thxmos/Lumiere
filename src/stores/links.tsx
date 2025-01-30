@@ -1,10 +1,9 @@
 import { create } from "zustand";
-
-import { LinkDto } from "@/actions/entities/links";
+import { LinkResponse } from "@/repositories/link";
 
 type LinkStore = {
-  links: LinkDto[];
-  setLinks: (links: LinkDto[]) => void;
+  links: LinkResponse[];
+  setLinks: (links: LinkResponse[]) => void;
 };
 
 export const useLinksStore = create<LinkStore>((set) => ({

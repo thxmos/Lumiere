@@ -6,11 +6,9 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { SOCIAL_PLATFORMS } from "@/constants/social-media";
-import { updateUser } from "./actions";
-import { UserDto } from "@/actions/entities/user";
+import { updateUser, UserDto } from "@/actions/entities/user";
 import { DashboardCard } from "@/components/dashboard-card";
 import { toast } from "sonner";
-import Image from "next/image";
 
 interface Props {
   user: UserDto;
@@ -33,7 +31,7 @@ export function SocialMediaSection({ user }: Props) {
 
   const onSubmit = async (data: Record<string, string>) => {
     try {
-      await updateUser(user.id, data);
+      await updateUser(data);
       toast.success("Social media links updated successfully", {
         duration: 3000,
       });

@@ -2,8 +2,10 @@
 
 import { prisma } from "@/utils/lib/prisma";
 import { del } from "@vercel/blob";
-import { getUser } from "@/actions/entities/session";
-import { OAuthProvider, User } from "@prisma/client";
+import { getUser, isValidSession } from "@/actions/entities/session";
+import { Country, OAuthProvider, User } from "@prisma/client";
+import { SessionUser } from "@/utils/lib/lucia";
+import { withAuth } from "@/utils/security/auth";
 
 export const updateUserAvatar = async (url: string) => {
   const { user } = await getUser();
@@ -179,6 +181,27 @@ export async function updateUserByEmail(
 ): Promise<void> {
   await prisma.user.update({ where: { email }, data });
 }
+
+// TODO: clean up this disgusting mess
+export const updateUser = withAuth(
+  async (user: SessionUser, data: Partial<UserDto>) => {
+    await updateUserById(user.id, {
+      username: data.username,
+      description: data.description,
+      country: data.country as Country,
+      appleMusicUsername: data.appleMusicUsername,
+      discordUsername: data.discordUsername,
+      facebookUsername: data.facebookUsername,
+      instagramUsername: data.instagramUsername,
+      patreonUsername: data.patreonUsername,
+      spotifyUsername: data.spotifyUsername,
+      tiktokUsername: data.tiktokUsername,
+      twitchUsername: data.twitchUsername,
+      twitterUsername: data.twitterUsername,
+      youtubeUsername: data.youtubeUsername,
+    });
+  },
+);
 
 export async function deleteUser(id: string): Promise<void> {
   await prisma.user.delete({ where: { id } });

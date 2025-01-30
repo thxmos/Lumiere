@@ -1,6 +1,7 @@
 import { Click, Prisma } from "@prisma/client";
 import { IBaseRepository } from "../types";
 
+export type ClickCreateDto = Omit<Prisma.ClickCreateInput, "id">;
 export type ClickCreateInput = Prisma.ClickCreateInput;
 export type ClickUpdateInput = Prisma.ClickUpdateInput;
 export type ClickWhereInput = Prisma.ClickWhereInput;

@@ -33,6 +33,6 @@ export const createClickSocial = async (
 
 export const getClicksByLinkId = async (linkId: string) => {
   const clickRepository = new ClickRepository();
-  const clicks = await clickRepository.findAllByLinkId(linkId);
+  const clicks = await clickRepository.getAllByLinkId(linkId);
   return clicks;
 };

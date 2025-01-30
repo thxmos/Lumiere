@@ -64,7 +64,7 @@ export const QRCodeCard = ({
             </div>
             <div className="flex flex-col gap-2">
               <h3
-                className="text-lg font-bold text-secondary group-hover:text-primary transition-all duration-300 cursor-pointer"
+                className="text-lg font-bold text-primary transition-all duration-300 cursor-pointer"
                 onClick={() => setIsQRModalOpen(true)}
               >
                 {qrCode.title || "Untitled"}

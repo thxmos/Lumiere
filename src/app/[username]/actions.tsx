@@ -1,14 +1,12 @@
 "use server";
 
-import {
-  getLinkById,
-  getLinksByUserId,
-  updateLink,
-} from "@/actions/entities/links";
 import { createClick, createClickSocial } from "@/actions/entities/clicks";
 import { headers } from "next/headers";
 import { UAParser } from "ua-parser-js";
 import { BrowserData } from "@/types/clicks";
+import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
+import { getLinkById } from "@/actions/entities/link/getLinkById";
+import { updateLink } from "@/actions/entities/link/updateLink";
 
 async function getLocationData(ip: string) {
   try {

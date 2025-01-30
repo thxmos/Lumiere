@@ -1,15 +1,11 @@
-import { getUserById } from "@/actions/entities/user";
-import { getUser } from "@/actions/entities/session";
-import { getLinksWithNumOfClicks } from "./actions";
+import { getLinksWithNumOfClicks } from "@/actions/entities/link/getLinksWithNumOfClicks";
 import { SocialMediaSection } from "./social-media.section";
 import { LinksSection } from "./links.section";
+import { validateAuthPage } from "@/utils/security/auth";
 
 const LinksPage = async () => {
-  const sessionUser = await getUser();
-  const userId = sessionUser.user?.id;
-  if (!userId) return null;
-  const user = await getUserById(userId);
-  const links = await getLinksWithNumOfClicks(userId);
+  const user = await validateAuthPage();
+  const links = await getLinksWithNumOfClicks(user.id);
 
   return (
     <>

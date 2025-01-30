@@ -32,7 +32,7 @@ export class ClickRepository implements IClickRepository {
     }
   }
 
-  async findAllByLinkId(linkId: string): Promise<ClickResponse[]> {
+  async getAllByLinkId(linkId: string): Promise<ClickResponse[]> {
     try {
       const clicks = await prisma.click.findMany({
         where: { linkId },

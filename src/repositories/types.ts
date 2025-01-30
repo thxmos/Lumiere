@@ -1,4 +1,3 @@
-// src/repositories/types.ts
 export interface IBaseRepository<T, CreateInput, UpdateInput> {
   findById(id: string): Promise<T | null>;
   findAll(): Promise<T[]>;

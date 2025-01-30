@@ -6,16 +6,17 @@ import { PlusCircle } from "lucide-react";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 
-import { type LinkDto } from "@/actions/entities/links";
-import { deleteLink, updateUserLinksAction } from "./actions";
 import { LinksList } from "./components/links-list";
 import { DashboardCard } from "@/components/dashboard-card";
 import { Button } from "@/components/ui/button";
 import { deleteImage } from "@/actions/entities/assets";
 import { useLinksStore } from "@/stores/links";
 import { UserDto } from "@/actions/entities/user";
+import { LinkResponse } from "@/repositories/link/types";
+import { updateUserLinksAction } from "@/actions/entities/link/updateUserLinks";
+import { deleteLinkById } from "@/actions/entities/link/deleteLinkById";
 
-/*
+/* 
 TODO: Creating new link and submitting form is not working when id is set here
 Setting id in the action breaks the draggable list
 Cant create a new link when id is set here
@@ -23,7 +24,7 @@ Deleting a new link also gives a failure but removes from the list
 */
 
 interface Props {
-  userLinks: LinkDto[];
+  userLinks: LinkResponse[];
   user: UserDto;
 }
 
@@ -73,15 +74,15 @@ export function LinksSection({ userLinks, user }: Props) {
         active: false,
         index: links.length,
         id: "new-" + uuidv4(), //TODO: SLOPPPPPPP
-      } as LinkDto,
+      } as LinkResponse,
     ]);
   };
 
   const removeLink = async (index: number) => {
-    const linkToRemove = links[index] as LinkDto;
+    const linkToRemove = links[index] as LinkResponse;
     if (linkToRemove.id) {
       try {
-        await deleteLink(linkToRemove);
+        await deleteLinkById(linkToRemove.id);
         if (linkToRemove.imageUrl) {
           await deleteImage(linkToRemove.imageUrl, user.id);
         }
@@ -94,7 +95,7 @@ export function LinksSection({ userLinks, user }: Props) {
     setLinks(links.filter((_, i) => i !== index));
   };
 
-  const updateLink = (index: number, updatedLink: LinkDto) => {
+  const updateLink = (index: number, updatedLink: LinkResponse) => {
     setLinks(links.map((link, i) => (i === index ? updatedLink : link)));
   };
 
@@ -111,7 +112,12 @@ export function LinksSection({ userLinks, user }: Props) {
           onDelete={removeLink}
         />
         <div className="flex justify-end px-0 space-x-2">
-          <Button type="button" variant="outline" onClick={addLink}>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={addLink}
+            disabled={links.length >= 10}
+          >
             <PlusCircle className="w-4 h-4 mr-2" />
             Add Link
           </Button>
