@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { sendResetEmail } from "@/actions/email/email";
+import { sendResetEmail } from "@/actions/email/sendPasswordResetEmail";
 import { toast } from "sonner";
 import {
   Form,

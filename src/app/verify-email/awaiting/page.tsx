@@ -15,7 +15,7 @@ import { Loader2, Mail, AlertCircle, CheckCircle } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import React from "react";
 import { toast } from "sonner";
-import { sendResetEmail } from "@/actions/email/email";
+import { sendResetEmail } from "@/actions/email/sendPasswordResetEmail";
 
 export default function AwaitingVerification({
   searchParams,
