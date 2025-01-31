@@ -15,7 +15,7 @@ export const SOCIAL_PLATFORMS = [
   {
     label: "Apple Music",
     value: "appleMusicUsername",
-    prefix: "https://applemusic.com/",
+    prefix: "https://music.apple.com/us/artist/",
     icon: FaApple,
   },
   // {
@@ -45,13 +45,13 @@ export const SOCIAL_PLATFORMS = [
   {
     label: "Spotify",
     value: "spotifyUsername",
-    prefix: "https://spotify.com/",
+    prefix: "https://open.spotify.com/artist/",
     icon: FaSpotify,
   },
   {
     label: "TikTok",
     value: "tiktokUsername",
-    prefix: "https://tiktok.com/",
+    prefix: "https://tiktok.com/@",
     icon: FaTiktok,
   },
   {

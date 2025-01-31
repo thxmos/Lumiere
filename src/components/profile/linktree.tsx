@@ -24,12 +24,12 @@ interface Props {
   user: UserDtoNoId;
 }
 
-const LinkTree: React.FC<Props> = ({
+export default function LinkTree({
   isPreview = false,
   initialTheme,
   initialLinks,
   user,
-}) => {
+}: Props) {
   const [localTheme, setlocalTheme] = useState<ThemeNoId | null>(initialTheme);
   const [localLinks, setLocalLinks] = useState<LinkDtoWithId[]>(
     initialLinks as LinkDtoWithId[],
@@ -192,6 +192,4 @@ const LinkTree: React.FC<Props> = ({
       </div>
     </div>
   );
-};
-
-export default LinkTree;
+}

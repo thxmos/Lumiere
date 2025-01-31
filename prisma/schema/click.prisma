@@ -1,8 +1,24 @@
+// Click model
+
+// Used to track clicks on user created links OR social media links.
+
+// Ideal use: 
+// Option 1: User clicks on a link - linkId is not null, userId is null, socialPlatform is null
+// Option 2: User clicks on a social media link - linkId is null, userId is not null, socialPlatform is not null
+
 model Click {
   id String @id @default(uuid()) @unique
+
   linkId String
-  socialPlatformClicked SocialMedia?
   link Link @relation(fields: [linkId], references: [id])
+
+  userId String?
+  user User? @relation(fields: [userId], references: [id])
+  socialPlatform SocialMedia?
+
+  // Ensure one and only one type of click is recorded
+  @@unique([linkId, userId], name: "click_source")
+  
   createdAt DateTime @default(now())
 
   // Network info

@@ -8,7 +8,7 @@ import MobilePreview from "@/components/mobile-preview/mobile-preview";
 import LinkTree from "@/components/profile/linktree";
 import { getThemeAction } from "@/actions/entities/theme/getTheme";
 import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
-import { UserDto } from "@/actions/entities/user/createUser";
+import type { UserDtoNoId } from "@/actions/entities/user/createUser";
 import { LinkDtoWithId } from "@/types/links";
 import Navbar from "@/components/layout/nav-bar";
 import { validateAuthPage } from "@/utils/security/auth";
@@ -19,10 +19,17 @@ interface Props {
 
 const DashboardLayout: React.FC<Props> = async ({ children }) => {
   const user = await validateAuthPage();
-  const tabs = DASHBOARD_TABS;
 
   const theme = await getThemeAction(user?.id!);
   const links = await getLinksByUserId(user?.id!);
+
+  // const { id, ...userWithoutId } = user; // remove id from user object
+  // const { user: storedUser, setUser } = useUserStore();
+
+  // // For mobile preview
+  // useEffect(() => {
+  //   setUser(userWithoutId as UserDto); // set user in store
+  // }, []);
 
   return (
     <ProtectedLayout redirectUrl="/auth">
@@ -31,7 +38,7 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
       <div className="flex h-screen bg-background">
         <LayoutSidebar
           userRole={user?.roles || USER_ROLES.USER}
-          tabs={tabs}
+          tabs={DASHBOARD_TABS}
           title="Dashboard"
           headerIcon={<LayoutDashboard />}
         />
@@ -44,7 +51,7 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
               isPreview={true}
               initialLinks={links as LinkDtoWithId[]}
               initialTheme={theme}
-              user={user as UserDto}
+              user={user as UserDtoNoId}
             />
           </MobilePreview>
         </div>

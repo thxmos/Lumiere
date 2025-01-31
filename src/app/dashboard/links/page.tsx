@@ -10,7 +10,7 @@ const LinksPage = async () => {
   return (
     <>
       <LinksSection userLinks={links} user={user} />
-      <SocialMediaSection user={user} />
+      <SocialMediaSection initialUser={user} />
     </>
   );
 };

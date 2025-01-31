@@ -8,12 +8,13 @@ import React from "react";
 
 interface Props {
   children: React.ReactNode;
-  username: string;
+  username: string; // for preview link
 }
 
-const MobilePreview: React.FC<Props> = ({ children, username }) => {
+export default function MobilePreview({ children, username }: Props) {
   const pathname = usePathname();
 
+  // Only display on links and theme editor pages
   if (pathname !== "/dashboard/links" && pathname !== "/dashboard/theme-editor")
     return null;
 
@@ -38,6 +39,4 @@ const MobilePreview: React.FC<Props> = ({ children, username }) => {
       </div>
     </>
   );
-};
-
-export default MobilePreview;
+}

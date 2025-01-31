@@ -9,27 +9,32 @@ model User {
 
   // Profile Info
   avatar      String?
-  imageId     String? // EVENTUALLY replace avatar with imageId
+  imageId     String? // EVENTUALLY replace avatar with imageId, change to avatarId?
+  Image Image[]
   username    String   @unique @default(dbgenerated("'user-' || floor(random() * 1000000)::text"))
   description String?  @default("") @db.VarChar(200)
-  links Link[] @relation("UserLinks")
   theme Theme? @relation("UserTheme")
   themeId String?
+
+  // Interactions
+  links Link[] @relation("UserLinks")
+  QRCodes QRCode[] @relation("UserQRCodes")
+  Click Click[]
 
   // Products
   Product2 Product2[] @relation("UserProducts")
   
   // Social Links
-    appleMusicUsername String?
-    discordUsername String?
-    facebookUsername String?
-    instagramUsername String?
-    patreonUsername String?
-    spotifyUsername String?
-    tiktokUsername String?
-    twitchUsername String?
-    twitterUsername String?
-    youtubeUsername String?
+  appleMusicUsername String?
+  discordUsername String?
+  facebookUsername String?
+  instagramUsername String?
+  patreonUsername String?
+  spotifyUsername String?
+  tiktokUsername String?
+  twitchUsername String?
+  twitterUsername String?
+  youtubeUsername String?
   
   // Account Info
   isVerified Boolean  @default(false)
@@ -45,10 +50,6 @@ model User {
   verificationToken VerificationToken?
   passwordResetToken PasswordResetToken?
   oAuthProvider OAuthProvider?
- 
-  QRCodes QRCode[] @relation("UserQRCodes")
-  Image Image[]
-
   roles Role @default(USER)
 }
 
