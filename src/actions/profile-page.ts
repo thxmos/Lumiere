@@ -1,20 +1,15 @@
 "use server";
 
-import { createClick } from "@/actions/entities/click/createClick";
 import { headers } from "next/headers";
 import { UAParser } from "ua-parser-js";
 import { BrowserData } from "@/types/clicks";
-import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
-import { getLinkById } from "@/actions/entities/link/getLinkById";
-import { updateLink } from "@/actions/entities/link/updateLink";
-import { CreateScanDto } from "./entities/scan/createScan";
+import { CreateScanDto } from "@/actions/entities/scan/createScan";
 import { getQRCodeById } from "@/actions/entities/qr-code/getQrCodeById";
 import { updateQRCode } from "@/actions/entities/qr-code/updateQrCode";
-import { createScan } from "./entities/scan/createScan";
-import { getUserByUsername } from "./entities/user/user";
+import { createScan } from "@/actions/entities/scan/createScan";
 import { userRepository } from "@/repositories/user";
 import { linkRepository } from "@/repositories/link";
-import { ClickCreateInput, clickRepository } from "@/repositories/click";
+import { clickRepository } from "@/repositories/click";
 
 // TODO: refactor into middleware?
 async function getLocationData(ip: string) {

@@ -4,7 +4,7 @@ import { APP_NAME } from "@/constants/app";
 import { resend } from "@/utils/lib/resend";
 import WelcomeEmail from "@/emails/welcome";
 import PasswordResetEmail from "@/emails/password-reset";
-import { getUserByEmail } from "@/actions/entities/user/user";
+import { getUserByEmail } from "@/actions/entities/user/getUserByEmail";
 import { createPasswordResetToken } from "@/actions/entities/password-reset-token/createPasswordResetToken";
 import { createVerificationToken } from "@/actions/entities/verification-token/verification-token";
 

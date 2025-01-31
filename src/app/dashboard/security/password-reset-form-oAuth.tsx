@@ -6,7 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import React, { useTransition, useRef } from "react";
 import { toast } from "sonner";
-import { setPasswordOAuth, UserDto } from "@/actions/entities/user/user";
+import type { UserDto } from "@/actions/entities/user/createUser";
+import { setPasswordOAuth } from "@/actions/entities/user/setPasswordOAuth";
 import { useRouter } from "next/navigation";
 
 type Props = {
@@ -24,7 +25,7 @@ const PasswordResetFormOAuth: React.FC<Props> = ({ user }) => {
 
     startTransition(async () => {
       try {
-        await setPasswordOAuth(formData, user.id);
+        await setPasswordOAuth(formData);
         toast.success("Successfully set password");
         formRef.current?.reset();
         router.refresh();

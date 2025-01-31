@@ -2,10 +2,11 @@
 
 import { SignUpSchema } from "@/app/auth/components/sign-up-form";
 import { hash } from "@/utils/security/crypto";
-import { getUserByEmail, updateUserById } from "../entities/user/user";
-import { createUser } from "../entities/user/user";
-import { createStripeCustomer } from "../stripe/stripe.customers";
-import { sendVerifyEmail } from "../email";
+import { getUserByEmail } from "@/actions/entities/user/getUserByEmail";
+import { createUser } from "@/actions/entities/user/createUser";
+import { createStripeCustomer } from "@/actions/stripe/stripe.customers";
+import { sendVerifyEmail } from "@/actions/email";
+import { updateUserById } from "@/actions/entities/user/updateUserById";
 
 export const signUp = async (values: SignUpSchema) => {
   const { email, name, password } = values;

@@ -1,5 +1,5 @@
-import { UserDto } from "@/actions/entities/user/user";
-import { hasPasswordAction } from "@/actions/entities/user/user";
+import { UserDto } from "@/actions/entities/user/createUser";
+import { hasPasswordAction } from "@/actions/entities/user/hasPassword";
 import SecuritySection from "./security.section";
 import { validateAuthPage } from "@/utils/security/auth";
 

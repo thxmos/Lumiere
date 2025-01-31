@@ -5,8 +5,9 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { updateUserSettings, UserDto } from "@/actions/entities/user/user";
 import { DashboardCard } from "@/components/layout/dashboard-card";
+import type { UserDto } from "@/actions/entities/user/createUser";
+import { updateUserSettings } from "@/actions/entities/user/updateUserSettings";
 
 export default function UserSettingsSection({ user }: { user: UserDto }) {
   const [isSubmitting, setIsSubmitting] = useState(false);

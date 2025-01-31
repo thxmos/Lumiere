@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { prisma } from "../lib/prisma";
 import { AUTH_COOKIE_NAME } from "@/constants/app";
 import { SessionUser } from "../lib/lucia";
-import { UserDto } from "@/actions/entities/user/user";
+import { UserDto } from "@/actions/entities/user/createUser";
 
 /*
  * validateServerSession:

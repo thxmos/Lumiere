@@ -1,7 +1,7 @@
 "use server";
 
 import { deleteImage } from "@/actions/entities/asset/deleteImage";
-import { updateUserAvatar } from "@/actions/entities/user/user";
+import { updateUserAvatar } from "@/actions/entities/user/updateUserAvatar";
 import { put, del } from "@vercel/blob";
 import { getUser } from "@/actions/entities/session";
 import {

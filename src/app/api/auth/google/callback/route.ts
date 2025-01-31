@@ -1,5 +1,6 @@
 import { createStripeCustomer } from "@/actions/stripe/stripe.customers";
-import { getUserByEmail, updateUserById } from "@/actions/entities/user/user";
+import { getUserByEmail } from "@/actions/entities/user/getUserByEmail";
+import { updateUserById } from "@/actions/entities/user/updateUserById";
 import { googleOAuthClient } from "@/utils/security/googleOauth";
 import { lucia } from "@/utils/lib/lucia";
 import { prisma } from "@/utils/lib/prisma";

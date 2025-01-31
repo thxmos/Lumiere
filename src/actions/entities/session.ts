@@ -1,6 +1,6 @@
 "use server";
 
-import { getUserById } from "@/actions/entities/user/user";
+import { getUserById } from "@/actions/entities/user/getUserById";
 import { lucia, SessionUser } from "@/utils/lib/lucia";
 import {
   deleteSessionCookie,

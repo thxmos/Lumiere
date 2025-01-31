@@ -1,10 +1,11 @@
-import { getUserByUsername, UserDtoNoId } from "@/actions/entities/user/user";
+import { getUserByUsername } from "@/actions/entities/user/getUserByUsername";
 import { getActiveLinksByUsername } from "@/actions/profile-page";
 import { getThemeByUsername } from "@/actions/entities/theme/getTheme";
 import React from "react";
 import { redirect } from "next/navigation";
 import LinkTree from "@/components/profile/linktree";
 import { LinkDtoWithId } from "@/types/links";
+import { UserDtoNoId } from "@/actions/entities/user/createUser";
 
 export default async function ArtistPage({
   params,

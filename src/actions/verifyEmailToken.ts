@@ -1,6 +1,6 @@
 "use server";
 
-import { updateUserById } from "@/actions/entities/user/user";
+import { updateUserById } from "@/actions/entities/user/updateUserById";
 import {
   deleteVerificationToken,
   getVerificationTokenByToken,

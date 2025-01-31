@@ -3,7 +3,7 @@
 import { hasPermission } from "@/utils/security/access";
 import { getUser } from "@/actions/entities/session";
 import type { User, Permissions } from "@/types/access";
-import { getUserById } from "@/actions/entities/user/user";
+import { getUserById } from "@/actions/entities/user/getUserById";
 
 /*
 BIG TODO: This is slop code, dont make a mock resource, just make access utils use a dto based on Prisma

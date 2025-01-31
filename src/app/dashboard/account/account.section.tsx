@@ -7,10 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { AvatarUpload } from "@/components/avatar-upload";
-import {
-  updateUserAccountInfoAction,
-  type UserDto,
-} from "@/actions/entities/user/user";
+import type { UserDto } from "@/actions/entities/user/createUser";
 import { DashboardCard } from "@/components/layout/dashboard-card";
 import { toast } from "sonner";
 import {
@@ -22,6 +19,7 @@ import {
 } from "@/components/ui/select";
 import { COUNTRIES } from "@/constants/countries";
 import { Switch } from "@/components/ui/switch";
+import { updateUserAccountInfoAction } from "@/actions/entities/user/updateUserAccountInfoAction";
 
 export function AccountSection({ user }: { user: UserDto }) {
   const {

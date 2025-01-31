@@ -8,7 +8,7 @@ import MobilePreview from "@/components/mobile-preview/mobile-preview";
 import LinkTree from "@/components/profile/linktree";
 import { getThemeAction } from "@/actions/entities/theme/getTheme";
 import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
-import { UserDto } from "@/actions/entities/user/user";
+import { UserDto } from "@/actions/entities/user/createUser";
 import { LinkDtoWithId } from "@/types/links";
 import Navbar from "@/components/layout/nav-bar";
 import { validateAuthPage } from "@/utils/security/auth";

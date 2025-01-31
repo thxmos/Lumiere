@@ -2,6 +2,7 @@
 
 import { PasswordResetTokenDto } from "@/types/auth";
 import { passwordResetTokenRepository } from "@/repositories/password-reset-token";
+
 export async function getPasswordResetTokenByToken(
   token: string,
 ): Promise<PasswordResetTokenDto> {
