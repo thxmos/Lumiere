@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { uploadAvatar } from "@/actions/file-upload/image-upload";
+import { uploadAvatar } from "@/actions/file-upload/uploadImageAndBlob";
 import { getInitials } from "@/utils/utils";
 import { ImageUploadDialog } from "./modals/image-upload-modal";
 import { Upload } from "lucide-react";

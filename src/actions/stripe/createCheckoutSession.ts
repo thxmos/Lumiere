@@ -4,7 +4,8 @@ import { createStripeCheckoutSession } from "@/actions/stripe/createStripeChecko
 import { getStripeCustomer } from "@/actions/stripe/getStripeCustomer";
 import { getUserById } from "@/actions/entities/user/getUserById";
 import { Price } from "@prisma/client";
-import { getUser } from "../entities/session";
+import { withAuth } from "@/utils/security/auth";
+import { SessionUser } from "@/utils/lib/lucia";
 
 export type Subscription = {
   id: string;
@@ -17,33 +18,30 @@ export type Subscription = {
   interval: string;
 };
 
-export const createCheckoutSession = async (
-  price: Price,
-  quanity: number,
-): Promise<{ success: boolean; sessionId?: string; message?: string }> => {
-  try {
-    const { user: luciaUser } = await getUser();
+export const createCheckoutSession = withAuth(
+  async (
+    user: SessionUser,
+    price: Price,
+    quanity: number,
+  ): Promise<{ success: boolean; sessionId?: string; message?: string }> => {
+    try {
+      const userFromDb = await getUserById(user.id);
 
-    if (!luciaUser) {
-      return { success: false };
+      if (!userFromDb || !userFromDb.stripeCustomerId) {
+        throw new Error("User not found or no stripe customer id");
+      }
+
+      const customer = await getStripeCustomer(userFromDb.stripeCustomerId);
+
+      const session = await createStripeCheckoutSession(
+        customer.id,
+        price.stripePriceId!,
+        quanity,
+      );
+
+      return { success: true, sessionId: session.id };
+    } catch (error) {
+      return { success: false, message: "Failed to create checkout session." };
     }
-
-    const user = await getUserById(luciaUser.id);
-
-    if (!user || !user.stripeCustomerId) {
-      throw new Error("User not found or no stripe customer id");
-    }
-
-    const customer = await getStripeCustomer(user.stripeCustomerId);
-
-    const session = await createStripeCheckoutSession(
-      customer.id,
-      price.stripePriceId!,
-      quanity,
-    );
-
-    return { success: true, sessionId: session.id };
-  } catch (error) {
-    return { success: false, message: "Failed to create checkout session." };
-  }
-};
+  },
+);

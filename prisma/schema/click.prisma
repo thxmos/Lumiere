@@ -9,8 +9,8 @@
 model Click {
   id String @id @default(uuid()) @unique
 
-  linkId String
-  link Link @relation(fields: [linkId], references: [id])
+  linkId String?
+  link Link? @relation(fields: [linkId], references: [id])
 
   userId String?
   user User? @relation(fields: [userId], references: [id])

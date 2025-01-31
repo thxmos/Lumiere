@@ -8,7 +8,6 @@ import type { LinkDto, LinkDtoWithId } from "@/types/links";
 import type { ThemeNoId } from "@/types/theme";
 import { useThemeStore } from "@/stores/themes";
 import { useLinksStore } from "@/stores/links";
-import BackgroundVideo from "./components/background-video";
 import { UserDtoNoId } from "@/actions/entities/user/createUser";
 import { BLACK, WHITE } from "@/constants/colors";
 import { COUNTRIES } from "@/constants/countries";
@@ -16,9 +15,15 @@ import { TabSelector } from "./components/tab-selector";
 import { SOCIAL_PLATFORMS } from "@/constants/social-media";
 import { cn } from "@/utils/utils";
 import { DEFAULT_FONT } from "@/constants/fonts";
+import { ColoredBackground } from "./components/background-color";
+import VideoBackground from "./components/background-video";
+import { ImageBackground } from "./components/background-image";
+import { createClickSocial } from "@/actions/entities/click/createClickSocial";
+import { SocialMedia } from "@prisma/client";
 
 interface Props {
   isPreview?: boolean;
+  isMobilePreview?: boolean;
   initialLinks: LinkDto[];
   initialTheme: ThemeNoId;
   user: UserDtoNoId;
@@ -26,6 +31,7 @@ interface Props {
 
 export default function LinkTree({
   isPreview = false,
+  isMobilePreview = false,
   initialTheme,
   initialLinks,
   user,
@@ -63,6 +69,30 @@ export default function LinkTree({
     iconSize: 24,
   };
 
+  /*
+   * handleIconClick()
+   *
+   * Create new Click entity for social media icon click only if not in preview mode
+   */
+
+  const handleIconClick = (socialPlatform: SocialMedia) => {
+    if (isPreview) return;
+    const browserData = {
+      userAgent: navigator.userAgent,
+      language: navigator.language,
+      screenWidth: window.screen.width,
+      screenHeight: window.screen.height,
+      referrer: document.referrer || "",
+      browser: navigator.userAgent,
+      browserVersion: navigator.appVersion,
+      operatingSystem: navigator.platform,
+      deviceType: navigator.userAgent,
+      screenResolution: `${window.screen.width}x${window.screen.height}`,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    };
+    createClickSocial(user.username, socialPlatform, browserData);
+  };
+
   return (
     <div
       className={cn("relative overflow-hidden", {
@@ -72,36 +102,21 @@ export default function LinkTree({
         fontFamily: localTheme?.fontFamily || DEFAULT_FONT,
       }}
     >
+      {/* Backgrounds */}
       {localTheme?.backgroundType === "color" && (
-        <div
-          className="absolute top-0 left-0 w-full h-full"
-          style={
-            localTheme?.gradient
-              ? {
-                  background: `linear-gradient(45deg, ${
-                    localTheme?.backgroundColor || "#000000"
-                  }, ${localTheme?.gradientColor || "#000000"})`,
-                }
-              : { backgroundColor: localTheme?.backgroundColor || "#000000" }
-          }
-        ></div>
+        <ColoredBackground localTheme={localTheme} />
       )}
-
       {localTheme?.backgroundType === "image" && (
-        <div
-          className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: `url(${localTheme?.backgroundImageUrl})` }}
-        ></div>
+        <ImageBackground localTheme={localTheme} />
       )}
-
-      {localTheme?.backgroundType === "video" && localTheme?.videoUrl && (
-        <BackgroundVideo bgVideo={localTheme?.videoUrl} />
+      {localTheme?.backgroundType === "video" && (
+        <VideoBackground localTheme={localTheme} />
       )}
 
       <div
         className={cn("relative z-10 px-4 py-16 flex flex-col", {
-          "min-h-screen": !isPreview,
-          "h-[calc(65vh)]": isPreview,
+          "min-h-screen": !isMobilePreview,
+          "h-[calc(65vh)]": isMobilePreview,
         })}
       >
         <div className="max-w-md mx-auto flex-grow">
@@ -110,8 +125,12 @@ export default function LinkTree({
             <Image
               src={user.avatar || PLACEHOLDER_IMG}
               alt="Profile Picture"
-              width={isPreview ? previewStyles.avatarSize : styles.avatarSize}
-              height={isPreview ? previewStyles.avatarSize : styles.avatarSize}
+              width={
+                isMobilePreview ? previewStyles.avatarSize : styles.avatarSize
+              }
+              height={
+                isMobilePreview ? previewStyles.avatarSize : styles.avatarSize
+              }
               className="rounded-full border-2 border-gray-200 flex-shrink-0"
               style={{
                 borderColor: localTheme?.borderColor || BLACK,
@@ -126,7 +145,7 @@ export default function LinkTree({
                 <h1
                   className={cn(
                     "font-bold",
-                    isPreview
+                    isMobilePreview
                       ? previewStyles.usernameSize
                       : styles.usernameSize,
                   )}
@@ -183,7 +202,10 @@ export default function LinkTree({
                     color: localTheme?.iconColor || WHITE,
                     fill: localTheme?.iconColor || WHITE,
                   }}
-                  size={isPreview ? previewStyles.iconSize : styles.iconSize}
+                  size={
+                    isMobilePreview ? previewStyles.iconSize : styles.iconSize
+                  }
+                  onClick={() => handleIconClick(platform.type)}
                 />
               </a>
             ))}

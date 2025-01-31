@@ -1,9 +1,9 @@
 "use server";
 
 import { hasPermission } from "@/utils/security/access";
-import { getUser } from "@/actions/entities/session";
 import type { User, Permissions } from "@/types/access";
 import { getUserById } from "@/actions/entities/user/getUserById";
+import { requireUser } from "@/utils/security/auth";
 
 /*
 BIG TODO: This is slop code, dont make a mock resource, just make access utils use a dto based on Prisma
@@ -27,9 +27,7 @@ export const hasPermissionAction = async (
     throw new Error(`Invalid resource: ${resource}`);
   }
 
-  const { user } = await getUser();
-  if (!user)
-    throw new Error("You do not have permissions to access this resource");
+  const user = await requireUser();
 
   // Here because i eventually want to take roles out of session
   const userFromDb = await getUserById(user.id);

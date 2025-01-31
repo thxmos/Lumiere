@@ -1,8 +1,18 @@
 "use server";
 
 import { clickRepository } from "@/repositories/click";
+import { SessionUser } from "@/utils/lib/lucia";
+import { withAuth } from "@/utils/security/auth";
 
-export const getClicksByLinkId = async (linkId: string) => {
-  const clicks = await clickRepository.getAllByLinkId(linkId);
-  return clicks;
-};
+/* getClicksByLinkId()
+ *
+ * Gets all clicks for a given linkId with full detail
+ * Used to display more in depth analytics on metrics page
+ */
+
+export const getClicksByLinkId = withAuth(
+  async (user: SessionUser, linkId: string) => {
+    const clicks = await clickRepository.getAllByLinkId(linkId);
+    return clicks;
+  },
+);

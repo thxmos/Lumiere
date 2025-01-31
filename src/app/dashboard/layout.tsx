@@ -49,6 +49,7 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
           <MobilePreview username={user?.username!}>
             <LinkTree
               isPreview={true}
+              isMobilePreview={true}
               initialLinks={links as LinkDtoWithId[]}
               initialTheme={theme}
               user={user as UserDtoNoId}

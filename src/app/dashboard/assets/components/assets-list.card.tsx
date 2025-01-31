@@ -5,7 +5,7 @@ import Image from "next/image";
 import type { ImageDtoWithId } from "@/types/image";
 import { ConfirmDeleteModal } from "@/components/modals/confirm-delete-modal";
 import { useState } from "react";
-import { deleteImageAction } from "@/actions/file-upload/image-upload";
+import { deleteImageAndBlob } from "@/actions/file-upload/deleteImageAndBlob";
 import { toast } from "sonner";
 import { useAssetStore } from "@/stores/assets";
 
@@ -21,7 +21,7 @@ export function AssetsCard({
 
   async function handleConfirmDelete() {
     try {
-      await deleteImageAction(asset.id);
+      await deleteImageAndBlob(asset.id);
       setIsDeleteModalOpen(false);
       toast.success("Asset deleted successfully", { duration: 3000 });
 

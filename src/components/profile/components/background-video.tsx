@@ -1,4 +1,10 @@
-export default function BackgroundVideo({ bgVideo }: { bgVideo: string }) {
+import { ThemeNoId } from "@/types/theme";
+
+export default function VideoBackground({
+  localTheme,
+}: {
+  localTheme: ThemeNoId;
+}) {
   return (
     <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50">
       <video
@@ -8,7 +14,7 @@ export default function BackgroundVideo({ bgVideo }: { bgVideo: string }) {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover"
       >
-        <source src={bgVideo} type="video/mp4" />
+        <source src={localTheme.videoUrl || ""} type="video/mp4" />
       </video>
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
     </div>
