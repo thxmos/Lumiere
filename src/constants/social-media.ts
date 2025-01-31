@@ -18,12 +18,12 @@ export const SOCIAL_PLATFORMS = [
     prefix: "https://applemusic.com/",
     icon: FaApple,
   },
-  {
-    label: "Discord",
-    value: "discordUsername",
-    prefix: "https://discord.com/",
-    icon: FaDiscord,
-  },
+  // {
+  //   label: "Discord",
+  //   value: "discordUsername",
+  //   prefix: "https://discord.com/",
+  //   icon: FaDiscord,
+  // },
   {
     label: "Facebook",
     value: "facebookUsername",
