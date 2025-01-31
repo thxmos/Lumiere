@@ -1,6 +1,6 @@
 "use client";
 
-import { createCheckoutSession } from "@/actions/stripe";
+import { createCheckoutSession } from "@/actions/stripe/createCheckoutSession";
 import { Button } from "@/components/ui/button";
 import {
   Card,

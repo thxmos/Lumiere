@@ -1,4 +1,4 @@
-import { createStripeCustomer } from "@/actions/stripe/stripe.customers";
+import { createStripeCustomer } from "@/actions/stripe/createStripeCustomer";
 import { getUserByEmail } from "@/actions/entities/user/getUserByEmail";
 import { updateUserById } from "@/actions/entities/user/updateUserById";
 import { googleOAuthClient } from "@/utils/security/googleOauth";

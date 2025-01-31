@@ -4,9 +4,9 @@ import { SignUpSchema } from "@/app/auth/components/sign-up-form";
 import { hash } from "@/utils/security/crypto";
 import { getUserByEmail } from "@/actions/entities/user/getUserByEmail";
 import { createUser } from "@/actions/entities/user/createUser";
-import { createStripeCustomer } from "@/actions/stripe/stripe.customers";
-import { sendVerifyEmail } from "@/actions/email";
+import { sendVerifyEmail } from "@/actions/email/email";
 import { updateUserById } from "@/actions/entities/user/updateUserById";
+import { createStripeCustomer } from "@/actions/stripe/createStripeCustomer";
 
 export const signUp = async (values: SignUpSchema) => {
   const { email, name, password } = values;

@@ -1,6 +1,6 @@
 "use server";
 
-import { getSubscriptionByUserId } from "@/actions/stripe/stripe.subscriptons";
+import { getSubscriptionByUserId } from "@/actions/stripe/getSubscriptionByUserId";
 
 export async function getBillingInfo(userId: string) {
   try {

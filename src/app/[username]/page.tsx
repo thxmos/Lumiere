@@ -1,5 +1,5 @@
 import { getUserByUsername } from "@/actions/entities/user/getUserByUsername";
-import { getActiveLinksByUsername } from "@/actions/profile-page";
+import { getActiveLinksByUsername } from "@/actions/entities/link/getActiveLinksByUsername";
 import { getThemeByUsername } from "@/actions/entities/theme/getTheme";
 import React from "react";
 import { redirect } from "next/navigation";

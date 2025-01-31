@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
 import VerificationStatus from "./verification-status";
-import { verifyEmailToken } from "../../actions/verifyEmailToken";
+import { verifyEmailToken } from "@/actions/email/verifyEmailToken";
 import Navbar from "@/components/layout/nav-bar";
 
 export default async function VerifyEmailPage({

@@ -2,18 +2,21 @@
 
 import { deleteImage } from "@/actions/entities/asset/deleteImage";
 import { updateUserAvatar } from "@/actions/entities/user/updateUserAvatar";
-import { put, del } from "@vercel/blob";
 import { getUser } from "@/actions/entities/session";
 import {
   createImage,
   type CreateImageDto,
-} from "../entities/asset/createImage";
+} from "@/actions/entities/asset/createImage";
+import { deleteBlob } from "./deleteBlob";
+import { uploadBlob } from "./uploadBlob";
 
 /*
 TODO: use the new auth methods instead of getUser
 should use uploadImageAction instead
 retrieve URL and save to User entity
 */
+
+// TODO: probably in assets? or user?
 export async function uploadAvatar(formData: FormData) {
   const path = "avatars/";
   const file = formData.get("file") as File;
@@ -27,6 +30,7 @@ export async function uploadAvatar(formData: FormData) {
   }
 }
 
+//TODO probably not needed
 export async function uploadLinkImage(
   formData: FormData,
   data: CreateImageDto,
@@ -81,38 +85,7 @@ export async function uploadImageAction(
   }
 }
 
-/*
-Uploads an image to the blob and returns the URL of the image if successful.
-*/
-const uploadBlob = async (file: File, path: string, maxSize: number = 20) => {
-  if (!file) throw new Error("Please select an image to upload.");
-
-  if (file.size / 1024 / 1024 > maxSize)
-    throw new Error(
-      `File size ${file.size / 1024 / 1024}MB is too large. Max ${maxSize}MB`,
-    );
-
-  try {
-    const { user } = await getUser();
-
-    const blob = await put(`${path}${user?.id}`, file, {
-      contentType: "image/png",
-      access: "public",
-    });
-
-    return blob;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-};
-
-const deleteBlob = async (path: string) => {
-  const { user } = await getUser();
-
-  await del(`${path}${user?.id}`);
-};
-
+//TODO: deleteImageAndBlobAction
 export async function deleteImageAction(imageId: string) {
   const { user } = await getUser();
   if (!user) throw new Error("Unauthenticated");

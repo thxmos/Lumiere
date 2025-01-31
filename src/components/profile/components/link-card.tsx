@@ -5,7 +5,7 @@ import { useTransition } from "react";
 import { PLACEHOLDER_IMG } from "@/constants/images";
 import type { LinkDtoWithId } from "@/types/links";
 import type { ThemeNoId } from "@/types/theme";
-import { updateLinkClicked } from "@/actions/profile-page";
+import { updateLinkClicked } from "@/actions/entities/link/updateLinkClicked";
 import type { BrowserData } from "@/types/clicks";
 
 export function LinkCard({

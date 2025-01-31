@@ -1,5 +1,5 @@
 import BillingSection from "./billing.section";
-import { getBillingInfo } from "../../../../actions/stripe/billing";
+import { getBillingInfo } from "@/actions/stripe/getBillingInfo";
 import { validateAuthPage } from "@/utils/security/auth";
 
 export default async function BillingPage() {
