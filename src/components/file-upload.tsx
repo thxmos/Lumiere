@@ -13,12 +13,12 @@ export enum FileType {
 }
 
 interface Props {
-  file: File | null;
-  setFile: (file: File | null) => void;
-  onUpload: (file: File) => void;
-  fileType: FileType;
-  acceptedTypes: { [key: string]: any };
-  uploading: boolean;
+  file: File | null; // Current file state
+  setFile: (file: File | null) => void; // Function to update file state
+  onUpload: (file: File) => void; // Function called when upload button is clicked
+  fileType: FileType; // Type of file (Image or Audio)
+  acceptedTypes: { [key: string]: any }; // Accepted MIME types
+  uploading: boolean; // Loading state for upload button
 }
 
 const FileUpload: React.FC<Props> = ({
@@ -52,6 +52,14 @@ const FileUpload: React.FC<Props> = ({
   const removeFile = () => {
     setFile(null);
     setPreview(null);
+  };
+
+  const handleFileUpload = () => {
+    if (file) {
+      onUpload(file);
+      setFile(null);
+      setPreview(null);
+    }
   };
 
   return (
@@ -120,7 +128,7 @@ const FileUpload: React.FC<Props> = ({
         <Button
           className="w-full mt-4"
           disabled={!file || uploading}
-          onClick={() => file && onUpload(file)}
+          onClick={handleFileUpload}
         >
           {/* Upload File */}
 

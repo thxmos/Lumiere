@@ -1,5 +1,5 @@
-import { DashboardCard } from "@/components/layout/dashboard-card";
-import { ImageUploadForm } from "./components/assets-upload.form";
+import { DashboardCard } from "@/components/layouts/dashboard-card";
+import { AssetUploadForm } from "./components/asset-upload.form";
 
 export const AssetsUploadSection = () => {
   return (
@@ -7,7 +7,7 @@ export const AssetsUploadSection = () => {
       title="Upload Assets"
       description="Upload assets to your account"
     >
-      <ImageUploadForm />
+      <AssetUploadForm />
     </DashboardCard>
   );
 };

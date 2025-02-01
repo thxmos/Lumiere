@@ -1,13 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ImageOff, Upload, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ImageUploadDialog } from "./modals/image-upload-modal";
+import { ImageUploadDialog } from "../app/dashboard/_components/modals/image-upload-modal";
 
 interface ImageUploadProps {
-  initialImage?: string;
-  onImageChange: (image: string | null) => void;
+  file: File | null;
+  setFile: (file: File | null) => void;
+  previewImg?: string;
+  setPreviewImg: (image: string | null) => void;
+  onImageChange: (image: File | null) => void;
   disabled?: boolean;
   size?: "sm" | "md" | "lg";
 }
@@ -30,30 +33,33 @@ TODO:
 - placeholder image, dont show upload button if theres no image and disabled
 */
 
+// Used for Link uploads currently
+
 export function ImageUpload({
-  initialImage,
+  previewImg,
+  setPreviewImg,
   onImageChange,
   disabled = false,
   size = "sm",
 }: ImageUploadProps) {
-  const [image, setImage] = useState<string | null>(initialImage || null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [tempFile, setTempFile] = useState<File | null>(null);
+  const [file, setFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
 
   const handleImageUpload = async () => {
-    if (!tempFile) return;
+    if (!file) return;
 
     setIsUploading(true);
     try {
+      // Get a base64 string of the file for preview
       const reader = new FileReader();
       reader.onloadend = () => {
         const base64String = reader.result as string;
-        setImage(base64String);
-        onImageChange(base64String);
+        setPreviewImg(base64String);
+        onImageChange(file);
         setIsDialogOpen(false);
       };
-      reader.readAsDataURL(tempFile);
+      reader.readAsDataURL(file);
     } catch (error) {
       console.error("Error uploading image:", error);
     } finally {
@@ -62,18 +68,24 @@ export function ImageUpload({
   };
 
   const handleRemoveImage = () => {
-    setImage(null);
+    setPreviewImg(null);
+    setPreviewImg(null);
     onImageChange(null);
   };
+
+  // Set the preview image to the initial image if it exists
+  useEffect(() => {
+    setPreviewImg(previewImg || null);
+  }, [previewImg]);
 
   return (
     <div
       className={`relative ${sizeClasses[size]} rounded-lg overflow-hidden border border-primary`}
     >
-      {image ? (
+      {previewImg ? (
         <div className="w-full h-full group">
           <img
-            src={image}
+            src={previewImg}
             alt="Uploaded"
             className="w-full h-full object-cover"
           />
@@ -105,11 +117,11 @@ export function ImageUpload({
         </div>
       )}
       <ImageUploadDialog
+        file={file}
+        setFile={setFile}
         isOpen={isDialogOpen}
         onOpenChange={setIsDialogOpen}
         onUpload={handleImageUpload}
-        file={tempFile}
-        setFile={setTempFile}
         isUploading={isUploading}
       />
     </div>

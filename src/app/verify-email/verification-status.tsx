@@ -8,7 +8,7 @@ import {
 import { AlertCircle, CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import TimedRedirect from "@/components/layout/timed-redirect";
+import TimedRedirect from "@/components/layouts/timed-redirect";
 
 interface VerificationProps {
   message: string;

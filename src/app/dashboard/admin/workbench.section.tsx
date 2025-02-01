@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { DashboardCard } from "@/components/layout/dashboard-card";
+import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { Workbench } from "./workbench";
 import { Button } from "@/components/ui/button";
 import { Entity } from "./types";

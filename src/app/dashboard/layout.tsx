@@ -1,16 +1,16 @@
 import { LayoutDashboard } from "lucide-react";
-import ProtectedLayout from "@/components/layout/protected-layout";
-import LayoutSidebar from "@/components/layout/layout-sidebar";
+import ProtectedLayout from "@/components/layouts/protected-layout";
+import LayoutSidebar from "@/components/layouts/layout-sidebar";
 import { DASHBOARD_TABS } from "./tabs";
 import { ScrollToTopLayout } from "./scroll-to-top.layout";
 import { USER_ROLES } from "@/constants/user";
-import MobilePreview from "@/components/mobile-preview/mobile-preview";
+import MobilePreview from "@/app/dashboard/_components/mobile-preview/mobile-preview";
 import LinkTree from "@/components/profile/linktree";
 import { getThemeAction } from "@/actions/entities/theme/getTheme";
 import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
 import type { UserDtoNoId } from "@/actions/entities/user/createUser";
 import { LinkDtoWithId } from "@/types/links";
-import Navbar from "@/components/layout/nav-bar";
+import Navbar from "@/components/layouts/nav-bar";
 import { validateAuthPage } from "@/utils/security/auth";
 
 interface Props {
@@ -23,6 +23,7 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
   const theme = await getThemeAction(user?.id!);
   const links = await getLinksByUserId(user?.id!);
 
+  // TODO: was trying to integrate with user Store for real time updates in social media
   // const { id, ...userWithoutId } = user; // remove id from user object
   // const { user: storedUser, setUser } = useUserStore();
 

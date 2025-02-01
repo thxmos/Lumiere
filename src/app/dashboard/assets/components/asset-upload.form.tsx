@@ -1,6 +1,6 @@
 "use client";
 
-import { uploadProductImage } from "@/actions/file-upload/uploadImageAndBlob";
+import { uploadAsset } from "@/actions/file-upload/createAsset";
 import { ImageUpload } from "@/components/image-upload";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,37 +11,37 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { useAssetStore } from "@/stores/assets";
 import { Image } from "@prisma/client";
-export const ImageUploadForm = () => {
+
+export const AssetUploadForm = () => {
+  const [preview, setPreview] = useState<string | null>(null); // base64 string of the image
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState<string | null>(null);
+  const [asset, setAsset] = useState<File | null>(null); // The file that will be uploaded in the form
   const setAssets = useAssetStore((state) => state.setAssets);
 
-  async function handleImageChange(newImage: string | null): Promise<void> {
-    setImage(newImage);
+  async function handleImageChange(file: File | null): Promise<void> {
+    setAsset(file);
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!image) {
+    if (!asset) {
       toast.error("Please select an image");
       return;
     }
 
-    const file = new File([image], "image.png", { type: "image/png" });
-    const formData = new FormData();
-    formData.append("file", file);
-
     try {
-      const uploadedImage = await uploadProductImage(formData, {
-        url: image,
-        title,
-        description,
-      });
+      // Cant send the form data directly to the action because the file is not serializable
+      const formData = new FormData();
+      formData.append("file", asset);
+      formData.append("title", title);
+      formData.append("description", description);
+
+      const uploadedImage = await uploadAsset(formData);
       toast.success("Image uploaded successfully");
 
       setAssets([uploadedImage as Image, ...useAssetStore.getState().assets]);
-
       resetForm();
     } catch (error) {
       toast.error("Failed to upload image");
@@ -51,13 +51,21 @@ export const ImageUploadForm = () => {
   function resetForm() {
     setTitle("");
     setDescription("");
-    setImage(null);
+    setPreview(null);
+    setAsset(null);
   }
 
   return (
     <form onSubmit={handleSubmit} className="flex gap-4">
       <div className="flex flex-col gap-2 items-center">
-        <ImageUpload onImageChange={handleImageChange} size="lg" />
+        <ImageUpload
+          file={asset}
+          setFile={setAsset}
+          previewImg={preview || undefined}
+          setPreviewImg={setPreview}
+          onImageChange={handleImageChange}
+          size="lg"
+        />
       </div>
       <div className="flex flex-col gap-2 justify-between w-full">
         <div className="flex flex-col gap-2">

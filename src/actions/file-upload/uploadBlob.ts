@@ -5,17 +5,18 @@ import { put } from "@vercel/blob";
 /*
 Uploads an image to the blob and returns the URL of the image if successful.
 */
+
 export const uploadBlob = withAuth(
-  async (user: SessionUser, file: File, path: string, maxSize: number = 20) => {
+  async (user: SessionUser, file: File, maxSizeInMb: number) => {
     if (!file) throw new Error("Please select an image to upload.");
 
-    if (file.size / 1024 / 1024 > maxSize)
+    if (file.size / 1024 / 1024 > maxSizeInMb)
       throw new Error(
-        `File size ${file.size / 1024 / 1024}MB is too large. Max ${maxSize}MB`,
+        `File size ${file.size / 1024 / 1024}MB is too large. Max ${maxSizeInMb}MB`,
       );
 
     try {
-      const blob = await put(`${path}${user.id}`, file, {
+      const blob = await put(`${user.id}-${Date.now()}-${file.name}`, file, {
         contentType: "image/png",
         access: "public",
       });

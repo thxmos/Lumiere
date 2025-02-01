@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Trash, Edit, Check, X } from "lucide-react";
-import { ConfirmDeleteModal } from "@/components/modals/confirm-delete-modal";
+import { ConfirmDeleteModal } from "@/app/dashboard/_components/modals/confirm-delete-modal";
 import { Label } from "@/components/ui/label";
 import { LinkResponse } from "@/repositories/link/types";
 

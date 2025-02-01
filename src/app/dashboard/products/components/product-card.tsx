@@ -7,7 +7,7 @@ import { Edit, X } from "lucide-react";
 import { PLACEHOLDER_IMG } from "@/constants/images";
 import type { Product2Dto } from "@/types/product2";
 import { deleteProductById } from "@/actions/entities/product/product";
-import { ConfirmDeleteModal } from "@/components/modals/confirm-delete-modal";
+import { ConfirmDeleteModal } from "@/app/dashboard/_components/modals/confirm-delete-modal";
 import { useState } from "react";
 import { toast } from "sonner";
 

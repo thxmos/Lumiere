@@ -10,7 +10,7 @@ import {
 
 export class AssetRepository implements IAssetRepository {
   private removePrivateFields(asset: Asset): AssetResponse {
-    const { id, ...assetResponse } = asset;
+    const { userId, ...assetResponse } = asset;
     return { ...assetResponse };
   }
 

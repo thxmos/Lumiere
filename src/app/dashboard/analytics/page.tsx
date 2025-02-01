@@ -1,4 +1,4 @@
-import { DashboardCard } from "@/components/layout/dashboard-card";
+import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { validateAuthPage } from "@/utils/security/auth";
 
 export default async function AnalyticsPage() {

@@ -3,11 +3,11 @@
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { uploadAvatar } from "@/actions/file-upload/uploadImageAndBlob";
+import { uploadAvatar } from "@/actions/file-upload/createAsset";
 import { getInitials } from "@/utils/utils";
 import { ImageUploadDialog } from "./modals/image-upload-modal";
 import { Upload } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "../../../components/ui/button";
 
 interface AvatarUploadProps {
   avatar: string | null;
@@ -55,7 +55,7 @@ export function AvatarUpload({ avatar, name }: AvatarUploadProps) {
       <Button
         className="w-full bg-primary"
         onClick={(e) => {
-          e.preventDefault();
+          e.preventDefault(); // dont trigger form in parent
           setIsModalOpen(true);
         }}
       >

@@ -1,11 +1,11 @@
 import { getImagesByUserId } from "@/actions/entities/asset/getImagesByUserId";
-import { AssetsUploadSection } from "./assets-upload.section";
-import AssetsListSection from "./assets-list.section";
+import { AssetsUploadSection } from "./asset-upload.section";
+import AssetsListSection from "./asset-list.section";
 import { Image } from "@prisma/client";
 import { validateAuthPage } from "@/utils/security/auth";
 
 export default async function ImagesPage() {
-  const user = validateAuthPage();
+  validateAuthPage();
 
   const assets = await getImagesByUserId();
 

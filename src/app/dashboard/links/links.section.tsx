@@ -6,9 +6,9 @@ import { PlusCircle } from "lucide-react";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 import { LinksList } from "./components/links-list";
-import { DashboardCard } from "@/components/layout/dashboard-card";
+import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { Button } from "@/components/ui/button";
-import { deleteImage } from "@/actions/entities/asset/deleteImage";
+import { deleteAsset } from "@/actions/file-upload/deleteAsset";
 import { useLinksStore } from "@/stores/links";
 import { UserDto } from "@/actions/entities/user/createUser";
 import { LinkResponse } from "@/repositories/link/types";
@@ -82,13 +82,9 @@ export function LinksSection({ userLinks, user }: Props) {
     if (linkToRemove.id) {
       try {
         await deleteLinkById(linkToRemove.id);
-        if (linkToRemove.imageUrl) {
-          await deleteImage(linkToRemove.imageUrl);
-        }
         toast.success("Link deleted successfully");
       } catch (error) {
         toast.error("Failed to delete link");
-        // Don't remove from state if delete failed
       }
     }
     setLinks(links.filter((_, i) => i !== index));

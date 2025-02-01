@@ -3,9 +3,9 @@
 import { X } from "lucide-react";
 import Image from "next/image";
 import type { ImageDtoWithId } from "@/types/image";
-import { ConfirmDeleteModal } from "@/components/modals/confirm-delete-modal";
+import { ConfirmDeleteModal } from "@/app/dashboard/_components/modals/confirm-delete-modal";
 import { useState } from "react";
-import { deleteImageAndBlob } from "@/actions/file-upload/deleteImageAndBlob";
+import { deleteAssetById } from "@/actions/file-upload/deleteAsset";
 import { toast } from "sonner";
 import { useAssetStore } from "@/stores/assets";
 
@@ -21,7 +21,7 @@ export function AssetsCard({
 
   async function handleConfirmDelete() {
     try {
-      await deleteImageAndBlob(asset.id);
+      await deleteAssetById(asset.id);
       setIsDeleteModalOpen(false);
       toast.success("Asset deleted successfully", { duration: 3000 });
 

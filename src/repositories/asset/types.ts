@@ -1,12 +1,16 @@
 import { Image, Prisma } from "@prisma/client";
 import { IBaseRepository } from "../types";
 
-export type AssetCreateInput = Prisma.ImageCreateInput;
+export type AssetCreateInput = Omit<
+  Prisma.ImageCreateInput,
+  "url" | "userId"
+> & {
+  url?: string;
+};
 export type AssetUpdateInput = Prisma.ImageUpdateInput;
 export type AssetWhereInput = Prisma.ImageWhereInput;
 
-// TODO: do we want to exclude link from LinkResponse?
-export type AssetResponse = Omit<Image, "id">;
+export type AssetResponse = Omit<Image, "userId">;
 
 export interface IAssetRepository
   extends IBaseRepository<AssetResponse, AssetCreateInput, AssetUpdateInput> {
