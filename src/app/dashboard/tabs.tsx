@@ -26,12 +26,6 @@ export type Tab = {
 //TODO: Rename key to path or something
 export const DASHBOARD_TABS: Tab[] = [
   {
-    key: "notifications",
-    label: "Notifications ⭐",
-    icon: <BellIcon className={iconStyle} />,
-    userRole: USER_ROLES.ADMIN,
-  },
-  {
     key: "account",
     label: "Account",
     icon: <Settings className={iconStyle} />,
@@ -71,21 +65,11 @@ export const DASHBOARD_TABS: Tab[] = [
     icon: <BarChart className={iconStyle} />,
     userRole: USER_ROLES.ADMIN,
   },
-  // {
-  //   key: "release-planner",
-  //   label: "Release Planner",
-  //   icon: <Calendar className={iconStyle} />,
-  // },
   {
     key: "security",
     label: "Security",
     icon: <Lock className={iconStyle} />,
   },
-  // {
-  //   key: "billing",
-  //   label: "Billing",
-  //   icon: <CreditCard className={iconStyle} />,
-  // },
   {
     key: "user-settings",
     label: "User Settings",
