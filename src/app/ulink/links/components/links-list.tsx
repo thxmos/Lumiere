@@ -9,10 +9,6 @@ import {
 import { LinkCard } from "./link-card";
 import { LinkResponse } from "@/repositories/link/types";
 
-/*
-TODO: Fix form submit, remove update on every re-order
-*/
-
 interface Props {
   links: LinkResponse[];
   setLinks: (links: LinkResponse[]) => void;
@@ -39,16 +35,6 @@ export const LinksList: React.FC<Props> = ({
     });
 
     setLinks(reorderedItems);
-    // try {
-    //   updateUserLinksAction(reorderedItems);
-    //   toast.success("Link order updated successfully", {
-    //     duration: 3000,
-    //   });
-    // } catch (error) {
-    //   toast.error("Failed to update link order", {
-    //     duration: 3000,
-    //   });
-    // }
   };
 
   return (

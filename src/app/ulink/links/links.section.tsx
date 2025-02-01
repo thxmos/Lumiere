@@ -5,10 +5,10 @@ import { useForm } from "react-hook-form";
 import { PlusCircle } from "lucide-react";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
+
 import { LinksList } from "./components/links-list";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { Button } from "@/components/ui/button";
-import { deleteAsset } from "@/actions/file-upload/deleteAsset";
 import { useLinksStore } from "@/stores/links";
 import { UserDto } from "@/actions/entities/user/createUser";
 import { LinkResponse } from "@/repositories/link/types";
@@ -44,6 +44,7 @@ export function LinksSection({ userLinks, user }: Props) {
   const onSubmit = async () => {
     try {
       const updatedLinks = await updateUserLinksAction(links);
+      console.log(updatedLinks);
       if (updatedLinks) {
         setLinks(updatedLinks);
         toast.success("Links updated successfully", {

@@ -47,6 +47,7 @@ export const updateUserLinksAction = withAuth(
       userId: user.id,
       active: link.active,
       index,
+      clicks: link.clicks || 0,
     })) as LinkResponse[];
     return result;
   },
