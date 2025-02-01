@@ -20,17 +20,21 @@ const rateLimiters = {
 
 export const withRateLimit: MiddlewareFactory = (next) => {
   return async (request: NextRequest) => {
-    // const path = request.nextUrl.pathname;
-    // const limiter = path.startsWith("/auth")
-    //   ? rateLimiters.auth
-    //   : rateLimiters.api;
+    if (process.env.NODE_ENV === "development") {
+      return next(request);
+    }
 
-    // const ip = request.ip ?? "127.0.0.1";
-    // const { success } = await limiter.limit(ip);
+    const path = request.nextUrl.pathname;
+    const limiter = path.startsWith("/auth")
+      ? rateLimiters.auth
+      : rateLimiters.api;
 
-    // if (!success) {
-    //   return NextResponse.json({ error: "Too many requests" }, { status: 429 });
-    // }
+    const ip = request.ip ?? "127.0.0.1";
+    const { success } = await limiter.limit(ip);
+
+    if (!success) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
 
     return next(request);
   };
