@@ -31,6 +31,9 @@ export const LinkCard: React.FC<Props> = ({
   onUpdate,
   onDelete,
 }) => {
+  const [file, setFile] = useState<File | null>(null);
+  const [previewImg, setPreviewImg] = useState<string | null>(null);
+
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editedLink, setEditedLink] = useState(link);
@@ -79,7 +82,10 @@ export const LinkCard: React.FC<Props> = ({
           {/* Image Upload */}
           <div>
             <ImageUpload
-              initialImage={editedLink.imageUrl ?? undefined}
+              file={file}
+              setFile={setFile}
+              previewImg={editedLink.imageUrl ?? undefined}
+              setPreviewImg={() => {}}
               onImageChange={(image) => handleImageChange(image ?? "")}
               disabled={!isEditing}
             />
