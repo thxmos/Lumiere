@@ -23,8 +23,9 @@ const LayoutSidebar: React.FC<Props> = ({
 }) => {
   const pathname = usePathname();
 
+  //max-h-[calc(100%-4rem)]
   return (
-    <aside className="w-96 bg-card p-4 shadow-md h-full">
+    <aside className="w-64 bg-card p-4 shadow-md h-[calc(100vh-4rem)] fixed top-16 left-0">
       <div className="flex h-full w-full flex-col">
         <div className="flex items-center mb-8 gap-2">
           {headerIcon}
@@ -53,7 +54,7 @@ const LayoutSidebar: React.FC<Props> = ({
             })}
           </div>
           <div className="flex flex-col mt-auto">
-            <Button className="w-full justify-start">
+            <Button className="w-full justify-center">
               <SparklesIcon className="h-4 w-4 mr-2" />
               Upgrade Plan
             </Button>

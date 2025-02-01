@@ -36,7 +36,7 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
     <ProtectedLayout redirectUrl="/auth">
       <Navbar />
 
-      <div className="flex h-screen bg-background">
+      <div className="flex h-[calc(100vh-4rem)] bg-background">
         <LayoutSidebar
           path="ulink"
           userRole={user?.roles || USER_ROLES.USER}
@@ -44,7 +44,7 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
           title="ULink"
           headerIcon={<Cable />}
         />
-        <main className="flex flex-col overflow-y-auto bg-background mb-16 w-full gap-4 p-8">
+        <main className="flex flex-col overflow-y-auto bg-background w-full gap-4 p-8 ml-64">
           <ScrollToTopLayout>{children}</ScrollToTopLayout>
         </main>
         <div className="min-w-[30%] h-full grid items-center">
