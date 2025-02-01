@@ -5,7 +5,7 @@ import { validateAuthPage } from "@/utils/security/auth";
 
 export default async function LinksPage() {
   const user = await validateAuthPage();
-  const links = await getLinksWithNumOfClicks(user.id);
+  const links = await getLinksWithNumOfClicks();
 
   return (
     <>

@@ -21,7 +21,7 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
   const user = await validateAuthPage();
 
   const theme = await getThemeAction(user?.id!);
-  const links = await getLinksByUserId(user?.id!);
+  const links = await getLinksByUserId();
 
   // TODO: was trying to integrate with user Store for real time updates in social media
   // const { id, ...userWithoutId } = user; // remove id from user object
