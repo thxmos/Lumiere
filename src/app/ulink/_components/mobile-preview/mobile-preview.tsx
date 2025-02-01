@@ -25,7 +25,7 @@ export default function MobilePreview({ children, username }: Props) {
         {/* Phone border*/}
         <div className="w-[20rem] h-[40rem] bg-gray-800 rounded-[2rem] p-1 shadow-lg mx-auto">
           {/* Phone screen */}
-          <div className="w-full h-full bg-white rounded-[1.9rem] overflow-hidden relative overflow-y-scroll">
+          <div className="w-full h-full bg-white rounded-[1.9rem] overflow-hidden relative overflow-y-scroll no-scrollbar">
             {children}
           </div>
         </div>

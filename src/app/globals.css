@@ -148,6 +148,7 @@
     --ring: 258 89.5% 66.3%;
     --radius: 0.5rem;
   }
+
   .purple-dark {
     --background: 258 50% 5%;
     --foreground: 258 5% 90%;
@@ -239,6 +240,7 @@
     --ring: 173 80.4% 40%;
     --radius: 0.5rem;
   }
+
   .teal {
     --background: 173 50% 5%;
     --foreground: 173 5% 90%;
@@ -268,5 +270,17 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }
