@@ -27,7 +27,7 @@ const LayoutSidebar: React.FC<Props> = ({
   return (
     <aside className="w-64 bg-card p-4 shadow-md h-[calc(100vh-4rem)] fixed top-16 left-0">
       <div className="flex h-full w-full flex-col">
-        <div className="flex items-center mb-8 gap-2">
+        <div className="flex items-center mb-4 gap-2">
           {headerIcon}
           <h2 className="text-2xl font-bold text-foreground">{title}</h2>
         </div>
