@@ -10,6 +10,7 @@ import {
 import { AlertTriangle } from "lucide-react";
 import Navbar from "@/components/layouts/nav-bar";
 import { validateServerSession } from "@/utils/security/auth";
+import { DEFAULT_REDIRECT_URL } from "@/constants/app";
 
 export default async function NotFoundPage() {
   const user = await validateServerSession();
@@ -32,7 +33,7 @@ export default async function NotFoundPage() {
               Oops! The page you're looking for doesn't exist or has been moved.
             </p>
           </CardContent>
-          <Link href={user ? "/dashboard" : "/auth"}>
+          <Link href={user ? DEFAULT_REDIRECT_URL : "/auth"}>
             <CardFooter className="flex justify-center">
               <Button>Return to Home</Button>
             </CardFooter>

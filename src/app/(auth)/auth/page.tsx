@@ -4,12 +4,13 @@ import SignUpForm from "./components/sign-up-form";
 import { redirect } from "next/navigation";
 import Navbar from "@/components/layouts/nav-bar";
 import { validateServerSession } from "@/utils/security/auth";
+import { DEFAULT_REDIRECT_URL } from "@/constants/app";
 
 const AuthPage = async () => {
   const user = await validateServerSession();
 
   if (user) {
-    redirect("/dashboard");
+    redirect(DEFAULT_REDIRECT_URL);
   }
 
   return (

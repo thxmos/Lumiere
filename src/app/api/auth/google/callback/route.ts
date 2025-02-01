@@ -7,6 +7,7 @@ import { prisma } from "@/utils/lib/prisma";
 import { createSessionCookie } from "@/utils/security/cookies";
 import { OAuthProvider } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
+import { DEFAULT_REDIRECT_URL } from "@/constants/app";
 
 export async function GET(req: NextRequest) {
   try {
@@ -89,6 +90,6 @@ export async function GET(req: NextRequest) {
     console.error("api/auth/google/callback: error", error.message);
     return new Response("Internal server error", { status: 500 });
   } finally {
-    return NextResponse.redirect(new URL("/dashboard", req.url));
+    return NextResponse.redirect(new URL(DEFAULT_REDIRECT_URL, req.url));
   }
 }

@@ -28,6 +28,7 @@ import { signIn } from "@/actions/security/auth/signIn";
 import { BeatLoader } from "react-spinners";
 import ForgotPasswordForm from "./forgot-password-form";
 import { getGoogleOauthConsentUrl } from "@/actions/security/auth/getGoogleOauthConsentUrl";
+import { DEFAULT_REDIRECT_URL } from "@/constants/app";
 
 const signInSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -52,7 +53,7 @@ const SignInForm = () => {
       const res = await signIn(values);
       if (res.success) {
         toast.success("Login successful");
-        router.push("/dashboard");
+        router.push(DEFAULT_REDIRECT_URL);
       } else {
         toast.error(res.error || "Login failed");
       }

@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { MiddlewareFactory } from "./core/types";
 import { AUTH_COOKIE_NAME } from "@/constants/app";
+import { DEFAULT_REDIRECT_URL } from "@/constants/app";
 
-const PROTECTED_ROUTES = ["/dashboard", "/api/protected"];
+const PROTECTED_ROUTES = [DEFAULT_REDIRECT_URL, "/api/protected"];
 const PUBLIC_ROUTES = ["/auth/login", "/auth/register", "/api/public"];
 
 export const withAuth: MiddlewareFactory = (next) => {

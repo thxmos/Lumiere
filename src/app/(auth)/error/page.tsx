@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { AlertTriangle } from "lucide-react";
+import { DEFAULT_REDIRECT_URL } from "@/constants/app";
 
 export default function ErrorPage() {
   return (
@@ -31,7 +32,7 @@ export default function ErrorPage() {
             </p>
           </CardContent>
           <CardFooter className="flex justify-center">
-            <Link href="/dashboard">
+            <Link href={DEFAULT_REDIRECT_URL}>
               <Button>Return to Home</Button>
             </Link>
           </CardFooter>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { DEFAULT_REDIRECT_URL } from "@/constants/app";
 
 export default function TimedRedirect() {
   const router = useRouter();
@@ -17,7 +18,7 @@ export default function TimedRedirect() {
 
   useEffect(() => {
     if (countdown === 0) {
-      router.push("/dashboard");
+      router.push(DEFAULT_REDIRECT_URL);
     }
   }, [countdown, router]);
 
