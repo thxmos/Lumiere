@@ -20,6 +20,7 @@ const ForesightLayout: React.FC<Props> = async ({ children }) => {
 
       <div className="flex h-screen bg-background">
         <LayoutSidebar
+          path="foresight"
           userRole={user?.roles || USER_ROLES.USER}
           tabs={FORESIGHT_TABS}
           title="Foresight"

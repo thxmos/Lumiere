@@ -38,6 +38,7 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
 
       <div className="flex h-screen bg-background">
         <LayoutSidebar
+          path="ulink"
           userRole={user?.roles || USER_ROLES.USER}
           tabs={DASHBOARD_TABS}
           title="ULink"

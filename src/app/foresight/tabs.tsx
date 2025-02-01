@@ -1,5 +1,5 @@
 import { USER_ROLES } from "@/constants/user";
-import { SwordsIcon } from "lucide-react";
+import { SwordsIcon, WaypointsIcon } from "lucide-react";
 
 const iconStyle = "mr-2 h-4 w-4";
 
@@ -17,5 +17,10 @@ export const FORESIGHT_TABS: Tab[] = [
     key: "strategy",
     label: "Strategy",
     icon: <SwordsIcon className={iconStyle} />,
+  },
+  {
+    key: "pipeline",
+    label: "Pipeline",
+    icon: <WaypointsIcon className={iconStyle} />,
   },
 ];
