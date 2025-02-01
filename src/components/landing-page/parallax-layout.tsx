@@ -1,5 +1,5 @@
 import Parallax from "./parallax";
-import HERO_BG_IMG from "@/assets/hero-bg.jpg";
+import HERO_BG_IMG from "@/assets/hero-bg.jpeg";
 
 export const ParallaxLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -9,7 +9,7 @@ export const ParallaxLayout = ({ children }: { children: React.ReactNode }) => {
       strength={200}
     >
       <section
-        id="contact"
+        id="parallax-layout"
         className="w-full py-12 md:py-24 lg:py-32 xl:py-48 flex justify-center items-center bg-black bg-opacity-50 text-white"
       >
         {children}

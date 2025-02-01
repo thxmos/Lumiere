@@ -28,12 +28,17 @@ const Navbar = async () => {
       role="banner"
     >
       <Link
-        className="flex items-center justify-center space-x-2"
+        className="flex items-center justify-center space-x-2 relative"
         href="/"
         aria-label={"Home Page"}
       >
-        <SunMoonIcon className="h-10 w-10 text-primary" aria-hidden="true" />
-        <p className="text-2xl font-bold">{APP_NAME}</p>
+        <div className="animate-gradient-x bg-gradient-to-r from-yellow-500 via-orange-500 to-yellow-500 bg-[length:200%_auto] bg-clip-text text-transparent transition-all flex items-center justify-center space-x-2">
+          <SunMoonIcon
+            className="h-10 w-10 text-yellow-500"
+            aria-hidden="true"
+          />
+          <p className="text-2xl font-bold">{APP_NAME}</p>
+        </div>
       </Link>
 
       <nav
