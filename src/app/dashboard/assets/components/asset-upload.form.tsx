@@ -1,7 +1,7 @@
 "use client";
 
 import { uploadAsset } from "@/actions/file-upload/createAsset";
-import { ImageUpload } from "@/components/image-upload";
+import { ImageUpload } from "@/components/upload/image-upload";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -10,18 +10,21 @@ import { UploadIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useAssetStore } from "@/stores/assets";
-import { Image } from "@prisma/client";
+import { Asset } from "@prisma/client";
 
+import { FileType } from "@/components/upload/file-upload";
 export const AssetUploadForm = () => {
   const [preview, setPreview] = useState<string | null>(null); // base64 string of the image
-
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [asset, setAsset] = useState<File | null>(null); // The file that will be uploaded in the form
-  const setAssets = useAssetStore((state) => state.setAssets);
+  const [fileType, setFileType] = useState<FileType | null>(null);
 
-  async function handleImageChange(file: File | null): Promise<void> {
+  const setAssets = useAssetStore((state) => state.setAssets); //TODO: think I read this isn't the best way to do this
+
+  async function onImageChange(file: File | null): Promise<void> {
     setAsset(file);
+    setFileType(file?.type.includes("image") ? FileType.Image : FileType.Video);
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -41,43 +44,44 @@ export const AssetUploadForm = () => {
       const uploadedImage = await uploadAsset(formData);
       toast.success("Image uploaded successfully");
 
-      setAssets([uploadedImage as Image, ...useAssetStore.getState().assets]);
+      setAssets([uploadedImage as Asset, ...useAssetStore.getState().assets]);
       resetForm();
     } catch (error) {
       toast.error("Failed to upload image");
     }
   }
 
-  function resetForm() {
+  const resetForm = () => {
     setTitle("");
     setDescription("");
     setPreview(null);
     setAsset(null);
-  }
+  };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-4">
-      <div className="flex flex-col gap-2 items-center">
+    <form onSubmit={handleSubmit} className="flex gap-2">
+      <div className="flex flex-col gap-2">
         <ImageUpload
           file={asset}
           setFile={setAsset}
+          fileType={fileType}
           previewImg={preview || undefined}
           setPreviewImg={setPreview}
-          onImageChange={handleImageChange}
+          onImageChange={onImageChange}
           size="lg"
         />
       </div>
       <div className="flex flex-col gap-2 justify-between w-full">
         <div className="flex flex-col gap-2">
-          <Label className="text-foreground font-bold">Image Title</Label>
+          <Label className="text-foreground font-bold">Title</Label>
           <Input
             placeholder="Enter a title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <Label className="text-foreground font-bold">Image Description</Label>
+          <Label className="text-foreground font-bold">Description</Label>
           <Textarea
-            className="h-24"
+            className="h-24 resize-none"
             placeholder="Enter a description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}

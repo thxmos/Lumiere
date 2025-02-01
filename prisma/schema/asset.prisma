@@ -1,6 +1,6 @@
-model Image {
+model Asset {
   id String @id @default(uuid())
-  title String?
+  title String @default("'asset-' || floor(random() * 1000000)::text")
   description String?
   url String
   type AssetType @default(IMAGE)

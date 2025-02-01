@@ -1,8 +1,8 @@
-import { LayoutDashboard } from "lucide-react";
+import { Cable } from "lucide-react";
 import ProtectedLayout from "@/components/layouts/protected-layout";
 import LayoutSidebar from "@/components/layouts/layout-sidebar";
 import { DASHBOARD_TABS } from "./tabs";
-import { ScrollToTopLayout } from "./scroll-to-top.layout";
+import { ScrollToTopLayout } from "./_components/scroll-to-top.layout";
 import { USER_ROLES } from "@/constants/user";
 import MobilePreview from "@/app/dashboard/_components/mobile-preview/mobile-preview";
 import LinkTree from "@/components/profile/linktree";
@@ -40,8 +40,8 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
         <LayoutSidebar
           userRole={user?.roles || USER_ROLES.USER}
           tabs={DASHBOARD_TABS}
-          title="Dashboard"
-          headerIcon={<LayoutDashboard />}
+          title="ULink"
+          headerIcon={<Cable />}
         />
         <main className="flex flex-col overflow-y-auto bg-background mb-16 w-full gap-4 p-8">
           <ScrollToTopLayout>{children}</ScrollToTopLayout>

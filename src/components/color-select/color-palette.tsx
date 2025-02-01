@@ -13,16 +13,9 @@ interface ColorPaletteProps {
   onSelectColor: (color: string) => void;
 }
 
-const sizeClasses = {
-  sm: "w-12 h-12 min-w-12 min-h-12",
-  md: "w-16 h-16 min-w-16 min-h-16",
-  lg: "w-20 h-20 min-w-20 min-h-20",
-};
-
 export function ColorPalette({
   themePrimaryColor = "#000000",
   onSelectColor,
-  // sizeClasses,
 }: ColorPaletteProps) {
   const scheme = [
     themePrimaryColor,
@@ -30,7 +23,7 @@ export function ColorPalette({
       themePrimaryColor,
       ColorSchemeType.TRIADE,
       ColorVariation.SOFT,
-      7,
+      9,
     ),
     BLACK,
     WHITE,
@@ -53,7 +46,7 @@ export function ColorPalette({
         {scheme.slice(0, halfLength).map((schemeColor) => (
           <Button
             key={schemeColor + uuidv4()}
-            className={`${sizeClasses} rounded-md overflow-hidden border border-primary`}
+            className="w-7 h-7 min-w-7 min-h-7 rounded-md overflow-hidden border border-primary"
             onClick={(e) => handleSelectColor(e, schemeColor)}
             aria-label={`Select color ${schemeColor}`}
             style={{ backgroundColor: schemeColor }}
@@ -66,7 +59,7 @@ export function ColorPalette({
         {scheme.slice(halfLength).map((schemeColor) => (
           <Button
             key={schemeColor + uuidv4()}
-            className={`${sizeClasses} rounded-md overflow-hidden border border-primary`}
+            className="w-7 h-7 min-w-7 min-h-7 rounded-md overflow-hidden border border-primary"
             onClick={(e) => handleSelectColor(e, schemeColor)}
             aria-label={`Select color ${schemeColor}`}
             style={{ backgroundColor: schemeColor }}

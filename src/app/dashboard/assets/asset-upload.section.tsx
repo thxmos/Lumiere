@@ -5,7 +5,7 @@ export const AssetsUploadSection = () => {
   return (
     <DashboardCard
       title="Upload Assets"
-      description="Supported filetypes: .png, .jpg, .jpeg, .gif, .mp4"
+      description="Upload assets here to use on your pages"
     >
       <AssetUploadForm />
     </DashboardCard>

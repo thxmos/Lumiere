@@ -1,6 +1,6 @@
 "use client";
 
-import { LayoutDashboard } from "lucide-react";
+import { Cable, LayoutDashboard } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { usePathname } from "next/navigation";
@@ -19,7 +19,7 @@ const LayoutSidebar: React.FC<Props> = ({ tabs, title, userRole }) => {
   return (
     <aside className="w-60 bg-card p-6 shadow-md h-full">
       <div className="flex items-center mb-8">
-        <LayoutDashboard className="h-8 w-8 text-primary mr-2" />
+        <Cable className="h-8 w-8 text-primary mr-2" />
         <h2 className="text-2xl font-bold text-foreground">{title}</h2>
       </div>
       <nav>

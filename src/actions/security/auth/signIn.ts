@@ -1,6 +1,6 @@
 "use server";
 
-import { SignInSchema } from "@/app/auth/components/sign-in-form";
+import { SignInSchema } from "@/app/(auth)/auth/components/sign-in-form";
 import { lucia } from "@/utils/lib/lucia";
 import { prisma } from "@/utils/lib/prisma";
 import { createSessionCookie } from "@/utils/security/cookies";

@@ -1,6 +1,6 @@
 "use server";
 
-import { SignUpSchema } from "@/app/auth/components/sign-up-form";
+import { SignUpSchema } from "@/app/(auth)/auth/components/sign-up-form";
 import { hash } from "@/utils/security/crypto";
 import { getUserByEmail } from "@/actions/entities/user/getUserByEmail";
 import { createUser } from "@/actions/entities/user/createUser";

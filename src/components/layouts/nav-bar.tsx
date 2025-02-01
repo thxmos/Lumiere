@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Trees } from "lucide-react";
 import { APP_NAME } from "@/constants/app";
-import DropdownMenu from "./dropdown-menu";
+import DropdownMenu from "./nav-bar-menu";
 import { validateServerSession } from "@/utils/security/auth";
 
 const Navbar = async () => {

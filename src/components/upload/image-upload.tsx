@@ -3,12 +3,15 @@
 import { useEffect, useState } from "react";
 import { ImageOff, Upload, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ImageUploadDialog } from "../app/dashboard/_components/modals/image-upload-modal";
+import { AssetUploadDialog } from "./upload-modal";
+import { FileType } from "./file-upload";
+import Image from "next/image";
 
 interface ImageUploadProps {
   file: File | null;
   setFile: (file: File | null) => void;
   previewImg?: string;
+  fileType: FileType | null;
   setPreviewImg: (image: string | null) => void;
   onImageChange: (image: File | null) => void;
   disabled?: boolean;
@@ -39,6 +42,7 @@ export function ImageUpload({
   previewImg,
   setPreviewImg,
   onImageChange,
+  fileType,
   disabled = false,
   size = "sm",
 }: ImageUploadProps) {
@@ -46,7 +50,7 @@ export function ImageUpload({
   const [file, setFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
 
-  const handleImageUpload = async () => {
+  const onUpload = async () => {
     if (!file) return;
 
     setIsUploading(true);
@@ -84,11 +88,21 @@ export function ImageUpload({
     >
       {previewImg ? (
         <div className="w-full h-full group">
-          <img
-            src={previewImg}
-            alt="Uploaded"
-            className="w-full h-full object-cover"
-          />
+          {fileType === FileType.Image ? (
+            <img
+              src={previewImg}
+              alt="Uploaded Image"
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <video
+              src={previewImg}
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+            />
+          )}
           <div
             className={`absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 transition-opacity ${!disabled ? "group-hover:opacity-100 cursor-pointer" : ""}`}
           >
@@ -116,12 +130,13 @@ export function ImageUpload({
           )}
         </div>
       )}
-      <ImageUploadDialog
+      <AssetUploadDialog
         file={file}
+        assetType={FileType.Image}
         setFile={setFile}
         isOpen={isDialogOpen}
         onOpenChange={setIsDialogOpen}
-        onUpload={handleImageUpload}
+        onUpload={onUpload}
         isUploading={isUploading}
       />
     </div>

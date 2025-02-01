@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,39 +9,90 @@ import { BeatLoader } from "react-spinners";
 
 export enum FileType {
   Image = "Image",
-  Audio = "Audio",
+  Video = "Video",
 }
 
 interface Props {
   file: File | null; // Current file state
   setFile: (file: File | null) => void; // Function to update file state
   onUpload: (file: File) => void; // Function called when upload button is clicked
-  fileType: FileType; // Type of file (Image or Audio)
+  fileType: FileType; // Type of file (Image or Video)
   acceptedTypes: { [key: string]: any }; // Accepted MIME types
-  uploading: boolean; // Loading state for upload button
+  maxSize?: number; // in MB
 }
 
 const FileUpload: React.FC<Props> = ({
   onUpload,
   fileType,
   acceptedTypes,
-  uploading,
   file,
   setFile,
+  maxSize = 20,
 }) => {
   const [preview, setPreview] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    const selectedFile = acceptedFiles[0];
-    if (selectedFile && acceptedTypes.hasOwnProperty(selectedFile.type)) {
+  const onDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      const selectedFile = acceptedFiles[0];
+
+      if (selectedFile.size > maxSize * 1024 * 1024) {
+        setError(`File size must be less than ${maxSize}MB`);
+        return;
+      }
+
+      const fileType = selectedFile.type;
+      if (!acceptedTypes[fileType]) {
+        setError(`Invalid file type: ${fileType}`);
+        return;
+      }
+
       setFile(selectedFile);
-      setPreview(URL.createObjectURL(selectedFile));
+      const previewUrl = URL.createObjectURL(selectedFile);
+      setPreview(previewUrl);
       setError(null);
-    } else {
-      setError("Invalid file type");
+    },
+    [maxSize, acceptedTypes, setFile],
+  );
+
+  // Clean up object URL on unmount
+  useEffect(() => {
+    return () => {
+      if (preview) {
+        URL.revokeObjectURL(preview);
+      }
+    };
+  }, [preview]);
+
+  const PreviewComponent = () => {
+    if (!preview) return null;
+
+    if (fileType === FileType.Image) {
+      return (
+        <img
+          src={preview}
+          alt="Preview"
+          className="max-h-48 mx-auto rounded-lg"
+        />
+      );
     }
-  }, []);
+
+    if (fileType === FileType.Video) {
+      return (
+        <video
+          src={preview}
+          autoPlay
+          muted
+          loop
+          className="max-h-48 w-full mx-auto rounded-lg"
+        >
+          Your browser does not support the video tag.
+        </video>
+      );
+    }
+
+    return null;
+  };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
@@ -74,48 +125,29 @@ const FileUpload: React.FC<Props> = ({
           }`}
         >
           <input {...getInputProps()} />
-          {preview && fileType === FileType.Image ? (
-            <div className="relative">
-              <img
-                src={preview}
-                alt="Preview"
-                className="max-h-48 mx-auto rounded-lg"
-              />
-              <Button
-                variant="destructive"
-                size="icon"
-                className="absolute top-0 right-0 rounded-full "
-                onClick={(e) => {
-                  e.stopPropagation();
-                  removeFile();
-                }}
-              >
-                <XIcon className="h-4 w-4" />
-              </Button>
-            </div>
+          {preview ? (
+            <>
+              <PreviewComponent />
+              <div className="relative">
+                <Button
+                  variant="destructive"
+                  size="icon"
+                  className="absolute top-0 right-0 rounded-full "
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    removeFile();
+                  }}
+                >
+                  <XIcon className="h-4 w-4" />
+                </Button>
+              </div>
+            </>
           ) : (
             <div>
               <UploadIcon className="mx-auto h-12 w-12 text-gray-400" />
               <p className="mt-2 text-sm text-gray-600">
                 Drag and drop a file here, or click to select a file
               </p>
-            </div>
-          )}
-
-          {preview && fileType === FileType.Audio && (
-            <div className="flex items-center justify-center mt-4">
-              <audio controls>
-                <source src={preview} type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-              <Button
-                variant="destructive"
-                size="icon"
-                className="ml-4"
-                onClick={removeFile}
-              >
-                <XIcon className="h-4 w-4" />
-              </Button>
             </div>
           )}
         </div>
@@ -127,12 +159,11 @@ const FileUpload: React.FC<Props> = ({
         )}
         <Button
           className="w-full mt-4"
-          disabled={!file || uploading}
+          disabled={!file}
           onClick={handleFileUpload}
         >
-          {/* Upload File */}
-
-          {uploading ? <BeatLoader size={10} /> : "Upload File"}
+          Upload File
+          {/* {uploading ? <BeatLoader size={10} /> : "Upload File"} */}
         </Button>
       </CardContent>
     </Card>

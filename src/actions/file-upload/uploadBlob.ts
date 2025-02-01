@@ -17,7 +17,7 @@ export const uploadBlob = withAuth(
 
     try {
       const blob = await put(`${user.id}-${Date.now()}-${file.name}`, file, {
-        contentType: "image/png",
+        contentType: file.type,
         access: "public",
       });
 

@@ -7,14 +7,12 @@ import { motion } from "framer-motion";
 interface ColorPickerProps {
   value: string;
   onChange: (value: string) => void;
-  sizeClasses: string;
   standalone?: boolean;
 }
 
 export function ColorPicker({
   value,
   onChange,
-  sizeClasses,
   standalone = false,
 }: ColorPickerProps) {
   const uniqueId = useId();
@@ -53,7 +51,7 @@ export function ColorPicker({
   return (
     <>
       <motion.button
-        className={`${sizeClasses} rounded-md overflow-hidden border border-primary`}
+        className="w-16 h-16 min-w-16 min-h-16 rounded-md overflow-hidden border border-primary"
         style={{ backgroundColor: value }}
         onClick={handleButtonClick}
         aria-label={standalone ? "Select color" : "Color selected"}

@@ -1,16 +1,16 @@
-import { Image, Prisma } from "@prisma/client";
+import { Asset, Prisma } from "@prisma/client";
 import { IBaseRepository } from "../types";
 
 export type AssetCreateInput = Omit<
-  Prisma.ImageCreateInput,
+  Prisma.AssetCreateInput,
   "url" | "userId"
 > & {
   url?: string;
 };
-export type AssetUpdateInput = Prisma.ImageUpdateInput;
-export type AssetWhereInput = Prisma.ImageWhereInput;
+export type AssetUpdateInput = Prisma.AssetUpdateInput;
+export type AssetWhereInput = Prisma.AssetWhereInput;
 
-export type AssetResponse = Omit<Image, "userId">;
+export type AssetResponse = Omit<Asset, "userId">;
 
 export interface IAssetRepository
   extends IBaseRepository<AssetResponse, AssetCreateInput, AssetUpdateInput> {

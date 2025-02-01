@@ -5,7 +5,7 @@ import { SessionUser } from "@/utils/lib/lucia";
 import { withAuth } from "@/utils/security/auth";
 
 // TODO: getAllAssetsForUser
-export const getImagesByUserId = withAuth(async (user: SessionUser) => {
-  const images = await assetRepository.getAllByUserId(user.id);
-  return images;
+export const getAssetsByUserId = withAuth(async (user: SessionUser) => {
+  const assets = await assetRepository.getAllByUserId(user.id);
+  return assets;
 });

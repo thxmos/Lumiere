@@ -293,7 +293,7 @@ export function ThemeEditorSection({
             <Separator />
           </div>
 
-          {/* Background */}
+          {/* Backgrounds */}
           <div className="space-y-2">
             <Label className="text-lg font-bold">Background</Label>
             <div className="flex items-center space-x-2 mt-2">
@@ -313,6 +313,7 @@ export function ThemeEditorSection({
               />
             </div>
 
+            {/* Color Background */}
             {backgroundType === "color" && (
               <>
                 <div className="flex items-center space-x-2 mt-2">
@@ -368,6 +369,7 @@ export function ThemeEditorSection({
               </>
             )}
 
+            {/* Image Background */}
             {backgroundType === "image" && (
               <div className="flex items-center space-x-2 mt-2">
                 <Label className="w-24 font-bold">Image URL</Label>
@@ -396,6 +398,7 @@ export function ThemeEditorSection({
               </div>
             )}
 
+            {/* Video Background */}
             {backgroundType === "video" && (
               <div className="flex items-center space-x-2 mt-2">
                 <Label className="w-24 font-bold">Video Asset</Label>

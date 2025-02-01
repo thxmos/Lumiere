@@ -10,12 +10,6 @@ interface ColorPickerProps {
   size?: "sm" | "md" | "lg";
 }
 
-const sizeClasses = {
-  sm: "w-12 h-12",
-  md: "w-16 h-16",
-  lg: "w-20 h-20",
-};
-
 export function ColorPickerStandalone({
   value,
   onChange,
@@ -32,7 +26,7 @@ export function ColorPickerStandalone({
 
   return (
     <motion.button
-      className={`${sizeClasses[size]} rounded-md overflow-hidden border border-primary relative`}
+      className={`h-16 w-16 rounded-md overflow-hidden border border-primary relative`}
       style={{ backgroundColor: value, margin: 0 }}
       aria-label="Select color"
     >

@@ -1,14 +1,14 @@
-import { getImagesByUserId } from "@/actions/entities/asset/getAssetsByUserId";
+import { getAssetsByUserId } from "@/actions/entities/asset/getAssetsByUserId";
 import { AssetsUploadSection } from "./asset-upload.section";
 import AssetsListSection from "./asset-list.section";
-import { Image } from "@prisma/client";
+import { Asset } from "@prisma/client";
 import { validateAuthPage } from "@/utils/security/auth";
-import { ScrollToTopLayout } from "../scroll-to-top.layout";
+import { ScrollToTopLayout } from "../_components/scroll-to-top.layout";
 
-export default async function ImagesPage() {
+export default async function AssetsPage() {
   validateAuthPage();
 
-  const assets = await getImagesByUserId();
+  const assets = await getAssetsByUserId();
 
   // TODO: make into a helper method
   // const assetsWithUrl = assets.map((asset) => ({
@@ -19,7 +19,7 @@ export default async function ImagesPage() {
   return (
     <ScrollToTopLayout>
       <AssetsUploadSection />
-      <AssetsListSection initialAssets={assets as Image[]} />
+      <AssetsListSection initialAssets={assets as Asset[]} />
     </ScrollToTopLayout>
   );
 }

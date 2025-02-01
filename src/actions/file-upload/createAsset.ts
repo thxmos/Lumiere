@@ -11,6 +11,7 @@ import {
 import { updateUserAvatar } from "@/actions/entities/user/updateUserAvatar";
 import { del } from "@vercel/blob";
 import { updateProduct } from "../entities/product/product2";
+import { AssetType } from "@prisma/client";
 
 /*
 Authenticated user uploads an image to the blob, creates an image in the database, and returns the URL of the image if successful.
@@ -32,6 +33,7 @@ export const createAsset = withAuth(
         const asset = await assetRepository.create({
           ...data,
           url: blobResult.url,
+          type: file.type.includes("image") ? AssetType.IMAGE : AssetType.VIDEO,
           User: {
             connect: {
               id: user.id,
@@ -65,7 +67,7 @@ export const uploadAsset = async (formData: FormData) => {
   return newAsset;
 };
 
-export const uploadAvatar = async (user: SessionUser, formData: FormData) => {
+export const uploadAvatar = async (formData: FormData) => {
   try {
     const file = formData.get("file") as File;
     // Create

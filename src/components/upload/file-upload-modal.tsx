@@ -8,7 +8,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import FileUpload, { FileType } from "@/components/file-upload";
+import FileUpload, { FileType } from "@/components/upload/file-upload";
+
+// TODO: only used in avatar upload currently
+// replace with asset upload dialog and delete this file
 
 interface ImageUploadDialogProps {
   isOpen: boolean;
@@ -31,24 +34,26 @@ export function ImageUploadDialog({
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Update Image</DialogTitle>
+          <DialogTitle>Upload Asset</DialogTitle>
           <DialogDescription>
-            Upload an image and click upload file to update.
+            <span className="font-bold">Supported formats:</span> .jpg, .jpeg,
+            .png, .mp4, .mov, .avi, .mkv
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <FileUpload
-            fileType={FileType.Image}
-            file={file}
-            setFile={setFile}
-            onUpload={onUpload}
-            acceptedTypes={{
-              "image/jpeg": [],
-              "image/png": [],
-            }}
-            uploading={isUploading}
-          />
-        </div>
+        <FileUpload
+          fileType={FileType.Image}
+          file={file}
+          setFile={setFile}
+          onUpload={onUpload}
+          acceptedTypes={{
+            "image/jpg": [],
+            "image/jpeg": [],
+            "image/png": [],
+            // "image/gif": [],
+            "video/mp4": [],
+          }}
+          // uploading={isUploading}
+        />
       </DialogContent>
     </Dialog>
   );

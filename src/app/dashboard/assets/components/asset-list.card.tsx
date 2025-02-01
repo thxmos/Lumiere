@@ -9,6 +9,7 @@ import { deleteAssetById } from "@/actions/file-upload/deleteAsset";
 import { toast } from "sonner";
 import { useAssetStore } from "@/stores/assets";
 import { AssetType } from "@prisma/client";
+import { Badge } from "@/components/ui/badge";
 
 export function AssetsCard({
   asset,
@@ -41,23 +42,34 @@ export function AssetsCard({
         key={asset.id}
         className="flex items-center justify-between border border-secondary rounded-md gap-4 p-2 hover:border-primary"
       >
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
           <div className="text-sm text-primary font-bold">{index + 1}</div>
-          <Image
-            src={asset.url || "/placeholder.svg"}
-            alt={asset.url}
-            width={100}
-            height={100}
-            objectFit="cover"
-            className="rounded-md border border-primary min-w-[100px] min-h-[100px]"
-          />
+          {asset.type === AssetType.IMAGE ? (
+            <Image
+              src={asset.url || "/placeholder.svg"}
+              alt={asset.url}
+              width={100}
+              height={100}
+              objectFit="cover"
+              className="rounded-md border border-primary max-w-[100px] max-h-[100px]"
+            />
+          ) : (
+            <video
+              src={asset.url}
+              className="rounded-md border border-primary min-w-[100px] min-h-[100px] max-w-[100px] max-h-[100px] object-cover"
+              autoPlay
+              muted
+              loop
+            />
+          )}
           <div className="flex flex-col gap-2">
             <p className="text-lg font-bold text-primary">
               {asset.title || "Untitled"}
             </p>
             <p className="text-sm text-muted-foreground">
-              <span className="font-bold">File Type:</span>{" "}
-              {asset.type === AssetType.IMAGE ? "Image" : "Video"}
+              <Badge variant="outline">
+                {asset.type === AssetType.IMAGE ? "Image" : "Video"}
+              </Badge>
             </p>
             {/* <p className="text-sm text-muted-foreground">
               <span className="font-bold">File Size:</span>{" "}

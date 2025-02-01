@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import type { DraggableProvided } from "@hello-pangea/dnd";
 import { RxDragHandleDots2 } from "react-icons/rx";
-import { ImageUpload } from "@/components/image-upload";
+import { ImageUpload } from "@/components/upload/image-upload";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";

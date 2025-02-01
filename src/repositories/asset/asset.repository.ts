@@ -16,7 +16,7 @@ export class AssetRepository implements IAssetRepository {
 
   async findById(id: string): Promise<AssetResponse | null> {
     try {
-      const asset = await prisma.image.findUnique({ where: { id } });
+      const asset = await prisma.asset.findUnique({ where: { id } });
       return asset ? this.removePrivateFields(asset) : null;
     } catch (error) {
       throw new RepositoryError("Failed to fetch asset by id", error);
@@ -25,7 +25,7 @@ export class AssetRepository implements IAssetRepository {
 
   async findAll(): Promise<AssetResponse[]> {
     try {
-      const assets = await prisma.image.findMany();
+      const assets = await prisma.asset.findMany();
       return assets.map(this.removePrivateFields);
     } catch (error) {
       throw new RepositoryError("Failed to fetch all assets", error);
@@ -34,7 +34,7 @@ export class AssetRepository implements IAssetRepository {
 
   async getAllByUserId(userId: string): Promise<AssetResponse[]> {
     try {
-      const assets = await prisma.image.findMany({ where: { userId } });
+      const assets = await prisma.asset.findMany({ where: { userId } });
       return assets.map(this.removePrivateFields);
     } catch (error) {
       throw new RepositoryError("Failed to fetch assets by user id", error);
@@ -43,7 +43,7 @@ export class AssetRepository implements IAssetRepository {
 
   async create(data: AssetCreateInput): Promise<AssetResponse> {
     try {
-      const asset = await prisma.image.create({
+      const asset = await prisma.asset.create({
         data: {
           ...data,
         },
@@ -66,7 +66,7 @@ export class AssetRepository implements IAssetRepository {
 
   async update(id: string, data: AssetUpdateInput): Promise<AssetResponse> {
     try {
-      const asset = await prisma.image.update({
+      const asset = await prisma.asset.update({
         where: { id },
         data,
       });
@@ -89,7 +89,7 @@ export class AssetRepository implements IAssetRepository {
 
   async delete(id: string): Promise<void> {
     try {
-      await prisma.image.delete({
+      await prisma.asset.delete({
         where: { id },
       });
     } catch (error) {

@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { ImageUpload } from "@/components/image-upload";
+import { ImageUpload } from "@/components/upload/image-upload";
 import type { CreateProduct2Dto } from "@/types/product2";
 
 interface CreateProductModalProps {
@@ -114,6 +114,7 @@ export function CreateProductModal({
             <Label htmlFor="description">Description</Label>
             <Textarea
               id="description"
+              className="h-24 resize-none"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Enter product description"

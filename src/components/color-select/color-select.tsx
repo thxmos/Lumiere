@@ -21,32 +21,19 @@ export function ColorSelect({
   value,
   themePrimaryColor,
   onChange,
-  size = "lg",
 }: ColorSelectProps) {
   const handleColorChange = (color: string) => {
     onChange(color);
   };
 
-  const getHeightFromSize = (size: "sm" | "md" | "lg") => {
-    return sizeClasses[size].split(" ")[1];
-  };
-
   return (
     <div className="flex items-center space-x-4" style={{ margin: 0 }}>
-      <ColorPicker
-        value={value}
-        onChange={handleColorChange}
-        sizeClasses={sizeClasses[size]}
-      />
-      <div
-        className={`w-px ${getHeightFromSize(size)} bg-primary`}
-        aria-hidden="true"
-      />
+      <ColorPicker value={value} onChange={handleColorChange} />
+      <div className="w-px h-16 bg-primary" aria-hidden="true" />
       <div className="flex-grow">
         <ColorPalette
           themePrimaryColor={themePrimaryColor}
           onSelectColor={handleColorChange}
-          // sizeClasses={sizeClasses[size]}
         />
       </div>
     </div>
