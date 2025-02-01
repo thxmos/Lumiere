@@ -13,13 +13,18 @@ type Props = {
   headerIcon: React.ReactNode;
 };
 
-const LayoutSidebar: React.FC<Props> = ({ tabs, title, userRole }) => {
+const LayoutSidebar: React.FC<Props> = ({
+  tabs,
+  title,
+  userRole,
+  headerIcon,
+}) => {
   const pathname = usePathname();
 
   return (
     <aside className="w-60 bg-card p-6 shadow-md h-full">
-      <div className="flex items-center mb-8">
-        <ScanEyeIcon className="h-8 w-8 text-primary mr-2" />
+      <div className="flex items-center mb-8 gap-2">
+        {headerIcon}
         <h2 className="text-2xl font-bold text-foreground">{title}</h2>
       </div>
       <nav>

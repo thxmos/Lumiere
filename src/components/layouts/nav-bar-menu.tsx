@@ -64,7 +64,7 @@ export default function DropdownMenu({ user }: Props) {
         <DropdownMenuGroup>
           {[
             {
-              href: "/dashboard",
+              href: "/ulink",
               label: "ULink",
               icon: Cable,
             },

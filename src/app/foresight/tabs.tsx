@@ -1,5 +1,5 @@
 import { USER_ROLES } from "@/constants/user";
-import { Wrench, User, SwordsIcon } from "lucide-react";
+import { SwordsIcon } from "lucide-react";
 
 const iconStyle = "mr-2 h-4 w-4";
 
