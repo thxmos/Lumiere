@@ -126,7 +126,7 @@ export const LinkCard: React.FC<Props> = ({
                   </span>
                 </Link>
                 <span className="text-sm text-muted-foreground block">
-                  Clicks: {link.clicks}
+                  Clicks: {link.clicks ?? 0}
                 </span>
               </>
             )}
