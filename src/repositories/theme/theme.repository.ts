@@ -58,7 +58,7 @@ export class ThemeRepository implements IThemeRepository {
   async update(id: string, data: ThemeUpdateInput): Promise<ThemeResponse> {
     try {
       const theme = await prisma.theme.update({
-        where: { id },
+        where: { userId: id },
         data,
       });
       return this.removePrivateFields(theme);

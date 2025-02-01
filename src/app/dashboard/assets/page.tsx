@@ -1,8 +1,9 @@
-import { getImagesByUserId } from "@/actions/entities/asset/getImagesByUserId";
+import { getImagesByUserId } from "@/actions/entities/asset/getAssetsByUserId";
 import { AssetsUploadSection } from "./asset-upload.section";
 import AssetsListSection from "./asset-list.section";
 import { Image } from "@prisma/client";
 import { validateAuthPage } from "@/utils/security/auth";
+import { ScrollToTopLayout } from "../scroll-to-top.layout";
 
 export default async function ImagesPage() {
   validateAuthPage();
@@ -16,9 +17,9 @@ export default async function ImagesPage() {
   // }));
 
   return (
-    <>
+    <ScrollToTopLayout>
       <AssetsUploadSection />
       <AssetsListSection initialAssets={assets as Image[]} />
-    </>
+    </ScrollToTopLayout>
   );
 }

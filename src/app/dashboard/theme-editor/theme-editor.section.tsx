@@ -17,6 +17,8 @@ import { useThemeStore } from "@/stores/themes";
 import { Switch } from "@/components/ui/switch";
 import { WHITE } from "@/constants/colors";
 import { upsertTheme } from "@/actions/entities/theme/upsertTheme";
+import { AssetResponse } from "@/repositories/asset";
+import { AssetType } from "@prisma/client";
 
 /*
 TODO: ThemePrimaryColor should be primaryColor
@@ -32,8 +34,10 @@ const BACKGROUND_TYPES = [
 
 export function ThemeEditorSection({
   initialTheme,
+  assets,
 }: {
   initialTheme: ThemeNoId;
+  assets: AssetResponse[];
 }) {
   const { control, handleSubmit, watch } = useForm<{
     theme: ThemeNoId;
@@ -371,10 +375,21 @@ export function ThemeEditorSection({
                   name="theme.backgroundImageUrl"
                   control={control}
                   render={({ field: { onChange, value } }) => (
-                    <Input
-                      type="text"
-                      value={value || ""}
-                      onChange={onChange}
+                    // <Input
+                    //   type="text"
+                    //   value={value || ""}
+                    //   onChange={onChange}
+                    // />
+                    <SelectInput
+                      options={assets
+                        .filter((asset) => asset.type === AssetType.IMAGE)
+                        .map((asset) => ({
+                          label: asset.title ?? "Untitled",
+                          value: asset.url,
+                        }))}
+                      placeholder="Select image asset"
+                      onValueChange={onChange}
+                      defaultValue={value ?? undefined}
                     />
                   )}
                 />
@@ -383,15 +398,26 @@ export function ThemeEditorSection({
 
             {backgroundType === "video" && (
               <div className="flex items-center space-x-2 mt-2">
-                <Label className="w-24 font-bold">Video URL</Label>
+                <Label className="w-24 font-bold">Video Asset</Label>
                 <Controller
                   name="theme.videoUrl"
                   control={control}
                   render={({ field: { onChange, value } }) => (
-                    <Input
-                      type="text"
-                      value={value || ""}
-                      onChange={onChange}
+                    // <Input
+                    //   type="text"
+                    //   value={value || ""}
+                    //   onChange={onChange}
+                    // />
+                    <SelectInput
+                      options={assets
+                        .filter((asset) => asset.type === AssetType.VIDEO)
+                        .map((asset) => ({
+                          label: asset.title ?? "Untitled",
+                          value: asset.url,
+                        }))}
+                      placeholder="Select video asset"
+                      onValueChange={onChange}
+                      defaultValue={value ?? undefined}
                     />
                   )}
                 />

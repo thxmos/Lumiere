@@ -44,7 +44,7 @@ export function AccountSection({ user }: { user: UserDto }) {
         duration: 3000,
       });
     } catch (error) {
-      toast.error("Failed to update profile", {
+      toast.error("Failed to update profile. " + error, {
         duration: 3000,
       });
     }
@@ -68,10 +68,13 @@ export function AccountSection({ user }: { user: UserDto }) {
             {...register("username", {
               required: "Username is required",
               pattern: {
-                value: /^[a-zA-Z0-9]+$/,
-                message: "Username can only contain letters and numbers",
+                value: /^[a-zA-Z0-9\-]+$/,
+                message:
+                  "Username can only contain letters, numbers, and hyphens",
               },
             })}
+            minLength={3}
+            maxLength={69}
             aria-invalid={errors.username ? "true" : "false"}
           />
           {errors.username && (

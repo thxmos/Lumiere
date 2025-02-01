@@ -8,6 +8,7 @@ import { useState } from "react";
 import { deleteAssetById } from "@/actions/file-upload/deleteAsset";
 import { toast } from "sonner";
 import { useAssetStore } from "@/stores/assets";
+import { AssetType } from "@prisma/client";
 
 export function AssetsCard({
   asset,
@@ -56,12 +57,12 @@ export function AssetsCard({
             </p>
             <p className="text-sm text-muted-foreground">
               <span className="font-bold">File Type:</span>{" "}
-              {asset.url ? "Image" : "Video"}
+              {asset.type === AssetType.IMAGE ? "Image" : "Video"}
             </p>
-            <p className="text-sm text-muted-foreground">
+            {/* <p className="text-sm text-muted-foreground">
               <span className="font-bold">File Size:</span>{" "}
               {asset.url ? "10MB" : "100MB"}
-            </p>
+            </p> */}
           </div>
         </div>
         <X

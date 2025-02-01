@@ -3,10 +3,16 @@ model Image {
   title String?
   description String?
   url String
+  type AssetType @default(IMAGE)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   userId String
   User User @relation(fields: [userId], references: [id])
 }
-  
+
+enum AssetType {
+  IMAGE
+  VIDEO
+  GIF
+}
