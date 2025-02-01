@@ -1,6 +1,6 @@
-export const APP_NAME = "Tree Link";
+export const APP_NAME = "Lumiere";
 export const APP_DESCRIPTION =
-  "Tree your links and manage your social media presence";
-export const APP_DOMAIN = "treelink.app";
+  "Illuminate the path to connecting with your audience";
+export const APP_DOMAIN = "lumiere.app";
 
 export const AUTH_COOKIE_NAME = "auth_session_cookie";

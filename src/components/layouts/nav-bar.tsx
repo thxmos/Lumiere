@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Trees } from "lucide-react";
+import { SunMoonIcon } from "lucide-react";
 import { APP_NAME } from "@/constants/app";
 import DropdownMenu from "./nav-bar-menu";
 import { validateServerSession } from "@/utils/security/auth";
@@ -32,7 +32,7 @@ const Navbar = async () => {
         href="/"
         aria-label={"Home Page"}
       >
-        <Trees className="h-6 w-6 text-primary" aria-hidden="true" />
+        <SunMoonIcon className="h-10 w-10 text-primary" aria-hidden="true" />
         <p className="text-2xl font-bold">{APP_NAME}</p>
       </Link>
 

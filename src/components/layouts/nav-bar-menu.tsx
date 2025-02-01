@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Cable, LogOut, User } from "lucide-react";
+import { Cable, LogOut, ScanEyeIcon, User } from "lucide-react";
 import { getInitials } from "@/utils/utils";
 
 interface Props {
@@ -67,6 +67,11 @@ export default function DropdownMenu({ user }: Props) {
               href: "/dashboard",
               label: "ULink",
               icon: Cable,
+            },
+            {
+              href: "/foresight",
+              label: "Foresight",
+              icon: ScanEyeIcon,
             },
             {
               href: "#",
