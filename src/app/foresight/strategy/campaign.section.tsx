@@ -86,9 +86,13 @@ export default function CampaignSection() {
         : null;
 
       setMarketingPlan(formattedData);
-      toast.success("Successfully generated marketing strategy!");
+      toast.success("Successfully generated marketing strategy!", {
+        duration: 3000,
+      });
     } catch (error) {
-      toast.error("Failed to generate marketing strategy");
+      toast.error("Failed to generate marketing strategy", {
+        duration: 3000,
+      });
       console.error(error);
     } finally {
       setIsLoading(false);
@@ -147,38 +151,7 @@ export default function CampaignSection() {
 
         {marketingPlan && (
           <div className="mt-6 space-y-4">
-            <Label>Marketing Strategy</Label>
-            <Accordion type="single" collapsible className="w-full">
-              {marketingPlan.categories.map((category) => (
-                <AccordionItem key={category.id} value={category.id}>
-                  <AccordionTrigger className="text-lg font-semibold">
-                    {category.title}
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <div className="space-y-4">
-                      {category.actions.map((action) => (
-                        <Card key={action.id}>
-                          <CardHeader>
-                            <CardTitle className="text-base">
-                              {action.title}
-                            </CardTitle>
-                            <CardDescription>
-                              Complete by:{" "}
-                              {format(new Date(action.completeDate), "PPP")}
-                            </CardDescription>
-                          </CardHeader>
-                          <CardContent>
-                            <p className="text-sm text-muted-foreground">
-                              {action.description}
-                            </p>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+            <Label>Completed!</Label>
           </div>
         )}
       </form>
