@@ -1,30 +1,42 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { APP_NAME } from "@/constants/app";
 import Link from "next/link";
-import { ParallaxLayout } from "./parallax-layout";
+import { Vortex } from "../ui/vortex";
+import { GRADIENT_STYLES } from "@/constants/aceternity";
+import { SparklesIcon } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <ParallaxLayout>
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center space-y-4 text-center">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-              Manage your links with {APP_NAME}
-            </h1>
-            <p className="mx-auto max-w-[700px] md:text-xl">
-              Create your personalized profile page to showcase all your
-              important links in one place. Share your social media, portfolio,
-              music, and more with a single, customizable URL.
-            </p>
-          </div>
+    <div className="mx-auto h-[calc(100vh-4rem)] overflow-hidden">
+      <Vortex
+        rangeY={400}
+        particleCount={200}
+        baseSpeed={0.001}
+        baseHue={30}
+        containerClassName="flex-1"
+      >
+        <div className="flex flex-col h-full justify-center items-center space-y-4 text-center">
+          <h1 className="text-4xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+            Manage your links with
+            <span className={GRADIENT_STYLES}>{APP_NAME}</span>
+          </h1>
+          <p className="mx-auto max-w-[700px] md:text-xl">
+            Light up the path forward. Create profiles that evolve with you,
+            while getting smart insights on growing your audience and turning
+            connections into opportunities.
+          </p>
           <div className="space-x-4">
             <Link href="/auth" passHref>
-              <Button>Get Started</Button>
+              <Button className="text-xl">
+                <SparklesIcon className="w-4 h-4 mr-2" />
+                Get Started
+              </Button>
             </Link>
           </div>
         </div>
-      </div>
-    </ParallaxLayout>
+      </Vortex>
+    </div>
   );
 }
