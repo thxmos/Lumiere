@@ -1,8 +1,11 @@
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { validateAuthPage } from "@/utils/security/auth";
-import { getUserMarketingDataFromDb } from "@/actions/foresight/getMarketingPlanFromDb";
+import {
+  CampaignWithActions,
+  getUserMarketingDataFromDb,
+} from "@/actions/foresight/getMarketingPlanFromDb";
 import { PlanSelector } from "./plan-selector";
-import type { SongWithMarketing } from "@/actions/foresight/getMarketingPlanFromDb";
+import { Campaign } from "@prisma/client";
 
 export default async function PipelineSection() {
   await validateAuthPage();
@@ -14,21 +17,21 @@ export default async function PipelineSection() {
         title="Pipeline"
         description="Start planning your releases here"
       >
-        <div className="text-red-500">Failed to load marketing plans</div>
+        <div className="text-red-500">Failed to load campaigns</div>
       </DashboardCard>
     );
   }
 
-  const songs: SongWithMarketing[] = response.data ?? [];
+  const campaigns: Campaign[] = response.data ?? [];
 
-  if (songs.length === 0) {
+  if (campaigns.length === 0) {
     return (
       <DashboardCard
         title="Pipeline"
         description="Start planning your releases here"
       >
         <div className="text-muted-foreground">
-          No marketing plans found. Create one from the Campaign tab.
+          No campaigns found. Create one from the Campaign tab.
         </div>
       </DashboardCard>
     );
@@ -40,7 +43,7 @@ export default async function PipelineSection() {
       description="Start planning your releases here"
     >
       <div className="space-y-6">
-        <PlanSelector songs={songs} />
+        <PlanSelector campaigns={campaigns as CampaignWithActions[]} />
       </div>
     </DashboardCard>
   );

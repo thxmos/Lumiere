@@ -3,81 +3,45 @@
 import { prisma } from "@/utils/lib/prisma";
 import { withAuth } from "@/utils/security/auth";
 import { SessionUser } from "@/utils/lib/lucia";
+import { Campaign, Action } from "@prisma/client";
+
+// Define the type that includes the actions relation
+export type CampaignWithActions = Campaign & {
+  actions: Action[];
+};
 
 export const getUserMarketingDataFromDb = withAuth(
   async (user: SessionUser) => {
     try {
-      const marketingData = await prisma.song.findMany({
+      const campaigns = (await prisma.campaign.findMany({
         where: {
           userId: user.id,
         },
-        select: {
-          id: true,
-          description: true,
-          releaseDate: true,
-          createdAt: true,
-          marketingPlans: {
-            include: {
-              categories: {
-                include: {
-                  actions: {
-                    orderBy: {
-                      completeDate: "asc",
-                    },
-                  },
-                },
-              },
+        include: {
+          actions: {
+            orderBy: {
+              completeDate: "asc",
             },
           },
         },
         orderBy: {
           createdAt: "desc",
         },
-      });
+      })) as CampaignWithActions[];
 
       return {
         success: true,
-        data: marketingData,
+        data: campaigns,
       };
     } catch (error) {
-      console.error("Error fetching marketing data:", error);
+      console.error("Error fetching campaign data:", error);
       return {
         success: false,
-        error: "Failed to fetch marketing data",
+        error:
+          error instanceof Error
+            ? error.message
+            : "Failed to fetch campaign data",
       };
     }
   },
 );
-
-// Types for the returned data
-export type MarketingAction = {
-  id: string;
-  title: string;
-  description: string;
-  completeDate: Date;
-  createdAt: Date;
-  updatedAt: Date;
-};
-
-export type MarketingCategory = {
-  id: string;
-  title: string;
-  actions: MarketingAction[];
-  createdAt: Date;
-  updatedAt: Date;
-};
-
-export type MarketingPlan = {
-  id: string;
-  categories: MarketingCategory[];
-  createdAt: Date;
-  updatedAt: Date;
-};
-
-export type SongWithMarketing = {
-  id: string;
-  description: string;
-  releaseDate: Date;
-  createdAt: Date;
-  marketingPlans: MarketingPlan[];
-};

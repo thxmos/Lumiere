@@ -1,0 +1,25 @@
+
+// Campaign
+// 
+// In foresight, you can run a campaign for a song, or a song can have multiple campaigns.
+// 
+// A campaign has a title, description, genre, mood, inspiration, target audience, and release date for the song.
+// 
+// Action is a list of tasks that are assigned to a user to promote the song pre or post release.
+
+model Campaign {
+  id              String         @id @default(uuid())
+  songTitle       String
+  songDescription String?
+  genre           String?
+  mood            String?
+  inspiration     String?
+  targetAudience  String?
+  releaseDate     DateTime
+  actions         Action[]
+
+  userId          String
+  user            User           @relation(fields: [userId], references: [id])
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+}

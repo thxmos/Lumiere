@@ -1,10 +1,19 @@
+enum ActionCategory {
+  PRE_RELEASE
+  RELEASE_DAY
+  POST_RELEASE
+  GENRE_SPECIFIC
+  PLATFORM_AND_AUDIENCE
+}
+
 model Action {
   id              String         @id @default(cuid())
   title           String
   description     String
   completeDate    DateTime
-  categoryId      String
-  category        Category       @relation(fields: [categoryId], references: [id])
+  category        ActionCategory
+  campaignId      String
+  campaign        Campaign       @relation(fields: [campaignId], references: [id])
   createdAt       DateTime       @default(now())
   updatedAt       DateTime       @updatedAt
 }

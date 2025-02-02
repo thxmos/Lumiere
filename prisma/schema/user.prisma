@@ -56,7 +56,7 @@ model User {
   oAuthProvider OAuthProvider?
   roles Role @default(USER)
 
-  Song Song[]
+  Campaign Campaign[]
 }
 
 enum OAuthProvider {

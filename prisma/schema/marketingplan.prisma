@@ -1,8 +1,0 @@
-model MarketingPlan {
-  id              String         @id @default(cuid())
-  songId          String
-  song            Song           @relation(fields: [songId], references: [id])
-  categories      Category[]
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
-}
