@@ -3,6 +3,7 @@ import { SunMoonIcon } from "lucide-react";
 import { APP_NAME } from "@/constants/app";
 import DropdownMenu from "./nav-bar-menu";
 import { validateServerSession } from "@/utils/security/auth";
+import { Badge } from "../ui/badge";
 
 const Navbar = async () => {
   const user = await validateServerSession();
@@ -38,6 +39,7 @@ const Navbar = async () => {
             aria-hidden="true"
           />
           <p className="text-2xl font-bold">{APP_NAME}</p>
+          <Badge variant="ghost">BETA</Badge>
         </div>
       </Link>
 
