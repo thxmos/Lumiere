@@ -112,7 +112,10 @@ export function ImageUpload({
             />
           )}
           <div
-            className={`absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 transition-opacity ${!disabled ? "group-hover:opacity-100 cursor-pointer" : ""}`}
+            className={cn(
+              "absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 transition-opacity",
+              `${!disabled && "group-hover:opacity-100"}`,
+            )}
           >
             <Button
               variant="ghost"

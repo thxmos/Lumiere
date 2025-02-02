@@ -7,6 +7,7 @@ import { useDropzone } from "react-dropzone";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { UploadIcon, XIcon } from "lucide-react";
+import { cn } from "@/utils/utils";
 
 export enum FileType {
   Image = "Image",
@@ -89,30 +90,27 @@ const FileUpload: React.FC<Props> = ({
       <CardContent className="p-6">
         <div
           {...getRootProps()}
-          className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
-            isDragActive
-              ? "border-primary bg-primary/10"
-              : "border-gray-300 hover:border-primary"
-          }`}
+          className={cn(
+            "border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors",
+            `${isDragActive && "bg-primary/10"}`,
+          )}
         >
           <input {...getInputProps()} />
           {preview ? (
-            <>
+            <div className="relative">
               <PreviewComponent preview={preview} fileType={fileType} />
-              <div className="relative">
-                <Button
-                  variant="destructive"
-                  size="icon"
-                  className="absolute top-0 right-0 rounded-full "
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    removeFile();
-                  }}
-                >
-                  <XIcon className="h-4 w-4" />
-                </Button>
-              </div>
-            </>
+              <Button
+                variant="destructive"
+                size="icon"
+                className="absolute top-0 right-0 rounded-full "
+                onClick={(e) => {
+                  e.stopPropagation();
+                  removeFile();
+                }}
+              >
+                <XIcon className="h-4 w-4" />
+              </Button>
+            </div>
           ) : (
             <div>
               <UploadIcon className="mx-auto h-12 w-12 text-gray-400" />
