@@ -6,10 +6,12 @@ export function LinksTab({
   links,
   theme,
   isPreview,
+  shadowStyle,
 }: {
   links: LinkDtoWithId[];
   theme: ThemeNoId;
   isPreview: boolean;
+  shadowStyle: React.CSSProperties;
 }) {
   return (
     <div className="space-y-4 flex flex-col">
@@ -21,6 +23,7 @@ export function LinksTab({
               {...link}
               theme={theme}
               isPreview={isPreview}
+              shadowStyle={shadowStyle}
             />
           );
         }

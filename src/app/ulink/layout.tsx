@@ -20,7 +20,7 @@ interface Props {
 const DashboardLayout: React.FC<Props> = async ({ children }) => {
   const user = await validateAuthPage();
 
-  const theme = await getThemeAction(user?.id!);
+  const theme = await getThemeAction();
   const links = await getLinksByUserId();
 
   // TODO: was trying to integrate with user Store for real time updates in social media

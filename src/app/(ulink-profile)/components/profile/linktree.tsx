@@ -29,6 +29,33 @@ interface Props {
   user: UserDtoNoId;
 }
 
+// Add this type near the top with your other interfaces
+type CardShadow = {
+  cardShadowSize?: number;
+  cardShadowColor?: string;
+  cardShadowOffset?: number;
+  cardShadowDirection?: number;
+  cardShadowBlur?: number;
+};
+
+// Add this helper function to generate the shadow CSS
+const generateShadowStyle = (theme: ThemeNoId & CardShadow) => {
+  if (!theme.cardShadowSize || !theme.cardShadowColor) return {};
+
+  const offsetX = theme.cardShadowOffset
+    ? Math.cos(((theme.cardShadowDirection || 0) * Math.PI) / 180) *
+      theme.cardShadowOffset
+    : 0;
+  const offsetY = theme.cardShadowOffset
+    ? Math.sin(((theme.cardShadowDirection || 0) * Math.PI) / 180) *
+      theme.cardShadowOffset
+    : 0;
+
+  return {
+    boxShadow: `${offsetX}px ${offsetY}px ${theme.cardShadowBlur || 0}px ${theme.cardShadowSize}px ${theme.cardShadowColor}`,
+  };
+};
+
 export default function LinkTree({
   isPreview = false,
   isMobilePreview = false,
@@ -180,6 +207,7 @@ export default function LinkTree({
             links={localLinks}
             theme={localTheme!}
             isPreview={isPreview}
+            shadowStyle={generateShadowStyle(localTheme!)}
           />
 
           {/* Social Links */}
