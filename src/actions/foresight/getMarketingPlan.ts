@@ -129,8 +129,6 @@ Requirements:
         throw new Error("Invalid API response format");
       }
 
-      console.log("Raw API Response:", data.content[0].text);
-
       let plan: ClaudeResponse;
       try {
         plan = JSON.parse(data.content[0].text) as ClaudeResponse;
