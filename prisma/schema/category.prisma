@@ -1,0 +1,9 @@
+model Category {
+  id              String         @id @default(cuid())
+  title           String
+  marketingPlanId String
+  marketingPlan   MarketingPlan  @relation(fields: [marketingPlanId], references: [id])
+  actions         Action[]
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+}
