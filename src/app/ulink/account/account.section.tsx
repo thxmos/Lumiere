@@ -1,12 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { AvatarUpload } from "@/app/ulink/_components/avatar-upload";
+import AvatarUpload from "@/app/ulink/_components/avatar-upload";
 import type { UserDto } from "@/actions/entities/user/createUser";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { toast } from "sonner";
@@ -20,6 +20,7 @@ import {
 import { COUNTRIES } from "@/constants/countries";
 import { Switch } from "@/components/ui/switch";
 import { updateUserAccountInfoAction } from "@/actions/entities/user/updateUserAccountInfoAction";
+import { uploadAvatar } from "@/actions/file-upload/createAsset";
 
 export function AccountSection({ user }: { user: UserDto }) {
   const {
@@ -37,9 +38,18 @@ export function AccountSection({ user }: { user: UserDto }) {
     },
   });
 
+  const [avatarFile, setAvatarFile] = useState<File | null>(null);
+
   const onSubmit = async (data: Partial<UserDto>) => {
     try {
       await updateUserAccountInfoAction(data);
+
+      if (avatarFile) {
+        const formData = new FormData();
+        formData.append("file", avatarFile);
+        await uploadAvatar(formData);
+      }
+
       toast.success("Profile updated successfully", {
         duration: 3000,
       });
@@ -60,7 +70,11 @@ export function AccountSection({ user }: { user: UserDto }) {
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-4"
       >
-        <AvatarUpload avatar={user.avatar || ""} name={user.name || ""} />
+        <AvatarUpload
+          avatarFile={avatarFile}
+          setAvatarFile={setAvatarFile}
+          avatarUrl={user.avatar ?? ""}
+        />
         <div className="space-y-2">
           <Label htmlFor="username">Username</Label>
           <Input

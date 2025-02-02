@@ -1,67 +1,42 @@
 "use client";
 
-import React, { useState } from "react";
-import { toast } from "sonner";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { uploadAvatar } from "@/actions/file-upload/createAsset";
-import { getInitials } from "@/utils/utils";
-import { ImageUploadDialog } from "../../../components/upload/file-upload-modal";
-import { Upload } from "lucide-react";
-import { Button } from "../../../components/ui/button";
+import React, { useEffect, useState } from "react";
+import { FileType } from "@/components/upload/file-upload";
+import { ImageUpload } from "@/components/upload/image-upload";
 
 interface AvatarUploadProps {
-  avatar: string | null;
-  name: string;
+  avatarFile: File | null;
+  setAvatarFile: (file: File | null) => void;
+  avatarUrl: string;
 }
 
-export function AvatarUpload({ avatar, name }: AvatarUploadProps) {
-  const [avatarFile, setAvatarFile] = useState<File | null>(null);
-  const [isUploadingAvatar, setIsUploadingAvatar] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const AvatarUpload: React.FC<AvatarUploadProps> = ({
+  avatarFile,
+  setAvatarFile,
+  avatarUrl,
+}) => {
+  const [preview, setPreview] = useState<string | null>(avatarUrl); // base64 string of the image
+  const [fileType, setFileType] = useState<FileType | null>(null);
 
-  const handleAvatarUpload = async () => {
-    setIsUploadingAvatar(true);
-
-    try {
-      const formData = new FormData();
-      formData.append("file", avatarFile!);
-      await uploadAvatar(formData);
-      setIsModalOpen(false);
-      toast.success("Avatar uploaded successfully");
-    } catch (error) {
-      toast.error(
-        error instanceof Error ? error.message : "Failed to upload avatar",
-      );
-    }
-    setIsUploadingAvatar(false);
-  };
+  async function onImageChange(file: File | null): Promise<void> {
+    setAvatarFile(file);
+    setFileType(file?.type.includes("image") ? FileType.Image : FileType.Video);
+  }
 
   return (
     <div className="w-36 grid place-items-center gap-4">
-      <Avatar className="w-28 h-28 border border-primary">
-        <AvatarImage src={avatar ?? undefined} alt="Avatar" />
-        <AvatarFallback className="bg-red-500 text-white text-xs">
-          {getInitials(name)}
-        </AvatarFallback>
-      </Avatar>
-      <ImageUploadDialog
-        isOpen={isModalOpen}
-        onOpenChange={setIsModalOpen}
-        onUpload={handleAvatarUpload}
+      <ImageUpload
         file={avatarFile}
         setFile={setAvatarFile}
-        isUploading={isUploadingAvatar}
+        fileType={FileType.Image}
+        previewImg={preview || undefined}
+        setPreviewImg={setPreview}
+        onImageChange={onImageChange}
+        size="md"
+        rounded={true}
       />
-      <Button
-        className="w-full bg-primary"
-        onClick={(e) => {
-          e.preventDefault(); // dont trigger form in parent
-          setIsModalOpen(true);
-        }}
-      >
-        <Upload className="h-4 w-4 mr-2" />
-        Update Avatar
-      </Button>
     </div>
   );
-}
+};
+
+export default AvatarUpload;

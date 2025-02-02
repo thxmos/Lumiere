@@ -1,11 +1,13 @@
+// 1
+
 "use client";
 
 import { useEffect, useState } from "react";
 import { ImageOff, Upload, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AssetUploadDialog } from "./upload-modal";
+import { AssetUploadDialog } from "./asset-upload-modal";
 import { FileType } from "./file-upload";
-import Image from "next/image";
+import { cn } from "@/utils/utils";
 
 interface ImageUploadProps {
   file: File | null;
@@ -16,6 +18,7 @@ interface ImageUploadProps {
   onImageChange: (image: File | null) => void;
   disabled?: boolean;
   size?: "sm" | "md" | "lg";
+  rounded?: boolean;
 }
 
 const sizeClasses = {
@@ -45,6 +48,7 @@ export function ImageUpload({
   fileType,
   disabled = false,
   size = "sm",
+  rounded = false,
 }: ImageUploadProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [file, setFile] = useState<File | null>(null);
@@ -84,7 +88,11 @@ export function ImageUpload({
 
   return (
     <div
-      className={`relative ${sizeClasses[size]} rounded-lg overflow-hidden border border-primary`}
+      className={cn(
+        "relative overflow-hidden border border-primary",
+        `${sizeClasses[size]}`,
+        `${rounded ? "rounded-full" : "rounded-lg"}`,
+      )}
     >
       {previewImg ? (
         <div className="w-full h-full group">
@@ -120,13 +128,27 @@ export function ImageUpload({
         </div>
       ) : (
         <div
-          className={`${sizeClasses[size]} flex items-center justify-center bg-gray-100 ${!disabled ? "cursor-pointer" : ""}`}
+          className={cn(
+            "flex items-center justify-center bg-background group",
+            `${sizeClasses[size]}`,
+            `${!disabled && "cursor-pointer"}`,
+          )}
           onClick={() => !disabled && setIsDialogOpen(true)}
         >
-          {!disabled ? (
-            <Upload className={`${iconSizes[size]} text-primary`} />
+          {disabled ? (
+            <ImageOff
+              className={cn(
+                "text-primary group-hover:opacity-70 transition-all ease-in-out",
+                `${iconSizes[size]} `,
+              )}
+            />
           ) : (
-            <ImageOff className={`${iconSizes[size]} text-primary`} />
+            <Upload
+              className={cn(
+                "text-primary group-hover:opacity-70 transition-all ease-in-out",
+                `${iconSizes[size]} `,
+              )}
+            />
           )}
         </div>
       )}

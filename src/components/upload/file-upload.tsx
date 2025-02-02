@@ -1,3 +1,5 @@
+// 3
+
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
@@ -5,7 +7,6 @@ import { useDropzone } from "react-dropzone";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { UploadIcon, XIcon } from "lucide-react";
-import { BeatLoader } from "react-spinners";
 
 export enum FileType {
   Image = "Image",
@@ -64,36 +65,6 @@ const FileUpload: React.FC<Props> = ({
     };
   }, [preview]);
 
-  const PreviewComponent = () => {
-    if (!preview) return null;
-
-    if (fileType === FileType.Image) {
-      return (
-        <img
-          src={preview}
-          alt="Preview"
-          className="max-h-48 mx-auto rounded-lg"
-        />
-      );
-    }
-
-    if (fileType === FileType.Video) {
-      return (
-        <video
-          src={preview}
-          autoPlay
-          muted
-          loop
-          className="max-h-48 w-full mx-auto rounded-lg"
-        >
-          Your browser does not support the video tag.
-        </video>
-      );
-    }
-
-    return null;
-  };
-
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: acceptedTypes,
@@ -127,7 +98,7 @@ const FileUpload: React.FC<Props> = ({
           <input {...getInputProps()} />
           {preview ? (
             <>
-              <PreviewComponent />
+              <PreviewComponent preview={preview} fileType={fileType} />
               <div className="relative">
                 <Button
                   variant="destructive"
@@ -171,3 +142,39 @@ const FileUpload: React.FC<Props> = ({
 };
 
 export default FileUpload;
+
+const PreviewComponent = ({
+  preview,
+  fileType,
+}: {
+  preview: string;
+  fileType: FileType;
+}) => {
+  if (!preview) return null;
+
+  if (fileType === FileType.Image) {
+    return (
+      <img
+        src={preview}
+        alt="Preview"
+        className="max-h-48 mx-auto rounded-lg"
+      />
+    );
+  }
+
+  if (fileType === FileType.Video) {
+    return (
+      <video
+        src={preview}
+        autoPlay
+        muted
+        loop
+        className="max-h-48 w-full mx-auto rounded-lg"
+      >
+        Your browser does not support the video tag.
+      </video>
+    );
+  }
+
+  return null;
+};
