@@ -3,7 +3,7 @@ import { APP_NAME } from "@/constants/app";
 const Footer = () => {
   return (
     <footer
-      className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 justify-center h-24"
+      className="bg-black/[0.96] p-4 flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 justify-center h-24"
       role="contentinfo"
       aria-label="Site footer"
     >
