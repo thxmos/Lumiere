@@ -1,7 +1,7 @@
 "use server";
 
 import { themeRepository } from "@/repositories/theme";
-import { ThemeNoId } from "@/types/theme";
+import { ThemeNoId } from "@/types/entities/theme";
 import { SessionUser } from "@/utils/lib/lucia";
 import { withAuth } from "@/utils/security/auth";
 

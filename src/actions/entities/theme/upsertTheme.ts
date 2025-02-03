@@ -1,6 +1,6 @@
 "use server";
 
-import { ThemeNoId } from "@/types/theme";
+import { ThemeNoId } from "@/types/entities/theme";
 import { getThemeByUserId } from "./getThemeByUserId";
 import { createTheme } from "./createTheme";
 import { updateThemeByUserId } from "./updateThemeByUserId";

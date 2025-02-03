@@ -2,7 +2,7 @@ import { Cable } from "lucide-react";
 import ProtectedLayout from "@/components/layouts/protected-layout";
 import LayoutSidebar from "@/components/layouts/layout-sidebar";
 import { DASHBOARD_TABS } from "./tabs";
-import { USER_ROLES } from "@/constants/user";
+import { USER_ROLES } from "@/types/user-roles";
 import MobilePreview from "@/app/ulink/_components/mobile-preview/mobile-preview";
 import LinkTree from "@/app/(ulink-profile)/components/profile/linktree";
 import { getThemeAction } from "@/actions/entities/theme/getTheme";

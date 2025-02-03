@@ -1,6 +1,6 @@
-import type { ThemeNoId } from "@/types/theme";
-import { BLACK } from "@/constants/colors";
-import { WHITE } from "@/constants/colors";
+import type { ThemeNoId } from "@/types/entities/theme";
+import { BLACK } from "@/constants/ui/colors";
+import { WHITE } from "@/constants/ui/colors";
 
 //TODO: Clean up shadcn themes, associate each theme with the color below and map through where needed
 export const SHADCN_THEMES = [

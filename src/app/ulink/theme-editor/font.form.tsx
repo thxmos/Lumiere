@@ -1,8 +1,8 @@
 import { Controller } from "react-hook-form";
 
-import { ThemeNoId } from "@/types/theme";
+import { ThemeNoId } from "@/types/entities/theme";
 import { Control } from "react-hook-form";
-import { FONTS } from "@/constants/fonts";
+import { FONTS } from "@/constants/ui/fonts";
 import { SelectInput } from "@/components/select-input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";

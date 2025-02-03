@@ -3,18 +3,18 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-import { PLACEHOLDER_IMG } from "@/constants/images";
+import { PLACEHOLDER_IMG } from "@/constants/ui/images";
 import type { LinkDto, LinkDtoWithId } from "@/types/links";
-import type { ThemeNoId } from "@/types/theme";
+import type { ThemeNoId } from "@/types/entities/theme";
 import { useThemeStore } from "@/stores/themes";
 import { useLinksStore } from "@/stores/links";
 import { UserDtoNoId } from "@/actions/entities/user/createUser";
-import { BLACK, WHITE } from "@/constants/colors";
+import { BLACK, WHITE } from "@/constants/ui/colors";
 import { COUNTRIES } from "@/constants/countries";
 import { TabSelector } from "./components/tab-selector";
 import { SOCIAL_PLATFORMS } from "@/constants/social-media";
 import { cn } from "@/utils/utils";
-import { DEFAULT_FONT } from "@/constants/fonts";
+import { DEFAULT_FONT } from "@/constants/ui/fonts";
 import { ColoredBackground } from "./components/background-color";
 import VideoBackground from "./components/background-video";
 import { ImageBackground } from "./components/background-image";

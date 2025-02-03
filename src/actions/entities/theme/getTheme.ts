@@ -1,7 +1,7 @@
 "use server";
 
-import { DEFAULT_THEME } from "@/constants/theme";
-import { ThemeNoId } from "@/types/theme";
+import { DEFAULT_THEME } from "@/constants/ui/theme";
+import { ThemeNoId } from "@/types/entities/theme";
 import { getThemeByUserId } from "./getThemeByUserId";
 import { userRepository } from "@/repositories/user";
 import { withAuth } from "@/utils/security/auth";

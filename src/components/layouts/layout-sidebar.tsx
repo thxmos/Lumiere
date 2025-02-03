@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import { usePathname } from "next/navigation";
 import { SidebarTab } from "@/types/layout/SidebarTab";
 import { SparklesIcon } from "lucide-react";
+import { GRADIENT_STYLES } from "@/constants/ui/styles";
 
 type Props = {
   tabs: SidebarTab[];
@@ -30,10 +31,16 @@ const LayoutSidebar: React.FC<Props> = ({
     <aside className="w-64 bg-card p-4 shadow-md h-[calc(100vh-4rem)] fixed top-16 left-0">
       <div className="flex h-full w-full flex-col">
         <div className="flex items-center mb-4 gap-2">
-          {headerIcon}
-          <h2 className="text-xl font-bold text-foreground">{title}</h2>
+          <span className="text-xl border-2 border-primary rounded-full p-2">
+            {headerIcon}
+          </span>
+          <div className="flex flex-col">
+            <h2 className={`text-xl font-bold text-primary ${GRADIENT_STYLES}`}>
+              {title}
+            </h2>
+            <p className={"text-xs text-muted-foreground"}>{description}</p>
+          </div>
         </div>
-        <p className="text-sm text-foreground mb-4">{description}</p>
         <nav className="flex flex-1 flex-col h-full w-full">
           <div className="flex flex-col gap-2 flex-1 w-full">
             {tabs.map((tab) => {

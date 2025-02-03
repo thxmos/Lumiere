@@ -1,6 +1,6 @@
 "use server";
 
-import { PasswordResetTokenDto } from "@/types/auth";
+import { PasswordResetTokenDto } from "@/types/entities/auth";
 import { passwordResetTokenRepository } from "@/repositories/password-reset-token";
 
 export async function getPasswordResetTokenByToken(

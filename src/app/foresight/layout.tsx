@@ -2,7 +2,7 @@ import { ScanEyeIcon } from "lucide-react";
 import ProtectedLayout from "@/components/layouts/protected-layout";
 import LayoutSidebar from "@/components/layouts/layout-sidebar";
 import { FORESIGHT_TABS } from "./tabs";
-import { USER_ROLES } from "@/constants/user";
+import { USER_ROLES } from "@/types/user-roles";
 import Navbar from "@/components/layouts/nav-bar";
 import { validateAuthPage } from "@/utils/security/auth";
 import { ScrollToTopLayout } from "@/app/ulink/_components/scroll-to-top.layout";

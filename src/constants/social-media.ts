@@ -1,5 +1,6 @@
-import { SocialMedia } from "@prisma/client";
+import { SocialMediaPlatform } from "@/types/entities/SocialMediaPlatforms";
 import {
+  FaApple,
   FaDiscord,
   FaFacebook,
   FaInstagram,
@@ -9,16 +10,6 @@ import {
   FaTwitter,
   FaYoutube,
 } from "react-icons/fa6";
-
-import { FaApple } from "react-icons/fa6";
-
-export type SocialMediaPlatform = {
-  label: string;
-  value: string;
-  prefix: string;
-  type: SocialMedia;
-  icon: React.ElementType;
-};
 
 export const SOCIAL_PLATFORMS: SocialMediaPlatform[] = [
   {

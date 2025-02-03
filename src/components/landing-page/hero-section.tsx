@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import { APP_NAME } from "@/constants/app";
 import Link from "next/link";
 import { Vortex } from "../ui/vortex";
-import { GRADIENT_STYLES } from "@/constants/aceternity";
-import { SparkleIcon, SparklesIcon } from "lucide-react";
+import { GRADIENT_STYLES } from "@/constants/ui/styles";
+import { SparklesIcon } from "lucide-react";
 
 export default function HeroSection() {
   return (
@@ -20,7 +20,8 @@ export default function HeroSection() {
       >
         <div className="flex flex-col h-full justify-center items-center space-y-4 text-center">
           <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-            Your path, <span className={GRADIENT_STYLES}>brilliantly lit.</span>
+            Your path, <br />{" "}
+            <span className={GRADIENT_STYLES}>brilliantly lit.</span>
           </h1>
           <p className="mx-auto max-w-[700px] md:text-xl text-muted-foreground">
             Turn your audience into a thriving community with dynamic profiles,
@@ -29,7 +30,7 @@ export default function HeroSection() {
           </p>
           <div className="space-x-4">
             <Link href="/auth" passHref>
-              <Button>
+              <Button className="mt-4">
                 <SparklesIcon className="w-4 h-4 mr-2" />
                 Get Started
               </Button>

@@ -1,6 +1,6 @@
 "use server";
 
-import { CreateQRCodeDto } from "@/types/qr-codes";
+import { CreateQRCodeDto } from "@/types/entities/qr-codes";
 import { qrCodeRepository } from "@/repositories/qr-code";
 import { withAuth } from "@/utils/security/auth";
 import { SessionUser } from "@/utils/lib/lucia";

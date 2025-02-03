@@ -2,7 +2,7 @@ import { QRListSection } from "./qr-list.section";
 import { QRGeneratorSection } from "./qr-generator.section";
 import { validateAuthPage } from "@/utils/security/auth";
 import { getQRCodesByUserId } from "@/actions/entities/qr-code/getQrCodesByUserId";
-import { QRCodeDto } from "@/types/qr-codes";
+import { QRCodeDto } from "@/types/entities/qr-codes";
 /*
 TODO:
 - Add a click counter to the QR code

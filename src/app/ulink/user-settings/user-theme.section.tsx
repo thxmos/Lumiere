@@ -2,7 +2,7 @@
 
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { Label } from "@/components/ui/label";
-import { THEMES } from "@/constants/theme";
+import { THEMES } from "@/constants/ui/theme";
 import { useTheme } from "next-themes";
 
 export const UserThemeSection = () => {

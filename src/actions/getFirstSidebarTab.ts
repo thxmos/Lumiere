@@ -1,12 +1,14 @@
 "use server";
 
-import { USER_ROLES } from "@/constants/user";
+import { USER_ROLES } from "@/types/user-roles";
 import { redirect } from "next/navigation";
 import { withAuth } from "@/utils/security/auth";
 import { SessionUser } from "@/utils/lib/lucia";
 import { SidebarTab } from "@/types/layout/SidebarTab";
 
-// Get the first tab that the user has access to
+// Used by all pages that have a sidebar
+// Gets the first tab that the user has access to
+
 export const redirectToFirstTab = withAuth(
   async (user: SessionUser, tabs: SidebarTab[], path: string) => {
     if (tabs.length === 0) {

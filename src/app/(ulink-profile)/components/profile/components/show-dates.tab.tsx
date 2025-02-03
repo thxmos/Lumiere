@@ -1,4 +1,4 @@
-import { ThemeNoId } from "@/types/theme";
+import { ThemeNoId } from "@/types/entities/theme";
 import Link from "next/link";
 import { Ticket } from "lucide-react";
 
