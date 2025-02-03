@@ -107,7 +107,7 @@ export default function CampaignSection() {
           userId: response.data.userId,
           createdAt: response.data.createdAt.toISOString(),
           updatedAt: response.data.updatedAt.toISOString(),
-          actions: response.data.actions.map((action) => ({
+          actions: response.data.actions.map((action: any) => ({
             id: action.id,
             title: action.title,
             description: action.description,

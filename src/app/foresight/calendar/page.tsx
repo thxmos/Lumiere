@@ -14,6 +14,8 @@ import { Button } from "@/components/ui/button";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { cn } from "@/utils/utils";
 
+// TODO: Add your own notes each calendar day
+
 export default function CalendarPage() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const today = new Date();
