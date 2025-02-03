@@ -1,31 +1,17 @@
-import {
-  BugIcon,
-  CalendarRangeIcon,
-  MessageCircleIcon,
-  SwordsIcon,
-  WaypointsIcon,
-} from "lucide-react";
-
-const iconStyle = "mr-2 h-4 w-4";
-
-export type Tab = {
-  key: string;
-  label: string;
-  icon: React.ReactNode;
-  userRole?: string;
-  mobilePreview?: boolean;
-};
+import { SIDEBAR_ICON_STYLE } from "@/constants/layout";
+import { SidebarTab } from "@/types/layout/SidebarTab";
+import { BugIcon, MessageCircleIcon } from "lucide-react";
 
 //TODO: Rename key to path or something
-export const KAIZEN_TABS: Tab[] = [
+export const KAIZEN_TABS: SidebarTab[] = [
   {
     key: "feedback",
     label: "Feedback",
-    icon: <MessageCircleIcon className={iconStyle} />,
+    icon: <MessageCircleIcon className={SIDEBAR_ICON_STYLE} />,
   },
   {
     key: "bugs",
     label: "Bugs",
-    icon: <BugIcon className={iconStyle} />,
+    icon: <BugIcon className={SIDEBAR_ICON_STYLE} />,
   },
 ];

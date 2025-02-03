@@ -1,7 +1,6 @@
-import { redirect } from "next/navigation";
-import { getFirstTab } from "./actions";
+import { redirectToFirstTab } from "@/actions/getFirstSidebarTab";
+import { KAIZEN_TABS } from "./tabs";
 
-export default async function Dashboard() {
-  const firstTab = await getFirstTab();
-  redirect(`/kaizen/${firstTab?.key}`);
+export default async function Kaizen() {
+  redirectToFirstTab(KAIZEN_TABS, "kaizen");
 }

@@ -1,7 +1,6 @@
-import { redirect } from "next/navigation";
-import { getFirstTab } from "./actions";
+import { redirectToFirstTab } from "@/actions/getFirstSidebarTab";
+import { EPK_TABS } from "./tabs";
 
-export default async function Dashboard() {
-  const firstTab = await getFirstTab();
-  redirect(`/epk/${firstTab?.key}`);
+export default async function EPK() {
+  redirectToFirstTab(EPK_TABS, "epk");
 }

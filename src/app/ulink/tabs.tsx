@@ -10,7 +10,7 @@ import {
   ImageIcon,
 } from "lucide-react";
 
-export const DASHBOARD_TABS: SidebarTab[] = [
+export const ULINK_TABS: SidebarTab[] = [
   {
     key: "account",
     label: "Account",
