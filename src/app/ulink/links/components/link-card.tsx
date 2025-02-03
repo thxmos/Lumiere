@@ -1,6 +1,6 @@
 import type React from "react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { DraggableProvided } from "@hello-pangea/dnd";
 import { RxDragHandleDots2 } from "react-icons/rx";
 import { AssetUpload } from "@/components/upload/asset-upload";
@@ -23,6 +23,7 @@ interface Props {
   onUpdate: (index: number, updatedLink: LinkResponse) => void;
   onDelete: (index: number) => void;
   insertAssetMap: (id: string, file: File) => void;
+  setIsEditingAnyLink: (isEditing: boolean) => void;
 }
 
 export const LinkCard: React.FC<Props> = ({
@@ -32,12 +33,17 @@ export const LinkCard: React.FC<Props> = ({
   onUpdate,
   onDelete,
   insertAssetMap,
+  setIsEditingAnyLink,
 }) => {
   const [file, setFile] = useState<File | null>(null);
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editedLink, setEditedLink] = useState(link);
+
+  useEffect(() => {
+    setIsEditingAnyLink(isEditing);
+  }, [isEditing]);
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement> | boolean,

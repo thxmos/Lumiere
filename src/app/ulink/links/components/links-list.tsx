@@ -14,12 +14,14 @@ interface Props {
   onUpdate: (index: number, updatedLink: LinkResponse) => void;
   onDelete: (index: number) => void;
   insertAssetMap: (id: string, file: File) => void;
+  setIsEditingAnyLink: (isEditing: boolean) => void;
 }
 
 export const LinksList: React.FC<Props> = ({
   onUpdate,
   onDelete,
   insertAssetMap,
+  setIsEditingAnyLink,
 }) => {
   const { links, setLinks } = useLinksStore();
 
@@ -63,6 +65,7 @@ export const LinksList: React.FC<Props> = ({
                     onUpdate={onUpdate}
                     onDelete={onDelete}
                     insertAssetMap={insertAssetMap}
+                    setIsEditingAnyLink={setIsEditingAnyLink}
                   />
                 )}
               </Draggable>

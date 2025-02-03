@@ -32,6 +32,8 @@ interface Props {
 export function LinksSection({ userLinks, user, linkGroupId }: Props) {
   const { links, setLinks } = useLinksStore();
 
+  const [isEditingAnyLink, setIsEditingAnyLink] = useState(true);
+
   const [assetMap, setAssetMap] = useState<
     {
       id: string;
@@ -50,7 +52,12 @@ export function LinksSection({ userLinks, user, linkGroupId }: Props) {
     formState: { isSubmitting },
   } = useForm();
 
-  const onSubmit = async () => {
+  const onSubmit = async (e: any) => {
+    if (isEditingAnyLink) {
+      toast.error("Please finish editing the current link before saving");
+      return;
+    }
+
     try {
       // Wait for all asset uploads to complete
       await Promise.all(
@@ -140,6 +147,7 @@ export function LinksSection({ userLinks, user, linkGroupId }: Props) {
           onUpdate={updateLink}
           onDelete={removeLink}
           insertAssetMap={insertAssetMap}
+          setIsEditingAnyLink={setIsEditingAnyLink}
         />
         <div className="flex justify-end px-0 space-x-2">
           <Button
