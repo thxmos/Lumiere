@@ -3,17 +3,19 @@
 import { useState } from "react";
 import { LinksTab } from "./links.tab";
 import type { LinkDtoWithId } from "@/types/links";
-import type { ThemeNoId } from "@/types/theme";
+import type { ThemeNoId } from "@/types/entities/theme";
 import { ShowDatesTab } from "./show-dates.tab";
 
 export function TabSelector({
   links,
   theme,
   isPreview,
+  shadowStyle,
 }: {
   links: LinkDtoWithId[];
   theme: ThemeNoId;
   isPreview: boolean;
+  shadowStyle: React.CSSProperties;
 }) {
   const [activeTab, setActiveTab] = useState("links");
 
@@ -58,7 +60,12 @@ export function TabSelector({
         */}
       </div>
       {activeTab === "links" && (
-        <LinksTab links={links} theme={theme} isPreview={isPreview} />
+        <LinksTab
+          links={links}
+          theme={theme}
+          isPreview={isPreview}
+          shadowStyle={shadowStyle}
+        />
       )}
       {/* {activeTab === "show-dates" && <ShowDatesTab theme={theme as ThemeNoId} />} */}
       {/* Uncomment these when ready to implement

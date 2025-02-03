@@ -4,32 +4,32 @@ model Theme {
   user User @relation("UserTheme", fields: [userId], references: [id])
 
   primaryColor String @db.Char(7) @default("#3f434a") //TODO: better default
-  secondaryColor String @db.Char(7) @default("#3f1f4a") //TODO: better default
+  secondaryColor String @db.Char(7) @default("#ffa500") //TODO: better default
 
   fontFamily String // TODO: make FontFamily enum
   fontWeight Int
-  fontColor String @db.Char(7)
-  secondaryColorFont String @db.Char(7)
+  fontColor String @db.Char(7) @default("#000000")
+  secondaryColorFont String @db.Char(7) @default("#000000") 
 
   borderColor String
   borderRadius Int
   borderWidth Int
   borderStyle String
 
-  cardBackgroundColor String? @db.Char(7)
-  cardTextColor String? @db.Char(7)
-  iconColor String? @db.Char(7)
+  cardBackgroundColor String? @db.Char(7) @default("#FFFFFF")
+  cardTextColor String? @db.Char(7) @default("#000000")
+  cardShadowSize Int? // Size in pixels
+  cardShadowColor String? @db.Char(7) @default("#000000")
+  cardShadowOffset Int? // Distance in pixels
+  cardShadowDirection Int?// Angle in degrees (0-360)
+  cardShadowBlur Int? // Blur in pixels 
   
-  shadow Boolean @default(false)
-  shadowColor String? @db.Char(7)
-  shadowBlur Int?
-  shadowOffsetX Int?
-  shadowOffsetY Int?
+  iconColor String? @db.Char(7)
 
   backgroundType String @default("color") // "color" | "image" | "video" //TODO: make enum
-  backgroundColor String? @db.Char(7) 
-  gradient Boolean @default(false)
-  gradientColor String? @db.Char(7)
+  backgroundColor String? @db.Char(7) @default("#FFFFFF")
+  gradient Boolean @default(true)
+  gradientColor String? @db.Char(7) @default("#4f5359") 
   backgroundImageUrl String? // could point directly to assetId - backgroundImageAssetId
   videoUrl String? // could point directly to assetId - videoAssetId
 

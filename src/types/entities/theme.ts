@@ -17,6 +17,11 @@ export type CreateThemeDto = {
   borderStyle: string;
 
   cardBackgroundColor: string;
+  cardShadowSize: number;
+  cardShadowOffset: number;
+  cardShadowDirection: number;
+  cardShadowBlur: number;
+  cardShadowColor: string;
   iconColor: string;
 
   backgroundType: string; // "color" | "image" | "video"

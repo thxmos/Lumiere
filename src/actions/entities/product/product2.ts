@@ -1,8 +1,8 @@
 "use server";
 
-import { CreateProduct2Dto } from "@/types/product2";
+import { CreateProduct2Dto } from "@/types/entities/product2";
 import { prisma } from "@/utils/lib/prisma";
-import { Product2Dto } from "@/types/product2";
+import { Product2Dto } from "@/types/entities/product2";
 import { Product2 } from "@prisma/client";
 import { SessionUser } from "@/utils/lib/lucia";
 import { withAuth } from "@/utils/security/auth";

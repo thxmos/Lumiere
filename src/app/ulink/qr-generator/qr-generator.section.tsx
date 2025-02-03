@@ -9,10 +9,10 @@ import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import { toast } from "sonner";
 import { generateQRCode2 } from "./utils";
-import { PLACEHOLDER_IMG } from "@/constants/images";
+import { PLACEHOLDER_IMG } from "@/constants/ui/images";
 import QRModal from "./components/qr-modal";
 import { useQRCodeStore } from "@/stores/qr-codes";
-import { QRCodeDto } from "@/types/qr-codes";
+import { QRCodeDto } from "@/types/entities/qr-codes";
 import { createQRCode } from "@/actions/entities/qr-code/createQrCode";
 
 // Add initialQRCodes to the props

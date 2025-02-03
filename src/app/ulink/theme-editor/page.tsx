@@ -4,8 +4,8 @@ import { validateAuthPage } from "@/utils/security/auth";
 import { getAssetsByUserId } from "@/actions/entities/asset/getAssetsByUserId";
 
 const ThemeEditorPage = async () => {
-  const user = await validateAuthPage();
-  const theme = await getThemeAction(user.id);
+  await validateAuthPage();
+  const theme = await getThemeAction();
   const assets = await getAssetsByUserId();
 
   return (

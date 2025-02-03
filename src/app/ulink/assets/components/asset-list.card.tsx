@@ -2,7 +2,7 @@
 
 import { X } from "lucide-react";
 import Image from "next/image";
-import type { ImageDtoWithId } from "@/types/image";
+import type { ImageDtoWithId } from "@/types/entities/image";
 import { ConfirmDeleteModal } from "@/app/ulink/_components/modals/confirm-delete-modal";
 import { useState } from "react";
 import { deleteAssetById } from "@/actions/file-upload/deleteAsset";

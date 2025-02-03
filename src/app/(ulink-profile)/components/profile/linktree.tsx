@@ -3,18 +3,18 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-import { PLACEHOLDER_IMG } from "@/constants/images";
+import { PLACEHOLDER_IMG } from "@/constants/ui/images";
 import type { LinkDto, LinkDtoWithId } from "@/types/links";
-import type { ThemeNoId } from "@/types/theme";
+import type { ThemeNoId } from "@/types/entities/theme";
 import { useThemeStore } from "@/stores/themes";
 import { useLinksStore } from "@/stores/links";
 import { UserDtoNoId } from "@/actions/entities/user/createUser";
-import { BLACK, WHITE } from "@/constants/colors";
+import { BLACK, WHITE } from "@/constants/ui/colors";
 import { COUNTRIES } from "@/constants/countries";
 import { TabSelector } from "./components/tab-selector";
 import { SOCIAL_PLATFORMS } from "@/constants/social-media";
 import { cn } from "@/utils/utils";
-import { DEFAULT_FONT } from "@/constants/fonts";
+import { DEFAULT_FONT } from "@/constants/ui/fonts";
 import { ColoredBackground } from "./components/background-color";
 import VideoBackground from "./components/background-video";
 import { ImageBackground } from "./components/background-image";
@@ -28,6 +28,33 @@ interface Props {
   initialTheme: ThemeNoId;
   user: UserDtoNoId;
 }
+
+// Add this type near the top with your other interfaces
+type CardShadow = {
+  cardShadowSize?: number;
+  cardShadowColor?: string;
+  cardShadowOffset?: number;
+  cardShadowDirection?: number;
+  cardShadowBlur?: number;
+};
+
+// Add this helper function to generate the shadow CSS
+const generateShadowStyle = (theme: ThemeNoId & CardShadow) => {
+  if (!theme.cardShadowSize || !theme.cardShadowColor) return {};
+
+  const offsetX = theme.cardShadowOffset
+    ? Math.cos(((theme.cardShadowDirection || 0) * Math.PI) / 180) *
+      theme.cardShadowOffset
+    : 0;
+  const offsetY = theme.cardShadowOffset
+    ? Math.sin(((theme.cardShadowDirection || 0) * Math.PI) / 180) *
+      theme.cardShadowOffset
+    : 0;
+
+  return {
+    boxShadow: `${offsetX}px ${offsetY}px ${theme.cardShadowBlur || 0}px ${theme.cardShadowSize}px ${theme.cardShadowColor}`,
+  };
+};
 
 export default function LinkTree({
   isPreview = false,
@@ -180,6 +207,7 @@ export default function LinkTree({
             links={localLinks}
             theme={localTheme!}
             isPreview={isPreview}
+            shadowStyle={generateShadowStyle(localTheme!)}
           />
 
           {/* Social Links */}

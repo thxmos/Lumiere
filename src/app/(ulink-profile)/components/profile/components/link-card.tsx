@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import { useTransition } from "react";
-import { PLACEHOLDER_IMG } from "@/constants/images";
+import { PLACEHOLDER_IMG } from "@/constants/ui/images";
 import type { LinkDtoWithId } from "@/types/links";
-import type { ThemeNoId } from "@/types/theme";
+import type { ThemeNoId } from "@/types/entities/theme";
 import { updateLinkClicked } from "@/actions/entities/link/updateLinkClicked";
 import type { BrowserData } from "@/types/clicks";
 
@@ -15,7 +15,12 @@ export function LinkCard({
   imageUrl,
   theme,
   isPreview = false,
-}: LinkDtoWithId & { theme: ThemeNoId; isPreview: boolean }) {
+  shadowStyle,
+}: LinkDtoWithId & {
+  theme: ThemeNoId;
+  isPreview: boolean;
+  shadowStyle: React.CSSProperties;
+}) {
   const [isPending, startTransition] = useTransition();
 
   const cardStyle = {
@@ -27,6 +32,7 @@ export function LinkCard({
     fontFamily: theme.fontFamily,
     cursor: "pointer",
     transition: "transform 0.2s ease-in-out, opacity 0.2s ease-in-out", // Add transition for smooth animation
+    ...shadowStyle,
   };
 
   const titleStyle = {
@@ -78,7 +84,12 @@ export function LinkCard({
           borderRadius: `${theme.borderRadius}px`,
         }}
       />
-      <span className="ml-4 text-lg" style={titleStyle}>
+      <span
+        className="ml-4 text-lg"
+        style={{
+          color: theme.cardTextColor || "#000000",
+        }}
+      >
         {title}
       </span>
     </button>

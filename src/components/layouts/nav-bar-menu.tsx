@@ -14,8 +14,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
+  BarcodeIcon,
   Cable,
-  HammerIcon,
   LogOut,
   MailPlusIcon,
   ScanEyeIcon,
@@ -24,11 +24,7 @@ import {
 } from "lucide-react";
 import { getInitials } from "@/utils/utils";
 
-interface Props {
-  user: any;
-}
-
-export default function DropdownMenu({ user }: Props) {
+export default function DropdownMenu({ user }: { user: any }) {
   const [open, setOpen] = useState(false);
 
   if (!user) return null;
@@ -90,6 +86,11 @@ export default function DropdownMenu({ user }: Props) {
               href: "/kaizen",
               label: "Kaizen",
               icon: MailPlusIcon,
+            },
+            {
+              href: "/exchange",
+              label: "Exchange",
+              icon: BarcodeIcon,
             },
             {
               href: "#",
