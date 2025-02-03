@@ -3,6 +3,7 @@ import { Click } from "@prisma/client";
 export type ClicksDto = Omit<Click, "id">;
 export type ClickDtoWithId = Click;
 
+// TODO: seperate BrowserData from Click
 export interface BrowserData {
   ipAddress: string | null;
   userAgent: string | null;

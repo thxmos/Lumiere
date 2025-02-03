@@ -13,14 +13,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Cable, LogOut, ScanEyeIcon, User } from "lucide-react";
+import { BarcodeIcon, Cable, LogOut, ScanEyeIcon, User } from "lucide-react";
 import { getInitials } from "@/utils/utils";
 
-interface Props {
-  user: any;
-}
-
-export default function DropdownMenu({ user }: Props) {
+export default function DropdownMenu({ user }: { user: any }) {
   const [open, setOpen] = useState(false);
 
   if (!user) return null;
@@ -72,6 +68,11 @@ export default function DropdownMenu({ user }: Props) {
               href: "/foresight",
               label: "Foresight",
               icon: ScanEyeIcon,
+            },
+            {
+              href: "/exchange",
+              label: "Exchange",
+              icon: BarcodeIcon,
             },
             {
               href: "#",

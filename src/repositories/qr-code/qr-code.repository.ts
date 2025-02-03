@@ -7,7 +7,7 @@ import {
   QrCodeCreateInput,
   QrCodeUpdateInput,
 } from "./types";
-import { QRCodeDto } from "@/types/qr-codes";
+import { QRCodeDto } from "@/types/entities/qr-codes";
 
 export function toDtoMapper(qrCode: QRCode): QRCodeDto {
   return {

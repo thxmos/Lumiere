@@ -3,6 +3,7 @@ import { SunMoonIcon } from "lucide-react";
 import { APP_NAME } from "@/constants/app";
 import DropdownMenu from "./nav-bar-menu";
 import { validateServerSession } from "@/utils/security/auth";
+import { Badge } from "../ui/badge";
 
 const Navbar = async () => {
   const user = await validateServerSession();
@@ -24,7 +25,7 @@ const Navbar = async () => {
 
   return (
     <header
-      className="px-4 lg:px-6 min-h-16 flex items-center border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+      className="px-4 lg:px-6 min-h-16 flex items-center border-b border-secondary bg-black/[0.96] backdrop-blur"
       role="banner"
     >
       <Link
@@ -38,6 +39,8 @@ const Navbar = async () => {
             aria-hidden="true"
           />
           <p className="text-2xl font-bold">{APP_NAME}</p>
+          <Badge variant="ghost">BETA</Badge>{" "}
+          {/* its complaining but it works*/}
         </div>
       </Link>
 

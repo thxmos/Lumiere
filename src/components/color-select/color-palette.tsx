@@ -1,7 +1,7 @@
 import type React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Button } from "../ui/button";
-import { BLACK, WHITE } from "@/constants/colors";
+import { BLACK, WHITE } from "@/constants/ui/colors";
 import {
   ColorSchemeType,
   ColorVariation,

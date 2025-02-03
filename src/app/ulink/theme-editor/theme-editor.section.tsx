@@ -5,9 +5,9 @@ import { useForm, Controller, useWatch } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { FONTS } from "@/constants/fonts";
+import { FONTS } from "@/constants/ui/fonts";
 import { toast } from "sonner";
-import type { ThemeNoId } from "@/types/theme";
+import type { ThemeNoId } from "@/types/entities/theme";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { SelectInput } from "@/components/select-input";
 import { ColorSelect } from "@/components/color-select/color-select";
@@ -15,10 +15,13 @@ import { ColorPickerStandalone } from "@/components/color-select/color-picker-st
 import { Separator } from "@/components/ui/separator";
 import { useThemeStore } from "@/stores/themes";
 import { Switch } from "@/components/ui/switch";
-import { WHITE } from "@/constants/colors";
+import { WHITE } from "@/constants/ui/colors";
 import { upsertTheme } from "@/actions/entities/theme/upsertTheme";
 import { AssetResponse } from "@/repositories/asset";
 import { AssetType } from "@prisma/client";
+import { FontSection } from "./font.form";
+import { CardSection } from "./card.form";
+import { BorderSection } from "./border.form";
 
 /*
 TODO: ThemePrimaryColor should be primaryColor
@@ -77,6 +80,22 @@ export function ThemeEditorSection({
           data.theme.borderWidth as unknown as string,
           10,
         ),
+        cardShadowSize: Number.parseInt(
+          data.theme.cardShadowSize as unknown as string,
+          10,
+        ),
+        cardShadowOffset: Number.parseInt(
+          data.theme.cardShadowOffset as unknown as string,
+          10,
+        ),
+        cardShadowDirection: Number.parseInt(
+          data.theme.cardShadowDirection as unknown as string,
+          10,
+        ),
+        cardShadowBlur: Number.parseInt(
+          data.theme.cardShadowBlur as unknown as string,
+          10,
+        ),
       };
       await upsertTheme(updatedTheme);
       toast.success("Theme updated successfully", {
@@ -128,150 +147,23 @@ export function ThemeEditorSection({
             <Separator />
           </div>
 
-          {/* Font */}
-          <div className="space-y-4">
-            <Label className="text-lg font-bold">Font</Label>
-            <div className="flex items-center space-x-2 mt-2">
-              <Label className="w-24 font-bold">Font Family</Label>
-              <Controller
-                name="theme.fontFamily"
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <SelectInput
-                    options={FONTS}
-                    placeholder="Select font family"
-                    onValueChange={onChange}
-                    defaultValue={value || FONTS[0].value}
-                    isFontsSelect
-                  />
-                )}
-              />
-            </div>
-            <div className="flex items-center space-x-2 mt-2">
-              <Label className="w-24 font-bold">Text Color</Label>
-              <Controller
-                name="theme.fontColor"
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <ColorSelect
-                    value={value}
-                    themePrimaryColor={watch("theme.primaryColor")}
-                    onChange={onChange}
-                  />
-                )}
-              />
-            </div>
-            <div className="flex items-center space-x-2 mt-2">
-              <Label className="w-24 font-bold">Secondary Text Color</Label>
-              <Controller
-                name="theme.secondaryColorFont"
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <ColorSelect
-                    value={value}
-                    themePrimaryColor={watch("theme.primaryColor")}
-                    onChange={onChange}
-                  />
-                )}
-              />
-            </div>
-            <Separator />
-          </div>
+          {/* Font Section */}
+          <FontSection
+            control={control}
+            themePrimaryColor={watch("theme.primaryColor")}
+          />
 
-          {/* Border */}
-          <div className="space-y-4">
-            <Label className="text-lg font-bold">Border</Label>
-            <div className="flex items-center space-x-2 mt-2">
-              <Label className="w-24 font-bold">Border Color</Label>
-              <Controller
-                name="theme.borderColor"
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <ColorSelect
-                    value={value}
-                    themePrimaryColor={watch("theme.primaryColor")}
-                    onChange={onChange}
-                  />
-                )}
-              />
-            </div>
-            <div className="flex items-center space-x-2 mt-2">
-              <Label className="w-24 font-bold">Border Radius</Label>
-              <Controller
-                name="theme.borderRadius"
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <Input
-                    type="number"
-                    value={value}
-                    onChange={(e) =>
-                      onChange(Number.parseInt(e.target.value, 10))
-                    }
-                    max={40}
-                    min={0}
-                  />
-                )}
-              />
-            </div>
-            <div className="flex items-center space-x-2 mt-2">
-              <Label className="w-24 font-bold">Border Width</Label>
-              <Controller
-                name="theme.borderWidth"
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <Input
-                    type="number"
-                    value={value}
-                    onChange={(e) =>
-                      onChange(Number.parseInt(e.target.value, 10))
-                    }
-                    max={5}
-                    min={0}
-                  />
-                )}
-              />
-            </div>
-            <div className="flex items-center space-x-2 mt-2">
-              <Label className="w-24 font-bold">Border Style</Label>
-              <Controller
-                name="theme.borderStyle"
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <SelectInput
-                    options={[
-                      { label: "Solid", value: "solid" },
-                      { label: "Dashed", value: "dashed" },
-                      { label: "Dotted", value: "dotted" },
-                    ]}
-                    placeholder="Select border style"
-                    onValueChange={onChange}
-                    defaultValue={value}
-                  />
-                )}
-              />
-            </div>
-            <Separator />
-          </div>
+          {/* Border Section */}
+          <BorderSection
+            control={control}
+            themePrimaryColor={watch("theme.primaryColor")}
+          />
 
-          {/* Card */}
-          <div className="space-y-4">
-            <Label className="text-lg font-bold">Card</Label>
-            <div className="flex items-center space-x-2 mt-2">
-              <Label className="w-24 font-bold">Background Color</Label>
-              <Controller
-                name="theme.cardBackgroundColor"
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <ColorSelect
-                    value={value || ""}
-                    themePrimaryColor={watch("theme.primaryColor")}
-                    onChange={onChange}
-                  />
-                )}
-              />
-            </div>
-            <Separator />
-          </div>
+          {/* Card Section */}
+          <CardSection
+            control={control}
+            themePrimaryColor={watch("theme.primaryColor")}
+          />
 
           {/* Icon */}
           <div className="space-y-4">

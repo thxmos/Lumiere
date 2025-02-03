@@ -13,7 +13,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { ImageUpload } from "@/components/upload/image-upload";
-import type { CreateProduct2Dto } from "@/types/product2";
+import type { CreateProduct2Dto } from "@/types/entities/product2";
 
 interface CreateProductModalProps {
   isOpen: boolean;

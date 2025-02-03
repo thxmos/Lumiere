@@ -1,4 +1,4 @@
-import { ThemeNoId } from "@/types/theme";
+import { ThemeNoId } from "@/types/entities/theme";
 
 export default function VideoBackground({
   localTheme,

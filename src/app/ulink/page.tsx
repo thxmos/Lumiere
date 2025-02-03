@@ -1,7 +1,6 @@
-import { redirect } from "next/navigation";
-import { getFirstTab } from "./actions";
+import { redirectToFirstTab } from "@/actions/getFirstSidebarTab";
+import { DASHBOARD_TABS } from "./tabs";
 
 export default async function Dashboard() {
-  const firstTab = await getFirstTab();
-  redirect(`/ulink/${firstTab?.key}`);
+  await redirectToFirstTab(DASHBOARD_TABS, "ulink");
 }

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { ProductCard } from "./components/product-card";
 import { CreateProductModal } from "./create-product-modal";
-import type { CreateProduct2Dto, Product2Dto } from "@/types/product2";
+import type { CreateProduct2Dto, Product2Dto } from "@/types/entities/product2";
 import { toast } from "sonner";
 import { createNewProduct } from "@/actions/entities/product/product2";
 export default function ProductsSection({

@@ -1,9 +1,9 @@
 model Session {
   id        String   @id
-  userId    String   @unique
+  userId    String @unique
   expiresAt DateTime
 
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {

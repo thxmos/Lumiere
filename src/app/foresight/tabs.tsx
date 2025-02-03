@@ -1,26 +1,16 @@
-import { USER_ROLES } from "@/constants/user";
+import { SidebarTab } from "@/types/layout/SidebarTab";
 import { SwordsIcon, WaypointsIcon } from "lucide-react";
+import { SIDEBAR_ICON_STYLE } from "@/constants/layout";
 
-const iconStyle = "mr-2 h-4 w-4";
-
-export type Tab = {
-  key: string;
-  label: string;
-  icon: React.ReactNode;
-  userRole?: string;
-  mobilePreview?: boolean;
-};
-
-//TODO: Rename key to path or something
-export const FORESIGHT_TABS: Tab[] = [
+export const FORESIGHT_TABS: SidebarTab[] = [
   {
     key: "strategy",
     label: "Strategy",
-    icon: <SwordsIcon className={iconStyle} />,
+    icon: <SwordsIcon className={SIDEBAR_ICON_STYLE} />,
   },
   {
     key: "pipeline",
     label: "Pipeline",
-    icon: <WaypointsIcon className={iconStyle} />,
+    icon: <WaypointsIcon className={SIDEBAR_ICON_STYLE} />,
   },
 ];

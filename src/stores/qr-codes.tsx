@@ -1,4 +1,4 @@
-import type { QRCodeDto } from "@/types/qr-codes";
+import type { QRCodeDto } from "@/types/entities/qr-codes";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

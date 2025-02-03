@@ -3,7 +3,6 @@ generator client {
   previewFeatures = ["prismaSchemaFolder"]
 }
 
-// TODO: why did we add directUrl and url?
 datasource db {
   provider = "postgresql"
   url      = env("POSTGRES_PRISMA_URL")
