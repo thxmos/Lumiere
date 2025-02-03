@@ -6,7 +6,7 @@ import { PlusCircle } from "lucide-react";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 
-import { LinksList } from "./components/links-list";
+import { LinksList } from "@/app/ulink/links/components/links-list";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { Button } from "@/components/ui/button";
 import { useLinksStore } from "@/stores/links";
@@ -25,9 +25,10 @@ Deleting a new link also gives a failure but removes from the list
 interface Props {
   userLinks: LinkResponse[];
   user: UserDto;
+  linkGroupId: string;
 }
 
-export function LinksSection({ userLinks, user }: Props) {
+export function LinksSection({ userLinks, user, linkGroupId }: Props) {
   const { links, setLinks } = useLinksStore();
 
   useEffect(() => {
@@ -43,18 +44,18 @@ export function LinksSection({ userLinks, user }: Props) {
 
   const onSubmit = async () => {
     try {
-      const updatedLinks = await updateUserLinksAction(links);
-      console.log(updatedLinks);
-      if (updatedLinks) {
-        setLinks(updatedLinks);
-        toast.success("Links updated successfully", {
-          duration: 2000,
-        });
-      } else {
-        toast.error("Failed to update links", {
+      const updatedLinks = await updateUserLinksAction(links, linkGroupId);
+
+      if (!updatedLinks) {
+        return toast.error("Failed to update links", {
           duration: 2000,
         });
       }
+
+      setLinks(updatedLinks);
+      toast.success("Links updated successfully", {
+        duration: 2000,
+      });
     } catch (error) {
       toast.error("Failed to update links", {
         duration: 2000,
@@ -70,10 +71,10 @@ export function LinksSection({ userLinks, user }: Props) {
         title: "",
         url: "https://",
         imageUrl: "",
-        userId: user.id,
         active: false,
         index: links.length,
         id: "new-" + uuidv4(), //TODO: SLOPPPPPPP
+        linkGroupId: linkGroupId,
       } as LinkResponse,
     ]);
   };
@@ -101,12 +102,7 @@ export function LinksSection({ userLinks, user }: Props) {
       description={`Manage your custom links here and track your audience (${links.length}/10)`}
     >
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <LinksList
-          links={links}
-          setLinks={setLinks}
-          onUpdate={updateLink}
-          onDelete={removeLink}
-        />
+        <LinksList onUpdate={updateLink} onDelete={removeLink} />
         <div className="flex justify-end px-0 space-x-2">
           <Button
             type="button"

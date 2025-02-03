@@ -1,8 +1,9 @@
 model LinkGroup {
-  id String @id @unique @default(uuid())
+  id          String  @id @unique @default(uuid())
+  name        String
+  description String?
 
-  links  Link[] @relation("linkGroupLinks")
-  linkId String
+  links Link[] @relation("linkGroupLinks")
 
   createdAt DateTime  @default(now())
   updatedAt DateTime  @default(now()) @updatedAt

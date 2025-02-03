@@ -11,6 +11,7 @@ import { Trash, Edit, Check, X } from "lucide-react";
 import { ConfirmDeleteModal } from "@/app/ulink/_components/modals/confirm-delete-modal";
 import { Label } from "@/components/ui/label";
 import { LinkResponse } from "@/repositories/link/types";
+import { FileType } from "@/components/upload/file-upload";
 
 /*
 - text ellipsis on mobile
@@ -32,7 +33,8 @@ export const LinkCard: React.FC<Props> = ({
   onDelete,
 }) => {
   const [file, setFile] = useState<File | null>(null);
-  const [previewImg, setPreviewImg] = useState<string | null>(null);
+  const [fileType, setFileType] = useState<FileType | null>(null);
+  const [previewImg, setPreviewImg] = useState<string | null>(link.imageUrl);
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -50,8 +52,9 @@ export const LinkCard: React.FC<Props> = ({
     }
   };
 
-  const handleImageChange = (imageUrl: string) => {
-    setEditedLink({ ...editedLink, imageUrl });
+  const handleImageChange = (file: File | null) => {
+    setFile(file);
+    setFileType(file?.type.includes("image") ? FileType.Image : FileType.Video);
   };
 
   const handleConfirmDelete = () => {
@@ -74,7 +77,7 @@ export const LinkCard: React.FC<Props> = ({
       <li
         ref={draggableProvided.innerRef}
         {...draggableProvided.draggableProps}
-        className="border border-secondary hover:border-primary bg-card transition-all rounded-lg p-4 flex justify-between items-center"
+        className="border border-secondary hover:border-primary bg-card transition-all rounded-lg p-4 flex justify-between items-center mb-4"
       >
         <div className="flex gap-4 items-center justify-between w-full">
           <Label className="font-bold text-primary">{index + 1}</Label>
@@ -84,9 +87,10 @@ export const LinkCard: React.FC<Props> = ({
             <ImageUpload
               file={file}
               setFile={setFile}
-              previewImg={editedLink.imageUrl ?? undefined}
-              setPreviewImg={() => {}}
-              onImageChange={(image) => handleImageChange(image ?? "")}
+              fileType={fileType}
+              previewImg={previewImg}
+              setPreviewImg={setPreviewImg}
+              onImageChange={handleImageChange}
               disabled={!isEditing}
             />
           </div>

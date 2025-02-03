@@ -15,8 +15,8 @@ model Link {
   updatedAt DateTime  @default(now()) @updatedAt
   deletedAt DateTime? // soft delete
 
-  linkGroudId String
-  linkGroup   LinkGroup @relation("linkGroupLinks", fields: [linkGroudId], references: [id])
+  linkGroupId String
+  linkGroup   LinkGroup @relation("linkGroupLinks", fields: [linkGroupId], references: [id])
 
   Click Click[]
 }

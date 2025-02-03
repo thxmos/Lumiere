@@ -12,9 +12,9 @@ import { cn } from "@/utils/utils";
 interface ImageUploadProps {
   file: File | null;
   setFile: (file: File | null) => void;
-  previewImg?: string;
-  fileType: FileType | null;
+  previewImg: string | null;
   setPreviewImg: (image: string | null) => void;
+  fileType: FileType | null;
   onImageChange: (image: File | null) => void;
   disabled?: boolean;
   size?: "sm" | "md" | "lg";

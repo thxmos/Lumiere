@@ -6,13 +6,14 @@ import {
   LinkResponse,
   LinkCreateInput,
   LinkUpdateInput,
+  LinkCreateManyInput,
 } from "./types";
 import { SessionUser } from "@/utils/lib/lucia";
 
 export class LinkRepository implements ILinkRepository {
   // TODO: fix removePrivateFields
   private removePrivateFields(link: Link): LinkResponse {
-    const { /*id,*/ userId, ...linkResponse } = link; // TODO: id or no?
+    const { /*id,*/ ...linkResponse } = link; // TODO: id or no?
     return linkResponse as LinkResponse;
   }
 
@@ -27,19 +28,51 @@ export class LinkRepository implements ILinkRepository {
 
   async getLinksByUserId(userId: string): Promise<LinkResponse[]> {
     try {
-      const links = await prisma.link.findMany({ where: { userId } });
-      return links.map(this.removePrivateFields);
+      const linkGroups = await prisma.linkGroup.findMany({
+        where: {
+          user: { id: userId },
+        },
+        include: {
+          links: true,
+        },
+      });
+
+      return linkGroups.flatMap((group) =>
+        group.links.map(this.removePrivateFields),
+      );
     } catch (error) {
       throw new RepositoryError("Failed to fetch links by user id", error);
     }
   }
 
-  async getActiveLinksByUsername(username: string): Promise<LinkResponse[]> {
+  async getLinksByGroupId(groupId: string): Promise<LinkResponse[]> {
     try {
       const links = await prisma.link.findMany({
-        where: { user: { username }, active: true },
+        where: {
+          linkGroupId: groupId,
+        },
       });
+
       return links.map(this.removePrivateFields);
+    } catch (error) {
+      throw new RepositoryError("Failed to fetch links by group id", error);
+    }
+  }
+
+  async getActiveLinksByUsername(username: string): Promise<LinkResponse[]> {
+    try {
+      const linkGroups = await prisma.linkGroup.findMany({
+        where: {
+          user: { username },
+        },
+        include: {
+          links: true,
+        },
+      });
+
+      return linkGroups.flatMap((group) =>
+        group.links.map(this.removePrivateFields),
+      );
     } catch (error) {
       throw new RepositoryError(
         "Failed to fetch active links by username",
@@ -80,10 +113,17 @@ export class LinkRepository implements ILinkRepository {
     }
   }
 
-  async createMany(user: SessionUser, data: LinkCreateInput[]): Promise<void> {
+  async createMany(
+    user: SessionUser,
+    data: LinkCreateManyInput[],
+    linkGroupId: string,
+  ): Promise<void> {
     try {
       await prisma.link.createMany({
-        data: data.map((link) => ({ ...link, userId: user.id })),
+        data: data.map((link) => ({
+          ...link,
+          linkGroupId,
+        })),
       });
     } catch (error) {
       throw new RepositoryError("Failed to create links", error);
