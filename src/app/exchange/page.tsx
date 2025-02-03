@@ -1,7 +1,6 @@
-import { redirect } from "next/navigation";
-import { getFirstTab } from "./actions";
+import { redirectToFirstTab } from "@/actions/getFirstSidebarTab";
+import { EXCHANGE_TABS } from "./tabs";
 
 export default async function Exchange() {
-  const firstTab = await getFirstTab();
-  redirect(`/exchange/${firstTab?.key}`);
+  await redirectToFirstTab(EXCHANGE_TABS, "exchange");
 }

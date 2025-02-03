@@ -10,6 +10,7 @@ type Props = {
   tabs: SidebarTab[];
   userRole: string;
   title: string;
+  description: string;
   headerIcon: React.ReactNode;
   path: string;
 };
@@ -17,6 +18,7 @@ type Props = {
 const LayoutSidebar: React.FC<Props> = ({
   tabs,
   title,
+  description,
   userRole,
   headerIcon,
   path,
@@ -31,6 +33,7 @@ const LayoutSidebar: React.FC<Props> = ({
           {headerIcon}
           <h2 className="text-xl font-bold text-foreground">{title}</h2>
         </div>
+        <p className="text-sm text-foreground mb-4">{description}</p>
         <nav className="flex flex-1 flex-col h-full w-full">
           <div className="flex flex-col gap-2 flex-1 w-full">
             {tabs.map((tab) => {

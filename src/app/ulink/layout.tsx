@@ -32,17 +32,23 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
   //   setUser(userWithoutId as UserDto); // set user in store
   // }, []);
 
+  const path = "ulink";
+  const title = "ULink";
+  const description = "Connect with your audience";
+  const headerIcon = <Cable />;
+
   return (
     <ProtectedLayout redirectUrl="/auth">
       <Navbar />
 
       <div className="flex h-[calc(100vh-4rem)] bg-background">
         <LayoutSidebar
-          path="ulink"
+          path={path}
           userRole={user?.roles || USER_ROLES.USER}
           tabs={DASHBOARD_TABS}
-          title="ULink"
-          headerIcon={<Cable />}
+          title={title}
+          description={description}
+          headerIcon={headerIcon}
         />
         <main className="flex flex-col overflow-y-auto bg-background w-full gap-4 p-8 ml-64">
           <ScrollToTopLayout>{children}</ScrollToTopLayout>

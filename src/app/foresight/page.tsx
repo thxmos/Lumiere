@@ -1,7 +1,6 @@
-import { redirect } from "next/navigation";
-import { getFirstTab } from "./actions";
+import { redirectToFirstTab } from "@/actions/getFirstSidebarTab";
+import { FORESIGHT_TABS } from "./tabs";
 
 export default async function Foresight() {
-  const firstTab = await getFirstTab();
-  redirect(`/foresight/${firstTab?.key}`);
+  await redirectToFirstTab(FORESIGHT_TABS, "foresight");
 }
