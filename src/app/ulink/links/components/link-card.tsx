@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import type { DraggableProvided } from "@hello-pangea/dnd";
 import { RxDragHandleDots2 } from "react-icons/rx";
-import { ImageUpload } from "@/components/upload/image-upload";
+import { AssetUpload } from "@/components/upload/asset-upload";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
@@ -11,7 +11,6 @@ import { Trash, Edit, Check, X } from "lucide-react";
 import { ConfirmDeleteModal } from "@/app/ulink/_components/modals/confirm-delete-modal";
 import { Label } from "@/components/ui/label";
 import { LinkResponse } from "@/repositories/link/types";
-import { FileType } from "@/components/upload/file-upload";
 
 /*
 - text ellipsis on mobile
@@ -23,6 +22,7 @@ interface Props {
   draggableProvided: DraggableProvided;
   onUpdate: (index: number, updatedLink: LinkResponse) => void;
   onDelete: (index: number) => void;
+  insertAssetMap: (id: string, file: File) => void;
 }
 
 export const LinkCard: React.FC<Props> = ({
@@ -31,10 +31,9 @@ export const LinkCard: React.FC<Props> = ({
   draggableProvided,
   onUpdate,
   onDelete,
+  insertAssetMap,
 }) => {
   const [file, setFile] = useState<File | null>(null);
-  const [fileType, setFileType] = useState<FileType | null>(null);
-  const [previewImg, setPreviewImg] = useState<string | null>(link.imageUrl);
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -52,11 +51,6 @@ export const LinkCard: React.FC<Props> = ({
     }
   };
 
-  const handleImageChange = (file: File | null) => {
-    setFile(file);
-    setFileType(file?.type.includes("image") ? FileType.Image : FileType.Video);
-  };
-
   const handleConfirmDelete = () => {
     onDelete(index);
     setIsDeleteModalOpen(false);
@@ -72,6 +66,12 @@ export const LinkCard: React.FC<Props> = ({
     setIsEditing(false);
   };
 
+  const onAssetChange = async (file: File | null) => {
+    if (!file) return;
+
+    insertAssetMap(link.id, file);
+  };
+
   return (
     <>
       <li
@@ -84,14 +84,12 @@ export const LinkCard: React.FC<Props> = ({
 
           {/* Image Upload */}
           <div>
-            <ImageUpload
+            <AssetUpload
               file={file}
               setFile={setFile}
-              fileType={fileType}
-              previewImg={previewImg}
-              setPreviewImg={setPreviewImg}
-              onImageChange={handleImageChange}
               disabled={!isEditing}
+              onImageChange={onAssetChange}
+              initialImage={link.imageUrl}
             />
           </div>
 

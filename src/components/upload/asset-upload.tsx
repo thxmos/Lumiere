@@ -8,18 +8,7 @@ import { Button } from "@/components/ui/button";
 import { AssetUploadDialog } from "./asset-upload-modal";
 import { FileType } from "./file-upload";
 import { cn } from "@/utils/utils";
-
-interface ImageUploadProps {
-  file: File | null;
-  setFile: (file: File | null) => void;
-  previewImg: string | null;
-  setPreviewImg: (image: string | null) => void;
-  fileType: FileType | null;
-  onImageChange: (image: File | null) => void;
-  disabled?: boolean;
-  size?: "sm" | "md" | "lg";
-  rounded?: boolean;
-}
+import { getAssetBase64, getAssetType } from "@/utils/lib/asset";
 
 const sizeClasses = {
   sm: "min-w-20 min-h-20 max-w-20 max-h-20",
@@ -33,58 +22,66 @@ const iconSizes = {
   lg: "h-16 w-16",
 };
 
-/*
-TODO:
-- make this more robust
-- placeholder image, dont show upload button if theres no image and disabled
-*/
+interface ImageUploadProps {
+  file: File | null;
+  setFile: (file: File | null) => void;
+  onImageChange?: (image: File | null) => void;
+  disabled?: boolean;
+  size?: "sm" | "md" | "lg";
+  rounded?: boolean;
+  initialImage?: string | null;
+}
 
-// Used for Link uploads currently
-
-export function ImageUpload({
-  previewImg,
-  setPreviewImg,
+export function AssetUpload({
+  file,
+  setFile,
   onImageChange,
-  fileType,
   disabled = false,
   size = "sm",
   rounded = false,
+  initialImage = null,
 }: ImageUploadProps) {
+  const [fileType, setFileType] = useState<FileType | null>(null);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
+
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [file, setFile] = useState<File | null>(null);
-  const [isUploading, setIsUploading] = useState(false);
 
   const onUpload = async () => {
     if (!file) return;
 
-    setIsUploading(true);
     try {
       // Get a base64 string of the file for preview
       const reader = new FileReader();
       reader.onloadend = () => {
         const base64String = reader.result as string;
-        setPreviewImg(base64String);
-        onImageChange(file);
+        setPreviewImage(base64String);
+        handleImageChange(file);
         setIsDialogOpen(false);
       };
       reader.readAsDataURL(file);
     } catch (error) {
       console.error("Error uploading image:", error);
-    } finally {
-      setIsUploading(false);
     }
   };
 
   const handleRemoveImage = () => {
-    setPreviewImg(null);
-    setPreviewImg(null);
-    onImageChange(null);
+    setPreviewImage(null);
+    handleImageChange(null);
+  };
+
+  const handleImageChange = (file: File | null) => {
+    setFileType(file?.type.includes("image") ? FileType.Image : FileType.Video);
+    setFile(file);
+    onImageChange?.(file);
   };
 
   // Set the preview image to the initial image if it exists
+
   useEffect(() => {
-    setPreviewImg(previewImg || null);
-  }, [previewImg]);
+    setPreviewImage(initialImage);
+
+    setFileType(getAssetType(initialImage));
+  }, [initialImage]);
 
   return (
     <div
@@ -94,17 +91,17 @@ export function ImageUpload({
         `${rounded ? "rounded-full" : "rounded-lg"}`,
       )}
     >
-      {previewImg ? (
+      {previewImage ? (
         <div className="w-full h-full group">
           {fileType === FileType.Image ? (
             <img
-              src={previewImg}
+              src={previewImage}
               alt="Uploaded Image"
               className="w-full h-full object-cover"
             />
           ) : (
             <video
-              src={previewImg}
+              src={previewImage}
               className="w-full h-full object-cover"
               autoPlay
               muted
@@ -157,12 +154,11 @@ export function ImageUpload({
       )}
       <AssetUploadDialog
         file={file}
-        assetType={FileType.Image}
         setFile={setFile}
+        assetType={FileType.Image}
         isOpen={isDialogOpen}
         onOpenChange={setIsDialogOpen}
         onUpload={onUpload}
-        isUploading={isUploading}
       />
     </div>
   );

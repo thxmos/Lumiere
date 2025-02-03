@@ -25,7 +25,6 @@ export const createAsset = withAuth(
     data: Omit<AssetCreateInput, "User">,
     maxSizeInMb = 20,
   ): Promise<AssetResponse> => {
-    console.log({ file, data });
     const blobResult = await uploadBlob(file, maxSizeInMb);
 
     if (blobResult) {
@@ -58,6 +57,8 @@ export const uploadAsset = async (formData: FormData) => {
   const file = formData.get("file") as File;
   const title = formData.get("title") as string;
   const description = formData.get("description") as string;
+
+  console.log(file, title, description);
 
   const newAsset = await createAsset(file, {
     title,

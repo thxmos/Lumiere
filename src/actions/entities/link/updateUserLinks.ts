@@ -28,6 +28,7 @@ export const updateUserLinksAction = withAuth(
         title: link.title,
         url: link.url,
         imageUrl: link.imageUrl,
+        imageId: link.imageId,
         active: link.active,
         linkGroupId,
       })) as LinkCreateManyInput[];
@@ -42,6 +43,7 @@ export const updateUserLinksAction = withAuth(
         title: link.title,
         url: link.url,
         imageUrl: link.imageUrl,
+        imageId: link.imageId,
         active: link.active,
       })) as LinkUpdateInput[];
 
@@ -52,7 +54,7 @@ export const updateUserLinksAction = withAuth(
       title: link.title || "",
       url: link.url || "",
       imageUrl: link.imageUrl || null,
-      imageId: null,
+      imageId: link.imageId || null,
       active: link.active || false,
       index: index || null,
       clicks: link.clicks || 0,

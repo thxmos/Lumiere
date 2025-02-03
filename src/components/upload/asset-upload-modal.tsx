@@ -16,8 +16,7 @@ interface AssetUploadDialogProps {
   onOpenChange: (open: boolean) => void;
   onUpload: () => Promise<void>;
   file: File | null;
-  setFile: React.Dispatch<React.SetStateAction<File | null>>;
-  isUploading: boolean;
+  setFile: (file: File | null) => void;
   assetType: FileType;
   title?: string;
 }
@@ -28,7 +27,6 @@ export function AssetUploadDialog({
   onUpload,
   file,
   setFile,
-  isUploading, // integrate
   title = "Upload Asset",
 }: AssetUploadDialogProps) {
   const [assetType, setAssetType] = useState<FileType>(FileType.Image);

@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { ImageUpload } from "@/components/upload/image-upload";
+import { AssetUpload } from "@/components/upload/asset-upload";
 import type { CreateProduct2Dto } from "@/types/entities/product2";
 
 interface CreateProductModalProps {
@@ -77,7 +77,7 @@ export function CreateProductModal({
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="image">Image</Label>
-            <ImageUpload
+            <AssetUpload
               initialImage={imageId}
               size="lg"
               onImageChange={handleImageChange}
