@@ -1,77 +1,63 @@
-import { USER_ROLES } from "@/constants/user";
+import { SIDEBAR_ICON_STYLE } from "@/constants/layout";
+import { SidebarTab } from "@/types/layout/SidebarTab";
 import { Link1Icon } from "@radix-ui/react-icons";
 import {
   Settings,
   Lock,
   Paintbrush,
-  ShoppingBag,
   QrCodeIcon,
-  Wrench,
   User,
   ImageIcon,
-  BarChart,
-  BellIcon,
 } from "lucide-react";
 
-const iconStyle = "mr-2 h-4 w-4";
-
-export type Tab = {
-  key: string;
-  label: string;
-  icon: React.ReactNode;
-  userRole?: string;
-  mobilePreview?: boolean;
-};
-
-//TODO: Rename key to path or something
-export const DASHBOARD_TABS: Tab[] = [
+export const DASHBOARD_TABS: SidebarTab[] = [
   {
     key: "account",
     label: "Account",
-    icon: <Settings className={iconStyle} />,
+    icon: <Settings className={SIDEBAR_ICON_STYLE} />,
   },
   {
     key: "assets",
     label: "Assets",
-    icon: <ImageIcon className={iconStyle} />,
+    icon: <ImageIcon className={SIDEBAR_ICON_STYLE} />,
   },
   {
     key: "links",
     label: "Links",
-    icon: <Link1Icon className={iconStyle} />,
+    icon: <Link1Icon className={SIDEBAR_ICON_STYLE} />,
     mobilePreview: true,
   },
   {
     key: "theme-editor",
     label: "Theme Editor",
-    icon: <Paintbrush className={iconStyle} />,
+    icon: <Paintbrush className={SIDEBAR_ICON_STYLE} />,
     mobilePreview: true,
   },
   {
     key: "qr-generator",
     label: "QR Generator",
-    icon: <QrCodeIcon className={iconStyle} />,
+    icon: <QrCodeIcon className={SIDEBAR_ICON_STYLE} />,
   },
-  {
-    key: "analytics",
-    label: "Analytics ⭐",
-    icon: <BarChart className={iconStyle} />,
-    userRole: USER_ROLES.ADMIN,
-  },
+  // {
+  //   key: "analytics",
+  //   label: "Analytics ⭐",
+  //   icon: <BarChart className={iconStyle} />,
+  //   userRole: USER_ROLES.ADMIN,
+  // },
   {
     key: "security",
     label: "Security",
-    icon: <Lock className={iconStyle} />,
+    icon: <Lock className={SIDEBAR_ICON_STYLE} />,
   },
   {
     key: "user-settings",
     label: "User Settings",
-    icon: <User className={iconStyle} />,
+    icon: <User className={SIDEBAR_ICON_STYLE} />,
   },
-  {
-    key: "admin",
-    label: "Admin ⭐",
-    icon: <Wrench className={iconStyle} />,
-    userRole: USER_ROLES.ADMIN,
-  },
+  // {
+  //   key: "admin",
+  //   label: "Admin ⭐",
+  //   icon: <Wrench className={iconStyle} />,
+  //   userRole: USER_ROLES.ADMIN,
+  // },
 ];

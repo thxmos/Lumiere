@@ -3,11 +3,11 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { usePathname } from "next/navigation";
-import { Tab } from "@/app/ulink/tabs";
+import { SidebarTab } from "@/types/layout/SidebarTab";
 import { SparklesIcon } from "lucide-react";
 
 type Props = {
-  tabs: Tab[];
+  tabs: SidebarTab[];
   userRole: string;
   title: string;
   headerIcon: React.ReactNode;
@@ -29,7 +29,7 @@ const LayoutSidebar: React.FC<Props> = ({
       <div className="flex h-full w-full flex-col">
         <div className="flex items-center mb-4 gap-2">
           {headerIcon}
-          <h2 className="text-2xl font-bold text-foreground">{title}</h2>
+          <h2 className="text-xl font-bold text-foreground">{title}</h2>
         </div>
         <nav className="flex flex-1 flex-col h-full w-full">
           <div className="flex flex-col gap-2 flex-1 w-full">
