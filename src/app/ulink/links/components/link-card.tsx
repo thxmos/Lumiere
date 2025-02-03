@@ -11,6 +11,7 @@ import { Trash, Edit, Check, X } from "lucide-react";
 import { ConfirmDeleteModal } from "@/app/ulink/_components/modals/confirm-delete-modal";
 import { Label } from "@/components/ui/label";
 import { LinkResponse } from "@/repositories/link/types";
+import { cn } from "@/utils/utils";
 
 /*
 - text ellipsis on mobile
@@ -201,17 +202,15 @@ export const LinkCard: React.FC<Props> = ({
           </Button>
 
           {/* Drag Handle */}
-          {!isEditing && (
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              {...draggableProvided.dragHandleProps}
-              className="cursor-grab"
-            >
-              <RxDragHandleDots2 className="h-4 w-4" />
-            </Button>
-          )}
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            {...draggableProvided.dragHandleProps}
+            className={cn("cursor-grab", isEditing && "hidden")}
+          >
+            <RxDragHandleDots2 className="h-4 w-4" />
+          </Button>
         </div>
       </li>
       <ConfirmDeleteModal
