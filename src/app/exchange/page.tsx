@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { getFirstTab } from "./actions";
 
-export default async function Foresight() {
+export default async function Exchange() {
   const firstTab = await getFirstTab();
-  redirect(`/foresight/${firstTab?.key}`);
+  redirect(`/exchange/${firstTab?.key}`);
 }

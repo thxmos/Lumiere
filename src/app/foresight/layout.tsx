@@ -5,7 +5,7 @@ import { FORESIGHT_TABS } from "./tabs";
 import { USER_ROLES } from "@/constants/user";
 import Navbar from "@/components/layouts/nav-bar";
 import { validateAuthPage } from "@/utils/security/auth";
-import { ScrollToTopLayout } from "./scroll-to-top.layout";
+import { ScrollToTopLayout } from "@/app/ulink/_components/scroll-to-top.layout";
 
 interface Props {
   children: React.ReactNode;

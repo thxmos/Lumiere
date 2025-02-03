@@ -52,13 +52,6 @@ export const DASHBOARD_TABS: Tab[] = [
     label: "QR Generator",
     icon: <QrCodeIcon className={iconStyle} />,
   },
-
-  {
-    key: "products",
-    label: "Products ⭐",
-    icon: <ShoppingBag className={iconStyle} />,
-    userRole: USER_ROLES.ADMIN,
-  },
   {
     key: "analytics",
     label: "Analytics ⭐",

@@ -1,7 +1,7 @@
-import { Cable } from "lucide-react";
+import { BarcodeIcon, Cable } from "lucide-react";
 import ProtectedLayout from "@/components/layouts/protected-layout";
 import LayoutSidebar from "@/components/layouts/layout-sidebar";
-import { DASHBOARD_TABS } from "./tabs";
+import { EXCHANGE_TABS } from "./tabs";
 import { USER_ROLES } from "@/constants/user";
 import MobilePreview from "@/app/ulink/_components/mobile-preview/mobile-preview";
 import LinkTree from "@/app/(ulink-profile)/components/profile/linktree";
@@ -38,11 +38,11 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
 
       <div className="flex h-[calc(100vh-4rem)] bg-background">
         <LayoutSidebar
-          path="ulink"
+          path="exchange"
           userRole={user?.roles || USER_ROLES.USER}
-          tabs={DASHBOARD_TABS}
-          title="ULink"
-          headerIcon={<Cable />}
+          tabs={EXCHANGE_TABS}
+          title="Exchange"
+          headerIcon={<BarcodeIcon />}
         />
         <main className="flex flex-col overflow-y-auto bg-background w-full gap-4 p-8 ml-64">
           <ScrollToTopLayout>{children}</ScrollToTopLayout>
