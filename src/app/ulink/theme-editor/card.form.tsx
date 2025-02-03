@@ -1,5 +1,5 @@
 import { Controller } from "react-hook-form";
-import { ThemeFormProps } from "./FontSection";
+import { ThemeFormProps } from "./font.form";
 import { Label } from "@/components/ui/label";
 import { ColorSelect } from "@/components/color-select/color-select";
 import { Input } from "@/components/ui/input";
@@ -55,7 +55,9 @@ export function CardSection({ control, themePrimaryColor }: ThemeFormProps) {
         />
       </div>
       <div className="flex items-center space-x-2 mt-2">
-        <Label className="w-24 font-bold">Shadow Color</Label>
+        <Label className="w-24 font-bold">
+          Shadow <br /> Color
+        </Label>
         <Controller
           name="theme.cardShadowColor"
           control={control}

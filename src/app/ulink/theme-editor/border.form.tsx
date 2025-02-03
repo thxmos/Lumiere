@@ -1,5 +1,5 @@
 import { Controller } from "react-hook-form";
-import { ThemeFormProps } from "./FontSection";
+import { ThemeFormProps } from "./font.form";
 import { ColorSelect } from "@/components/color-select/color-select";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
