@@ -21,8 +21,10 @@ import {
   ScanEyeIcon,
   ScrollTextIcon,
   User,
+  UserIcon,
 } from "lucide-react";
 import { getInitials } from "@/utils/utils";
+import { Separator } from "../ui/separator";
 
 export default function DropdownMenu({ user }: { user: any }) {
   const [open, setOpen] = useState(false);
@@ -65,6 +67,11 @@ export default function DropdownMenu({ user }: { user: any }) {
           <User className="text-sm" />
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="bg-primary" />
+        {/* <DropdownMenuLabel>
+          <span className="text-xs font-medium text-muted-foreground">
+            Modules (less corny name)
+          </span>
+        </DropdownMenuLabel> */}
         <DropdownMenuGroup>
           {[
             {
@@ -72,25 +79,31 @@ export default function DropdownMenu({ user }: { user: any }) {
               label: "ULink",
               icon: Cable,
             },
-            {
-              href: "/epk",
-              label: "EPK",
-              icon: ScrollTextIcon,
-            },
+            // {
+            //   href: "/epk",
+            //   label: "EPK",
+            //   icon: ScrollTextIcon,
+            // },
             {
               href: "/foresight",
               label: "Foresight",
               icon: ScanEyeIcon,
             },
             {
+              href: "/exchange",
+              label: "Exchange",
+              icon: BarcodeIcon,
+            },
+
+            {
               href: "/kaizen",
               label: "Kaizen",
               icon: MailPlusIcon,
             },
             {
-              href: "/exchange",
-              label: "Exchange",
-              icon: BarcodeIcon,
+              href: "/user-settings",
+              label: "User Settings",
+              icon: UserIcon,
             },
             {
               href: "#",

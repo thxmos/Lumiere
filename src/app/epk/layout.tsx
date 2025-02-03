@@ -14,18 +14,23 @@ interface Props {
 const ForesightLayout: React.FC<Props> = async ({ children }) => {
   const user = await validateAuthPage();
 
+  const path = "epk";
+  const title = "EPK Builder";
+  const description = "Show your accomplishments";
+  const headerIcon = <ScrollTextIcon />;
+
   return (
     <ProtectedLayout redirectUrl="/auth">
       <Navbar />
 
       <div className="flex h-[calc(100vh-4rem)] bg-background">
         <LayoutSidebar
-          path="epk"
-          description="Show your accomplishments"
+          path={path}
           userRole={user?.roles || USER_ROLES.USER}
           tabs={EPK_TABS}
-          title="EPK Builder"
-          headerIcon={<ScrollTextIcon />}
+          title={title}
+          description={description}
+          headerIcon={headerIcon}
         />
         <main className="flex flex-col overflow-y-auto bg-background w-full gap-4 p-8 ml-64">
           <ScrollToTopLayout>{children}</ScrollToTopLayout>

@@ -1,23 +1,23 @@
-import { MailPlusIcon } from "lucide-react";
+import { UserIcon } from "lucide-react";
 import ProtectedLayout from "@/components/layouts/protected-layout";
 import LayoutSidebar from "@/components/layouts/layout-sidebar";
-import { KAIZEN_TABS } from "./tabs";
+import { USER_SETTINGS_TABS } from "./tabs";
+import { USER_ROLES } from "@/types/user-roles";
 import Navbar from "@/components/layouts/nav-bar";
 import { validateAuthPage } from "@/utils/security/auth";
-import { USER_ROLES } from "@/types/user-roles";
-import { ScrollToTopLayout } from "../ulink/_components/scroll-to-top.layout";
+import { ScrollToTopLayout } from "@/app/ulink/_components/scroll-to-top.layout";
 
 interface Props {
   children: React.ReactNode;
 }
 
-const KaizenLayout: React.FC<Props> = async ({ children }) => {
+const UserSettingsLayout: React.FC<Props> = async ({ children }) => {
   const user = await validateAuthPage();
 
-  const path = "kaizen";
-  const title = "Kaizen";
-  const description = "Help make Lumiere better";
-  const headerIcon = <MailPlusIcon />;
+  const path = "user-settings";
+  const title = "User Settings";
+  const description = "Manage your account";
+  const headerIcon = <UserIcon />;
 
   return (
     <ProtectedLayout redirectUrl="/auth">
@@ -27,7 +27,7 @@ const KaizenLayout: React.FC<Props> = async ({ children }) => {
         <LayoutSidebar
           path={path}
           userRole={user?.roles || USER_ROLES.USER}
-          tabs={KAIZEN_TABS}
+          tabs={USER_SETTINGS_TABS}
           title={title}
           description={description}
           headerIcon={headerIcon}
@@ -40,4 +40,4 @@ const KaizenLayout: React.FC<Props> = async ({ children }) => {
   );
 };
 
-export default KaizenLayout;
+export default UserSettingsLayout;

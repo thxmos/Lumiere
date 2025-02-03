@@ -44,16 +44,7 @@ export const ULINK_TABS: SidebarTab[] = [
   //   icon: <BarChart className={iconStyle} />,
   //   userRole: USER_ROLES.ADMIN,
   // },
-  {
-    key: "security",
-    label: "Security",
-    icon: <Lock className={SIDEBAR_ICON_STYLE} />,
-  },
-  {
-    key: "user-settings",
-    label: "User Settings",
-    icon: <User className={SIDEBAR_ICON_STYLE} />,
-  },
+
   // {
   //   key: "admin",
   //   label: "Admin ⭐",
