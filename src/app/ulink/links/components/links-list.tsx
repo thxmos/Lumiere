@@ -8,20 +8,16 @@ import {
 
 import { LinkCard } from "./link-card";
 import { LinkResponse } from "@/repositories/link/types";
+import { useLinksStore } from "@/stores/links";
 
 interface Props {
-  links: LinkResponse[];
-  setLinks: (links: LinkResponse[]) => void;
   onUpdate: (index: number, updatedLink: LinkResponse) => void;
   onDelete: (index: number) => void;
 }
 
-export const LinksList: React.FC<Props> = ({
-  links,
-  setLinks,
-  onUpdate,
-  onDelete,
-}) => {
+export const LinksList: React.FC<Props> = ({ onUpdate, onDelete }) => {
+  const { links, setLinks } = useLinksStore();
+
   const onDragEnd = (result: DropResult) => {
     const { source, destination } = result;
     if (!destination) return;
@@ -47,16 +43,12 @@ export const LinksList: React.FC<Props> = ({
       <Droppable droppableId="links">
         {(droppableProvided) => (
           <ul
-            className="space-y-4 min-h-[18px]"
+            className="min-h-[18px]"
             ref={droppableProvided.innerRef}
             {...droppableProvided.droppableProps}
           >
             {links.map((link, index) => (
-              <Draggable
-                key={link.id}
-                draggableId={link?.id?.toString() || index.toString()}
-                index={index}
-              >
+              <Draggable key={link.id} draggableId={link.id} index={index}>
                 {(draggableProvided) => (
                   <LinkCard
                     key={link.id}

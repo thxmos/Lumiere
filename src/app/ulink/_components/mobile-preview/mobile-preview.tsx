@@ -14,8 +14,7 @@ interface Props {
 export default function MobilePreview({ children, username }: Props) {
   const pathname = usePathname();
 
-  // Only display on links and theme editor pages
-  if (pathname !== "/ulink/links" && pathname !== "/ulink/theme-editor")
+  if (!pathname.includes("/ulink/links/") && pathname !== "/ulink/theme-editor")
     return null;
 
   return (

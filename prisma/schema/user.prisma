@@ -1,61 +1,60 @@
 model User {
   // Personal Info
-  id    String  @id @default(uuid())
-  email String  @unique
-  name  String?
-  password   String?
-  country Country? @default(None)
-  displayCountry Boolean @default(false)
+  id             String   @id @default(uuid())
+  email          String   @unique
+  name           String?
+  password       String?
+  country        Country? @default(None)
+  displayCountry Boolean  @default(false)
 
   // Profile Info
   avatar      String? // TODO: replace with avatarId
   // avatarId     String? 
   // assets      Asset[]
-  username    String   @unique @default(dbgenerated("'user-' || floor(random() * 1000000)::text"))
-  description String?  @default("") @db.VarChar(200)
-  theme Theme? @relation("UserTheme")
-  themeId String?
+  username    String  @unique @default(dbgenerated("'user-' || floor(random() * 1000000)::text"))
+  description String? @default("") @db.VarChar(200)
+  theme       Theme?  @relation("UserTheme")
+  themeId     String?
 
   // Assets
   Asset Asset[]
 
   // Interactions
-  links Link[] @relation("UserLinks")
-  QRCodes QRCode[] @relation("UserQRCodes")
-  Click Click[]
-  
+  // links      Link[]      @relation("UserLinks")
+  linkGroups LinkGroup[] @relation("UserLinkGroups")
+  QRCodes    QRCode[]    @relation("UserQRCodes")
+  Click      Click[]
 
   // Products
   Product2 Product2[] @relation("UserProducts")
-  
+
   // Social Links
   appleMusicUsername String?
-  discordUsername String?
-  facebookUsername String?
-  instagramUsername String?
-  patreonUsername String?
-  spotifyUsername String?
-  tiktokUsername String?
-  twitchUsername String?
-  twitterUsername String?
-  youtubeUsername String?
-  
+  discordUsername    String?
+  facebookUsername   String?
+  instagramUsername  String?
+  patreonUsername    String?
+  spotifyUsername    String?
+  tiktokUsername     String?
+  twitchUsername     String?
+  twitterUsername    String?
+  youtubeUsername    String?
+
   // Account Info
   isVerified Boolean  @default(false)
   createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
 
   // Payment Info
   stripeCustomerId String? @unique
-  subscriptions Price[] @relation("UserSubscriptions")
+  subscriptions    Price[] @relation("UserSubscriptions")
 
   // Session Info
-  session       Session?
-  verificationToken VerificationToken?
+  session            Session?
+  verificationToken  VerificationToken?
   passwordResetToken PasswordResetToken?
-  oAuthProvider OAuthProvider?
-  roles Role @default(USER)
-
+  oAuthProvider      OAuthProvider?
+  roles              Role                @default(USER)
 }
 
 enum OAuthProvider {
