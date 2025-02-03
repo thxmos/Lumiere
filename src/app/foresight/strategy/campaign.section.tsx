@@ -264,6 +264,10 @@ export default function CampaignSection() {
 
         <div className="space-y-2">
           <Label>Release Date</Label>
+          <br />
+          <Label className="text-xs text-muted-foreground">
+            We suggest a release date at least 2 weeks from today.
+          </Label>
           <Popover>
             <PopoverTrigger asChild>
               <Button

@@ -22,8 +22,9 @@ import {
   CardTitle,
   CardFooter,
 } from "@/components/ui/card";
-import { Campaign } from "@prisma/client";
-import { Action } from "@/types/foresight/campaign";
+import { Action, Campaign } from "@prisma/client";
+import { createCalendarEvent } from "@/actions/google/createGoogleCalendarEvent";
+import { toast } from "sonner";
 
 type ActionCategory =
   | "PRE_RELEASE"
@@ -49,8 +50,6 @@ export function PlanSelector({
 }: {
   campaigns: CampaignWithActions[];
 }) {
-  console.log(campaigns);
-
   const [selectedCampaignId, setSelectedCampaignId] = useState<string>("");
 
   const selectedCampaign = campaigns.find(
@@ -76,7 +75,13 @@ export function PlanSelector({
   }, [selectedCampaign]);
 
   const addToCalendar = (action: Action) => {
-    console.log("Adding to calendar:", action);
+    try {
+      createCalendarEvent(action, selectedCampaign?.songTitle ?? "");
+      toast.success("Event added to calendar", { duration: 3000 });
+    } catch (error) {
+      console.error("Error adding to calendar:", error);
+      toast.error("Error adding to calendar", { duration: 3000 });
+    }
   };
 
   return (

@@ -9,39 +9,53 @@ import { OAuthProvider } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { DEFAULT_REDIRECT_URL } from "@/constants/app";
 
+/**
+ * Google OAuth callback handler
+ * Processes the OAuth response from Google, creates or updates user accounts,
+ * and establishes an authenticated session
+ */
+
 export async function GET(req: NextRequest) {
   try {
+    // Extract code and state from callback URL parameters
     const url = req.nextUrl;
     const code = url.searchParams.get("code");
     const state = url.searchParams.get("state");
 
+    // Validate code and state parameters exist
     if (!code || !state) {
       console.error("api/auth/google/callback: no code or state");
       return new Response("Invalid request", { status: 400 });
     }
 
+    // Get stored OAuth verifier and state from cookies
     const codeVerifier = req.cookies.get("google_oAuth_code_verifier")?.value;
     const savedState = req.cookies.get("google_oAuth_state")?.value;
 
+    // Validate stored values exist
     if (!codeVerifier || !savedState) {
       console.error("api/auth/google/callback: no code verifier or state");
       return new Response("Invalid request", { status: 400 });
     }
 
+    // Verify state matches to prevent CSRF attacks
     if (state !== savedState) {
       console.error("api/auth/google/callback: state mismatch");
       return new Response("Invalid request", { status: 400 });
     }
 
-    const { accessToken } = await googleOAuthClient.validateAuthorizationCode(
+    // Exchange authorization code for access token
+    const tokens = await googleOAuthClient.validateAuthorizationCode(
       code,
       codeVerifier,
     );
+
+    // Fetch user information from Google
     const googleResponse = await fetch(
       "https://www.googleapis.com/oauth2/v1/userinfo",
       {
         headers: {
-          Authorization: `Bearer ${accessToken}`,
+          Authorization: `Bearer ${tokens.accessToken}`,
         },
       },
     );
@@ -54,29 +68,47 @@ export async function GET(req: NextRequest) {
 
     let userId = "";
 
+    // Check if user already exists
     const existingUser = await getUserByEmail(googleData.email);
 
     if (existingUser) {
       userId = existingUser.id;
+
+      // Update existing user's Google Calendar tokens
+      await prisma.user.update({
+        where: { id: userId },
+        data: {
+          googleAccessToken: tokens.accessToken,
+          googleRefreshToken: tokens.refreshToken,
+          googleTokenExpiry: tokens.accessTokenExpiresAt,
+        },
+      });
     }
 
+    // If user doesn't exist, create new account
     if (!existingUser) {
+      // Create new user record
       const user = await prisma.user.create({
         data: {
           email: googleData.email.toLowerCase(),
           name: googleData.name,
           avatar: googleData.picture,
-          isVerified: true,
+          isVerified: true, // Google accounts are pre-verified
           oAuthProvider: OAuthProvider.GOOGLE,
+          googleAccessToken: tokens.accessToken,
+          googleRefreshToken: tokens.refreshToken,
+          googleTokenExpiry: tokens.accessTokenExpiresAt,
         },
       });
       userId = user.id;
 
+      // Create associated Stripe customer
       const stripeCustomer = await createStripeCustomer(
         googleData.email.toLocaleLowerCase(),
         googleData.name,
       );
 
+      // Update user with Stripe customer ID if created successfully
       if (stripeCustomer.id !== undefined) {
         await updateUserById(user.id, { stripeCustomerId: stripeCustomer.id });
       } else {
@@ -84,12 +116,14 @@ export async function GET(req: NextRequest) {
       }
     }
 
+    // Create authenticated session
     const session = await lucia.createSession(userId, {});
     createSessionCookie(session.id);
   } catch (error: any) {
     console.error("api/auth/google/callback: error", error.message);
     return new Response("Internal server error", { status: 500 });
   } finally {
+    // Redirect to default URL regardless of success/failure
     return NextResponse.redirect(new URL(DEFAULT_REDIRECT_URL, req.url));
   }
 }

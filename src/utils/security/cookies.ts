@@ -3,6 +3,7 @@ import { lucia } from "@/utils/lib/lucia";
 import { cookies } from "next/headers";
 
 export const getSessionIdFromCookie = () => {
+  console.log("cookies", cookies().get(lucia.sessionCookieName));
   return cookies().get(lucia.sessionCookieName)?.value || null;
 };
 

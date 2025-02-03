@@ -55,6 +55,9 @@ model User {
   passwordResetToken PasswordResetToken?
   oAuthProvider OAuthProvider?
   roles Role @default(USER)
+  googleAccessToken    String?
+  googleRefreshToken   String?
+  googleTokenExpiry    DateTime?
 
   Campaign Campaign[]
 }
