@@ -39,7 +39,8 @@ const Navbar = async () => {
             aria-hidden="true"
           />
           <p className="text-2xl font-bold">{APP_NAME}</p>
-          <Badge variant="ghost">BETA</Badge> {/*idk why its complaining*/}
+          <Badge variant="ghost">BETA</Badge>{" "}
+          {/* its complaining but it works*/}
         </div>
       </Link>
 
