@@ -20,7 +20,7 @@ export default function MobilePreview({ children, username }: Props) {
   return (
     <>
       {/* Preview container */}
-      <div className="flex flex-col gap-4 justify-center items-center">
+      <div className="flex flex-col gap-4 justify-center items-center min-w-[30%]">
         {/* Phone border*/}
         <div className="w-[20rem] h-[40rem] bg-gray-800 rounded-[2rem] p-1 shadow-lg mx-auto">
           {/* Phone screen */}
