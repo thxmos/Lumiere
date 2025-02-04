@@ -24,7 +24,8 @@ import {
   UserIcon,
 } from "lucide-react";
 import { getInitials } from "@/utils/utils";
-import { Separator } from "../ui/separator";
+import { USER_ROLES } from "@/types/user-roles";
+import { NavItem } from "@/types/navigation";
 
 export default function DropdownMenu({ user }: { user: any }) {
   const [open, setOpen] = useState(false);
@@ -37,6 +38,50 @@ export default function DropdownMenu({ user }: { user: any }) {
     closeDropdown();
     await logout();
   };
+
+  const navItems: NavItem[] = [
+    {
+      href: "/ulink",
+      label: "ULink",
+      icon: Cable,
+    },
+    {
+      href: "/epk",
+      label: "EPK",
+      icon: ScrollTextIcon,
+      role: USER_ROLES.ADMIN,
+    },
+    {
+      href: "/foresight",
+      label: "Foresight",
+      icon: ScanEyeIcon,
+      role: USER_ROLES.ADMIN,
+    },
+    {
+      href: "/exchange",
+      label: "Exchange",
+      icon: BarcodeIcon,
+      role: USER_ROLES.ADMIN,
+    },
+
+    {
+      href: "/kaizen",
+      label: "Kaizen",
+      icon: MailPlusIcon,
+      role: USER_ROLES.ADMIN,
+    },
+    {
+      href: "/user-settings",
+      label: "User Settings",
+      icon: UserIcon,
+    },
+    {
+      href: "#",
+      label: "Sign Out",
+      icon: LogOut,
+      onClick: handleLogout,
+    },
+  ];
 
   return (
     <DropdownWrapper open={open} onOpenChange={setOpen}>
@@ -73,45 +118,7 @@ export default function DropdownMenu({ user }: { user: any }) {
           </span>
         </DropdownMenuLabel> */}
         <DropdownMenuGroup>
-          {[
-            {
-              href: "/ulink",
-              label: "ULink",
-              icon: Cable,
-            },
-            // {
-            //   href: "/epk",
-            //   label: "EPK",
-            //   icon: ScrollTextIcon,
-            // },
-            {
-              href: "/foresight",
-              label: "Foresight",
-              icon: ScanEyeIcon,
-            },
-            {
-              href: "/exchange",
-              label: "Exchange",
-              icon: BarcodeIcon,
-            },
-
-            {
-              href: "/kaizen",
-              label: "Kaizen",
-              icon: MailPlusIcon,
-            },
-            {
-              href: "/user-settings",
-              label: "User Settings",
-              icon: UserIcon,
-            },
-            {
-              href: "#",
-              label: "Sign Out",
-              icon: LogOut,
-              onClick: handleLogout,
-            },
-          ].map((item, index) => (
+          {navItems.map((item, index) => (
             <DropdownMenuItem asChild key={index}>
               {
                 <Link

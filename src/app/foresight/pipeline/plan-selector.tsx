@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { addDays, format } from "date-fns";
-import { CheckCircle, CheckIcon, Plus } from "lucide-react";
+import { CheckCircle, CheckIcon, Plus, Trash, XIcon } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -29,7 +29,8 @@ import { cn } from "@/utils/utils";
 import { GRADIENT_STYLES } from "@/constants/ui/styles";
 import CircleProgress from "@/components/ui/circle-progress";
 import { LUMIERE_GRAY_DARK, LUMIERE_ORANGE } from "@/constants/ui/colors";
-import { Label } from "@/components/ui/label";
+import { updateGoogleCalendarEvent } from "@/actions/google/updateGoogleCalendarEvent";
+import { deleteCalendarEvent } from "@/actions/google/deleteGoogleCalendarEvent";
 
 // TODO: Find the action with the last day of the campaign and use that to filter present/past
 // TODO:
@@ -99,6 +100,26 @@ export function PlanSelector({
     }
   };
 
+  const syncCalendar = (action: Action) => {
+    try {
+      updateGoogleCalendarEvent(action, selectedCampaign?.songTitle ?? "");
+      toast.success("Event updated in calendar", { duration: 3000 });
+    } catch (error) {
+      console.error("Error updating calendar:", error);
+      toast.error("Error updating calendar", { duration: 3000 });
+    }
+  };
+
+  const deleteFromCalendar = (action: Action) => {
+    try {
+      deleteCalendarEvent(action.id);
+      toast.success("Event deleted from calendar", { duration: 3000 });
+    } catch (error) {
+      console.error("Error deleting from calendar:", error);
+      toast.error("Error deleting from calendar", { duration: 3000 });
+    }
+  };
+
   return (
     <div className="space-y-4">
       <div className="flex w-full justify-end gap-2 items-center">
@@ -164,8 +185,7 @@ export function PlanSelector({
                       current={
                         actions
                           .filter((action) => action.category === category)
-                          .filter((action) => action.lastSyncedToCalendarAt)
-                          .length
+                          .filter((action) => action.completedAt).length
                       }
                       total={
                         actions.filter((action) => action.category === category)
@@ -219,25 +239,35 @@ export function PlanSelector({
                             {action.description}
                           </p>
                         </CardContent>
-                        <CardFooter>
+                        <CardFooter className="flex gap-2">
                           {action.lastSyncedToCalendarAt ? (
-                            <Badge
-                              variant="outline"
-                              className={cn(
-                                "w-full flex flex-col items-center justify-center text-xs",
-                                GRADIENT_STYLES,
-                              )}
-                            >
-                              <p className="text-center">
-                                Last synced to calendar:
-                              </p>
-                              <p>
-                                {format(
-                                  new Date(action.lastSyncedToCalendarAt),
-                                  "PPP",
+                            <>
+                              <Badge
+                                variant="outline"
+                                className={cn(
+                                  "w-full flex flex-col items-center justify-center text-xs cursor-pointer",
+                                  GRADIENT_STYLES,
                                 )}
-                              </p>
-                            </Badge>
+                                onClick={() => syncCalendar(action)}
+                              >
+                                <p className="text-center">
+                                  Last synced to calendar:
+                                </p>
+                                <p>
+                                  {format(
+                                    new Date(action.lastSyncedToCalendarAt),
+                                    "PPP",
+                                  )}
+                                </p>
+                              </Badge>
+                              <Badge
+                                variant="outline"
+                                className="flex items-center p-2 cursor-pointer"
+                                onClick={() => deleteFromCalendar(action)}
+                              >
+                                <XIcon className="h-4 w-4" />
+                              </Badge>
+                            </>
                           ) : (
                             <Button
                               variant="ghost"

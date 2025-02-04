@@ -17,7 +17,7 @@ Action ID: ${action.id}
 `;
 }
 
-export const createCalendarEvent = withAuth(
+export const updateGoogleCalendarEvent = withAuth(
   async (user: SessionUser, action: Action, campaignTitle: string) => {
     try {
       const accessToken = await getGoogleAccessToken(user.id);
@@ -25,16 +25,15 @@ export const createCalendarEvent = withAuth(
       const event = {
         summary: campaignTitle + " - " + action.title,
         description: formatEventDescription(action, campaignTitle),
-        colorId: "6", // Tangerine
+        colorId: "6",
         start: {
-          date: action.completeDate.toISOString().split("T")[0], // Format: YYYY-MM-DD
+          date: action.completeDate.toISOString().split("T")[0],
           timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         },
         end: {
-          date: action.completeDate.toISOString().split("T")[0], // Same day
+          date: action.completeDate.toISOString().split("T")[0],
           timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         },
-        // additional metadata
         extendedProperties: {
           private: {
             actionId: action.id,
@@ -45,9 +44,9 @@ export const createCalendarEvent = withAuth(
       };
 
       const response = await fetch(
-        "https://www.googleapis.com/calendar/v3/calendars/primary/events",
+        `https://www.googleapis.com/calendar/v3/calendars/primary/events/${action.id}`,
         {
-          method: "POST",
+          method: "PATCH",
           headers: {
             Authorization: `Bearer ${accessToken}`,
             "Content-Type": "application/json",
@@ -58,8 +57,10 @@ export const createCalendarEvent = withAuth(
 
       console.log(response);
 
+      //TODO: not handling errors here
+
       if (!response.ok) {
-        throw new Error("Failed to create calendar event");
+        throw new Error("Failed to update calendar event");
       }
 
       await prisma.action.update({
@@ -69,7 +70,7 @@ export const createCalendarEvent = withAuth(
 
       return await response.json();
     } catch (error) {
-      console.error("Error creating calendar event:", error);
+      console.error("Error updating calendar event:", error);
       throw error;
     }
   },
