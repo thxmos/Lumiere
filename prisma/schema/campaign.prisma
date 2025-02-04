@@ -18,6 +18,8 @@ model Campaign {
   releaseDate     DateTime
   actions         Action[]
 
+  assetId         String?
+
   userId          String
   user            User           @relation(fields: [userId], references: [id])
   createdAt       DateTime       @default(now())

@@ -4,6 +4,7 @@ import { SessionUser } from "@/utils/lib/lucia";
 import { withAuth } from "@/utils/security/auth";
 import { Action } from "@prisma/client";
 import { getGoogleAccessToken } from "./getGoogleAccessToken";
+import { prisma } from "@/utils/lib/prisma";
 
 function formatEventDescription(action: Action, campaignTitle: string) {
   return `
@@ -20,20 +21,17 @@ export const createCalendarEvent = withAuth(
   async (user: SessionUser, action: Action, campaignTitle: string) => {
     try {
       const accessToken = await getGoogleAccessToken(user.id);
-      console.log("accessToken", accessToken);
 
       const event = {
         summary: campaignTitle + " - " + action.title,
         description: formatEventDescription(action, campaignTitle),
+        colorId: "6", // Tangerine
         start: {
-          dateTime: action.completeDate.toISOString(),
+          date: action.completeDate.toISOString().split("T")[0], // Format: YYYY-MM-DD
           timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         },
         end: {
-          // Set end time to 1 hour after start by default
-          dateTime: new Date(
-            action.completeDate.getTime() + 60 * 60 * 1000,
-          ).toISOString(),
+          date: action.completeDate.toISOString().split("T")[0], // Same day
           timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         },
         // additional metadata
@@ -61,6 +59,11 @@ export const createCalendarEvent = withAuth(
       if (!response.ok) {
         throw new Error("Failed to create calendar event");
       }
+
+      await prisma.action.update({
+        where: { id: action.id },
+        data: { lastSyncedToCalendarAt: new Date() },
+      });
 
       return await response.json();
     } catch (error) {

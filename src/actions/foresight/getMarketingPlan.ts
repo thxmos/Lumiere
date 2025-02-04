@@ -119,7 +119,7 @@ Requirements:
       });
 
       if (!response.ok) {
-        throw new Error("Failed to get AI response");
+        throw new Error(`Anthropic API returned status: ${response.status}`);
       }
 
       const data = await response.json();

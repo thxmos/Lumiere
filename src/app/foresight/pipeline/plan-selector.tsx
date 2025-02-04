@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { format } from "date-fns";
-import { Plus } from "lucide-react";
+import { addDays, format } from "date-fns";
+import { CheckCircle, CheckIcon, Plus } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -25,6 +25,14 @@ import {
 import { Action, Campaign } from "@prisma/client";
 import { createCalendarEvent } from "@/actions/google/createGoogleCalendarEvent";
 import { toast } from "sonner";
+import { cn } from "@/utils/utils";
+import { GRADIENT_STYLES } from "@/constants/ui/styles";
+import CircleProgress from "@/components/ui/circle-progress";
+import { LUMIERE_GRAY_DARK, LUMIERE_ORANGE } from "@/constants/ui/colors";
+import { Label } from "@/components/ui/label";
+
+// TODO: Find the action with the last day of the campaign and use that to filter present/past
+// TODO:
 
 type ActionCategory =
   | "PRE_RELEASE"
@@ -51,6 +59,9 @@ export function PlanSelector({
   campaigns: CampaignWithActions[];
 }) {
   const [selectedCampaignId, setSelectedCampaignId] = useState<string>("");
+  const [pipelineView, setPipelineView] = useState<"current" | "past">(
+    "current",
+  );
 
   const selectedCampaign = campaigns.find(
     (campaign) => campaign.id === selectedCampaignId,
@@ -74,6 +85,10 @@ export function PlanSelector({
     return groups;
   }, [selectedCampaign]);
 
+  const onChangePipelineView = (view: "current" | "past") => {
+    setPipelineView(view);
+  };
+
   const addToCalendar = (action: Action) => {
     try {
       createCalendarEvent(action, selectedCampaign?.songTitle ?? "");
@@ -85,20 +100,51 @@ export function PlanSelector({
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
+      <div className="flex w-full justify-end gap-2 items-center">
+        <Badge
+          variant={pipelineView === "current" ? "default" : "outline"}
+          className={cn("px-2 py-1 text-sm gap-4 items-center cursor-pointer", {
+            "bg-orange-500 text-white": pipelineView === "current",
+          })}
+          onClick={() => onChangePipelineView("current")}
+        >
+          Current
+        </Badge>
+        <Badge
+          variant={pipelineView === "past" ? "default" : "outline"}
+          className={cn("px-2 py-1 text-sm gap-4 items-center cursor-pointer", {
+            "bg-orange-500 text-white": pipelineView === "past",
+          })}
+          onClick={() => onChangePipelineView("past")}
+        >
+          Past
+        </Badge>
+      </div>
+
       <Select value={selectedCampaignId} onValueChange={setSelectedCampaignId}>
         <SelectTrigger className="w-full">
-          <SelectValue placeholder="Select a release to view its plan" />
+          <SelectValue placeholder="Select a campaign to view its plan" />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
-            <SelectLabel>Your Releases</SelectLabel>
-            {campaigns.map((campaign) => (
-              <SelectItem key={campaign.id} value={campaign.id}>
-                {campaign.songTitle} (
-                {format(new Date(campaign.releaseDate), "PPP")})
-              </SelectItem>
-            ))}
+            <SelectLabel>Your Campaigns</SelectLabel>
+            {campaigns
+              // .filter((campaign) =>
+              //   pipelineView === "current"
+              //     ? !campaign.actions.some(
+              //         (action) => action.lastSyncedToCalendarAt,
+              //       )
+              //     : campaign.actions.some(
+              //         (action) => action.lastSyncedToCalendarAt,
+              //       ),
+              // )
+              .map((campaign) => (
+                <SelectItem key={campaign.id} value={campaign.id}>
+                  {campaign.songTitle} (
+                  {format(new Date(campaign.releaseDate), "PPP")})
+                </SelectItem>
+              ))}
           </SelectGroup>
         </SelectContent>
       </Select>
@@ -108,21 +154,65 @@ export function PlanSelector({
           {(Object.entries(groupedActions) as [ActionCategory, Action[]][]).map(
             ([category, actions]) =>
               actions.length > 0 && (
-                <div key={category} className="space-y-4">
-                  <Badge variant="outline" className="px-4 py-1 text-base">
+                <div key={category} className="space-y-4 ">
+                  <Badge
+                    variant="outline"
+                    className="px-4 py-1 text-base gap-4 items-center"
+                  >
                     {CATEGORY_TITLES[category]}
+                    <CircleProgress
+                      current={
+                        actions
+                          .filter((action) => action.category === category)
+                          .filter((action) => action.lastSyncedToCalendarAt)
+                          .length
+                      }
+                      total={
+                        actions.filter((action) => action.category === category)
+                          .length
+                      }
+                      size={20}
+                      strokeWidth={4}
+                      progressColor={LUMIERE_ORANGE}
+                      backgroundColor={LUMIERE_GRAY_DARK}
+                    />
                   </Badge>
                   <div className="flex gap-4 overflow-x-auto pb-4">
                     {actions.map((action: Action) => (
-                      <Card key={action.id} className="min-w-[300px]">
+                      <Card
+                        key={action.id}
+                        className={cn("min-w-[300px]", {
+                          "border-orange-500": action.lastSyncedToCalendarAt,
+                        })}
+                      >
                         <CardHeader>
-                          <CardTitle className="text-base">
-                            {action.title}
+                          <CardTitle
+                            className={cn(
+                              "text-base flex items-center justify-between",
+                              {
+                                [GRADIENT_STYLES]: action.completedAt,
+                              },
+                            )}
+                          >
+                            <p>{action.title}</p>
+                            {action.completedAt && (
+                              <CheckIcon className="h-4 w-4 ml-2 text-orange-500" />
+                            )}
                           </CardTitle>
-                          <CardDescription>
-                            Complete by:{" "}
-                            {format(new Date(action.completeDate), "PPP")}
-                          </CardDescription>
+                          {!action.completedAt && (
+                            <CardDescription>
+                              Complete by:{" "}
+                              {format(
+                                addDays(new Date(action.completeDate), 1),
+                                "PPP",
+                              )}
+                            </CardDescription>
+                          )}
+                          {action.completedAt && (
+                            <CardDescription className={GRADIENT_STYLES}>
+                              Completed
+                            </CardDescription>
+                          )}
                         </CardHeader>
                         <CardContent>
                           <p className="text-sm text-muted-foreground">
@@ -130,14 +220,34 @@ export function PlanSelector({
                           </p>
                         </CardContent>
                         <CardFooter>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className="w-full flex items-center gap-2"
-                            onClick={() => addToCalendar(action)}
-                          >
-                            <Plus className="h-4 w-4" /> Add to Calendar
-                          </Button>
+                          {action.lastSyncedToCalendarAt ? (
+                            <Badge
+                              variant="outline"
+                              className={cn(
+                                "w-full flex flex-col items-center justify-center text-xs",
+                                GRADIENT_STYLES,
+                              )}
+                            >
+                              <p className="text-center">
+                                Last synced to calendar:
+                              </p>
+                              <p>
+                                {format(
+                                  new Date(action.lastSyncedToCalendarAt),
+                                  "PPP",
+                                )}
+                              </p>
+                            </Badge>
+                          ) : (
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="w-full flex items-center gap-2"
+                              onClick={() => addToCalendar(action)}
+                            >
+                              <Plus className="h-4 w-4" /> Add to Calendar
+                            </Button>
+                          )}
                         </CardFooter>
                       </Card>
                     ))}
