@@ -56,8 +56,6 @@ export const createCalendarEvent = withAuth(
         },
       );
 
-      console.log(response);
-
       if (!response.ok) {
         throw new Error("Failed to create calendar event");
       }

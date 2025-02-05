@@ -1,39 +1,35 @@
 "use server";
+
 import { prisma } from "@/utils/lib/prisma";
 import { googleOAuthClient } from "@/utils/security/googleOauth";
 
 export async function getGoogleAccessToken(userId: string) {
-  const user = await prisma.user.findUnique({
-    where: { id: userId },
-    select: {
-      googleAccessToken: true,
-      googleRefreshToken: true,
-      googleTokenExpiry: true,
-    },
+  const googleToken = await prisma.googleToken.findUnique({
+    where: { userId },
   });
 
-  if (!user?.googleAccessToken) {
+  if (!googleToken?.googleAccessToken) {
     throw new Error("User not connected to Google");
   }
 
-  // Check if token is expired
-  if (user.googleTokenExpiry && user.googleTokenExpiry < new Date()) {
-    // Token is expired, need to refresh
+  if (
+    googleToken.googleTokenExpiry &&
+    googleToken.googleTokenExpiry < new Date()
+  ) {
     const tokens = await googleOAuthClient.refreshAccessToken(
-      user.googleRefreshToken ?? "",
+      googleToken.googleRefreshToken ?? "",
     );
 
-    // Update tokens in database
-    await prisma.user.update({
-      where: { id: userId },
+    await prisma.googleToken.update({
+      where: { userId },
       data: {
         googleAccessToken: tokens.accessToken,
-        googleTokenExpiry: tokens.accessTokenExpiresAt, // might be wrong
+        googleTokenExpiry: tokens.accessTokenExpiresAt,
       },
     });
 
     return tokens.accessToken;
   }
 
-  return user.googleAccessToken;
+  return googleToken.googleAccessToken;
 }

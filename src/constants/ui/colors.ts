@@ -3,6 +3,11 @@ export const BLACK = "#000000";
 export const OFF_BLACK = "#1A1A1A";
 export const OFF_WHITE = "#E5E7EB";
 
+export const COLOR_1 = "#CE5027";
+export const COLOR_2 = "#F97316";
+export const COLOR_3 = "#D97706";
+
+// IDK RANDOM ONES
 export const LUMIERE_ORANGE = "#F97316";
 export const LUMIERE_GREEN = "#16A34A";
 export const LUMIERE_PURPLE = "#6D28D9";

@@ -7,13 +7,17 @@ export const getSessionIdFromCookie = () => {
   return cookies().get(lucia.sessionCookieName)?.value || null;
 };
 
-export const createSessionCookie = (sessionId: string) => {
+// createAndSetSessionCookie
+// Create a lucia session cookie and set it in the cookies
+
+export const createAndSetSessionCookie = (sessionId: string) => {
   const sessionCookie = lucia.createSessionCookie(sessionId);
   cookies().set(
     sessionCookie.name,
     sessionCookie.value,
     sessionCookie.attributes,
   );
+  return sessionCookie;
 };
 
 export const deleteSessionCookie = () => {

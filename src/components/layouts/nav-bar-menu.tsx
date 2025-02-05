@@ -44,6 +44,7 @@ export default function DropdownMenu({ user }: { user: any }) {
       href: "/ulink",
       label: "ULink",
       icon: Cable,
+      role: USER_ROLES.USER,
     },
     {
       href: "/epk",
@@ -55,7 +56,7 @@ export default function DropdownMenu({ user }: { user: any }) {
       href: "/foresight",
       label: "Foresight",
       icon: ScanEyeIcon,
-      role: USER_ROLES.ADMIN,
+      role: USER_ROLES.USER,
     },
     {
       href: "/exchange",
@@ -68,12 +69,13 @@ export default function DropdownMenu({ user }: { user: any }) {
       href: "/kaizen",
       label: "Kaizen",
       icon: MailPlusIcon,
-      role: USER_ROLES.ADMIN,
+      role: USER_ROLES.USER,
     },
     {
       href: "/user-settings",
       label: "User Settings",
       icon: UserIcon,
+      role: USER_ROLES.USER,
     },
     {
       href: "#",
@@ -118,21 +120,23 @@ export default function DropdownMenu({ user }: { user: any }) {
           </span>
         </DropdownMenuLabel> */}
         <DropdownMenuGroup>
-          {navItems.map((item, index) => (
-            <DropdownMenuItem asChild key={index}>
-              {
-                <Link
-                  href={item.href}
-                  className="flex items-center justify-between w-full cursor-pointer"
-                  onClick={item.onClick ?? closeDropdown}
-                  role="menuitem"
-                >
-                  <span>{item.label}</span>
-                  <item.icon className="text-sm" aria-hidden="true" />
-                </Link>
-              }
-            </DropdownMenuItem>
-          ))}
+          {navItems
+            .filter((item) => item.role === user.roles)
+            .map((item, index) => (
+              <DropdownMenuItem asChild key={index}>
+                {
+                  <Link
+                    href={item.href}
+                    className="flex items-center justify-between w-full cursor-pointer"
+                    onClick={item.onClick ?? closeDropdown}
+                    role="menuitem"
+                  >
+                    <span>{item.label}</span>
+                    <item.icon className="text-sm" aria-hidden="true" />
+                  </Link>
+                }
+              </DropdownMenuItem>
+            ))}
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownWrapper>

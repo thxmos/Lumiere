@@ -2,7 +2,14 @@
 
 import { useState, useMemo } from "react";
 import { addDays, format } from "date-fns";
-import { CheckCircle, CheckIcon, Plus, Trash, XIcon } from "lucide-react";
+import {
+  CheckCheckIcon,
+  CheckCircle,
+  CheckIcon,
+  Plus,
+  Trash,
+  XIcon,
+} from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -120,6 +127,17 @@ export function PlanSelector({
     }
   };
 
+  const renderActionCheckmarks = (action: Action) => {
+    let count = 0;
+    if (action.completedAt && action.lastSyncedToCalendarAt)
+      return <CheckCheckIcon className="h-4 w-4 ml-2 text-orange-500" />;
+    if (action.completedAt)
+      return <CheckIcon className="h-4 w-4 ml-2 text-orange-500" />;
+    if (action.lastSyncedToCalendarAt)
+      return <CheckIcon className="h-4 w-4 ml-2" />;
+    return <></>;
+  };
+
   return (
     <div className="space-y-4">
       <div className="flex w-full justify-end gap-2 items-center">
@@ -154,10 +172,10 @@ export function PlanSelector({
               // .filter((campaign) =>
               //   pipelineView === "current"
               //     ? !campaign.actions.some(
-              //         (action) => action.lastSyncedToCalendarAt,
+              //         (action) => action.completeDate <= new Date(),
               //       )
               //     : campaign.actions.some(
-              //         (action) => action.lastSyncedToCalendarAt,
+              //         (action) => action.completeDate > new Date(),
               //       ),
               // )
               .map((campaign) => (
@@ -202,7 +220,7 @@ export function PlanSelector({
                       <Card
                         key={action.id}
                         className={cn("min-w-[300px]", {
-                          "border-orange-500": action.lastSyncedToCalendarAt,
+                          "border-orange-500": action.completedAt,
                         })}
                       >
                         <CardHeader>
@@ -215,9 +233,7 @@ export function PlanSelector({
                             )}
                           >
                             <p>{action.title}</p>
-                            {action.completedAt && (
-                              <CheckIcon className="h-4 w-4 ml-2 text-orange-500" />
-                            )}
+                            {renderActionCheckmarks(action)}
                           </CardTitle>
                           {!action.completedAt && (
                             <CardDescription>

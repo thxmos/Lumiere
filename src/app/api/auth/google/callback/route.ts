@@ -4,7 +4,7 @@ import { updateUserById } from "@/actions/entities/user/updateUserById";
 import { googleOAuthClient } from "@/utils/security/googleOauth";
 import { lucia } from "@/utils/lib/lucia";
 import { prisma } from "@/utils/lib/prisma";
-import { createSessionCookie } from "@/utils/security/cookies";
+import { createAndSetSessionCookie } from "@/utils/security/cookies";
 import { OAuthProvider } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { DEFAULT_REDIRECT_URL } from "@/constants/app";
@@ -66,26 +66,42 @@ export async function GET(req: NextRequest) {
       picture: string;
     };
 
-    let userId = "";
-
-    // Check if user already exists
+    let userId = ""; // Set later depending on if user exists or needs to be created
     const existingUser = await getUserByEmail(googleData.email);
 
+    // If user already exists
     if (existingUser) {
       userId = existingUser.id;
 
-      // Update existing user's Google Calendar tokens
-      await prisma.user.update({
-        where: { id: userId },
-        data: {
-          googleAccessToken: tokens.accessToken,
-          googleRefreshToken: tokens.refreshToken,
-          googleTokenExpiry: tokens.accessTokenExpiresAt,
-        },
+      // Then check if they have a google token
+      const existingGoogleToken = await prisma.googleToken.findUnique({
+        where: { userId },
       });
+
+      // If they do, update it
+      if (existingGoogleToken) {
+        await prisma.googleToken.update({
+          where: { id: existingGoogleToken.id },
+          data: {
+            googleAccessToken: tokens.accessToken,
+            googleRefreshToken: tokens.refreshToken,
+            googleTokenExpiry: tokens.accessTokenExpiresAt,
+          },
+        });
+      } else {
+        // If they don't, create it
+        await prisma.googleToken.create({
+          data: {
+            googleAccessToken: tokens.accessToken,
+            googleRefreshToken: tokens.refreshToken,
+            googleTokenExpiry: tokens.accessTokenExpiresAt,
+            userId: userId,
+          },
+        });
+      }
     }
 
-    // If user doesn't exist, create new account
+    // If user doesn't exist, create new account with google token
     if (!existingUser) {
       // Create new user record
       const user = await prisma.user.create({
@@ -95,12 +111,19 @@ export async function GET(req: NextRequest) {
           avatar: googleData.picture,
           isVerified: true, // Google accounts are pre-verified
           oAuthProvider: OAuthProvider.GOOGLE,
-          googleAccessToken: tokens.accessToken,
-          googleRefreshToken: tokens.refreshToken,
-          googleTokenExpiry: tokens.accessTokenExpiresAt,
         },
       });
       userId = user.id;
+
+      // Create google token for user
+      await prisma.googleToken.create({
+        data: {
+          googleAccessToken: tokens.accessToken,
+          googleRefreshToken: tokens.refreshToken,
+          googleTokenExpiry: tokens.accessTokenExpiresAt,
+          userId: userId,
+        },
+      });
 
       // Create associated Stripe customer
       const stripeCustomer = await createStripeCustomer(
@@ -118,7 +141,15 @@ export async function GET(req: NextRequest) {
 
     // Create authenticated session
     const session = await lucia.createSession(userId, {});
-    createSessionCookie(session.id);
+    createAndSetSessionCookie(session.id);
+
+    const response = NextResponse.redirect(
+      new URL(DEFAULT_REDIRECT_URL, req.url),
+    );
+
+    createAndSetSessionCookie(session.id);
+
+    return response;
   } catch (error: any) {
     console.error("api/auth/google/callback: error", error.message);
     return new Response("Internal server error", { status: 500 });

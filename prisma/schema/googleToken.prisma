@@ -1,0 +1,10 @@
+model GoogleToken {
+  id                String    @id @default(uuid())
+  googleAccessToken  String?
+  googleRefreshToken String?
+  googleTokenExpiry DateTime?
+  createdAt         DateTime  @default(now())
+
+  userId            String    @unique
+  User User[] @relation(name: "UserGoogleToken")
+}

@@ -12,6 +12,7 @@ model User {
   // avatarId     String? 
   // assets      Asset[]
   username    String  @unique @default(dbgenerated("'user-' || floor(random() * 1000000)::text"))
+  alias       String?
   description String? @default("") @db.VarChar(200)
   theme       Theme?  @relation("UserTheme")
   themeId     String?
@@ -55,11 +56,18 @@ model User {
   passwordResetToken PasswordResetToken?
   oAuthProvider OAuthProvider?
   roles Role @default(USER)
-  googleAccessToken    String?
-  googleRefreshToken   String?
-  googleTokenExpiry    DateTime?
+  googleToken GoogleToken? @relation(name: "UserGoogleToken", fields: [googleTokenId], references: [id])
+  googleTokenId String?
 
+
+  // Foresight
+  strategyType StrategyType?
+  commitment Commitment?
   Campaign Campaign[]
+
+  // Spotify
+  SpotifyStats SpotifyStats[]
+  SpotifyToken SpotifyToken[]
 }
 
 enum OAuthProvider {
@@ -69,4 +77,17 @@ enum OAuthProvider {
 enum Role {
   ADMIN
   USER
+}
+
+enum StrategyType {
+  GROWTH
+  ENGAGEMENT
+  COMMUNITY
+  SALES
+}
+
+enum Commitment {
+  LOW
+  MEDIUM
+  HIGH
 }

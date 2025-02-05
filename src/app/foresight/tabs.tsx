@@ -8,6 +8,7 @@ import {
   WaypointsIcon,
 } from "lucide-react";
 import { SIDEBAR_ICON_STYLE } from "@/constants/layout";
+import { USER_ROLES } from "@/types/user-roles";
 
 export const FORESIGHT_TABS: SidebarTab[] = [
   {
@@ -19,6 +20,7 @@ export const FORESIGHT_TABS: SidebarTab[] = [
     key: "roadmap",
     label: "Roadmap",
     icon: <RouteIcon className={SIDEBAR_ICON_STYLE} />,
+    userRole: USER_ROLES.ADMIN,
   },
   {
     key: "strategy",
@@ -34,10 +36,6 @@ export const FORESIGHT_TABS: SidebarTab[] = [
     key: "calendar",
     label: "Calendar",
     icon: <CalendarRangeIcon className={SIDEBAR_ICON_STYLE} />,
-  },
-  {
-    key: "integrations",
-    label: "Integrations",
-    icon: <SatelliteIcon className={SIDEBAR_ICON_STYLE} />,
+    userRole: USER_ROLES.ADMIN,
   },
 ];
