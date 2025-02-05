@@ -2,14 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { addDays, format } from "date-fns";
-import {
-  CheckCheckIcon,
-  CheckCircle,
-  CheckIcon,
-  Plus,
-  Trash,
-  XIcon,
-} from "lucide-react";
+import { CheckCheckIcon, CheckIcon, Plus, XIcon } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -97,7 +90,7 @@ export function PlanSelector({
     setPipelineView(view);
   };
 
-  const addToCalendar = (action: Action) => {
+  const addToCalendar = async (action: Action) => {
     try {
       createCalendarEvent(action, selectedCampaign?.songTitle ?? "");
       toast.success("Event added to calendar", { duration: 3000 });
@@ -107,7 +100,7 @@ export function PlanSelector({
     }
   };
 
-  const syncCalendar = (action: Action) => {
+  const syncCalendar = async (action: Action) => {
     try {
       updateGoogleCalendarEvent(action, selectedCampaign?.songTitle ?? "");
       toast.success("Event updated in calendar", { duration: 3000 });
@@ -117,7 +110,7 @@ export function PlanSelector({
     }
   };
 
-  const deleteFromCalendar = (action: Action) => {
+  const deleteFromCalendar = async (action: Action) => {
     try {
       deleteCalendarEvent(action.id);
       toast.success("Event deleted from calendar", { duration: 3000 });

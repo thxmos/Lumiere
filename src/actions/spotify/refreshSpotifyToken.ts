@@ -1,6 +1,10 @@
 import { prisma } from "@/utils/lib/prisma";
 
 export async function refreshSpotifyToken(tokenId: string) {
+  if (!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_CLIENT_SECRET) {
+    throw new Error("Spotify client credentials are not configured");
+  }
+
   const spotifyToken = await prisma.spotifyToken.findUnique({
     where: { id: tokenId },
     select: { refreshToken: true },
@@ -29,6 +33,19 @@ export async function refreshSpotifyToken(tokenId: string) {
   }
 
   const tokens = await response.json();
+
+  // Validate the response was successful
+  if (!tokens.access_token) {
+    throw new Error("No access token found");
+  }
+
+  if (!tokens.refresh_token) {
+    throw new Error("No refresh token found");
+  }
+
+  if (!tokens.expires_in) {
+    throw new Error("No expiration time found");
+  }
 
   // Update the token in the SpotifyToken table
   await prisma.spotifyToken.update({

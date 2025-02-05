@@ -56,9 +56,7 @@ model User {
   passwordResetToken PasswordResetToken?
   oAuthProvider OAuthProvider?
   roles Role @default(USER)
-  googleToken GoogleToken? @relation(name: "UserGoogleToken", fields: [googleTokenId], references: [id])
-  googleTokenId String?
-
+  GoogleToken GoogleToken[] @relation(name: "UserGoogleTokens")
 
   // Foresight
   strategyType StrategyType?
@@ -67,7 +65,8 @@ model User {
 
   // Spotify
   SpotifyStats SpotifyStats[]
-  SpotifyToken SpotifyToken[]
+  SpotifyToken SpotifyToken[] @relation("UserSpotifyTokens")
+
 }
 
 enum OAuthProvider {

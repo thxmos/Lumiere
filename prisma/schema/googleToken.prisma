@@ -6,5 +6,5 @@ model GoogleToken {
   createdAt         DateTime  @default(now())
 
   userId            String    @unique
-  User User[] @relation(name: "UserGoogleToken")
+  user User @relation(fields: [userId], references: [id], name: "UserGoogleTokens")
 }

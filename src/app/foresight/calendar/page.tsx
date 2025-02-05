@@ -77,13 +77,17 @@ export default function CalendarPage() {
             {daysInMonth().map((day, idx) => {
               const dayNumber = format(day, "d");
               const firstDay = idx === 0;
-              const dayOfWeek = format(day, "i") as unknown as number; // 1-7
+              const dayOfWeek = day.getDay() + 1; // 1-7 (Sunday = 1)
               const startOffset = firstDay ? dayOfWeek - 1 : 0;
 
               return (
                 <div
                   key={day.toString()}
-                  style={firstDay ? { gridColumnStart: dayOfWeek } : undefined}
+                  style={
+                    firstDay
+                      ? { gridColumnStart: dayOfWeek }
+                      : { gridColumnStart: startOffset }
+                  }
                   className={cn(
                     "min-h-24 bg-background p-2",
                     isToday(day) && "bg-muted/50",

@@ -95,15 +95,6 @@ export default async function ProfileInfoSection() {
             </div>
           </div>
         </div>
-        <Separator />
-        <div className="flex flex-col gap-2">
-          <Label>Social Media focus</Label>
-          <Label>
-            Social Media sync - show stats before and after campaign, number of
-            uploads, etc
-          </Label>
-          <Label>AI will warn user if falling behind</Label>
-        </div>
       </>
     </DashboardCard>
   );

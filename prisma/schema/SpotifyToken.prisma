@@ -6,7 +6,7 @@ model SpotifyToken {
   expiresAt DateTime
 
   userId String
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id], name: "UserSpotifyTokens")
 
   spotifyArtistId     String?
 }

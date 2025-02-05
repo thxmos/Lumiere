@@ -147,8 +147,6 @@ export async function GET(req: NextRequest) {
       new URL(DEFAULT_REDIRECT_URL, req.url),
     );
 
-    createAndSetSessionCookie(session.id);
-
     return response;
   } catch (error: any) {
     console.error("api/auth/google/callback: error", error.message);
