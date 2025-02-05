@@ -8,8 +8,8 @@ import { prisma } from "@/utils/lib/prisma";
 export const deleteCalendarEvent = withAuth(
   async (user: SessionUser, actionId: string) => {
     try {
-      const action = await prisma.action.findUnique({
-        where: { id: actionId },
+      const action = await prisma.action.findFirst({
+        where: { id: actionId, campaign: { userId: user.id } },
       });
 
       if (!action?.lastSyncedToCalendarAt) {

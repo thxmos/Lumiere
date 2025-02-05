@@ -44,6 +44,11 @@ export async function GET(req: NextRequest) {
       return new Response("Invalid request", { status: 400 });
     }
 
+    // Clear OAuth cookies
+    // TODO: confirm this is the correct way to delete cookies
+    req.cookies.delete("google_oAuth_state");
+    req.cookies.delete("google_oAuth_code_verifier");
+
     // Exchange authorization code for access token
     const tokens = await googleOAuthClient.validateAuthorizationCode(
       code,
@@ -146,7 +151,6 @@ export async function GET(req: NextRequest) {
     const response = NextResponse.redirect(
       new URL(DEFAULT_REDIRECT_URL, req.url),
     );
-
     return response;
   } catch (error: any) {
     console.error("api/auth/google/callback: error", error.message);

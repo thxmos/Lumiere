@@ -5,12 +5,26 @@ import { prisma } from "@/utils/lib/prisma";
 import { withAuth } from "@/utils/security/auth";
 import { format } from "date-fns";
 
+/*
+TODO: Add rate limiting
+*/
+
 export type ActionCategory =
   | "PRE_RELEASE"
   | "RELEASE_DAY"
   | "POST_RELEASE"
   | "GENRE_SPECIFIC"
   | "PLATFORM_AND_AUDIENCE";
+
+// +const MarketingPlanInputSchema = z.object({
+// +  songTitle: z.string().min(1).max(100),
+// +  songDescription: z.string().min(1).max(1000),
+// +  genre: z.string().min(1).max(50),
+// +  mood: z.string().min(1).max(50),
+// +  inspiration: z.string().min(1).max(500),
+// +  targetAudience: z.string().min(1).max(200),
+// +  releaseDate: z.date().min(new Date()),
+// +});
 
 type MarketingPlanInput = {
   songTitle: string;

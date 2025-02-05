@@ -44,6 +44,7 @@ export const createCalendarEvent = withAuth(
         },
       };
 
+      //TODO: add retry logic
       const response = await fetch(
         "https://www.googleapis.com/calendar/v3/calendars/primary/events",
         {
