@@ -1,7 +1,7 @@
 "use client";
 
 import { uploadAsset } from "@/actions/file-upload/createAsset";
-import { ImageUpload } from "@/components/upload/image-upload";
+import { AssetUpload } from "@/components/upload/asset-upload";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,18 +14,11 @@ import { Asset } from "@prisma/client";
 
 import { FileType } from "@/components/upload/file-upload";
 export const AssetUploadForm = () => {
-  const [preview, setPreview] = useState<string | null>(null); // base64 string of the image
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [asset, setAsset] = useState<File | null>(null); // The file that will be uploaded in the form
-  const [fileType, setFileType] = useState<FileType | null>(null);
 
   const setAssets = useAssetStore((state) => state.setAssets); //TODO: think I read this isn't the best way to do this
-
-  async function onImageChange(file: File | null): Promise<void> {
-    setAsset(file);
-    setFileType(file?.type.includes("image") ? FileType.Image : FileType.Video);
-  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -54,22 +47,13 @@ export const AssetUploadForm = () => {
   const resetForm = () => {
     setTitle("");
     setDescription("");
-    setPreview(null);
     setAsset(null);
   };
 
   return (
     <form onSubmit={handleSubmit} className="flex gap-2">
       <div className="flex flex-col gap-2">
-        <ImageUpload
-          file={asset}
-          setFile={setAsset}
-          fileType={fileType}
-          previewImg={preview || undefined}
-          setPreviewImg={setPreview}
-          onImageChange={onImageChange}
-          size="lg"
-        />
+        <AssetUpload file={asset} setFile={setAsset} size="lg" />
       </div>
       <div className="flex flex-col gap-2 justify-between w-full">
         <div className="flex flex-col gap-2">

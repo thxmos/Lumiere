@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { FileType } from "@/components/upload/file-upload";
-import { ImageUpload } from "@/components/upload/image-upload";
+import { AssetUpload } from "@/components/upload/asset-upload";
 
 interface AvatarUploadProps {
   avatarFile: File | null;
@@ -25,7 +25,7 @@ const AvatarUpload: React.FC<AvatarUploadProps> = ({
 
   return (
     <div className="w-36 grid place-items-center gap-4">
-      <ImageUpload
+      <AssetUpload
         file={avatarFile}
         setFile={setAvatarFile}
         fileType={FileType.Image}

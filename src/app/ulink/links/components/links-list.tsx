@@ -13,9 +13,16 @@ import { useLinksStore } from "@/stores/links";
 interface Props {
   onUpdate: (index: number, updatedLink: LinkResponse) => void;
   onDelete: (index: number) => void;
+  insertAssetMap: (id: string, file: File) => void;
+  setIsEditingAnyLink: (isEditing: boolean) => void;
 }
 
-export const LinksList: React.FC<Props> = ({ onUpdate, onDelete }) => {
+export const LinksList: React.FC<Props> = ({
+  onUpdate,
+  onDelete,
+  insertAssetMap,
+  setIsEditingAnyLink,
+}) => {
   const { links, setLinks } = useLinksStore();
 
   const onDragEnd = (result: DropResult) => {
@@ -57,6 +64,8 @@ export const LinksList: React.FC<Props> = ({ onUpdate, onDelete }) => {
                     draggableProvided={draggableProvided}
                     onUpdate={onUpdate}
                     onDelete={onDelete}
+                    insertAssetMap={insertAssetMap}
+                    setIsEditingAnyLink={setIsEditingAnyLink}
                   />
                 )}
               </Draggable>

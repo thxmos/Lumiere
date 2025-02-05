@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { PlusCircle } from "lucide-react";
 import { toast } from "sonner";
@@ -14,6 +14,7 @@ import { UserDto } from "@/actions/entities/user/createUser";
 import { LinkResponse } from "@/repositories/link/types";
 import { updateUserLinksAction } from "@/actions/entities/link/updateUserLinks";
 import { deleteLinkById } from "@/actions/entities/link/deleteLinkById";
+import { uploadAsset } from "@/actions/file-upload/createAsset";
 
 /* 
 TODO: Creating new link and submitting form is not working when id is set here
@@ -31,6 +32,15 @@ interface Props {
 export function LinksSection({ userLinks, user, linkGroupId }: Props) {
   const { links, setLinks } = useLinksStore();
 
+  const [isEditingAnyLink, setIsEditingAnyLink] = useState(true);
+
+  const [assetMap, setAssetMap] = useState<
+    {
+      id: string;
+      file: File;
+    }[]
+  >([]);
+
   useEffect(() => {
     setLinks(userLinks);
 
@@ -42,8 +52,35 @@ export function LinksSection({ userLinks, user, linkGroupId }: Props) {
     formState: { isSubmitting },
   } = useForm();
 
-  const onSubmit = async () => {
+  const onSubmit = async (e: any) => {
+    if (isEditingAnyLink) {
+      toast.error("Please finish editing the current link before saving");
+      return;
+    }
+
     try {
+      // Wait for all asset uploads to complete
+      await Promise.all(
+        links.map(async (link) => {
+          const asset = assetMap.find((asset) => asset.id === link.id);
+          if (asset) {
+            const formData = new FormData();
+            formData.append("file", asset.file);
+            formData.append("title", `Link Asset ${link.title}`);
+            formData.append(
+              "description",
+              `Link Asset ${link.title}_Description`,
+            );
+            const uploadedImage = await uploadAsset(formData);
+
+            link.imageUrl = uploadedImage.url;
+            link.imageId = uploadedImage.id;
+          }
+          return link;
+        }),
+      );
+
+      // Now that all assets are uploaded, update the links
       const updatedLinks = await updateUserLinksAction(links, linkGroupId);
 
       if (!updatedLinks) {
@@ -96,13 +133,22 @@ export function LinksSection({ userLinks, user, linkGroupId }: Props) {
     setLinks(links.map((link, i) => (i === index ? updatedLink : link)));
   };
 
+  const insertAssetMap = (id: string, file: File) => {
+    setAssetMap((prev) => [...prev, { id, file }]);
+  };
+
   return (
     <DashboardCard
       title="Links"
       description={`Manage your custom links here and track your audience (${links.length}/10)`}
     >
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <LinksList onUpdate={updateLink} onDelete={removeLink} />
+        <LinksList
+          onUpdate={updateLink}
+          onDelete={removeLink}
+          insertAssetMap={insertAssetMap}
+          setIsEditingAnyLink={setIsEditingAnyLink}
+        />
         <div className="flex justify-end px-0 space-x-2">
           <Button
             type="button"

@@ -53,17 +53,15 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
         <main className="flex flex-col overflow-y-auto bg-background w-full gap-4 p-8 ml-64">
           <ScrollToTopLayout>{children}</ScrollToTopLayout>
         </main>
-        <div className="min-w-[30%] h-full grid items-center">
-          <MobilePreview username={user?.username!}>
-            <LinkTree
-              isPreview={true}
-              isMobilePreview={true}
-              initialLinks={links as LinkDtoWithId[]}
-              initialTheme={theme}
-              user={user as UserDtoNoId}
-            />
-          </MobilePreview>
-        </div>
+        <MobilePreview username={user?.username!}>
+          <LinkTree
+            isPreview={true}
+            isMobilePreview={true}
+            initialLinks={links as LinkDtoWithId[]}
+            initialTheme={theme}
+            user={user as UserDtoNoId}
+          />
+        </MobilePreview>
       </div>
     </ProtectedLayout>
   );
