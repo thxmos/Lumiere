@@ -44,7 +44,8 @@ export const IntegrationDetailsModal = ({
             {platform.label} Integration
           </DialogTitle>
           <DialogDescription>
-            View and manage your {platform.label} connection
+            View and manage your {platform.label} connection to sync your stats
+            here
           </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col gap-4">
