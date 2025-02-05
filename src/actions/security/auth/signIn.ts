@@ -3,7 +3,7 @@
 import { SignInSchema } from "@/app/(auth)/auth/components/sign-in-form";
 import { lucia } from "@/utils/lib/lucia";
 import { prisma } from "@/utils/lib/prisma";
-import { createSessionCookie } from "@/utils/security/cookies";
+import { createAndSetSessionCookie } from "@/utils/security/cookies";
 import { Argon2id } from "oslo/password";
 export const signIn = async (values: SignInSchema) => {
   try {
@@ -27,7 +27,7 @@ export const signIn = async (values: SignInSchema) => {
     }
 
     const session = await lucia.createSession(user.id, {});
-    createSessionCookie(session.id);
+    createAndSetSessionCookie(session.id);
     return { success: true };
   } catch (error) {
     return { error: "Something went wrong", success: false };

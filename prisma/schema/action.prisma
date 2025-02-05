@@ -1,0 +1,21 @@
+enum ActionCategory {
+  PRE_RELEASE
+  RELEASE_DAY
+  POST_RELEASE
+  GENRE_SPECIFIC
+  PLATFORM_AND_AUDIENCE
+}
+
+model Action {
+  id              String         @id @default(uuid())
+  title           String
+  description     String
+  completeDate    DateTime // change to completeByDate
+  category        ActionCategory
+  campaignId      String
+  campaign        Campaign       @relation(fields: [campaignId], references: [id], name: "CampaignActions", onDelete: Cascade)
+  completedAt     DateTime? 
+  lastSyncedToCalendarAt DateTime?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+}

@@ -13,8 +13,19 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { BarcodeIcon, Cable, LogOut, ScanEyeIcon, User } from "lucide-react";
+import {
+  BarcodeIcon,
+  Cable,
+  LogOut,
+  MailPlusIcon,
+  ScanEyeIcon,
+  ScrollTextIcon,
+  User,
+  UserIcon,
+} from "lucide-react";
 import { getInitials } from "@/utils/utils";
+import { USER_ROLES } from "@/types/user-roles";
+import { NavItem } from "@/types/navigation";
 
 export default function DropdownMenu({ user }: { user: any }) {
   const [open, setOpen] = useState(false);
@@ -27,6 +38,52 @@ export default function DropdownMenu({ user }: { user: any }) {
     closeDropdown();
     await logout();
   };
+
+  const navItems: NavItem[] = [
+    {
+      href: "/ulink",
+      label: "ULink",
+      icon: Cable,
+      role: USER_ROLES.USER,
+    },
+    {
+      href: "/epk",
+      label: "EPK",
+      icon: ScrollTextIcon,
+      role: USER_ROLES.ADMIN,
+    },
+    {
+      href: "/foresight",
+      label: "Foresight",
+      icon: ScanEyeIcon,
+      role: USER_ROLES.USER,
+    },
+    {
+      href: "/exchange",
+      label: "Exchange",
+      icon: BarcodeIcon,
+      role: USER_ROLES.ADMIN,
+    },
+
+    {
+      href: "/kaizen",
+      label: "Kaizen",
+      icon: MailPlusIcon,
+      role: USER_ROLES.USER,
+    },
+    {
+      href: "/user-settings",
+      label: "User Settings",
+      icon: UserIcon,
+      role: USER_ROLES.USER,
+    },
+    {
+      href: "#",
+      label: "Sign Out",
+      icon: LogOut,
+      onClick: handleLogout,
+    },
+  ];
 
   return (
     <DropdownWrapper open={open} onOpenChange={setOpen}>
@@ -57,44 +114,29 @@ export default function DropdownMenu({ user }: { user: any }) {
           <User className="text-sm" />
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="bg-primary" />
+        {/* <DropdownMenuLabel>
+          <span className="text-xs font-medium text-muted-foreground">
+            Modules (less corny name)
+          </span>
+        </DropdownMenuLabel> */}
         <DropdownMenuGroup>
-          {[
-            {
-              href: "/ulink",
-              label: "ULink",
-              icon: Cable,
-            },
-            {
-              href: "/foresight",
-              label: "Foresight",
-              icon: ScanEyeIcon,
-            },
-            {
-              href: "/exchange",
-              label: "Exchange",
-              icon: BarcodeIcon,
-            },
-            {
-              href: "#",
-              label: "Sign Out",
-              icon: LogOut,
-              onClick: handleLogout,
-            },
-          ].map((item, index) => (
-            <DropdownMenuItem asChild key={index}>
-              {
-                <Link
-                  href={item.href}
-                  className="flex items-center justify-between w-full cursor-pointer"
-                  onClick={item.onClick ?? closeDropdown}
-                  role="menuitem"
-                >
-                  <span>{item.label}</span>
-                  <item.icon className="text-sm" aria-hidden="true" />
-                </Link>
-              }
-            </DropdownMenuItem>
-          ))}
+          {navItems
+            .filter((item) => item.role === user.roles)
+            .map((item, index) => (
+              <DropdownMenuItem asChild key={index}>
+                {
+                  <Link
+                    href={item.href}
+                    className="flex items-center justify-between w-full cursor-pointer"
+                    onClick={item.onClick ?? closeDropdown}
+                    role="menuitem"
+                  >
+                    <span>{item.label}</span>
+                    <item.icon className="text-sm" aria-hidden="true" />
+                  </Link>
+                }
+              </DropdownMenuItem>
+            ))}
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownWrapper>

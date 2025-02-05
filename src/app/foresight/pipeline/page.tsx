@@ -1,12 +1,12 @@
 import { validateAuthPage } from "@/utils/security/auth";
-import CampaignSection from "./pipeline.section";
+import PipelineSection from "./pipeline.section";
 
-export default async function StrategyPage() {
+export default async function PipelinePage() {
   await validateAuthPage();
 
   return (
     <>
-      <CampaignSection />
+      <PipelineSection />
     </>
   );
 }

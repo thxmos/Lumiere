@@ -1,7 +1,7 @@
 import { Cable } from "lucide-react";
 import ProtectedLayout from "@/components/layouts/protected-layout";
 import LayoutSidebar from "@/components/layouts/layout-sidebar";
-import { DASHBOARD_TABS } from "./tabs";
+import { ULINK_TABS } from "./tabs";
 import { USER_ROLES } from "@/types/user-roles";
 import MobilePreview from "@/app/ulink/_components/mobile-preview/mobile-preview";
 import LinkTree from "@/app/(ulink-profile)/components/profile/linktree";
@@ -45,7 +45,7 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
         <LayoutSidebar
           path={path}
           userRole={user?.roles || USER_ROLES.USER}
-          tabs={DASHBOARD_TABS}
+          tabs={ULINK_TABS}
           title={title}
           description={description}
           headerIcon={headerIcon}

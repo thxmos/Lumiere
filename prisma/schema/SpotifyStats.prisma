@@ -1,0 +1,11 @@
+model SpotifyStats {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  followers   Int
+  popularity  Int
+  monthlyListeners Int?
+  timestamp   DateTime @default(now())
+
+  @@index([userId])
+}
