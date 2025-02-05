@@ -16,12 +16,12 @@ model Campaign {
   inspiration     String?
   targetAudience  String?
   releaseDate     DateTime
-  actions         Action[]
+  actions         Action[] @relation("CampaignActions")
 
   assetId         String?
 
   userId          String
-  user            User           @relation(fields: [userId], references: [id])
+  user            User           @relation(fields: [userId], references: [id], name: "UserCampaigns", onDelete: Cascade)
   createdAt       DateTime       @default(now())
   updatedAt       DateTime       @updatedAt
 }

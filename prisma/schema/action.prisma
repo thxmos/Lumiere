@@ -13,7 +13,7 @@ model Action {
   completeDate    DateTime // change to completeByDate
   category        ActionCategory
   campaignId      String
-  campaign        Campaign       @relation(fields: [campaignId], references: [id])
+  campaign        Campaign       @relation(fields: [campaignId], references: [id], name: "CampaignActions", onDelete: Cascade)
   completedAt     DateTime? 
   lastSyncedToCalendarAt DateTime?
   createdAt       DateTime       @default(now())

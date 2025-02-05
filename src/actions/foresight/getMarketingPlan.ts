@@ -46,6 +46,10 @@ export const createMarketingPlan = withAuth(
       releaseDate,
     }: MarketingPlanInput,
   ) => {
+    if (!process.env.ANTHROPIC_API_KEY) {
+      throw new Error("Anthropic API key is not configured");
+    }
+
     if (!prisma) {
       return { success: false, error: "Database connection not initialized" };
     }
