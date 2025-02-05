@@ -61,7 +61,7 @@ model User {
   // Foresight
   strategyType StrategyType?
   commitment Commitment?
-  Campaign Campaign[]
+  Campaign Campaign[] @relation(name: "UserCampaigns")
 
   // Spotify
   SpotifyStats SpotifyStats[]

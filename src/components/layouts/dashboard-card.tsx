@@ -23,10 +23,13 @@ export function DashboardCard({
 }: DashboardCardProps) {
   return (
     <Card className="max-w-4xl border-primary">
-      <CardHeader>
-        {title && <CardTitle className="text-2xl">{title}</CardTitle>}
-        {description && <CardDescription>{description}</CardDescription>}
-      </CardHeader>
+      {title && (
+        <CardHeader>
+          <CardTitle className="text-2xl">{title}</CardTitle>
+          {description && <CardDescription>{description}</CardDescription>}
+        </CardHeader>
+      )}
+      {!title && <div className="h-4" />}
       <CardContent className="space-y-4">{children}</CardContent>
       {footer && <CardFooter>{footer}</CardFooter>}
     </Card>

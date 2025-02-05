@@ -72,5 +72,5 @@ export async function validateAuthPage() {
   if (!user) {
     redirect("/auth");
   }
-  return user as UserDto;
+  return user as SessionUser;
 }
