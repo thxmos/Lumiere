@@ -86,59 +86,63 @@ export default function DropdownMenu({ user }: { user: any }) {
   ];
 
   return (
-    <DropdownWrapper open={open} onOpenChange={setOpen}>
-      <DropdownMenuTrigger asChild>
-        <Avatar
-          className="cursor-pointer border border-primary"
-          role="button"
-          aria-haspopup="menu"
-          aria-expanded={open}
-          aria-label="User menu"
-        >
-          <AvatarImage src={user.avatar} alt="" />
-          <AvatarFallback className="bg-red-500 text-white text-xs">
-            {getInitials(user.name!)}
-          </AvatarFallback>
-        </Avatar>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent
-        className="w-56 mt-1 border border-primary shadow-md"
-        role="menu"
-        aria-label="User account options"
+    <Link href="/dashboard/ulink/links">
+      {/* <DropdownWrapper> */}
+      {/* <DropdownMenuTrigger asChild> */}
+      <Avatar
+        className="cursor-pointer border border-primary"
+        role="button"
+        aria-haspopup="menu"
+        aria-expanded={open}
+        aria-label="User menu"
       >
-        <DropdownMenuLabel className="flex items-center justify-between">
-          <span className="flex flex-col">
-            {user.username}
-            <span className="text-xs text-muted-foreground">{user.email}</span>
-          </span>
-          <User className="text-sm" />
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator className="bg-primary" />
-        {/* <DropdownMenuLabel>
+        <AvatarImage src={user.avatar} alt="" />
+        <AvatarFallback className="bg-red-500 text-white text-xs">
+          {getInitials(user.name!)}
+        </AvatarFallback>
+      </Avatar>
+      {/* </DropdownMenuTrigger> */}
+      {/* <DropdownMenuContent
+          className="w-56 mt-1 border border-primary shadow-md"
+          role="menu"
+          aria-label="User account options"
+        >
+          <DropdownMenuLabel className="flex items-center justify-between">
+            <span className="flex flex-col">
+              {user.username}
+              <span className="text-xs text-muted-foreground">
+                {user.email}
+              </span>
+            </span>
+            <User className="text-sm" />
+          </DropdownMenuLabel>
+          <DropdownMenuSeparator className="bg-primary" /> */}
+      {/* <DropdownMenuLabel>
           <span className="text-xs font-medium text-muted-foreground">
             Modules (less corny name)
           </span>
         </DropdownMenuLabel> */}
-        <DropdownMenuGroup>
-          {navItems
-            .filter((item) => item.role === user.roles)
-            .map((item, index) => (
-              <DropdownMenuItem asChild key={index}>
-                {
-                  <Link
-                    href={item.href}
-                    className="flex items-center justify-between w-full cursor-pointer"
-                    onClick={item.onClick ?? closeDropdown}
-                    role="menuitem"
-                  >
-                    <span>{item.label}</span>
-                    <item.icon className="text-sm" aria-hidden="true" />
-                  </Link>
-                }
-              </DropdownMenuItem>
-            ))}
-        </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownWrapper>
+      {/* <DropdownMenuGroup>
+            {navItems
+              .filter((item) => item.role === user.roles)
+              .map((item, index) => (
+                <DropdownMenuItem asChild key={index}>
+                  {
+                    <Link
+                      href={item.href}
+                      className="flex items-center justify-between w-full cursor-pointer"
+                      onClick={item.onClick ?? closeDropdown}
+                      role="menuitem"
+                    >
+                      <span>{item.label}</span>
+                      <item.icon className="text-sm" aria-hidden="true" />
+                    </Link>
+                  }
+                </DropdownMenuItem>
+              ))}
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownWrapper> */}
+    </Link>
   );
 }

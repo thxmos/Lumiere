@@ -1,0 +1,16 @@
+import { getLinkGroupsByUserId } from "@/actions/entities/link/getLinkGroupsByUserId";
+import LinkGroupGrid from "./components/link-group-grid";
+import { validateAuthPage } from "@/utils/security/auth";
+
+const LinkGroupsPage = async () => {
+  const user = await validateAuthPage();
+  const linkGroups = await getLinkGroupsByUserId();
+
+  return (
+    <div className="flex flex-col gap-4">
+      <LinkGroupGrid linkGroups={linkGroups} user={user} />
+    </div>
+  );
+};
+
+export default LinkGroupsPage;

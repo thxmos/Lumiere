@@ -12,7 +12,7 @@ export type LinkGroupResponse = LinkGroup;
 export type LinkGroupCreateDto = {
   name: string;
   description: string;
-  userId?: string;
+  userId: string;
 };
 
 export interface ILinkGroupRepository
