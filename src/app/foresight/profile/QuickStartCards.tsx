@@ -7,13 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  PlusCircle,
-  Link as LinkIcon,
-  CalendarDays,
-  SwordsIcon,
-  CalendarDaysIcon,
-} from "lucide-react";
+import { Link as LinkIcon, SwordsIcon, CalendarDaysIcon } from "lucide-react";
 
 const QuickStartCards = () => {
   return (

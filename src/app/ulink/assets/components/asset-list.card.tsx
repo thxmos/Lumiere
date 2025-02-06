@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { useAssetStore } from "@/stores/assets";
 import { AssetType } from "@prisma/client";
 import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 
 export function AssetsCard({
   asset,
@@ -38,9 +39,9 @@ export function AssetsCard({
 
   return (
     <>
-      <div
+      <Card
         key={asset.id}
-        className="flex items-center justify-between border border-secondary rounded-md gap-4 p-2 hover:border-primary"
+        className="flex items-center justify-between rounded-md gap-4 p-2"
       >
         <div className="flex items-center gap-4">
           <div className="text-sm text-primary font-bold">{index + 1}</div>
@@ -81,7 +82,7 @@ export function AssetsCard({
           className="w-8 h-8 text-muted-foreground hover:text-primary cursor-pointer"
           onClick={() => setIsDeleteModalOpen(true)}
         />
-      </div>
+      </Card>
       <ConfirmDeleteModal
         isOpen={isDeleteModalOpen}
         onClose={() => setIsDeleteModalOpen(false)}
