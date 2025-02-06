@@ -68,86 +68,101 @@ export function AccountSection({ user }: { user: UserDto }) {
       <form
         id="profile-form"
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-4"
+        className="flex flex-col w-full"
       >
-        <AvatarUpload
-          avatarFile={avatarFile}
-          setAvatarFile={setAvatarFile}
-          avatarUrl={user.avatar ?? ""}
-        />
-        <div className="space-y-2">
-          <Label htmlFor="username">Username</Label>
-          <Input
-            id="username"
-            {...register("username", {
-              required: "Username is required",
-              pattern: {
-                value: /^[a-zA-Z0-9\-]+$/,
-                message:
-                  "Username can only contain letters, numbers, and hyphens",
-              },
-            })}
-            minLength={3}
-            maxLength={69}
-            aria-invalid={errors.username ? "true" : "false"}
-          />
-          {errors.username && (
-            <p className="text-sm text-red-500" role="alert">
-              {errors.username.message}
-            </p>
-          )}
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="description">
-            Description ({watch("description")?.length || 0}/150)
-          </Label>
-          <Textarea
-            id="description"
-            {...register("description", {
-              maxLength: {
-                value: 150,
-                message: "Description cannot exceed 150 characters",
-              },
-            })}
-            rows={4}
-            className="resize-none"
-            aria-invalid={errors.description ? "true" : "false"}
-          />
-          {errors.description && (
-            <p className="text-sm text-red-500" role="alert">
-              {errors.description.message}
-            </p>
-          )}
-        </div>
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col space-y-2 flex-1">
-            <Label htmlFor="country">Country</Label>
-            <Select
-              onValueChange={(value) => setValue("country", value)}
-              defaultValue={user.country || ""}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select your country" />
-              </SelectTrigger>
-              <SelectContent>
-                {COUNTRIES.map((country) => (
-                  <SelectItem key={country.code} value={country.code}>
-                    {country.emoji} {country.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+        <div className="flex gap-4 w-full">
+          {/* Avatar */}
+          <div className="flex flex-col items-center w-fit gap-4 pt-2">
+            <Label>Avatar</Label>
+            <AvatarUpload
+              avatarFile={avatarFile}
+              setAvatarFile={setAvatarFile}
+              avatarUrl={user.avatar ?? ""}
+            />
           </div>
-          <div className="flex items-center space-x-2">
-            <Switch
-              id="display-country"
-              {...register("displayCountry")}
-              checked={watch("displayCountry")}
-              onCheckedChange={(checked) => setValue("displayCountry", checked)}
-            />{" "}
-            <Label htmlFor="display-country">Display Country</Label>
+          {/* Username and Description */}
+          <div className="flex flex-col gap-4 w-full">
+            <div className="space-y-2">
+              <Label htmlFor="username">Username</Label>
+              <Input
+                id="username"
+                {...register("username", {
+                  required: "Username is required",
+                  pattern: {
+                    value: /^[a-zA-Z0-9\-]+$/,
+                    message:
+                      "Username can only contain letters, numbers, and hyphens",
+                  },
+                })}
+                minLength={3}
+                maxLength={69}
+                aria-invalid={errors.username ? "true" : "false"}
+              />
+              {errors.username && (
+                <p className="text-sm text-red-500" role="alert">
+                  {errors.username.message}
+                </p>
+              )}
+            </div>
+            {/* Description */}
+            <div className="space-y-2">
+              <Label htmlFor="description">
+                Description ({watch("description")?.length || 0}/150)
+              </Label>
+              <Textarea
+                id="description"
+                {...register("description", {
+                  maxLength: {
+                    value: 150,
+                    message: "Description cannot exceed 150 characters",
+                  },
+                })}
+                rows={4}
+                className="resize-none"
+                aria-invalid={errors.description ? "true" : "false"}
+              />
+              {errors.description && (
+                <p className="text-sm text-red-500" role="alert">
+                  {errors.description.message}
+                </p>
+              )}
+            </div>
+            <div className="flex gap-4 items-center">
+              {/* Country */}
+              <div className="flex flex-col space-y-2 flex-1 max-w-[300px]">
+                <Label htmlFor="country">Country</Label>
+                <Select
+                  onValueChange={(value) => setValue("country", value)}
+                  defaultValue={user.country || ""}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select your country" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {COUNTRIES.map((country) => (
+                      <SelectItem key={country.code} value={country.code}>
+                        {country.emoji} {country.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              {/* Display Country */}
+              <div className="flex gap-2 mt-4 items-center">
+                <Switch
+                  id="display-country"
+                  {...register("displayCountry")}
+                  checked={watch("displayCountry")}
+                  onCheckedChange={(checked) =>
+                    setValue("displayCountry", checked)
+                  }
+                />{" "}
+                <Label htmlFor="display-country">Display Country</Label>
+              </div>
+            </div>
           </div>
         </div>
+
         <div className="flex justify-end w-full">
           <Button type="submit" form="profile-form" disabled={isSubmitting}>
             {isSubmitting ? "Saving..." : "Save Changes"}
