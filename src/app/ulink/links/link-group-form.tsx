@@ -8,6 +8,8 @@ import { useState } from "react";
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import { Card } from "@/components/ui/card";
+import { PlusIcon } from "lucide-react";
 
 const LinkGroupForm = () => {
   const router = useRouter();
@@ -18,6 +20,11 @@ const LinkGroupForm = () => {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
+      if (name.length === 0) {
+        toast.error("Name is required");
+        return;
+      }
+
       await createLinkGroup({
         name,
         description,
@@ -33,20 +40,26 @@ const LinkGroupForm = () => {
 
   return (
     <>
-      <h2 className="text-2xl font-bold">Create Link Group</h2>
-      <form className="flex flex-col gap-2" onSubmit={onSubmit}>
-        <Input
-          type="text"
-          placeholder="Name"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <Input
-          type="text"
-          placeholder="Description"
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <Button type="submit">Create</Button>
-      </form>
+      <Card className="p-4">
+        <form className="flex flex-col gap-2" onSubmit={onSubmit}>
+          <Input
+            type="text"
+            placeholder="Name"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+          />
+          <Input
+            type="text"
+            placeholder="Description"
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+          />
+          <Button type="submit" className="flex gap-2">
+            <PlusIcon className="w-4 h-4" />
+            Create New Link Group
+          </Button>
+        </form>
+      </Card>
     </>
   );
 };

@@ -3,7 +3,7 @@
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { QRCodeCard } from "./components/qr-list.card";
 import { useQRCodeStore } from "@/stores/qr-codes";
-import { QrCodeIcon, ScanQrCodeIcon } from "lucide-react";
+import { ScanQrCodeIcon } from "lucide-react";
 
 export const QRListSection = () => {
   const { qrCodes, removeQRCode } = useQRCodeStore();
