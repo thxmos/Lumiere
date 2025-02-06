@@ -22,6 +22,7 @@ import { AssetType } from "@prisma/client";
 import { FontSection } from "./font.form";
 import { CardSection } from "./card.form";
 import { BorderSection } from "./border.form";
+import { PaintBucketIcon } from "lucide-react";
 
 /*
 TODO: ThemePrimaryColor should be primaryColor
@@ -112,7 +113,12 @@ export function ThemeEditorSection({
 
   return (
     <DashboardCard
-      title={<span>Themes</span>}
+      title={
+        <div className="flex items-center gap-2">
+          <PaintBucketIcon className="w-8 h-8" />
+          Themes
+        </div>
+      }
       description="Customize your brand theme settings here. These will be applied to all your pages"
       footer={
         <div className="flex justify-end w-full">

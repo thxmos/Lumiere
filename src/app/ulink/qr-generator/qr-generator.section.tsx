@@ -14,6 +14,7 @@ import QRModal from "./components/qr-modal";
 import { useQRCodeStore } from "@/stores/qr-codes";
 import { QRCodeDto } from "@/types/entities/qr-codes";
 import { createQRCode } from "@/actions/entities/qr-code/createQrCode";
+import { QrCodeIcon } from "lucide-react";
 
 // Add initialQRCodes to the props
 export const QRGeneratorSection = ({
@@ -50,7 +51,12 @@ export const QRGeneratorSection = ({
 
   return (
     <DashboardCard
-      title="QR Generator"
+      title={
+        <div className="flex items-center gap-2">
+          <QrCodeIcon className="w-8 h-8" />
+          QR Generator
+        </div>
+      }
       description="Generate QR codes for your links"
     >
       <form onSubmit={handleSubmit} className="space-y-4">

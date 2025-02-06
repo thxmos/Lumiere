@@ -8,6 +8,7 @@ import {
   QrCodeIcon,
   User,
   ImageIcon,
+  PaintBucketIcon,
 } from "lucide-react";
 
 export const ULINK_TABS: SidebarTab[] = [
@@ -30,7 +31,7 @@ export const ULINK_TABS: SidebarTab[] = [
   {
     key: "theme-editor",
     label: "Theme Editor",
-    icon: <Paintbrush className={SIDEBAR_ICON_STYLE} />,
+    icon: <PaintBucketIcon className={SIDEBAR_ICON_STYLE} />,
     mobilePreview: true,
   },
   {

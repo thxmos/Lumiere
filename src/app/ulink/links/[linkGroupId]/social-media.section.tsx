@@ -11,6 +11,7 @@ import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { toast } from "sonner";
 import { updateUser } from "@/actions/entities/user/updateUser";
 import { useUserStore } from "@/stores/user";
+import { UsersIcon } from "lucide-react";
 
 export function SocialMediaSection({ initialUser }: { initialUser: UserDto }) {
   const { user, setUser } = useUserStore();
@@ -52,7 +53,12 @@ export function SocialMediaSection({ initialUser }: { initialUser: UserDto }) {
 
   return (
     <DashboardCard
-      title="Social Media"
+      title={
+        <div className="flex items-center gap-2">
+          <UsersIcon className="w-8 h-8" />
+          Social Media
+        </div>
+      }
       description="Manage your social media links here"
       footer={
         <div className="flex justify-end w-full">

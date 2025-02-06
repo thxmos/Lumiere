@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { PlusCircle } from "lucide-react";
+import { LinkIcon, PlusCircle } from "lucide-react";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 
@@ -139,7 +139,12 @@ export function LinksSection({ userLinks, user, linkGroupId }: Props) {
 
   return (
     <DashboardCard
-      title="Links"
+      title={
+        <div className="flex items-center gap-2">
+          <LinkIcon className="w-8 h-8" />
+          Links
+        </div>
+      }
       description={`Manage your custom links here and track your audience (${links.length}/10)`}
     >
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

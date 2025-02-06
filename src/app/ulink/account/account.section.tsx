@@ -21,6 +21,7 @@ import { COUNTRIES } from "@/constants/countries";
 import { Switch } from "@/components/ui/switch";
 import { updateUserAccountInfoAction } from "@/actions/entities/user/updateUserAccountInfoAction";
 import { uploadAvatar } from "@/actions/file-upload/createAsset";
+import { SettingsIcon } from "lucide-react";
 
 export function AccountSection({ user }: { user: UserDto }) {
   const {
@@ -62,7 +63,12 @@ export function AccountSection({ user }: { user: UserDto }) {
 
   return (
     <DashboardCard
-      title="Profile Info"
+      title={
+        <div className="flex items-center gap-2">
+          <SettingsIcon className="w-8 h-8" />
+          Profile Info
+        </div>
+      }
       description="Manage your profile information here."
     >
       <form
