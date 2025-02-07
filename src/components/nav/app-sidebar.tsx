@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { NavMain } from "./nav-main";
 import { NavProjects } from "./nav-projects";
 import { NavUser } from "./nav-user";
-import { TeamSwitcher } from "./team-switcher";
+import { AccountSwitcher } from "./account-switcher";
 import {
   Sidebar,
   SidebarContent,
@@ -50,7 +50,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <Badge variant="ghost">BETA</Badge>
           </div>
         </Link>
-        <TeamSwitcher teams={data.teams} />
+        <AccountSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent className="bg-background">
         <NavProjects projects={data.projects} />

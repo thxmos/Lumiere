@@ -27,7 +27,7 @@ interface TeamSwitcherProps {
   teams: Team[];
 }
 
-export function TeamSwitcher({ teams }: TeamSwitcherProps) {
+export function AccountSwitcher({ teams }: TeamSwitcherProps) {
   const { isMobile } = useSidebar();
   const [activeTeam, setActiveTeam] = React.useState<Team>(teams[0]);
 

@@ -45,7 +45,7 @@ export function NavProjects({ projects }: NavProjectsProps) {
             <SidebarMenuButton
               asChild
               className={cn(
-                "flex w-full items-center bg-background text-foreground hover:bg-accent hover:text-accent-foreground",
+                "flex w-full items-center bg-background text-foreground hover:bg-accent hover:text-accent-foreground font-medium",
                 pathname.includes(item.url) &&
                   "bg-accent text-accent-foreground",
               )}

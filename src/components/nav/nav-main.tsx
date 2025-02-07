@@ -23,6 +23,7 @@ import { cn } from "@/utils/utils";
 
 interface NavItem {
   title: string;
+  description: string;
   url: string;
   icon?: React.ReactNode;
   isActive?: boolean;
@@ -46,7 +47,7 @@ export function NavMain({ items }: NavMainProps) {
         Modules
       </SidebarGroupLabel>
       <SidebarMenu>
-        {items.map((item) => (
+        {items.map((item: NavItem) => (
           <Collapsible
             key={item.title}
             asChild
@@ -57,26 +58,31 @@ export function NavMain({ items }: NavMainProps) {
               <CollapsibleTrigger asChild>
                 <SidebarMenuButton
                   tooltip={item.title}
-                  className={cn(
-                    "bg-background text-foreground hover:bg-accent hover:text-accent-foreground group-data-[state=open]/collapsible:bg-accent group-data-[state=open]/collapsible:text-accent-foreground",
-                    pathname.includes(item.url) &&
-                      "bg-accent text-accent-foreground",
-                  )}
+                  className={
+                    "bg-background text-foreground font-medium p-6 pl-2 pr-2"
+                  }
                 >
-                  <span className="text-primary">{item.icon}</span>
-                  <span>{item.title}</span>
+                  <span className="text-primary border-2 border-border rounded-full p-1">
+                    {item.icon}
+                  </span>
+                  <div className="flex flex-col">
+                    <p className="text-sm font-medium">{item.title}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </div>
                   <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 text-muted-foreground" />
                 </SidebarMenuButton>
               </CollapsibleTrigger>
               {item.items && (
                 <CollapsibleContent>
-                  <SidebarMenuSub>
+                  <SidebarMenuSub className="[--sidebar-menu-sub-color:theme(colors.primary)]">
                     {item.items.map((subItem) => (
                       <SidebarMenuSubItem key={subItem.title}>
                         <SidebarMenuSubButton
                           asChild
                           className={cn(
-                            "bg-background text-foreground hover:bg-accent hover:text-accent-foreground",
+                            "bg-background text-foreground",
                             pathname.includes(subItem.url) &&
                               "bg-accent text-accent-foreground",
                           )}

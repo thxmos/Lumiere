@@ -1,6 +1,5 @@
 "use server";
 
-import { SIDEBAR_ICON_STYLE } from "@/constants/layout";
 import { userRepository } from "@/repositories/user";
 import { SessionUser } from "@/utils/lib/lucia";
 import { withAuth } from "@/utils/security/auth";
@@ -22,6 +21,8 @@ import {
   UserIcon,
   WaypointsIcon,
 } from "lucide-react";
+
+const SIDEBAR_ICON_STYLE = "h-4 w-4";
 
 export const getNavInfo = withAuth(async (user: SessionUser) => {
   const fullUser = await userRepository.findById(user.id);
@@ -75,6 +76,7 @@ export const getNavInfo = withAuth(async (user: SessionUser) => {
     navMain: [
       {
         title: "ULink",
+        description: "Connect with your audience",
         url: "/ulink",
         icon: <CableIcon className={SIDEBAR_ICON_STYLE} />,
         isActive: true,
@@ -98,6 +100,7 @@ export const getNavInfo = withAuth(async (user: SessionUser) => {
       },
       {
         title: "Foresight",
+        description: "Light up your next step",
         url: "/foresight",
         icon: <ScanEyeIcon className={SIDEBAR_ICON_STYLE} />,
         items: [
@@ -125,6 +128,7 @@ export const getNavInfo = withAuth(async (user: SessionUser) => {
       },
       {
         title: "Kaizen",
+        description: "Grow with the community",
         url: "/kaizen",
         icon: <MailPlusIcon className={SIDEBAR_ICON_STYLE} />,
         items: [
