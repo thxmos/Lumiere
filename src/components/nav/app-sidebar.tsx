@@ -47,7 +47,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               aria-hidden="true"
             />
             <p className="text-2xl font-bold text-foreground">{APP_NAME}</p>
-            <Badge variant="ghost">BETA</Badge>
+            <Badge variant="outline">BETA</Badge>
           </div>
         </Link>
         <AccountSwitcher teams={data.teams} />
