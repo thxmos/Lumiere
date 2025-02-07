@@ -16,16 +16,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-
-interface Team {
-  name: string;
-  logo: React.ReactNode;
-  plan: string;
-}
-
-interface TeamSwitcherProps {
-  teams: Team[];
-}
+import { Team, TeamSwitcherProps } from "./types";
 
 export function AccountSwitcher({ teams }: TeamSwitcherProps) {
   const { isMobile } = useSidebar();

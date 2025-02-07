@@ -4,8 +4,10 @@ import { userRepository } from "@/repositories/user";
 import { SessionUser } from "@/utils/lib/lucia";
 import { withAuth } from "@/utils/security/auth";
 import {
+  ArrowUpDownIcon,
   AudioWaveformIcon,
   BarChart3Icon,
+  BugIcon,
   CableIcon,
   CalendarIcon,
   CommandIcon,
@@ -14,11 +16,13 @@ import {
   ImagesIcon,
   LinkIcon,
   MailPlusIcon,
+  MessageSquareIcon,
   PaintBucketIcon,
   QrCodeIcon,
   ScanEyeIcon,
   SwordsIcon,
   UserIcon,
+  UsersIcon,
   WaypointsIcon,
 } from "lucide-react";
 
@@ -135,18 +139,22 @@ export const getNavInfo = withAuth(async (user: SessionUser) => {
           {
             title: "Community",
             url: "community",
+            icon: <UsersIcon className={SIDEBAR_ICON_STYLE} />,
           },
           {
             title: "Feedback",
             url: "feedback",
+            icon: <MessageSquareIcon className={SIDEBAR_ICON_STYLE} />,
           },
           {
             title: "Bug Report",
             url: "bug-report",
+            icon: <BugIcon className={SIDEBAR_ICON_STYLE} />,
           },
           {
             title: "Changes",
             url: "changes",
+            icon: <ArrowUpDownIcon className={SIDEBAR_ICON_STYLE} />,
           },
         ],
       },

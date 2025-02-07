@@ -20,23 +20,7 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/utils/utils";
-
-interface NavItem {
-  title: string;
-  description: string;
-  url: string;
-  icon?: React.ReactNode;
-  isActive?: boolean;
-  items?: Array<{
-    title: string;
-    url: string;
-    icon?: React.ReactNode;
-  }>;
-}
-
-interface NavMainProps {
-  items: NavItem[];
-}
+import { NavItem, NavMainProps } from "./types";
 
 export function NavMain({ items }: NavMainProps) {
   const pathname = usePathname();

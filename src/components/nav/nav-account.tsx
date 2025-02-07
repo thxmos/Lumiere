@@ -26,18 +26,18 @@ interface Project {
   icon: React.ReactNode;
 }
 
-interface NavProjectsProps {
+interface NavAccountProps {
   projects: Project[];
 }
 
-export function NavProjects({ projects }: NavProjectsProps) {
+export default function NavAccount({ projects }: NavAccountProps) {
   const { isMobile } = useSidebar();
   const pathname = usePathname();
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
       <SidebarGroupLabel className="text-muted-foreground">
-        Account
+        Your Account
       </SidebarGroupLabel>
       <SidebarMenu>
         {projects.map((item) => (
