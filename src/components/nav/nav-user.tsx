@@ -1,13 +1,8 @@
-"use client";
-
 import Link from "next/link";
 import {
-  BadgeCheck,
   BadgeCheckIcon,
-  Bell,
   BellIcon,
   ChevronsUpDown,
-  CreditCard,
   CreditCardIcon,
   LogOut,
   Sparkles,
@@ -30,6 +25,8 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { getInitials } from "@/utils/utils";
+import { usePathname } from "next/navigation";
+import { cn } from "@/utils/utils";
 
 export function NavUser({
   user,
@@ -41,6 +38,7 @@ export function NavUser({
   };
 }) {
   const { isMobile } = useSidebar();
+  const pathname = usePathname();
 
   return (
     <SidebarMenu>
@@ -49,21 +47,27 @@ export function NavUser({
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
               size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+              className="bg-background hover:bg-accent hover:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground"
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                <AvatarFallback className="rounded-lg bg-primary text-primary-foreground">
+                  {getInitials(user.name)}
+                </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
+                <span className="truncate font-semibold text-foreground">
+                  {user.name}
+                </span>
+                <span className="truncate text-xs text-muted-foreground">
+                  {user.email}
+                </span>
               </div>
-              <ChevronsUpDown className="ml-auto size-4" />
+              <ChevronsUpDown className="ml-auto size-4 text-muted-foreground" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+            className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg bg-popover text-popover-foreground"
             side={isMobile ? "bottom" : "right"}
             align="end"
             sideOffset={4}
@@ -72,26 +76,30 @@ export function NavUser({
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">
+                  <AvatarFallback className="rounded-lg bg-primary text-primary-foreground">
                     {getInitials(user.name)}
                   </AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">{user.name}</span>
-                  <span className="truncate text-xs">{user.email}</span>
+                  <span className="truncate font-semibold text-foreground">
+                    {user.name}
+                  </span>
+                  <span className="truncate text-xs text-muted-foreground">
+                    {user.email}
+                  </span>
                 </div>
               </div>
             </DropdownMenuLabel>
-            <DropdownMenuSeparator />
+            <DropdownMenuSeparator className="bg-border" />
             <DropdownMenuGroup>
-              <Link href="/dashboard/subscribe">
-                <DropdownMenuItem className="gap-2 cursor-pointer">
+              <Link href="/dashboard/subscribe" className="w-full">
+                <DropdownMenuItem className="gap-2 cursor-pointer hover:bg-accent hover:text-accent-foreground">
                   <Sparkles />
                   Upgrade to Pro
                 </DropdownMenuItem>
               </Link>
             </DropdownMenuGroup>
-            <DropdownMenuSeparator />
+            <DropdownMenuSeparator className="bg-border" />
             <DropdownMenuGroup>
               {[
                 {
@@ -113,16 +121,23 @@ export function NavUser({
                 <Link
                   href={`/dashboard/user-settings/${item.url}`}
                   key={item.title}
+                  className="w-full"
                 >
-                  <DropdownMenuItem className="gap-2 cursor-pointer">
+                  <DropdownMenuItem
+                    className={cn(
+                      "gap-2 cursor-pointer hover:bg-accent hover:text-accent-foreground",
+                      pathname.includes(item.url) &&
+                        "bg-accent text-accent-foreground",
+                    )}
+                  >
                     {item.icon}
                     {item.title}
                   </DropdownMenuItem>
                 </Link>
               ))}
             </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem className="gap-2 cursor-pointer">
+            <DropdownMenuSeparator className="bg-border" />
+            <DropdownMenuItem className="gap-2 cursor-pointer hover:bg-accent hover:text-accent-foreground">
               <LogOut />
               Log out
             </DropdownMenuItem>

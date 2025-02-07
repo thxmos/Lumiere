@@ -1,6 +1,6 @@
 "use client";
 
-import { Folder, Forward, MoreHorizontal, Trash2 } from "lucide-react";
+import { Folder, Forward, Trash2 } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -16,6 +16,9 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/utils/utils";
 
 interface Project {
   name: string;
@@ -29,54 +32,55 @@ interface NavProjectsProps {
 
 export function NavProjects({ projects }: NavProjectsProps) {
   const { isMobile } = useSidebar();
+  const pathname = usePathname();
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <SidebarGroupLabel>Account</SidebarGroupLabel>
+      <SidebarGroupLabel className="text-muted-foreground">
+        Account
+      </SidebarGroupLabel>
       <SidebarMenu>
         {projects.map((item) => (
           <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton asChild>
-              <a href={`/dashboard/${item.url}`}>
-                {item.icon}
+            <SidebarMenuButton
+              asChild
+              className={cn(
+                "flex w-full items-center bg-background text-foreground hover:bg-accent hover:text-accent-foreground",
+                pathname.includes(item.url) &&
+                  "bg-accent text-accent-foreground",
+              )}
+            >
+              <Link
+                href={`/dashboard/${item.url}`}
+                className="flex items-center w-full py-2 px-2"
+              >
+                <span className="mr-2 text-primary">{item.icon}</span>
                 <span>{item.name}</span>
-              </a>
+              </Link>
             </SidebarMenuButton>
             <DropdownMenu>
-              {/* <DropdownMenuTrigger asChild>
-                <SidebarMenuAction showOnHover>
-                  <MoreHorizontal className="size-4" />
-                  <span className="sr-only">More</span>
-                </SidebarMenuAction>
-              </DropdownMenuTrigger> */}
               <DropdownMenuContent
-                className="w-48 rounded-lg"
+                className="w-48 rounded-lg bg-popover text-popover-foreground"
                 side={isMobile ? "bottom" : "right"}
                 align={isMobile ? "end" : "start"}
               >
-                <DropdownMenuItem>
-                  <Folder className="size-4 text-muted-foreground" />
+                <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground">
+                  <Folder className="size-4 mr-2 text-primary" />
                   <span>View Project</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Forward className="size-4 text-muted-foreground" />
+                <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground">
+                  <Forward className="size-4 mr-2 text-primary" />
                   <span>Share Project</span>
                 </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <Trash2 className="size-4 text-muted-foreground" />
+                <DropdownMenuSeparator className="bg-border" />
+                <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground">
+                  <Trash2 className="size-4 mr-2 text-primary" />
                   <span>Delete Project</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </SidebarMenuItem>
         ))}
-        {/* <SidebarMenuItem>
-          <SidebarMenuButton className="text-sidebar-foreground/70">
-            <MoreHorizontal className="size-4 text-sidebar-foreground/70" />
-            <span>More</span>
-          </SidebarMenuButton>
-        </SidebarMenuItem> */}
       </SidebarMenu>
     </SidebarGroup>
   );

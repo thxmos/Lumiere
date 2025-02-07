@@ -1,13 +1,8 @@
 import { CheckIcon, ClockIcon, MailIcon, ScanEyeIcon } from "lucide-react";
-import ProtectedLayout from "@/components/layouts/protected-layout";
-import LayoutSidebar from "@/components/layouts/layout-sidebar";
-import { FORESIGHT_TABS } from "./tabs";
-import { USER_ROLES } from "@/types/user-roles";
-import Navbar from "@/components/layouts/nav-bar";
 import { validateAuthPage } from "@/utils/security/auth";
-import { ScrollToTopLayout } from "@/app/dashboard/ulink/_components/scroll-to-top.layout";
+import { ScrollToTopLayout } from "@/components/layouts/scroll-to-top.layout";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
-import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 

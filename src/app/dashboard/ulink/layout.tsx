@@ -1,23 +1,17 @@
-import { Cable } from "lucide-react";
-import ProtectedLayout from "@/components/layouts/protected-layout";
-import LayoutSidebar from "@/components/layouts/layout-sidebar";
-import { ULINK_TABS } from "./tabs";
-import { USER_ROLES } from "@/types/user-roles";
 import MobilePreview from "@/app/dashboard/ulink/_components/mobile-preview/mobile-preview";
 import LinkTree from "@/app/(ulink-profile)/components/profile/linktree";
 import { getThemeAction } from "@/actions/entities/theme/getTheme";
 import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
 import type { UserDtoNoId } from "@/actions/entities/user/createUser";
-import { LinkDtoWithId } from "@/types/links";
-import Navbar from "@/components/layouts/nav-bar";
+import type { LinkDtoWithId } from "@/types/links";
 import { validateAuthPage } from "@/utils/security/auth";
-import { ScrollToTopLayout } from "@/app/dashboard/ulink/_components/scroll-to-top.layout";
+import { ScrollToTopLayout } from "@/components/layouts/scroll-to-top.layout";
 
 interface Props {
   children: React.ReactNode;
 }
 
-const DashboardLayout: React.FC<Props> = async ({ children }) => {
+const ULinkLayout: React.FC<Props> = async ({ children }) => {
   const user = await validateAuthPage();
 
   const theme = await getThemeAction();
@@ -50,4 +44,4 @@ const DashboardLayout: React.FC<Props> = async ({ children }) => {
   );
 };
 
-export default DashboardLayout;
+export default ULinkLayout;

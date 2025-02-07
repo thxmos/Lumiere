@@ -18,6 +18,8 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/utils/utils";
 
 interface NavItem {
   title: string;
@@ -27,6 +29,7 @@ interface NavItem {
   items?: Array<{
     title: string;
     url: string;
+    icon?: React.ReactNode;
   }>;
 }
 
@@ -35,9 +38,13 @@ interface NavMainProps {
 }
 
 export function NavMain({ items }: NavMainProps) {
+  const pathname = usePathname();
+
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Modules</SidebarGroupLabel>
+      <SidebarGroupLabel className="text-muted-foreground">
+        Modules
+      </SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible
@@ -48,10 +55,17 @@ export function NavMain({ items }: NavMainProps) {
           >
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
-                <SidebarMenuButton tooltip={item.title}>
-                  {item.icon}
+                <SidebarMenuButton
+                  tooltip={item.title}
+                  className={cn(
+                    "bg-background text-foreground hover:bg-accent hover:text-accent-foreground group-data-[state=open]/collapsible:bg-accent group-data-[state=open]/collapsible:text-accent-foreground",
+                    pathname.includes(item.url) &&
+                      "bg-accent text-accent-foreground",
+                  )}
+                >
+                  <span className="text-primary">{item.icon}</span>
                   <span>{item.title}</span>
-                  <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                  <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 text-muted-foreground" />
                 </SidebarMenuButton>
               </CollapsibleTrigger>
               {item.items && (
@@ -59,8 +73,20 @@ export function NavMain({ items }: NavMainProps) {
                   <SidebarMenuSub>
                     {item.items.map((subItem) => (
                       <SidebarMenuSubItem key={subItem.title}>
-                        <SidebarMenuSubButton asChild>
+                        <SidebarMenuSubButton
+                          asChild
+                          className={cn(
+                            "bg-background text-foreground hover:bg-accent hover:text-accent-foreground",
+                            pathname.includes(subItem.url) &&
+                              "bg-accent text-accent-foreground",
+                          )}
+                        >
                           <Link href={`/dashboard/${item.url}/${subItem.url}`}>
+                            {subItem.icon && (
+                              <span className="text-primary mr-2">
+                                {subItem.icon}
+                              </span>
+                            )}
                             <span>{subItem.title}</span>
                           </Link>
                         </SidebarMenuSubButton>

@@ -5,7 +5,7 @@ import { EXCHANGE_TABS } from "./tabs";
 import { USER_ROLES } from "@/types/user-roles";
 import Navbar from "@/components/layouts/nav-bar";
 import { validateAuthPage } from "@/utils/security/auth";
-import { ScrollToTopLayout } from "@/app/dashboard/ulink/_components/scroll-to-top.layout";
+import { ScrollToTopLayout } from "@/components/layouts/scroll-to-top.layout";
 
 interface Props {
   children: React.ReactNode;
