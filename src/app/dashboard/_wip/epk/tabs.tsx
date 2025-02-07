@@ -1,25 +1,11 @@
-import {
-  CalendarRangeIcon,
-  HammerIcon,
-  SwordsIcon,
-  WaypointsIcon,
-} from "lucide-react";
+import { SIDEBAR_ICON_STYLE } from "@/constants/layout";
+import { SidebarTab } from "@/types/layout/SidebarTab";
+import { HammerIcon } from "lucide-react";
 
-const iconStyle = "mr-2 h-4 w-4";
-
-export type Tab = {
-  key: string;
-  label: string;
-  icon: React.ReactNode;
-  userRole?: string;
-  mobilePreview?: boolean;
-};
-
-//TODO: Rename key to path or something
-export const EPK_TABS: Tab[] = [
+export const EPK_TABS: SidebarTab[] = [
   {
     key: "builder",
     label: "Builder",
-    icon: <HammerIcon className={iconStyle} />,
+    icon: <HammerIcon className={SIDEBAR_ICON_STYLE} />,
   },
 ];

@@ -6,6 +6,7 @@ import {
   CreditCardIcon,
   LogOut,
   Sparkles,
+  UserCogIcon,
 } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -104,7 +105,7 @@ export function NavUser({
               {[
                 {
                   title: "Account",
-                  icon: <BadgeCheckIcon />,
+                  icon: <UserCogIcon />,
                   url: "account",
                 },
                 {

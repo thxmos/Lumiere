@@ -16,11 +16,15 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { Team, TeamSwitcherProps } from "./types";
+import { Account } from "./types";
 
-export function AccountSwitcher({ teams }: TeamSwitcherProps) {
+export interface AccountSwitcherProps {
+  accounts: Account[];
+}
+
+export function AccountSwitcher({ accounts }: AccountSwitcherProps) {
   const { isMobile } = useSidebar();
-  const [activeTeam, setActiveTeam] = React.useState<Team>(teams[0]);
+  const [activeTeam, setActiveTeam] = React.useState<Account>(accounts[0]);
 
   return (
     <SidebarMenu>
@@ -52,18 +56,22 @@ export function AccountSwitcher({ teams }: TeamSwitcherProps) {
             sideOffset={4}
           >
             <DropdownMenuLabel className="text-xs text-muted-foreground">
-              Teams
+              Your Accounts{" "}
+              <span className="text-xs text-muted-foreground">
+                {`(${accounts.length}/3)`}
+              </span>
             </DropdownMenuLabel>
-            {teams.map((team, index) => (
+            {accounts.map((account, index) => (
               <DropdownMenuItem
-                key={team.name}
-                onClick={() => setActiveTeam(team)}
+                key={account.name}
+                onClick={() => setActiveTeam(account)}
                 className="gap-2 p-2 cursor-pointer hover:bg-accent hover:text-accent-foreground"
               >
                 <div className="flex size-6 items-center justify-center rounded-sm border border-border bg-background">
-                  {team.logo}
+                  {account.logo}
+                  {/* TODO: make this an image */}
                 </div>
-                {team.name}
+                {account.name}
                 <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
               </DropdownMenuItem>
             ))}
@@ -72,7 +80,9 @@ export function AccountSwitcher({ teams }: TeamSwitcherProps) {
               <div className="flex size-6 items-center justify-center rounded-md border border-border bg-background">
                 <Plus className="size-4" />
               </div>
-              <div className="font-medium text-muted-foreground">Add team</div>
+              <div className="font-medium text-muted-foreground">
+                Add New Account
+              </div>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

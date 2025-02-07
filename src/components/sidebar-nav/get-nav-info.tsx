@@ -4,9 +4,9 @@ import { userRepository } from "@/repositories/user";
 import { SessionUser } from "@/utils/lib/lucia";
 import { withAuth } from "@/utils/security/auth";
 import {
-  ArrowUpDownIcon,
   AudioWaveformIcon,
   BarChart3Icon,
+  BookMarkedIcon,
   BugIcon,
   CableIcon,
   CalendarIcon,
@@ -37,22 +37,23 @@ export const getNavInfo = withAuth(async (user: SessionUser) => {
       email: fullUser?.email ?? "",
       avatar: user.avatar,
     },
-    teams: [
+    accounts: [
       // TODO: artists/accounts under user
+
       {
         name: "Tesko",
         logo: <GalleryVerticalEndIcon className={SIDEBAR_ICON_STYLE} />,
-        plan: "Enterprise",
+        plan: "Artist/Musician",
       },
       {
         name: "The Clear",
         logo: <AudioWaveformIcon className={SIDEBAR_ICON_STYLE} />,
-        plan: "Startup",
+        plan: "Artist/Musician",
       },
       {
         name: "Lurking Shadows",
         logo: <CommandIcon className={SIDEBAR_ICON_STYLE} />,
-        plan: "Free",
+        plan: "Artist/Musician",
       },
     ],
     projects: [
@@ -152,9 +153,9 @@ export const getNavInfo = withAuth(async (user: SessionUser) => {
             icon: <BugIcon className={SIDEBAR_ICON_STYLE} />,
           },
           {
-            title: "Changes",
-            url: "changes",
-            icon: <ArrowUpDownIcon className={SIDEBAR_ICON_STYLE} />,
+            title: "Documentation",
+            url: "documentation",
+            icon: <BookMarkedIcon className={SIDEBAR_ICON_STYLE} />,
           },
         ],
       },

@@ -1,42 +1,19 @@
-import { ScrollTextIcon } from "lucide-react";
-import ProtectedLayout from "@/components/layouts/protected-layout";
-import LayoutSidebar from "@/components/layouts/layout-sidebar";
-import { EPK_TABS } from "./tabs";
-import Navbar from "@/components/layouts/nav-bar";
+import { ScrollToTopLayout } from "@/components/layouts/scroll-to-top.layout";
 import { validateAuthPage } from "@/utils/security/auth";
-import { ScrollToTopLayout } from "./scroll-to-top.layout";
-import { USER_ROLES } from "@/types/user-roles";
 
 interface Props {
   children: React.ReactNode;
 }
 
 const ForesightLayout: React.FC<Props> = async ({ children }) => {
-  const user = await validateAuthPage();
-
-  const path = "epk";
-  const title = "EPK Builder";
-  const description = "Show your accomplishments";
-  const headerIcon = <ScrollTextIcon />;
+  await validateAuthPage();
 
   return (
-    <ProtectedLayout redirectUrl="/auth">
-      <Navbar />
-
-      <div className="flex h-[calc(100vh-4rem)] bg-background">
-        <LayoutSidebar
-          path={path}
-          userRole={user?.roles || USER_ROLES.USER}
-          tabs={EPK_TABS}
-          title={title}
-          description={description}
-          headerIcon={headerIcon}
-        />
-        <main className="flex flex-col overflow-y-auto bg-background w-full gap-4 p-8 ml-64">
-          <ScrollToTopLayout>{children}</ScrollToTopLayout>
-        </main>
-      </div>
-    </ProtectedLayout>
+    <div className="flex h-[calc(100vh-4rem)] bg-background">
+      <main className="flex flex-col overflow-y-auto bg-background w-full gap-4 p-8 ml-64">
+        <ScrollToTopLayout>{children}</ScrollToTopLayout>
+      </main>
+    </div>
   );
 };
 

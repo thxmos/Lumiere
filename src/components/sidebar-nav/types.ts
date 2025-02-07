@@ -1,11 +1,8 @@
-export interface Team {
+// TODO: replace with prisma one
+export interface Account {
   name: string;
   logo: React.ReactNode;
   plan: string;
-}
-
-export interface TeamSwitcherProps {
-  teams: Team[];
 }
 
 export interface NavItem {

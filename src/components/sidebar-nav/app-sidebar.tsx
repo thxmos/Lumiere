@@ -14,7 +14,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { getNavInfo } from "./getNavInfo";
+import { getNavInfo } from "./get-nav-info";
 import Link from "next/link";
 import { SunMoonIcon } from "lucide-react";
 import { Badge } from "../ui/badge";
@@ -50,7 +50,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <Badge variant="outline">BETA</Badge>
           </div>
         </Link>
-        <AccountSwitcher teams={data.teams} />
+        <AccountSwitcher accounts={data.accounts} />
       </SidebarHeader>
       <SidebarContent className="bg-background">
         <NavAccount projects={data.projects} />
