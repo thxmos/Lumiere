@@ -23,7 +23,9 @@ export default function DashboardLayout({
             <Breadcrumbs />
           </div>
         </header>
-        <div className="flex flex-col gap-4 p-4">{children}</div>
+        <div className="flex flex-col gap-4 p-4 overflow-y-scroll">
+          {children}
+        </div>
       </SidebarInset>
     </SidebarProvider>
   );
