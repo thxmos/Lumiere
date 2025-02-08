@@ -22,7 +22,7 @@ model Link {
 model LinkGroup {
   id          String  @id @unique @default(uuid())
   name        String
-  description String?
+  description String? @db.VarChar(200)
 
   links Link[] @relation("linkGroupLinks")
 

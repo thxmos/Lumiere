@@ -1,0 +1,56 @@
+model Account {
+  id             String   @id @default(uuid())
+
+  country        Country? @default(None)
+  displayCountry Boolean  @default(false)
+
+  avatar      String? // TODO: replace with avatarId
+  // avatarId     String? 
+  // assets      Asset[]
+
+  username    String  @unique @default(dbgenerated("'user-' || floor(random() * 1000000)::text"))
+  alias       String?
+
+  description String? @default("") @db.VarChar(200) // TODO: move this to link groups
+
+  // Theme
+//   theme       Theme?  @relation("UserTheme") // TODO: make many to many
+//   themeId     String?
+
+  // Assets
+//   Asset Asset[]
+
+  // Interactions
+//   linkGroups LinkGroup[] @relation("UserLinkGroups")
+//   QRCodes    QRCode[]    @relation("UserQRCodes")
+//   Click      Click[] // Click is tied directly to an account if its a social media link clicked
+
+  // Social Links
+  appleMusicArtistId String?
+  discordUsername    String? // Unused currently
+  facebookUsername   String?
+  instagramUsername  String?
+  patreonUsername    String?
+  spotifyArtistId    String?
+  tiktokUsername     String?
+  twitchUsername     String?
+  twitterUsername    String?
+  youtubeUsername    String?
+
+  // Foresight
+//   strategyType StrategyType?
+//   commitment Commitment?
+//   Campaign Campaign[] @relation(name: "UserCampaigns")
+
+//   // Analytics Tokens
+//   SpotifyToken SpotifyToken[] @relation("UserSpotifyTokens")
+//   GoogleToken GoogleToken[] @relation(name: "UserGoogleTokens")
+
+//   // Analytics
+//   ProfileView ProfileView[]
+//   SpotifyStats SpotifyStats[]
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+
+}
