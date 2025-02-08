@@ -1,5 +1,5 @@
 import { getLinkGroupsByUserId } from "@/actions/entities/link/getLinkGroupsByUserId";
-import LinkGroupGrid from "./components/link-group-grid";
+import LinkGroupGrid from "./link-group-grid";
 import { validateAuthPage } from "@/utils/security/auth";
 
 const LinkGroupsPage = async () => {

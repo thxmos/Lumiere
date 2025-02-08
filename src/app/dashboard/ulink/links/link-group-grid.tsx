@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { LinkGroupResponse } from "@/repositories/linkGroups";
-import LinkGroupForm from "../link-group-form";
+import LinkGroupForm from "./link-group-form";
 import { Button } from "@/components/ui/button";
 import { XIcon } from "lucide-react";
 import { Label } from "@/components/ui/label";
@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import { SessionUser } from "@/utils/lib/lucia";
 import { useRouter } from "next/navigation";
 
-const basePath = "/ulink/links";
+const basePath = "/dashboard/ulink/links";
 
 interface LinkGroupGridProps {
   linkGroups: LinkGroupResponse[];

@@ -26,62 +26,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useTheme } from "next-themes";
 
-const chartData = [
-  { date: "2023-06-01", clicks: 120, scans: 80 },
-  { date: "2023-06-08", clicks: 150, scans: 100 },
-  { date: "2023-06-15", clicks: 180, scans: 130 },
-  { date: "2023-06-22", clicks: 220, scans: 160 },
-  { date: "2023-06-29", clicks: 250, scans: 190 },
-];
-
-const tableData = [
-  {
-    id: 1,
-    date: "2023-06-01",
-    type: "Click",
-    link: "spotify.com/artist",
-    browser: "Chrome",
-    os: "Windows",
-  },
-  {
-    id: 2,
-    date: "2023-06-02",
-    type: "Scan",
-    link: "QR Code 1",
-    browser: "Safari",
-    os: "iOS",
-  },
-  {
-    id: 3,
-    date: "2023-06-03",
-    type: "Click",
-    link: "instagram.com/artist",
-    browser: "Firefox",
-    os: "macOS",
-  },
-  {
-    id: 4,
-    date: "2023-06-04",
-    type: "Click",
-    link: "twitter.com/artist",
-    browser: "Chrome",
-    os: "Android",
-  },
-  {
-    id: 5,
-    date: "2023-06-05",
-    type: "Scan",
-    link: "QR Code 2",
-    browser: "Edge",
-    os: "Windows",
-  },
-];
+import { tableData, chartData } from "./mocks";
 
 export default function AnalyticsDashboard() {
   const [selectedLink, setSelectedLink] = useState("all");
-  const { theme } = useTheme();
 
   const filteredData =
     selectedLink === "all"
@@ -108,7 +57,7 @@ export default function AnalyticsDashboard() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
+        <Card className="border-primary">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Clicks</CardTitle>
           </CardHeader>
@@ -119,7 +68,7 @@ export default function AnalyticsDashboard() {
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="border-primary">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Scans</CardTitle>
           </CardHeader>
@@ -130,7 +79,7 @@ export default function AnalyticsDashboard() {
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="border-primary">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Unique Visitors
@@ -143,7 +92,7 @@ export default function AnalyticsDashboard() {
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="border-primary">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Avg. Engagement Time
@@ -158,9 +107,9 @@ export default function AnalyticsDashboard() {
         </Card>
       </div>
 
-      <Card>
+      <Card className="border-primary">
         <CardHeader>
-          <CardTitle>Clicks and Scans Over Time</CardTitle>
+          <CardTitle>Interactions</CardTitle>
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={400}>
@@ -200,7 +149,7 @@ export default function AnalyticsDashboard() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="border-primary">
         <CardHeader>
           <CardTitle>Detailed Analytics</CardTitle>
         </CardHeader>

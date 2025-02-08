@@ -6,7 +6,7 @@ import { LinkIcon, PlusCircle } from "lucide-react";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 
-import { LinksList } from "@/app/dashboard/ulink/links/components/links-list";
+import { LinksList } from "@/app/dashboard/ulink/links/[linkGroupId]/links-list";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { Button } from "@/components/ui/button";
 import { useLinksStore } from "@/stores/links";
