@@ -3,19 +3,23 @@ model Theme {
   userId String @unique
   user User @relation("UserTheme", fields: [userId], references: [id])
 
+  // Colors
   primaryColor String @db.Char(7) @default("#3f434a") //TODO: better default
   secondaryColor String @db.Char(7) @default("#ffa500") //TODO: better default
 
+  // Text
   fontFamily String // TODO: make FontFamily enum
   fontWeight Int
   fontColor String @db.Char(7) @default("#000000")
   secondaryColorFont String @db.Char(7) @default("#000000") 
 
+  // Border
   borderColor String
   borderRadius Int
   borderWidth Int
   borderStyle String
 
+  // Card
   cardBackgroundColor String? @db.Char(7) @default("#FFFFFF")
   cardTextColor String? @db.Char(7) @default("#000000")
   cardShadowSize Int? // Size in pixels
@@ -24,8 +28,10 @@ model Theme {
   cardShadowDirection Int?// Angle in degrees (0-360)
   cardShadowBlur Int? // Blur in pixels 
   
+  // Icon
   iconColor String? @db.Char(7)
 
+  // Background
   backgroundType String @default("color") // "color" | "image" | "video" //TODO: make enum
   backgroundColor String? @db.Char(7) @default("#FFFFFF")
   gradient Boolean @default(true)
@@ -33,10 +39,12 @@ model Theme {
   backgroundImageUrl String? // could point directly to assetId - backgroundImageAssetId
   videoUrl String? // could point directly to assetId - videoAssetId
 
+  // Misc
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt @default(now())
 }
 
+//TODO: use this instead of string
 enum FontFamily {
   INTER
   ROBOTO

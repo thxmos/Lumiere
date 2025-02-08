@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Scan, Link } from "@prisma/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Select,
@@ -29,7 +30,13 @@ import {
 
 import { tableData, chartData } from "./mocks";
 
-export default function AnalyticsDashboard() {
+export default function AnalyticsDashboard({
+  links,
+  scans,
+}: {
+  links: Link[];
+  scans: Scan[];
+}) {
   const [selectedLink, setSelectedLink] = useState("all");
 
   const filteredData =

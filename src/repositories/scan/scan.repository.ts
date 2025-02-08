@@ -1,4 +1,4 @@
-import { Image as Asset, Prisma, Scan } from "@prisma/client";
+import { Prisma, Scan } from "@prisma/client";
 import { prisma } from "@/utils/lib/prisma";
 import { NotFoundError, DuplicateError, RepositoryError } from "../errors";
 import {
@@ -19,7 +19,7 @@ export class ScanRepository implements IScanRepository {
       const scan = await prisma.scan.findUnique({ where: { id } });
       return scan ? this.removePrivateFields(scan) : null;
     } catch (error) {
-      throw new RepositoryError("Failed to fetch scan by id", error);
+      throw new RepositoryError(`Failed to fetch scan with id: ${id}`, error);
     }
   }
 
@@ -37,7 +37,24 @@ export class ScanRepository implements IScanRepository {
       const scans = await prisma.scan.findMany({ where: { qrId } });
       return scans.map(this.removePrivateFields);
     } catch (error) {
-      throw new RepositoryError("Failed to fetch scans by qr id", error);
+      throw new RepositoryError(
+        `Failed to fetch scans by qr id: ${qrId}`,
+        error,
+      );
+    }
+  }
+
+  async getAllByUserId(userId: string): Promise<ScanResponse[]> {
+    try {
+      const scans = await prisma.scan.findMany({
+        where: { qrCode: { userId } },
+      });
+      return scans.map(this.removePrivateFields);
+    } catch (error) {
+      throw new RepositoryError(
+        `Failed to fetch scans for user: ${userId}`,
+        error,
+      );
     }
   }
 

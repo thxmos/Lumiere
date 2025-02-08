@@ -1,3 +1,6 @@
+// Session Token
+// Used to authenticate users and keep them logged in
+//
 model Session {
   id        String   @id
   userId    String @unique
@@ -6,6 +9,9 @@ model Session {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+// Verification Token
+// Used when user first signs up to verify their email
+//
 model VerificationToken {
   id        String   @id @default(uuid())
   token     String   @unique
@@ -14,6 +20,9 @@ model VerificationToken {
   expiresAt DateTime
 }
 
+// Password Reset Token
+// Used in password reset flow which starts in login page
+//
 model PasswordResetToken {
   id        String   @id @default(uuid())
   token     String   @unique

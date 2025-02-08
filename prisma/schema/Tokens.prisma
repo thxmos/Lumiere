@@ -1,0 +1,31 @@
+// Google Token
+// Used for Google Calendar API
+
+model GoogleToken {
+  id                String    @id @default(uuid())
+  googleAccessToken  String?
+  googleRefreshToken String?
+  googleTokenExpiry DateTime?
+
+  userId            String    @unique
+  user User @relation(fields: [userId], references: [id], name: "UserGoogleTokens")
+
+  createdAt         DateTime  @default(now())
+
+}
+
+// Spotify Token
+// Used for Spotify Analytics
+
+model SpotifyToken {
+  id String @id @default(uuid())
+  spotifyArtistId     String?
+  userId String
+  user User @relation(fields: [userId], references: [id], name: "UserSpotifyTokens")
+
+  accessToken String
+  refreshToken String
+  expiresAt DateTime
+
+  createdAt         DateTime  @default(now())
+}

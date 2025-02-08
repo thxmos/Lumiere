@@ -1,6 +1,24 @@
-model Scan {
-  id        String   @id @default(cuid())
+model QRCode {
+  id String @id @default(uuid()) @unique
+  title String?
+  url String
+
+  userId String
+  user User @relation("UserQRCodes", fields: [userId], references: [id])
+
+  scans Int @default(0) //TODO: change to numScans or something
+  QRScan QRScan[] @relation("QRCodeScans")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
+
+}
+
+model QRScan {
+  id        String   @id @default(uuid())
   qrId      String
+  qrCode    QRCode   @relation("QRCodeScans", fields: [qrId], references: [id])
+
   createdAt DateTime @default(now())
 
   // Network info

@@ -1,11 +1,3 @@
-enum ActionCategory {
-  PRE_RELEASE
-  RELEASE_DAY
-  POST_RELEASE
-  GENRE_SPECIFIC
-  PLATFORM_AND_AUDIENCE
-}
-
 model Action {
   id              String         @id @default(uuid())
   title           String
@@ -18,4 +10,12 @@ model Action {
   lastSyncedToCalendarAt DateTime?
   createdAt       DateTime       @default(now())
   updatedAt       DateTime       @updatedAt
+}
+
+enum ActionCategory {
+  PRE_RELEASE
+  RELEASE_DAY
+  POST_RELEASE
+  GENRE_SPECIFIC
+  PLATFORM_AND_AUDIENCE
 }
