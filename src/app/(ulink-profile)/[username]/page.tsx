@@ -1,12 +1,12 @@
 import { getUserByUsername } from "@/actions/entities/User/getUserByUsername";
 import { getActiveLinksByUsername } from "@/actions/entities/Link/getActiveLinksByUsername";
-import { getThemeByUsername } from "@/actions/entities/Theme/getTheme";
+import { getThemeByUsername } from "@/actions/entities/Theme/getThemeByUsername";
 import React from "react";
 import { redirect } from "next/navigation";
 import LinkTree from "@/app/(ulink-profile)/components/profile/linktree";
 import { LinkDtoWithId } from "@/types/links";
-import { UserDtoNoId } from "@/actions/entities/User/createUser";
 import { createProfileView } from "@/actions/entities/ProfileView/createProfileView";
+import { UserResponse } from "@/repositories/user";
 
 export default async function ArtistPage({
   params,
@@ -32,7 +32,7 @@ export default async function ArtistPage({
       isPreview={searchParams.preview === "true"}
       initialLinks={links as LinkDtoWithId[]}
       initialTheme={theme}
-      user={user as UserDtoNoId}
+      user={user as UserResponse}
     />
   );
 }

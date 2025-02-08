@@ -12,7 +12,6 @@ export const updateLinks = withAuth(
     for (const link of data) {
       await linkRepository.update(link.id, {
         ...link,
-        user: { connect: { id: user.id } },
       });
     }
   },

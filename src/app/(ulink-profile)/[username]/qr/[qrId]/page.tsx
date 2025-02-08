@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { updateQrScan } from "@/actions/entities/QRCode/updateQrScan";
+import { updateQrScanCount } from "@/actions/entities/QRCode/updateQrScanCount";
 import { getQRCodeById } from "@/actions/entities/QRCode/getQrCodeById";
 import { BrowserData } from "@/types/clicks";
 import { headers } from "next/headers";
@@ -38,7 +38,7 @@ export default async function QRRedirectPage({
   //TODO: check if referring page is the user's page
   //TODO: maybe use preview query param here to disable scans
   // Update scan count
-  await updateQrScan(qrId, browserData);
+  await updateQrScanCount(qrId, browserData);
 
   // Get QR code data
   const qrCode = await getQRCodeById(qrId);

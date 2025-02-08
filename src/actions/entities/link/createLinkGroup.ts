@@ -2,7 +2,6 @@
 
 import {
   LinkGroupCreateDto,
-  LinkGroupCreateInput,
   linkGroupRepository,
 } from "@/repositories/linkGroups";
 

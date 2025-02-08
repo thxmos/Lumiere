@@ -6,7 +6,7 @@ import { CreateScanDto } from "../QRScan/createScan";
 import { getQRCodeById } from "./getQrCodeById";
 import { updateQRCode } from "./updateQrCode";
 
-export const updateQrScan = async (
+export const updateQrScanCount = async (
   qrId: string,
   browserData: Partial<BrowserData>,
 ) => {
