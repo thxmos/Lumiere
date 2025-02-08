@@ -1,9 +1,9 @@
 const chartData = [
-  { date: "2023-06-01", clicks: 120, scans: 80 },
-  { date: "2023-06-08", clicks: 150, scans: 100 },
-  { date: "2023-06-15", clicks: 180, scans: 130 },
-  { date: "2023-06-22", clicks: 220, scans: 160 },
-  { date: "2023-06-29", clicks: 250, scans: 190 },
+  { date: "2023-06-01", clicks: 45, scans: 9, views: 12 },
+  { date: "2023-06-08", clicks: 37, scans: 21, views: 12 },
+  { date: "2023-06-15", clicks: 53, scans: 4, views: 14 },
+  { date: "2023-06-22", clicks: 42, scans: 31, views: 16 },
+  { date: "2023-06-29", clicks: 67, scans: 7, views: 18 },
 ];
 
 const tableData = [

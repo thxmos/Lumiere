@@ -153,6 +153,14 @@ export default function AnalyticsDashboard({
                 fill="hsl(var(--chart-2))"
                 fillOpacity={0.5}
               />
+              <Area
+                type="monotone"
+                dataKey="views"
+                stackId="1"
+                stroke="hsl(var(--chart-3))"
+                fill="hsl(var(--chart-3))"
+                fillOpacity={0.5}
+              />
             </AreaChart>
           </ResponsiveContainer>
         </CardContent>
@@ -212,6 +220,15 @@ const CustomTooltip = ({ active, payload, label }: any) => {
             style={{ color: "hsl(var(--chart-2))" }}
           >
             {payload[1].value}
+          </span>
+        </p>
+        <p className="text-sm flex items-center gap-2">
+          <span className="font-bold">Views:</span>
+          <span
+            className="font-medium"
+            style={{ color: "hsl(var(--chart-3))" }}
+          >
+            {payload[2].value}
           </span>
         </p>
       </div>
