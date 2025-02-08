@@ -40,7 +40,7 @@ export default function AnalyticsDashboard() {
         );
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-4">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-semibold">Monthly Overview</h2>
         <Select value={selectedLink} onValueChange={setSelectedLink}>
@@ -186,12 +186,24 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-card text-card-foreground p-3 border rounded-lg shadow-sm">
-        <p className="font-semibold">{label}</p>
-        <p className="text-sm">
-          Clicks: <span className="font-medium">{payload[0].value}</span>
+        <p className="font-bold">{label}</p>
+        <p className="text-sm flex items-center gap-2">
+          <span className="font-bold">Clicks:</span>
+          <span
+            className="font-medium"
+            style={{ color: "hsl(var(--chart-1))" }}
+          >
+            {payload[0].value}
+          </span>
         </p>
-        <p className="text-sm">
-          Scans: <span className="font-medium">{payload[1].value}</span>
+        <p className="text-sm flex items-center gap-2">
+          <span className="font-bold">Scans:</span>
+          <span
+            className="font-medium"
+            style={{ color: "hsl(var(--chart-2))" }}
+          >
+            {payload[1].value}
+          </span>
         </p>
       </div>
     );

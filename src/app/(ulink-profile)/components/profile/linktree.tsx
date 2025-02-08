@@ -29,7 +29,6 @@ interface Props {
   user: UserDtoNoId;
 }
 
-// Add this type near the top with your other interfaces
 type CardShadow = {
   cardShadowSize?: number;
   cardShadowColor?: string;
