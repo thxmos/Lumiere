@@ -10,7 +10,7 @@ import {
 
 export class UserRepository implements IUserRepository {
   private removePrivateFields(user: User): UserResponse {
-    const { password, stripeCustomerId, ...userResponse } = user;
+    const { password, ...userResponse } = user; //TODO: stripeCustomerId
     return userResponse;
   }
 

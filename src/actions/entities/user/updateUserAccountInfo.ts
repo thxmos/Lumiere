@@ -9,7 +9,7 @@ import { getUserByUsername } from "./getUserByUsername";
 
 // TODO: probably could just use updateUser
 // OR just have specific update functions that use repository update
-export const updateUserAccountInfoAction = withAuth(
+export const updateUserAccountInfo = withAuth(
   async (user: SessionUser, data: Partial<UserDto>) => {
     if (data.username) {
       if (data.username !== user.username) {

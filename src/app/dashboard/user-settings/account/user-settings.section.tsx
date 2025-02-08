@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
-import type { UserDto } from "@/actions/entities/User/createUser";
-import { updateUserSettings } from "@/actions/entities/User/updateUserSettings";
+import { updateUserById } from "@/actions/entities/User/updateUserById";
+import { UserResponse } from "@/repositories/user";
 
-export default function UserSettingsSection({ user }: { user: UserDto }) {
+export default function UserSettingsSection({ user }: { user: UserResponse }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -19,7 +19,7 @@ export default function UserSettingsSection({ user }: { user: UserDto }) {
     const name = formData.get("name") as string;
 
     try {
-      await updateUserSettings({ name });
+      await updateUserById(user.id, { name });
       toast.success("Successfully updated user", {
         duration: 3000,
       });

@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import React, { useTransition, useRef } from "react";
 import { toast } from "sonner";
-import { passwordReset } from "@/actions/entities/User/passwordReset";
+import { setPassword } from "@/actions/entities/User/setPassword";
 import type { UserDto } from "@/actions/entities/User/createUser";
 
 type Props = {
@@ -22,7 +22,7 @@ const PasswordResetForm: React.FC<Props> = ({ user }) => {
 
     startTransition(async () => {
       try {
-        await passwordReset(formData, user.id);
+        await setPassword(formData, user.id);
         toast.success("Successfully updated password");
         formRef.current?.reset();
       } catch (error) {

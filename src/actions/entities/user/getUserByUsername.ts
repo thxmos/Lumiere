@@ -2,7 +2,10 @@
 
 import { userRepository } from "@/repositories/user";
 
-// used on username page
+/*
+ * getUserByUsername()
+ * used on public ULink profile page
+ */
 export const getUserByUsername = async (username: string) => {
   const data = await userRepository.findByUsername(username);
   if (!data) return null;

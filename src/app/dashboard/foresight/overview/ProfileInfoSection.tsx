@@ -19,21 +19,14 @@ import { cn } from "@/utils/utils";
 import { useState } from "react";
 import { SocialMediaIntegrationsMenu } from "./IntegrationsMenu";
 import { IntegrationDetailsModal } from "./IntegrationDetailsModal";
-import { SessionUser } from "@/utils/lib/lucia";
-import { Commitment, StrategyType } from "@prisma/client";
 import { toast } from "sonner";
+import { UserResponse } from "@/repositories/user";
 
 export interface ProfileInfoSectionProps {
-  user: SessionUser;
-  commitment: Commitment | null;
-  strategyType: StrategyType | null;
+  user: UserResponse;
 }
 
-export const ProfileInfoSection = ({
-  user,
-  commitment,
-  strategyType,
-}: ProfileInfoSectionProps) => {
+export const ProfileInfoSection = ({ user }: ProfileInfoSectionProps) => {
   const [isIntegrationsModalOpen, setIsIntegrationsModalOpen] = useState(false);
   const [selectedPlatform, setSelectedPlatform] = useState<
     (typeof SOCIAL_PLATFORMS)[number] | null
@@ -84,31 +77,32 @@ export const ProfileInfoSection = ({
               <Label className="flex items-center gap-2">
                 <BrainIcon className="w-4 h-4" />
                 <span className="font-bold">Strategy:</span>{" "}
-                {strategyType || "None"}
+                {user.strategyType || "None"}
               </Label>
               <Label className="flex items-center gap-2">
                 <WeightIcon className="w-4 h-4" />
                 <span className="font-bold">Commitment:</span>{" "}
-                {commitment || "None"}
+                {user.commitment || "None"}
               </Label>
               <Label className="flex items-center gap-2">
                 <ThermometerIcon className="w-4 h-4" />
-                <span className="font-bold">Buzz:</span> {commitment || "None"}
+                <span className="font-bold">Buzz:</span>{" "}
+                {user.commitment || "None"}
               </Label>
               <Label className="flex items-center gap-2">
                 <BarChart3Icon className="w-4 h-4" />
                 <span className="font-bold">Most Reach:</span>{" "}
-                {commitment || "None"}
+                {user.commitment || "None"}
               </Label>
               <Label className="flex items-center gap-2">
                 <TrendingUpIcon className="w-4 h-4" />
                 <span className="font-bold">Trending:</span>{" "}
                 <span
                   className={cn(
-                    !commitment ? "text-green-500" : "text-red-500",
+                    !user.commitment ? "text-green-500" : "text-red-500",
                   )}
                 >
-                  {!commitment ? "Up" : "Down"}
+                  {!user.commitment ? "Up" : "Down"}
                 </span>
               </Label>
             </div>

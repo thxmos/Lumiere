@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/select";
 import { COUNTRIES } from "@/constants/countries";
 import { Switch } from "@/components/ui/switch";
-import { updateUserAccountInfoAction } from "@/actions/entities/User/updateUserAccountInfoAction";
+import { updateUserAccountInfo } from "@/actions/entities/User/updateUserAccountInfo";
 import { uploadAvatar } from "@/actions/file-upload/createAsset";
 import { SettingsIcon } from "lucide-react";
 
@@ -43,7 +43,7 @@ export function AccountSection({ user }: { user: UserDto }) {
 
   const onSubmit = async (data: Partial<UserDto>) => {
     try {
-      await updateUserAccountInfoAction(data);
+      await updateUserAccountInfo(data);
 
       if (avatarFile) {
         const formData = new FormData();

@@ -6,7 +6,7 @@ export type UserUpdateInput = Prisma.UserUpdateInput;
 export type UserWhereInput = Prisma.UserWhereInput;
 
 // For responses, we can omit sensitive fields from Prisma's User type
-export type UserResponse = Omit<User, "password" | "stripeCustomerId">;
+export type UserResponse = Omit<User, "password">; //TODO: stripeCustomerId
 
 export interface IUserRepository
   extends IBaseRepository<UserResponse, UserCreateInput, UserUpdateInput> {

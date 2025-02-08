@@ -25,7 +25,7 @@ export const createCheckoutSession = withAuth(
     quanity: number,
   ): Promise<{ success: boolean; sessionId?: string; message?: string }> => {
     try {
-      const userFromDb = await getUserById(user.id);
+      const userFromDb = await getUserById();
 
       if (!userFromDb || !userFromDb.stripeCustomerId) {
         throw new Error("User not found or no stripe customer id");

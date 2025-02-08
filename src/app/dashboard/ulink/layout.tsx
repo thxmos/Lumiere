@@ -6,14 +6,14 @@ import type { UserDtoNoId } from "@/actions/entities/User/createUser";
 import type { LinkDtoWithId } from "@/types/links";
 import { validateAuthPage } from "@/utils/security/auth";
 import { ScrollToTopLayout } from "@/components/layouts/scroll-to-top.layout";
+import { getUserById } from "@/actions/entities/User/getUserById";
 
 interface Props {
   children: React.ReactNode;
 }
 
 const ULinkLayout: React.FC<Props> = async ({ children }) => {
-  const user = await validateAuthPage();
-
+  const user = await getUserById();
   const theme = await getThemeAction();
   const links = await getLinksByUserId();
 
@@ -39,7 +39,7 @@ const ULinkLayout: React.FC<Props> = async ({ children }) => {
           isMobilePreview={true}
           initialLinks={links as LinkDtoWithId[]}
           initialTheme={theme}
-          user={user as UserDtoNoId}
+          user={user}
         />
       </MobilePreview>
     </div>

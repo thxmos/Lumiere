@@ -5,6 +5,11 @@ import { updateUserById } from "./updateUserById";
 import { SessionUser } from "@/utils/lib/lucia";
 import { withAuth } from "@/utils/security/auth";
 
+/*
+ * setPasswordOAuth()
+ * Used on security page to set password for OAuth users
+ */
+
 export const setPasswordOAuth = withAuth(
   async (user: SessionUser, formData: FormData) => {
     const newPassword = formData.get("newPassword") as string;

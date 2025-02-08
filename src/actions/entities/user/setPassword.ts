@@ -4,7 +4,12 @@ import { verify, hash } from "@/utils/security/crypto";
 import { updateUserById } from "./updateUserById";
 import { getUserByIdWithPassword } from "./getUserByIdWithPassword";
 
-export async function passwordReset(formData: FormData, userId: string) {
+/*
+ * setPassword()
+ * Used on security page to change password
+ */
+
+export async function setPassword(formData: FormData, userId: string) {
   const currentPassword = formData.get("currentPassword") as string;
   const newPassword = formData.get("newPassword") as string;
   const confirmPassword = formData.get("confirmPassword") as string;

@@ -8,7 +8,6 @@ import type { LinkDto, LinkDtoWithId } from "@/types/links";
 import type { ThemeNoId } from "@/types/entities/theme";
 import { useThemeStore } from "@/stores/themes";
 import { useLinksStore } from "@/stores/links";
-import { UserDtoNoId } from "@/actions/entities/User/createUser";
 import { BLACK, WHITE } from "@/constants/ui/colors";
 import { COUNTRIES } from "@/constants/countries";
 import { TabSelector } from "./components/tab-selector";
@@ -20,14 +19,7 @@ import VideoBackground from "./components/background-video";
 import { ImageBackground } from "./components/background-image";
 import { createClickSocial } from "@/actions/entities/LinkClick/createClickSocial";
 import { SocialMedia } from "@prisma/client";
-
-interface Props {
-  isPreview?: boolean;
-  isMobilePreview?: boolean;
-  initialLinks: LinkDto[];
-  initialTheme: ThemeNoId;
-  user: UserDtoNoId;
-}
+import { UserResponse } from "@/repositories/user";
 
 type CardShadow = {
   cardShadowSize?: number;
@@ -54,6 +46,14 @@ const generateShadowStyle = (theme: ThemeNoId & CardShadow) => {
     boxShadow: `${offsetX}px ${offsetY}px ${theme.cardShadowBlur || 0}px ${theme.cardShadowSize}px ${theme.cardShadowColor}`,
   };
 };
+
+interface Props {
+  isPreview?: boolean;
+  isMobilePreview?: boolean;
+  initialLinks: LinkDto[];
+  initialTheme: ThemeNoId;
+  user: UserResponse;
+}
 
 export default function LinkTree({
   isPreview = false,
