@@ -29,15 +29,17 @@ const ULinkLayout: React.FC<Props> = async ({ children }) => {
       <main className="flex flex-col overflow-y-auto bg-background w-full gap-4 p-8">
         <ScrollToTopLayout>{children}</ScrollToTopLayout>
       </main>
-      <MobilePreview username={user?.username!}>
-        <LinkTree
-          isPreview={true}
-          isMobilePreview={true}
-          initialLinks={links as LinkDtoWithId[]}
-          initialTheme={theme}
-          user={user}
-        />
-      </MobilePreview>
+      <aside className="sticky top-0 flex items-center h-screen px-32">
+        <MobilePreview username={user?.username!}>
+          <LinkTree
+            isPreview={true}
+            isMobilePreview={true}
+            initialLinks={links as LinkDtoWithId[]}
+            initialTheme={theme}
+            user={user}
+          />
+        </MobilePreview>
+      </aside>
     </div>
   );
 };
