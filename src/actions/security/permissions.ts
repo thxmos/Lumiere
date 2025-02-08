@@ -2,7 +2,7 @@
 
 import { hasPermission } from "@/utils/security/access";
 import type { User, Permissions } from "@/types/access";
-import { getUserById } from "@/actions/entities/user/getUserById";
+import { getUserById } from "@/actions/entities/User/getUserById";
 import { requireUser } from "@/utils/security/auth";
 
 /*

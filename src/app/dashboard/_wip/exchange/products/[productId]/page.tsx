@@ -1,6 +1,6 @@
 import ProductEditSection from "./product-edit.section";
-import { getProduct } from "@/actions/entities/product/product2";
-import { UserDto } from "@/actions/entities/user/createUser";
+import { getProduct } from "@/actions/entities/Product/product2";
+import { UserDto } from "@/actions/entities/User/createUser";
 import { validateAuthPage } from "@/utils/security/auth";
 
 interface Props {

@@ -11,10 +11,10 @@ import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { AssetUpload } from "@/components/upload/asset-upload";
 import { toast } from "sonner";
-import { updateProduct } from "@/actions/entities/product/product2";
+import { updateProduct } from "@/actions/entities/Product/product2";
 import { useForm } from "react-hook-form";
 import type { Product2Dto } from "@/types/entities/product2";
-import { UserDto } from "@/actions/entities/user/createUser";
+import { UserDto } from "@/actions/entities/User/createUser";
 
 interface Props {
   product: Product2Dto;

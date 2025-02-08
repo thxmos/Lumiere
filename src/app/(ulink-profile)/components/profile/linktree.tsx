@@ -8,7 +8,7 @@ import type { LinkDto, LinkDtoWithId } from "@/types/links";
 import type { ThemeNoId } from "@/types/entities/theme";
 import { useThemeStore } from "@/stores/themes";
 import { useLinksStore } from "@/stores/links";
-import { UserDtoNoId } from "@/actions/entities/user/createUser";
+import { UserDtoNoId } from "@/actions/entities/User/createUser";
 import { BLACK, WHITE } from "@/constants/ui/colors";
 import { COUNTRIES } from "@/constants/countries";
 import { TabSelector } from "./components/tab-selector";
@@ -18,7 +18,7 @@ import { DEFAULT_FONT } from "@/constants/ui/fonts";
 import { ColoredBackground } from "./components/background-color";
 import VideoBackground from "./components/background-video";
 import { ImageBackground } from "./components/background-image";
-import { createClickSocial } from "@/actions/entities/click/createClickSocial";
+import { createClickSocial } from "@/actions/entities/LinkClick/createClickSocial";
 import { SocialMedia } from "@prisma/client";
 
 interface Props {

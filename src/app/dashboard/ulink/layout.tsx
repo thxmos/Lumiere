@@ -1,8 +1,8 @@
 import MobilePreview from "@/app/dashboard/ulink/_components/mobile-preview/mobile-preview";
 import LinkTree from "@/app/(ulink-profile)/components/profile/linktree";
-import { getThemeAction } from "@/actions/entities/theme/getTheme";
-import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
-import type { UserDtoNoId } from "@/actions/entities/user/createUser";
+import { getThemeAction } from "@/actions/entities/Theme/getTheme";
+import { getLinksByUserId } from "@/actions/entities/Link/getLinksByUserId";
+import type { UserDtoNoId } from "@/actions/entities/User/createUser";
 import type { LinkDtoWithId } from "@/types/links";
 import { validateAuthPage } from "@/utils/security/auth";
 import { ScrollToTopLayout } from "@/components/layouts/scroll-to-top.layout";

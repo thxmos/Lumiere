@@ -1,4 +1,4 @@
-import { getLinkGroupsByUserId } from "@/actions/entities/link/getLinkGroupsByUserId";
+import { getLinkGroupsByUserId } from "@/actions/entities/Link/getLinkGroupsByUserId";
 import LinkGroupGrid from "./link-group-grid";
 import { validateAuthPage } from "@/utils/security/auth";
 

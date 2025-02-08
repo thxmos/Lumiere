@@ -6,10 +6,10 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { SOCIAL_PLATFORMS } from "@/constants/social-media";
-import { UserDto } from "@/actions/entities/user/createUser";
+import { UserDto } from "@/actions/entities/User/createUser";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { toast } from "sonner";
-import { updateUser } from "@/actions/entities/user/updateUser";
+import { updateUser } from "@/actions/entities/User/updateUser";
 import { useUserStore } from "@/stores/user";
 import { UsersIcon } from "lucide-react";
 

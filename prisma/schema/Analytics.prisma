@@ -1,3 +1,17 @@
+// ProfileView
+// Created when a user views a linktree profile
+
+model ProfileView {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  timestamp   DateTime @default(now())
+
+  @@index([userId])
+}
+
+// SpotifyStats
+// Data pulled from Spotify API for analytics
 model SpotifyStats {
   id          String   @id @default(uuid())
   userId      String

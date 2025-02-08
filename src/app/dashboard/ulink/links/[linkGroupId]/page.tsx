@@ -1,6 +1,6 @@
 import { LinksSection } from "./links.section";
 import { validateAuthPage } from "@/utils/security/auth";
-import { getLinksByGroupId } from "@/actions/entities/link/getLinksByGroupId";
+import { getLinksByGroupId } from "@/actions/entities/Link/getLinksByGroupId";
 import { SocialMediaSection } from "./social-media.section";
 
 export default async function LinksPage({

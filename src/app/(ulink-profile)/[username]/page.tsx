@@ -1,11 +1,11 @@
-import { getUserByUsername } from "@/actions/entities/user/getUserByUsername";
-import { getActiveLinksByUsername } from "@/actions/entities/link/getActiveLinksByUsername";
-import { getThemeByUsername } from "@/actions/entities/theme/getTheme";
+import { getUserByUsername } from "@/actions/entities/User/getUserByUsername";
+import { getActiveLinksByUsername } from "@/actions/entities/Link/getActiveLinksByUsername";
+import { getThemeByUsername } from "@/actions/entities/Theme/getTheme";
 import React from "react";
 import { redirect } from "next/navigation";
 import LinkTree from "@/app/(ulink-profile)/components/profile/linktree";
 import { LinkDtoWithId } from "@/types/links";
-import { UserDtoNoId } from "@/actions/entities/user/createUser";
+import { UserDtoNoId } from "@/actions/entities/User/createUser";
 
 export default async function ArtistPage({
   params,

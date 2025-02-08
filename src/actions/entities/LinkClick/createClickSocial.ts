@@ -1,7 +1,7 @@
 "use server";
 
 import { BrowserData } from "@/types/clicks";
-import { getClientData } from "@/actions/getClientData";
+import { getClientData } from "@/actions/analytics";
 import { clickRepository } from "@/repositories/click";
 import { SocialMedia } from "@prisma/client";
 

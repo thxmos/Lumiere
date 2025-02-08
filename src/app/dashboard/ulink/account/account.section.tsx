@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import AvatarUpload from "@/app/dashboard/ulink/_components/avatar-upload";
-import type { UserDto } from "@/actions/entities/user/createUser";
+import type { UserDto } from "@/actions/entities/User/createUser";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { toast } from "sonner";
 import {
@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/select";
 import { COUNTRIES } from "@/constants/countries";
 import { Switch } from "@/components/ui/switch";
-import { updateUserAccountInfoAction } from "@/actions/entities/user/updateUserAccountInfoAction";
+import { updateUserAccountInfoAction } from "@/actions/entities/User/updateUserAccountInfoAction";
 import { uploadAvatar } from "@/actions/file-upload/createAsset";
 import { SettingsIcon } from "lucide-react";
 

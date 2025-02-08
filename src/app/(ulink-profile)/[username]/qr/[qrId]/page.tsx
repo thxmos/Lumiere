@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
-import { updateQrScan } from "@/actions/entities/qr-code/updateQrScan";
-import { getQRCodeById } from "@/actions/entities/qr-code/getQrCodeById";
+import { updateQrScan } from "@/actions/entities/QRCode/updateQrScan";
+import { getQRCodeById } from "@/actions/entities/QRCode/getQrCodeById";
 import { BrowserData } from "@/types/clicks";
 import { headers } from "next/headers";
 import { UAParser } from "ua-parser-js";

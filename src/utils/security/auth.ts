@@ -3,7 +3,6 @@ import { redirect } from "next/navigation";
 import { prisma } from "../lib/prisma";
 import { AUTH_COOKIE_NAME } from "@/constants/app";
 import { SessionUser } from "../lib/lucia";
-import { UserDto } from "@/actions/entities/user/createUser";
 
 /*
  * validateServerSession:
@@ -22,7 +21,15 @@ export const validateServerSession = async () => {
   const session = await prisma.session.findUnique({
     where: { id: sessionId },
     include: {
-      user: true,
+      user: {
+        select: {
+          id: true,
+          username: true,
+          name: true,
+          avatar: true,
+          roles: true,
+        },
+      },
     },
   });
 

@@ -50,22 +50,26 @@ model User {
   stripeCustomerId String? @unique
   subscriptions    Price[] @relation("UserSubscriptions")
 
-  // Session Info
+  // Session & Auth
   session            Session?
   verificationToken  VerificationToken?
   passwordResetToken PasswordResetToken?
   oAuthProvider OAuthProvider?
   roles Role @default(USER)
-  GoogleToken GoogleToken[] @relation(name: "UserGoogleTokens")
 
   // Foresight
   strategyType StrategyType?
   commitment Commitment?
   Campaign Campaign[] @relation(name: "UserCampaigns")
 
-  // Spotify
-  SpotifyStats SpotifyStats[]
+  // Analytics Tokens
   SpotifyToken SpotifyToken[] @relation("UserSpotifyTokens")
+  GoogleToken GoogleToken[] @relation(name: "UserGoogleTokens")
+
+
+  // Analytics
+  ProfileView ProfileView[]
+  SpotifyStats SpotifyStats[]
 
 }
 

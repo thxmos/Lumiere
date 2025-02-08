@@ -1,8 +1,8 @@
 "use server";
 
 import { BrowserData } from "@/types/clicks";
-import { createScan } from "../scan/createScan";
-import { CreateScanDto } from "../scan/createScan";
+import { createScan } from "../QRScan/createScan";
+import { CreateScanDto } from "../QRScan/createScan";
 import { getQRCodeById } from "./getQrCodeById";
 import { updateQRCode } from "./updateQrCode";
 

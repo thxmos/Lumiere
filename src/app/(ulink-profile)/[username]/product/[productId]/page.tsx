@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
-import { getProductById } from "@/actions/entities/product/product2";
-import { getUserByUsername } from "@/actions/entities/user/getUserByUsername";
+import { getProductById } from "@/actions/entities/Product/product2";
+import { getUserByUsername } from "@/actions/entities/User/getUserByUsername";
 
 export default async function ArtistProductPage({
   params,

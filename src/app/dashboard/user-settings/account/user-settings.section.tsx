@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
-import type { UserDto } from "@/actions/entities/user/createUser";
-import { updateUserSettings } from "@/actions/entities/user/updateUserSettings";
+import type { UserDto } from "@/actions/entities/User/createUser";
+import { updateUserSettings } from "@/actions/entities/User/updateUserSettings";
 
 export default function UserSettingsSection({ user }: { user: UserDto }) {
   const [isSubmitting, setIsSubmitting] = useState(false);

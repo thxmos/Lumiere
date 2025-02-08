@@ -6,7 +6,12 @@ import { SessionUser } from "@/utils/lib/lucia";
 
 export const getQRCodesByUserId = withAuth(
   async (user: SessionUser): Promise<QrCodeResponse[]> => {
-    const qrCodes = await qrCodeRepository.getAllByUserId(user.id);
-    return qrCodes;
+    try {
+      const qrCodes = await qrCodeRepository.getAllByUserId(user.id);
+      return qrCodes;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   },
 );

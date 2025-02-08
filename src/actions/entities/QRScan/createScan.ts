@@ -1,9 +1,10 @@
 "use server";
 
-import { scanRepository } from "@/repositories/scan";
+import { qrScanRepository } from "@/repositories/qr-scan";
 import { SessionUser } from "@/utils/lib/lucia";
 import { withAuth } from "@/utils/security/auth";
 
+// TODO: temporarily used, should be replaced with QRScanCreateInput
 export type CreateScanDto = {
   qrId: string;
   browser: string;
@@ -17,8 +18,8 @@ export type CreateScanDto = {
 
 export const createScan = withAuth(
   async (user: SessionUser, scan: CreateScanDto) => {
-    const newScan = await scanRepository.create({
-      qrId: scan.qrId,
+    const newScan = await qrScanRepository.create({
+      qrCode: { connect: { id: scan.qrId } },
       browser: scan.browser,
       browserVersion: scan.browserVersion,
       operatingSystem: scan.operatingSystem,

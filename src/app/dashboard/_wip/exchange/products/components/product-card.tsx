@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Edit, X } from "lucide-react";
 import { PLACEHOLDER_IMG } from "@/constants/ui/images";
 import type { Product2Dto } from "@/types/entities/product2";
-import { deleteProductById } from "@/actions/entities/product/product";
+import { deleteProductById } from "@/actions/entities/Product/product";
 import { ConfirmDeleteModal } from "@/app/dashboard/ulink/_components/modals/confirm-delete-modal";
 import { useState } from "react";
 import { toast } from "sonner";

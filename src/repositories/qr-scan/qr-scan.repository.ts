@@ -1,40 +1,40 @@
-import { Prisma, Scan } from "@prisma/client";
+import { Prisma, QRScan } from "@prisma/client";
 import { prisma } from "@/utils/lib/prisma";
 import { NotFoundError, DuplicateError, RepositoryError } from "../errors";
 import {
-  IScanRepository,
-  ScanResponse,
-  ScanCreateInput,
-  ScanUpdateInput,
+  IQRScanRepository,
+  QRScanResponse,
+  QRScanCreateInput,
+  QRScanUpdateInput,
 } from "./types";
 
-export class ScanRepository implements IScanRepository {
-  private removePrivateFields(scan: Scan): ScanResponse {
+export class QRScanRepository implements IQRScanRepository {
+  private removePrivateFields(scan: QRScan): QRScanResponse {
     const { id, ...scanResponse } = scan;
     return { ...scanResponse };
   }
 
-  async findById(id: string): Promise<ScanResponse | null> {
+  async findById(id: string): Promise<QRScanResponse | null> {
     try {
-      const scan = await prisma.scan.findUnique({ where: { id } });
+      const scan = await prisma.qRScan.findUnique({ where: { id } });
       return scan ? this.removePrivateFields(scan) : null;
     } catch (error) {
       throw new RepositoryError(`Failed to fetch scan with id: ${id}`, error);
     }
   }
 
-  async findAll(): Promise<ScanResponse[]> {
+  async findAll(): Promise<QRScanResponse[]> {
     try {
-      const scans = await prisma.scan.findMany();
+      const scans = await prisma.qRScan.findMany();
       return scans.map(this.removePrivateFields);
     } catch (error) {
       throw new RepositoryError("Failed to fetch all scans", error);
     }
   }
 
-  async getAllByQrId(qrId: string): Promise<ScanResponse[]> {
+  async getAllByQrId(qrId: string): Promise<QRScanResponse[]> {
     try {
-      const scans = await prisma.scan.findMany({ where: { qrId } });
+      const scans = await prisma.qRScan.findMany({ where: { qrId } });
       return scans.map(this.removePrivateFields);
     } catch (error) {
       throw new RepositoryError(
@@ -44,12 +44,13 @@ export class ScanRepository implements IScanRepository {
     }
   }
 
-  async getAllByUserId(userId: string): Promise<ScanResponse[]> {
+  async getAllByUserId(userId: string): Promise<QRScan[]> {
     try {
-      const scans = await prisma.scan.findMany({
+      const scans = await prisma.qRScan.findMany({
         where: { qrCode: { userId } },
       });
-      return scans.map(this.removePrivateFields);
+      // return scans.map(this.removePrivateFields); TODO: maybe shouldnt leak id
+      return scans;
     } catch (error) {
       throw new RepositoryError(
         `Failed to fetch scans for user: ${userId}`,
@@ -58,9 +59,9 @@ export class ScanRepository implements IScanRepository {
     }
   }
 
-  async create(data: ScanCreateInput): Promise<ScanResponse> {
+  async create(data: QRScanCreateInput): Promise<QRScanResponse> {
     try {
-      const scan = await prisma.scan.create({
+      const scan = await prisma.qRScan.create({
         data: {
           ...data,
         },
@@ -73,7 +74,7 @@ export class ScanRepository implements IScanRepository {
           throw new DuplicateError(
             "Scan",
             field,
-            data[field as keyof ScanCreateInput] as string,
+            data[field as keyof QRScanCreateInput] as string,
           );
         }
       }
@@ -81,9 +82,9 @@ export class ScanRepository implements IScanRepository {
     }
   }
 
-  async update(id: string, data: ScanUpdateInput): Promise<ScanResponse> {
+  async update(id: string, data: QRScanUpdateInput): Promise<QRScanResponse> {
     try {
-      const scan = await prisma.scan.update({
+      const scan = await prisma.qRScan.update({
         where: { id },
         data,
       });
@@ -96,7 +97,7 @@ export class ScanRepository implements IScanRepository {
           throw new DuplicateError(
             "Scan",
             field,
-            data[field as keyof ScanUpdateInput] as string,
+            data[field as keyof QRScanUpdateInput] as string,
           );
         }
       }
@@ -106,7 +107,7 @@ export class ScanRepository implements IScanRepository {
 
   async delete(id: string): Promise<void> {
     try {
-      await prisma.scan.delete({
+      await prisma.qRScan.delete({
         where: { id },
       });
     } catch (error) {

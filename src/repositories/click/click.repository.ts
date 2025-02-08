@@ -43,6 +43,16 @@ export class ClickRepository implements IClickRepository {
     }
   }
 
+  async getAllByUserId(userId: string): Promise<Click[]> {
+    try {
+      const clicks = await prisma.click.findMany({ where: { userId } });
+      // return clicks.map(this.removePrivateFields); // TODO: hmm id or no
+      return clicks;
+    } catch (error) {
+      throw new RepositoryError("Failed to fetch clicks by user id", error);
+    }
+  }
+
   async create(data: ClickCreateInput): Promise<ClickResponse> {
     try {
       const click = await prisma.click.create({

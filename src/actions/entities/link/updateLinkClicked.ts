@@ -1,6 +1,6 @@
 "use server";
 
-import { getClientData } from "@/actions/getClientData";
+import { getClientData } from "@/actions/analytics";
 import { clickRepository } from "@/repositories/click";
 import { linkRepository } from "@/repositories/link";
 import { BrowserData } from "@/types/clicks";

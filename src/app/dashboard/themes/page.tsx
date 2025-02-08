@@ -1,7 +1,7 @@
-import { getThemeAction } from "@/actions/entities/theme/getTheme";
+import { getThemeAction } from "@/actions/entities/Theme/getTheme";
 import { ThemeEditorSection } from "./theme-editor.section";
 import { validateAuthPage } from "@/utils/security/auth";
-import { getAssetsByUserId } from "@/actions/entities/asset/getAssetsByUserId";
+import { getAssetsByUserId } from "@/actions/entities/Asset/getAssetsByUserId";
 
 const ThemeEditorPage = async () => {
   await validateAuthPage();

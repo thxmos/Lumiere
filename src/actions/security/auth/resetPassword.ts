@@ -2,7 +2,7 @@
 
 import { prisma } from "@/utils/lib/prisma";
 import { hash } from "@/utils/security/crypto";
-import { getPasswordResetTokenByToken } from "../../entities/password-reset-token/getPasswordResetTokenByToken";
+import { getPasswordResetTokenByToken } from "../../entities/PasswordResetToken/getPasswordResetTokenByToken";
 
 export async function resetPassword(token: string, password: string) {
   try {

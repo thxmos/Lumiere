@@ -8,7 +8,7 @@ import { X } from "lucide-react";
 import { toast } from "sonner";
 import { ConfirmDeleteModal } from "@/app/dashboard/ulink/_components/modals/confirm-delete-modal";
 import { useState } from "react";
-import { deleteQRCode } from "@/actions/entities/qr-code/deleteQrCode";
+import { deleteQRCode } from "@/actions/entities/QRCode/deleteQrCode";
 import type { QRCodeDto } from "@/types/entities/qr-codes";
 import QRModal from "./qr-modal";
 

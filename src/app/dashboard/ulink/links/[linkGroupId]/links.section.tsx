@@ -10,10 +10,10 @@ import { LinksList } from "@/app/dashboard/ulink/links/[linkGroupId]/links-list"
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { Button } from "@/components/ui/button";
 import { useLinksStore } from "@/stores/links";
-import { UserDto } from "@/actions/entities/user/createUser";
+import { UserDto } from "@/actions/entities/User/createUser";
 import { LinkResponse } from "@/repositories/link/types";
-import { updateUserLinksAction } from "@/actions/entities/link/updateUserLinks";
-import { deleteLinkById } from "@/actions/entities/link/deleteLinkById";
+import { updateUserLinksAction } from "@/actions/entities/Link/updateUserLinks";
+import { deleteLinkById } from "@/actions/entities/Link/deleteLinkById";
 import { uploadAsset } from "@/actions/file-upload/createAsset";
 
 /* 

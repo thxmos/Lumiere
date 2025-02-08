@@ -3,8 +3,8 @@
 import { APP_NAME } from "@/constants/app";
 import { resend } from "@/utils/lib/resend";
 import PasswordResetEmail from "@/emails/password-reset";
-import { getUserByEmail } from "@/actions/entities/user/getUserByEmail";
-import { createPasswordResetToken } from "@/actions/entities/password-reset-token/createPasswordResetToken";
+import { getUserByEmail } from "@/actions/entities/User/getUserByEmail";
+import { createPasswordResetToken } from "@/actions/entities/PasswordResetToken/createPasswordResetToken";
 
 export const sendResetEmail = async (email: string) => {
   const user = await getUserByEmail(email);

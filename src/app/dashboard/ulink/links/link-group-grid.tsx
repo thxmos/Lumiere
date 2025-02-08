@@ -7,7 +7,7 @@ import LinkGroupForm from "./link-group-form";
 import { Button } from "@/components/ui/button";
 import { XIcon } from "lucide-react";
 import { Label } from "@/components/ui/label";
-import { deleteLinkGroup } from "@/actions/entities/link/deleteLinkGroup";
+import { deleteLinkGroup } from "@/actions/entities/Link/deleteLinkGroup";
 import { toast } from "sonner";
 import { SessionUser } from "@/utils/lib/lucia";
 import { useRouter } from "next/navigation";

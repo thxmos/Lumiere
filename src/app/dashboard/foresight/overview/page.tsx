@@ -1,6 +1,6 @@
 import { validateAuthPage } from "@/utils/security/auth";
 import { ProfileInfoSection } from "./ProfileInfoSection";
-import { getUserById } from "@/actions/entities/user/getUserById";
+import { getUserById } from "@/actions/entities/User/getUserById";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import QuickStartCards from "./QuickStartCards";
 

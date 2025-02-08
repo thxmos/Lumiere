@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Scan, Link } from "@prisma/client";
+import { Click, Link, QRScan } from "@prisma/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Select,
@@ -33,9 +33,11 @@ import { tableData, chartData } from "./mocks";
 export default function AnalyticsDashboard({
   links,
   scans,
+  clicks,
 }: {
   links: Link[];
-  scans: Scan[];
+  scans: QRScan[];
+  clicks: Click[];
 }) {
   const [selectedLink, setSelectedLink] = useState("all");
 
@@ -69,7 +71,7 @@ export default function AnalyticsDashboard({
             <CardTitle className="text-sm font-medium">Total Clicks</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">920</div>
+            <div className="text-2xl font-bold">{clicks.length}</div>
             <p className="text-xs text-muted-foreground">
               +20.1% from last month
             </p>
@@ -80,7 +82,7 @@ export default function AnalyticsDashboard({
             <CardTitle className="text-sm font-medium">Total Scans</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">660</div>
+            <div className="text-2xl font-bold">{scans.length}</div>
             <p className="text-xs text-muted-foreground">
               +15.5% from last month
             </p>

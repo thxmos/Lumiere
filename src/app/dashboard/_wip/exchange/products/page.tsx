@@ -1,4 +1,4 @@
-import { getProducts } from "@/actions/entities/product/product2";
+import { getProducts } from "@/actions/entities/Product/product2";
 import ProductsSection from "./products.section";
 import { validateAuthPage } from "@/utils/security/auth";
 
