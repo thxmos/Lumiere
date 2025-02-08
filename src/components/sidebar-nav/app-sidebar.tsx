@@ -2,7 +2,6 @@
 
 import type * as React from "react";
 import { useEffect, useState } from "react";
-
 import { NavMain } from "./nav-main";
 import NavAccount from "./nav-account";
 import { NavUser } from "./nav-user";
@@ -21,17 +20,37 @@ import { SunMoonIcon } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { APP_NAME } from "@/constants/app";
 import { cn } from "@/utils/utils";
+import { SidebarSkeleton } from "./sidebar-skeleton";
+import { NavData } from "./types";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const [data, setData] = useState<NavItem | null>(null);
+  const [data, setData] = useState<NavData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const { state } = useSidebar();
   const isExpanded = state === "expanded";
 
   useEffect(() => {
-    getNavInfo().then(setData).catch(console.error);
+    const fetchData = async () => {
+      try {
+        const result = await getNavInfo();
+        setData(result);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  if (!data) return null;
+  if (isLoading) {
+    return <SidebarSkeleton />;
+  }
+
+  if (!data) {
+    return null;
+  }
 
   return (
     <Sidebar
@@ -39,7 +58,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       className="bg-background border-r border-border"
       {...props}
     >
-      <SidebarHeader className="bg-background border-b border-border ">
+      <SidebarHeader className="bg-background border-b border-border">
         <Link
           className="flex items-center relative p-2 text-foreground"
           href="/"
@@ -63,10 +82,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             )}
           </div>
         </Link>
-        <AccountSwitcher accounts={data.accounts} />
+        <AccountSwitcher accounts={data.userAccounts} />
       </SidebarHeader>
       <SidebarContent className="bg-background">
-        <NavAccount projects={data.projects} />
+        <NavAccount account={data.account} />
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter className="bg-background border-t border-border">

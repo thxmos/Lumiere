@@ -17,10 +17,10 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/utils/utils";
-import { NavItem } from "./types";
+import { NavGroup } from "./types";
 
 export interface NavMainProps {
-  items: NavItem[];
+  items: NavGroup[];
 }
 
 export function NavMain({ items }: NavMainProps) {
@@ -32,7 +32,7 @@ export function NavMain({ items }: NavMainProps) {
         Modules
       </SidebarGroupLabel>
       <SidebarMenu>
-        {items.map((item: NavItem) => (
+        {items.map((item: NavGroup) => (
           <Collapsible
             key={item.title}
             asChild
@@ -43,15 +43,17 @@ export function NavMain({ items }: NavMainProps) {
               <CollapsibleTrigger
                 asChild
                 className={cn(
-                  "flex w-full items-center bg-background text-foreground hover:bg-accent hover:text-accent-foreground font-medium",
-                  pathname.includes(item.url) &&
-                    "bg-accent text-accent-foreground",
+                  "flex w-full items-center bg-background text-foreground font-medium",
+                  "hover:bg-accent/50 hover:text-foreground",
+                  "active:bg-accent/70 active:text-foreground",
+                  "group-data-[state=open]/collapsible:bg-accent/50 group-data-[state=open]/collapsible:text-foreground",
+                  pathname.includes(item.url) && "bg-accent text-foreground",
                 )}
               >
                 <SidebarMenuButton
                   tooltip={item.title}
                   className={cn(
-                    "bg-background text-foreground font-medium p-6 pl-2 pr-2",
+                    "bg-transparent text-inherit font-medium p-6 pl-2 pr-2",
                     "group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:p-2",
                   )}
                 >
@@ -64,7 +66,9 @@ export function NavMain({ items }: NavMainProps) {
                     {item.icon}
                   </span>
                   <div className="flex flex-col group-data-[collapsible=icon]:hidden">
-                    <p className="text-sm font-medium">{item.title}</p>
+                    <p className="text-sm font-medium text-inherit">
+                      {item.title}
+                    </p>
                     <p className="text-xs text-muted-foreground">
                       {item.description}
                     </p>
@@ -80,9 +84,11 @@ export function NavMain({ items }: NavMainProps) {
                         <SidebarMenuSubButton
                           asChild
                           className={cn(
-                            "bg-background text-foreground hover:bg-accent hover:text-accent-foreground",
+                            "bg-background text-foreground",
+                            "hover:bg-accent/50 hover:text-foreground",
+                            "active:bg-accent/70 active:text-foreground",
                             pathname.includes(subItem.url) &&
-                              "bg-accent text-accent-foreground",
+                              "bg-accent text-foreground",
                           )}
                         >
                           <Link href={`/dashboard/${item.url}/${subItem.url}`}>

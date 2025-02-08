@@ -15,12 +15,12 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { Account } from "./types";
 import NewAccountModal from "./new-account-modal";
 import { cn } from "@/utils/utils";
+import { UserAccount } from "./types";
 
 export interface AccountSwitcherProps {
-  accounts: Account[];
+  accounts: UserAccount[];
   onAddAccount?: (name: string) => void;
 }
 
@@ -29,7 +29,7 @@ export function AccountSwitcher({
   onAddAccount,
 }: AccountSwitcherProps) {
   const { isMobile, state } = useSidebar();
-  const [activeAccount, setActiveAccount] = useState<Account>(accounts[0]);
+  const [activeAccount, setActiveAccount] = useState<UserAccount>(accounts[0]);
   const isCollapsed = state === "collapsed";
 
   const handleCreateAccount = (name: string) => {
@@ -58,7 +58,7 @@ export function AccountSwitcher({
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
                 <span className="truncate font-semibold text-foreground">
-                  {activeAccount.name}
+                  {activeAccount.title}
                 </span>
                 <span className="truncate text-xs text-muted-foreground">
                   {activeAccount.plan}
@@ -81,14 +81,14 @@ export function AccountSwitcher({
             </DropdownMenuLabel>
             {accounts.map((account, index) => (
               <DropdownMenuItem
-                key={account.name}
+                key={account.title}
                 onClick={() => setActiveAccount(account)}
                 className="gap-2 p-2 cursor-pointer hover:bg-accent hover:text-accent-foreground"
               >
                 <div className="flex size-6 items-center justify-center rounded-sm border border-border bg-background">
                   {account.logo}
                 </div>
-                {account.name}
+                {account.title}
                 <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
               </DropdownMenuItem>
             ))}

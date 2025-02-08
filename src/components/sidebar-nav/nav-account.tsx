@@ -16,19 +16,13 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/utils/utils";
-
-interface Project {
-  name: string;
-  url: string;
-  icon: React.ReactNode;
-}
+import { NavItem } from "./types";
 
 interface NavAccountProps {
-  projects: Project[];
+  account: NavItem[];
 }
 
-export default function NavAccount({ projects }: NavAccountProps) {
-  const { isMobile } = useSidebar();
+export default function NavAccount({ account }: NavAccountProps) {
   const pathname = usePathname();
 
   return (
@@ -37,15 +31,16 @@ export default function NavAccount({ projects }: NavAccountProps) {
         Your Account
       </SidebarGroupLabel>
       <SidebarMenu>
-        {projects.map((item) => (
-          <SidebarMenuItem key={item.name}>
+        {account.map((item) => (
+          <SidebarMenuItem key={item.title}>
             <SidebarMenuButton
               asChild
-              tooltip={item.name}
+              tooltip={item.title}
               className={cn(
-                "flex w-full items-center bg-background text-foreground hover:bg-accent hover:text-accent-foreground font-medium",
-                pathname.includes(item.url) &&
-                  "bg-accent text-accent-foreground",
+                "flex w-full items-center bg-background text-foreground font-medium",
+                "hover:bg-accent/50 hover:text-foreground",
+                "active:bg-accent/70 active:text-foreground",
+                pathname.includes(item.url) && "bg-accent text-foreground",
                 "group-data-[collapsible=icon]:justify-center",
               )}
             >
@@ -57,31 +52,10 @@ export default function NavAccount({ projects }: NavAccountProps) {
                   {item.icon}
                 </span>
                 <span className="group-data-[collapsible=icon]:hidden">
-                  {item.name}
+                  {item.title}
                 </span>
               </Link>
             </SidebarMenuButton>
-            <DropdownMenu>
-              <DropdownMenuContent
-                className="w-48 rounded-lg bg-popover text-popover-foreground"
-                side={isMobile ? "bottom" : "right"}
-                align={isMobile ? "end" : "start"}
-              >
-                <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground">
-                  <Folder className="size-4 mr-2 text-primary" />
-                  <span>View Project</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground">
-                  <Forward className="size-4 mr-2 text-primary" />
-                  <span>Share Project</span>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator className="bg-border" />
-                <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground">
-                  <Trash2 className="size-4 mr-2 text-primary" />
-                  <span>Delete Project</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
           </SidebarMenuItem>
         ))}
       </SidebarMenu>

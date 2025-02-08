@@ -1,20 +1,31 @@
-// TODO: replace with prisma one
-export interface Account {
-  id: string;
-  name: string;
+export interface NavData {
+  user: {
+    name: string;
+    email: string;
+    avatar: string;
+  };
+  userAccounts: UserAccount[];
+  account: NavItem[];
+  navMain: NavGroup[];
+}
+
+export interface UserAccount {
+  title: string;
   logo: React.ReactNode;
   plan: string;
 }
 
-export interface NavItem {
+export interface NavGroup {
   title: string;
   description: string;
   url: string;
   icon?: React.ReactNode;
   isActive?: boolean;
-  items?: Array<{
-    title: string;
-    url: string;
-    icon?: React.ReactNode;
-  }>;
+  items?: NavItem[];
+}
+
+export interface NavItem {
+  title: string;
+  url: string;
+  icon?: React.ReactNode;
 }
