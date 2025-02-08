@@ -7,7 +7,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import AvatarUpload from "@/app/dashboard/ulink/_components/avatar-upload";
-import type { UserDto } from "@/actions/entities/User/createUser";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { toast } from "sonner";
 import {
@@ -22,8 +21,9 @@ import { Switch } from "@/components/ui/switch";
 import { updateUserAccountInfo } from "@/actions/entities/User/updateUserAccountInfo";
 import { uploadAvatar } from "@/actions/file-upload/createAsset";
 import { SettingsIcon } from "lucide-react";
+import { UserResponse } from "@/repositories/user";
 
-export function AccountSection({ user }: { user: UserDto }) {
+export function AccountSection({ user }: { user: UserResponse }) {
   const {
     register,
     handleSubmit,
@@ -41,7 +41,7 @@ export function AccountSection({ user }: { user: UserDto }) {
 
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
 
-  const onSubmit = async (data: Partial<UserDto>) => {
+  const onSubmit = async (data: Partial<UserResponse>) => {
     try {
       await updateUserAccountInfo(data);
 

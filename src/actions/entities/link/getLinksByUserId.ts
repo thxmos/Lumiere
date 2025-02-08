@@ -11,7 +11,6 @@ import { withAuth } from "@/utils/security/auth";
 
 export const getLinksByUserId = withAuth(
   async (user: SessionUser): Promise<LinkResponse[]> => {
-    console.log("getLinksByUserId", user);
     const links = await linkRepository.getLinksByUserId(user.id);
     return links;
   },

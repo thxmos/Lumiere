@@ -1,4 +1,4 @@
-import { AccountSection } from "./account.section";
+import { AccountSection } from "../account.section";
 import { validateAuthPage } from "@/utils/security/auth";
 
 export default async function AccountSettingsPage() {

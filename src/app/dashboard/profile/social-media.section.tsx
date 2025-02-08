@@ -6,14 +6,18 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { SOCIAL_PLATFORMS } from "@/constants/social-media";
-import { UserDto } from "@/actions/entities/User/createUser";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { toast } from "sonner";
 import { updateUser } from "@/actions/entities/User/updateUser";
 import { useUserStore } from "@/stores/user";
 import { UsersIcon } from "lucide-react";
+import { UserResponse } from "@/repositories/user";
 
-export function SocialMediaSection({ initialUser }: { initialUser: UserDto }) {
+export function SocialMediaSection({
+  initialUser,
+}: {
+  initialUser: UserResponse;
+}) {
   const { user, setUser } = useUserStore();
 
   const {
@@ -24,16 +28,17 @@ export function SocialMediaSection({ initialUser }: { initialUser: UserDto }) {
     defaultValues: SOCIAL_PLATFORMS.reduce(
       (acc, platform) => ({
         ...acc,
-        [platform.value]: initialUser[platform.value as keyof UserDto] || "",
+        [platform.value]:
+          initialUser[platform.value as keyof UserResponse] || "",
       }),
       {},
     ),
   });
 
   useEffect(() => {
-    setUser(initialUser);
+    setUser({ ...initialUser, password: null });
 
-    return () => setUser(initialUser);
+    return () => setUser({ ...initialUser, password: null });
   }, []);
 
   const onSubmit = async (data: Record<string, string>) => {

@@ -6,11 +6,10 @@ import { LinkIcon, PlusCircle } from "lucide-react";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 
-import { LinksList } from "@/app/dashboard/ulink/links/[linkGroupId]/links-list";
+import { LinksList } from "./links-list";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { Button } from "@/components/ui/button";
 import { useLinksStore } from "@/stores/links";
-import { UserDto } from "@/actions/entities/User/createUser";
 import { LinkResponse } from "@/repositories/link/types";
 import { updateUserLinksAction } from "@/actions/entities/Link/updateUserLinks";
 import { deleteLinkById } from "@/actions/entities/Link/deleteLinkById";
@@ -25,7 +24,6 @@ Deleting a new link also gives a failure but removes from the list
 
 interface Props {
   userLinks: LinkResponse[];
-  user: UserDto;
   linkGroupId: string;
 }
 

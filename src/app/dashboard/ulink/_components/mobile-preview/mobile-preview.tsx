@@ -14,13 +14,12 @@ interface Props {
 export default function MobilePreview({ children, username }: Props) {
   const pathname = usePathname();
 
-  if (!pathname.includes("/ulink/links/") && pathname !== "/ulink/theme-editor")
-    return null;
+  if (!pathname.includes("/ulink/links")) return null;
 
   return (
     <>
       {/* Preview container */}
-      <div className="flex flex-col gap-4 justify-center items-center min-w-[30%]">
+      <div className="flex flex-col gap-4 justify-center items-center min-w-[30%] h-screen">
         {/* Phone border*/}
         <div className="w-[20rem] h-[40rem] bg-gray-800 rounded-[2rem] p-1 shadow-lg mx-auto">
           {/* Phone screen */}

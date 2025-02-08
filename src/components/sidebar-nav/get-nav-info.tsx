@@ -67,11 +67,11 @@ export const getNavInfo = withAuth(
           url: "/analytics",
           icon: <BarChart3Icon className={SIDEBAR_ICON_STYLE} />,
         },
-        {
-          title: "Themes",
-          url: "/themes",
-          icon: <PaintBucketIcon className={SIDEBAR_ICON_STYLE} />,
-        },
+        // {
+        //   title: "Themes",
+        //   url: "/themes",
+        //   icon: <PaintBucketIcon className={SIDEBAR_ICON_STYLE} />,
+        // },
         {
           title: "Assets",
           url: "/assets",
