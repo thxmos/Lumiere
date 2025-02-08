@@ -1,6 +1,5 @@
-import * as React from "react";
-import { ChevronsUpDown, Plus } from "lucide-react";
-
+import { useState } from "react";
+import { ChevronsUpDown } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,14 +16,25 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Account } from "./types";
+import NewAccountModal from "./new-account-modal";
+import { cn } from "@/utils/utils";
 
 export interface AccountSwitcherProps {
   accounts: Account[];
+  onAddAccount?: (name: string) => void;
 }
 
-export function AccountSwitcher({ accounts }: AccountSwitcherProps) {
-  const { isMobile } = useSidebar();
-  const [activeTeam, setActiveTeam] = React.useState<Account>(accounts[0]);
+export function AccountSwitcher({
+  accounts,
+  onAddAccount,
+}: AccountSwitcherProps) {
+  const { isMobile, state } = useSidebar();
+  const [activeAccount, setActiveAccount] = useState<Account>(accounts[0]);
+  const isCollapsed = state === "collapsed";
+
+  const handleCreateAccount = (name: string) => {
+    onAddAccount?.(name);
+  };
 
   return (
     <SidebarMenu>
@@ -33,20 +43,28 @@ export function AccountSwitcher({ accounts }: AccountSwitcherProps) {
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
               size="lg"
-              className="bg-background hover:bg-accent hover:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground"
+              className={cn(
+                "bg-background hover:bg-accent hover:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
+                "group-data-[collapsible=icon]:justify-center",
+              )}
             >
-              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                {activeTeam.logo}
+              <div
+                className={cn(
+                  "flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground",
+                  isCollapsed ? "mr-0" : "mr-2",
+                )}
+              >
+                {activeAccount.logo}
               </div>
-              <div className="grid flex-1 text-left text-sm leading-tight">
+              <div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
                 <span className="truncate font-semibold text-foreground">
-                  {activeTeam.name}
+                  {activeAccount.name}
                 </span>
                 <span className="truncate text-xs text-muted-foreground">
-                  {activeTeam.plan}
+                  {activeAccount.plan}
                 </span>
               </div>
-              <ChevronsUpDown className="ml-auto text-muted-foreground" />
+              <ChevronsUpDown className="ml-auto text-muted-foreground group-data-[collapsible=icon]:hidden" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
@@ -64,26 +82,18 @@ export function AccountSwitcher({ accounts }: AccountSwitcherProps) {
             {accounts.map((account, index) => (
               <DropdownMenuItem
                 key={account.name}
-                onClick={() => setActiveTeam(account)}
+                onClick={() => setActiveAccount(account)}
                 className="gap-2 p-2 cursor-pointer hover:bg-accent hover:text-accent-foreground"
               >
                 <div className="flex size-6 items-center justify-center rounded-sm border border-border bg-background">
                   {account.logo}
-                  {/* TODO: make this an image */}
                 </div>
                 {account.name}
                 <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
               </DropdownMenuItem>
             ))}
             <DropdownMenuSeparator className="bg-border" />
-            <DropdownMenuItem className="gap-2 p-2 cursor-pointer hover:bg-accent hover:text-accent-foreground">
-              <div className="flex size-6 items-center justify-center rounded-md border border-border bg-background">
-                <Plus className="size-4" />
-              </div>
-              <div className="font-medium text-muted-foreground">
-                Add New Account
-              </div>
-            </DropdownMenuItem>
+            <NewAccountModal onCreateAccount={handleCreateAccount} />
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>

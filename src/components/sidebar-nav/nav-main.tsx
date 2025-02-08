@@ -1,7 +1,4 @@
-"use client";
-
 import { ChevronRight } from "lucide-react";
-
 import {
   Collapsible,
   CollapsibleContent,
@@ -20,7 +17,11 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/utils/utils";
-import { NavItem, NavMainProps } from "./types";
+import { NavItem } from "./types";
+
+export interface NavMainProps {
+  items: NavItem[];
+}
 
 export function NavMain({ items }: NavMainProps) {
   const pathname = usePathname();
@@ -39,23 +40,36 @@ export function NavMain({ items }: NavMainProps) {
             className="group/collapsible"
           >
             <SidebarMenuItem>
-              <CollapsibleTrigger asChild>
+              <CollapsibleTrigger
+                asChild
+                className={cn(
+                  "flex w-full items-center bg-background text-foreground hover:bg-accent hover:text-accent-foreground font-medium",
+                  pathname.includes(item.url) &&
+                    "bg-accent text-accent-foreground",
+                )}
+              >
                 <SidebarMenuButton
                   tooltip={item.title}
-                  className={
-                    "bg-background text-foreground font-medium p-6 pl-2 pr-2"
-                  }
+                  className={cn(
+                    "bg-background text-foreground font-medium p-6 pl-2 pr-2",
+                    "group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:p-2",
+                  )}
                 >
-                  <span className="text-primary border-2 border-border rounded-full p-1">
+                  <span
+                    className={cn(
+                      "text-primary border-2 border-border rounded-full p-1",
+                      "group-data-[collapsible=icon]:mr-0",
+                    )}
+                  >
                     {item.icon}
                   </span>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col group-data-[collapsible=icon]:hidden">
                     <p className="text-sm font-medium">{item.title}</p>
                     <p className="text-xs text-muted-foreground">
                       {item.description}
                     </p>
                   </div>
-                  <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 text-muted-foreground" />
+                  <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 text-muted-foreground group-data-[collapsible=icon]:hidden" />
                 </SidebarMenuButton>
               </CollapsibleTrigger>
               {item.items && (
@@ -66,7 +80,7 @@ export function NavMain({ items }: NavMainProps) {
                         <SidebarMenuSubButton
                           asChild
                           className={cn(
-                            "bg-background text-foreground",
+                            "bg-background text-foreground hover:bg-accent hover:text-accent-foreground",
                             pathname.includes(subItem.url) &&
                               "bg-accent text-accent-foreground",
                           )}

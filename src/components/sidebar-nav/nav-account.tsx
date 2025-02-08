@@ -1,7 +1,4 @@
-"use client";
-
 import { Folder, Forward, Trash2 } from "lucide-react";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -35,7 +32,7 @@ export default function NavAccount({ projects }: NavAccountProps) {
   const pathname = usePathname();
 
   return (
-    <SidebarGroup className="group-data-[collapsible=icon]:hidden">
+    <SidebarGroup>
       <SidebarGroupLabel className="text-muted-foreground">
         Your Account
       </SidebarGroupLabel>
@@ -44,18 +41,24 @@ export default function NavAccount({ projects }: NavAccountProps) {
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton
               asChild
+              tooltip={item.name}
               className={cn(
                 "flex w-full items-center bg-background text-foreground hover:bg-accent hover:text-accent-foreground font-medium",
                 pathname.includes(item.url) &&
                   "bg-accent text-accent-foreground",
+                "group-data-[collapsible=icon]:justify-center",
               )}
             >
               <Link
                 href={`/dashboard/${item.url}`}
                 className="flex items-center w-full py-2 px-2"
               >
-                <span className="mr-2 text-primary">{item.icon}</span>
-                <span>{item.name}</span>
+                <span className="mr-2 text-primary group-data-[collapsible=icon]:mr-0">
+                  {item.icon}
+                </span>
+                <span className="group-data-[collapsible=icon]:hidden">
+                  {item.name}
+                </span>
               </Link>
             </SidebarMenuButton>
             <DropdownMenu>

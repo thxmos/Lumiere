@@ -1,5 +1,6 @@
 // TODO: replace with prisma one
 export interface Account {
+  id: string;
   name: string;
   logo: React.ReactNode;
   plan: string;
@@ -16,8 +17,4 @@ export interface NavItem {
     url: string;
     icon?: React.ReactNode;
   }>;
-}
-
-export interface NavMainProps {
-  items: NavItem[];
 }
