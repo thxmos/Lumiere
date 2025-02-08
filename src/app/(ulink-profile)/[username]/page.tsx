@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import LinkTree from "@/app/(ulink-profile)/components/profile/linktree";
 import { LinkDtoWithId } from "@/types/links";
 import { UserDtoNoId } from "@/actions/entities/User/createUser";
+import { createProfileView } from "@/actions/entities/ProfileView/createProfileView";
 
 export default async function ArtistPage({
   params,
@@ -22,6 +23,9 @@ export default async function ArtistPage({
 
   const links = await getActiveLinksByUsername(user.username);
   const theme = await getThemeByUsername(user.username);
+  if (searchParams.preview !== "true") {
+    await createProfileView(user.username);
+  }
 
   return (
     <LinkTree

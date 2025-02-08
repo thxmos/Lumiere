@@ -30,7 +30,7 @@ export class LinkRepository implements ILinkRepository {
     try {
       const linkGroups = await prisma.linkGroup.findMany({
         where: {
-          user: { id: userId },
+          userId: userId,
         },
         include: {
           links: true,

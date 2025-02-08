@@ -17,6 +17,8 @@ const ULinkLayout: React.FC<Props> = async ({ children }) => {
   const theme = await getThemeAction();
   const links = await getLinksByUserId();
 
+  console.log(links);
+
   // TODO: was trying to integrate with user Store for real time updates in social media
   // const { id, ...userWithoutId } = user; // remove id from user object
   // const { user: storedUser, setUser } = useUserStore();
