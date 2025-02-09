@@ -17,11 +17,17 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { COUNTRIES } from "@/constants/countries";
-import { Switch } from "@/components/ui/switch";
 import { updateUserAccountInfo } from "@/actions/entities/User/updateUserAccountInfo";
 import { uploadAvatar } from "@/actions/file-upload/createAsset";
 import { SettingsIcon } from "lucide-react";
 import { UserResponse } from "@/repositories/user";
+
+type AccountFormData = {
+  username: string;
+  description: string;
+  country: string;
+  displayCountry: boolean;
+};
 
 export function AccountSection({ user }: { user: UserResponse }) {
   const {
@@ -41,9 +47,9 @@ export function AccountSection({ user }: { user: UserResponse }) {
 
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
 
-  const onSubmit = async (data: Partial<UserResponse>) => {
+  const onSubmit = async (data: AccountFormData) => {
     try {
-      await updateUserAccountInfo(data);
+      await updateUserAccountInfo(data as Partial<UserResponse>);
 
       if (avatarFile) {
         const formData = new FormData();

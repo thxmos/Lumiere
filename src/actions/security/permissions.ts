@@ -30,7 +30,7 @@ export const hasPermissionAction = async (
   const user = await requireUser();
 
   // Here because i eventually want to take roles out of session
-  const userFromDb = await getUserById(user.id);
+  const userFromDb = await getUserById();
   if (!userFromDb)
     throw new Error("You do not have permissions to access this resource");
 

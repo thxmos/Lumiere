@@ -1,4 +1,4 @@
-import { Image as Asset, Prisma } from "@prisma/client";
+import { Asset, Prisma } from "@prisma/client";
 import { prisma } from "@/utils/lib/prisma";
 import { NotFoundError, DuplicateError, RepositoryError } from "../errors";
 import {
@@ -46,6 +46,7 @@ export class AssetRepository implements IAssetRepository {
       const asset = await prisma.asset.create({
         data: {
           ...data,
+          url: data.url!,
         },
       });
       return this.removePrivateFields(asset);

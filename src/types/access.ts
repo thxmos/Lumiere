@@ -85,19 +85,24 @@ export const ROLES = {
   },
   USER: {
     link: {
-      view: (user, link) => !user.blockedBy.includes(link.userId),
+      // view: (user, link) => !user.blockedBy.includes(link.userId),
+      view: true,
       create: true,
-      update: (user, link) => link.userId === user.id,
+      update: true,
+      delete: true,
+      // update: (user, link) => link.userId === user.id,
     },
     qrCode: {
       view: (user, qrCode) => !user.blockedBy.includes(qrCode.userId),
       create: true,
       update: (user, qrCode) => qrCode.userId === user.id,
+      delete: true,
     },
     products: {
       view: (user, product) => !user.blockedBy.includes(product.id),
       create: true,
       update: (user, product) => product.id === user.id,
+      delete: true,
     },
     theme: {
       view: true,

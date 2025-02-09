@@ -28,10 +28,8 @@ const AvatarUpload: React.FC<AvatarUploadProps> = ({
       <AssetUpload
         file={avatarFile}
         setFile={setAvatarFile}
-        fileType={FileType.Image}
-        previewImg={preview || undefined}
-        setPreviewImg={setPreview}
         onImageChange={onImageChange}
+        initialImage={avatarUrl}
         size="md"
         rounded={true}
       />

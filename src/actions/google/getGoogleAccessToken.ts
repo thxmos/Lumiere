@@ -4,8 +4,8 @@ import { prisma } from "@/utils/lib/prisma";
 import { googleOAuthClient } from "@/utils/security/googleOauth";
 
 export async function getGoogleAccessToken(userId: string) {
-  const googleToken = await prisma.googleToken.findUnique({
-    where: { userId },
+  const googleToken = await prisma.googleToken.findFirst({
+    where: { user: { id: userId } },
   });
 
   if (!googleToken?.googleAccessToken) {
@@ -21,7 +21,7 @@ export async function getGoogleAccessToken(userId: string) {
     );
 
     await prisma.googleToken.update({
-      where: { userId },
+      where: { id: googleToken.id },
       data: {
         googleAccessToken: tokens.accessToken,
         googleTokenExpiry: tokens.accessTokenExpiresAt,

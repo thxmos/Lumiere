@@ -78,7 +78,7 @@ export function NavMain({ items }: NavMainProps) {
               </CollapsibleTrigger>
               {item.items && (
                 <CollapsibleContent>
-                  <SidebarMenuSub className="[--sidebar-menu-sub-color:theme(colors.primary)]">
+                  <SidebarMenuSub>
                     {item.items.map((subItem) => (
                       <SidebarMenuSubItem key={subItem.title}>
                         <SidebarMenuSubButton

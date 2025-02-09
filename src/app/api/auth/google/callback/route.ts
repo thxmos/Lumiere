@@ -79,8 +79,8 @@ export async function GET(req: NextRequest) {
       userId = existingUser.id;
 
       // Then check if they have a google token
-      const existingGoogleToken = await prisma.googleToken.findUnique({
-        where: { userId },
+      const existingGoogleToken = await prisma.googleToken.findFirst({
+        where: { user: { id: userId } },
       });
 
       // If they do, update it

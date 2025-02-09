@@ -22,11 +22,11 @@ import { SocialMedia } from "@prisma/client";
 import { UserResponse } from "@/repositories/user";
 
 type CardShadow = {
-  cardShadowSize?: number;
-  cardShadowColor?: string;
-  cardShadowOffset?: number;
-  cardShadowDirection?: number;
-  cardShadowBlur?: number;
+  cardShadowSize?: number | null;
+  cardShadowColor?: string | null;
+  cardShadowOffset?: number | null;
+  cardShadowDirection?: number | null;
+  cardShadowBlur?: number | null;
 };
 
 // Add this helper function to generate the shadow CSS

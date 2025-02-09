@@ -1,5 +1,3 @@
-export const CommunityPage = () => {
+export default function Page() {
   return <div>Community</div>;
-};
-
-export default CommunityPage;
+}

@@ -1,9 +1,9 @@
-import { Image } from "@prisma/client";
+import { Asset } from "@prisma/client";
 import { create } from "zustand";
 
 type AssetStore = {
-  assets: Image[];
-  setAssets: (assets: Image[]) => void;
+  assets: Asset[];
+  setAssets: (assets: Asset[]) => void;
 };
 
 export const useAssetStore = create<AssetStore>()((set) => ({
