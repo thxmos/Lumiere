@@ -15,12 +15,13 @@ import { DEFAULT_REDIRECT_URL } from "@/constants/app";
  * and establishes an authenticated session
  */
 
-export async function GET(req: NextRequest) {
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url);
+
   try {
     // Extract code and state from callback URL parameters
-    const url = req.nextUrl;
-    const code = url.searchParams.get("code");
-    const state = url.searchParams.get("state");
+    const code = searchParams.get("code");
+    const state = searchParams.get("state");
 
     // Validate code and state parameters exist
     if (!code || !state) {
@@ -29,8 +30,10 @@ export async function GET(req: NextRequest) {
     }
 
     // Get stored OAuth verifier and state from cookies
-    const codeVerifier = req.cookies.get("google_oAuth_code_verifier")?.value;
-    const savedState = req.cookies.get("google_oAuth_state")?.value;
+    const codeVerifier = request.cookies.get(
+      "google_oAuth_code_verifier",
+    )?.value;
+    const savedState = request.cookies.get("google_oAuth_state")?.value;
 
     // Validate stored values exist
     if (!codeVerifier || !savedState) {
@@ -46,8 +49,8 @@ export async function GET(req: NextRequest) {
 
     // Clear OAuth cookies
     // TODO: confirm this is the correct way to delete cookies
-    req.cookies.delete("google_oAuth_state");
-    req.cookies.delete("google_oAuth_code_verifier");
+    request.cookies.delete("google_oAuth_state");
+    request.cookies.delete("google_oAuth_code_verifier");
 
     // Exchange authorization code for access token
     const tokens = await googleOAuthClient.validateAuthorizationCode(
@@ -149,7 +152,7 @@ export async function GET(req: NextRequest) {
     createAndSetSessionCookie(session.id);
 
     const response = NextResponse.redirect(
-      new URL(DEFAULT_REDIRECT_URL, req.url),
+      new URL(DEFAULT_REDIRECT_URL, request.url),
     );
     return response;
   } catch (error: any) {
@@ -157,6 +160,6 @@ export async function GET(req: NextRequest) {
     return new Response("Internal server error", { status: 500 });
   } finally {
     // Redirect to default URL regardless of success/failure
-    return NextResponse.redirect(new URL(DEFAULT_REDIRECT_URL, req.url));
+    return NextResponse.redirect(new URL(DEFAULT_REDIRECT_URL, request.url));
   }
 }
