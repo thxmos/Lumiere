@@ -15,6 +15,7 @@ export const SOCIAL_PLATFORMS: SocialMediaPlatform[] = [
   {
     label: "Apple Music",
     value: "appleMusicUsername",
+    active: "appleMusic",
     prefix: "https://music.apple.com/us/artist/",
     type: "APPLE_MUSIC",
     icon: FaApple,
@@ -28,6 +29,7 @@ export const SOCIAL_PLATFORMS: SocialMediaPlatform[] = [
   {
     label: "Facebook",
     value: "facebookUsername",
+    active: "facebook",
     prefix: "https://facebook.com/",
     type: "FACEBOOK",
     icon: FaFacebook,
@@ -35,6 +37,7 @@ export const SOCIAL_PLATFORMS: SocialMediaPlatform[] = [
   {
     label: "Instagram",
     value: "instagramUsername",
+    active: "instagram",
     prefix: "https://instagram.com/",
     type: "INSTAGRAM",
     icon: FaInstagram,
@@ -42,6 +45,7 @@ export const SOCIAL_PLATFORMS: SocialMediaPlatform[] = [
   {
     label: "Patreon",
     value: "patreonUsername",
+    active: "patreon",
     prefix: "https://patreon.com/",
     type: "PATREON",
     icon: FaPatreon,
@@ -49,6 +53,7 @@ export const SOCIAL_PLATFORMS: SocialMediaPlatform[] = [
   {
     label: "Spotify",
     value: "spotifyUsername",
+    active: "spotify",
     prefix: "https://open.spotify.com/artist/",
     type: "SPOTIFY",
     icon: FaSpotify,
@@ -56,6 +61,7 @@ export const SOCIAL_PLATFORMS: SocialMediaPlatform[] = [
   {
     label: "TikTok",
     value: "tiktokUsername",
+    active: "tiktok",
     prefix: "https://tiktok.com/@",
     type: "TIKTOK",
     icon: FaTiktok,
@@ -63,6 +69,7 @@ export const SOCIAL_PLATFORMS: SocialMediaPlatform[] = [
   {
     label: "Twitter/X",
     value: "twitterUsername",
+    active: "twitter",
     prefix: "https://x.com/",
     type: "TWITTER_X",
     icon: FaTwitter,
@@ -70,6 +77,7 @@ export const SOCIAL_PLATFORMS: SocialMediaPlatform[] = [
   {
     label: "YouTube",
     value: "youtubeUsername",
+    active: "youtube",
     prefix: "https://youtube.com/",
     type: "YOUTUBE",
     icon: FaYoutube,

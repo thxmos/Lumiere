@@ -29,7 +29,7 @@ const ULinkLayout: React.FC<Props> = async ({ children }) => {
       <main className="flex flex-col overflow-y-auto bg-background w-full gap-4">
         <ScrollToTopLayout>{children}</ScrollToTopLayout>
       </main>
-      <aside className="sticky top-0 flex items-center h-screen px-32">
+      <aside className="sticky top-0 flex items-center h-[calc(100vh-100px)] px-32">
         <MobilePreview username={user?.username!}>
           <LinkTree
             isPreview={true}

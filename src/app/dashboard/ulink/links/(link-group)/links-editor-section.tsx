@@ -5,23 +5,37 @@ import { ThemeResponse } from "@/repositories/theme/types";
 import { AssetResponse } from "@/repositories/asset/types";
 import SocialMediaSection from "../social-media.section";
 import DescriptionSection from "../description.section";
+import { UserResponse } from "@/repositories/user/types";
+import { LinkGroupResponse } from "@/repositories/linkGroups/types";
+import NewLinkGroupForm from "./new-link-group-form";
 
 export default async function LinksEditorSections({
-  linkGroupId,
+  linkGroup,
+  user,
   links,
   theme,
   assets,
 }: {
-  linkGroupId: string;
+  linkGroup: LinkGroupResponse;
+  user: UserResponse;
   links: LinkResponse[];
   theme: ThemeResponse;
   assets: AssetResponse[];
 }) {
+  if (!linkGroup) {
+    return (
+      <div className="flex flex-col gap-4">
+        <p>No link groups found. Create a new one.</p>
+        <NewLinkGroupForm user={user} />
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-4">
-      <DescriptionSection />
-      <LinksSection userLinks={links} linkGroupId={linkGroupId} />
-      <SocialMediaSection />
+      <DescriptionSection linkGroup={linkGroup} />
+      <LinksSection userLinks={links} linkGroupId={linkGroup.id} />
+      <SocialMediaSection linkGroup={linkGroup} />
       <ThemeEditorSection initialTheme={theme} assets={assets} />
     </div>
   );

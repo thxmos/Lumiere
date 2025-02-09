@@ -4,9 +4,10 @@ import { validateAuthPage } from "@/utils/security/auth";
 import { getAssetsByUserId } from "@/actions/entities/Asset/getAssetsByUserId";
 import { getThemeAction } from "@/actions/entities/Theme/getTheme";
 import { getLinksByUserId } from "@/actions/entities/Link/getLinksByUserId";
+import { getUserById } from "@/actions/entities/User/getUserById";
 
 const LinkGroupsPage = async () => {
-  const user = await validateAuthPage();
+  const user = await getUserById();
   const theme = await getThemeAction();
   const assets = await getAssetsByUserId();
   const links = await getLinksByUserId();

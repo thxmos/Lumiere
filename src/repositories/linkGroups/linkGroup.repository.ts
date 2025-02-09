@@ -4,6 +4,7 @@ import {
   LinkGroupCreateDto,
   LinkGroupCreateInput,
   LinkGroupResponse,
+  LinkGroupUpdateInput,
 } from "./types";
 import { RepositoryError } from "../errors";
 import { prisma } from "@/utils/lib/prisma";
@@ -69,7 +70,7 @@ export class LinkGroupRepository implements ILinkGroupRepository {
 
   async update(
     id: string,
-    data: Partial<LinkGroupCreateInput>,
+    data: LinkGroupUpdateInput,
   ): Promise<LinkGroupResponse> {
     try {
       const linkGroup = await prisma.linkGroup.update({

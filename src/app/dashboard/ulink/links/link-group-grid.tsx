@@ -10,6 +10,7 @@ import {
   Select,
   SelectContent,
   SelectItem,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -19,10 +20,12 @@ import { ThemeResponse } from "@/repositories/theme/types";
 import { AssetResponse } from "@/repositories/asset/types";
 import { LinkResponse } from "@/repositories/link/types";
 import { NewLinkGroupModal } from "./(link-group)/new-link-group-modal";
+import { UserResponse } from "@/repositories/user/types";
+import { PlusIcon } from "lucide-react";
 
 interface LinkGroupGridProps {
   linkGroups: LinkGroupResponse[];
-  user: SessionUser;
+  user: UserResponse;
   theme: ThemeResponse;
   assets: AssetResponse[];
   links: LinkResponse[];
@@ -37,24 +40,11 @@ const LinkGroupGrid: React.FC<LinkGroupGridProps> = ({
 }) => {
   const router = useRouter();
   const [selectedLinkGroupId, setSelectedLinkGroupId] = useState<string | null>(
-    linkGroups[0]?.id ?? null,
+    linkGroups.sort(
+      (a, b) => b.updatedAt!.getTime() - a.updatedAt!.getTime(), // sort by updatedAt in descending order
+    )[0]?.id ?? null,
   );
   const [isNewGroupModalOpen, setIsNewGroupModalOpen] = useState(false);
-
-  const handleDelete = async (
-    e: React.MouseEvent<HTMLButtonElement>,
-    id: string,
-  ) => {
-    e.preventDefault();
-    e.stopPropagation();
-    try {
-      await deleteLinkGroup(id);
-      toast.success("Link group deleted successfully");
-      router.refresh();
-    } catch (error) {
-      toast.error("Failed to delete link group");
-    }
-  };
 
   const handleSelectChange = (value: string) => {
     if (value === "new") {
@@ -66,8 +56,8 @@ const LinkGroupGrid: React.FC<LinkGroupGridProps> = ({
 
   return (
     <>
-      <div className="flex gap-4 items-center w-full justify-end">
-        <Label className="text-foreground font-bold">Link Groups</Label>
+      <div className="flex gap-4 items-center w-full">
+        <Label className="text-2xl text-foreground font-bold">Link Group</Label>
         <Select
           defaultValue={linkGroups[0]?.id ?? ""}
           onValueChange={handleSelectChange}
@@ -81,7 +71,12 @@ const LinkGroupGrid: React.FC<LinkGroupGridProps> = ({
                 {group.title}
               </SelectItem>
             ))}
-            <SelectItem value="new">New Link Group</SelectItem>
+            <SelectSeparator />
+            <SelectItem value="add-new">
+              <span className="flex items-center gap-2">
+                <PlusIcon className="w-4 h-4" /> Add New Link Group
+              </span>
+            </SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -94,7 +89,10 @@ const LinkGroupGrid: React.FC<LinkGroupGridProps> = ({
 
       {selectedLinkGroupId && (
         <LinksEditorSections
-          linkGroupId={selectedLinkGroupId}
+          linkGroup={
+            linkGroups.find((group) => group.id === selectedLinkGroupId)!
+          }
+          user={user}
           links={links.filter(
             (link) => link.linkGroupId === selectedLinkGroupId,
           )}

@@ -1,38 +1,36 @@
 "use client";
 
+import React, { useState } from "react";
+import { PlusIcon } from "lucide-react";
+import { toast } from "sonner";
 import { createLinkGroup } from "@/actions/entities/Link/createLinkGroup";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { toast } from "sonner";
-import { useState } from "react";
-
-import React from "react";
 import { useRouter } from "next/navigation";
 import { Card } from "@/components/ui/card";
-import { PlusIcon } from "lucide-react";
-import { SessionUser } from "@/utils/lib/lucia";
+import { UserResponse } from "@/repositories/user/types";
 
-const LinkGroupForm = ({ user }: { user: SessionUser }) => {
+const NewLinkGroupForm = ({ user }: { user: UserResponse }) => {
   const router = useRouter();
 
-  const [name, setName] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      if (name.length === 0) {
+      if (title.length === 0) {
         toast.error("Name is required");
         return;
       }
 
       await createLinkGroup({
-        name,
+        title,
         description,
         userId: user.id,
       });
       toast.success("Link group created successfully");
-      setName("");
+      setTitle("");
       setDescription("");
       router.refresh();
     } catch (error) {
@@ -47,8 +45,8 @@ const LinkGroupForm = ({ user }: { user: SessionUser }) => {
           <Input
             type="text"
             placeholder="Name"
-            onChange={(e) => setName(e.target.value)}
-            value={name}
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
           />
           <Input
             type="text"
@@ -66,4 +64,4 @@ const LinkGroupForm = ({ user }: { user: SessionUser }) => {
   );
 };
 
-export default LinkGroupForm;
+export default NewLinkGroupForm;
