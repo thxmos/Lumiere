@@ -153,18 +153,6 @@ export function AccountSection({ user }: { user: UserResponse }) {
                   </SelectContent>
                 </Select>
               </div>
-              {/* Display Country */}
-              <div className="flex gap-2 mt-4 items-center">
-                <Switch
-                  id="display-country"
-                  {...register("displayCountry")}
-                  checked={watch("displayCountry")}
-                  onCheckedChange={(checked) =>
-                    setValue("displayCountry", checked)
-                  }
-                />{" "}
-                <Label htmlFor="display-country">Display Country</Label>
-              </div>
             </div>
           </div>
         </div>

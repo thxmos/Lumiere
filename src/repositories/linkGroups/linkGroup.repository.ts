@@ -52,7 +52,7 @@ export class LinkGroupRepository implements ILinkGroupRepository {
     try {
       const linkGroup = await prisma.linkGroup.create({
         data: {
-          name: data.name,
+          title: data.title,
           description: data.description,
           user: {
             connect: {

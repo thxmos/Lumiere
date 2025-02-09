@@ -10,8 +10,8 @@ export type LinkGroupWhereInput = Prisma.LinkGroupWhereInput;
 export type LinkGroupResponse = LinkGroup;
 
 export type LinkGroupCreateDto = {
-  name: string;
-  description: string;
+  title?: string;
+  description?: string;
   userId: string;
 };
 

@@ -26,7 +26,7 @@ const ULinkLayout: React.FC<Props> = async ({ children }) => {
 
   return (
     <div className="flex bg-background">
-      <main className="flex flex-col overflow-y-auto bg-background w-full gap-4 p-8">
+      <main className="flex flex-col overflow-y-auto bg-background w-full gap-4">
         <ScrollToTopLayout>{children}</ScrollToTopLayout>
       </main>
       <aside className="sticky top-0 flex items-center h-screen px-32">
