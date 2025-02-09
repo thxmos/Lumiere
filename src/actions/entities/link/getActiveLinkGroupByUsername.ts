@@ -20,5 +20,5 @@ export const getActiveLinkGroupByUsername = async (
   const linkGroup =
     await linkGroupRepository.findActiveLinkGroupByUsername(username);
   if (!linkGroup) return null;
-  return { ...linkGroup, links: (linkGroup.links as Link[]) || [] };
+  return { ...linkGroup, Links: linkGroup.Links || [] };
 };
