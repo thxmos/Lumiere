@@ -30,15 +30,19 @@ export class LinkRepository implements ILinkRepository {
     try {
       const linkGroups = await prisma.linkGroup.findMany({
         where: {
-          userId: userId,
+          User: {
+            some: {
+              id: userId,
+            },
+          },
         },
         include: {
-          links: true,
+          Links: true,
         },
       });
 
       return linkGroups.flatMap((group) =>
-        group.links.map(this.removePrivateFields),
+        group.Links.map(this.removePrivateFields),
       );
     } catch (error) {
       throw new RepositoryError("Failed to fetch links by user id", error);
@@ -49,7 +53,9 @@ export class LinkRepository implements ILinkRepository {
     try {
       const links = await prisma.link.findMany({
         where: {
-          linkGroupId: groupId,
+          LinkGroup: {
+            id: groupId,
+          },
         },
       });
 
@@ -63,15 +69,19 @@ export class LinkRepository implements ILinkRepository {
     try {
       const linkGroups = await prisma.linkGroup.findMany({
         where: {
-          user: { username },
+          User: {
+            some: {
+              username,
+            },
+          },
         },
         include: {
-          links: true,
+          Links: true,
         },
       });
 
       return linkGroups.flatMap((group) =>
-        group.links.map(this.removePrivateFields),
+        group.Links.map(this.removePrivateFields),
       );
     } catch (error) {
       throw new RepositoryError(
@@ -91,38 +101,47 @@ export class LinkRepository implements ILinkRepository {
   }
 
   async create(data: LinkCreateInput): Promise<LinkResponse> {
-    try {
-      const link = await prisma.link.create({
-        data: {
-          ...data,
-        },
-      });
-      return this.removePrivateFields(link);
-    } catch (error) {
-      if (error instanceof Prisma.PrismaClientKnownRequestError) {
-        if (error.code === "P2002") {
-          const field = (error.meta?.target as string[])[0];
-          throw new DuplicateError(
-            "Link",
-            field,
-            data[field as keyof LinkCreateInput] as string,
-          );
-        }
-      }
-      throw new RepositoryError("Failed to create link", error);
-    }
+    // try {
+    //   const link = await prisma.link.create({
+    //     data: {
+    //       ...data,
+    //       LinkGroup: {
+    //         connect: {
+    //           id: data.LinkGroup.connect?.id,
+    //         },
+    //       },
+    //     },
+    //   });
+    //   return this.removePrivateFields(link);
+    // } catch (error) {
+    //   if (error instanceof Prisma.PrismaClientKnownRequestError) {
+    //     if (error.code === "P2002") {
+    //       const field = (error.meta?.target as string[])[0];
+    //       throw new DuplicateError(
+    //         "Link",
+    //         field,
+    //         data[field as keyof LinkCreateInput] as string,
+    //       );
+    //     }
+    //   }
+    //   throw new RepositoryError("Failed to create link", error);
+    // }
+    throw new Error("Not implemented");
   }
 
   async createMany(
     user: SessionUser,
     data: LinkCreateManyInput[],
-    linkGroupId: string,
   ): Promise<void> {
     try {
       await prisma.link.createMany({
         data: data.map((link) => ({
           ...link,
-          linkGroupId,
+          LinkGroup: {
+            connect: {
+              id: link.linkGroupId,
+            },
+          },
         })),
       });
     } catch (error) {
