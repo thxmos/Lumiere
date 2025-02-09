@@ -1,7 +1,8 @@
 model Theme {
   id String @id @default(uuid()) @unique
-  userId String @unique
-  user User @relation("UserTheme", fields: [userId], references: [id])
+
+  linkGroupId String @unique
+  LinkGroup LinkGroup @relation("LinkGroupTheme", fields: [linkGroupId], references: [id])
 
   // Colors
   primaryColor String @db.Char(7) @default("#3f434a") //TODO: better default
@@ -32,7 +33,7 @@ model Theme {
   iconColor String? @db.Char(7)
 
   // Background
-  backgroundType String @default("color") // "color" | "image" | "video" //TODO: make enum
+  backgroundType String @default("color") // "color" | "image" | "video" //TODO: MAKE ENUM
   backgroundColor String? @db.Char(7) @default("#FFFFFF")
   gradient Boolean @default(true)
   gradientColor String? @db.Char(7) @default("#4f5359") 

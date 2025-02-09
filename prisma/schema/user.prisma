@@ -14,14 +14,11 @@ model User {
   username    String  @unique @default(dbgenerated("'user-' || floor(random() * 1000000)::text"))
   alias       String?
   description String? @default("") @db.VarChar(200)
-  theme       Theme?  @relation("UserTheme")
-  themeId     String?
 
   // Assets
   Asset Asset[]
 
   // Interactions
-  // links      Link[]      @relation("UserLinks")
   linkGroups LinkGroup[] @relation("UserLinkGroups")
   QRCodes    QRCode[]    @relation("UserQRCodes")
   Click      Click[]
