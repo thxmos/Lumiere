@@ -4,10 +4,10 @@ import {
   LinkGroupCreateDto,
   LinkGroupResponse,
   LinkGroupUpdateInput,
+  LinkGroupWithLinks,
 } from "./types";
 import { RepositoryError } from "../errors";
 import { prisma } from "@/utils/lib/prisma";
-import { LinkGroupWithLinks } from "@/actions/entities/link/getActiveLinkGroupByUsername";
 
 export class LinkGroupRepository implements ILinkGroupRepository {
   private removePrivateFields(linkGroup: LinkGroup): LinkGroupResponse {
@@ -29,7 +29,13 @@ export class LinkGroupRepository implements ILinkGroupRepository {
   async findByUserId(userId: string): Promise<LinkGroupResponse[]> {
     try {
       const linkGroups = await prisma.linkGroup.findMany({
-        where: { userId },
+        where: {
+          User: {
+            some: {
+              id: userId,
+            },
+          },
+        },
       });
       return linkGroups.map(this.removePrivateFields);
     } catch (error) {
@@ -47,13 +53,15 @@ export class LinkGroupRepository implements ILinkGroupRepository {
     try {
       const linkGroup = await prisma.linkGroup.findFirst({
         where: {
-          user: {
-            username,
+          User: {
+            some: {
+              username: username,
+            },
           },
           active: true,
         },
         include: {
-          links: {
+          Links: {
             where: {
               active: true,
             },
@@ -84,10 +92,13 @@ export class LinkGroupRepository implements ILinkGroupRepository {
         data: {
           title: data.title,
           description: data.description,
-          user: {
+          User: {
             connect: {
               id: data.userId,
             },
+          },
+          Theme: {
+            create: {},
           },
         },
       });
