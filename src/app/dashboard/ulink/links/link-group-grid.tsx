@@ -2,7 +2,7 @@
 
 import { LinkGroupResponse } from "@/repositories/linkGroups";
 import { Label } from "@/components/ui/label";
-import { deleteLinkGroup } from "@/actions/entities/Link/deleteLinkGroup";
+import { deleteLinkGroup } from "@/actions/entities/link/deleteLinkGroup";
 import { toast } from "sonner";
 import { SessionUser } from "@/utils/lib/lucia";
 import { useRouter } from "next/navigation";

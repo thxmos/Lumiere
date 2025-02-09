@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { COUNTRIES } from "@/constants/countries";
-import { updateUserAccountInfo } from "@/actions/entities/User/updateUserAccountInfo";
+import { updateUserAccountInfo } from "@/actions/entities/user/updateUserAccountInfo";
 import { uploadAvatar } from "@/actions/file-upload/createAsset";
 import { SettingsIcon } from "lucide-react";
 import { UserResponse } from "@/repositories/user";

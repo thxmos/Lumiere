@@ -7,7 +7,7 @@ import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
 import { UserResponse } from "@/repositories/user/types";
 import { useState } from "react";
-import { updateLinkGroup } from "@/actions/entities/Link/updateLinkGroup";
+import { updateLinkGroup } from "@/actions/entities/link/updateLinkGroup";
 import { LinkGroupResponse } from "@/repositories/linkGroups/types";
 import { toast } from "sonner";
 

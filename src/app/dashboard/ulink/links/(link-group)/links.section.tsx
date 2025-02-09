@@ -11,8 +11,8 @@ import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { Button } from "@/components/ui/button";
 import { useLinksStore } from "@/stores/links";
 import { LinkResponse } from "@/repositories/link/types";
-import { updateUserLinksAction } from "@/actions/entities/Link/updateUserLinks";
-import { deleteLinkById } from "@/actions/entities/Link/deleteLinkById";
+import { updateUserLinksAction } from "@/actions/entities/link/updateUserLinks";
+import { deleteLinkById } from "@/actions/entities/link/deleteLinkById";
 import { uploadAsset } from "@/actions/file-upload/createAsset";
 
 /* 

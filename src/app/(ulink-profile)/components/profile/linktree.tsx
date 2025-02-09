@@ -17,7 +17,7 @@ import { DEFAULT_FONT } from "@/constants/ui/fonts";
 import { ColoredBackground } from "./components/background-color";
 import VideoBackground from "./components/background-video";
 import { ImageBackground } from "./components/background-image";
-import { createClickSocial } from "@/actions/entities/LinkClick/createClickSocial";
+import { createClickSocial } from "@/actions/entities/link-click/createClickSocial";
 import { SocialMedia } from "@prisma/client";
 import { UserResponse } from "@/repositories/user";
 

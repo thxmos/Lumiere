@@ -6,8 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import React, { useTransition, useRef } from "react";
 import { toast } from "sonner";
-import type { UserDto } from "@/actions/entities/User/createUser";
-import { setPasswordOAuth } from "@/actions/entities/User/setPasswordOAuth";
+import type { UserDto } from "@/actions/entities/user/createUser";
+import { setPasswordOAuth } from "@/actions/entities/user/setPasswordOAuth";
 import { useRouter } from "next/navigation";
 
 type Props = {

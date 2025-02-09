@@ -1,4 +1,4 @@
-import { deleteLinkGroup } from "@/actions/entities/Link/deleteLinkGroup";
+import { deleteLinkGroup } from "@/actions/entities/link/deleteLinkGroup";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { Button } from "@/components/ui/button";
 import { ConfirmDeleteModal } from "../_components/modals/confirm-delete-modal";

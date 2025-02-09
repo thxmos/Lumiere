@@ -6,7 +6,7 @@ import { UsersIcon } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { updateLinkGroup } from "@/actions/entities/Link/updateLinkGroup";
+import { updateLinkGroup } from "@/actions/entities/link/updateLinkGroup";
 import { LinkGroupResponse } from "@/repositories/linkGroups/types";
 import { toast } from "sonner";
 

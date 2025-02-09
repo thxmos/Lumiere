@@ -1,4 +1,4 @@
-import { getAssetsByUserId } from "@/actions/entities/Asset/getAssetsByUserId";
+import { getAssetsByUserId } from "@/actions/entities/asset/getAssetsByUserId";
 import { AssetsUploadSection } from "./asset-upload.section";
 import AssetsListSection from "./asset-list.section";
 import { Asset } from "@prisma/client";

@@ -1,8 +1,8 @@
 "use server";
 
 import WelcomeEmail from "@/emails/welcome";
-import { getUserByEmail } from "../entities/User/getUserByEmail";
-import { createVerificationToken } from "../entities/VerificationToken/verification-token";
+import { getUserByEmail } from "../entities/user/getUserByEmail";
+import { createVerificationToken } from "../entities/verification-token/verification-token";
 import { APP_NAME } from "@/constants/app";
 import { resend } from "@/utils/lib/resend";
 

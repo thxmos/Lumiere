@@ -1,4 +1,4 @@
-import { getUserById } from "@/actions/entities/User/getUserById";
+import { getUserById } from "@/actions/entities/user/getUserById";
 import UserSettingsSection from "./user-settings.section";
 import { UserThemeSection } from "./user-theme.section";
 import { validateAuthPage } from "@/utils/security/auth";

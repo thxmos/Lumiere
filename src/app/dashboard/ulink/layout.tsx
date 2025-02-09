@@ -1,10 +1,10 @@
 import MobilePreview from "@/app/dashboard/ulink/_components/mobile-preview/mobile-preview";
 import LinkTree from "@/app/(ulink-profile)/components/profile/linktree";
-import { getThemeAction } from "@/actions/entities/Theme/getTheme";
-import { getLinksByUserId } from "@/actions/entities/Link/getLinksByUserId";
+import { getThemeAction } from "@/actions/entities/theme/getTheme";
+import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
 import type { LinkDtoWithId } from "@/types/links";
 import { ScrollToTopLayout } from "@/components/layouts/scroll-to-top.layout";
-import { getUserById } from "@/actions/entities/User/getUserById";
+import { getUserById } from "@/actions/entities/user/getUserById";
 
 interface Props {
   children: React.ReactNode;

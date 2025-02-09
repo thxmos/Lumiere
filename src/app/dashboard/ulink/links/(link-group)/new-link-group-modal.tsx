@@ -1,6 +1,6 @@
 "use client";
 
-import { createLinkGroup } from "@/actions/entities/Link/createLinkGroup";
+import { createLinkGroup } from "@/actions/entities/link/createLinkGroup";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,

@@ -1,5 +1,5 @@
 import { ProfileInfoSection } from "./ProfileInfoSection";
-import { getUserById } from "@/actions/entities/User/getUserById";
+import { getUserById } from "@/actions/entities/user/getUserById";
 import QuickStartCards from "./QuickStartCards";
 
 export default async function ProfilePage() {

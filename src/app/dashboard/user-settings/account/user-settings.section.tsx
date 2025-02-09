@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
-import { updateUserById } from "@/actions/entities/User/updateUserById";
+import { updateUserById } from "@/actions/entities/user/updateUserById";
 import { UserResponse } from "@/repositories/user";
 
 export default function UserSettingsSection({ user }: { user: UserResponse }) {

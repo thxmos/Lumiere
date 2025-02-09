@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { PlusIcon } from "lucide-react";
 import { toast } from "sonner";
-import { createLinkGroup } from "@/actions/entities/Link/createLinkGroup";
+import { createLinkGroup } from "@/actions/entities/link/createLinkGroup";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";

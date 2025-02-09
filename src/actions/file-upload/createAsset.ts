@@ -8,9 +8,9 @@ import {
   assetRepository,
   AssetResponse,
 } from "@/repositories/asset";
-import { updateUserAvatar } from "@/actions/entities/User/updateUserAvatar";
+import { updateUserAvatar } from "@/actions/entities/user/updateUserAvatar";
 import { del } from "@vercel/blob";
-import { updateProduct } from "../entities/Product/product2";
+import { updateProduct } from "../entities/product/product2";
 import { AssetType } from "@prisma/client";
 
 /*

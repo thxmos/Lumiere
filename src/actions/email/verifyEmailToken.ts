@@ -1,10 +1,10 @@
 "use server";
 
-import { updateUserById } from "@/actions/entities/User/updateUserById";
+import { updateUserById } from "@/actions/entities/user/updateUserById";
 import {
   deleteVerificationToken,
   getVerificationTokenByToken,
-} from "@/actions/entities/VerificationToken/verification-token";
+} from "@/actions/entities/verification-token/verification-token";
 
 export async function verifyEmailToken(token: string) {
   try {

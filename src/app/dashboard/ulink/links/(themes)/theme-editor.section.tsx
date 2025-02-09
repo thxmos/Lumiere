@@ -16,7 +16,7 @@ import { Separator } from "@/components/ui/separator";
 import { useThemeStore } from "@/stores/themes";
 import { Switch } from "@/components/ui/switch";
 import { WHITE } from "@/constants/ui/colors";
-import { upsertTheme } from "@/actions/entities/Theme/upsertTheme";
+import { upsertTheme } from "@/actions/entities/theme/upsertTheme";
 import { AssetResponse } from "@/repositories/asset";
 import { AssetType } from "@prisma/client";
 import { FontSection } from "./font.form";
