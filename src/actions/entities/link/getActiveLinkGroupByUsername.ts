@@ -1,0 +1,26 @@
+"use server";
+
+import { linkGroupRepository } from "@/repositories/linkGroup";
+import { userRepository } from "@/repositories/user";
+import { Link } from "@prisma/client";
+import { LinkGroup } from "@prisma/client";
+
+/*
+ * getActiveLinkGroupsByUsername()
+ * Used on public ULink profile page
+ */
+
+export interface LinkGroupWithLinks extends LinkGroup {
+  links: Link[];
+}
+
+export const getActiveLinkGroupByUsername = async (
+  username: string,
+): Promise<LinkGroupWithLinks | null> => {
+  const user = await userRepository.findByUsername(username);
+  if (!user) return null;
+  const linkGroup =
+    await linkGroupRepository.findActiveLinkGroupByUsername(username);
+  if (!linkGroup) return null;
+  return { ...linkGroup, links: (linkGroup.links as Link[]) || [] };
+};

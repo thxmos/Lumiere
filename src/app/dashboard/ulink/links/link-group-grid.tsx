@@ -1,10 +1,7 @@
 "use client";
 
-import { LinkGroupResponse } from "@/repositories/linkGroups";
+import { LinkGroupResponse } from "@/repositories/linkGroup";
 import { Label } from "@/components/ui/label";
-import { deleteLinkGroup } from "@/actions/entities/link/deleteLinkGroup";
-import { toast } from "sonner";
-import { SessionUser } from "@/utils/lib/lucia";
 import { useRouter } from "next/navigation";
 import {
   Select,
@@ -22,6 +19,9 @@ import { LinkResponse } from "@/repositories/link/types";
 import { NewLinkGroupModal } from "./(link-group)/new-link-group-modal";
 import { UserResponse } from "@/repositories/user/types";
 import { PlusIcon } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { setActiveLinkGroup } from "@/actions/entities/link/setActiveLinkGroup";
+import { toast } from "sonner";
 
 interface LinkGroupGridProps {
   linkGroups: LinkGroupResponse[];
@@ -47,38 +47,64 @@ const LinkGroupGrid: React.FC<LinkGroupGridProps> = ({
   const [isNewGroupModalOpen, setIsNewGroupModalOpen] = useState(false);
 
   const handleSelectChange = (value: string) => {
-    if (value === "new") {
+    if (value === "add-new") {
       setIsNewGroupModalOpen(true);
     } else {
       setSelectedLinkGroupId(value);
     }
   };
 
+  const handleSetActiveLinkGroup = async (checked: boolean) => {
+    if (checked) {
+      await setActiveLinkGroup(selectedLinkGroupId!);
+      toast.success("Link group activated", { duration: 3000 });
+    } else {
+      toast.warning("Please select another link group to activate", {
+        duration: 3000,
+      });
+    }
+  };
+
   return (
     <>
-      <div className="flex gap-4 items-center w-full">
-        <Label className="text-2xl text-foreground font-bold">Link Group</Label>
-        <Select
-          defaultValue={linkGroups[0]?.id ?? ""}
-          onValueChange={handleSelectChange}
-        >
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Select a link group" />
-          </SelectTrigger>
-          <SelectContent>
-            {linkGroups.map((group) => (
-              <SelectItem key={group.id} value={group.id}>
-                {group.title}
+      <div className="flex justify-between items-center">
+        <div className="flex gap-4 items-center w-full">
+          <Label className="text-2xl text-foreground font-bold">
+            Link Group
+          </Label>
+          <Select
+            defaultValue={linkGroups[0]?.id ?? ""}
+            onValueChange={handleSelectChange}
+          >
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Select a link group" />
+            </SelectTrigger>
+            <SelectContent>
+              {linkGroups.map((group) => (
+                <SelectItem key={group.id} value={group.id}>
+                  {group.title}
+                </SelectItem>
+              ))}
+              <SelectSeparator />
+              <SelectItem value="add-new">
+                <span className="flex items-center gap-2">
+                  <PlusIcon className="w-4 h-4" /> Add New Link Group
+                </span>
               </SelectItem>
-            ))}
-            <SelectSeparator />
-            <SelectItem value="add-new">
-              <span className="flex items-center gap-2">
-                <PlusIcon className="w-4 h-4" /> Add New Link Group
-              </span>
-            </SelectItem>
-          </SelectContent>
-        </Select>
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="flex items-center gap-2">
+          <Label htmlFor="active">Active</Label>
+          <Switch
+            id="active"
+            checked={
+              linkGroups.find((group) => group.id === selectedLinkGroupId)
+                ?.active ?? false
+            }
+            onCheckedChange={handleSetActiveLinkGroup}
+          />
+        </div>
       </div>
 
       <NewLinkGroupModal

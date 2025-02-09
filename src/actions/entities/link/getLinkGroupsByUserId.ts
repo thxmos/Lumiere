@@ -1,6 +1,6 @@
 "use server";
 
-import { linkGroupRepository } from "@/repositories/linkGroups";
+import { linkGroupRepository } from "@/repositories/linkGroup";
 import { SessionUser } from "@/utils/lib/lucia";
 import { withAuth } from "@/utils/security/auth";
 

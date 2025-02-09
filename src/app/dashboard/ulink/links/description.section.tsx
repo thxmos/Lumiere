@@ -1,14 +1,13 @@
 import { DashboardCard } from "@/components/layouts/dashboard-card";
-import { UsersIcon } from "lucide-react";
+import { BookOpenTextIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
-import { UserResponse } from "@/repositories/user/types";
 import { useState } from "react";
 import { updateLinkGroup } from "@/actions/entities/link/updateLinkGroup";
-import { LinkGroupResponse } from "@/repositories/linkGroups/types";
+import { LinkGroupResponse } from "@/repositories/linkGroup/types";
 import { toast } from "sonner";
 
 export default function DescriptionSection({
@@ -45,7 +44,7 @@ export default function DescriptionSection({
     <DashboardCard
       title={
         <div className="flex items-center gap-2">
-          <UsersIcon className="w-8 h-8" />
+          <BookOpenTextIcon className="w-8 h-8" />
           <p>Description</p>
         </div>
       }
@@ -58,18 +57,22 @@ export default function DescriptionSection({
         </div>
       }
     >
-      <Label>Title</Label>
-      <Input
-        placeholder="Enter your title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <Label>Description</Label>
-      <Textarea
-        placeholder="Enter your description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
+      <div className="flex flex-col gap-2">
+        <Label>Title</Label>
+        <Input
+          placeholder="Enter your title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
+      <div className="flex flex-col gap-2">
+        <Label>Description</Label>
+        <Textarea
+          placeholder="Enter your description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </div>
       <div className="flex items-center gap-2">
         <Switch
           id="display-country"

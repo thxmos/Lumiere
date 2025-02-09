@@ -7,7 +7,7 @@ import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { updateLinkGroup } from "@/actions/entities/link/updateLinkGroup";
-import { LinkGroupResponse } from "@/repositories/linkGroups/types";
+import { LinkGroupResponse } from "@/repositories/linkGroup/types";
 import { toast } from "sonner";
 
 export default function SocialMediaSection({

@@ -1,10 +1,12 @@
 import MobilePreview from "@/app/dashboard/ulink/_components/mobile-preview/mobile-preview";
 import LinkTree from "@/app/(ulink-profile)/components/profile/linktree";
 import { getThemeAction } from "@/actions/entities/theme/getTheme";
-import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
-import type { LinkDtoWithId } from "@/types/links";
 import { ScrollToTopLayout } from "@/components/layouts/scroll-to-top.layout";
 import { getUserById } from "@/actions/entities/user/getUserById";
+import {
+  getActiveLinkGroupByUsername,
+  LinkGroupWithLinks,
+} from "@/actions/entities/link/getActiveLinkGroupByUsername";
 
 interface Props {
   children: React.ReactNode;
@@ -13,7 +15,7 @@ interface Props {
 const ULinkLayout: React.FC<Props> = async ({ children }) => {
   const user = await getUserById();
   const theme = await getThemeAction();
-  const links = await getLinksByUserId();
+  const linkGroup = await getActiveLinkGroupByUsername(user?.username!);
 
   // TODO: was trying to integrate with user Store for real time updates in social media
   // const { id, ...userWithoutId } = user; // remove id from user object
@@ -34,7 +36,7 @@ const ULinkLayout: React.FC<Props> = async ({ children }) => {
           <LinkTree
             isPreview={true}
             isMobilePreview={true}
-            initialLinks={links as LinkDtoWithId[]}
+            initialLinkGroup={linkGroup as LinkGroupWithLinks}
             initialTheme={theme}
             user={user}
           />

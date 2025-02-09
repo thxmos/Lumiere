@@ -25,6 +25,8 @@ model LinkGroup {
   description String? @db.VarChar(200)
   displayCountry Boolean @default(false)
 
+  active Boolean @default(false)
+
   links Link[] @relation("linkGroupLinks")
 
   appleMusicActive Boolean @default(false)
@@ -41,6 +43,6 @@ model LinkGroup {
   deletedAt DateTime?
 
   userId String
-  user   User   @relation("UserLinkGroups", fields: [userId], references: [id])
+  user   User   @relation("UserLinkGroups", fields: [userId], references: [id], onDelete: Cascade)
 }
 

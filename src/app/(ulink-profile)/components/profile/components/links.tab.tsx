@@ -15,8 +15,9 @@ export function LinksTab({
 }) {
   return (
     <div className="space-y-4 flex flex-col">
-      {links.map((link, index) => {
-        if (link.active) {
+      {links
+        .filter((link) => link.active)
+        .map((link, index) => {
           return (
             <LinkCard
               key={index}
@@ -26,8 +27,7 @@ export function LinksTab({
               shadowStyle={shadowStyle}
             />
           );
-        }
-      })}
+        })}
     </div>
   );
 }

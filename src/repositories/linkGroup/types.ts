@@ -1,4 +1,4 @@
-import { LinkGroup, Prisma } from "@prisma/client";
+import { Link, LinkGroup, Prisma } from "@prisma/client";
 import { IBaseRepository } from "../types";
 
 export type LinkGroupCreateInput = Prisma.LinkGroupCreateInput;
@@ -8,6 +8,10 @@ export type LinkGroupUpdateInput = Prisma.LinkGroupUpdateInput;
 export type LinkGroupWhereInput = Prisma.LinkGroupWhereInput;
 
 export type LinkGroupResponse = LinkGroup;
+
+export type LinkGroupWithLinks = Prisma.LinkGroupGetPayload<{
+  include: { links: true };
+}>;
 
 export type LinkGroupCreateDto = {
   title?: string;

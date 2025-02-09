@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { PLACEHOLDER_IMG } from "@/constants/ui/images";
-import type { LinkDto, LinkDtoWithId } from "@/types/links";
+import type { LinkDtoWithId } from "@/types/links";
 import type { ThemeNoId } from "@/types/entities/theme";
 import { useThemeStore } from "@/stores/themes";
 import { useLinksStore } from "@/stores/links";
@@ -20,6 +20,7 @@ import { ImageBackground } from "./components/background-image";
 import { createClickSocial } from "@/actions/entities/link-click/createClickSocial";
 import { SocialMedia } from "@prisma/client";
 import { UserResponse } from "@/repositories/user";
+import { LinkGroupWithLinks } from "@/actions/entities/link/getActiveLinkGroupByUsername";
 
 type CardShadow = {
   cardShadowSize?: number | null;
@@ -50,7 +51,7 @@ const generateShadowStyle = (theme: ThemeNoId & CardShadow) => {
 interface Props {
   isPreview?: boolean;
   isMobilePreview?: boolean;
-  initialLinks: LinkDto[];
+  initialLinkGroup: LinkGroupWithLinks;
   initialTheme: ThemeNoId;
   user: UserResponse;
 }
@@ -59,27 +60,29 @@ export default function LinkTree({
   isPreview = false,
   isMobilePreview = false,
   initialTheme,
-  initialLinks,
+  initialLinkGroup,
   user,
 }: Props) {
   const [localTheme, setlocalTheme] = useState<ThemeNoId | null>(initialTheme);
   const [localLinks, setLocalLinks] = useState<LinkDtoWithId[]>(
-    initialLinks as LinkDtoWithId[],
+    initialLinkGroup?.links || [],
   );
+
+  console.log(initialLinkGroup);
 
   const { theme, setTheme } = useThemeStore();
   const { links, setLinks } = useLinksStore();
 
   useEffect(() => {
     setTheme(initialTheme);
-    setLinks(initialLinks as LinkDtoWithId[]);
+    setLinks(initialLinkGroup?.links || []);
   }, []);
 
   useEffect(() => {
     if (!isPreview) return;
 
     if (theme) setlocalTheme(theme);
-    if (links) setLocalLinks(links as LinkDtoWithId[]);
+    if (links) setLocalLinks(links);
   }, [theme, links]);
 
   const previewStyles = {
@@ -142,7 +145,7 @@ export default function LinkTree({
       <div
         className={cn("relative z-10 px-4 py-16 flex flex-col", {
           "min-h-screen": !isMobilePreview,
-          "h-[calc(65vh)]": isMobilePreview,
+          "min-h-[calc(64vh)]": isMobilePreview,
         })}
       >
         <div className="max-w-md mx-auto flex-grow">
@@ -181,7 +184,7 @@ export default function LinkTree({
                 >
                   {user.username}
                 </h1>
-                {user.country && user.displayCountry && (
+                {user.country && initialLinkGroup?.displayCountry && (
                   <span className="ml-2">
                     {
                       COUNTRIES.find((country) => country.code === user.country)
@@ -196,7 +199,7 @@ export default function LinkTree({
                   color: localTheme?.secondaryColorFont || WHITE,
                 }}
               >
-                {user.description}
+                {initialLinkGroup?.description}
               </p>
             </div>
           </div>

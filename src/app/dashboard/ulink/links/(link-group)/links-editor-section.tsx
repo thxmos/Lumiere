@@ -6,7 +6,7 @@ import { AssetResponse } from "@/repositories/asset/types";
 import SocialMediaSection from "../social-media.section";
 import DescriptionSection from "../description.section";
 import { UserResponse } from "@/repositories/user/types";
-import { LinkGroupResponse } from "@/repositories/linkGroups/types";
+import { LinkGroupResponse } from "@/repositories/linkGroup/types";
 import NewLinkGroupForm from "./new-link-group-form";
 
 export default async function LinksEditorSections({

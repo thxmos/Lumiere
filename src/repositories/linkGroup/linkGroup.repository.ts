@@ -2,12 +2,12 @@ import { LinkGroup } from "@prisma/client";
 import {
   ILinkGroupRepository,
   LinkGroupCreateDto,
-  LinkGroupCreateInput,
   LinkGroupResponse,
   LinkGroupUpdateInput,
 } from "./types";
 import { RepositoryError } from "../errors";
 import { prisma } from "@/utils/lib/prisma";
+import { LinkGroupWithLinks } from "@/actions/entities/link/getActiveLinkGroupByUsername";
 
 export class LinkGroupRepository implements ILinkGroupRepository {
   private removePrivateFields(linkGroup: LinkGroup): LinkGroupResponse {
@@ -35,6 +35,35 @@ export class LinkGroupRepository implements ILinkGroupRepository {
     } catch (error) {
       throw new RepositoryError(
         "Failed to fetch link groups by user id",
+        error,
+      );
+    }
+  }
+
+  // Used on profile page to get active link group with active links only
+  async findActiveLinkGroupByUsername(
+    username: string,
+  ): Promise<LinkGroupWithLinks | null> {
+    try {
+      const linkGroup = await prisma.linkGroup.findFirst({
+        where: {
+          user: {
+            username,
+          },
+          active: true,
+        },
+        include: {
+          links: {
+            where: {
+              active: true,
+            },
+          },
+        },
+      });
+      return linkGroup;
+    } catch (error) {
+      throw new RepositoryError(
+        "Failed to fetch active link group by user id",
         error,
       );
     }

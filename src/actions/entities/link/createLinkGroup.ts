@@ -3,7 +3,7 @@
 import {
   LinkGroupCreateDto,
   linkGroupRepository,
-} from "@/repositories/linkGroups";
+} from "@/repositories/linkGroup";
 
 import { SessionUser } from "@/utils/lib/lucia";
 import { withAuth } from "@/utils/security/auth";

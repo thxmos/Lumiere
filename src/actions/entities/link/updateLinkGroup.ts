@@ -3,8 +3,8 @@
 import { withAuth } from "@/utils/security/auth";
 
 import { SessionUser } from "@/utils/lib/lucia";
-import { LinkGroupUpdateInput } from "@/repositories/linkGroups/types";
-import { linkGroupRepository } from "@/repositories/linkGroups";
+import { LinkGroupUpdateInput } from "@/repositories/linkGroup/types";
+import { linkGroupRepository } from "@/repositories/linkGroup";
 
 export const updateLinkGroup = withAuth(
   async (
