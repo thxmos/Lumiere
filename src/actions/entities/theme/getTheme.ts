@@ -15,7 +15,7 @@ export const getThemeAction = withAuth(
       if (!theme) {
         return DEFAULT_THEME;
       }
-      const { id, ...themeWithoutId } = theme;
+      const { ...themeWithoutId } = theme;
       return themeWithoutId as ThemeNoId;
     } catch (error) {
       console.error("Error getting theme", error);
