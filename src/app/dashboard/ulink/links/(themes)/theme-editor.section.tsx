@@ -9,7 +9,7 @@ import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { ColorSelect } from "@/components/color-select/color-select";
 import { ColorPickerStandalone } from "@/components/color-select/color-picker-standalone";
 import { Separator } from "@/components/ui/separator";
-import { useThemeStore } from "@/stores/themes";
+import { useThemeStore } from "@/stores/old/themes";
 import { upsertTheme } from "@/actions/entities/theme/upsertTheme";
 import { AssetResponse } from "@/repositories/asset";
 import { AssetType, Theme } from "@prisma/client";

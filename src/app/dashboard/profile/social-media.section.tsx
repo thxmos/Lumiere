@@ -9,7 +9,7 @@ import { SOCIAL_PLATFORMS } from "@/constants/social-media";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { toast } from "sonner";
 import { updateUser } from "@/actions/entities/user/updateUser";
-import { useUserStore } from "@/stores/user";
+import { useUserStore } from "@/stores/old/user";
 import { UsersIcon } from "lucide-react";
 import { UserResponse } from "@/repositories/user";
 

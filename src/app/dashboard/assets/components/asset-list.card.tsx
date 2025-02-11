@@ -7,7 +7,7 @@ import { ConfirmDeleteModal } from "@/app/dashboard/ulink/_components/modals/con
 import { useState } from "react";
 import { deleteAssetById } from "@/actions/file-upload/deleteAsset";
 import { toast } from "sonner";
-import { useAssetStore } from "@/stores/assets";
+import { useAssetStore } from "@/stores/old/assets";
 import { AssetType } from "@prisma/client";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";

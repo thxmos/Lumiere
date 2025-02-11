@@ -3,7 +3,7 @@
 import { Asset } from "@prisma/client";
 import { DashboardCard } from "@/components/layouts/dashboard-card";
 import { AssetsCard } from "./components/asset-list.card";
-import { useAssetStore } from "@/stores/assets";
+import { useAssetStore } from "@/stores/old/assets";
 import { useEffect } from "react";
 import { ImagesIcon } from "lucide-react";
 

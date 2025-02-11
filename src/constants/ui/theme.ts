@@ -1,4 +1,4 @@
-import type { ThemeNoId } from "@/types/entities/theme";
+import { Theme } from "@prisma/client";
 import { BLACK } from "@/constants/ui/colors";
 import { WHITE } from "@/constants/ui/colors";
 
@@ -53,4 +53,4 @@ export const DEFAULT_THEME = {
   borderRadius: 0,
   borderWidth: 0,
   borderStyle: "solid",
-} as ThemeNoId;
+} as Theme;
