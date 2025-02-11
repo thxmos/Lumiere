@@ -12,7 +12,12 @@ import { withAuth } from "@/utils/security/auth";
 
 export const getClicksByLinkId = withAuth(
   async (user: SessionUser, linkId: string) => {
-    const clicks = await clickRepository.getAllByLinkId(linkId);
-    return clicks;
+    try {
+      const clicks = await clickRepository.getAllByLinkId(linkId);
+      return clicks;
+    } catch (error) {
+      console.error("Error getting clicks by linkId", error);
+      return [];
+    }
   },
 );

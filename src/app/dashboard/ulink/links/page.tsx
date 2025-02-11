@@ -1,6 +1,5 @@
 import { getLinkGroupsByUserId } from "@/actions/entities/link/getLinkGroupsByUserId";
 import LinkGroupGrid from "./link-group-grid";
-import { validateAuthPage } from "@/utils/security/auth";
 import { getAssetsByUserId } from "@/actions/entities/asset/getAssetsByUserId";
 import { getThemeAction } from "@/actions/entities/theme/getTheme";
 import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";

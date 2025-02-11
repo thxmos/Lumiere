@@ -2,17 +2,24 @@
 
 import { DEFAULT_THEME } from "@/constants/ui/theme";
 import { ThemeNoId } from "@/types/entities/theme";
-import { getThemeByUserId } from "./getThemeByUserId";
+import { getThemeByUserId } from "./_getThemeByUserId";
 import { withAuth } from "@/utils/security/auth";
 import { SessionUser } from "@/utils/lib/lucia";
 
+//TODO: get theme by linkgroup
+
 export const getThemeAction = withAuth(
   async (user: SessionUser): Promise<ThemeNoId> => {
-    const theme = await getThemeByUserId(user.id);
-    if (!theme) {
+    try {
+      const theme = await getThemeByUserId(user.id);
+      if (!theme) {
+        return DEFAULT_THEME;
+      }
+      const { id, ...themeWithoutId } = theme;
+      return themeWithoutId as ThemeNoId;
+    } catch (error) {
+      console.error("Error getting theme", error);
       return DEFAULT_THEME;
     }
-    const { id, ...themeWithoutId } = theme;
-    return themeWithoutId as ThemeNoId;
   },
 );

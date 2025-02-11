@@ -1,6 +1,6 @@
 import { DEFAULT_THEME } from "@/constants/ui/theme";
 import { ThemeNoId } from "@/types/entities/theme";
-import { getThemeByUserId } from "./getThemeByUserId";
+import { getThemeByUserId } from "./_getThemeByUserId";
 import { userRepository } from "@/repositories/user";
 
 // TODO: ensure we dont return any sensitive info

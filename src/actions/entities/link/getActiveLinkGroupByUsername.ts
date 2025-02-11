@@ -5,7 +5,6 @@ import {
   LinkGroupWithLinks,
 } from "@/repositories/linkGroup";
 import { userRepository } from "@/repositories/user";
-import { Link } from "@prisma/client";
 
 /*
  * getActiveLinkGroupsByUsername()

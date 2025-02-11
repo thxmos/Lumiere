@@ -5,4 +5,4 @@ export const APP_DOMAIN = "lumiere.app";
 
 export const AUTH_COOKIE_NAME = "auth_session_cookie";
 
-export const DEFAULT_REDIRECT_URL = "dashboard/profile";
+export const DEFAULT_REDIRECT_URL = "/dashboard/profile";
