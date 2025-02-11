@@ -1,5 +1,5 @@
 import { getAllClicksByUserId } from "@/actions/entities/link-click/getAllClicksByUserId";
-import { getAllProfileViewsByUserId } from "@/actions/entities/profile-view/getAllProfileViewsByUserId";
+import { getAllProfileViewsByUserId } from "@/actions/ulink/profile-view/getAllProfileViewsByUserId";
 import AnalyticsDashboard from "./analytics-dashboard";
 import { getScansByUserId } from "@/actions/ulink/qr-scan/getScansByUserId";
 
