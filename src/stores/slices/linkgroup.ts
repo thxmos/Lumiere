@@ -20,7 +20,7 @@ export const createLinkGroupSlice: StateCreator<
         ...state.linkGroups,
         {
           ...linkGroup,
-          links: [],
+          Links: [],
           theme: DEFAULT_THEME,
         },
       ],
