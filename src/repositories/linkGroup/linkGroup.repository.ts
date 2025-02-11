@@ -5,6 +5,7 @@ import {
   LinkGroupResponse,
   LinkGroupUpdateInput,
   LinkGroupWithLinks,
+  LinkGroupWithLinksTheme,
 } from "./types";
 import { RepositoryError } from "../errors";
 import { prisma } from "@/utils/lib/prisma";
@@ -26,7 +27,7 @@ export class LinkGroupRepository implements ILinkGroupRepository {
     }
   }
 
-  async findByUserId(userId: string): Promise<LinkGroupResponse[]> {
+  async findByUserId(userId: string): Promise<LinkGroupWithLinksTheme[]> {
     try {
       const linkGroups = await prisma.linkGroup.findMany({
         where: {
@@ -36,8 +37,12 @@ export class LinkGroupRepository implements ILinkGroupRepository {
             },
           },
         },
+        include: {
+          Theme: true,
+          Links: true,
+        },
       });
-      return linkGroups.map(this.removePrivateFields);
+      return linkGroups;
     } catch (error) {
       throw new RepositoryError(
         "Failed to fetch link groups by user id",

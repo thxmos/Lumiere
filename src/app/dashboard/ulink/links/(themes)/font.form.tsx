@@ -1,6 +1,6 @@
 import { Controller } from "react-hook-form";
 
-import { ThemeNoId } from "@/types/entities/theme";
+import { Theme } from "@prisma/client";
 import { Control } from "react-hook-form";
 import { FONTS } from "@/constants/ui/fonts";
 import { SelectInput } from "@/components/select-input";
@@ -10,7 +10,7 @@ import { ColorSelect } from "@/components/color-select/color-select";
 
 export interface ThemeFormProps {
   control: Control<{
-    theme: ThemeNoId;
+    theme: Theme;
   }>;
   themePrimaryColor: string;
 }

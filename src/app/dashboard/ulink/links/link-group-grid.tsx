@@ -1,6 +1,6 @@
 "use client";
 
-import { LinkGroupResponse } from "@/repositories/linkGroup";
+import { LinkGroupWithLinksTheme } from "@/repositories/linkGroup/types";
 import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
 import {
@@ -17,26 +17,22 @@ import { ThemeResponse } from "@/repositories/theme/types";
 import { AssetResponse } from "@/repositories/asset/types";
 import { LinkResponse } from "@/repositories/link/types";
 import { NewLinkGroupModal } from "./(link-group)/new-link-group-modal";
-import { UserResponse } from "@/repositories/user/types";
 import { PlusIcon } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { setActiveLinkGroup } from "@/actions/entities/link/setActiveLinkGroup";
 import { toast } from "sonner";
 
 interface LinkGroupGridProps {
-  linkGroups: LinkGroupResponse[];
-  theme: ThemeResponse;
+  linkGroups: LinkGroupWithLinksTheme[];
   assets: AssetResponse[];
-  links: LinkResponse[];
 }
 
 const LinkGroupGrid: React.FC<LinkGroupGridProps> = ({
   linkGroups,
-  links,
-  theme,
   assets,
 }) => {
   const router = useRouter();
+
   const [selectedLinkGroupId, setSelectedLinkGroupId] = useState<string | null>(
     linkGroups.sort(
       (a, b) => b.updatedAt!.getTime() - a.updatedAt!.getTime(), // sort by updatedAt in descending order
@@ -66,6 +62,7 @@ const LinkGroupGrid: React.FC<LinkGroupGridProps> = ({
   return (
     <>
       <div className="flex justify-between items-center">
+        {/* Link Group Selector */}
         <div className="flex gap-4 items-center w-full">
           <Label className="text-2xl text-foreground font-bold">
             Link Group
@@ -92,6 +89,8 @@ const LinkGroupGrid: React.FC<LinkGroupGridProps> = ({
             </SelectContent>
           </Select>
         </div>
+
+        {/* Active Switch */}
         <div className="flex items-center gap-2">
           <Label htmlFor="active">Active</Label>
           <Switch
@@ -111,15 +110,12 @@ const LinkGroupGrid: React.FC<LinkGroupGridProps> = ({
         onSuccess={() => router.refresh()}
       />
 
+      {/* Links Editor Section */}
       {selectedLinkGroupId && (
         <LinksEditorSections
           linkGroup={
             linkGroups.find((group) => group.id === selectedLinkGroupId)!
           }
-          links={links.filter(
-            (link) => link.linkGroupId === selectedLinkGroupId,
-          )}
-          theme={theme}
           assets={assets}
         />
       )}

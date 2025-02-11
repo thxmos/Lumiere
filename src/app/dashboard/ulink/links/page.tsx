@@ -12,12 +12,7 @@ const LinkGroupsPage = async () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <LinkGroupGrid
-        linkGroups={linkGroups}
-        links={links}
-        theme={theme}
-        assets={assets}
-      ></LinkGroupGrid>
+      <LinkGroupGrid linkGroups={linkGroups} assets={assets}></LinkGroupGrid>
     </div>
   );
 };

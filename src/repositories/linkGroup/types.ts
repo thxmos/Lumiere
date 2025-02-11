@@ -13,6 +13,10 @@ export type LinkGroupWithLinks = Prisma.LinkGroupGetPayload<{
   include: { Links: true };
 }>;
 
+export type LinkGroupWithLinksTheme = Prisma.LinkGroupGetPayload<{
+  include: { Links: true; Theme: true };
+}>;
+
 export type LinkGroupCreateDto = {
   title?: string;
   description?: string;
