@@ -3,10 +3,10 @@ import { SessionUser } from "@/utils/lib/lucia";
 import { userRepository } from "@/repositories/user";
 
 /*
- *
+ * Gets the current user from session
  */
 
-export const getUserById = withAuth(async (user: SessionUser) => {
+export const getCurrentUser = withAuth(async (user: SessionUser) => {
   const foundUser = await userRepository.findById(user.id);
 
   if (!foundUser) {

@@ -1,5 +1,6 @@
 model Theme {
-  id String @id @default(uuid()) @unique
+  // id String @id @default(uuid()) @unique
+  //TODO: just make this match linkgroup id
 
   linkGroupId String @unique
   LinkGroup LinkGroup @relation("linkGroupTheme", fields: [linkGroupId], references: [id], onDelete: Cascade)

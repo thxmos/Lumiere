@@ -1,4 +1,4 @@
-import { getUserById } from "@/actions/entities/user/getUserById";
+import { getUserById } from "@/actions/entities/user/getCurrentUser";
 import { AccountSection } from "./account.section";
 import { SocialMediaSection } from "./social-media.section";
 

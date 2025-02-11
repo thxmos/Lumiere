@@ -6,12 +6,12 @@ import { SessionUser } from "@/utils/lib/lucia";
 import { withAuth } from "@/utils/security/auth";
 
 export const createTheme = withAuth(
-  async (user: SessionUser, theme: ThemeNoId) => {
+  async (user: SessionUser, linkGroupId: string, theme: ThemeNoId) => {
     const newTheme = await themeRepository.create({
       ...theme,
-      user: {
+      LinkGroup: {
         connect: {
-          id: user.id,
+          id: linkGroupId,
         },
       },
     });

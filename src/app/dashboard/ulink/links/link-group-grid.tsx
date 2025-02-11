@@ -25,7 +25,6 @@ import { toast } from "sonner";
 
 interface LinkGroupGridProps {
   linkGroups: LinkGroupResponse[];
-  user: UserResponse;
   theme: ThemeResponse;
   assets: AssetResponse[];
   links: LinkResponse[];
@@ -33,7 +32,6 @@ interface LinkGroupGridProps {
 
 const LinkGroupGrid: React.FC<LinkGroupGridProps> = ({
   linkGroups,
-  user,
   links,
   theme,
   assets,
@@ -118,7 +116,6 @@ const LinkGroupGrid: React.FC<LinkGroupGridProps> = ({
           linkGroup={
             linkGroups.find((group) => group.id === selectedLinkGroupId)!
           }
-          user={user}
           links={links.filter(
             (link) => link.linkGroupId === selectedLinkGroupId,
           )}

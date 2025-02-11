@@ -2,7 +2,7 @@ import MobilePreview from "@/app/dashboard/ulink/_components/mobile-preview/mobi
 import LinkTree from "@/app/(ulink-profile)/components/profile/linktree";
 import { getThemeAction } from "@/actions/entities/theme/getTheme";
 import { ScrollToTopLayout } from "@/components/layouts/scroll-to-top.layout";
-import { getUserById } from "@/actions/entities/user/getUserById";
+import { getCurrentUser } from "@/actions/entities/user/getCurrentUser";
 import { getActiveLinkGroupByUsername } from "@/actions/entities/link/getActiveLinkGroupByUsername";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const ULinkLayout: React.FC<Props> = async ({ children }) => {
-  const user = await getUserById();
+  const user = await getCurrentUser();
   const theme = await getThemeAction();
   const linkGroup = await getActiveLinkGroupByUsername(user?.username!);
 

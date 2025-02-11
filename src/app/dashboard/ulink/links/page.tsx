@@ -6,7 +6,6 @@ import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
 import { getUserById } from "@/actions/entities/user/getUserById";
 
 const LinkGroupsPage = async () => {
-  const user = await getUserById();
   const theme = await getThemeAction();
   const assets = await getAssetsByUserId();
   const links = await getLinksByUserId();
@@ -17,7 +16,6 @@ const LinkGroupsPage = async () => {
       <LinkGroupGrid
         linkGroups={linkGroups}
         links={links}
-        user={user}
         theme={theme}
         assets={assets}
       ></LinkGroupGrid>

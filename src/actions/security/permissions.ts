@@ -2,7 +2,7 @@
 
 import { hasPermission } from "@/utils/security/access";
 import type { User, Permissions } from "@/types/access";
-import { getUserById } from "@/actions/entities/user/getUserById";
+import { getCurrentUser } from "@/actions/entities/user/getCurrentUser";
 import { requireUser } from "@/utils/security/auth";
 
 /*
@@ -30,7 +30,7 @@ export const hasPermissionAction = async (
   const user = await requireUser();
 
   // Here because i eventually want to take roles out of session
-  const userFromDb = await getUserById();
+  const userFromDb = await getCurrentUser();
   if (!userFromDb)
     throw new Error("You do not have permissions to access this resource");
 
