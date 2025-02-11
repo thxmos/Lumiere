@@ -30,7 +30,6 @@ model LinkGroup {
   Links Link[] @relation("LinkGroupLinks")
   Theme Theme? @relation("linkGroupTheme")
 
-
   appleMusicActive Boolean @default(false)
   facebookActive Boolean @default(false)
   instagramActive Boolean @default(false)

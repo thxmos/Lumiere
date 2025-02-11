@@ -1,4 +1,7 @@
 import { LinkResponse } from "@/repositories/link";
+import { LinkGroupWithLinks } from "@/repositories/linkGroup";
+import { LinkGroupResponse } from "@/repositories/linkGroup";
+import { ThemeNoId } from "@/types/entities/theme";
 import { SessionUser } from "@/utils/lib/lucia";
 import { Asset, Theme } from "@prisma/client";
 
@@ -21,12 +24,36 @@ export interface AssetSlice {
   removeAsset: (assetId: string) => void;
 }
 
-export interface LinkSlice {
-  links: LinkResponse[];
-  setLinks: (links: LinkResponse[]) => void;
-  addLink: (link: LinkResponse) => void;
-  updateLink: (id: string, link: Partial<LinkResponse>) => void;
-  removeLink: (id: string) => void;
+export interface LinkGroupSlice {
+  linkGroups: LinkGroupWithLinks[];
+  activeLinkGroup: LinkGroupWithLinks | null;
+
+  // Group operations
+  setLinkGroups: (linkGroups: LinkGroupWithLinks[]) => void;
+  addLinkGroup: (linkGroup: LinkGroupResponse) => void;
+  updateLinkGroup: (id: string, updates: Partial<LinkGroupResponse>) => void;
+  removeLinkGroup: (id: string) => void;
+  setActiveLinkGroup: (groupId: string) => void;
+
+  // Link operations within groups
+  addLink: (groupId: string, link: LinkResponse) => void;
+  updateLink: (
+    groupId: string,
+    linkId: string,
+    updates: Partial<LinkResponse>,
+  ) => void;
+  removeLink: (groupId: string, linkId: string) => void;
+  updateLinks: (groupId: string, links: LinkResponse[]) => void;
+
+  // Theme operations
+  updateTheme: (groupId: string, updates: Partial<Theme>) => void;
+
+  // Social media
+  updateSocialMedia: (
+    groupId: string,
+    platform: string,
+    isActive: boolean,
+  ) => void;
 }
 
 // Combine all slices into a RootState
@@ -34,4 +61,4 @@ export interface RootState
   extends UserSlice,
     ThemeSlice,
     AssetSlice,
-    LinkSlice {}
+    LinkGroupSlice {}
