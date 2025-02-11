@@ -1,7 +1,6 @@
 import { LinkResponse } from "@/repositories/link";
-import { LinkGroupWithLinks } from "@/repositories/linkGroup";
+import { LinkGroupWithLinksTheme } from "@/repositories/linkGroup";
 import { LinkGroupResponse } from "@/repositories/linkGroup";
-import { ThemeNoId } from "@/types/entities/theme";
 import { SessionUser } from "@/utils/lib/lucia";
 import { Asset, Theme } from "@prisma/client";
 
@@ -25,11 +24,11 @@ export interface AssetSlice {
 }
 
 export interface LinkGroupSlice {
-  linkGroups: LinkGroupWithLinks[];
-  activeLinkGroup: LinkGroupWithLinks | null;
+  linkGroups: LinkGroupWithLinksTheme[];
+  activeLinkGroup: LinkGroupWithLinksTheme | null;
 
   // Group operations
-  setLinkGroups: (linkGroups: LinkGroupWithLinks[]) => void;
+  setLinkGroups: (linkGroups: LinkGroupWithLinksTheme[]) => void;
   addLinkGroup: (linkGroup: LinkGroupResponse) => void;
   updateLinkGroup: (id: string, updates: Partial<LinkGroupResponse>) => void;
   removeLinkGroup: (id: string) => void;

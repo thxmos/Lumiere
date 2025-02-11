@@ -21,7 +21,7 @@ export const createLinkGroupSlice: StateCreator<
         {
           ...linkGroup,
           Links: [],
-          theme: DEFAULT_THEME,
+          Theme: DEFAULT_THEME,
         },
       ],
     })),
@@ -59,14 +59,14 @@ export const createLinkGroupSlice: StateCreator<
     set((state) => ({
       linkGroups: state.linkGroups.map((group) =>
         group.id === groupId
-          ? { ...group, links: [...group.links, link] }
+          ? { ...group, Links: [...group.Links, link] }
           : group,
       ),
       activeLinkGroup:
         state.activeLinkGroup?.id === groupId
           ? {
               ...state.activeLinkGroup,
-              links: [...state.activeLinkGroup.links, link],
+              Links: [...state.activeLinkGroup.Links, link],
             }
           : state.activeLinkGroup,
     })),
@@ -77,7 +77,7 @@ export const createLinkGroupSlice: StateCreator<
         group.id === groupId
           ? {
               ...group,
-              links: group.links.map((link) =>
+              Links: group.Links.map((link) =>
                 link.id === linkId ? { ...link, ...updates } : link,
               ),
             }
@@ -87,7 +87,7 @@ export const createLinkGroupSlice: StateCreator<
         state.activeLinkGroup?.id === groupId
           ? {
               ...state.activeLinkGroup,
-              links: state.activeLinkGroup.links.map((link) =>
+              Links: state.activeLinkGroup.Links.map((link) =>
                 link.id === linkId ? { ...link, ...updates } : link,
               ),
             }
@@ -100,7 +100,7 @@ export const createLinkGroupSlice: StateCreator<
         group.id === groupId
           ? {
               ...group,
-              links: group.links.filter((link) => link.id !== linkId),
+              Links: group.Links.filter((link) => link.id !== linkId),
             }
           : group,
       ),
@@ -108,7 +108,7 @@ export const createLinkGroupSlice: StateCreator<
         state.activeLinkGroup?.id === groupId
           ? {
               ...state.activeLinkGroup,
-              links: state.activeLinkGroup.links.filter(
+              Links: state.activeLinkGroup.Links.filter(
                 (link) => link.id !== linkId,
               ),
             }
@@ -118,22 +118,23 @@ export const createLinkGroupSlice: StateCreator<
   updateLinks: (groupId, links) =>
     set((state) => ({
       linkGroups: state.linkGroups.map((group) =>
-        group.id === groupId ? { ...group, links } : group,
+        group.id === groupId ? { ...group, Links: links } : group,
       ),
       activeLinkGroup:
         state.activeLinkGroup?.id === groupId
-          ? { ...state.activeLinkGroup, links }
+          ? { ...state.activeLinkGroup, Links: links }
           : state.activeLinkGroup,
     })),
 
-  // Theme operations
   updateTheme: (groupId, updates) =>
     set((state) => ({
       linkGroups: state.linkGroups.map((group) =>
         group.id === groupId
           ? {
               ...group,
-              theme: { ...group.theme, ...updates },
+              Theme: group.Theme
+                ? { ...group.Theme, ...updates }
+                : { ...DEFAULT_THEME, linkGroupId: groupId, ...updates },
             }
           : group,
       ),
@@ -141,7 +142,9 @@ export const createLinkGroupSlice: StateCreator<
         state.activeLinkGroup?.id === groupId
           ? {
               ...state.activeLinkGroup,
-              theme: { ...state.activeLinkGroup.theme, ...updates },
+              Theme: state.activeLinkGroup.Theme
+                ? { ...state.activeLinkGroup.Theme, ...updates }
+                : { ...DEFAULT_THEME, linkGroupId: groupId, ...updates },
             }
           : state.activeLinkGroup,
     })),
