@@ -8,7 +8,7 @@ import {
 
 import { LinkCard } from "./link-card";
 import { LinkResponse } from "@/repositories/link/types";
-import { useLinksStore } from "@/stores/links";
+import { useLinksStore } from "@/stores/old/links";
 
 interface Props {
   onUpdate: (index: number, updatedLink: LinkResponse) => void;

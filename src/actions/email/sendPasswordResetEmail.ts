@@ -4,7 +4,7 @@ import { APP_NAME } from "@/constants/app";
 import { resend } from "@/utils/lib/resend";
 import PasswordResetEmail from "@/emails/password-reset";
 import { getUserByEmail } from "@/actions/entities/user/getUserByEmail";
-import { createPasswordResetToken } from "@/actions/entities/password-reset-token/createPasswordResetToken";
+import { createPasswordResetToken } from "@/actions/security/auth/tokens/createPasswordResetToken";
 
 export const sendResetEmail = async (email: string) => {
   const user = await getUserByEmail(email);

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Click, Link, ProfileView, QRScan } from "@prisma/client";
+import { Click, ProfileView, QRScan } from "@prisma/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Select,

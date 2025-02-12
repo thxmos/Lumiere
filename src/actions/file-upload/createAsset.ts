@@ -84,14 +84,3 @@ export const uploadAvatar = async (formData: FormData) => {
     throw new Error("Failed to update avatar");
   }
 };
-
-//replace both with createAsset
-export async function uploadLinkImage(
-  formData: FormData,
-  data: AssetCreateInput,
-) {
-  const file = formData.get("file") as File;
-
-  const newAsset = await createAsset(file, data);
-  return await createAsset(file, data);
-}

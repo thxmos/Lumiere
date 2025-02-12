@@ -1,27 +1,18 @@
 import { getLinkGroupsByUserId } from "@/actions/entities/link/getLinkGroupsByUserId";
 import LinkGroupGrid from "./link-group-grid";
-import { validateAuthPage } from "@/utils/security/auth";
 import { getAssetsByUserId } from "@/actions/entities/asset/getAssetsByUserId";
 import { getThemeAction } from "@/actions/entities/theme/getTheme";
 import { getLinksByUserId } from "@/actions/entities/link/getLinksByUserId";
-import { getUserById } from "@/actions/entities/user/getUserById";
 
 const LinkGroupsPage = async () => {
-  const user = await getUserById();
-  const theme = await getThemeAction();
   const assets = await getAssetsByUserId();
   const links = await getLinksByUserId();
   const linkGroups = await getLinkGroupsByUserId();
+  const theme = await getThemeAction(); //TODO get by linkgroup
 
   return (
     <div className="flex flex-col gap-4">
-      <LinkGroupGrid
-        linkGroups={linkGroups}
-        links={links}
-        user={user}
-        theme={theme}
-        assets={assets}
-      ></LinkGroupGrid>
+      <LinkGroupGrid linkGroups={linkGroups} assets={assets}></LinkGroupGrid>
     </div>
   );
 };

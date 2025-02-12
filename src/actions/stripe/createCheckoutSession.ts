@@ -2,7 +2,7 @@
 
 import { createStripeCheckoutSession } from "@/actions/stripe/createStripeCheckoutSession";
 import { getStripeCustomer } from "@/actions/stripe/getStripeCustomer";
-import { getUserById } from "@/actions/entities/user/getUserById";
+import { getCurrentUser } from "@/actions/entities/user/getCurrentUser";
 import { Price } from "@prisma/client";
 import { withAuth } from "@/utils/security/auth";
 import { SessionUser } from "@/utils/lib/lucia";
@@ -25,7 +25,7 @@ export const createCheckoutSession = withAuth(
     quanity: number,
   ): Promise<{ success: boolean; sessionId?: string; message?: string }> => {
     try {
-      const userFromDb = await getUserById();
+      const userFromDb = await getCurrentUser();
 
       if (!userFromDb || !userFromDb.stripeCustomerId) {
         throw new Error("User not found or no stripe customer id");

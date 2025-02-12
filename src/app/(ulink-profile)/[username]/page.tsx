@@ -4,7 +4,7 @@ import { getThemeByUsername } from "@/actions/entities/theme/getThemeByUsername"
 import React from "react";
 import { redirect } from "next/navigation";
 import LinkTree from "@/app/(ulink-profile)/components/profile/linktree";
-import { createProfileView } from "@/actions/entities/profile-view/createProfileView";
+import { createProfileView } from "@/actions/ulink/profile-view/createProfileView";
 import { UserResponse } from "@/repositories/user";
 
 export default async function ArtistPage({

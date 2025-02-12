@@ -11,9 +11,9 @@ import { toast } from "sonner";
 import { generateQRCode2 } from "./utils";
 import { PLACEHOLDER_IMG } from "@/constants/ui/images";
 import QRModal from "./components/qr-modal";
-import { useQRCodeStore } from "@/stores/qr-codes";
+import { useQRCodeStore } from "@/stores/old/qr-codes";
 import { QRCodeDto } from "@/types/entities/qr-codes";
-import { createQRCode } from "@/actions/entities/qr-code/createQrCode";
+import { createQRCode } from "@/actions/ulink/qr-code/createQrCode";
 import { QrCodeIcon } from "lucide-react";
 
 // Add initialQRCodes to the props

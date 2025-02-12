@@ -14,7 +14,7 @@ model Link {
   updatedAt DateTime  @default(now()) @updatedAt
   deletedAt DateTime? // TODO:soft delete and archive data for user analytics?
   linkGroupId String
-  linkGroup   LinkGroup @relation("linkGroupLinks", fields: [linkGroupId], references: [id], onDelete: Cascade)
+  LinkGroup   LinkGroup @relation("LinkGroupLinks", fields: [linkGroupId], references: [id], onDelete: Cascade)
 
   Click Click[]
 }
@@ -24,10 +24,11 @@ model LinkGroup {
   title       String?  @default("New Link Group")
   description String? @db.VarChar(200)
   displayCountry Boolean @default(false)
-
   active Boolean @default(false)
 
-  links Link[] @relation("linkGroupLinks")
+  User User[] @relation("UserLinkGroups")
+  Links Link[] @relation("LinkGroupLinks")
+  Theme Theme? @relation("linkGroupTheme")
 
   appleMusicActive Boolean @default(false)
   facebookActive Boolean @default(false)
@@ -41,8 +42,5 @@ model LinkGroup {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @default(now()) @updatedAt
   deletedAt DateTime?
-
-  userId String
-  user   User   @relation("UserLinkGroups", fields: [userId], references: [id], onDelete: Cascade)
 }
 

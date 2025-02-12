@@ -1,5 +1,5 @@
-import { getPasswordResetTokenByToken } from "@/actions/entities/password-reset-token/getPasswordResetTokenByToken";
-import { deletePasswordResetToken } from "@/actions/entities/password-reset-token/deletePasswordResetToken";
+import { getPasswordResetTokenByToken } from "@/actions/security/auth/tokens/getPasswordResetTokenByToken";
+import { deletePasswordResetToken } from "@/actions/security/auth/tokens/deletePasswordResetToken";
 import { updateUserById } from "@/actions/entities/user/updateUserById";
 import { hash } from "@/utils/security/crypto";
 import { NextRequest, NextResponse } from "next/server";

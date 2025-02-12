@@ -6,8 +6,8 @@ import Image from "next/image";
 import { PLACEHOLDER_IMG } from "@/constants/ui/images";
 import type { LinkDtoWithId } from "@/types/links";
 import type { ThemeNoId } from "@/types/entities/theme";
-import { useThemeStore } from "@/stores/themes";
-import { useLinksStore } from "@/stores/links";
+import { useThemeStore } from "@/stores/old/themes";
+import { useLinksStore } from "@/stores/old/links";
 import { BLACK, WHITE } from "@/constants/ui/colors";
 import { COUNTRIES } from "@/constants/countries";
 import { TabSelector } from "./components/tab-selector";
@@ -20,8 +20,7 @@ import { ImageBackground } from "./components/background-image";
 import { createClickSocial } from "@/actions/entities/link-click/createClickSocial";
 import { SocialMedia } from "@prisma/client";
 import { UserResponse } from "@/repositories/user";
-import { LinkGroupWithLinks } from "@/actions/entities/link/getActiveLinkGroupByUsername";
-
+import { LinkGroupWithLinks } from "@/repositories/linkGroup";
 type CardShadow = {
   cardShadowSize?: number | null;
   cardShadowColor?: string | null;
@@ -51,7 +50,7 @@ const generateShadowStyle = (theme: ThemeNoId & CardShadow) => {
 interface Props {
   isPreview?: boolean;
   isMobilePreview?: boolean;
-  initialLinkGroup: LinkGroupWithLinks;
+  initialLinkGroup: LinkGroupWithLinks | null;
   initialTheme: ThemeNoId;
   user: UserResponse;
 }
@@ -65,17 +64,15 @@ export default function LinkTree({
 }: Props) {
   const [localTheme, setlocalTheme] = useState<ThemeNoId | null>(initialTheme);
   const [localLinks, setLocalLinks] = useState<LinkDtoWithId[]>(
-    initialLinkGroup?.links || [],
+    initialLinkGroup?.Links || [],
   );
-
-  console.log(initialLinkGroup);
 
   const { theme, setTheme } = useThemeStore();
   const { links, setLinks } = useLinksStore();
 
   useEffect(() => {
     setTheme(initialTheme);
-    setLinks(initialLinkGroup?.links || []);
+    setLinks(initialLinkGroup?.Links || []);
   }, []);
 
   useEffect(() => {

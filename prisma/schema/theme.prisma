@@ -1,41 +1,43 @@
 model Theme {
-  id String @id @default(uuid()) @unique
-  userId String @unique
-  user User @relation("UserTheme", fields: [userId], references: [id])
+  // id String @id @default(uuid()) @unique
+  //TODO: just make this match linkgroup id
+
+  linkGroupId String @id @unique
+  LinkGroup LinkGroup @relation("linkGroupTheme", fields: [linkGroupId], references: [id], onDelete: Cascade)
 
   // Colors
   primaryColor String @db.Char(7) @default("#3f434a") //TODO: better default
   secondaryColor String @db.Char(7) @default("#ffa500") //TODO: better default
 
   // Text
-  fontFamily String // TODO: make FontFamily enum
-  fontWeight Int
+  fontFamily String?  // TODO: make FontFamily enum
+  fontWeight Int @default(400)
   fontColor String @db.Char(7) @default("#000000")
   secondaryColorFont String @db.Char(7) @default("#000000") 
 
   // Border
-  borderColor String
-  borderRadius Int
-  borderWidth Int
-  borderStyle String
+  borderColor String @db.Char(7) @default("#000000")
+  borderRadius Int @default(0)
+  borderWidth Int @default(0)
+  borderStyle String @default("solid")
 
   // Card
   cardBackgroundColor String? @db.Char(7) @default("#FFFFFF")
   cardTextColor String? @db.Char(7) @default("#000000")
-  cardShadowSize Int? // Size in pixels
+  cardShadowSize Int @default(0) // Size in pixels
   cardShadowColor String? @db.Char(7) @default("#000000")
-  cardShadowOffset Int? // Distance in pixels
-  cardShadowDirection Int?// Angle in degrees (0-360)
-  cardShadowBlur Int? // Blur in pixels 
+  cardShadowOffset Int @default(0) // Distance in pixels
+  cardShadowDirection Int @default(0)// Angle in degrees (0-360)
+  cardShadowBlur Int @default(0) // Blur in pixels 
   
   // Icon
-  iconColor String? @db.Char(7)
+  iconColor String @db.Char(7) @default("#000000")
 
   // Background
-  backgroundType String @default("color") // "color" | "image" | "video" //TODO: make enum
-  backgroundColor String? @db.Char(7) @default("#FFFFFF")
+  backgroundType String @default("color") // "color" | "image" | "video" //TODO: MAKE ENUM
+  backgroundColor String @db.Char(7) @default("#FFFFFF")
   gradient Boolean @default(true)
-  gradientColor String? @db.Char(7) @default("#4f5359") 
+  gradientColor String @db.Char(7) @default("#4f5359") 
   backgroundImageUrl String? // could point directly to assetId - backgroundImageAssetId
   videoUrl String? // could point directly to assetId - videoAssetId
 

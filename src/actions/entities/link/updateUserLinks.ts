@@ -33,7 +33,7 @@ export const updateUserLinksAction = withAuth(
         linkGroupId,
       })) as LinkCreateManyInput[];
 
-    await linkRepository.createMany(user, createLinksFiltered, linkGroupId);
+    await linkRepository.createMany(user, createLinksFiltered);
 
     const updateLinksFiltered = links
       ?.filter((link) => !link.id?.includes("new-"))

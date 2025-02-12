@@ -1,9 +1,9 @@
-import { getUserById } from "@/actions/entities/user/getUserById";
+import { getCurrentUser } from "@/actions/entities/user/getCurrentUser";
 import { AccountSection } from "./account.section";
 import { SocialMediaSection } from "./social-media.section";
 
 export default async function ProfilePage() {
-  const user = await getUserById();
+  const user = await getCurrentUser();
 
   return (
     <>

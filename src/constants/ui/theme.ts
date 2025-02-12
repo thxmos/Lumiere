@@ -1,4 +1,4 @@
-import type { ThemeNoId } from "@/types/entities/theme";
+import { Theme } from "@prisma/client";
 import { BLACK } from "@/constants/ui/colors";
 import { WHITE } from "@/constants/ui/colors";
 
@@ -30,7 +30,7 @@ export const THEMES = [
 
 export const DEFAULT_THEME = {
   primaryColor: WHITE,
-  secondaryColor: "#3f1f4a",
+  secondaryColor: "#ffa500",
   fontFamily: "Arial",
   fontWeight: 400,
   fontColor: BLACK,
@@ -49,8 +49,7 @@ export const DEFAULT_THEME = {
   cardShadowBlur: 0,
   cardShadowColor: BLACK,
   iconColor: WHITE,
-  borderColor: BLACK,
   borderRadius: 0,
   borderWidth: 0,
   borderStyle: "solid",
-} as ThemeNoId;
+} as Theme;

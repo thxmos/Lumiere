@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { UploadIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { useAssetStore } from "@/stores/assets";
+import { useAssetStore } from "@/stores/old/assets";
 import { Asset } from "@prisma/client";
 
 import { FileType } from "@/components/upload/file-upload";

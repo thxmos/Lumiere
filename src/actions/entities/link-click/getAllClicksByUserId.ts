@@ -10,6 +10,11 @@ import { withAuth } from "@/utils/security/auth";
  */
 
 export const getAllClicksByUserId = withAuth(async (user: SessionUser) => {
-  const clicks = await clickRepository.getAllByUserId(user.id);
-  return clicks;
+  try {
+    const clicks = await clickRepository.getAllByUserId(user.id);
+    return clicks;
+  } catch (error) {
+    console.error("Error getting clicks by userId", error);
+    return [];
+  }
 });
