@@ -1,9 +1,9 @@
 "use server";
 
-import { hash } from "@/utils/security/crypto";
+import { hash } from "@/shared/utils/security/crypto";
 import { updateUserById } from "./updateUserById";
 import { SessionUser } from "@/core/auth/lucia";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 
 /*
  * setPasswordOAuth()

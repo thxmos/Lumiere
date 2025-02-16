@@ -1,6 +1,6 @@
 import { Theme } from "@prisma/client";
-import { BLACK } from "@/config/ui/colors";
-import { WHITE } from "@/config/ui/colors";
+import { BLACK } from "@/config/theme/colors";
+import { WHITE } from "@/config/theme/colors";
 
 //TODO: Clean up shadcn themes, associate each theme with the color below and map through where needed
 export const SHADCN_THEMES = [

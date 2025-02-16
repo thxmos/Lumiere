@@ -1,7 +1,7 @@
 "use server";
 
 import { SessionUser } from "@/shared/core/auth/lucia";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 import { Action } from "@prisma/client";
 import { getGoogleAccessToken } from "./getGoogleAccessToken";
 import { prisma } from "@/shared/core/db/prisma";

@@ -2,15 +2,15 @@ import { Button } from "@/shared/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { Card } from "@/shared/components/ui/card";
-import { generateQRCode2 } from "../utils";
 import { Label } from "@/shared/components/ui/label";
 import { X } from "lucide-react";
 import { toast } from "sonner";
-import { ConfirmDeleteModal } from "@/app/dashboard/ulink/_components/modals/confirm-delete-modal";
+import { ConfirmDeleteModal } from "@/modules/uLink/components/modals/confirm-delete-modal";
 import { useState } from "react";
 import type { QRCodeDto } from "@/shared/types/entities/qr-codes";
-import QRModal from "./qr-modal";
 import { deleteQRCode } from "@/shared/actions/ulink/qr-code/deleteQrCode";
+import QRModal from "./qr-modal";
+import { generateQRCode2 } from "@/app/dashboard/ulink/qr-generator/utils";
 
 export const QRCodeCard = ({
   qrCode,

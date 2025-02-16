@@ -23,14 +23,14 @@ import {
   CardFooter,
 } from "@/shared/components/ui/card";
 import { Action, Campaign } from "@prisma/client";
-import { createCalendarEvent } from "@/shared/actions/google/createGoogleCalendarEvent";
+import { createCalendarEvent } from "@/modules/foresight/actions/google/createGoogleCalendarEvent";
 import { toast } from "sonner";
-import { cn } from "@/utils/utils";
+import { cn } from "@/shared/utils/utils";
 import { GRADIENT_STYLES } from "@/config/theme/styles";
 import CircleProgress from "@/shared/components/ui/circle-progress";
 import { LUMIERE_GRAY_DARK, LUMIERE_ORANGE } from "@/config/theme/colors";
-import { updateGoogleCalendarEvent } from "@/shared/actions/google/updateGoogleCalendarEvent";
-import { deleteCalendarEvent } from "@/shared/actions/google/deleteGoogleCalendarEvent";
+import { updateGoogleCalendarEvent } from "@/modules/foresight/actions/google/updateGoogleCalendarEvent";
+import { deleteCalendarEvent } from "@/modules/foresight/actions/google/deleteGoogleCalendarEvent";
 
 // TODO: Find the action with the last day of the campaign and use that to filter present/past
 // TODO:

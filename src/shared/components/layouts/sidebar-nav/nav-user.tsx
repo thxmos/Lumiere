@@ -28,9 +28,9 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/shared/components/ui/sidebar";
-import { getInitials } from "@/utils/utils";
+import { getInitials } from "@/shared/utils/utils";
 import { usePathname } from "next/navigation";
-import { cn } from "@/utils/utils";
+import { cn } from "@/shared/utils/utils";
 
 export function NavUser({
   user,

@@ -6,7 +6,7 @@ import { Input } from "@/shared/components/ui/input";
 import { Textarea } from "@/shared/components/ui/textarea";
 import { Button } from "@/shared/components/ui/button";
 import { Label } from "@/shared/components/ui/label";
-import AvatarUpload from "@/app/dashboard/ulink/_components/avatar-upload";
+import AvatarUpload from "@/modules/uLink/components/avatar-upload";
 import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
 import { toast } from "sonner";
 import {

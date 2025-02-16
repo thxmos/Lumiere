@@ -6,7 +6,7 @@ import {
   ColorSchemeType,
   ColorVariation,
   generateColorSchemeFromHex,
-} from "@/utils/ui/colors";
+} from "@/shared/utils/ui/colors";
 
 interface ColorPaletteProps {
   themePrimaryColor: string;

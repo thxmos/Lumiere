@@ -8,10 +8,10 @@ import { Input } from "@/shared/components/ui/input";
 import { Switch } from "@/shared/components/ui/switch";
 import { Button } from "@/shared/components/ui/button";
 import { Trash, Edit, Check, X } from "lucide-react";
-import { ConfirmDeleteModal } from "@/app/dashboard/ulink/_components/modals/confirm-delete-modal";
+import { ConfirmDeleteModal } from "@/modules/uLink/components/modals/confirm-delete-modal";
 import { Label } from "@/shared/components/ui/label";
 import { LinkResponse } from "@/shared/core/db/repositories/link";
-import { cn } from "@/utils/utils";
+import { cn } from "@/shared/utils/utils";
 
 /*
 - text ellipsis on mobile

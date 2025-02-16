@@ -1,5 +1,4 @@
-import { lucia } from "@/core/auth/lucia";
-
+import { lucia } from "@/shared/core/auth/lucia";
 import { cookies } from "next/headers";
 
 export const getSessionIdFromCookie = () => {

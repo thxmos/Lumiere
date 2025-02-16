@@ -1,6 +1,6 @@
 import { QRListSection } from "./qr-list.section";
 import { QRGeneratorSection } from "./qr-generator.section";
-import { validateAuthPage } from "@/utils/security/auth";
+import { validateAuthPage } from "@/shared/utils/security/auth";
 import { getQRCodesByUserId } from "@/shared/actions/ulink/qr-code/getQrCodesByUserId";
 import { QRCodeDto } from "@/shared/types/entities/qr-codes";
 /*

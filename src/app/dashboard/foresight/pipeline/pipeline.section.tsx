@@ -1,5 +1,5 @@
 import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
-import { validateAuthPage } from "@/utils/security/auth";
+import { validateAuthPage } from "@/shared/utils/security/auth";
 import {
   CampaignWithActions,
   getUserMarketingDataFromDb,

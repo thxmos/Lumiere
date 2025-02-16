@@ -7,9 +7,8 @@ import { ImageOff, Upload, X } from "lucide-react";
 import { Button } from "@/shared/components/ui/button";
 import { AssetUploadDialog } from "./asset-upload-modal";
 import { FileType } from "./file-upload";
-import { cn } from "@/utils/utils";
-import { getAssetType } from "@/utils/lib/asset";
-
+import { getAssetType } from "@/shared/utils/lib/asset";
+import { cn } from "@/shared/utils/utils";
 const sizeClasses = {
   sm: "min-w-20 min-h-20 max-w-20 max-h-20",
   md: "min-w-32 min-h-32 max-w-32 max-h-32",

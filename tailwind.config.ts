@@ -4,7 +4,8 @@ const config: Config = {
   darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/modules/shared/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/shared/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/modules/**/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {

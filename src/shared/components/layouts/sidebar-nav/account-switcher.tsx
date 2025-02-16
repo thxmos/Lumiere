@@ -16,7 +16,7 @@ import {
   useSidebar,
 } from "@/shared/components/ui/sidebar";
 import NewAccountModal from "./new-account-modal";
-import { cn } from "@/utils/utils";
+import { cn } from "@/shared/utils/utils";
 import { UserAccount } from "./types";
 
 export interface AccountSwitcherProps {

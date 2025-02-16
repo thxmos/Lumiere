@@ -12,7 +12,7 @@ import { BLACK, WHITE } from "@/config/theme/colors";
 import { COUNTRIES } from "@/config/constants/countries";
 import { TabSelector } from "./components/tab-selector";
 import { SOCIAL_PLATFORMS } from "@/config/constants/social-media";
-import { cn } from "@/utils/utils";
+import { cn } from "@/shared/utils/utils";
 import { DEFAULT_FONT } from "@/config/theme/fonts";
 import { ColoredBackground } from "./components/background-color";
 import VideoBackground from "./components/background-video";

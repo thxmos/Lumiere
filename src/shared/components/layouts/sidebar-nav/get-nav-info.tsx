@@ -1,7 +1,7 @@
 "use server";
 
 import { SessionUser } from "@/core/auth/lucia";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 import { userRepository } from "@/shared/core/db/repositories/user";
 import {
   AudioWaveformIcon,

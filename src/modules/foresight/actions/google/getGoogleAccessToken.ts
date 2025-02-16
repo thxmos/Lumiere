@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/shared/core/db/prisma";
-import { googleOAuthClient } from "@/utils/security/googleOauth";
+import { googleOAuthClient } from "@/shared/utils/security/googleOauth";
 
 export async function getGoogleAccessToken(userId: string) {
   const googleToken = await prisma.googleToken.findFirst({

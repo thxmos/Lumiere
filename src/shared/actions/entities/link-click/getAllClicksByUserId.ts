@@ -2,7 +2,7 @@
 
 import { clickRepository } from "@/shared/core/db/repositories/click";
 import { SessionUser } from "@/shared/core/auth/lucia";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 
 /* getClicksByUserId()
  *

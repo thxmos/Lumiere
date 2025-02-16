@@ -7,7 +7,7 @@ import { useDropzone } from "react-dropzone";
 import { Button } from "@/shared/components/ui/button";
 import { Card, CardContent } from "@/shared/components/ui/card";
 import { UploadIcon, XIcon } from "lucide-react";
-import { cn } from "@/utils/utils";
+import { cn } from "@/shared/utils/utils";
 
 export enum FileType {
   Image = "Image",

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { SunMoonIcon } from "lucide-react";
 import { APP_NAME } from "@/config/constants/app";
 import DropdownMenu from "./nav-bar-menu";
-import { validateServerSession } from "@/utils/security/auth";
+import { validateServerSession } from "@/shared/utils/security/auth";
 import { Badge } from "@/shared/components/ui/badge";
 
 const Navbar = async () => {

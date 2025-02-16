@@ -9,7 +9,7 @@ import {
 
 import { LinkResponse } from "@/shared/core/db/repositories/link/types";
 import { SessionUser } from "@/shared/core/auth/lucia";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 
 export const updateUserLinksAction = withAuth(
   async (

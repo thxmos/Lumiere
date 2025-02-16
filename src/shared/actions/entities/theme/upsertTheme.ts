@@ -3,7 +3,7 @@
 import { ThemeNoId } from "@/shared/types/entities/theme";
 import { getThemeByUserId } from "./_getThemeByUserId";
 import { createTheme } from "./createTheme";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 import { SessionUser } from "@/core/auth/lucia";
 import { updateThemeById } from "./updateThemeById";
 

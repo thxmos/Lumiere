@@ -18,7 +18,7 @@ import {
   User,
   UserIcon,
 } from "lucide-react";
-import { getInitials } from "@/utils/utils";
+import { getInitials } from "@/shared/utils/utils";
 import { USER_ROLES } from "@/shared/types/user-roles";
 import { NavItem } from "@/shared/types/navigation";
 

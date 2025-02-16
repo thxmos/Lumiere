@@ -1,10 +1,10 @@
 import { createStripeCustomer } from "@/shared/actions/stripe/createStripeCustomer";
 import { getUserByEmail } from "@/shared/actions/entities/user/getUserByEmail";
 import { updateUserById } from "@/shared/actions/entities/user/updateUserById";
-import { googleOAuthClient } from "@/utils/security/googleOauth";
-import { lucia } from "@/core/auth/lucia";
+import { googleOAuthClient } from "@/shared/utils/security/googleOauth";
+import { lucia } from "@/shared/core/auth/lucia";
 import { prisma } from "@/shared/core/db/prisma";
-import { createAndSetSessionCookie } from "@/utils/security/cookies";
+import { createAndSetSessionCookie } from "@/shared/utils/security/cookies";
 import { OAuthProvider } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { DEFAULT_REDIRECT_URL } from "@/config/constants/app";

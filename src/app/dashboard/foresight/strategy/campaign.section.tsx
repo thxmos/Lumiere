@@ -13,7 +13,7 @@ import {
 } from "@/shared/components/ui/popover";
 import { CalendarIcon, Loader2 } from "lucide-react";
 import { format } from "date-fns";
-import { cn } from "@/utils/utils";
+import { cn } from "@/shared/utils/utils";
 import { toast } from "sonner";
 import { createMarketingPlan } from "@/modules/foresight/actions/campaigns/getMarketingPlan";
 

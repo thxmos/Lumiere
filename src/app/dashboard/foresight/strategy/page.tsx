@@ -1,4 +1,4 @@
-import { validateAuthPage } from "@/utils/security/auth";
+import { validateAuthPage } from "@/shared/utils/security/auth";
 import CampaignSection from "./campaign.section";
 
 export default async function StrategyPage() {

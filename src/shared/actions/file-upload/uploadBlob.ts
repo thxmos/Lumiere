@@ -1,5 +1,5 @@
 import { SessionUser } from "@/core/auth/lucia";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 import { put } from "@vercel/blob";
 
 /*

@@ -3,7 +3,7 @@
 import { SignInSchema } from "@/app/(auth)/auth/components/sign-in-form";
 import { lucia } from "@/shared/core/auth/lucia";
 import { prisma } from "@/shared/core/db/prisma";
-import { createAndSetSessionCookie } from "@/utils/security/cookies";
+import { createAndSetSessionCookie } from "@/shared/utils/security/cookies";
 import { Argon2id } from "oslo/password";
 export const signIn = async (values: SignInSchema) => {
   try {

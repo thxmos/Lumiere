@@ -10,7 +10,7 @@ import Image from "next/image";
 import { toast } from "sonner";
 import { generateQRCode2 } from "./utils";
 import { PLACEHOLDER_IMG } from "@/config/theme/images";
-import QRModal from "./components/qr-modal";
+import QRModal from "../../../../modules/uLink/components/qr-modal";
 import { useQRCodeStore } from "@/shared/stores/old/qr-codes";
 import { QRCodeDto } from "@/shared/types/entities/qr-codes";
 import { createQRCode } from "@/shared/actions/ulink/qr-code/createQrCode";

@@ -1,7 +1,7 @@
 import { getPasswordResetTokenByToken } from "@/shared/actions/security/auth/tokens/getPasswordResetTokenByToken";
 import { deletePasswordResetToken } from "@/shared/actions/security/auth/tokens/deletePasswordResetToken";
 import { updateUserById } from "@/shared/actions/entities/user/updateUserById";
-import { hash } from "@/utils/security/crypto";
+import { hash } from "@/shared/utils/security/crypto";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {

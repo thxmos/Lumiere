@@ -5,7 +5,7 @@ import { prisma } from "@/shared/core/db/prisma";
 import { Product2Dto } from "@/shared/types/entities/product2";
 import { Product2 } from "@prisma/client";
 import { SessionUser } from "@/shared/core/auth/lucia";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 
 function toDtoMapper(product: Product2): Product2Dto {
   return {

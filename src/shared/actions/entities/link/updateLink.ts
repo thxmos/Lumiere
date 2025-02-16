@@ -1,6 +1,6 @@
 "use server";
 
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 
 import { LinkUpdateInput } from "@/shared/core/db/repositories/link/types";
 import { SessionUser } from "@/shared/core/auth/lucia";

@@ -1,6 +1,6 @@
 "use server";
 
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 import { SessionUser } from "@/core/auth/lucia";
 import { updateUserById } from "./updateUserById";
 import { UserDto } from "./createUser";

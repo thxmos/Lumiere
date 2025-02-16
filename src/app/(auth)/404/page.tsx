@@ -9,7 +9,7 @@ import {
 } from "@/shared/components/ui/card";
 import { AlertTriangle } from "lucide-react";
 import Navbar from "@/shared/components/layouts/nav-bar";
-import { validateServerSession } from "@/utils/security/auth";
+import { validateServerSession } from "@/shared/utils/security/auth";
 import { DEFAULT_REDIRECT_URL } from "@/config/constants/app";
 
 export default async function NotFoundPage() {

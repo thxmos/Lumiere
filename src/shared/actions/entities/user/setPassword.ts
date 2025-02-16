@@ -1,6 +1,6 @@
 "use server";
 
-import { verify, hash } from "@/utils/security/crypto";
+import { verify, hash } from "@/shared/utils/security/crypto";
 import { updateUserById } from "./updateUserById";
 import { getUserByIdWithPassword } from "./getUserByIdWithPassword";
 

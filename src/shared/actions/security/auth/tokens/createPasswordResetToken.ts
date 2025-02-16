@@ -1,7 +1,7 @@
 "use server";
 
 import { PasswordResetToken } from "@prisma/client";
-import { generateTokenWithExpiration } from "@/utils/security/crypto";
+import { generateTokenWithExpiration } from "@/shared/utils/security/crypto";
 import { passwordResetTokenRepository } from "@/shared/core/db/repositories/password-reset-token";
 
 type PasswordResetTokenDto = PasswordResetToken;

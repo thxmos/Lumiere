@@ -1,7 +1,7 @@
 "use client";
 
 import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
-import { QRCodeCard } from "./components/qr-list.card";
+import { QRCodeCard } from "../../../../modules/uLink/components/qr-list.card";
 import { useQRCodeStore } from "@/shared/stores/old/qr-codes";
 import { ScanQrCodeIcon } from "lucide-react";
 

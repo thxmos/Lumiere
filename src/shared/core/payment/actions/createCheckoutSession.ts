@@ -1,7 +1,7 @@
 "use server";
 
 import { Price } from "@prisma/client";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 import { SessionUser } from "@/shared/core/auth/lucia";
 import { createStripeCheckoutSession } from "./createStripeCheckoutSession";
 import { getCurrentUser } from "@/shared/actions/entities/user/getCurrentUser";

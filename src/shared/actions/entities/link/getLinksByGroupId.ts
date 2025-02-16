@@ -2,7 +2,7 @@ import {
   linkRepository,
   LinkResponse,
 } from "@/shared/core/db/repositories/link";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 import { SessionUser } from "@/shared/core/auth/lucia";
 
 export const getLinksByGroupId = withAuth(

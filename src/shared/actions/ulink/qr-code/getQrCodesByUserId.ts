@@ -4,7 +4,7 @@ import {
   qrCodeRepository,
   QrCodeResponse,
 } from "@/shared/core/db/repositories/qr-code";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 import { SessionUser } from "@/shared/core/auth/lucia";
 
 export const getQRCodesByUserId = withAuth(

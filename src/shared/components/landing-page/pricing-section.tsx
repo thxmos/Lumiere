@@ -1,4 +1,4 @@
-import Pricing from "@/app/dashboard/user-settings/pricing/pricing";
+import Pricing from "@/shared/components/pricing/pricing";
 import { ParallaxLayout } from "./parallax-layout";
 
 const PricingSection = () => {

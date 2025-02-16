@@ -1,7 +1,7 @@
 "use server";
 
 import { SignUpSchema } from "@/app/(auth)/auth/components/sign-up-form";
-import { hash } from "@/utils/security/crypto";
+import { hash } from "@/shared/utils/security/crypto";
 import { getUserByEmail } from "@/shared/actions/entities/user/getUserByEmail";
 import { createUser } from "@/shared/actions/entities/user/createUser";
 import { sendVerifyEmail } from "@/shared/core/email/actions/sendVerifyEmail";

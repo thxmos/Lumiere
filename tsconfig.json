@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/utils/constants"
+    "src/shared/utils/constants"
   ],
   "exclude": ["node_modules"]
 }

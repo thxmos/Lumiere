@@ -1,7 +1,7 @@
 "use server";
 
 import { uploadBlob } from "./uploadBlob";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 import { SessionUser } from "@/shared/core/auth/lucia";
 import {
   type AssetCreateInput,

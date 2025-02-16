@@ -4,7 +4,7 @@ import { linkRepository } from "@/shared/core/db/repositories/link";
 import { LinkUpdateDto } from "@/shared/core/db/repositories/link/types";
 
 import { SessionUser } from "@/shared/core/auth/lucia";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 
 // TODO: updateMany doesnt work so making seperate requests... bleh
 export const updateLinks = withAuth(

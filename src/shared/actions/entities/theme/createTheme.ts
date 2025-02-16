@@ -3,7 +3,7 @@
 import { themeRepository } from "@/shared/core/db/repositories/theme";
 import { ThemeNoId } from "@/shared/types/entities/theme";
 import { SessionUser } from "@/shared/core/auth/lucia";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 
 export const createTheme = withAuth(
   async (user: SessionUser, linkGroupId: string, theme: ThemeNoId) => {

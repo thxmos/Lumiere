@@ -6,7 +6,7 @@ import {
 } from "@/shared/core/db/repositories/linkGroup";
 
 import { SessionUser } from "@/core/auth/lucia";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 
 export const createLinkGroup = withAuth(
   async (user: SessionUser, data: Partial<LinkGroupCreateDto>) => {

@@ -15,7 +15,7 @@ import {
   WeightIcon,
 } from "lucide-react";
 import { SOCIAL_PLATFORMS } from "@/config/constants/social-media";
-import { cn } from "@/utils/utils";
+import { cn } from "@/shared/utils/utils";
 import { useState } from "react";
 import { SocialMediaIntegrationsMenu } from "./IntegrationsMenu";
 import { IntegrationDetailsModal } from "./IntegrationDetailsModal";

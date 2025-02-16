@@ -3,8 +3,8 @@
 import { DEFAULT_THEME } from "@/config/theme/theme";
 import { ThemeNoId } from "@/shared/types/entities/theme";
 import { getThemeByUserId } from "./_getThemeByUserId";
-import { withAuth } from "@/utils/security/auth";
-import { SessionUser } from "@/core/auth/lucia";
+import { withAuth } from "@/shared/utils/security/auth";
+import { SessionUser } from "@/shared/core/auth/lucia";
 
 //TODO: get theme by linkgroup
 

@@ -1,9 +1,9 @@
 "use server";
 
-import { hasPermission } from "@/utils/security/access";
+import { hasPermission } from "@/shared/utils/security/access";
 import type { User, Permissions } from "@/shared/types/access";
 import { getCurrentUser } from "@/shared/actions/entities/user/getCurrentUser";
-import { requireUser } from "@/utils/security/auth";
+import { requireUser } from "@/shared/utils/security/auth";
 
 /*
 BIG TODO: This is slop code, dont make a mock resource, just make access utils use a dto based on Prisma

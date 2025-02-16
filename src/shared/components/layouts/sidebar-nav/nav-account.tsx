@@ -7,7 +7,7 @@ import {
 } from "@/shared/components/ui/sidebar";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn } from "@/utils/utils";
+import { cn } from "@/shared/utils/utils";
 import { NavItem } from "./types";
 
 interface NavAccountProps {

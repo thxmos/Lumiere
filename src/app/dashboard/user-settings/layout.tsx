@@ -1,4 +1,4 @@
-import { validateAuthPage } from "@/utils/security/auth";
+import { validateAuthPage } from "@/shared/utils/security/auth";
 import { ScrollToTopLayout } from "@/shared/components/layouts/scroll-to-top.layout";
 
 interface Props {

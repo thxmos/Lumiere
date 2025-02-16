@@ -1,5 +1,5 @@
 import { CheckIcon, ClockIcon, MailIcon, ScanEyeIcon } from "lucide-react";
-import { validateAuthPage } from "@/utils/security/auth";
+import { validateAuthPage } from "@/shared/utils/security/auth";
 import { ScrollToTopLayout } from "@/shared/components/layouts/scroll-to-top.layout";
 import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
 import { Card } from "@/shared/components/ui/card";

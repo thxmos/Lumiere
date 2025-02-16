@@ -2,7 +2,7 @@
 
 import { assetRepository } from "@/shared/core/db/repositories/asset";
 import { SessionUser } from "@/shared/core/auth/lucia";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 
 // TODO: getAllAssetsForUser
 export const getAssetsByUserId = withAuth(async (user: SessionUser) => {

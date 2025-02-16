@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shared/components/ui/card";
-import { getCurrencySymbol } from "@/utils/ui/currency";
+import { getCurrencySymbol } from "@/shared/utils/ui/currency";
 import { Price, Product } from "@prisma/client";
 import { Check } from "lucide-react";
 import { loadStripe } from "@stripe/stripe-js";

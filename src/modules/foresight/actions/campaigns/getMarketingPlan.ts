@@ -2,7 +2,7 @@
 
 import { SessionUser } from "@/shared/core/auth/lucia";
 import { prisma } from "@/shared/core/db/prisma";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 import { format } from "date-fns";
 
 /*

@@ -1,4 +1,4 @@
-import MobilePreview from "@/app/dashboard/ulink/_components/mobile-preview/mobile-preview";
+import MobilePreview from "@/modules/uLink/components/mobile-preview/mobile-preview";
 import LinkTree from "@/app/(ulink-profile)/components/profile/linktree";
 import { getThemeAction } from "@/shared/actions/entities/theme/getTheme";
 import { ScrollToTopLayout } from "@/shared/components/layouts/scroll-to-top.layout";

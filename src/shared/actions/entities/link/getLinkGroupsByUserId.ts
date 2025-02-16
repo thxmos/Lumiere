@@ -2,7 +2,7 @@
 
 import { linkGroupRepository } from "@/shared/core/db/repositories/linkGroup";
 import { SessionUser } from "@/shared/core/auth/lucia";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 
 export const getLinkGroupsByUserId = withAuth(async (user: SessionUser) => {
   try {

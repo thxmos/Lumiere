@@ -2,7 +2,7 @@
 
 import { USER_ROLES } from "@/shared/types/user-roles";
 import { redirect } from "next/navigation";
-import { withAuth } from "@/utils/security/auth";
+import { withAuth } from "@/shared/utils/security/auth";
 import { SessionUser } from "@/core/auth/lucia";
 import { SidebarTab } from "@/shared/types/layout/SidebarTab";
 

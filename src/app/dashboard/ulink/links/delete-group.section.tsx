@@ -1,7 +1,7 @@
 import { deleteLinkGroup } from "@/shared/actions/entities/link/deleteLinkGroup";
 import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
 import { Button } from "@/shared/components/ui/button";
-import { ConfirmDeleteModal } from "../_components/modals/confirm-delete-modal";
+import { ConfirmDeleteModal } from "../../../../modules/uLink/components/modals/confirm-delete-modal";
 import { useState } from "react";
 import { SettingsIcon } from "lucide-react";
 

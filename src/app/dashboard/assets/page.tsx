@@ -2,7 +2,7 @@ import { getAssetsByUserId } from "@/shared/actions/entities/asset/getAssetsByUs
 import { AssetsUploadSection } from "./asset-upload.section";
 import AssetsListSection from "./asset-list.section";
 import { Asset } from "@prisma/client";
-import { validateAuthPage } from "@/utils/security/auth";
+import { validateAuthPage } from "@/shared/utils/security/auth";
 import { ScrollToTopLayout } from "@/shared/components/layouts/scroll-to-top.layout";
 
 export default async function AssetsPage() {
