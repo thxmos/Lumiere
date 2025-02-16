@@ -1,9 +1,9 @@
 "use client";
 
 import { Asset } from "@prisma/client";
-import { DashboardCard } from "@/components/layouts/dashboard-card";
+import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
 import { AssetsCard } from "./components/asset-list.card";
-import { useAssetStore } from "@/stores/old/assets";
+import { useAssetStore } from "@/modules/shared/stores/old/assets";
 import { useEffect } from "react";
 import { ImagesIcon } from "lucide-react";
 

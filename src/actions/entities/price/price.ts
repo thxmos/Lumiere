@@ -1,7 +1,7 @@
 "use server";
 
 import { cache } from "react";
-import { prisma } from "@/utils/lib/prisma";
+import { prisma } from "@/modules/shared/core/db/prisma";
 import { Price, Prisma } from "@prisma/client";
 
 export const createPrice = async (

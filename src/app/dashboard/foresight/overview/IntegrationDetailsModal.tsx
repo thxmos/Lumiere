@@ -6,12 +6,12 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+} from "@/modules/shared/components/ui/dialog";
+import { Button } from "@/modules/shared/components/ui/button";
+import { Label } from "@/modules/shared/components/ui/label";
 import { toast } from "sonner";
-import { SOCIAL_PLATFORMS } from "@/constants/social-media";
 import { XIcon } from "lucide-react";
+import { SOCIAL_PLATFORMS } from "@/config/constants/social-media";
 
 export interface IntegrationDetailsModalProps {
   isOpen: boolean;

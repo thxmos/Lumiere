@@ -2,16 +2,16 @@
 
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { SOCIAL_PLATFORMS } from "@/constants/social-media";
-import { DashboardCard } from "@/components/layouts/dashboard-card";
+import { Input } from "@/modules/shared/components/ui/input";
+import { Button } from "@/modules/shared/components/ui/button";
+import { Label } from "@/modules/shared/components/ui/label";
+import { SOCIAL_PLATFORMS } from "@/config/constants/social-media";
+import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
 import { toast } from "sonner";
 import { updateUser } from "@/actions/entities/user/updateUser";
-import { useUserStore } from "@/stores/old/user";
+import { useUserStore } from "@/modules/shared/stores/old/user";
 import { UsersIcon } from "lucide-react";
-import { UserResponse } from "@/repositories/user";
+import { UserResponse } from "@/modules/shared/core/db/repositories/user";
 
 export function SocialMediaSection({
   initialUser,

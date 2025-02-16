@@ -1,8 +1,8 @@
-import Footer from "@/components/landing-page/footer";
-import FeaturesSection from "@/components/landing-page/features-section";
-import HeroSection from "@/components/landing-page/hero-section";
-import SubscribeSection from "@/components/landing-page/subscribe-section";
-import Navbar from "@/components/layouts/nav-bar";
+import Footer from "@/modules/shared/components/landing-page/footer";
+import FeaturesSection from "@/modules/shared/components/landing-page/features-section";
+import HeroSection from "@/modules/shared/components/landing-page/hero-section";
+import SubscribeSection from "@/modules/shared/components/landing-page/subscribe-section";
+import Navbar from "@/modules/shared/components/layouts/nav-bar";
 
 export default async function LandingPage() {
   return (

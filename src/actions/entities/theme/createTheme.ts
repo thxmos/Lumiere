@@ -1,8 +1,8 @@
 "use server";
 
-import { themeRepository } from "@/repositories/theme";
-import { ThemeNoId } from "@/types/entities/theme";
-import { SessionUser } from "@/utils/lib/lucia";
+import { themeRepository } from "@/modules/shared/core/db/repositories/theme";
+import { ThemeNoId } from "@/modules/shared/types/entities/theme";
+import { SessionUser } from "@/modules/shared/core/auth/lucia";
 import { withAuth } from "@/utils/security/auth";
 
 export const createTheme = withAuth(

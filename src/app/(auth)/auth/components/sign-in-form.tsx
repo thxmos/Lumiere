@@ -13,7 +13,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/modules/shared/components/ui/card";
 import {
   Form,
   FormControl,
@@ -21,14 +21,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+} from "@/modules/shared/components/ui/form";
+import { Input } from "@/modules/shared/components/ui/input";
+import { Button } from "@/modules/shared/components/ui/button";
 import { signIn } from "@/actions/security/auth/signIn";
 import { BeatLoader } from "react-spinners";
 import ForgotPasswordForm from "./forgot-password-form";
 import { getGoogleOauthConsentUrl } from "@/actions/security/auth/getGoogleOauthConsentUrl";
-import { DEFAULT_REDIRECT_URL } from "@/constants/app";
+import { DEFAULT_REDIRECT_URL } from "@/config/constants/app";
 
 const signInSchema = z.object({
   email: z.string().email("Invalid email address"),

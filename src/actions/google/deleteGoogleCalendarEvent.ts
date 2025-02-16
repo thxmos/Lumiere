@@ -1,9 +1,9 @@
 "use server";
 
-import { SessionUser } from "@/utils/lib/lucia";
+import { SessionUser } from "@/modules/shared/core/auth/lucia";
 import { withAuth } from "@/utils/security/auth";
 import { getGoogleAccessToken } from "./getGoogleAccessToken";
-import { prisma } from "@/utils/lib/prisma";
+import { prisma } from "@/modules/shared/core/db/prisma";
 
 export const deleteCalendarEvent = withAuth(
   async (user: SessionUser, actionId: string) => {

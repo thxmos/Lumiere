@@ -1,6 +1,6 @@
 import { withAuth } from "@/utils/security/auth";
-import { SessionUser } from "@/utils/lib/lucia";
-import { userRepository } from "@/repositories/user";
+import { SessionUser } from "@/modules/shared/core/auth/lucia";
+import { userRepository } from "@/modules/shared/core/db/repositories/user";
 
 /*
  * Gets the current user from session

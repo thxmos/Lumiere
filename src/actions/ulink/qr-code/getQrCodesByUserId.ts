@@ -1,8 +1,11 @@
 "use server";
 
-import { qrCodeRepository, QrCodeResponse } from "@/repositories/qr-code";
+import {
+  qrCodeRepository,
+  QrCodeResponse,
+} from "@/modules/shared/core/db/repositories/qr-code";
 import { withAuth } from "@/utils/security/auth";
-import { SessionUser } from "@/utils/lib/lucia";
+import { SessionUser } from "@/modules/shared/core/auth/lucia";
 
 export const getQRCodesByUserId = withAuth(
   async (user: SessionUser): Promise<QrCodeResponse[]> => {

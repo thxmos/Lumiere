@@ -1,7 +1,7 @@
-import { ThemeNoId } from "@/types/entities/theme";
+import { ThemeNoId } from "@/modules/shared/types/entities/theme";
 import { withAuth } from "@/utils/security/auth";
-import { SessionUser } from "@/utils/lib/lucia";
-import { themeRepository } from "@/repositories/theme";
+import { SessionUser } from "@/modules/shared/core/auth/lucia";
+import { themeRepository } from "@/modules/shared/core/db/repositories/theme";
 
 export const updateThemeById = withAuth(
   async (user: SessionUser, themeId: string, theme: ThemeNoId) => {

@@ -1,18 +1,18 @@
 "use client";
 
 import { uploadAsset } from "@/actions/file-upload/createAsset";
-import { AssetUpload } from "@/components/upload/asset-upload";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { AssetUpload } from "@/modules/shared/components/upload/asset-upload";
+import { Button } from "@/modules/shared/components/ui/button";
+import { Input } from "@/modules/shared/components/ui/input";
+import { Label } from "@/modules/shared/components/ui/label";
+import { Textarea } from "@/modules/shared/components/ui/textarea";
 import { UploadIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { useAssetStore } from "@/stores/old/assets";
+import { useAssetStore } from "@/modules/shared/stores/old/assets";
 import { Asset } from "@prisma/client";
 
-import { FileType } from "@/components/upload/file-upload";
+import { FileType } from "@/modules/shared/components/upload/file-upload";
 export const AssetUploadForm = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");

@@ -1,21 +1,25 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/modules/shared/components/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from "@/modules/shared/components/ui/card";
+import { Input } from "@/modules/shared/components/ui/input";
+import { Label } from "@/modules/shared/components/ui/label";
 import { Loader2, Mail, AlertCircle, CheckCircle } from "lucide-react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/modules/shared/components/ui/alert";
 import React from "react";
 import { toast } from "sonner";
-import { sendResetEmail } from "@/actions/email/sendPasswordResetEmail";
+import { sendResetEmail } from "@/modules/shared/core/email/actions/sendPasswordResetEmail";
 
 export default function AwaitingVerification({
   searchParams,

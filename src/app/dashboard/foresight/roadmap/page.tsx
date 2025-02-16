@@ -1,5 +1,5 @@
-import { DashboardCard } from "@/components/layouts/dashboard-card";
-import { Label } from "@/components/ui/label";
+import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
+import { Label } from "@/modules/shared/components/ui/label";
 
 export default function RoadmapPage() {
   return (

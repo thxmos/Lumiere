@@ -1,10 +1,10 @@
 "use server";
 
-import { SessionUser } from "@/utils/lib/lucia";
+import { SessionUser } from "@/modules/shared/core/auth/lucia";
 import { withAuth } from "@/utils/security/auth";
 import { Action } from "@prisma/client";
 import { getGoogleAccessToken } from "./getGoogleAccessToken";
-import { prisma } from "@/utils/lib/prisma";
+import { prisma } from "@/modules/shared/core/db/prisma";
 
 function formatEventDescription(action: Action, campaignTitle: string) {
   return `

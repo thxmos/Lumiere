@@ -1,4 +1,4 @@
-import { stripe } from "@/utils/lib/stripe.utils";
+import { stripe } from "@/modules/shared/core/payment/stripe.utils";
 
 export async function createStripeCheckoutSession(
   customerId: string,

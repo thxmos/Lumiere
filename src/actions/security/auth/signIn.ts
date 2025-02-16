@@ -1,8 +1,8 @@
 "use server";
 
 import { SignInSchema } from "@/app/(auth)/auth/components/sign-in-form";
-import { lucia } from "@/utils/lib/lucia";
-import { prisma } from "@/utils/lib/prisma";
+import { lucia } from "@/modules/shared/core/auth/lucia";
+import { prisma } from "@/modules/shared/core/db/prisma";
 import { createAndSetSessionCookie } from "@/utils/security/cookies";
 import { Argon2id } from "oslo/password";
 export const signIn = async (values: SignInSchema) => {

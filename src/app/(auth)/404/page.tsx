@@ -1,16 +1,16 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/modules/shared/components/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/modules/shared/components/ui/card";
 import { AlertTriangle } from "lucide-react";
-import Navbar from "@/components/layouts/nav-bar";
+import Navbar from "@/modules/shared/components/layouts/nav-bar";
 import { validateServerSession } from "@/utils/security/auth";
-import { DEFAULT_REDIRECT_URL } from "@/constants/app";
+import { DEFAULT_REDIRECT_URL } from "@/config/constants/app";
 
 export default async function NotFoundPage() {
   const user = await validateServerSession();

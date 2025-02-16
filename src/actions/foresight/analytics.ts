@@ -2,7 +2,7 @@
 
 import { headers } from "next/headers";
 import { UAParser } from "ua-parser-js";
-import { BrowserData } from "@/types/clicks";
+import { BrowserData } from "@/modules/shared/types/clicks";
 
 // TODO: refactor into middleware?
 async function getLocationData(ip: string) {

@@ -1,14 +1,14 @@
 "use server";
 
-import { linkRepository } from "@/repositories/link";
+import { linkRepository } from "@/modules/shared/core/db/repositories/link";
 import {
   LinkCreateInput,
   LinkCreateManyInput,
   LinkUpdateInput,
-} from "@/repositories/link/types";
+} from "@/modules/shared/core/db/repositories/link/types";
 
-import { LinkResponse } from "@/repositories/link/types";
-import { SessionUser } from "@/utils/lib/lucia";
+import { LinkResponse } from "@/modules/shared/core/db/repositories/link/types";
+import { SessionUser } from "@/modules/shared/core/auth/lucia";
 import { withAuth } from "@/utils/security/auth";
 
 export const updateUserLinksAction = withAuth(

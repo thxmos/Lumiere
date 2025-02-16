@@ -3,7 +3,7 @@ import { AssetsUploadSection } from "./asset-upload.section";
 import AssetsListSection from "./asset-list.section";
 import { Asset } from "@prisma/client";
 import { validateAuthPage } from "@/utils/security/auth";
-import { ScrollToTopLayout } from "@/components/layouts/scroll-to-top.layout";
+import { ScrollToTopLayout } from "@/modules/shared/components/layouts/scroll-to-top.layout";
 
 export default async function AssetsPage() {
   validateAuthPage();

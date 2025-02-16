@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/utils/lib/prisma";
+import { prisma } from "@/modules/shared/core/db/prisma";
 import { googleOAuthClient } from "@/utils/security/googleOauth";
 import { generateState } from "arctic";
 import { generateCodeVerifier } from "arctic";

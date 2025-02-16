@@ -2,11 +2,11 @@ import { Controller } from "react-hook-form";
 
 import { Theme } from "@prisma/client";
 import { Control } from "react-hook-form";
-import { FONTS } from "@/constants/ui/fonts";
-import { SelectInput } from "@/components/select-input";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
-import { ColorSelect } from "@/components/color-select/color-select";
+import { FONTS } from "@/config/theme/fonts";
+import { SelectInput } from "@/modules/shared/components/forms/select-input";
+import { Label } from "@/modules/shared/components/ui/label";
+import { Separator } from "@/modules/shared/components/ui/separator";
+import { ColorSelect } from "@/modules/shared/components/forms/color-select/color-select";
 
 export interface ThemeFormProps {
   control: Control<{

@@ -1,9 +1,9 @@
 "use server";
 
 import { getClientData } from "@/actions/foresight/analytics";
-import { clickRepository } from "@/repositories/click";
-import { linkRepository } from "@/repositories/link";
-import { BrowserData } from "@/types/clicks";
+import { clickRepository } from "@/modules/shared/core/db/repositories/click";
+import { linkRepository } from "@/modules/shared/core/db/repositories/link";
+import { BrowserData } from "@/modules/shared/types/clicks";
 
 // Can probably assume the click exists if its displayed on the page
 export const updateLinkClicked = async (

@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/utils/lib/prisma";
+import { prisma } from "@/modules/shared/core/db/prisma";
 import { googleOAuthClient } from "@/utils/security/googleOauth";
 
 export async function getGoogleAccessToken(userId: string) {

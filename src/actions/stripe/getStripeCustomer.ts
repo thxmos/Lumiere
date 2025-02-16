@@ -1,7 +1,7 @@
 "use server";
 
 import { Stripe } from "stripe";
-import { stripe } from "@/utils/lib/stripe.utils";
+import { stripe } from "@/modules/shared/core/payment/stripe.utils";
 
 export const getStripeCustomer = async (
   customerId: string,

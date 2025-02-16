@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/utils/lib/prisma";
+import { prisma } from "@/modules/shared/core/db/prisma";
 import { createHash } from "crypto";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";

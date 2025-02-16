@@ -1,5 +1,5 @@
 import { validateAuthPage } from "@/utils/security/auth";
-import { ScrollToTopLayout } from "@/components/layouts/scroll-to-top.layout";
+import { ScrollToTopLayout } from "@/modules/shared/components/layouts/scroll-to-top.layout";
 
 interface Props {
   children: React.ReactNode;

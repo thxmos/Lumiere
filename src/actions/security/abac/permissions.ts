@@ -1,7 +1,7 @@
 "use server";
 
 import { hasPermission } from "@/utils/security/access";
-import type { User, Permissions } from "@/types/access";
+import type { User, Permissions } from "@/modules/shared/types/access";
 import { getCurrentUser } from "@/actions/entities/user/getCurrentUser";
 import { requireUser } from "@/utils/security/auth";
 

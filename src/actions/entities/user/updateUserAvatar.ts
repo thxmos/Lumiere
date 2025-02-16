@@ -1,8 +1,8 @@
 "use server";
 
-import { SessionUser } from "@/utils/lib/lucia";
+import { SessionUser } from "@/modules/shared/core/auth/lucia";
 import { withAuth } from "@/utils/security/auth";
-import { userRepository } from "@/repositories/user";
+import { userRepository } from "@/modules/shared/core/db/repositories/user";
 
 export const updateUserAvatar = withAuth(
   async (user: SessionUser, url: string) => {

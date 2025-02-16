@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { redirect, useSearchParams } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from "@/modules/shared/components/ui/button";
+import { Input } from "@/modules/shared/components/ui/input";
+import { Label } from "@/modules/shared/components/ui/label";
 import {
   Card,
   CardContent,
@@ -12,9 +12,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/modules/shared/components/ui/card";
 import { AlertCircle } from "lucide-react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/modules/shared/components/ui/alert";
 import { resetPassword } from "@/actions/security/auth/resetPassword";
 
 export default function ResetPasswordForm() {

@@ -1,8 +1,8 @@
 "use server";
 
-import { type BrowserData } from "@/types/clicks";
+import { type BrowserData } from "@/modules/shared/types/clicks";
 import { Country } from "@prisma/client";
-import { clickRepository } from "@/repositories/click";
+import { clickRepository } from "@/modules/shared/core/db/repositories/click";
 
 /* createClick()
  *

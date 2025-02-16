@@ -2,12 +2,12 @@
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Input } from "@/modules/shared/components/ui/input";
+import { Textarea } from "@/modules/shared/components/ui/textarea";
+import { Button } from "@/modules/shared/components/ui/button";
+import { Label } from "@/modules/shared/components/ui/label";
 import AvatarUpload from "@/app/dashboard/ulink/_components/avatar-upload";
-import { DashboardCard } from "@/components/layouts/dashboard-card";
+import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
 import { toast } from "sonner";
 import {
   Select,
@@ -15,12 +15,12 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { COUNTRIES } from "@/constants/countries";
+} from "@/modules/shared/components/ui/select";
+import { COUNTRIES } from "@/config/constants/countries";
 import { updateUserAccountInfo } from "@/actions/entities/user/updateUserAccountInfo";
 import { uploadAvatar } from "@/actions/file-upload/createAsset";
 import { SettingsIcon } from "lucide-react";
-import { UserResponse } from "@/repositories/user";
+import { UserResponse } from "@/modules/shared/core/db/repositories/user";
 
 type AccountFormData = {
   username: string;

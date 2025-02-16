@@ -1,4 +1,4 @@
-import { SessionUser } from "@/utils/lib/lucia";
+import { SessionUser } from "@/core/auth/lucia";
 import { getUserByIdWithPassword } from "./getUserByIdWithPassword";
 import { withAuth } from "@/utils/security/auth";
 

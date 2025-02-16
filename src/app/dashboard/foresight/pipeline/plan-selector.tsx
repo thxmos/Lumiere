@@ -11,9 +11,9 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+} from "@/modules/shared/components/ui/select";
+import { Badge } from "@/modules/shared/components/ui/badge";
+import { Button } from "@/modules/shared/components/ui/button";
 import {
   Card,
   CardContent,
@@ -21,14 +21,14 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
-} from "@/components/ui/card";
+} from "@/modules/shared/components/ui/card";
 import { Action, Campaign } from "@prisma/client";
 import { createCalendarEvent } from "@/actions/google/createGoogleCalendarEvent";
 import { toast } from "sonner";
 import { cn } from "@/utils/utils";
-import { GRADIENT_STYLES } from "@/constants/ui/styles";
-import CircleProgress from "@/components/ui/circle-progress";
-import { LUMIERE_GRAY_DARK, LUMIERE_ORANGE } from "@/constants/ui/colors";
+import { GRADIENT_STYLES } from "@/config/theme/styles";
+import CircleProgress from "@/modules/shared/components/ui/circle-progress";
+import { LUMIERE_GRAY_DARK, LUMIERE_ORANGE } from "@/config/theme/colors";
 import { updateGoogleCalendarEvent } from "@/actions/google/updateGoogleCalendarEvent";
 import { deleteCalendarEvent } from "@/actions/google/deleteGoogleCalendarEvent";
 

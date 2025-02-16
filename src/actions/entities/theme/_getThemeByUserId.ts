@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/utils/lib/prisma";
+import { prisma } from "@/modules/shared/core/db/prisma";
 import { Theme } from "@prisma/client";
 
 //TODO: should just get the theme by linkgroup

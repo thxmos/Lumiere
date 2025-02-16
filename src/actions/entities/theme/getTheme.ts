@@ -1,10 +1,10 @@
 "use server";
 
-import { DEFAULT_THEME } from "@/constants/ui/theme";
-import { ThemeNoId } from "@/types/entities/theme";
+import { DEFAULT_THEME } from "@/config/theme/theme";
+import { ThemeNoId } from "@/modules/shared/types/entities/theme";
 import { getThemeByUserId } from "./_getThemeByUserId";
 import { withAuth } from "@/utils/security/auth";
-import { SessionUser } from "@/utils/lib/lucia";
+import { SessionUser } from "@/core/auth/lucia";
 
 //TODO: get theme by linkgroup
 

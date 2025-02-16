@@ -1,11 +1,11 @@
-import { AppSidebar } from "@/components/sidebar-nav/app-sidebar";
-import { Breadcrumbs } from "@/components/sidebar-nav/breadcrumbs";
-import { Separator } from "@/components/ui/separator";
+import { AppSidebar } from "@/modules/shared/components/layouts/sidebar-nav/app-sidebar";
+import { Breadcrumbs } from "@/modules/shared/components/layouts/sidebar-nav/breadcrumbs";
+import { Separator } from "@/modules/shared/components/ui/separator";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar";
+} from "@/modules/shared/components/ui/sidebar";
 
 export default function DashboardLayout({
   children,

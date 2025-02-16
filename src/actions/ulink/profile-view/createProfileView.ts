@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/utils/lib/prisma";
+import { prisma } from "@/modules/shared/core/db/prisma";
 
 // TODO: make a repository for this
 

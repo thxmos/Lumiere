@@ -4,7 +4,7 @@ import { SignUpSchema } from "@/app/(auth)/auth/components/sign-up-form";
 import { hash } from "@/utils/security/crypto";
 import { getUserByEmail } from "@/actions/entities/user/getUserByEmail";
 import { createUser } from "@/actions/entities/user/createUser";
-import { sendVerifyEmail } from "@/actions/email/sendVerifyEmail";
+import { sendVerifyEmail } from "@/modules/shared/core/email/actions/sendVerifyEmail";
 import { updateUserById } from "@/actions/entities/user/updateUserById";
 import { createStripeCustomer } from "@/actions/stripe/createStripeCustomer";
 

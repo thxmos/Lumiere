@@ -1,10 +1,10 @@
 "use server";
 
 import { del } from "@vercel/blob";
-import { linkRepository } from "@/repositories/link";
-import { SessionUser } from "@/utils/lib/lucia";
+import { linkRepository } from "@/modules/shared/core/db/repositories/link";
+import { SessionUser } from "@/modules/shared/core/auth/lucia";
 import { withAuth } from "@/utils/security/auth";
-import { assetRepository } from "@/repositories/asset";
+import { assetRepository } from "@/modules/shared/core/db/repositories/asset";
 
 /*
  * deleteLinkById

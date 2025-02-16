@@ -1,7 +1,7 @@
 "use server";
 
-import { assetRepository } from "@/repositories/asset";
-import { SessionUser } from "@/utils/lib/lucia";
+import { assetRepository } from "@/modules/shared/core/db/repositories/asset";
+import { SessionUser } from "@/modules/shared/core/auth/lucia";
 import { withAuth } from "@/utils/security/auth";
 
 // TODO: getAllAssetsForUser

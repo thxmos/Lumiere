@@ -3,14 +3,14 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { DraggableProvided } from "@hello-pangea/dnd";
 import { RxDragHandleDots2 } from "react-icons/rx";
-import { AssetUpload } from "@/components/upload/asset-upload";
-import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
-import { Button } from "@/components/ui/button";
+import { AssetUpload } from "@/modules/shared/components/upload/asset-upload";
+import { Input } from "@/modules/shared/components/ui/input";
+import { Switch } from "@/modules/shared/components/ui/switch";
+import { Button } from "@/modules/shared/components/ui/button";
 import { Trash, Edit, Check, X } from "lucide-react";
 import { ConfirmDeleteModal } from "@/app/dashboard/ulink/_components/modals/confirm-delete-modal";
-import { Label } from "@/components/ui/label";
-import { LinkResponse } from "@/repositories/link/types";
+import { Label } from "@/modules/shared/components/ui/label";
+import { LinkResponse } from "@/modules/shared/core/db/repositories/link";
 import { cn } from "@/utils/utils";
 
 /*

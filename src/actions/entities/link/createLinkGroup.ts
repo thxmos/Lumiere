@@ -3,9 +3,9 @@
 import {
   LinkGroupCreateDto,
   linkGroupRepository,
-} from "@/repositories/linkGroup";
+} from "@/modules/shared/core/db/repositories/linkGroup";
 
-import { SessionUser } from "@/utils/lib/lucia";
+import { SessionUser } from "@/core/auth/lucia";
 import { withAuth } from "@/utils/security/auth";
 
 export const createLinkGroup = withAuth(

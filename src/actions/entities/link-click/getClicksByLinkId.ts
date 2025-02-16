@@ -1,7 +1,7 @@
 "use server";
 
-import { clickRepository } from "@/repositories/click";
-import { SessionUser } from "@/utils/lib/lucia";
+import { clickRepository } from "@/modules/shared/core/db/repositories/click";
+import { SessionUser } from "@/modules/shared/core/auth/lucia";
 import { withAuth } from "@/utils/security/auth";
 
 /* getClicksByLinkId()

@@ -6,8 +6,8 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { SOCIAL_PLATFORMS } from "@/constants/social-media";
+} from "@/modules/shared/components/ui/dialog";
+import { SOCIAL_PLATFORMS } from "@/config/constants/social-media";
 
 export interface SocialMediaAuthProps {
   onSuccess: () => void;

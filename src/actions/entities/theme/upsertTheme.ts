@@ -1,10 +1,10 @@
 "use server";
 
-import { ThemeNoId } from "@/types/entities/theme";
+import { ThemeNoId } from "@/modules/shared/types/entities/theme";
 import { getThemeByUserId } from "./_getThemeByUserId";
 import { createTheme } from "./createTheme";
 import { withAuth } from "@/utils/security/auth";
-import { SessionUser } from "@/utils/lib/lucia";
+import { SessionUser } from "@/core/auth/lucia";
 import { updateThemeById } from "./updateThemeById";
 
 export const upsertTheme = withAuth(
@@ -12,9 +12,9 @@ export const upsertTheme = withAuth(
     const existingTheme = await getThemeByUserId(user.id);
     if (existingTheme) {
       //TODO: take out linkgroupId
-      await updateThemeById(existingTheme.id, theme);
+      await updateThemeById(existingTheme.linkGroupId, theme);
     } else {
-      await createTheme(theme);
+      await createTheme(user.id, theme);
     }
   },
 );

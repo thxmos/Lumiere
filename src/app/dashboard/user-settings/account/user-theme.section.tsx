@@ -1,8 +1,8 @@
 "use client";
 
-import { DashboardCard } from "@/components/layouts/dashboard-card";
-import { Label } from "@/components/ui/label";
-import { THEMES } from "@/constants/ui/theme";
+import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
+import { Label } from "@/modules/shared/components/ui/label";
+import { THEMES } from "@/config/theme/theme";
 import { useTheme } from "next-themes";
 
 export const UserThemeSection = () => {

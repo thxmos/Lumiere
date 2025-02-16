@@ -1,4 +1,4 @@
-import { FileType } from "@/components/upload/file-upload";
+import { FileType } from "@/modules/shared/components/upload/file-upload";
 
 export const getAssetBase64 = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {

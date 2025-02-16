@@ -1,7 +1,7 @@
 "use client";
 
-import { LinkGroupWithLinksTheme } from "@/repositories/linkGroup/types";
-import { Label } from "@/components/ui/label";
+import { LinkGroupWithLinksTheme } from "@/modules/shared/core/db/repositories/linkGroup/types";
+import { Label } from "@/modules/shared/components/ui/label";
 import { useRouter } from "next/navigation";
 import {
   Select,
@@ -10,15 +10,13 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/modules/shared/components/ui/select";
 import { useState } from "react";
 import LinksEditorSections from "./(link-group)/links-editor-section";
-import { ThemeResponse } from "@/repositories/theme/types";
-import { AssetResponse } from "@/repositories/asset/types";
-import { LinkResponse } from "@/repositories/link/types";
+import { AssetResponse } from "@/modules/shared/core/db/repositories/asset/types";
 import { NewLinkGroupModal } from "./(link-group)/new-link-group-modal";
 import { PlusIcon } from "lucide-react";
-import { Switch } from "@/components/ui/switch";
+import { Switch } from "@/modules/shared/components/ui/switch";
 import { setActiveLinkGroup } from "@/actions/entities/link/setActiveLinkGroup";
 import { toast } from "sonner";
 

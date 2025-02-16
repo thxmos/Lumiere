@@ -1,7 +1,7 @@
 "use server";
 
-import { linkGroupRepository } from "@/repositories/linkGroup";
-import { SessionUser } from "@/utils/lib/lucia";
+import { linkGroupRepository } from "@/modules/shared/core/db/repositories/linkGroup";
+import { SessionUser } from "@/modules/shared/core/auth/lucia";
 import { withAuth } from "@/utils/security/auth";
 
 export const getLinkGroupsByUserId = withAuth(async (user: SessionUser) => {

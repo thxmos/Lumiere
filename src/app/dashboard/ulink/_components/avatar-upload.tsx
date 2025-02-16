@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { FileType } from "@/components/upload/file-upload";
-import { AssetUpload } from "@/components/upload/asset-upload";
+import { FileType } from "@/modules/shared/components/upload/file-upload";
+import { AssetUpload } from "@/modules/shared/components/upload/asset-upload";
 
 interface AvatarUploadProps {
   avatarFile: File | null;

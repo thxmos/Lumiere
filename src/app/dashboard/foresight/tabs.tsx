@@ -1,4 +1,4 @@
-import { SidebarTab } from "@/types/layout/SidebarTab";
+import { SidebarTab } from "@/modules/shared/types/layout/SidebarTab";
 import {
   BookUserIcon,
   CalendarRangeIcon,
@@ -6,8 +6,8 @@ import {
   SwordsIcon,
   WaypointsIcon,
 } from "lucide-react";
-import { SIDEBAR_ICON_STYLE } from "@/constants/layout";
-import { USER_ROLES } from "@/types/user-roles";
+import { SIDEBAR_ICON_STYLE } from "@/config/constants/layout";
+import { USER_ROLES } from "@/modules/shared/types/user-roles";
 
 export const FORESIGHT_TABS: SidebarTab[] = [
   {

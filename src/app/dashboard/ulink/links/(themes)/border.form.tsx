@@ -1,10 +1,10 @@
 import { Controller } from "react-hook-form";
 import { ThemeFormProps } from "./font.form";
-import { ColorSelect } from "@/components/color-select/color-select";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { SelectInput } from "@/components/select-input";
-import { Separator } from "@/components/ui/separator";
+import { ColorSelect } from "@/modules/shared/components/forms/color-select/color-select";
+import { Label } from "@/modules/shared/components/ui/label";
+import { Input } from "@/modules/shared/components/ui/input";
+import { SelectInput } from "@/modules/shared/components/forms/select-input";
+import { Separator } from "@/modules/shared/components/ui/separator";
 
 export function BorderSection({ control, themePrimaryColor }: ThemeFormProps) {
   return (

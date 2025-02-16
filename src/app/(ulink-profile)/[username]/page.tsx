@@ -5,7 +5,7 @@ import React from "react";
 import { redirect } from "next/navigation";
 import LinkTree from "@/app/(ulink-profile)/components/profile/linktree";
 import { createProfileView } from "@/actions/ulink/profile-view/createProfileView";
-import { UserResponse } from "@/repositories/user";
+import { UserResponse } from "@/modules/shared/core/db/repositories/user";
 
 export default async function ArtistPage({
   params,

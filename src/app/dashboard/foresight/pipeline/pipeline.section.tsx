@@ -1,4 +1,4 @@
-import { DashboardCard } from "@/components/layouts/dashboard-card";
+import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
 import { validateAuthPage } from "@/utils/security/auth";
 import {
   CampaignWithActions,

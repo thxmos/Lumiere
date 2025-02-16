@@ -1,6 +1,6 @@
-import { DashboardCard } from "@/components/layouts/dashboard-card";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
+import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
+import { Button } from "@/modules/shared/components/ui/button";
+import { Textarea } from "@/modules/shared/components/ui/textarea";
 
 export default function FeedbackPage() {
   return (

@@ -1,10 +1,10 @@
 "use server";
 
-import WelcomeEmail from "@/emails/welcome";
-import { getUserByEmail } from "../entities/user/getUserByEmail";
+import WelcomeEmail from "@/modules/shared/core/email/templates/welcome";
+import { getUserByEmail } from "@/actions/entities/user/getUserByEmail";
+import { APP_NAME } from "@/config/constants/app";
+import { resend } from "@/modules/shared/core/email/resend";
 import { createVerificationToken } from "../security/auth/tokens/verification-token";
-import { APP_NAME } from "@/constants/app";
-import { resend } from "@/utils/lib/resend";
 
 // Used in sign up flow
 export const sendVerifyEmail = async (email: string) => {

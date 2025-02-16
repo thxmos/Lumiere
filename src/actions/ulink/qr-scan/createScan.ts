@@ -1,7 +1,7 @@
 "use server";
 
-import { qrScanRepository } from "@/repositories/qr-scan";
-import { SessionUser } from "@/utils/lib/lucia";
+import { qrScanRepository } from "@/modules/shared/core/db/repositories/qr-scan";
+import { SessionUser } from "@/modules/shared/core/auth/lucia";
 import { withAuth } from "@/utils/security/auth";
 
 // TODO: temporarily used, should be replaced with QRScanCreateInput

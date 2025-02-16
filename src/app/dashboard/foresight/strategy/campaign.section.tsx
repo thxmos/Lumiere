@@ -1,16 +1,16 @@
 "use client";
 
-import { DashboardCard } from "@/components/layouts/dashboard-card";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Calendar } from "@/components/ui/calendar";
-import { Label } from "@/components/ui/label";
+import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
+import { Button } from "@/modules/shared/components/ui/button";
+import { Textarea } from "@/modules/shared/components/ui/textarea";
+import { Calendar } from "@/modules/shared/components/ui/calendar";
+import { Label } from "@/modules/shared/components/ui/label";
 import { useState } from "react";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@/modules/shared/components/ui/popover";
 import { CalendarIcon, Loader2 } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/utils/utils";

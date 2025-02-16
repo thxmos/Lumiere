@@ -1,7 +1,7 @@
 "use server";
 
 import { withAuth } from "@/utils/security/auth";
-import { SessionUser } from "@/utils/lib/lucia";
+import { SessionUser } from "@/core/auth/lucia";
 import { updateUserById } from "./updateUserById";
 import { UserDto } from "./createUser";
 import { Country } from "@prisma/client";

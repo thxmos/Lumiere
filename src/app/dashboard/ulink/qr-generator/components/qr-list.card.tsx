@@ -1,14 +1,14 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/modules/shared/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { Card } from "@/components/ui/card";
+import { Card } from "@/modules/shared/components/ui/card";
 import { generateQRCode2 } from "../utils";
-import { Label } from "@/components/ui/label";
+import { Label } from "@/modules/shared/components/ui/label";
 import { X } from "lucide-react";
 import { toast } from "sonner";
 import { ConfirmDeleteModal } from "@/app/dashboard/ulink/_components/modals/confirm-delete-modal";
 import { useState } from "react";
-import type { QRCodeDto } from "@/types/entities/qr-codes";
+import type { QRCodeDto } from "@/modules/shared/types/entities/qr-codes";
 import QRModal from "./qr-modal";
 import { deleteQRCode } from "@/actions/ulink/qr-code/deleteQrCode";
 

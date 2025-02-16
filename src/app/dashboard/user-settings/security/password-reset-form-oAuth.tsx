@@ -1,9 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { CardContent, CardFooter } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from "@/modules/shared/components/ui/button";
+import { CardContent, CardFooter } from "@/modules/shared/components/ui/card";
+import { Input } from "@/modules/shared/components/ui/input";
+import { Label } from "@/modules/shared/components/ui/label";
 import React, { useTransition, useRef } from "react";
 import { toast } from "sonner";
 import type { UserDto } from "@/actions/entities/user/createUser";

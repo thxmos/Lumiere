@@ -1,12 +1,12 @@
 "use server";
 
-import { SessionUser } from "@/utils/lib/lucia";
+import { SessionUser } from "@/modules/shared/core/auth/lucia";
 import { withAuth } from "@/utils/security/auth";
 import {
   qrCodeRepository,
   QrCodeResponse,
   QrCodeUpdateInput,
-} from "@/repositories/qr-code";
+} from "@/modules/shared/core/db/repositories/qr-code";
 
 export const updateQRCode = withAuth(
   async (

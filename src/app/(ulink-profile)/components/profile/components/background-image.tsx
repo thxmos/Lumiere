@@ -1,4 +1,4 @@
-import { ThemeNoId } from "@/types/entities/theme";
+import { ThemeNoId } from "@/modules/shared/types/entities/theme";
 
 export const ImageBackground = ({ localTheme }: { localTheme: ThemeNoId }) => {
   return (

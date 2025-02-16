@@ -1,9 +1,9 @@
 "use server";
 
-import { linkRepository } from "@/repositories/link";
-import { LinkUpdateDto } from "@/repositories/link/types";
+import { linkRepository } from "@/modules/shared/core/db/repositories/link";
+import { LinkUpdateDto } from "@/modules/shared/core/db/repositories/link/types";
 
-import { SessionUser } from "@/utils/lib/lucia";
+import { SessionUser } from "@/modules/shared/core/auth/lucia";
 import { withAuth } from "@/utils/security/auth";
 
 // TODO: updateMany doesnt work so making seperate requests... bleh

@@ -2,15 +2,14 @@
 
 import { uploadBlob } from "./uploadBlob";
 import { withAuth } from "@/utils/security/auth";
-import { SessionUser } from "@/utils/lib/lucia";
+import { SessionUser } from "@/modules/shared/core/auth/lucia";
 import {
   type AssetCreateInput,
   assetRepository,
   AssetResponse,
-} from "@/repositories/asset";
+} from "@/modules/shared/core/db/repositories/asset";
 import { updateUserAvatar } from "@/actions/entities/user/updateUserAvatar";
 import { del } from "@vercel/blob";
-import { updateProduct } from "../entities/product/product2";
 import { AssetType } from "@prisma/client";
 
 /*

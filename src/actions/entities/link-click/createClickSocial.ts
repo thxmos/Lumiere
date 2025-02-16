@@ -1,8 +1,8 @@
 "use server";
 
-import { BrowserData } from "@/types/clicks";
+import { BrowserData } from "@/modules/shared/types/clicks";
 import { getClientData } from "@/actions/foresight/analytics";
-import { clickRepository } from "@/repositories/click";
+import { clickRepository } from "@/modules/shared/core/db/repositories/click";
 import { SocialMedia } from "@prisma/client";
 
 /* createClickSocial()

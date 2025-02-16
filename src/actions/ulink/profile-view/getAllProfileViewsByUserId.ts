@@ -1,5 +1,5 @@
-import { SessionUser } from "@/utils/lib/lucia";
-import { prisma } from "@/utils/lib/prisma";
+import { SessionUser } from "@/modules/shared/core/auth/lucia";
+import { prisma } from "@/modules/shared/core/db/prisma";
 import { withAuth } from "@/utils/security/auth";
 
 export const getAllProfileViewsByUserId = withAuth(

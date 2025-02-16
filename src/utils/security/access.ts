@@ -1,5 +1,9 @@
-import type { Permissions, RolesWithPermissions, User } from "@/types/access";
-import { ROLES } from "@/types/access";
+import type {
+  Permissions,
+  RolesWithPermissions,
+  User,
+} from "@/modules/shared/types/access";
+import { ROLES } from "@/modules/shared/types/access";
 
 /*
 Rough ABAC implementation helper method

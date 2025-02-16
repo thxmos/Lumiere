@@ -1,6 +1,6 @@
 "use server";
 
-import { userRepository } from "@/repositories/user";
+import { userRepository } from "@/modules/shared/core/db/repositories/user";
 
 /*
  * getUserByUsername()

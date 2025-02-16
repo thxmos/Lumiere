@@ -2,7 +2,7 @@
 
 import { hash } from "@/utils/security/crypto";
 import { updateUserById } from "./updateUserById";
-import { SessionUser } from "@/utils/lib/lucia";
+import { SessionUser } from "@/core/auth/lucia";
 import { withAuth } from "@/utils/security/auth";
 
 /*

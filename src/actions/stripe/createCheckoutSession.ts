@@ -5,7 +5,7 @@ import { getStripeCustomer } from "@/actions/stripe/getStripeCustomer";
 import { getCurrentUser } from "@/actions/entities/user/getCurrentUser";
 import { Price } from "@prisma/client";
 import { withAuth } from "@/utils/security/auth";
-import { SessionUser } from "@/utils/lib/lucia";
+import { SessionUser } from "@/core/auth/lucia";
 
 export type Subscription = {
   id: string;

@@ -2,13 +2,12 @@ import { createStripeCustomer } from "@/actions/stripe/createStripeCustomer";
 import { getUserByEmail } from "@/actions/entities/user/getUserByEmail";
 import { updateUserById } from "@/actions/entities/user/updateUserById";
 import { googleOAuthClient } from "@/utils/security/googleOauth";
-import { lucia } from "@/utils/lib/lucia";
-import { prisma } from "@/utils/lib/prisma";
+import { lucia } from "@/core/auth/lucia";
+import { prisma } from "@/modules/shared/core/db/prisma";
 import { createAndSetSessionCookie } from "@/utils/security/cookies";
 import { OAuthProvider } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { DEFAULT_REDIRECT_URL } from "@/constants/app";
-
+import { DEFAULT_REDIRECT_URL } from "@/config/constants/app";
 /**
  * Google OAuth callback handler
  * Processes the OAuth response from Google, creates or updates user accounts,

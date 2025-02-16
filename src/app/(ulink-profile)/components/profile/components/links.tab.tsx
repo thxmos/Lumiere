@@ -1,6 +1,6 @@
 import { LinkCard } from "./link-card";
-import { LinkDtoWithId } from "@/types/links";
-import { ThemeNoId } from "@/types/entities/theme";
+import { LinkDtoWithId } from "@/modules/shared/types/links";
+import { ThemeNoId } from "@/modules/shared/types/entities/theme";
 
 export function LinksTab({
   links,

@@ -7,10 +7,10 @@ import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 
 import { LinksList } from "./links-list";
-import { DashboardCard } from "@/components/layouts/dashboard-card";
-import { Button } from "@/components/ui/button";
-import { useLinksStore } from "@/stores/old/links";
-import { LinkResponse } from "@/repositories/link/types";
+import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
+import { Button } from "@/modules/shared/components/ui/button";
+import { useLinksStore } from "@/modules/shared/stores/old/links";
+import { LinkResponse } from "@/modules/shared/core/db/repositories/link";
 import { updateUserLinksAction } from "@/actions/entities/link/updateUserLinks";
 import { deleteLinkById } from "@/actions/entities/link/deleteLinkById";
 import { uploadAsset } from "@/actions/file-upload/createAsset";

@@ -7,8 +7,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-
+} from "@/modules/shared/components/ui/alert-dialog";
 interface ConfirmDeleteModalProps {
   isOpen: boolean;
   onClose: () => void;

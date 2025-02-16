@@ -3,8 +3,8 @@
 import {
   linkGroupRepository,
   LinkGroupWithLinks,
-} from "@/repositories/linkGroup";
-import { userRepository } from "@/repositories/user";
+} from "@/modules/shared/core/db/repositories/linkGroup";
+import { userRepository } from "@/modules/shared/core/db/repositories/user";
 
 /*
  * getActiveLinkGroupsByUsername()

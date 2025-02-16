@@ -1,9 +1,9 @@
 import { LinksSection } from "./links.section";
 import { ThemeEditorSection } from "../(themes)/theme-editor.section";
-import { AssetResponse } from "@/repositories/asset/types";
+import { AssetResponse } from "@/modules/shared/core/db/repositories/asset/types";
 import SocialMediaSection from "../social-media.section";
 import DescriptionSection from "../description.section";
-import { LinkGroupWithLinksTheme } from "@/repositories/linkGroup/types";
+import { LinkGroupWithLinksTheme } from "@/modules/shared/core/db/repositories/linkGroup/types";
 
 export default async function LinksEditorSections({
   linkGroup,

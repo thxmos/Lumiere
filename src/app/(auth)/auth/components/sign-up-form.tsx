@@ -6,7 +6,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/modules/shared/components/ui/card";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -17,11 +17,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from "@/modules/shared/components/ui/form";
 
 import { z } from "zod";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/modules/shared/components/ui/input";
+import { Button } from "@/modules/shared/components/ui/button";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { signUp } from "@/actions/security/auth/signUp";
