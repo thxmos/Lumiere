@@ -1,14 +1,14 @@
 import Link from "next/link";
 
-import Navbar from "@/modules/shared/components/layouts/nav-bar";
-import { Button } from "@/modules/shared/components/ui/button";
+import Navbar from "@/shared/components/layouts/nav-bar";
+import { Button } from "@/shared/components/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/modules/shared/components/ui/card";
+} from "@/shared/components/ui/card";
 import { AlertTriangle } from "lucide-react";
 import { DEFAULT_REDIRECT_URL } from "@/config/constants/app";
 export default function ErrorPage() {

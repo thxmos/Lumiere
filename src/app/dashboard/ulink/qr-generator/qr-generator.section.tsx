@@ -2,18 +2,18 @@
 
 import type React from "react";
 import { useState, useEffect } from "react";
-import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
-import { Input } from "@/modules/shared/components/ui/input";
-import { Button } from "@/modules/shared/components/ui/button";
-import { Label } from "@/modules/shared/components/ui/label";
+import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
+import { Input } from "@/shared/components/ui/input";
+import { Button } from "@/shared/components/ui/button";
+import { Label } from "@/shared/components/ui/label";
 import Image from "next/image";
 import { toast } from "sonner";
 import { generateQRCode2 } from "./utils";
 import { PLACEHOLDER_IMG } from "@/config/theme/images";
 import QRModal from "./components/qr-modal";
-import { useQRCodeStore } from "@/modules/shared/stores/old/qr-codes";
-import { QRCodeDto } from "@/modules/shared/types/entities/qr-codes";
-import { createQRCode } from "@/actions/ulink/qr-code/createQrCode";
+import { useQRCodeStore } from "@/shared/stores/old/qr-codes";
+import { QRCodeDto } from "@/shared/types/entities/qr-codes";
+import { createQRCode } from "@/shared/actions/ulink/qr-code/createQrCode";
 import { QrCodeIcon } from "lucide-react";
 
 // Add initialQRCodes to the props

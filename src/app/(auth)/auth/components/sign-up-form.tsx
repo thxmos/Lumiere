@@ -6,7 +6,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/modules/shared/components/ui/card";
+} from "@/shared/components/ui/card";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -17,14 +17,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/modules/shared/components/ui/form";
+} from "@/shared/components/ui/form";
 
 import { z } from "zod";
-import { Input } from "@/modules/shared/components/ui/input";
-import { Button } from "@/modules/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+import { Button } from "@/shared/components/ui/button";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { signUp } from "@/actions/security/auth/signUp";
+import { signUp } from "@/shared/actions/security/auth/signUp";
 import { BeatLoader } from "react-spinners";
 
 export const signUpSchema = z

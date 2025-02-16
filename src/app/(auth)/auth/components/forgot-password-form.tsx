@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { sendResetEmail } from "@/modules/shared/core/email/actions/sendPasswordResetEmail";
+import { sendResetEmail } from "@/shared/core/email/actions/sendPasswordResetEmail";
 import { toast } from "sonner";
 import {
   Form,
@@ -11,9 +11,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/modules/shared/components/ui/form";
-import { Input } from "@/modules/shared/components/ui/input";
-import { Button } from "@/modules/shared/components/ui/button";
+} from "@/shared/components/ui/form";
+import { Input } from "@/shared/components/ui/input";
+import { Button } from "@/shared/components/ui/button";
 import { BeatLoader } from "react-spinners";
 
 const resetPasswordSchema = z.object({

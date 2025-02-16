@@ -1,21 +1,21 @@
 "use client";
 
-import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
-import { Button } from "@/modules/shared/components/ui/button";
-import { Textarea } from "@/modules/shared/components/ui/textarea";
-import { Calendar } from "@/modules/shared/components/ui/calendar";
-import { Label } from "@/modules/shared/components/ui/label";
+import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
+import { Button } from "@/shared/components/ui/button";
+import { Textarea } from "@/shared/components/ui/textarea";
+import { Calendar } from "@/shared/components/ui/calendar";
+import { Label } from "@/shared/components/ui/label";
 import { useState } from "react";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/modules/shared/components/ui/popover";
+} from "@/shared/components/ui/popover";
 import { CalendarIcon, Loader2 } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/utils/utils";
 import { toast } from "sonner";
-import { createMarketingPlan } from "@/actions/foresight/getMarketingPlan";
+import { createMarketingPlan } from "@/modules/foresight/actions/campaigns/getMarketingPlan";
 
 type ActionCategory =
   | "PRE_RELEASE"

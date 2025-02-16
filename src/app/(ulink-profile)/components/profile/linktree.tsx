@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { PLACEHOLDER_IMG } from "@/config/theme/images";
-import type { LinkDtoWithId } from "@/modules/shared/types/links";
-import type { ThemeNoId } from "@/modules/shared/types/entities/theme";
-import { useThemeStore } from "@/modules/shared/stores/old/themes";
-import { useLinksStore } from "@/modules/shared/stores/old/links";
+import type { LinkDtoWithId } from "@/shared/types/links";
+import type { ThemeNoId } from "@/shared/types/entities/theme";
+import { useThemeStore } from "@/shared/stores/old/themes";
+import { useLinksStore } from "@/shared/stores/old/links";
 import { BLACK, WHITE } from "@/config/theme/colors";
 import { COUNTRIES } from "@/config/constants/countries";
 import { TabSelector } from "./components/tab-selector";
@@ -17,10 +17,10 @@ import { DEFAULT_FONT } from "@/config/theme/fonts";
 import { ColoredBackground } from "./components/background-color";
 import VideoBackground from "./components/background-video";
 import { ImageBackground } from "./components/background-image";
-import { createClickSocial } from "@/actions/entities/link-click/createClickSocial";
+import { createClickSocial } from "@/shared/actions/entities/link-click/createClickSocial";
 import { SocialMedia } from "@prisma/client";
-import { UserResponse } from "@/modules/shared/core/db/repositories/user";
-import { LinkGroupWithLinks } from "@/modules/shared/core/db/repositories/linkGroup";
+import { UserResponse } from "@/shared/core/db/repositories/user";
+import { LinkGroupWithLinks } from "@/shared/core/db/repositories/linkGroup";
 
 type CardShadow = {
   cardShadowSize?: number | null;

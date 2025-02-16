@@ -1,7 +1,7 @@
 "use client";
 
-import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
-import { Label } from "@/modules/shared/components/ui/label";
+import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
+import { Label } from "@/shared/components/ui/label";
 import { THEMES } from "@/config/theme/theme";
 import { useTheme } from "next-themes";
 

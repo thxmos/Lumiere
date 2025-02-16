@@ -1,4 +1,4 @@
-import { getCurrentUser } from "@/actions/entities/user/getCurrentUser";
+import { getCurrentUser } from "@/shared/actions/entities/user/getCurrentUser";
 import UserSettingsSection from "./user-settings.section";
 import { UserThemeSection } from "./user-theme.section";
 import { validateAuthPage } from "@/utils/security/auth";

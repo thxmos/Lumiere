@@ -1,8 +1,8 @@
-import { updateUserById } from "@/actions/entities/user/updateUserById";
+import { updateUserById } from "@/shared/actions/entities/user/updateUserById";
 import {
   deleteVerificationToken,
   getVerificationTokenByToken,
-} from "@/actions/security/auth/tokens/verification-token";
+} from "@/shared/actions/security/auth/tokens/verification-token";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {

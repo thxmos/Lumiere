@@ -1,16 +1,16 @@
 "use client";
 
-import { createLinkGroup } from "@/actions/entities/link/createLinkGroup";
-import { Button } from "@/modules/shared/components/ui/button";
+import { createLinkGroup } from "@/shared/actions/entities/link/createLinkGroup";
+import { Button } from "@/shared/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogDescription,
-} from "@/modules/shared/components/ui/dialog";
-import { Input } from "@/modules/shared/components/ui/input";
-import { Label } from "@/modules/shared/components/ui/label";
+} from "@/shared/components/ui/dialog";
+import { Input } from "@/shared/components/ui/input";
+import { Label } from "@/shared/components/ui/label";
 import { useState } from "react";
 import { toast } from "sonner";
 

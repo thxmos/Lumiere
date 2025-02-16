@@ -1,4 +1,4 @@
-import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
+import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
 import { AssetUploadForm } from "./components/asset-upload.form";
 import { ImageIcon, ImagePlusIcon } from "lucide-react";
 

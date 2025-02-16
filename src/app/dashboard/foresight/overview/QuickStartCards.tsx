@@ -1,4 +1,4 @@
-import { Button } from "@/modules/shared/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 import {
   Card,
   CardContent,
@@ -6,7 +6,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/modules/shared/components/ui/card";
+} from "@/shared/components/ui/card";
 import { Link as LinkIcon, SwordsIcon, CalendarDaysIcon } from "lucide-react";
 
 const QuickStartCards = () => {

@@ -1,5 +1,5 @@
-import { findPrices } from "@/actions/entities/price/price";
-import { findProducts } from "@/actions/entities/product/product";
+import { findPrices } from "@/shared/actions/entities/price/price";
+import { findProducts } from "@/shared/actions/entities/product/product";
 import { Price, Product } from "@prisma/client";
 import PricingCard from "./pricing-card";
 

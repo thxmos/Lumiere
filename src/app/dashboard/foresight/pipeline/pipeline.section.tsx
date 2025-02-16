@@ -1,9 +1,9 @@
-import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
+import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
 import { validateAuthPage } from "@/utils/security/auth";
 import {
   CampaignWithActions,
   getUserMarketingDataFromDb,
-} from "@/actions/foresight/getMarketingPlanFromDb";
+} from "@/modules/foresight/actions/campaigns/getMarketingPlanFromDb";
 import { PlanSelector } from "./plan-selector";
 import { Campaign } from "@prisma/client";
 

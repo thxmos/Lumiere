@@ -1,13 +1,13 @@
 "use client";
 
-import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
+import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
 import { SOCIAL_PLATFORMS } from "@/config/constants/social-media";
 import { UsersIcon } from "lucide-react";
-import { Switch } from "@/modules/shared/components/ui/switch";
+import { Switch } from "@/shared/components/ui/switch";
 import { useState } from "react";
-import { Button } from "@/modules/shared/components/ui/button";
-import { updateLinkGroup } from "@/actions/entities/link/updateLinkGroup";
-import { LinkGroupResponse } from "@/modules/shared/core/db/repositories/linkGroup/types";
+import { Button } from "@/shared/components/ui/button";
+import { updateLinkGroup } from "@/shared/actions/entities/link/updateLinkGroup";
+import { LinkGroupResponse } from "@/shared/core/db/repositories/linkGroup/types";
 import { toast } from "sonner";
 
 export default function SocialMediaSection({

@@ -1,13 +1,13 @@
-import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
+import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
 import { BookOpenTextIcon } from "lucide-react";
-import { Button } from "@/modules/shared/components/ui/button";
-import { Textarea } from "@/modules/shared/components/ui/textarea";
-import { Label } from "@/modules/shared/components/ui/label";
-import { Switch } from "@/modules/shared/components/ui/switch";
-import { Input } from "@/modules/shared/components/ui/input";
+import { Button } from "@/shared/components/ui/button";
+import { Textarea } from "@/shared/components/ui/textarea";
+import { Label } from "@/shared/components/ui/label";
+import { Switch } from "@/shared/components/ui/switch";
+import { Input } from "@/shared/components/ui/input";
 import { useState } from "react";
-import { updateLinkGroup } from "@/actions/entities/link/updateLinkGroup";
-import { LinkGroupResponse } from "@/modules/shared/core/db/repositories/linkGroup/types";
+import { updateLinkGroup } from "@/shared/actions/entities/link/updateLinkGroup";
+import { LinkGroupResponse } from "@/shared/core/db/repositories/linkGroup/types";
 import { toast } from "sonner";
 
 export default function DescriptionSection({

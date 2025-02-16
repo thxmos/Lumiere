@@ -1,9 +1,9 @@
 import { redirect } from "next/navigation";
-import { getQRCodeById } from "@/actions/ulink/qr-code/getQrCodeById";
-import { BrowserData } from "@/modules/shared/types/clicks";
+import { getQRCodeById } from "@/shared/actions/ulink/qr-code/getQrCodeById";
+import { BrowserData } from "@/shared/types/clicks";
 import { headers } from "next/headers";
 import { UAParser } from "ua-parser-js";
-import { updateQrScanCount } from "@/actions/ulink/qr-code/updateQrScanCount";
+import { updateQrScanCount } from "@/shared/actions/ulink/qr-code/updateQrScanCount";
 
 export default async function QRRedirectPage({
   params,

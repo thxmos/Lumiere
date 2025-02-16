@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import ResetPasswordForm from "./reset-password-form";
-import Navbar from "@/modules/shared/components/layouts/nav-bar";
+import Navbar from "@/shared/components/layouts/nav-bar";
 
 export default function ResetPasswordPage() {
   return (

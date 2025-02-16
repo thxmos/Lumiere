@@ -1,14 +1,14 @@
 import Link from "next/link";
-import { Button } from "@/modules/shared/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/modules/shared/components/ui/card";
+} from "@/shared/components/ui/card";
 import { AlertTriangle } from "lucide-react";
-import Navbar from "@/modules/shared/components/layouts/nav-bar";
+import Navbar from "@/shared/components/layouts/nav-bar";
 import { validateServerSession } from "@/utils/security/auth";
 import { DEFAULT_REDIRECT_URL } from "@/config/constants/app";
 

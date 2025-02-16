@@ -7,8 +7,8 @@ import {
 } from "@hello-pangea/dnd";
 
 import { LinkCard } from "./link-card";
-import { LinkResponse } from "@/modules/shared/core/db/repositories/link";
-import { useLinksStore } from "@/modules/shared/stores/old/links";
+import { LinkResponse } from "@/shared/core/db/repositories/link";
+import { useLinksStore } from "@/shared/stores/old/links";
 
 interface Props {
   onUpdate: (index: number, updatedLink: LinkResponse) => void;

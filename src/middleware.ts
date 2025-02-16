@@ -1,8 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { composeMiddleware } from "./modules/shared/core/middleware/util/compose";
-import { withStaticPatterns } from "./modules/shared/core/middleware/static";
-import { withRateLimit } from "./modules/shared/core/middleware/rate-limit";
-import { withAuth } from "./modules/shared/core/middleware/auth";
+import { composeMiddleware } from "./shared/core/middleware/util/compose";
+import { withStaticPatterns } from "./shared/core/middleware/static";
+import { withRateLimit } from "./shared/core/middleware/rate-limit";
+import { withAuth } from "./shared/core/middleware/auth";
 
 const handler = composeMiddleware([
   withStaticPatterns, // let static files pass

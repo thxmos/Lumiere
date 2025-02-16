@@ -1,4 +1,4 @@
-import { SocialMediaPlatform } from "@/modules/shared/types/entities/SocialMediaPlatforms";
+import { SocialMediaPlatform } from "@/shared/types/entities/SocialMediaPlatforms";
 import {
   FaApple,
   FaDiscord,

@@ -3,12 +3,12 @@
 import React, { useState } from "react";
 import { PlusIcon } from "lucide-react";
 import { toast } from "sonner";
-import { createLinkGroup } from "@/actions/entities/link/createLinkGroup";
-import { Button } from "@/modules/shared/components/ui/button";
-import { Input } from "@/modules/shared/components/ui/input";
+import { createLinkGroup } from "@/shared/actions/entities/link/createLinkGroup";
+import { Button } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
 import { useRouter } from "next/navigation";
-import { Card } from "@/modules/shared/components/ui/card";
-import { UserResponse } from "@/modules/shared/core/db/repositories/user";
+import { Card } from "@/shared/components/ui/card";
+import { UserResponse } from "@/shared/core/db/repositories/user";
 
 const NewLinkGroupForm = ({ user }: { user: UserResponse }) => {
   const router = useRouter();

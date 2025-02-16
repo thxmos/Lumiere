@@ -7,13 +7,13 @@ import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 
 import { LinksList } from "./links-list";
-import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
-import { Button } from "@/modules/shared/components/ui/button";
-import { useLinksStore } from "@/modules/shared/stores/old/links";
-import { LinkResponse } from "@/modules/shared/core/db/repositories/link";
-import { updateUserLinksAction } from "@/actions/entities/link/updateUserLinks";
-import { deleteLinkById } from "@/actions/entities/link/deleteLinkById";
-import { uploadAsset } from "@/actions/file-upload/createAsset";
+import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
+import { Button } from "@/shared/components/ui/button";
+import { useLinksStore } from "@/shared/stores/old/links";
+import { LinkResponse } from "@/shared/core/db/repositories/link";
+import { updateUserLinksAction } from "@/shared/actions/entities/link/updateUserLinks";
+import { deleteLinkById } from "@/shared/actions/entities/link/deleteLinkById";
+import { uploadAsset } from "@/shared/actions/file-upload/createAsset";
 
 /* 
 TODO: Creating new link and submitting form is not working when id is set here

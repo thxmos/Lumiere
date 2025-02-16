@@ -1,7 +1,7 @@
 "use client";
 
-import { createCheckoutSession } from "@/actions/stripe/createCheckoutSession";
-import { Button } from "@/modules/shared/components/ui/button";
+import { createCheckoutSession } from "@/shared/core/payment/actions/createCheckoutSession";
+import { Button } from "@/shared/components/ui/button";
 import {
   Card,
   CardContent,
@@ -9,7 +9,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/modules/shared/components/ui/card";
+} from "@/shared/components/ui/card";
 import { getCurrencySymbol } from "@/utils/ui/currency";
 import { Price, Product } from "@prisma/client";
 import { Check } from "lucide-react";

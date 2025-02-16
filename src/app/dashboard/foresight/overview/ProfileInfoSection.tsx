@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
-import { Label } from "@/modules/shared/components/ui/label";
+import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
+import { Label } from "@/shared/components/ui/label";
 import { GRADIENT_STYLES } from "@/config/theme/styles";
 import {
   BarChart3Icon,
@@ -20,7 +20,7 @@ import { useState } from "react";
 import { SocialMediaIntegrationsMenu } from "./IntegrationsMenu";
 import { IntegrationDetailsModal } from "./IntegrationDetailsModal";
 import { toast } from "sonner";
-import { UserResponse } from "@/modules/shared/core/db/repositories/user";
+import { UserResponse } from "@/shared/core/db/repositories/user";
 
 export interface ProfileInfoSectionProps {
   user: UserResponse;

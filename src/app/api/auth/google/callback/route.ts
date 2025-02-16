@@ -1,9 +1,9 @@
-import { createStripeCustomer } from "@/actions/stripe/createStripeCustomer";
-import { getUserByEmail } from "@/actions/entities/user/getUserByEmail";
-import { updateUserById } from "@/actions/entities/user/updateUserById";
+import { createStripeCustomer } from "@/shared/actions/stripe/createStripeCustomer";
+import { getUserByEmail } from "@/shared/actions/entities/user/getUserByEmail";
+import { updateUserById } from "@/shared/actions/entities/user/updateUserById";
 import { googleOAuthClient } from "@/utils/security/googleOauth";
 import { lucia } from "@/core/auth/lucia";
-import { prisma } from "@/modules/shared/core/db/prisma";
+import { prisma } from "@/shared/core/db/prisma";
 import { createAndSetSessionCookie } from "@/utils/security/cookies";
 import { OAuthProvider } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";

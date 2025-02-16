@@ -7,14 +7,14 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/modules/shared/components/ui/card";
+} from "@/shared/components/ui/card";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/modules/shared/components/ui/select";
+} from "@/shared/components/ui/select";
 import {
   AreaChart,
   Area,
@@ -31,7 +31,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/modules/shared/components/ui/table";
+} from "@/shared/components/ui/table";
 
 import { tableData, chartData } from "./mocks";
 

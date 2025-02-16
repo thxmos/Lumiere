@@ -1,10 +1,10 @@
 import { CheckIcon, ClockIcon, MailIcon, ScanEyeIcon } from "lucide-react";
 import { validateAuthPage } from "@/utils/security/auth";
-import { ScrollToTopLayout } from "@/modules/shared/components/layouts/scroll-to-top.layout";
-import { DashboardCard } from "@/modules/shared/components/layouts/dashboard-card";
-import { Card } from "@/modules/shared/components/ui/card";
+import { ScrollToTopLayout } from "@/shared/components/layouts/scroll-to-top.layout";
+import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
+import { Card } from "@/shared/components/ui/card";
 import Image from "next/image";
-import { Button } from "@/modules/shared/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 
 interface Props {
   children: React.ReactNode;

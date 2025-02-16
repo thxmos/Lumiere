@@ -1,13 +1,13 @@
 "use client";
 
-import { Button } from "@/modules/shared/components/ui/button";
-import { CardContent, CardFooter } from "@/modules/shared/components/ui/card";
-import { Input } from "@/modules/shared/components/ui/input";
-import { Label } from "@/modules/shared/components/ui/label";
+import { Button } from "@/shared/components/ui/button";
+import { CardContent, CardFooter } from "@/shared/components/ui/card";
+import { Input } from "@/shared/components/ui/input";
+import { Label } from "@/shared/components/ui/label";
 import React, { useTransition, useRef } from "react";
 import { toast } from "sonner";
-import type { UserDto } from "@/actions/entities/user/createUser";
-import { setPasswordOAuth } from "@/actions/entities/user/setPasswordOAuth";
+import type { UserDto } from "@/shared/actions/entities/user/createUser";
+import { setPasswordOAuth } from "@/shared/actions/entities/user/setPasswordOAuth";
 import { useRouter } from "next/navigation";
 
 type Props = {

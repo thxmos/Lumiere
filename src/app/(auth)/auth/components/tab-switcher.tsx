@@ -4,7 +4,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/modules/shared/components/ui/tabs";
+} from "@/shared/components/ui/tabs";
 
 import React from "react";
 

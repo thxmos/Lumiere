@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { Button } from "@/modules/shared/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 
 const SubscribedCard = () => {
   return (
