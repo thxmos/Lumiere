@@ -1,6 +1,6 @@
 import { ProfileInfoSection } from "./ProfileInfoSection";
 import { getCurrentUser } from "@/shared/actions/entities/user/getCurrentUser";
-import QuickStartCards from "./QuickStartCards";
+import QuickStartCards from "./components/QuickStartCards";
 
 export default async function ProfilePage() {
   const user = await getCurrentUser();

@@ -1,4 +1,4 @@
-import { SIDEBAR_ICON_STYLE } from "@/config/constants/layout";
+import { SIDEBAR_ICON_STYLE } from "@/config/theme/layout";
 import { SidebarTab } from "@/shared/types/layout/SidebarTab";
 import { Link1Icon } from "@radix-ui/react-icons";
 import { Settings, QrCodeIcon, ImageIcon, PaintBucketIcon } from "lucide-react";

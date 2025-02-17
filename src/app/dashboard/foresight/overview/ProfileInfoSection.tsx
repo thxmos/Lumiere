@@ -17,8 +17,8 @@ import {
 import { SOCIAL_PLATFORMS } from "@/config/constants/social-media";
 import { cn } from "@/shared/utils/utils";
 import { useState } from "react";
-import { SocialMediaIntegrationsMenu } from "./IntegrationsMenu";
-import { IntegrationDetailsModal } from "./IntegrationDetailsModal";
+import { SocialMediaIntegrationsMenu } from "./components/IntegrationsMenu";
+import { IntegrationDetailsModal } from "./components/IntegrationDetailsModal";
 import { toast } from "sonner";
 import { UserResponse } from "@/shared/core/db/repositories/user";
 

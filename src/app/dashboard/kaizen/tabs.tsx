@@ -1,4 +1,4 @@
-import { SIDEBAR_ICON_STYLE } from "@/config/constants/layout";
+import { SIDEBAR_ICON_STYLE } from "@/config/theme/layout";
 import { SidebarTab } from "@/shared/types/layout/SidebarTab";
 import { BugIcon, MessageCircleIcon } from "lucide-react";
 

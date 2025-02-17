@@ -1,7 +1,6 @@
 import { SocialMediaPlatform } from "@/shared/types/entities/SocialMediaPlatforms";
 import {
   FaApple,
-  FaDiscord,
   FaFacebook,
   FaInstagram,
   FaTiktok,
@@ -20,12 +19,6 @@ export const SOCIAL_PLATFORMS: SocialMediaPlatform[] = [
     type: "APPLE_MUSIC",
     icon: FaApple,
   },
-  // {
-  //   label: "Discord",
-  //   value: "discordUsername",
-  //   prefix: "https://discord.com/",
-  //   icon: FaDiscord,
-  // },
   {
     label: "Facebook",
     value: "facebookUsername",
