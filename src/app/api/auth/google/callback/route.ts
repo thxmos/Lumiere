@@ -7,7 +7,7 @@ import { prisma } from "@/shared/core/db/prisma";
 import { createAndSetSessionCookie } from "@/shared/utils/security/cookies";
 import { OAuthProvider } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { DEFAULT_REDIRECT_URL } from "@/config/constants/app";
+import { DEFAULT_REDIRECT_URL } from "@/config/app";
 /**
  * Google OAuth callback handler
  * Processes the OAuth response from Google, creates or updates user accounts,

@@ -1,6 +1,6 @@
 import { LockIcon, UserIcon } from "lucide-react";
 import { SidebarTab } from "@/shared/types/layout/SidebarTab";
-import { SIDEBAR_ICON_STYLE } from "@/config/theme/layout";
+import { SIDEBAR_ICON_STYLE } from "@/config/theme/styles";
 
 export const USER_SETTINGS_TABS: SidebarTab[] = [
   {

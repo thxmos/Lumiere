@@ -17,7 +17,7 @@ import { AssetResponse } from "@/shared/core/db/repositories/asset/types";
 import { NewLinkGroupModal } from "./new-link-group-modal";
 import { PlusIcon } from "lucide-react";
 import { Switch } from "@/shared/components/ui/switch";
-import { setActiveLinkGroup } from "@/shared/actions/entities/link/setActiveLinkGroup";
+import { setActiveLinkGroup } from "@/modules/uLink/actions/link/setActiveLinkGroup";
 import { toast } from "sonner";
 
 interface LinkGroupGridProps {

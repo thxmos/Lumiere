@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from "@/config/theme/theme";
+import { DEFAULT_THEME } from "@/modules/uLink/default-theme";
 import { getThemeByUserId } from "./_getThemeByUserId";
 import { userRepository } from "@/shared/core/db/repositories/user";
 

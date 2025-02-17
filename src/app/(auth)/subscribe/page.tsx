@@ -1,4 +1,4 @@
-import { APP_NAME } from "@/config/constants/app";
+import { APP_NAME } from "@/config/app";
 import Navbar from "@/shared/components/layouts/nav-bar";
 import Pricing from "@/shared/components/pricing/pricing";
 

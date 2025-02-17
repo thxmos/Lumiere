@@ -10,7 +10,7 @@ import {
 import { AlertTriangle } from "lucide-react";
 import Navbar from "@/shared/components/layouts/nav-bar";
 import { validateServerSession } from "@/shared/utils/security/auth";
-import { DEFAULT_REDIRECT_URL } from "@/config/constants/app";
+import { DEFAULT_REDIRECT_URL } from "@/config/app";
 
 export default async function NotFoundPage() {
   const user = await validateServerSession();

@@ -1,6 +1,6 @@
 import { StateCreator } from "zustand";
 import { RootState, ThemeSlice } from "../types";
-import { DEFAULT_THEME } from "@/config/theme/theme";
+import { DEFAULT_THEME } from "@/modules/uLink/default-theme";
 
 export const createThemeSlice: StateCreator<RootState, [], [], ThemeSlice> = (
   set,

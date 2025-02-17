@@ -3,7 +3,7 @@
 import WelcomeEmail from "@/core/email/templates/welcome";
 import { getUserByEmail } from "../../../actions/entities/user/getUserByEmail";
 import { createVerificationToken } from "../../../actions/security/auth/tokens/verification-token";
-import { APP_NAME } from "@/config/constants/app";
+import { APP_NAME } from "@/config/app";
 import { resend } from "@/core/email/resend";
 
 // Used in sign up flow

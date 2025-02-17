@@ -1,6 +1,6 @@
 "use client";
 
-import { createLinkGroup } from "@/shared/actions/entities/link/createLinkGroup";
+import { createLinkGroup } from "@/modules/uLink/actions/link/createLinkGroup";
 import { Button } from "@/shared/components/ui/button";
 import {
   Dialog,

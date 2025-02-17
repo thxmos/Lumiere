@@ -6,7 +6,7 @@ import { Label } from "@/shared/components/ui/label";
 import { Switch } from "@/shared/components/ui/switch";
 import { Input } from "@/shared/components/ui/input";
 import { useState } from "react";
-import { updateLinkGroup } from "@/shared/actions/entities/link/updateLinkGroup";
+import { updateLinkGroup } from "@/modules/uLink/actions/link/updateLinkGroup";
 import { LinkGroupResponse } from "@/shared/core/db/repositories/linkGroup/types";
 import { toast } from "sonner";
 

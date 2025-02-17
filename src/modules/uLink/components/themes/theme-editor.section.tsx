@@ -10,7 +10,7 @@ import { ColorSelect } from "@/shared/components/forms/color-select/color-select
 import { ColorPickerStandalone } from "@/shared/components/forms/color-select/color-picker-standalone";
 import { Separator } from "@/shared/components/ui/separator";
 import { useThemeStore } from "@/shared/stores/old/themes";
-import { upsertTheme } from "@/shared/actions/entities/theme/upsertTheme";
+import { upsertTheme } from "@/modules/uLink/actions/theme/upsertTheme";
 import { AssetResponse } from "@/shared/core/db/repositories/asset";
 import { AssetType, Theme } from "@prisma/client";
 import { FontSection } from "./font.form";

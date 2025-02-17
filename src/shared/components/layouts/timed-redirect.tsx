@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { DEFAULT_REDIRECT_URL } from "@/config/constants/app";
+import { DEFAULT_REDIRECT_URL } from "@/config/app";
 
 export default function TimedRedirect() {
   const router = useRouter();

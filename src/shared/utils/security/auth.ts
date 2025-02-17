@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { prisma } from "@/shared/core/db/prisma";
-import { AUTH_COOKIE_NAME } from "@/config/constants/app";
+import { AUTH_COOKIE_NAME } from "@/config/app";
 import { SessionUser } from "@/core/auth/lucia";
 
 /*

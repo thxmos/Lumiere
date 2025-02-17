@@ -1,6 +1,6 @@
 import { Html } from "@react-email/html";
 import { Button } from "@react-email/button";
-import { APP_NAME } from "@/config/constants/app";
+import { APP_NAME } from "@/config/app";
 
 interface PasswordResetEmailProps {
   name: string;

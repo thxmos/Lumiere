@@ -1,6 +1,6 @@
 "use server";
 
-import { APP_NAME } from "@/config/constants/app";
+import { APP_NAME } from "@/config/app";
 import { resend } from "@/core/email/resend";
 import PasswordResetEmail from "@/core/email/templates/password-reset";
 import { getUserByEmail } from "@/shared/actions/entities/user/getUserByEmail";

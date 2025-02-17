@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from "@/shared/components/ui/card";
 import { AlertTriangle } from "lucide-react";
-import { DEFAULT_REDIRECT_URL } from "@/config/constants/app";
+import { DEFAULT_REDIRECT_URL } from "@/config/app";
 export default function ErrorPage() {
   return (
     <>

@@ -17,7 +17,7 @@ import { DEFAULT_FONT } from "@/config/theme/fonts";
 import { ColoredBackground } from "./components/background-color";
 import VideoBackground from "./components/background-video";
 import { ImageBackground } from "./components/background-image";
-import { createClickSocial } from "@/shared/actions/entities/link-click/createClickSocial";
+import { createClickSocial } from "@/modules/uLink/actions/link-click/createClickSocial";
 import { SocialMedia } from "@prisma/client";
 import { UserResponse } from "@/shared/core/db/repositories/user";
 import { LinkGroupWithLinks } from "@/shared/core/db/repositories/linkGroup";

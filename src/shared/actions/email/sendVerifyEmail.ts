@@ -2,7 +2,7 @@
 
 import WelcomeEmail from "@/shared/core/email/templates/welcome";
 import { getUserByEmail } from "@/shared/actions/entities/user/getUserByEmail";
-import { APP_NAME } from "@/config/constants/app";
+import { APP_NAME } from "@/config/app";
 import { resend } from "@/shared/core/email/resend";
 import { createVerificationToken } from "../security/auth/tokens/verification-token";
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SunMoonIcon } from "lucide-react";
-import { APP_NAME } from "@/config/constants/app";
+import { APP_NAME } from "@/config/app";
 import DropdownMenu from "./nav-bar-menu";
 import { validateServerSession } from "@/shared/utils/security/auth";
 import { Badge } from "@/shared/components/ui/badge";

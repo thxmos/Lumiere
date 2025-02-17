@@ -1,4 +1,4 @@
-import { deleteLinkGroup } from "@/shared/actions/entities/link/deleteLinkGroup";
+import { deleteLinkGroup } from "@/modules/uLink/actions/link/deleteLinkGroup";
 import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
 import { Button } from "@/shared/components/ui/button";
 import { useState } from "react";

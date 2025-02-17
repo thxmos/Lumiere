@@ -6,7 +6,7 @@ import {
   SwordsIcon,
   WaypointsIcon,
 } from "lucide-react";
-import { SIDEBAR_ICON_STYLE } from "@/config/theme/layout";
+import { SIDEBAR_ICON_STYLE } from "@/config/theme/styles";
 import { USER_ROLES } from "@/shared/types/user-roles";
 
 export const FORESIGHT_TABS: SidebarTab[] = [

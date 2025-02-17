@@ -1,6 +1,6 @@
 "use server";
 
-import { DEFAULT_THEME } from "@/config/theme/theme";
+import { DEFAULT_THEME } from "@/modules/uLink/default-theme";
 import { ThemeNoId } from "@/shared/types/entities/theme";
 import { getThemeByUserId } from "./_getThemeByUserId";
 import { withAuth } from "@/shared/utils/security/auth";

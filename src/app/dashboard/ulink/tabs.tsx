@@ -1,4 +1,4 @@
-import { SIDEBAR_ICON_STYLE } from "@/config/theme/layout";
+import { SIDEBAR_ICON_STYLE } from "@/config/theme/styles";
 import { SidebarTab } from "@/shared/types/layout/SidebarTab";
 import { Link1Icon } from "@radix-ui/react-icons";
 import { Settings, QrCodeIcon, ImageIcon, PaintBucketIcon } from "lucide-react";
@@ -31,17 +31,4 @@ export const ULINK_TABS: SidebarTab[] = [
     label: "QR Generator",
     icon: <QrCodeIcon className={SIDEBAR_ICON_STYLE} />,
   },
-  // {
-  //   key: "analytics",
-  //   label: "Analytics ⭐",
-  //   icon: <BarChart className={iconStyle} />,
-  //   userRole: USER_ROLES.ADMIN,
-  // },
-
-  // {
-  //   key: "admin",
-  //   label: "Admin ⭐",
-  //   icon: <Wrench className={iconStyle} />,
-  //   userRole: USER_ROLES.ADMIN,
-  // },
 ];

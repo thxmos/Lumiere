@@ -28,7 +28,7 @@ import { signIn } from "@/shared/actions/security/auth/signIn";
 import { BeatLoader } from "react-spinners";
 import ForgotPasswordForm from "./forgot-password-form";
 import { getGoogleOauthConsentUrl } from "@/shared/actions/security/auth/getGoogleOauthConsentUrl";
-import { DEFAULT_REDIRECT_URL } from "@/config/constants/app";
+import { DEFAULT_REDIRECT_URL } from "@/config/app";
 
 const signInSchema = z.object({
   email: z.string().email("Invalid email address"),

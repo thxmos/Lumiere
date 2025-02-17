@@ -4,7 +4,7 @@ import SignUpForm from "./components/sign-up-form";
 import { redirect } from "next/navigation";
 import Navbar from "@/shared/components/layouts/nav-bar";
 import { validateServerSession } from "@/shared/utils/security/auth";
-import { DEFAULT_REDIRECT_URL } from "@/config/constants/app";
+import { DEFAULT_REDIRECT_URL } from "@/config/app";
 
 const AuthPage = async () => {
   const user = await validateServerSession();

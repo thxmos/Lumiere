@@ -1,9 +1,9 @@
 import { getUserByUsername } from "@/shared/actions/entities/user/getUserByUsername";
-import { getActiveLinkGroupByUsername } from "@/shared/actions/entities/link/getActiveLinkGroupByUsername";
-import { getThemeByUsername } from "@/shared/actions/entities/theme/getThemeByUsername";
+import { getActiveLinkGroupByUsername } from "@/modules/uLink/actions/link/getActiveLinkGroupByUsername";
+import { getThemeByUsername } from "@/modules/uLink/actions/theme/getThemeByUsername";
 import React from "react";
 import { redirect } from "next/navigation";
-import LinkTree from "@/shared/components/profile/linktree";
+import LinkTree from "@/shared/components/ulink-profile/linktree";
 import { createProfileView } from "@/shared/actions/ulink/profile-view/createProfileView";
 import { UserResponse } from "@/shared/core/db/repositories/user";
 
