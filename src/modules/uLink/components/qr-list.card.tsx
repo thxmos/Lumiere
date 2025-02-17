@@ -5,7 +5,7 @@ import { Card } from "@/shared/components/ui/card";
 import { Label } from "@/shared/components/ui/label";
 import { X } from "lucide-react";
 import { toast } from "sonner";
-import { ConfirmDeleteModal } from "@/modules/uLink/components/modals/confirm-delete-modal";
+import { ConfirmDeleteModal } from "@/shared/components/confirm-delete-modal";
 import { useState } from "react";
 import type { QRCodeDto } from "@/shared/types/entities/qr-codes";
 import { deleteQRCode } from "@/shared/actions/ulink/qr-code/deleteQrCode";

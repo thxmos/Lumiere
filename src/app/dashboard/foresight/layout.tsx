@@ -13,11 +13,6 @@ interface Props {
 const ForesightLayout: React.FC<Props> = async ({ children }) => {
   const user = await validateAuthPage();
 
-  const path = "foresight";
-  const title = "Foresight";
-  const description = "Light up your path";
-  const headerIcon = <ScanEyeIcon />;
-
   return (
     <div className="flex">
       <div className="flex bg-background">

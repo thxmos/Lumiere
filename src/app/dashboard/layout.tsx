@@ -1,11 +1,13 @@
 import { AppSidebar } from "@/shared/components/layouts/sidebar-nav/app-sidebar";
 import { Breadcrumbs } from "@/shared/components/layouts/sidebar-nav/breadcrumbs";
+import { Button } from "@/shared/components/ui/button";
 import { Separator } from "@/shared/components/ui/separator";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@/shared/components/ui/sidebar";
+import { SunIcon } from "lucide-react";
 
 export default function DashboardLayout({
   children,
@@ -16,12 +18,15 @@ export default function DashboardLayout({
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 w-full justify-between">
           <div className="flex items-center gap-2 px-4">
             <SidebarTrigger className="-ml-1" />
             <Separator orientation="vertical" className="mr-2 h-4" />
             <Breadcrumbs />
           </div>
+          <Button variant="outline" size="icon" className="mr-4">
+            <SunIcon className="w-4 h-4" />
+          </Button>
         </header>
         <div className="flex flex-col gap-4 p-4 overflow-y-scroll">
           {children}

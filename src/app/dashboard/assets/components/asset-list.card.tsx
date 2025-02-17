@@ -3,7 +3,7 @@
 import { X } from "lucide-react";
 import Image from "next/image";
 import type { ImageDtoWithId } from "@/shared/types/entities/image";
-import { ConfirmDeleteModal } from "@/modules/uLink/components/modals/confirm-delete-modal";
+import { ConfirmDeleteModal } from "@/shared/components/confirm-delete-modal";
 import { useState } from "react";
 import { deleteAssetById } from "@/shared/actions/file-upload/deleteAsset";
 import { toast } from "sonner";

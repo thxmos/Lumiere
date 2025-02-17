@@ -12,9 +12,9 @@ import {
   SelectValue,
 } from "@/shared/components/ui/select";
 import { useState } from "react";
-import LinksEditorSections from "./(link-group)/links-editor-section";
+import LinksEditorSections from "./links-editor-section";
 import { AssetResponse } from "@/shared/core/db/repositories/asset/types";
-import { NewLinkGroupModal } from "./(link-group)/new-link-group-modal";
+import { NewLinkGroupModal } from "./new-link-group-modal";
 import { PlusIcon } from "lucide-react";
 import { Switch } from "@/shared/components/ui/switch";
 import { setActiveLinkGroup } from "@/shared/actions/entities/link/setActiveLinkGroup";

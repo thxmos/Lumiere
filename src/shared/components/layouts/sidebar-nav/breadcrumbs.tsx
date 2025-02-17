@@ -8,8 +8,10 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/shared/components/ui/breadcrumb";
+import { SunIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React from "react";
+import { Button } from "../../ui/button";
 
 function generateBreadcrumb(path: string) {
   const segments = path

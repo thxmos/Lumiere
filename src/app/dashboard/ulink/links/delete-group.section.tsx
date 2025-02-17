@@ -1,9 +1,10 @@
 import { deleteLinkGroup } from "@/shared/actions/entities/link/deleteLinkGroup";
 import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
 import { Button } from "@/shared/components/ui/button";
-import { ConfirmDeleteModal } from "../../../../modules/uLink/components/modals/confirm-delete-modal";
 import { useState } from "react";
-import { SettingsIcon } from "lucide-react";
+import { SettingsIcon, Trash2Icon } from "lucide-react";
+import { ConfirmDeleteModal } from "@/shared/components/confirm-delete-modal";
+import { toast } from "sonner";
 
 export default function DeleteGroupSection({
   linkGroupId,
@@ -13,7 +14,13 @@ export default function DeleteGroupSection({
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDelete = async () => {
-    await deleteLinkGroup(linkGroupId);
+    try {
+      await deleteLinkGroup(linkGroupId);
+      toast.success("Link group deleted successfully", { duration: 3000 });
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to delete link group", { duration: 3000 });
+    }
   };
 
   return (
@@ -21,11 +28,21 @@ export default function DeleteGroupSection({
       title={
         <div className="flex items-center gap-2">
           <SettingsIcon className="w-8 h-8" />
-          <p>Settings</p>
+          <p>Delete</p>
         </div>
       }
       description="Delete a link group"
-      footer={<Button onClick={() => setIsOpen(true)}>Delete</Button>}
+      footer={
+        <div className="flex gap-2 w-full justify-end">
+          <Button
+            onClick={() => setIsOpen(true)}
+            className="flex gap-2 bg-red-600 text-white"
+          >
+            <Trash2Icon className="w-4 h-4" />
+            Delete Link Group
+          </Button>
+        </div>
+      }
     >
       <p>Delete this link group</p>
       <ConfirmDeleteModal
