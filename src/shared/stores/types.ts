@@ -1,7 +1,7 @@
-import { LinkResponse } from "@/core/db/repositories/link";
-import { LinkGroupWithLinksTheme } from "@/core/db/repositories/linkGroup";
-import { LinkGroupResponse } from "@/core/db/repositories/linkGroup";
-import { SessionUser } from "@/utils/lib/lucia";
+import { LinkResponse } from "@/shared/core/db/repositories/link";
+import { LinkGroupWithLinksTheme } from "@/shared/core/db/repositories/linkGroup";
+import { LinkGroupResponse } from "@/shared/core/db/repositories/linkGroup";
+import { SessionUser } from "@/shared/core/auth/lucia";
 import { Asset, Theme } from "@prisma/client";
 
 export interface UserSlice {

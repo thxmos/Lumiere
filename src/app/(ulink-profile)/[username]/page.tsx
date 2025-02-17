@@ -3,7 +3,7 @@ import { getActiveLinkGroupByUsername } from "@/shared/actions/entities/link/get
 import { getThemeByUsername } from "@/shared/actions/entities/theme/getThemeByUsername";
 import React from "react";
 import { redirect } from "next/navigation";
-import LinkTree from "@/app/(ulink-profile)/components/profile/linktree";
+import LinkTree from "@/shared/components/profile/linktree";
 import { createProfileView } from "@/shared/actions/ulink/profile-view/createProfileView";
 import { UserResponse } from "@/shared/core/db/repositories/user";
 

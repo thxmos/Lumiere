@@ -1,6 +1,6 @@
 import { StateCreator } from "zustand";
 import { RootState, UserSlice } from "../types";
-import { SessionUser } from "@/utils/lib/lucia";
+import { SessionUser } from "@/shared/core/auth/lucia";
 
 export const DEFAULT_USER_STATE: SessionUser = {
   id: "",
