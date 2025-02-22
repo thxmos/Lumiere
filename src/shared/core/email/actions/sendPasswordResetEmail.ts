@@ -1,10 +1,10 @@
 "use server";
 
 import { APP_NAME } from "@/config/app";
-import { resend } from "@/core/email/resend";
-import PasswordResetEmail from "@/core/email/templates/password-reset";
-import { getUserByEmail } from "@/shared/actions/entities/user/getUserByEmail";
-import { createPasswordResetToken } from "@/shared/actions/security/auth/tokens/createPasswordResetToken";
+import { resend } from "@core/email/resend";
+import PasswordResetEmail from "@core/email/templates/password-reset";
+import { getUserByEmail } from "@actions/entities/user/getUserByEmail";
+import { createPasswordResetToken } from "@actions/security/auth/tokens/createPasswordResetToken";
 
 export const sendResetEmail = async (email: string) => {
   const user = await getUserByEmail(email);

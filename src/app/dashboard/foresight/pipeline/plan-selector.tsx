@@ -1,3 +1,5 @@
+"use client";
+
 import { addDays, format } from "date-fns";
 import { CheckCheckIcon, CheckIcon, Plus, XIcon } from "lucide-react";
 import {

@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { LinkGroupWithLinksTheme } from "@/core/db/repositories/linkGroup";
+import { LinkGroupWithLinksTheme } from "@core/db/repositories/linkGroup";
 
 type LinkGroupStore = {
   linkGroups: LinkGroupWithLinksTheme[];

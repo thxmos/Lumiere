@@ -68,7 +68,7 @@ export function LinkCard({
       className={`flex items-center p-2 w-full text-left transition-all hover:opacity-80 hover:scale-105 active:scale-95 ${
         isPending ? "opacity-50" : ""
       }`}
-      style={cardStyle}
+      style={cardStyle as React.CSSProperties}
       disabled={isPending}
     >
       <Image

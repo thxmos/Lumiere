@@ -1,6 +1,6 @@
 import { StateCreator } from "zustand";
 import { LinkGroupSlice, RootState } from "../types";
-import { DEFAULT_THEME } from "@/constants/ui/theme";
+import { DEFAULT_THEME } from "@/modules/uLink/default-theme";
 
 export const createLinkGroupSlice: StateCreator<
   RootState,

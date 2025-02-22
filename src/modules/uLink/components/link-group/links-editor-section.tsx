@@ -5,6 +5,7 @@ import { LinksSection } from "./links.section";
 import { LinkGroupWithLinksTheme } from "@core/db/repositories/linkGroup/types";
 import SocialMediaSection from "@/app/dashboard/ulink/links/social-media.section";
 import DeleteGroupSection from "@/app/dashboard/ulink/links/delete-group.section";
+import { ThemeNoId } from "@s-types/entities/theme";
 
 export default async function LinksEditorSections({
   linkGroup,
@@ -18,7 +19,10 @@ export default async function LinksEditorSections({
       <DescriptionSection linkGroup={linkGroup} />
       <LinksSection userLinks={linkGroup.Links} linkGroupId={linkGroup.id} />
       <SocialMediaSection linkGroup={linkGroup} />
-      <ThemeEditorSection initialTheme={linkGroup.Theme} assets={assets} />
+      <ThemeEditorSection
+        initialTheme={linkGroup.Theme ?? ({} as ThemeNoId)}
+        assets={assets}
+      />
       <DeleteGroupSection linkGroupId={linkGroup.id} />
     </div>
   );
