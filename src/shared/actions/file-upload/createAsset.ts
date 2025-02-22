@@ -1,14 +1,14 @@
 "use server";
 
 import { uploadBlob } from "./uploadBlob";
-import { withAuth } from "@/shared/utils/security/auth";
-import { SessionUser } from "@/shared/core/auth/lucia";
+import { withAuth } from "@utils/security/auth";
+import { SessionUser } from "@core/auth/lucia";
 import {
   type AssetCreateInput,
   assetRepository,
   AssetResponse,
-} from "@/shared/core/db/repositories/asset";
-import { updateUserAvatar } from "@/shared/actions/entities/user/updateUserAvatar";
+} from "@core/db/repositories/asset";
+import { updateUserAvatar } from "@actions/entities/user/updateUserAvatar";
 import { del } from "@vercel/blob";
 import { AssetType } from "@prisma/client";
 

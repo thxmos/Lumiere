@@ -1,10 +1,10 @@
 "use server";
 
-import { linkRepository } from "@/shared/core/db/repositories/link";
-import { LinkUpdateDto } from "@/shared/core/db/repositories/link/types";
+import { linkRepository } from "@core/db/repositories/link";
+import { LinkUpdateDto } from "@core/db/repositories/link/types";
 
-import { SessionUser } from "@/shared/core/auth/lucia";
-import { withAuth } from "@/shared/utils/security/auth";
+import { SessionUser } from "@core/auth/lucia";
+import { withAuth } from "@utils/security/auth";
 
 // TODO: updateMany doesnt work so making seperate requests... bleh
 export const updateLinks = withAuth(

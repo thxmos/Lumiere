@@ -1,10 +1,11 @@
 "use server";
 
 import { SignInSchema } from "@/app/(auth)/auth/components/sign-in-form";
-import { lucia } from "@/shared/core/auth/lucia";
-import { prisma } from "@/shared/core/db/prisma";
-import { createAndSetSessionCookie } from "@/shared/utils/security/cookies";
+import { lucia } from "@core/auth/lucia";
+import { prisma } from "@core/db/prisma";
+import { createAndSetSessionCookie } from "@utils/security/cookies";
 import { Argon2id } from "oslo/password";
+
 export const signIn = async (values: SignInSchema) => {
   try {
     const user = await prisma.user.findUnique({

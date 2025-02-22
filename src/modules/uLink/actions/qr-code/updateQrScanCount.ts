@@ -1,10 +1,10 @@
 "use server";
 
-import { BrowserData } from "@/shared/types/clicks";
-import { createScan } from "../qr-scan/createScan";
-import { CreateScanDto } from "../qr-scan/createScan";
-import { getQRCodeById } from "./getQrCodeById";
-import { updateQRCode } from "./updateQrCode";
+import { BrowserData } from "@s-types/clicks";
+import { createScan } from "@ulink/actions/qr-scan/createScan";
+import { CreateScanDto } from "@ulink/actions/qr-scan/createScan";
+import { getQRCodeById } from "@ulink/actions/qr-code/getQrCodeById";
+import { updateQRCode } from "@ulink/actions/qr-code/updateQrCode";
 
 export const updateQrScanCount = async (
   qrId: string,

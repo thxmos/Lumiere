@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { LinksTab } from "./links.tab";
-import type { LinkDtoWithId } from "@/shared/types/links";
-import type { ThemeNoId } from "@/shared/types/entities/theme";
+import type { LinkDtoWithId } from "@s-types/links";
+import type { ThemeNoId } from "@s-types/entities/theme";
 
 export function TabSelector({
   links,

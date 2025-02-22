@@ -11,9 +11,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/shared/components/ui/form";
-import { Input } from "@/shared/components/ui/input";
-import { Button } from "@/shared/components/ui/button";
+} from "@components/ui/form";
+import { Input } from "@components/ui/input";
+import { Button } from "@components/ui/button";
 import { BeatLoader } from "react-spinners";
 
 const resetPasswordSchema = z.object({

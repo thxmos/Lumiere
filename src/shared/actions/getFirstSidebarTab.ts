@@ -1,10 +1,10 @@
 "use server";
 
-import { USER_ROLES } from "@/shared/types/user-roles";
+import { USER_ROLES } from "@s-types/user-roles";
 import { redirect } from "next/navigation";
-import { withAuth } from "@/shared/utils/security/auth";
-import { SessionUser } from "@/shared/core/auth/lucia";
-import { SidebarTab } from "@/shared/types/layout/SidebarTab";
+import { withAuth } from "@utils/security/auth";
+import { SessionUser } from "@core/auth/lucia";
+import { SidebarTab } from "@s-types/layout/SidebarTab";
 
 // Used by all pages that have a sidebar
 // Gets the first tab that the user has access to

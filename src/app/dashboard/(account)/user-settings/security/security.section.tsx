@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { UserDto } from "@/shared/actions/entities/user/createUser";
+import { UserDto } from "@actions/entities/user/createUser";
 import PasswordResetForm from "./password-reset-form";
 import PasswordResetFormOAuth from "./password-reset-form-oAuth";
-import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
+import { DashboardCard } from "@components/layouts/dashboard-card";
 
 export default function SecuritySection({
   user,

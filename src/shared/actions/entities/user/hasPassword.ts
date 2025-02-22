@@ -1,6 +1,6 @@
-import { SessionUser } from "@/core/auth/lucia";
+import { SessionUser } from "@core/auth/lucia";
 import { getUserByIdWithPassword } from "./getUserByIdWithPassword";
-import { withAuth } from "@/shared/utils/security/auth";
+import { withAuth } from "@utils/security/auth";
 
 /**
  * hasPasswordAction()

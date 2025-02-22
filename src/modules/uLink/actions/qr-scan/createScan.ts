@@ -1,8 +1,8 @@
 "use server";
 
-import { qrScanRepository } from "@/shared/core/db/repositories/qr-scan";
-import { SessionUser } from "@/shared/core/auth/lucia";
-import { withAuth } from "@/shared/utils/security/auth";
+import { qrScanRepository } from "@core/db/repositories/qr-scan";
+import { SessionUser } from "@core/auth/lucia";
+import { withAuth } from "@utils/security/auth";
 
 // TODO: temporarily used, should be replaced with QRScanCreateInput
 export type CreateScanDto = {

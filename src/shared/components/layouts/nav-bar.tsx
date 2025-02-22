@@ -2,8 +2,8 @@ import Link from "next/link";
 import { SunMoonIcon } from "lucide-react";
 import { APP_NAME } from "@/config/app";
 import DropdownMenu from "./nav-bar-menu";
-import { validateServerSession } from "@/shared/utils/security/auth";
-import { Badge } from "@/shared/components/ui/badge";
+import { validateServerSession } from "@utils/security/auth";
+import { Badge } from "@components/ui/badge";
 
 const Navbar = async () => {
   const user = await validateServerSession();

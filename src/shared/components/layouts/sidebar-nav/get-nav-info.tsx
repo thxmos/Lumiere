@@ -1,14 +1,14 @@
 "use server";
 
-import { withAuth } from "@/shared/utils/security/auth";
-import { userRepository } from "@/shared/core/db/repositories/user";
+import { withAuth } from "@utils/security/auth";
+import { userRepository } from "@core/db/repositories/user";
 import {
   AudioWaveformIcon,
   CommandIcon,
   GalleryVerticalEndIcon,
 } from "lucide-react";
 import { NavData } from "./types";
-import { SessionUser } from "@/shared/core/auth/lucia";
+import { SessionUser } from "@core/auth/lucia";
 import { SIDEBAR_ICON_STYLE } from "@/config/theme/styles";
 import { NAV_MODULES } from "@/config/nav/modules";
 import { NAV_ACCOUNT } from "@/config/nav/account";

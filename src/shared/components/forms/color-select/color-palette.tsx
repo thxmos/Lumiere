@@ -1,6 +1,6 @@
 import type React from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Button } from "@/shared/components/ui/button";
+import { Button } from "@components/ui/button";
 import { BLACK, WHITE } from "@/config/theme/colors";
 import {
   ColorSchemeType,

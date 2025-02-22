@@ -3,15 +3,15 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { DraggableProvided } from "@hello-pangea/dnd";
 import { RxDragHandleDots2 } from "react-icons/rx";
-import { AssetUpload } from "@/shared/components/upload/asset-upload";
-import { Input } from "@/shared/components/ui/input";
-import { Switch } from "@/shared/components/ui/switch";
-import { Button } from "@/shared/components/ui/button";
+import { AssetUpload } from "@components/upload/asset-upload";
+import { Input } from "@components/ui/input";
+import { Switch } from "@components/ui/switch";
+import { Button } from "@components/ui/button";
 import { Trash, Edit, Check, X } from "lucide-react";
-import { ConfirmDeleteModal } from "@/shared/components/confirm-delete-modal";
-import { Label } from "@/shared/components/ui/label";
-import { LinkResponse } from "@/shared/core/db/repositories/link";
-import { cn } from "@/shared/utils/utils";
+import { ConfirmDeleteModal } from "@components/confirm-delete-modal";
+import { Label } from "@components/ui/label";
+import { LinkResponse } from "@core/db/repositories/link";
+import { cn } from "@utils/utils";
 
 /*
 - text ellipsis on mobile

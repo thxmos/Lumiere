@@ -1,7 +1,7 @@
 "use client";
 
-import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
-import { Label } from "@/shared/components/ui/label";
+import { DashboardCard } from "@components/layouts/dashboard-card";
+import { Label } from "@components/ui/label";
 import { THEMES } from "@/config/theme/shadcn";
 import { useTheme } from "next-themes";
 

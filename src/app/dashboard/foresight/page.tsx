@@ -1,4 +1,4 @@
-import { redirectToFirstTab } from "@/shared/actions/getFirstSidebarTab";
+import { redirectToFirstTab } from "@actions/getFirstSidebarTab";
 import { FORESIGHT_TABS } from "./tabs";
 
 export default async function Foresight() {

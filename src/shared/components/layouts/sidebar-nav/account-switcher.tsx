@@ -8,15 +8,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/shared/components/ui/dropdown-menu";
+} from "@components/ui/dropdown-menu";
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/shared/components/ui/sidebar";
+} from "@components/ui/sidebar";
 import NewAccountModal from "./new-account-modal";
-import { cn } from "@/shared/utils/utils";
+import { cn } from "@utils/utils";
 import { UserAccount } from "./types";
 
 export interface AccountSwitcherProps {

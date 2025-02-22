@@ -1,13 +1,13 @@
-import { createStripeCustomer } from "@/shared/actions/stripe/createStripeCustomer";
-import { getUserByEmail } from "@/shared/actions/entities/user/getUserByEmail";
-import { updateUserById } from "@/shared/actions/entities/user/updateUserById";
-import { googleOAuthClient } from "@/shared/utils/security/googleOauth";
-import { lucia } from "@/shared/core/auth/lucia";
-import { prisma } from "@/shared/core/db/prisma";
-import { createAndSetSessionCookie } from "@/shared/utils/security/cookies";
+import { getUserByEmail } from "@actions/entities/user/getUserByEmail";
+import { updateUserById } from "@actions/entities/user/updateUserById";
+import { googleOAuthClient } from "@utils/security/googleOauth";
+import { lucia } from "@core/auth/lucia";
+import { prisma } from "@core/db/prisma";
+import { createAndSetSessionCookie } from "@utils/security/cookies";
 import { OAuthProvider } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { DEFAULT_REDIRECT_URL } from "@/config/app";
+import { createStripeCustomer } from "@core/payment/actions/createStripeCustomer";
 /**
  * Google OAuth callback handler
  * Processes the OAuth response from Google, creates or updates user accounts,

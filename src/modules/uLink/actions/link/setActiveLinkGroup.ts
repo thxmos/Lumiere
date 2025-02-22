@@ -1,8 +1,8 @@
 "use server";
 
-import { prisma } from "@/shared/core/db/prisma";
-import { withAuth } from "@/shared/utils/security/auth";
-import { SessionUser } from "@/shared/core/auth/lucia";
+import { prisma } from "@core/db/prisma";
+import { withAuth } from "@utils/security/auth";
+import { SessionUser } from "@core/auth/lucia";
 
 /*
  * setActiveLinkGroup

@@ -7,7 +7,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/shared/components/ui/breadcrumb";
+} from "@components/ui/breadcrumb";
 import { SunIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React from "react";

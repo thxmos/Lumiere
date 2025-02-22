@@ -1,15 +1,15 @@
 import Link from "next/link";
-import { Button } from "@/shared/components/ui/button";
+import { Button } from "@components/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/shared/components/ui/card";
+} from "@components/ui/card";
 import { AlertTriangle } from "lucide-react";
-import Navbar from "@/shared/components/layouts/nav-bar";
-import { validateServerSession } from "@/shared/utils/security/auth";
+import Navbar from "@components/layouts/nav-bar";
+import { validateServerSession } from "@utils/security/auth";
 import { DEFAULT_REDIRECT_URL } from "@/config/app";
 
 export default async function NotFoundPage() {

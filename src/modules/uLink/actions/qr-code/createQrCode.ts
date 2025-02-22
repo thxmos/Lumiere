@@ -1,9 +1,9 @@
 "use server";
 
-import { CreateQRCodeDto } from "@/shared/types/entities/qr-codes";
-import { qrCodeRepository } from "@/shared/core/db/repositories/qr-code";
-import { withAuth } from "@/shared/utils/security/auth";
-import { SessionUser } from "@/shared/core/auth/lucia";
+import { CreateQRCodeDto } from "@s-types/entities/qr-codes";
+import { qrCodeRepository } from "@core/db/repositories/qr-code";
+import { withAuth } from "@utils/security/auth";
+import { SessionUser } from "@core/auth/lucia";
 
 export const createQRCode = withAuth(
   async (user: SessionUser, data: CreateQRCodeDto) => {

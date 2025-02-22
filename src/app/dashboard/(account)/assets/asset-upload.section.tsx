@@ -1,6 +1,6 @@
-import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
+import { DashboardCard } from "@components/layouts/dashboard-card";
 import { AssetUploadForm } from "./components/asset-upload.form";
-import { ImageIcon, ImagePlusIcon } from "lucide-react";
+import { ImagePlusIcon } from "lucide-react";
 
 export const AssetsUploadSection = () => {
   return (

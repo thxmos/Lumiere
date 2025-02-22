@@ -1,9 +1,9 @@
-import MobilePreview from "@/modules/uLink/components/mobile-preview/mobile-preview";
-import LinkTree from "@/shared/components/ulink-profile/linktree";
-import { getThemeAction } from "@/modules/uLink/actions/theme/getTheme";
-import { ScrollToTopLayout } from "@/shared/components/layouts/scroll-to-top.layout";
-import { getCurrentUser } from "@/shared/actions/entities/user/getCurrentUser";
-import { getActiveLinkGroupByUsername } from "@/modules/uLink/actions/link/getActiveLinkGroupByUsername";
+import MobilePreview from "@ulink/components/mobile-preview/mobile-preview";
+import LinkTree from "@components/ulink-profile/linktree";
+import { getThemeAction } from "@ulink/actions/theme/getTheme";
+import { ScrollToTopLayout } from "@components/layouts/scroll-to-top.layout";
+import { getCurrentUser } from "@actions/entities/user/getCurrentUser";
+import { getActiveLinkGroupByUsername } from "@ulink/actions/link/getActiveLinkGroupByUsername";
 
 interface Props {
   children: React.ReactNode;

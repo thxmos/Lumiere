@@ -1,8 +1,8 @@
 "use server";
 
 import { withAuth } from "@/shared/utils/security/auth";
-import { SessionUser } from "@/shared/core/auth/lucia";
-import { assetRepository } from "@/shared/core/db/repositories/asset";
+import { SessionUser } from "@core/auth/lucia";
+import { assetRepository } from "@core/db/repositories/asset";
 import { del } from "@vercel/blob";
 
 export const deleteAssetById = withAuth(

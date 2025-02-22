@@ -1,9 +1,9 @@
 "use server";
 
-import WelcomeEmail from "@/shared/core/email/templates/welcome";
-import { getUserByEmail } from "@/shared/actions/entities/user/getUserByEmail";
+import WelcomeEmail from "@core/email/templates/welcome";
+import { getUserByEmail } from "@actions/entities/user/getUserByEmail";
 import { APP_NAME } from "@/config/app";
-import { resend } from "@/shared/core/email/resend";
+import { resend } from "@core/email/resend";
 import { createVerificationToken } from "../security/auth/tokens/verification-token";
 
 // Used in sign up flow

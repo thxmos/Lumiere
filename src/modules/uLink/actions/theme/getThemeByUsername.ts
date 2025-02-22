@@ -1,6 +1,6 @@
-import { DEFAULT_THEME } from "@/modules/uLink/default-theme";
-import { getThemeByUserId } from "./_getThemeByUserId";
-import { userRepository } from "@/shared/core/db/repositories/user";
+import { DEFAULT_THEME } from "@ulink/default-theme";
+import { getThemeByUserId } from "@ulink/actions/theme/_getThemeByUserId";
+import { userRepository } from "@core/db/repositories/user";
 
 // TODO: ensure we dont return any sensitive info
 // public

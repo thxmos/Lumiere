@@ -1,5 +1,5 @@
 import { SIDEBAR_ICON_STYLE } from "@/config/theme/styles";
-import { SidebarTab } from "@/shared/types/layout/SidebarTab";
+import { SidebarTab } from "@s-types/layout/SidebarTab";
 import { BugIcon, MessageCircleIcon } from "lucide-react";
 
 //TODO: Rename key to path or something

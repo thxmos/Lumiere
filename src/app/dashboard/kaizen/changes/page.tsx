@@ -1,6 +1,4 @@
-import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
-import { Button } from "@/shared/components/ui/button";
-import { Textarea } from "@/shared/components/ui/textarea";
+import { DashboardCard } from "@components/layouts/dashboard-card";
 
 export default function ChangesPage() {
   return (

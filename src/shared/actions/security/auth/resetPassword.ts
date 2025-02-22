@@ -1,7 +1,7 @@
 "use server";
 
-import { prisma } from "@/shared/core/db/prisma";
-import { hash } from "@/shared/utils/security/crypto";
+import { prisma } from "@core/db/prisma";
+import { hash } from "@utils/security/crypto";
 import { getPasswordResetTokenByToken } from "./tokens/getPasswordResetTokenByToken";
 
 export async function resetPassword(token: string, password: string) {

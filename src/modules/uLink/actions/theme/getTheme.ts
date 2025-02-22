@@ -1,10 +1,10 @@
 "use server";
 
-import { DEFAULT_THEME } from "@/modules/uLink/default-theme";
-import { ThemeNoId } from "@/shared/types/entities/theme";
-import { getThemeByUserId } from "./_getThemeByUserId";
-import { withAuth } from "@/shared/utils/security/auth";
-import { SessionUser } from "@/shared/core/auth/lucia";
+import { DEFAULT_THEME } from "@ulink/default-theme";
+import { ThemeNoId } from "@s-types/entities/theme";
+import { getThemeByUserId } from "@ulink/actions/theme/_getThemeByUserId";
+import { withAuth } from "@utils/security/auth";
+import { SessionUser } from "@core/auth/lucia";
 
 //TODO: get theme by linkgroup
 

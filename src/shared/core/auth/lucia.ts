@@ -1,6 +1,6 @@
 import { Lucia } from "lucia";
 import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
-import { prisma } from "../db/prisma";
+import { prisma } from "@core/db/prisma";
 
 /*
 TODO:

@@ -1,8 +1,8 @@
 import DescriptionSection from "@/app/dashboard/ulink/links/description.section";
-import { AssetResponse } from "@/shared/core/db/repositories/asset/types";
+import { AssetResponse } from "@core/db/repositories/asset/types";
 import { ThemeEditorSection } from "../themes/theme-editor.section";
 import { LinksSection } from "./links.section";
-import { LinkGroupWithLinksTheme } from "@/shared/core/db/repositories/linkGroup/types";
+import { LinkGroupWithLinksTheme } from "@core/db/repositories/linkGroup/types";
 import SocialMediaSection from "@/app/dashboard/ulink/links/social-media.section";
 import DeleteGroupSection from "@/app/dashboard/ulink/links/delete-group.section";
 

@@ -10,9 +10,9 @@ import {
   subMonths,
 } from "date-fns";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/shared/components/ui/button";
-import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
-import { cn } from "@/shared/utils/utils";
+import { Button } from "@components/ui/button";
+import { DashboardCard } from "@components/layouts/dashboard-card";
+import { cn } from "@utils/utils";
 
 // TODO: Add your own notes each calendar day
 

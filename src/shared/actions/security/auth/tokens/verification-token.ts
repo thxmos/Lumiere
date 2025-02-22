@@ -1,7 +1,7 @@
 "use server";
 
-import { prisma } from "@/shared/core/db/prisma";
-import { generateTokenWithExpiration } from "@/shared/utils/security/crypto";
+import { prisma } from "@core/db/prisma";
+import { generateTokenWithExpiration } from "@utils/security/crypto";
 import { VerificationToken } from "@prisma/client";
 
 type VerificationTokenDto = {

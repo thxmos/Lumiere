@@ -1,10 +1,10 @@
 "use server";
 
-import { withAuth } from "@/shared/utils/security/auth";
+import { withAuth } from "@utils/security/auth";
 
-import { SessionUser } from "@/shared/core/auth/lucia";
-import { LinkGroupUpdateInput } from "@/shared/core/db/repositories/linkGroup/types";
-import { linkGroupRepository } from "@/shared/core/db/repositories/linkGroup";
+import { SessionUser } from "@core/auth/lucia";
+import { LinkGroupUpdateInput } from "@core/db/repositories/linkGroup/types";
+import { linkGroupRepository } from "@core/db/repositories/linkGroup";
 
 export const updateLinkGroup = withAuth(
   async (

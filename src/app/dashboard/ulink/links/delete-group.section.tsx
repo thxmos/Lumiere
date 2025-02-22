@@ -1,9 +1,9 @@
-import { deleteLinkGroup } from "@/modules/uLink/actions/link/deleteLinkGroup";
-import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
-import { Button } from "@/shared/components/ui/button";
+import { deleteLinkGroup } from "@ulink/actions/link/deleteLinkGroup";
+import { DashboardCard } from "@components/layouts/dashboard-card";
+import { Button } from "@components/ui/button";
 import { useState } from "react";
 import { SettingsIcon, Trash2Icon } from "lucide-react";
-import { ConfirmDeleteModal } from "@/shared/components/confirm-delete-modal";
+import { ConfirmDeleteModal } from "@components/confirm-delete-modal";
 import { toast } from "sonner";
 
 export default function DeleteGroupSection({

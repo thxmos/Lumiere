@@ -1,12 +1,12 @@
-import { AppSidebar } from "@/shared/components/layouts/sidebar-nav/app-sidebar";
-import { Breadcrumbs } from "@/shared/components/layouts/sidebar-nav/breadcrumbs";
-import { Button } from "@/shared/components/ui/button";
-import { Separator } from "@/shared/components/ui/separator";
+import { AppSidebar } from "@components/layouts/sidebar-nav/app-sidebar";
+import { Breadcrumbs } from "@components/layouts/sidebar-nav/breadcrumbs";
+import { Button } from "@components/ui/button";
+import { Separator } from "@components/ui/separator";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/shared/components/ui/sidebar";
+} from "@components/ui/sidebar";
 import { SunIcon } from "lucide-react";
 
 export default function DashboardLayout({

@@ -1,6 +1,6 @@
-import { withAuth } from "@/shared/utils/security/auth";
-import { SessionUser } from "@/shared/core/auth/lucia";
-import { userRepository } from "@/shared/core/db/repositories/user";
+import { withAuth } from "@utils/security/auth";
+import { SessionUser } from "@core/auth/lucia";
+import { userRepository } from "@core/db/repositories/user";
 
 /*
  * Gets the current user from session

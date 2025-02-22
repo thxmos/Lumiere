@@ -6,10 +6,10 @@ import {
   DialogContent,
   DialogDescription,
   DialogTitle,
-} from "@/shared/components/ui/dialog";
+} from "@components/ui/dialog";
 import FileUpload, { FileType } from "./file-upload";
 import { useState } from "react";
-import { Badge } from "@/shared/components/ui/badge";
+import { Badge } from "@components/ui/badge";
 
 interface AssetUploadDialogProps {
   isOpen: boolean;

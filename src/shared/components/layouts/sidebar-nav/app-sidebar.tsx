@@ -13,13 +13,13 @@ import {
   SidebarHeader,
   SidebarRail,
   useSidebar,
-} from "@/shared/components/ui/sidebar";
+} from "@components/ui/sidebar";
 import { getNavInfo } from "./get-nav-info";
 import Link from "next/link";
 import { SunMoonIcon } from "lucide-react";
-import { Badge } from "@/shared/components/ui/badge";
+import { Badge } from "@components/ui/badge";
 import { APP_NAME } from "@/config/app";
-import { cn } from "@/shared/utils/utils";
+import { cn } from "@utils/utils";
 import { SidebarSkeleton } from "./sidebar-skeleton";
 import { NavData } from "./types";
 

@@ -1,13 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { logout } from "@/shared/actions/security/auth/logout";
+import { logout } from "@actions/security/auth/logout";
 import Link from "next/link";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/shared/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar";
 import {
   BarcodeIcon,
   Cable,
@@ -18,9 +14,9 @@ import {
   User,
   UserIcon,
 } from "lucide-react";
-import { getInitials } from "@/shared/utils/utils";
-import { USER_ROLES } from "@/shared/types/user-roles";
-import { NavItem } from "@/shared/types/navigation";
+import { getInitials } from "@utils/utils";
+import { USER_ROLES } from "@s-types/user-roles";
+import { NavItem } from "@s-types/navigation";
 
 export default function DropdownMenu({ user }: { user: any }) {
   const [open, setOpen] = useState(false);

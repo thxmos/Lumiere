@@ -2,8 +2,8 @@ import TabSwitcher from "./components/tab-switcher";
 import SignInForm from "./components/sign-in-form";
 import SignUpForm from "./components/sign-up-form";
 import { redirect } from "next/navigation";
-import Navbar from "@/shared/components/layouts/nav-bar";
-import { validateServerSession } from "@/shared/utils/security/auth";
+import Navbar from "@components/layouts/nav-bar";
+import { validateServerSession } from "@utils/security/auth";
 import { DEFAULT_REDIRECT_URL } from "@/config/app";
 
 const AuthPage = async () => {

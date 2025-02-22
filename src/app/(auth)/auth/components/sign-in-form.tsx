@@ -13,7 +13,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/shared/components/ui/card";
+} from "@components/ui/card";
 import {
   Form,
   FormControl,
@@ -21,13 +21,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/shared/components/ui/form";
-import { Input } from "@/shared/components/ui/input";
-import { Button } from "@/shared/components/ui/button";
-import { signIn } from "@/shared/actions/security/auth/signIn";
+} from "@components/ui/form";
+import { Input } from "@components/ui/input";
+import { Button } from "@components/ui/button";
+import { signIn } from "@actions/security/auth/signIn";
 import { BeatLoader } from "react-spinners";
 import ForgotPasswordForm from "./forgot-password-form";
-import { getGoogleOauthConsentUrl } from "@/shared/actions/security/auth/getGoogleOauthConsentUrl";
+import { getGoogleOauthConsentUrl } from "@actions/security/auth/getGoogleOauthConsentUrl";
 import { DEFAULT_REDIRECT_URL } from "@/config/app";
 
 const signInSchema = z.object({

@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/shared/core/db/prisma";
+import { prisma } from "@core/db/prisma";
 
 // TODO: make a repository for this
 

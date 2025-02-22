@@ -1,7 +1,7 @@
-import { getAllClicksByUserId } from "@/modules/uLink/actions/link-click/getAllClicksByUserId";
-import { getAllProfileViewsByUserId } from "@/shared/actions/ulink/profile-view/getAllProfileViewsByUserId";
+import { getAllClicksByUserId } from "@ulink/actions/link-click/getAllClicksByUserId";
+import { getAllProfileViewsByUserId } from "@ulink/actions/profile-view/getAllProfileViewsByUserId";
 import AnalyticsDashboard from "./analytics-dashboard";
-import { getScansByUserId } from "@/shared/actions/ulink/qr-scan/getScansByUserId";
+import { getScansByUserId } from "@ulink/actions/qr-scan/getScansByUserId";
 
 export default async function AnalyticsPage() {
   const scans = await getScansByUserId();

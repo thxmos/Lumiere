@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogFooter,
   DialogDescription,
-} from "@/shared/components/ui/dialog";
+} from "@components/ui/dialog";
 import { SquareArrowOutUpRight } from "lucide-react";
 
 /*

@@ -2,12 +2,12 @@
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Input } from "@/shared/components/ui/input";
-import { Textarea } from "@/shared/components/ui/textarea";
-import { Button } from "@/shared/components/ui/button";
-import { Label } from "@/shared/components/ui/label";
-import AvatarUpload from "@/shared/components/upload/avatar-upload";
-import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
+import { Input } from "@components/ui/input";
+import { Textarea } from "@components/ui/textarea";
+import { Button } from "@components/ui/button";
+import { Label } from "@components/ui/label";
+import AvatarUpload from "@components/upload/avatar-upload";
+import { DashboardCard } from "@components/layouts/dashboard-card";
 import { toast } from "sonner";
 import {
   Select,
@@ -15,12 +15,12 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/components/ui/select";
+} from "@components/ui/select";
 import { COUNTRIES } from "@/config/constants/countries";
-import { updateUserAccountInfo } from "@/shared/actions/entities/user/updateUserAccountInfo";
-import { uploadAvatar } from "@/shared/actions/file-upload/createAsset";
+import { updateUserAccountInfo } from "@actions/entities/user/updateUserAccountInfo";
+import { uploadAvatar } from "@actions/file-upload/createAsset";
 import { SettingsIcon } from "lucide-react";
-import { UserResponse } from "@/shared/core/db/repositories/user";
+import { UserResponse } from "@core/db/repositories/user";
 
 type AccountFormData = {
   username: string;

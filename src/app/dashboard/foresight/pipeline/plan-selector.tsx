@@ -8,9 +8,9 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/shared/components/ui/select";
-import { Badge } from "@/shared/components/ui/badge";
-import { Button } from "@/shared/components/ui/button";
+} from "@components/ui/select";
+import { Badge } from "@components/ui/badge";
+import { Button } from "@components/ui/button";
 import {
   Card,
   CardContent,
@@ -18,15 +18,15 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
-} from "@/shared/components/ui/card";
+} from "@components/ui/card";
 import { Action, Campaign } from "@prisma/client";
-import { createCalendarEvent } from "@/modules/foresight/actions/google/createGoogleCalendarEvent";
+import { createCalendarEvent } from "@foresight/actions/google/createGoogleCalendarEvent";
 import { toast } from "sonner";
-import { cn } from "@/shared/utils/utils";
-import CircleProgress from "@/shared/components/ui/circle-progress";
+import { cn } from "@utils/utils";
+import CircleProgress from "@components/ui/circle-progress";
 import { LUMIERE_GRAY_DARK, LUMIERE_ORANGE } from "@/config/theme/colors";
-import { updateGoogleCalendarEvent } from "@/modules/foresight/actions/google/updateGoogleCalendarEvent";
-import { deleteCalendarEvent } from "@/modules/foresight/actions/google/deleteGoogleCalendarEvent";
+import { updateGoogleCalendarEvent } from "@foresight/actions/google/updateGoogleCalendarEvent";
+import { deleteCalendarEvent } from "@foresight/actions/google/deleteGoogleCalendarEvent";
 import { useState, useMemo } from "react";
 import { GRADIENT_STYLES } from "@/config/theme/styles";
 

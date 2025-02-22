@@ -1,7 +1,7 @@
 "use server";
 
-import { PasswordResetTokenDto } from "@/shared/types/entities/auth";
-import { passwordResetTokenRepository } from "@/shared/core/db/repositories/password-reset-token";
+import { PasswordResetTokenDto } from "@s-types/entities/auth";
+import { passwordResetTokenRepository } from "@core/db/repositories/password-reset-token";
 
 export async function getPasswordResetTokenByToken(
   token: string,

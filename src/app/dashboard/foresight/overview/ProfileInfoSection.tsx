@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
-import { Label } from "@/shared/components/ui/label";
+import { DashboardCard } from "@components/layouts/dashboard-card";
+import { Label } from "@components/ui/label";
 import { GRADIENT_STYLES } from "@/config/theme/styles";
 import {
   BarChart3Icon,
@@ -15,12 +15,12 @@ import {
   WeightIcon,
 } from "lucide-react";
 import { SOCIAL_PLATFORMS } from "@/config/constants/social-media";
-import { cn } from "@/shared/utils/utils";
+import { cn } from "@utils/utils";
 import { useState } from "react";
 import { SocialMediaIntegrationsMenu } from "./components/IntegrationsMenu";
 import { IntegrationDetailsModal } from "./components/IntegrationDetailsModal";
 import { toast } from "sonner";
-import { UserResponse } from "@/shared/core/db/repositories/user";
+import { UserResponse } from "@core/db/repositories/user";
 
 export interface ProfileInfoSectionProps {
   user: UserResponse;

@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { useTransition } from "react";
 import { PLACEHOLDER_IMG } from "@/config/theme/images";
-import type { LinkDtoWithId } from "@/shared/types/links";
-import type { ThemeNoId } from "@/shared/types/entities/theme";
-import { updateLinkClicked } from "@/modules/uLink/actions/link/updateLinkClicked";
-import type { BrowserData } from "@/shared/types/clicks";
+import type { LinkDtoWithId } from "@s-types/links";
+import type { ThemeNoId } from "@s-types/entities/theme";
+import { updateLinkClicked } from "@ulink/actions/link/updateLinkClicked";
+import type { BrowserData } from "@s-types/clicks";
 
 export function LinkCard({
   id,

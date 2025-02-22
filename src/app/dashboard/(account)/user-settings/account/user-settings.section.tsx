@@ -2,12 +2,12 @@
 
 import React, { useState } from "react";
 import { toast } from "sonner";
-import { Button } from "@/shared/components/ui/button";
-import { Input } from "@/shared/components/ui/input";
-import { Label } from "@/shared/components/ui/label";
-import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
-import { updateUserById } from "@/shared/actions/entities/user/updateUserById";
-import { UserResponse } from "@/shared/core/db/repositories/user";
+import { Button } from "@components/ui/button";
+import { Input } from "@components/ui/input";
+import { Label } from "@components/ui/label";
+import { DashboardCard } from "@components/layouts/dashboard-card";
+import { updateUserById } from "@actions/entities/user/updateUserById";
+import { UserResponse } from "@core/db/repositories/user";
 
 export default function UserSettingsSection({ user }: { user: UserResponse }) {
   const [isSubmitting, setIsSubmitting] = useState(false);

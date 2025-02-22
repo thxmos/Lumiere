@@ -1,7 +1,7 @@
-import { UserDto } from "@/shared/actions/entities/user/createUser";
-import { hasPasswordAction } from "@/shared/actions/entities/user/hasPassword";
+import { UserDto } from "@actions/entities/user/createUser";
+import { hasPasswordAction } from "@actions/entities/user/hasPassword";
 import SecuritySection from "./security.section";
-import { validateAuthPage } from "@/shared/utils/security/auth";
+import { validateAuthPage } from "@utils/security/auth";
 
 export default async function SecurityPage() {
   const user = await validateAuthPage();

@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
-import { useIsMobile } from "@/shared/hooks/use-mobile";
+import { useIsMobile } from "@hooks/use-mobile";
 import { Button } from "./button";
 import { Input } from "./input";
 import { Separator } from "./separator";
@@ -16,7 +16,7 @@ import {
   TooltipTrigger,
 } from "./tooltip";
 import { ViewVerticalIcon } from "@radix-ui/react-icons";
-import { cn } from "@/shared/utils/utils";
+import { cn } from "@utils/utils";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;

@@ -1,4 +1,4 @@
-import { Skeleton } from "@/shared/components/ui/skeleton";
+import { Skeleton } from "@components/ui/skeleton";
 import {
   Sidebar,
   SidebarContent,
@@ -6,7 +6,7 @@ import {
   SidebarGroup,
   SidebarHeader,
   SidebarRail,
-} from "@/shared/components/ui/sidebar";
+} from "@components/ui/sidebar";
 
 export function SidebarSkeleton() {
   return (

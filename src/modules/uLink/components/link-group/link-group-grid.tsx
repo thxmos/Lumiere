@@ -1,7 +1,7 @@
 "use client";
 
-import { LinkGroupWithLinksTheme } from "@/shared/core/db/repositories/linkGroup/types";
-import { Label } from "@/shared/components/ui/label";
+import { LinkGroupWithLinksTheme } from "@core/db/repositories/linkGroup/types";
+import { Label } from "@components/ui/label";
 import { useRouter } from "next/navigation";
 import {
   Select,
@@ -10,14 +10,14 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@/shared/components/ui/select";
+} from "@components/ui/select";
 import { useState } from "react";
 import LinksEditorSections from "./links-editor-section";
-import { AssetResponse } from "@/shared/core/db/repositories/asset/types";
+import { AssetResponse } from "@core/db/repositories/asset/types";
 import { NewLinkGroupModal } from "./new-link-group-modal";
 import { PlusIcon } from "lucide-react";
-import { Switch } from "@/shared/components/ui/switch";
-import { setActiveLinkGroup } from "@/modules/uLink/actions/link/setActiveLinkGroup";
+import { Switch } from "@components/ui/switch";
+import { setActiveLinkGroup } from "@ulink/actions/link/setActiveLinkGroup";
 import { toast } from "sonner";
 
 interface LinkGroupGridProps {

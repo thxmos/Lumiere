@@ -4,11 +4,11 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/shared/components/ui/card";
+} from "@components/ui/card";
 import { AlertCircle, CheckCircle } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/shared/components/ui/button";
-import TimedRedirect from "@/shared/components/layouts/timed-redirect";
+import { Button } from "@components/ui/button";
+import TimedRedirect from "@components/layouts/timed-redirect";
 
 interface VerificationProps {
   message: string;

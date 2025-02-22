@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@/shared/components/ui/button";
+import { Button } from "@components/ui/button";
 import Link from "next/link";
-import { Vortex } from "@/shared/components/ui/vortex";
+import { Vortex } from "@components/ui/vortex";
 import { GRADIENT_STYLES } from "@/config/theme/styles";
 import { SparklesIcon } from "lucide-react";
 

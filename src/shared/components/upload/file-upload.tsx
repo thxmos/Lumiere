@@ -4,10 +4,10 @@
 
 import { useState, useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
-import { Button } from "@/shared/components/ui/button";
-import { Card, CardContent } from "@/shared/components/ui/card";
+import { Button } from "@components/ui/button";
+import { Card, CardContent } from "@components/ui/card";
 import { UploadIcon, XIcon } from "lucide-react";
-import { cn } from "@/shared/utils/utils";
+import { cn } from "@utils/utils";
 
 export enum FileType {
   Image = "Image",

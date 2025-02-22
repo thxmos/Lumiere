@@ -1,8 +1,8 @@
 "use client";
 
-import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
-import { QRCodeCard } from "../../../../modules/uLink/components/qr-list.card";
-import { useQRCodeStore } from "@/shared/stores/old/qr-codes";
+import { DashboardCard } from "@components/layouts/dashboard-card";
+import { QRCodeCard } from "@ulink/components/qr-list.card";
+import { useQRCodeStore } from "@stores/old/qr-codes";
 import { ScanQrCodeIcon } from "lucide-react";
 
 export const QRListSection = () => {

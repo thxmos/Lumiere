@@ -1,5 +1,5 @@
 import { Asset, Prisma } from "@prisma/client";
-import { prisma } from "@/shared/core/db/prisma";
+import { prisma } from "@core/db/prisma";
 import { NotFoundError, DuplicateError, RepositoryError } from "../errors";
 import {
   IAssetRepository,

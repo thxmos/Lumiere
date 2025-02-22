@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/shared/core/db/prisma";
+import { prisma } from "@core/db/prisma";
 import { User } from "@prisma/client";
 
 export async function updateUserById(

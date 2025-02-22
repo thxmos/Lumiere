@@ -1,9 +1,6 @@
-import {
-  linkRepository,
-  LinkResponse,
-} from "@/shared/core/db/repositories/link";
-import { withAuth } from "@/shared/utils/security/auth";
-import { SessionUser } from "@/shared/core/auth/lucia";
+import { linkRepository, LinkResponse } from "@core/db/repositories/link";
+import { withAuth } from "@utils/security/auth";
+import { SessionUser } from "@core/auth/lucia";
 
 export const getLinksByGroupId = withAuth(
   async (user: SessionUser, groupId: string): Promise<LinkResponse[]> => {

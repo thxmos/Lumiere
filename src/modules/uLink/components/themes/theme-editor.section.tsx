@@ -2,24 +2,24 @@
 
 import React, { useEffect, useState } from "react";
 import { useForm, Controller, useWatch } from "react-hook-form";
-import { Button } from "@/shared/components/ui/button";
-import { Label } from "@/shared/components/ui/label";
+import { Button } from "@components/ui/button";
+import { Label } from "@components/ui/label";
 import { toast } from "sonner";
-import { DashboardCard } from "@/shared/components/layouts/dashboard-card";
-import { ColorSelect } from "@/shared/components/forms/color-select/color-select";
-import { ColorPickerStandalone } from "@/shared/components/forms/color-select/color-picker-standalone";
-import { Separator } from "@/shared/components/ui/separator";
-import { useThemeStore } from "@/shared/stores/old/themes";
-import { upsertTheme } from "@/modules/uLink/actions/theme/upsertTheme";
-import { AssetResponse } from "@/shared/core/db/repositories/asset";
+import { DashboardCard } from "@components/layouts/dashboard-card";
+import { ColorSelect } from "@components/forms/color-select/color-select";
+import { ColorPickerStandalone } from "@components/forms/color-select/color-picker-standalone";
+import { Separator } from "@components/ui/separator";
+import { useThemeStore } from "@stores/old/themes";
+import { upsertTheme } from "@ulink/actions/theme/upsertTheme";
+import { AssetResponse } from "@core/db/repositories/asset";
 import { AssetType, Theme } from "@prisma/client";
 import { FontSection } from "./font.form";
 import { CardSection } from "./card.form";
 import { BorderSection } from "./border.form";
 import { PaintBucketIcon } from "lucide-react";
-import { SelectInput } from "@/shared/components/forms/select-input";
+import { SelectInput } from "@components/forms/select-input";
 import { WHITE } from "@/config/theme/colors";
-import { Switch } from "@/shared/components/ui/switch";
+import { Switch } from "@components/ui/switch";
 
 /*
 TODO: ThemePrimaryColor should be primaryColor

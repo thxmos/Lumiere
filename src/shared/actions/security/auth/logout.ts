@@ -1,8 +1,8 @@
 "use server";
 
-import { lucia } from "@/shared/core/auth/lucia";
-import { SessionRepository } from "@/shared/core/db/repositories/sessions/sessions.repository";
-import { deleteSessionCookie } from "@/shared/utils/security/cookies";
+import { lucia } from "@core/auth/lucia";
+import { SessionRepository } from "@core/db/repositories/sessions/sessions.repository";
+import { deleteSessionCookie } from "@utils/security/cookies";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 

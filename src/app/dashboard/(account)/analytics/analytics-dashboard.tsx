@@ -2,19 +2,14 @@
 
 import { useState } from "react";
 import { Click, ProfileView, QRScan } from "@prisma/client";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/shared/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@components/ui/card";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/components/ui/select";
+} from "@components/ui/select";
 import {
   AreaChart,
   Area,
@@ -31,7 +26,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/shared/components/ui/table";
+} from "@components/ui/table";
 
 import { tableData, chartData } from "./mocks";
 

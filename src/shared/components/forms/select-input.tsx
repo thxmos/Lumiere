@@ -5,7 +5,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/components/ui/select";
+} from "@components/ui/select";
 
 interface SelectInputProps {
   options: { label: string; value: string }[];

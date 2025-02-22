@@ -2,15 +2,15 @@
 
 import { X } from "lucide-react";
 import Image from "next/image";
-import type { ImageDtoWithId } from "@/shared/types/entities/image";
-import { ConfirmDeleteModal } from "@/shared/components/confirm-delete-modal";
+import type { ImageDtoWithId } from "@s-types/entities/image";
+import { ConfirmDeleteModal } from "@components/confirm-delete-modal";
 import { useState } from "react";
-import { deleteAssetById } from "@/shared/actions/file-upload/deleteAsset";
 import { toast } from "sonner";
 import { AssetType } from "@prisma/client";
-import { Badge } from "@/shared/components/ui/badge";
-import { Card } from "@/shared/components/ui/card";
-import { useAssetStore } from "@/shared/stores/old/assets";
+import { Badge } from "@components/ui/badge";
+import { Card } from "@components/ui/card";
+import { useAssetStore } from "@stores/old/assets";
+import { deleteAssetById } from "@actions/file-upload/deleteAsset";
 
 export function AssetsCard({
   asset,

@@ -1,10 +1,10 @@
 "use server";
 
-import { CreateProduct2Dto } from "@/shared/types/entities/product2";
-import { prisma } from "@/shared/core/db/prisma";
-import { Product2Dto } from "@/shared/types/entities/product2";
+import { CreateProduct2Dto } from "@s-types/entities/product2";
+import { prisma } from "@core/db/prisma";
+import { Product2Dto } from "@s-types/entities/product2";
 import { Product2 } from "@prisma/client";
-import { SessionUser } from "@/shared/core/auth/lucia";
+import { SessionUser } from "@core/auth/lucia";
 import { withAuth } from "@/shared/utils/security/auth";
 
 function toDtoMapper(product: Product2): Product2Dto {
