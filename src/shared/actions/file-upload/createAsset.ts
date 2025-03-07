@@ -57,8 +57,6 @@ export const uploadAsset = async (formData: FormData) => {
   const title = formData.get("title") as string;
   const description = formData.get("description") as string;
 
-  console.log(file, title, description);
-
   const newAsset = await createAsset(file, {
     title,
     description,

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import Navbar from "@/shared/components/layouts/nav-bar";
+import Navbar from "@/shared/components/layouts/nav-header/nav-bar";
 import { Button } from "@/shared/components/ui/button";
 import {
   Card,

@@ -7,16 +7,17 @@ import { Input } from "@components/ui/input";
 import { Label } from "@components/ui/label";
 import { Textarea } from "@components/ui/textarea";
 import { UploadIcon } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { toast } from "sonner";
 import { useAssetStore } from "@stores/old/assets";
 import { Asset } from "@prisma/client";
-import { FileType } from "@components/upload/file-upload";
+import { AssetUploadDialogRef } from "@components/upload/asset-upload-modal";
 
 export const AssetUploadForm = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [asset, setAsset] = useState<File | null>(null); // The file that will be uploaded in the form
+  const assetUploadRef = useRef<AssetUploadDialogRef>(null);
 
   const setAssets = useAssetStore((state) => state.setAssets); //TODO: think I read this isn't the best way to do this
 
@@ -39,6 +40,7 @@ export const AssetUploadForm = () => {
 
       setAssets([uploadedImage as Asset, ...useAssetStore.getState().assets]);
       resetForm();
+      assetUploadRef.current?.resetImage();
     } catch (error) {
       toast.error("Failed to upload image");
     }

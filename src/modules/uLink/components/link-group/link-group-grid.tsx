@@ -30,13 +30,13 @@ const LinkGroupGrid: React.FC<LinkGroupGridProps> = ({
   assets,
 }) => {
   const router = useRouter();
+  const [isNewGroupModalOpen, setIsNewGroupModalOpen] = useState(false);
 
   const [selectedLinkGroupId, setSelectedLinkGroupId] = useState<string | null>(
     linkGroups.sort(
       (a, b) => b.updatedAt!.getTime() - a.updatedAt!.getTime(), // sort by updatedAt in descending order
     )[0]?.id ?? null,
   );
-  const [isNewGroupModalOpen, setIsNewGroupModalOpen] = useState(false);
 
   const handleSelectChange = (value: string) => {
     if (value === "add-new") {
@@ -50,6 +50,7 @@ const LinkGroupGrid: React.FC<LinkGroupGridProps> = ({
     if (checked) {
       await setActiveLinkGroup(selectedLinkGroupId!);
       toast.success("Link group activated", { duration: 3000 });
+      router.refresh();
     } else {
       toast.warning("Please select another link group to activate", {
         duration: 3000,

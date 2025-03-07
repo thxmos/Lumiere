@@ -21,10 +21,11 @@ const iconSizes = {
   lg: "h-16 w-16",
 };
 
-interface ImageUploadProps {
+interface Props {
   file: File | null;
   setFile: (file: File | null) => void;
   onImageChange?: (image: File | null) => void;
+
   disabled?: boolean;
   size?: "sm" | "md" | "lg";
   rounded?: boolean;
@@ -39,10 +40,9 @@ export function AssetUpload({
   size = "sm",
   rounded = false,
   initialImage = null,
-}: ImageUploadProps) {
+}: Props) {
   const [fileType, setFileType] = useState<FileType | null>(null);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
-
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const onUpload = async () => {

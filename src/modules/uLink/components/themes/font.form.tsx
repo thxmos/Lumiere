@@ -3,10 +3,10 @@ import { Controller } from "react-hook-form";
 import { Theme } from "@prisma/client";
 import { Control } from "react-hook-form";
 import { FONTS } from "@/config/theme/fonts";
-import { SelectInput } from "@components/forms/select-input";
+import { SelectInput } from "@/shared/components/form-inputs/select-input";
 import { Label } from "@components/ui/label";
 import { Separator } from "@components/ui/separator";
-import { ColorSelect } from "@components/forms/color-select/color-select";
+import { ColorSelect } from "@/shared/components/form-inputs/color-select/color-select";
 
 export interface ThemeFormProps {
   control: Control<{

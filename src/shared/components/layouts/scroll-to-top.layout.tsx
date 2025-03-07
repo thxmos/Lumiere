@@ -1,6 +1,6 @@
 "use client";
 
-import { useScrollToTop } from "@hooks/useScrollToTop";
+import { useScrollToTop } from "@/shared/hooks/ui/useScrollToTop";
 
 /*
 Refer to hook method above ^ on why we need this dumb component

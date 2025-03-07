@@ -11,8 +11,6 @@ export default async function PipelineSection() {
   await validateAuthPage();
   const response = await getUserMarketingDataFromDb();
 
-  console.log(response);
-
   if (!response.success) {
     return (
       <DashboardCard

@@ -55,8 +55,6 @@ export const updateGoogleCalendarEvent = withAuth(
         },
       );
 
-      console.log(response);
-
       //TODO: not handling errors here
 
       if (!response.ok) {

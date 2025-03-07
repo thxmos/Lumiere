@@ -1,7 +1,7 @@
 import { getUserByUsername } from "@actions/entities/user/getUserByUsername";
 import React from "react";
 import { redirect } from "next/navigation";
-import LinkTree from "@components/ulink-profile/linktree";
+import LinkTree from "@/modules/uLink/components/profile-page/profile-page";
 import { UserResponse } from "@core/db/repositories/user";
 import { getActiveLinkGroupByUsername } from "@ulink/actions/link/getActiveLinkGroupByUsername";
 import { getThemeByUsername } from "@ulink/actions/theme/getThemeByUsername";

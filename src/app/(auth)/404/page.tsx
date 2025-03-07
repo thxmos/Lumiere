@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@components/ui/card";
 import { AlertTriangle } from "lucide-react";
-import Navbar from "@components/layouts/nav-bar";
+import Navbar from "@/shared/components/layouts/nav-header/nav-bar";
 import { validateServerSession } from "@utils/security/auth";
 import { DEFAULT_REDIRECT_URL } from "@/config/app";
 

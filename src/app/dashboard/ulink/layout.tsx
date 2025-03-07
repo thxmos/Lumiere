@@ -1,5 +1,5 @@
 import MobilePreview from "@ulink/components/mobile-preview/mobile-preview";
-import LinkTree from "@components/ulink-profile/linktree";
+import LinkTree from "@/modules/uLink/components/profile-page/profile-page";
 import { getThemeAction } from "@ulink/actions/theme/getTheme";
 import { ScrollToTopLayout } from "@components/layouts/scroll-to-top.layout";
 import { getCurrentUser } from "@actions/entities/user/getCurrentUser";

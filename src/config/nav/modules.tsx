@@ -63,32 +63,32 @@ export const NAV_MODULES = [
       },
     ],
   },
-  {
-    title: "Kaizen",
-    description: "Grow with the community",
-    url: "/kaizen",
-    icon: <MailPlusIcon className={SIDEBAR_ICON_STYLE} />,
-    items: [
-      {
-        title: "Community",
-        url: "community",
-        icon: <UsersIcon className={SIDEBAR_ICON_STYLE} />,
-      },
-      {
-        title: "Feedback",
-        url: "feedback",
-        icon: <MessageSquareIcon className={SIDEBAR_ICON_STYLE} />,
-      },
-      {
-        title: "Bug Report",
-        url: "bug-report",
-        icon: <BugIcon className={SIDEBAR_ICON_STYLE} />,
-      },
-      {
-        title: "Documentation",
-        url: "documentation",
-        icon: <BookMarkedIcon className={SIDEBAR_ICON_STYLE} />,
-      },
-    ],
-  },
+  // {
+  //   title: "Kaizen",
+  //   description: "Grow with the community",
+  //   url: "/kaizen",
+  //   icon: <MailPlusIcon className={SIDEBAR_ICON_STYLE} />,
+  //   items: [
+  //     {
+  //       title: "Community",
+  //       url: "community",
+  //       icon: <UsersIcon className={SIDEBAR_ICON_STYLE} />,
+  //     },
+  //     {
+  //       title: "Feedback",
+  //       url: "feedback",
+  //       icon: <MessageSquareIcon className={SIDEBAR_ICON_STYLE} />,
+  //     },
+  //     {
+  //       title: "Bug Report",
+  //       url: "bug-report",
+  //       icon: <BugIcon className={SIDEBAR_ICON_STYLE} />,
+  //     },
+  //     {
+  //       title: "Documentation",
+  //       url: "documentation",
+  //       icon: <BookMarkedIcon className={SIDEBAR_ICON_STYLE} />,
+  //     },
+  //   ],
+  // },
 ];

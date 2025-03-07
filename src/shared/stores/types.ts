@@ -56,8 +56,4 @@ export interface LinkGroupSlice {
 }
 
 // Combine all slices into a RootState
-export interface RootState
-  extends UserSlice,
-    ThemeSlice,
-    AssetSlice,
-    LinkGroupSlice {}
+export interface RootState extends AssetSlice, LinkGroupSlice {}

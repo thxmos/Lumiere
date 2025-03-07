@@ -1,0 +1,2 @@
+- consolidate the (auth) pages and actions
+- middleware to check if profile

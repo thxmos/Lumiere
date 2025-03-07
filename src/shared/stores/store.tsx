@@ -1,16 +1,12 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { RootState } from "./types";
-import { createUserSlice } from "./slices/user";
-import { createThemeSlice } from "./slices/theme";
 import { createAssetSlice } from "./slices/asset";
 import { createLinkGroupSlice } from "./slices/linkgroup";
 
 export const useStore = create<RootState>()(
   persist(
     (...args) => ({
-      ...createUserSlice(...args),
-      ...createThemeSlice(...args),
       ...createAssetSlice(...args),
       ...createLinkGroupSlice(...args),
     }),
@@ -19,9 +15,14 @@ export const useStore = create<RootState>()(
       name: "root-store", // localStorage key
       partialize: (state) => ({
         // Only persist selected state
-        user: state.user,
-        theme: state.theme,
+        // user: state.user,
+        // theme: state.theme,
       }),
     },
   ),
 );
+
+//TODO
+// - i remember the persistence configuration was good pretty sure but i forget why
+// - delete user store and just use cookie
+// - link group manage themes as well as links

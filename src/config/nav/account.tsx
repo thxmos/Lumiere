@@ -1,6 +1,6 @@
 import { UserIcon, BarChart3Icon, ImagesIcon } from "lucide-react";
 import { SIDEBAR_ICON_STYLE } from "@/config/theme/styles";
-import { NavItem } from "@/shared/components/layouts/sidebar-nav/types";
+import { NavItem } from "@/shared/components/layouts/nav-sidebar/types";
 
 export const NAV_ACCOUNT: NavItem[] = [
   {

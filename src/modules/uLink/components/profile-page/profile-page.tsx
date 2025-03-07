@@ -14,9 +14,9 @@ import { TabSelector } from "./components/tab-selector";
 import { SOCIAL_PLATFORMS } from "@/config/constants/social-media";
 import { cn } from "@utils/utils";
 import { DEFAULT_FONT } from "@/config/theme/fonts";
-import { ColoredBackground } from "./components/background-color";
-import VideoBackground from "./components/background-video";
-import { ImageBackground } from "./components/background-image";
+import { ColoredBackground } from "./components/backgrounds/background-color";
+import VideoBackground from "./components/backgrounds/background-video";
+import { ImageBackground } from "./components/backgrounds/background-image";
 import { createClickSocial } from "@/modules/uLink/actions/link-click/createClickSocial";
 import { SocialMedia } from "@prisma/client";
 import { UserResponse } from "@core/db/repositories/user";
@@ -143,7 +143,7 @@ export default function LinkTree({
       <div
         className={cn("relative z-10 px-4 py-16 flex flex-col", {
           "min-h-screen": !isMobilePreview,
-          "min-h-[calc(64vh)]": isMobilePreview,
+          "min-h-[calc(65vh)]": isMobilePreview,
         })}
       >
         <div className="max-w-md mx-auto flex-grow">
